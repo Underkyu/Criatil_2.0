@@ -1,0 +1,78 @@
+div.corpo{ /*Basicamente so serve para dar cor pro fundo header*/
+    width: 100%;
+    background-color: #0476D9;
+}
+
+div.header{ /*Div que contem o conteudo do header*/
+    display: flex;
+}
+
+input[type=text] {
+    width: 6rem;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url("../imagens/Header/Lupa.png");
+    background-position: 10px 10px; 
+    background-size: 2rem;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    border: none;
+    height: 2rem;
+    border-radius: 20px;
+  }
+
+
+/*Responsividade*/
+.container {
+    max-width: 1425px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 2xl */
+  @media (max-width: 1536px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+  
+  /* xl */
+  @media (max-width: 1280px) {
+    .container {
+      max-width: 1024px;
+    }
+  }
+  
+  /* lg */
+  @media (max-width: 1024px) {
+    .container {
+      max-width: 768px;
+    }
+  }
+  
+  /* md */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 640px;
+    }
+  }
+  
+  /* sm */
+  @media (max-width: 640px) {
+    .container {
+      max-width: 475px;
+    }
+  }
+  
+  /* xs */
+  @media (max-width: 475px) {
+    .container {
+      width: 100%;
+    }
+  }

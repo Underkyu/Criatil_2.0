@@ -1,27 +1,76 @@
+*{/*Zerar valores e aplicar fonte padrão (Tauri)*/
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: none;
+  }
+
 div.corpo{ /*Basicamente so serve para dar cor pro fundo header*/
     width: 100%;
     background-color: #0476D9;
+    margin: 0px;
+    padding: 0px;
 }
 
 div.header{ /*Div que contem o conteudo do header*/
     display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
-input[type=text] {
+input[type=text] { /*Barra de pesquisa*/
     width: 6rem;
     border-radius: 4px;
     font-size: 16px;
     background-color: white;
     background-image: url("../imagens/Header/Lupa.png");
-    background-position: 10px 10px; 
+    background-position: 380px 9px; 
     background-size: 2rem;
     background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
+    padding: 12px 20px 12px 20px;
     border: none;
-    height: 2rem;
+    height: 3.3rem;
+    width: 27rem;
     border-radius: 20px;
   }
 
+  input.pesquisa::placeholder{
+    color: #33363F;
+    font-size: 1.1rem;
+  }
+
+  input:focus {
+    outline: 0;
+  }
+
+  img.Logo_header{ /*Bem autoexplicativo*/
+    height: 5.5rem;
+    margin: .5rem;
+  }
+
+  div.link_header { /*Div que contem icon e textos dos links para outras paginas que ficam dentro do header*/
+    display: flex;
+  }
+
+  img.link_header{/*Icon que fica ao lado dos links para outras páginas*/
+    width: 2.9rem;
+    margin-right: .5rem;
+  }
+
+  div.textos_pequenos{/*Div que contem ops pequenos textos que ficam ao lado dos icons no header*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  p.pequeno{/*Texto pequeno que vão ao lado do icon no header*/
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+  }
+
+  p.negrito{
+    font-weight: bold;
+  }
 
 /*Responsividade*/
 .container {

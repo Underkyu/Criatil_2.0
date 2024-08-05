@@ -1,7 +1,7 @@
 
 
 # <center><font size="+20">Criatil 2.0
-![Logo](https://raw.githubusercontent.com/Chrb09/Inclusipet-Project/master/img/Logo/InclusipetREADME.png](https://raw.githubusercontent.com/Underkyu/Criatil_2.0/646e3848dfc2b801b30709aebe450b1a2a3b293e/imagens/Header/LogoVetor.svg))
+![Logo](https://raw.githubusercontent.com/Underkyu/Criatil_2.0/646e3848dfc2b801b30709aebe450b1a2a3b293e/imagens/Header/LogoVetor.svg)
 
 <center><b>Segunda versão do projeto web de uma loja de brinquedo fictícia chamada Criatil em parceria com com A ETEC da Zona Leste e a multinacional IBM.</b>
 

@@ -29,17 +29,17 @@
 
 ## Páginas
 - Página principal 
-- Catálogo <b>WIP
-- Página de produto <b>WIP
-- Login e cadastro <b>WIP
-- Carrinho <b>WIP
-- Tela de pagamento <b>WIP
+- Catálogo <b>WIP</b>
+- Página de produto <b>WIP</b>
+- Login e cadastro <b>WIP</b>
+- Carrinho <b>WIP</b>
+- Tela de pagamento <b>WIP</b>
 - Contato
-- Perfil <b>WIP
-- Pedidos <b>WIP
-- Favoritos <b>WIP
-- Tela de cadastro de cartões de crédito <b>WIP
-- Sobre nós <b>WIP
+- Perfil <b>WIP</b>
+- Pedidos <b>WIP</b>
+- Favoritos <b>WIP</b>
+- Tela de cadastro de cartões de crédito <b>WIP</b>
+- Sobre nós <b>WIP</b>
 
 ## Linguagens e tecnologias utilizadas
 

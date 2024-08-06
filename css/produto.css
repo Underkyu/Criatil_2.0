@@ -1,0 +1,199 @@
+*{/*Zerar valores e aplicar fonte padrão (Roboto)*/
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: none;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+ 
+ div.produto{/*Div que contem as fotos e a descrição do produto*/
+    display: flex;
+  }
+  
+  div.detalhes{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    max-width: 700px;
+  }
+  
+  div.imagens_menores{/*Imagens menores do produto*/
+    display: flex;
+    flex-direction: column;
+    margin-right: 1.5rem;
+  }
+  
+  img.imagem_menor{/*Imagem menor do produto*/
+    width: 7.5rem;
+    border-radius: 25px;
+    border:#D4D4D4 solid 2px;
+    margin-bottom: 1rem;
+  }
+
+  img.imagem_maior{/*Imagem maior do produto*/
+    width: 30rem;
+    height: 30rem;
+    border-radius: 25px;
+    border:#D4D4D4 solid 2px;
+  }
+
+  div.estrela{/*Div que contem as estrelas de avaliações*/
+    display: flex;
+  }
+
+  div.avaliacoes{ /*Div que contem o numero de avialações e estrelas*/
+    align-items: center;
+    display: flex;
+    margin-top: .75rem;
+  }
+
+  p.avaliacao{
+    color: #F2AF00;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+
+  h3.titulo{
+    font-size: 2.25rem;
+  }
+
+  h2.preco{
+    color: #0476D9;
+    font-size: 2.75rem;
+    margin-top: 1rem;
+  }
+
+  p.descricao{
+    font-size: 20px;
+    margin-top: 1rem;
+  }
+
+  p.quantidade{
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: .25rem;
+  }
+
+  button.comprar{
+    border: none;
+    border-radius: 20px;
+    background-color: #0476D9;
+    padding: .5rem;
+    margin-top: 1rem;
+  }
+  
+  p.comprar{
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  button.carrinho{
+    border: none;
+    border-radius: 20px;
+    background-color: #F2AF00;
+    padding: .5rem;
+    margin-top: 1rem;
+  }
+  
+  p.carrinho{
+    color: black;
+    font-size: 1.5rem;
+  }
+
+    /*Css doido para fazer um botão igual o do figma*/
+    input[type="number"]{
+      -moz-appearance: textfield;
+      text-align: center;
+      font-size: 2rem;
+      border: none;
+      background-color: #ffffff;
+      color: #202030;
+      font-weight: bolder;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button{
+      -webkit-appearance: none;
+      margin: 0;
+  }
+  button.quantidade{
+      color: #3264fe;
+      background-color: #ffffff;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      font-weight: bolder;
+  }
+  #decrement{
+      padding: .5rem;
+      border-radius: 25px 0 0 25px;
+  }
+  #increment{
+      padding: .5rem;
+      border-radius: 0 25px 25px 0;
+  }
+  
+  div.quantidade{
+    display: flex;
+    border-radius: 10px;
+    border: #D4D4D4 2px solid;
+    width: fit-content;
+  }
+  
+  
+  /*Responsividade*/
+.container {
+    max-width: 1425px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 2xl */
+  @media (max-width: 1536px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+  
+  /* xl */
+  @media (max-width: 1280px) {
+    .container {
+      max-width: 1024px;
+    }
+  }
+  
+  /* lg */
+  @media (max-width: 1024px) {
+    .container {
+      max-width: 768px;
+    }
+  }
+  
+  /* md */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 640px;
+    }
+  }
+  
+  /* sm */
+  @media (max-width: 640px) {
+    .container {
+      max-width: 475px;
+    }
+  }
+  
+  /* xs */
+  @media (max-width: 475px) {
+    .container {
+      width: 100%;
+    }
+  }

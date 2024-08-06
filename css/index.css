@@ -1,3 +1,11 @@
+*{/*Zerar valores e aplicar fonte padrão (Roboto)*/
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: none;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
 /*Inicio CSS Carrossel*/
  img#grande{ /*Imagens do carrossel (maior)*/
     display: block;

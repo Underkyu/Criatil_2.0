@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="w">
+    <link rel="stylesheet" href="../css/produto.css">
+    <title>Pelucia Miku</title>
+</head>
+<body>
+    <div class="container">
+
+        <!--Inicio div produto-->
+        <div class="produto"><!--Div que contem as informações principais do produto-->
+
+            <div class="imagens_menores"><!--Imagens pequnas que ficam ao lado da maior-->
+                <img src="../imagens/Produtos/Miku/Imagem1.png" alt="Pelucia Miku de frente" class="imagem_menor" >
+                <img src="../imagens/Produtos/Miku/Imagem2.png" alt="Pelucia Miku vista da diagonal" class="imagem_menor">
+                <img src="../imagens/Produtos/Miku/Imagem3.png" alt="Pelucia Miku de trás" class="imagem_menor">
+            </div><!--Fim imagens pequenas-->
+
+            <img src="../imagens/Produtos/Miku/Imagem1.png" alt="Imagem maior do produto" class="imagem_maior"> <!--Imagem maior do produto-->
+
+            <div class="detalhes"><!--Div que contem os detalhes dos produtos-->
+                <h3 class="titulo">Pelucia Miku</h3><!--Nome do produto-->
+
+                <div class="avaliacoes"><!--Div que contem as estrelas e o numero de avalições-->
+                    <div class="estrelas">
+                        <img src="../imagens/Icons/estrela.png" alt="estrela">
+                        <img src="../imagens/Icons/estrela.png" alt="estrela">
+                        <img src="../imagens/Icons/estrela.png" alt="estrela">
+                        <img src="../imagens/Icons/estrela.png" alt="estrela">
+                        <img src="../imagens/Icons/meia_estrela.png" alt="estrela">
+                    </div>
+                    <p class="avaliacao">12.6K</p>
+                </div>
+                <h2 class="preco">R$79,99</h2>
+                <p class="descricao">Boneco de pelucia inspirado na famosa cantora virtual hatsune miku, perfeito para pessoas de qualquer idade</p>
+                
+                <p class="quantidade">Quantidade</p>
+                <div class="quantidade">
+                     <button id="decrement" onclick="stepper(this)" class="quantidade"> - </button>
+                     <input type="number" min="1" max="100" step="1" value="1" id="my-input">
+                     <button id="increment" onclick="stepper(this)" class="quantidade"> + </button>
+                </div>
+                
+                <button class="comprar">
+                    <p class="comprar">Comprar</p>
+                </button>
+                
+                <button class="carrinho">
+                    <p class="carrinho">Adiconar ao carrinho</p>
+                </button>
+            </div>    
+        </div>
+        <!--Fim div produto-->
+    </div>
+    <script src="../js/produto.js"></script>
+</body>
+</html>

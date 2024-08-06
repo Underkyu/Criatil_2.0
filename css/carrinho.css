@@ -1,0 +1,212 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}   
+#carrinho {
+    width: calc(100% - 280px); /* 310px = largura do resumo + margem */
+    margin-right: 310px; /* largura do resumo e da margem */
+    height: auto;
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;  
+    flex-direction: column;
+    position: absolute;
+    bottom: 15%;
+    left: -25px;
+}
+#resumo {
+    background-color: #0476D9;
+    position: absolute;
+    height: calc(100% + 10px);
+    width: 310px;
+    color: white;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    right: -1%;
+    top: -1%;
+    margin-left: 10px;
+    border: solid #000000 2px;
+}
+#resumo h1 {
+    font-weight: 500;
+    font-size: 38px;
+    display: flex;
+    position: absolute;
+    top: 20%;
+}
+.resumopreco{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    font-size: 18px;
+}
+.botao-continuar {
+    width: 60%;
+    height: 40px;
+    bottom: 30%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    border: solid white 3px;
+    border-radius: 18px;   
+    background-color: #0476D9;
+    font-size: 16px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 2.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.botao-pagamento {
+    width: 80%;
+    height: auto;
+    bottom: 22%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    border-radius: 10px;   
+    background-color: #F2AF00;
+    color: #000000;
+    font-size: 17px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 2.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+.produto {
+    display: flex;
+    align-items:center;
+    flex-wrap: nowrap;
+    gap: 35px;
+    font-size: 18px;
+    padding: 5px;
+    border: solid #0476D9 2px;
+}
+.produto + .produto {
+    border-top: none;
+}
+.produto-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.produto-imagem {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    margin-left: 40px;
+}
+.produto-nome {
+    flex: 1;
+    font-size: 17px;
+    margin-left: 20px;
+    margin-right: 50px;
+}
+.produto-quantidade {
+    margin-left: 75px;
+    margin-right: 75px;
+    font-size: 19px;
+}
+.produto-valor {
+    flex: 1;
+    font-size: 17px;
+    font-weight: 500;
+    margin-left: 75px;
+    margin-right: 75px;
+}
+.produto-nome, .produto-quantidade {
+    font-weight: 500;
+}
+#carrinho-legenda {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    margin-bottom: 10px;
+    width: calc(100% - 280px); /* largura do carrinho */
+}
+/* aq eu tive q fzr umas puta gambiarra de margem pra q a legenda fique no lugar certo em 
+   relação ao carrinho, se pensarem em algum jeito de fzr isso melhor podem falar ou mudar */
+.legenda-nome {
+    margin-left: 295px;
+}
+.legenda-qntd {
+    margin-left: 207px;
+    
+}.legenda-valor {
+    margin-left: 195px;
+}
+/* acho q seria interessante fazer uma animação pra fazer o botão da quantidade aparecer e expandir
+    ao invés de ficar sempre assim, principalmente pela responsividade, mas veremos no futuro */
+.produto-quantidade {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: solid #F2AF00 3px;
+    border-radius: 8px;
+    height: 33px;
+    padding: 0 5px;
+    width: 85px;
+    box-sizing: border-box;
+}
+.quantidade-botao {
+    border: none;
+    background-color:#ffffff;
+    margin: 2px;
+    font-size: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    color: black;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+.produto-quantidade span {
+    margin: 5px;
+}
+#entrega {
+    font-weight: 500;
+    justify-content: space-evenly;
+    width: 520px;
+    height: auto;
+    text-decoration: underline;
+    margin-top: 5%;
+    border-top: solid #0476D9 2px;
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;  
+    flex-direction: row;
+    width: calc(100% - 340px); /* 310px = largura do resumo + margem */
+}
+#frete, #metodo, #cupom {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.entrega-imagem{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    margin-right: 8px; 
+}
+
+/* responsividade abaixo dessa linha */
+

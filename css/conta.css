@@ -1,0 +1,171 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+} 
+#navbar-conta {
+    position: absolute;
+    height: 100%;
+    width: 310px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    left: 1%;
+    top: -8%;
+    margin-left: 5%;
+}
+.lateral-conta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;    
+    margin-bottom: 20px;
+    width: 100%;
+}
+.img-lateral {
+    width: 95px;
+    height: 95px;
+    object-fit: cover;  
+    border-radius: 100px;
+    border: solid #F2AF00 3px;
+}
+.nome-lateral {
+    font-size: 24px;
+    font-weight: 500;
+    padding: 10px;
+    flex-wrap: wrap;
+    width: 220px;
+}
+#navbar-conta a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    margin-top: 15px;
+}
+.pagina-selecionada{
+    font-weight: 500;
+}
+.paginas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 85%;
+    padding: 10px;
+    font-size: 21px;
+}
+#perfil-box{
+    position: absolute;
+    right: 2.5%;
+    top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #0476D9;
+    width: 840px;
+    height: 480px;
+    border-radius: 20px;
+}
+#perfil-box h1 {
+    position: relative;
+    top: 0;
+    color: white;
+    font-size: 36px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-family: 'Arial';
+}   
+#perfil {
+    margin-top: 0;
+    position: relative;
+    bottom: 15px;
+    background-color: white;
+    width: 92%;
+    height: 85%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0px;
+
+}
+.informacoes {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    font-size: 16px;
+    white-space: nowrap;
+    margin-left: -20px;
+}
+.informacoes div {
+    margin-top: 8px;
+}
+.legendas {
+    font-weight: 500;
+}
+.infos {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+.editar {
+    width: auto;
+    height: 40px;
+    border-radius: 12px;   
+    background-color: #F2AF00;
+    color: #000000;
+    font-size: 17px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 2.5;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    position: absolute;
+    bottom: 120px;
+    left: 40px;
+}
+.conta-box {
+    margin-top: 35px;
+    margin-left: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.img-conta {
+    width: 155px;
+    height: 155px;
+    object-fit: cover;  
+    border-radius: 100px;
+    border: solid #F2AF00 5px;
+}
+.nome-conta {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+.img-container {
+    position: relative;
+    display: inline-block;
+}
+.editar-icone /* div q contém o ícone */ {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #F2AF00;      
+    border-radius: 100%;
+    padding: 1px;
+    cursor: pointer;
+}
+.editar-icone img {
+    width: 40px;
+    height: 35px;
+    object-fit: cover;
+}

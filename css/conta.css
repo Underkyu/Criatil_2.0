@@ -144,7 +144,7 @@ body {
     height: 155px;
     object-fit: cover;  
     border-radius: 100px;
-    border: solid #F2AF00 3px;
+    border: solid #F2AF00 5px;
 }
 .nome-conta {
     font-size: 24px;

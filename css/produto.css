@@ -155,16 +155,18 @@ div.quantidade{
 /*Inicio CSS avalições*/
 div.avaliacao{
   display: flex;
-  border: #D4D4D4 solid 3px;
-  border-radius: 15px;
   width: fit-content;
   padding: 1rem;
 }
 
-div.estatiticas{/*Parte que mostra a porcentagem de cada tipo de avaliação*/
+div.estatisticas{/*Parte que mostra a porcentagem de cada tipo de avaliação*/
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border: #D4D4D4 solid 3px;
+  border-radius: 15px;
+  height: fit-content;
+  padding: 1rem;
 }
 
 h3.estatisticas{ /*Titulo "Estatisticas"*/
@@ -205,6 +207,38 @@ div.branco{ /*Div vazio que compões a parte branca do gráfico de barra*/
   border-radius: 0px 15px 15px 0px;
 }
 
+div.card_avaliacao{ /*Div que contem as avaliações em si*/
+  display: flex;
+  align-items: center;
+}
+
+div.nome_avaliacao{/*Nome do perfil do avaliador*/
+  display: flex;
+  align-items: center;
+}
+
+img.foto_perfil{ /*Foto de perfil do usuario no card de avalição*/
+  width: 5.75rem;
+  height: 5.75rem;
+  border: 1px solid black;
+  border-radius: 50px;
+}
+
+h5.nome{ /*Nome do perfil*/
+  font-size: 2.25rem;
+  margin: 0;
+}
+
+p.titulo_avaliacao{/*Titulo da avaliação*/
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0;
+}
+
+p.texto_avaliacao{/*O texto da avalição*/
+  font-size: 1.5rem;
+  margin: 0;
+}
 
 /*Fim CSS avaçliações*/
 

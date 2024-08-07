@@ -32,7 +32,7 @@
 - Catálogo <b>WIP</b>
 - Página de produto <b>WIP</b>
 - Login e cadastro <b>WIP</b>
-- Carrinho <b>WIP</b>
+- Carrinho
 - Tela de pagamento <b>WIP</b>
 - Contato
 - Perfil <b>WIP</b>

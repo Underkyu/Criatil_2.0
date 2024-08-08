@@ -231,3 +231,138 @@ div.promocionais{
     width: 100%;
   }
 }
+
+/* CSS DO HEADER */
+
+div.corpo{ /*Basicamente so serve para dar cor pro fundo header*/
+  width: 100%;
+    background-color: #0476D9;
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  div.header{ /*Div que contem o conteudo do header*/
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  input[type=text] { /*Barra de pesquisa*/
+    width: 6rem;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url("../imagens/Header/Lupa.png");
+    background-position: 97% 50%; 
+    background-size: 2rem;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 20px;
+    border: none;
+    height: 2rem;
+    width: 27rem;
+    border-radius: 20px;
+  }
+  
+  input.pesquisa::placeholder{
+    color: #33363F;
+    font-size: 1.1rem;
+  }
+  
+  input:focus {
+    outline: 0;
+  }
+  
+  img.Logo_header{ /*Bem autoexplicativo*/
+    height: 5.5rem;
+    margin: .5rem;
+  }
+  #linki{
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+  }
+  div.link_header { /*Div que contem icon e textos dos links para outras paginas que ficam dentro do header*/
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  img.link_header{/*Icon que fica ao lado dos links para outras páginas*/
+    width: 2.9rem;
+    height: 2.9rem;
+    margin-right: .5rem;
+  }
+  
+  div.textos_pequenos{/*Div que contem ops pequenos textos que ficam ao lado dos icons no header*/
+    display: flex;
+    justify-content: space-between;
+    gap: 0.4rem;  
+    
+  }
+  
+  p.pequeno{/*Texto pequeno que vão ao lado do icon no header*/
+  
+    color: white;
+  }
+  
+  p.negrito{
+    
+    font-weight: bold;
+  }
+  
+  /*Responsividade*/
+  .container {
+    max-width: 1425px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 2xl */
+  @media (max-width: 1536px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+  
+  /* xl */
+  @media (max-width: 1280px) {
+    .container {
+      max-width: 1024px;
+    }
+  }
+  
+  /* lg */
+  @media (max-width: 1024px) {
+    .container {
+      max-width: 768px;
+    }
+  }
+  
+  /* md */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 640px;
+    }
+  }
+  
+  /* sm */
+  @media (max-width: 640px) {
+    .container {
+      max-width: 475px;
+    }
+  }
+  
+  /* xs */
+  @media (max-width: 475px) {
+    .container {
+      width: 100%;
+    }
+  }
+  
+  /* FIM DO CSS DO HEADER */

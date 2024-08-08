@@ -41,11 +41,17 @@ div.estrela{/*Div que contem as estrelas de avaliações*/
   display: flex;
 }
 
+div.avaliacoes_anuncio{/*Div que contem o numero de avialações e estrelas ao lado do nome do produto*/
+ display: flex;
+ margin-top: 1rem;
+}
+
 div.avaliacoes{ /*Div que contem o numero de avialações e estrelas*/
-  align-items: center;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   margin: 0;
-  margin-top: .75rem;
+  margin-left: 4rem;
 }
 
 p.avaliacao{ /*Texto que fica ao lado das estrelas de avaliação*/
@@ -153,10 +159,26 @@ div.quantidade{
 /*Fim do CSS doido*/
 
 /*Inicio CSS avalições*/
+h2.avaliacoes{
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  justify-content: center;
+  font-size: 3rem;
+}
+
 div.avaliacao{
   display: flex;
   width: fit-content;
   padding: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  justify-content: center;
+
 }
 
 div.estatisticas{/*Parte que mostra a porcentagem de cada tipo de avaliação*/
@@ -208,13 +230,37 @@ div.branco{ /*Div vazio que compões a parte branca do gráfico de barra*/
 }
 
 div.card_avaliacao{ /*Div que contem as avaliações em si*/
+  margin: 0;
   display: flex;
-  align-items: center;
+  border: #D4D4D4 solid 3px;
+  border-radius: 15px;
+  padding: .75rem;
+  margin-bottom: 2rem;
+}
+
+div.detalhes_avaliacoes{/*Div que contem todos os cards de avaliação*/
+  padding: 0;
+  margin: 0;
+  margin-left: 1rem;
+}
+
+img.primeira_estrela{ /*Primeira estrela ao lado do nome do usuário*/
+  margin-left: 1rem;
+}
+
+
+div.avaliacoes{ /*Div com os cards de avaliações*/
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 0;
+  margin-left: 4rem;
 }
 
 div.nome_avaliacao{/*Nome do perfil do avaliador*/
   display: flex;
   align-items: center;
+  margin-top: 1.5rem;
 }
 
 img.foto_perfil{ /*Foto de perfil do usuario no card de avalição*/
@@ -233,11 +279,13 @@ p.titulo_avaliacao{/*Titulo da avaliação*/
   font-weight: bold;
   font-size: 2rem;
   margin: 0;
+  margin-top: .75rem;
 }
 
 p.texto_avaliacao{/*O texto da avalição*/
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin: 0;
+  margin-top: .25rem;
 }
 
 /*Fim CSS avaçliações*/

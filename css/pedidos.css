@@ -67,7 +67,7 @@
     background-color: #0476D9;
     width: 840px;
     height: 480px;
-    border-radius: 20px;    
+    border-radius: 20px;
 }
 #box h1 {
     position: relative;
@@ -76,91 +76,87 @@
     font-family: 'Arial';
     padding: 15px;
 }   
-#perfil {
+#pedidos {
     margin-top: 0;
     position: relative;
     bottom: 2%;
     background-color: white;
     width: 95%;
     height: 85%;
+    padding-left: 20px;
     border-radius: 20px;
     display: flex;
-    justify-content: space-evenly;
-    padding-left: 20px;
+    flex-direction: column;
 
 }
 .informacoes {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
     padding-top: 20px;
     font-size: 17px;
     white-space: nowrap;
     margin-left: -20px;
+    overflow-y: auto;
 }
 .informacoes div {
     margin-top: 8px;
 }
-.legendas {
-    font-weight: 500;
-}
-.infos {
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-}
-.editar {
+.produto {
     width: auto;
-    height: 40px;
-    border-radius: 12px;   
-    background-color: #F2AF00;
-    color: #000000;
-    font-size: 17px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    padding: 10px 20px;
-    cursor: pointer;
-    text-decoration: none;
-    line-height: 2.5;
-    border: none;
+    height: 140px;
+    margin-left: -10px;
+    margin-right: -10px;
     display: flex;
-    justify-content: center;
-    align-items: center;  
-    position: absolute;
-    bottom: 120px;
-    left: 40px;
+    align-items:center;
+    flex-direction: row;
+    font-size: 18px;
+    border: solid #0476D9 2px;
+    gap: 25px;
 }
-.conta-box {
-    margin-top: 35px;
+.produto + .produto {
+    border-top: none;
+    border-bottom: none;
+}
+.produto-info {
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
+    width: 100%;
 }
-.img-conta {
-    width: 135px;
-    height: 135px;
-    border-radius: 100px;
-    border: solid #F2AF00 5px;
-}
-.nome-conta {
-    font-size: 24px;
-    font-weight: 500;
-    margin-top: 10px;
-}
-.img-container {
-    position: relative;
-    display: inline-block;
-}
-.editar-icone /* div q contém o ícone */ {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background-color: #F2AF00;      
-    border-radius: 100%;
-    padding: 1px;
-    cursor: pointer;
-}
-.editar-icone img {
-    width: 40px;
-    height: 35px;
+.produto-imagem {
+    width: 130px;
+    height: 130px;
     object-fit: cover;
+    margin-left: 30px;
+}
+.produto-nome, .produto-quantidade, .produto-data, .produto-valor {
+    font-size: 17px;
+    font-weight: 500;
+    flex: 1;
+    text-align: center;
+}
+.produto-nome {
+    width: 20%;
+    white-space: wrap;
+}
+#carrinho-legenda {
+    display: flex;
+    justify-content: space-around;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+.legenda-foto, .legenda-nome, .legenda-qntd, .legenda-data, .legenda-valor {
+    flex: 1;
+}
+/* coisas da barra de scroll */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 0px; /* 0 pra n ter barra de rolagem horizontal */
+    background: transparent;
+    background-color: #F2AF00;
+    border-radius: 100px;
+    border: solid white 1px;
 }

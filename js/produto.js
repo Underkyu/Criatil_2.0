@@ -50,3 +50,10 @@ spaceBetween: 60,
 },
 },
   });
+
+  function mudarImagem(url, um, dois, tres){
+    document.getElementById('imagem_maior').src=url;
+    document.getElementById('um').style.display = um;
+    document.getElementById('dois').style.display = dois;
+    document.getElementById('tres').style.display = tres;
+  }

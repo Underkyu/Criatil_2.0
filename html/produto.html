@@ -18,12 +18,30 @@
         <div class="produto"><!--Div que contem as informações principais do produto-->
 
             <div class="imagens_menores"><!--Imagens pequnas que ficam ao lado da maior-->
-                <img src="../imagens/Produtos/Miku/Imagem1.png" alt="Pelucia Miku de frente" class="imagem_menor" >
-                <img src="../imagens/Produtos/Miku/Imagem2.png" alt="Pelucia Miku vista da diagonal" class="imagem_menor">
-                <img src="../imagens/Produtos/Miku/Imagem3.png" alt="Pelucia Miku de trás" class="imagem_menor">
+
+            <div class="imagem_menor" onclick="mudarImagem('../imagens/Produtos/Miku/Imagem1.png','block','none','none')">
+              <img src="../imagens/Produtos/Miku/Imagem1.png" alt="Pelucia Miku de frente" class="imagem_menor" >
+              <div class="barra_ativo">
+                <img src="../imagens/Produtos/barra_ativo.png" alt="barra ativo" class="barra_ativo" id="um"> <!--Aquela barrinha do lado da imagem pra mostrar qual imagem ta selecionada-->
+              </div>
+            </div>
+
+            <div class="imagem_menor" onclick="mudarImagem('../imagens/Produtos/Miku/Imagem2.png','none','block','none')">
+              <img src="../imagens/Produtos/Miku/Imagem2.png" alt="Pelucia Miku de frente" class="imagem_menor" >
+              <div class="barra_ativo">
+                <img src="../imagens/Produtos/barra_ativo.png" alt="barra ativo" class="barra_ativo" id="dois"> <!--Aquela barrinha do lado da imagem pra mostrar qual imagem ta selecionada-->
+              </div>
+            </div>
+
+            <div class="imagem_menor" onclick="mudarImagem('../imagens/Produtos/Miku/Imagem3.png','none','none','block')">
+              <img src="../imagens/Produtos/Miku/Imagem3.png" alt="Pelucia Miku de frente" class="imagem_menor" >
+              <div class="barra_ativo">
+                <img src="../imagens/Produtos/barra_ativo.png" alt="barra ativo" class="barra_ativo" id="tres"> <!--Aquela barrinha do lado da imagem pra mostrar qual imagem ta selecionada-->
+              </div>
+            </div>
             </div><!--Fim imagens pequenas-->
 
-            <img src="../imagens/Produtos/Miku/Imagem1.png" alt="Imagem maior do produto" class="imagem_maior"> <!--Imagem maior do produto-->
+            <img src="../imagens/Produtos/Miku/Imagem1.png" alt="Imagem maior do produto" class="imagem_maior" id="imagem_maior"> <!--Imagem maior do produto-->
 
             <div class="detalhes"><!--Div que contem os detalhes dos produtos-->
                 <h3 class="titulo">Pelucia Miku</h3><!--Nome do produto-->

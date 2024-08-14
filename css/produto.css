@@ -25,9 +25,27 @@ div.imagens_menores{/*Imagens menores do produto*/
 
 img.imagem_menor{/*Imagem menor do produto*/
   width: 7.5rem;
-  border-radius: 25px;
+  border-radius: 15px;
   border:#D4D4D4 solid 2px;
   margin-bottom: 1rem;
+}
+
+div.imagem_menor{
+  position: relative;
+}
+
+div.barra_ativo{
+  position: absolute;
+  height: 7.5rem;
+  top: 0px;
+}
+
+img.barra_ativo{
+  height: 7.75rem;
+}
+
+img#dois, img#tres {
+  display: none;
 }
 
 img.imagem_maior{/*Imagem maior do produto*/

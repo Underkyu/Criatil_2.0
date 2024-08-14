@@ -10,32 +10,115 @@
 </head>
 
 <body>
-    <div class="container"><!--Container de todo conteúdo-->
+    <div class="containerCatalogo"><!--Container de todo conteúdo-->
         <div class="filtros"><!--Caixa dos filtros-->
             <div class="titulofiltro">
-                <h1>filtros</h1>
+                <h1>FILTROS</h1>
             </div>
+            <br>
             <div class="variados"><!--Filtro por parâmetros-->
-                preço
-                <form>
-
-                </form>
+                <div class="tituloVariados">
+                    <div class="iconeVariados"><!--ícone do título-->
+                        <img src="/imagens/Icons/cifrãobranco.png" alt="Preço">
+                    </div>
+                    <div class="textoVariados"><!--Texto do título-->
+                        <p>Preço</p>
+                    </div>
+                </div>
+                <div class="formFiltro">
+                    <form><!--Filtro por preço-->
+                        <div class="formItem">
+                            <input type="radio" class="radioButton" name=">=45" id="radioPreco1" /><label>Até
+                                R$45</label>
+                        </div>
+                        <div class="formItem">
+                            <input type="radio" class="radioButton" name="45-100" id="radioPreco2" /><label>R$45 -
+                                R$100</label>
+                        </div>
+                        <div class="formItem">
+                            <input type="radio" class="radioButton" name=">100" id="radioPreco3" /><label>Acima de
+                                R$100</label>
+                        </div>
+                        <!--Código para a faixa de preço (A SER FEITO)
+                    <div class="faixaPreco">
+                        <input type="number" class="inputPreco" name="precoMin" id="filtroPrecoMin" placeholder="Valor Min">
+                        <input type="number" class="inputPreco" name="precoMax" id="filtroPrecoMax" placeholder="Valor Max">
+                    </div>
+                    -->
+                    </form>
+                </div>
             </div>
             <div class="inclusivos"><!--Filtros especificos para inclusão-->
-                inclusivos
-                <form>
-
-                </form>
+                <div class="tituloInclusivos">
+                    <div class="iconeInclusivos"><!--ícone do título-->
+                        <img src="/imagens/Icons/inclusivosbranco.png" alt="Inslusivos">
+                    </div>
+                    <div class="textoInclusivos"><!--Texto do título-->
+                        <p>Inclusivos</p>
+                    </div>
+                </div>
+                <div class="formFiltro">
+                    <form><!--Filtro por inclusividade-->
+                        <div class="formItem">
+                            <input type="checkbox" class="checkbox" name="defVisual"
+                                id="checkInclusivo1" /><label>Deficientes Visuais</label>
+                        </div>
+                        <div class="formItem">
+                            <input type="checkbox" class="checkbox" name="defMotor"
+                                id="checkInclusivo2" /><label>Deficientes Motores</label>
+                        </div>
+                        <div class="formItem">
+                            <input type="checkbox" class="checkbox" name="defAuditivo"
+                                id="checkInclusivo3" /><label>Deficientes Auditivos</label>
+                        </div>
+                        <div class="formItem">
+                            <input type="checkbox" class="checkbox" name="afasia"
+                                id="checkInclusivo4" /><label>Afasia</label>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="categorias"><!--Filtros de categorias definidas-->
-                categorias
-                <form>
-
-                </form>
+                <div class="tituloCategorias">
+                    <div class="iconeCategorias"><!--ícone do título-->
+                        <img src="/imagens/Icons/filtrobranco.png" alt="Categorias">
+                    </div>
+                    <div class="textoCategorias"><!--Texto do título-->
+                        <p>Categoria</p>
+                    </div>
+                </div>
+                <div class="formFiltro">
+                    <form><!--Filtro por categorias-->
+                        <div class="formItem">
+                            <input type="checkbox" class="checkbox" name="categoriaBoneco"
+                                id="checkCategoria1" /><label>Bonecos</label>
+                        </div>
+                        <div class="formItem">
+                            <input type="checkbox" class="checkbox" name="categoriaCarrinhos"
+                                id="checkCategoria2" /><label>Carrinhos</label>
+                        </div>
+                        <div class="formItem">
+                            <input type="checkbox" class="checkbox" name="categoriaPelucia"
+                                id="checkCategoria3" /><label>Pelúcia</label>
+                        </div>
+                        <div class="formItem">
+                            <input type="checkbox" class="checkbox" name="categoriaTecnicos"
+                                id="checkCategoria4" /><label>Técnicos</label>
+                        </div>
+                        <div class="formItem">
+                            <input type="checkbox" class="checkbox" name="categoriaEletronicos"
+                                id="checkCategoria5" /><label>Eletrônicos</label>
+                        </div>
+                        <div class="formItem">
+                            <input type="checkbox" class="checkbox" name="categoriaArtisticos"
+                                id="checkCategoria6" /><label>Artisticos</label>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="caixaprodutos"><!--Caixa dos produtos-->
-            <div class="titulo"><!--Titulo da janela-->
+            <div class="tituloProdutos"><!--Titulo da janela-->
                 <h1>Produtos</h1>
             </div>
             <div class="produtos"><!--Cards-->

@@ -177,6 +177,7 @@ div.promocionais{
   margin-top: 4.5rem;
   margin-bottom: 4.5rem;
 }
+/*Fim das imagens promcionais*/
 
 /*Responsividade*/
 .container {
@@ -202,6 +203,20 @@ div.promocionais{
   .container {
     max-width: 1024px;
   }
+  h4.titulo_card{
+    font-size: 1.3rem;
+}
+button.card{ /*Botão de comprar no card*/
+  width: 14rem;
+}
+h3.preco{
+  font-size: 2rem;
+}
+img.imagem_promocional{
+  width: 20rem;
+  height: 25.5rem;
+}
+
 }
 
 /* lg */

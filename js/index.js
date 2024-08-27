@@ -31,20 +31,24 @@ var swiper = new Swiper(".carrossel", {
       clickable: true,
     },
     breakpoints: {
-325: {
-  slidesPerView: 2,
+0: {
+    slidesPerView: 1.2,
+    spaceBetween: 30,
+},    
+475: {
+  slidesPerView: 1.6,
   spaceBetween: 30,
 },
 640: {
-slidesPerView: 2.5,
+slidesPerView: 2.1,
 spaceBetween: 30,
 },
 768: {
-slidesPerView: 3,
+slidesPerView: 2.2,
 spaceBetween: 60,
 },
 1024: {
-  slidesPerView: 3.5,
+  slidesPerView: 2.4,
   spaceBetween: 60,
 },
 1280: {
@@ -76,20 +80,24 @@ spaceBetween: 60,
       clickable: true,
     },
     breakpoints: {
-325: {
-  slidesPerView: 2,
+0: {
+  slidesPerView: 1.2,
+  spaceBetween: 30,
+}, 
+475: {
+  slidesPerView: 1.6,
   spaceBetween: 30,
 },
 640: {
-slidesPerView: 2.5,
+slidesPerView: 2.1,
 spaceBetween: 30,
 },
 768: {
-slidesPerView: 3,
+slidesPerView: 2.2,
 spaceBetween: 60,
 },
 1024: {
-  slidesPerView: 3.5,
+  slidesPerView: 2.4,
   spaceBetween: 60,
 },
 1280: {

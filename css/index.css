@@ -1,9 +1,21 @@
 *{/*Zerar valores e aplicar fonte padrão (Roboto)*/
   background-color: none;
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0px;
+  padding: 0px;
   }
 
+body{
+  padding: 0;
+  margin: 0;
+}
+html{
+  padding: 0px;
+  margin: 0px;
+}
+
 /*Inicio CSS Carrossel*/
+
  img#grande{ /*Imagens do carrossel (maior)*/
     display: block;
     width: 100%;
@@ -58,6 +70,7 @@ div.imagem_card{ /*div que contem a imagem do card*/
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0px;
 }
 
 h4.titulo_card{
@@ -65,6 +78,12 @@ h4.titulo_card{
     margin-left: 5px;
     font-size: 1.43rem;
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+
 }
 
 .texto_pequeno { /*aquele "por apenas" em baixo do titulo*/
@@ -209,10 +228,10 @@ div.promocionais{
 button.card{ /*Botão de comprar no card*/
   width: 14rem;
 }
-h3.preco{
+h3.preco{ /*Preço do produto*/
   font-size: 2rem;
 }
-img.imagem_promocional{
+img.imagem_promocional{ /*Card promocional*/
   width: 20rem;
   height: 25.5rem;
 }
@@ -224,19 +243,67 @@ img.imagem_promocional{
   .container {
     max-width: 768px;
   }
+  img.img3 { /*Terceira imagem promocional*/
+    display: none;
+  }
 }
 
 /* md */
 @media (max-width: 768px) {
   .container {
-    max-width: 640px;
+    max-width: 700px;
   }
+  img.imagem_promocional{ /*Card promocional*/
+    width: 19rem;
+    height: 24.5rem;
+  }
+  .foto_card { /*Classe da imagem do card*/
+    width: 14rem;
+    height: 14rem;
+    margin: 1rem;
+    object-fit: contain;
+}
+img.imagem_carrossel1{
+content: url(../imagens/Carrossel/imagem1cll.png);
+}
+
+img.imagem_carrossel2{
+  content: url(../imagens/Carrossel/imagem2cll.png);
+}
+
+img.imagem_carrossel3{
+  content: url(../imagens/Carrossel/imagem3cll.png);
+}
 }
 
 /* sm */
 @media (max-width: 640px) {
   .container {
-    max-width: 475px;
+    max-width: 600px;
+  }
+  .foto_card { /*Classe da imagem do card*/
+    width: 13rem;
+    height: 13rem;
+    margin: 1rem;
+    object-fit: contain;
+}
+  button.card{ /*Botão de comprar no card*/
+  width: 13rem;
+}
+  img.imagem_promocional{ /*Card promocional*/
+  width: 18rem;
+  height: 23.5rem;
+}
+}
+
+/* sm */
+@media (max-width: 555px) {
+  img.img2{
+    display: none;
+  }
+  img.imagem_promocional{ /*Card promocional*/
+    width: 21rem;
+    height: 25.5rem;
   }
 }
 
@@ -245,4 +312,20 @@ img.imagem_promocional{
   .container {
     width: 100%;
   }
+}
+  /* xxs */
+@media (max-width: 375px) {
+  .container {
+    width: 100%;
+  }
+  .foto_card { /*Classe da imagem do card*/
+    width: 12rem;
+    height: 12rem;
+    margin: 1rem;
+    object-fit: contain;
+}
+  button.card{ /*Botão de comprar no card*/
+  width: 12rem;
+}
+}
 }

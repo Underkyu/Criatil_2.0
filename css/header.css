@@ -11,12 +11,26 @@ div.corpo{ /*Basicamente so serve para dar cor pro fundo header*/
     background-color: #0476D9;
     margin: 0px;
     padding: 0px;
+    height: fit-content;
 }
 
-div.header{ /*Div que contem o conteudo do header*/
+div.header{ /*Div que contem o conteudo do header de pc e celular*/
     display: flex;
+    flex-direction: column; /*Eu não sei oq eu fiz, tentando deixar o header com o menu sanduiche, mas agr pra ficar normal pra pc precisa disso ;-;*/
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    width: inherit;
+    height: fit-content;
+    overflow: hidden;
+    transition-timing-function: ease-in;
+    transition-duration: 2s;
+}
+
+div.header_normal{ /*Div que contem o conteudo do header de pc*/
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
 }
 
 input[type=text] { /*Barra de pesquisa*/
@@ -49,12 +63,20 @@ input[type=text] { /*Barra de pesquisa*/
     margin: .5rem;
   }
 
+  div.links_normais{/*Div com as anchors mostradas no cp*/
+    display: flex;
+  }
+
   div.link_header { /*Div que contem icon e textos dos links para outras paginas que ficam dentro do header*/
     display: flex;
+    margin-left: 1rem;
+    justify-content: center;
+    align-items: center;
   }
 
   img.link_header{/*Icon que fica ao lado dos links para outras páginas*/
     width: 2.9rem;
+    height: 2.9rem;
     margin-right: .5rem;
   }
 
@@ -71,6 +93,41 @@ input[type=text] { /*Barra de pesquisa*/
 
   p.negrito{
     font-weight: bold;
+  }
+
+  img.menuSanduiche{ /*Imagem do icon de menu sanduiche*/
+    width: 4rem;
+  }
+
+  button.menuSanduiche{ /*Botão que abre o menu sanduiche*/
+    border: white 5px solid;
+    background-color: transparent;
+    border-radius: 15px; 
+    margin-left: 3rem;
+    display: none;
+  }
+  div.link_sanduiche{ /*Conteudo do menu sanduiche*/
+    display: inherit;
+  }
+  div.menuSanduiche{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
+    display: flex;
+    overflow: hidden;
+    transition-timing-function: ease-in;
+    transition-duration: 0.5s;
+    height: 0rem;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  
+  .open_header{ /*Classe que serve para tornar o menu sanduiche visivel*/
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 1rem;
+    overflow: hidden;
+    transition-timing-function: ease-in;
+    transition-duration: 0.5s;
+    height: 5rem;
   }
 
 /*Responsividade*/
@@ -97,6 +154,9 @@ input[type=text] { /*Barra de pesquisa*/
     .container {
       max-width: 1024px;
     }
+    input[type=text] { /*Barra de pesquisa*/
+      background-position: 320px 9px; 
+    }
   }
   
   /* lg */
@@ -104,25 +164,124 @@ input[type=text] { /*Barra de pesquisa*/
     .container {
       max-width: 768px;
     }
+    
+    button.menuSanduiche{/*Botão que abre o menu sanduiche*/
+      display: block;
+    }
+    input[type=text] { /*Barra de pesquisa*/
+      background-position: 340px 9px; 
+    }
+    div.links_normais{
+      display: none;
+    }
+    div.header{ /*Div que contem o conteudo do header de pc e celular*/
+      flex-direction: column;
+  }
   }
   
   /* md */
   @media (max-width: 768px) {
     .container {
-      max-width: 640px;
+      max-width: 700px;
+    }
+    input[type=text] { /*Barra de pesquisa*/
+      background-position: 275px 9px; 
+    }
+  }
+
+   /* sm */
+   @media (max-width: 680px) {
+    input[type=text] { /*Barra de pesquisa*/
+      background-position: 230px 9px; 
     }
   }
   
   /* sm */
   @media (max-width: 640px) {
     .container {
-      max-width: 475px;
+      max-width: 600px;
+    }
+
+    div.header_normal{ /*Div que contem o conteudo do header de pc*/
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    input[type=text] { /*Barra de pesquisa*/
+      background-position: 380px 9px; 
+    
+    }
+    img.Logo_header{
+      margin: 0;
+    }
+    button.menuSanduiche{ /*Botão que abre o menu sanduiche*/
+      border: white 5px solid;
+      background-color: transparent;
+      margin: 0;
     }
   }
   
   /* xs */
-  @media (max-width: 475px) {
+  @media (max-width: 521px) {
     .container {
       width: 100%;
     }
+    input[type=text] { /*Barra de pesquisa*/
+      margin-top: 1rem;
+    }
+    button.menuSanduiche{ /*Botão que abre o menu sanduiche*/
+      margin-top: 1rem;
+    }
+    div.menuSanduiche{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
+      flex-direction: column;
+    
+    }
+    
+    .open_header{ /*Classe que serve para tornar o menu sanduiche visivel*/
+      flex-direction: column;
+      height: 15rem;
+    }
+
+    div.link_header { /*Div que contem icon e textos dos links para outras paginas que ficam dentro do header*/
+      margin: 0;
+      margin-top: .5rem;
+    }
+
+    img.link_header{/*Icon que fica ao lado dos links para outras páginas*/
+      width: 3.5rem;
+      height: 3.5rem;
+      margin-right: .5rem;
+    }
+  
+  
+    p.pequeno{/*Texto pequeno que vão ao lado do icon no header*/
+      font-size: 1.4rem;
+    }
+  
+    p.negrito{
+      font-size: 1.4rem;
+    }
   }
+   /*Meio termo*/
+  @media (max-width: 429px) {
+    .container {
+      width: 100%;
+    }
+    
+    input[type=text] { /*Barra de pesquisa*/
+      background-position: 340px 9px; 
+    
+    }
+  }
+
+  /*xxs*/
+  @media (max-width: 375px) {
+    .container {
+      width: 100%;
+    }
+    input[type=text] { /*Barra de pesquisa*/
+      background-position: 285px 9px; 
+    
+    }
+  }
+  
+  

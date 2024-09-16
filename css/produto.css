@@ -532,6 +532,7 @@ div.product{ /* Div dos produtos*/
     padding: 0px;
     padding: 1rem;
 }
+}
   /* xxs */
 @media (max-width: 375px) {
   .container {

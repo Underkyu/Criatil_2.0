@@ -1,7 +1,9 @@
 *{/*Zerar valores e aplicar fonte padrão (Roboto)*/
   background-color: none;
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
+  margin: 0px;  
+  padding: 0px;
+}
 
 div.produto{/*Div que contem as fotos e a descrição do produto*/
   display: flex;
@@ -62,6 +64,7 @@ div.estrela{/*Div que contem as estrelas de avaliações*/
 div.avaliacoes_anuncio{/*Div que contem o numero de avialações e estrelas ao lado do nome do produto*/
  display: flex;
  margin-top: 1rem;
+ align-items: flex-end;
 }
 
 div.avaliacoes{ /*Div que contem o numero de avialações e estrelas*/
@@ -184,7 +187,7 @@ h2.avaliacoes{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   justify-content: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 div.avaliacao{
@@ -306,7 +309,72 @@ p.texto_avaliacao{/*O texto da avalição*/
   margin-top: .25rem;
 }
 
+div.estrelas{ /*Div que contem as estrelas das avaliações*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+p.avaliacao{
+  display: flex;
+  align-items: center;
+}
 /*Fim CSS avaçliações*/
+
+
+/*Inicio CSS Carrossel*/
+section.slider_carrossel{
+  display: none;
+}
+
+.swiper-pagination-bullet { /*Muda cor e tamanho das bolinhas de paginação do carrossel*/
+  opacity: 0.25;
+  background-color: black;
+  width: .75rem;
+  height: .75rem;
+  margin: .5rem;
+}
+
+.swiper-pagination-bullet-active { /*Muda cor da bolinha ativa*/
+  background-color: #0476D9;
+  opacity: 1;
+}
+/*Fim CSS do Carrossel*/
+
+
+/*Inicio CSS product slider 1*/
+div.product{ /* Div dos produtos*/
+  margin: 2rem;
+  }
+  
+  div.slider{ /* Div que contem o slider*/
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  }
+  
+  div.seta{ /*setinhas*/
+  position: relative;
+  }
+  
+  h1.titulo{
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3.5rem;
+  font-size: 2.5rem;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  img.carrossel{
+  justify-self: center;
+  }
+  div.carrossel{
+    width:65%;
+    object-fit: contain;
+  }
+  /*Fim CSS product slider*/
+  
+
 
 /*Responsividade*/
 .container {
@@ -332,6 +400,7 @@ p.texto_avaliacao{/*O texto da avalição*/
   .container {
     max-width: 1024px;
   }
+
 }
 
 /* lg */
@@ -339,20 +408,109 @@ p.texto_avaliacao{/*O texto da avalição*/
   .container {
     max-width: 768px;
   }
+  div.produto{
+    flex-direction: column;
+  }
+  section.slider_carrossel{
+    display: flex;
+  }
+  div.imagens_menores{
+    display: none;
+  }
+  img#imagem_maior{
+    display: none;
+  }
+  div.estatisticas{
+    display: none;
+  }
+  .swiper-button-prev {
+    display: none;
+  
+  }
+  .swiper-button-next {
+    display: none;
+  }
+  div.card_avaliacao{ /*Div que contem as avaliações em si*/
+    width: 95%;
+    margin: 0px;
+    margin-top: 2rem;
+  }
+  div.avaliacao{
+    padding: 0px;
+  }
+  div.avaliacoes{
+    margin: 0px;
+  }
 }
 
 /* md */
-@media (max-width: 768px) {
+@media (max-width: 790px) {
   .container {
-    max-width: 640px;
+    max-width: 700px;
+  }
+  div.carrossel{
+    width:70%;
+  }
+}
+
+/* md */
+@media (max-width: 730px) {
+  .container {
+    max-width: 700px;
+  }
+  div.carrossel{
+    width:80%;
   }
 }
 
 /* sm */
 @media (max-width: 640px) {
   .container {
-    max-width: 475px;
+    max-width: 600px;
   }
+
+  div.carrossel{
+    width:90%;
+  }
+
+  div.nome_avaliacao{/*Div com o nome do usuario e as estrelas*/
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  img.primeira_estrela{
+    margin: 0px;
+  }
+  div.estrelas{
+    margin-top: .5rem;
+  }
+  h5.nome{ /*Nome do perfil*/
+    font-size: 1.75rem;
+    margin: 0;
+  }
+  
+  p.titulo_avaliacao{/*Titulo da avaliação*/
+    font-size: 1.5rem;
+  }
+  
+  p.texto_avaliacao{/*O texto da avalição*/
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .container {
+    max-width: 600px;
+  }
+
+  div.carrossel{
+    width:95%;
+  }
+  img.imagem_maior{/*Imagem maior do produto*/
+    width: 25rem;
+    height: 25rem;
+  }
+  div.detalhes{}
 }
 
 /* xs */
@@ -360,6 +518,58 @@ p.texto_avaliacao{/*O texto da avalição*/
   .container {
     width: 100%;
   }
+  div.carrossel{
+    width:95%;
+  }
+  img.imagem_maior{/*Imagem maior do produto*/
+    width: 21rem;
+    height: 21rem;
+  }
+  p.texto_avaliacao{/*O texto da avalição*/
+    font-size: 1.1rem;
+  }
+  div.detalhes{
+    padding: 0px;
+    padding: 1rem;
+}
+  /* xxs */
+@media (max-width: 375px) {
+  .container {
+    width: 100%;
+  }
+  div.carrossel{
+    width:95%;
+  }
+  img.imagem_maior{/*Imagem maior do produto*/
+    width: 17.5rem;
+    height: 17.5rem;
+  }
+  h3.titulo{ /*Nome do produto*/
+    font-size: 1.75rem;
+    margin: 0;
+  }
+  
+  h2.preco{ /*Preço do produto*/
+    color: #0476D9;
+    margin: 0;
+    font-size: 2.25rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  p.descricao{ /*Descrição do produto*/
+    font-size: 15px;
+    margin-top: 1rem;
+    margin: 0;
+  }
+  
+  p.quantidade{ /*Literalmente a palavra quantidade em cima do negocio de escolher quantidade*/
+    font-size: 19px;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: .25rem;
+  }
 }
 
 
@@ -369,123 +579,6 @@ p.texto_avaliacao{/*O texto da avalição*/
 
 
 
-/* Inicio CSS do card*/
-div.card{
-  width: 17.5rem;
-  height: 27.5rem;
-  border: solid #D9D9D9 4px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 15px;
-}
 
-.foto_card { /*Classe da imagem do card*/
-  width: 15rem;
-  height: 15rem;
-  margin: 1rem;
-  object-fit: contain;
-}
 
-div.imagem_card{ /*div que contem a imagem do card*/
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-h4.titulo_card{
-  margin: 0px;
-  margin-left: 5px;
-  font-size: 1.43rem;
-  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.texto_pequeno { /*aquele "por apenas" em baixo do titulo*/
-  margin: 0px;
-  margin-left: 5px;
-  margin-top: .75rem;
-  font-weight: 550;
-  color: #4A4A4A;
-  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-h3.preco{
-  margin:0px;
-  margin-left: 5px;
-  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color: #F2AF00;
-  font-size: 2rem;
-}
-
-button.card{ /*Botão de comprar no card*/
-  width: 16rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: .75rem;
-  display: flex;
-  align-items: center;
-  padding: .3rem;
-  border-radius: 10px;
-  background-color: #F2AF00;
-  border: #F2AF00;
-  padding: .5rem;
-  justify-content: center;
-}
-
-img.botao_card { /*icon de carrinho no botão do card*/
-  height: 2.25rem;
-  width: 2.25rem;
-
-}
-
-p.botao_card{
-  font-weight: 600;
-  font-size: 1.25rem;
-  padding-left: .5rem;
-  margin: 0px;
-}
-
-div.imagem_card{ /*Div que contem imagens e selos de cards*/
-position: relative;
-}
-
-img.selo_deficiencia{ /*Selos que indicam que o produto é adaptado à pessoas com algum tipo de condição especia*/
-position: absolute;
-bottom: 8px;
-right: 16px;
-width: 4rem;
-}
-
-img.selo_desconto{
-position: absolute;
-bottom: 8px;
-left: 16px;
-width: 4rem;
-}
-/*Fim CSS card*/
-
-/*Inicio CSS product slider 1*/
-div.product{ /* Div dos produtos*/
-margin: 2rem;
-}
-
-div.slider{ /* Div que contem o slider*/
-display: flex;
-align-items: center;
-width: 100%;
-height: 100%;
-}
-
-div.seta{ /*setinhas*/
-position: relative;
-}
-
-h1.titulo{
-margin: 0;
-margin-left: auto;
-margin-right: auto;
-margin-top: 3.5rem;
-font-size: 2.5rem;
-font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-/*Fim CSS product slider*/

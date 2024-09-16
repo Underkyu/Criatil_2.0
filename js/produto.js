@@ -13,6 +13,8 @@ function stepper(btn){
     }
 }
 
+
+
   //Iniciando product slider
 
   var swiper2 = new Swiper(".product", {
@@ -28,28 +30,37 @@ function stepper(btn){
       clickable: true,
     },
     breakpoints: {
-325: {
-  slidesPerView: 2,
+0: {
+    slidesPerView: 1.2,
+    spaceBetween: 30,
+},    
+475: {
+  slidesPerView: 1.5,
   spaceBetween: 30,
 },
 640: {
-slidesPerView: 2.5,
+slidesPerView: 2.1,
 spaceBetween: 30,
 },
 768: {
-slidesPerView: 3,
+slidesPerView: 2.2,
 spaceBetween: 60,
 },
 1024: {
-  slidesPerView: 3.5,
+  slidesPerView: 2.4,
   spaceBetween: 60,
 },
 1280: {
-  slidesPerView: 4.1,
+  slidesPerView: 3.2,
+  spaceBetween: 60,
+},
+1536: {
+  slidesPerView: 4,
   spaceBetween: 60,
 },
 },
   });
+
 
   function mudarImagem(url, um, dois, tres){
     document.getElementById('imagem_maior').src=url;
@@ -57,3 +68,14 @@ spaceBetween: 60,
     document.getElementById('dois').style.display = dois;
     document.getElementById('tres').style.display = tres;
   }
+
+
+  //Iniciando carrossel
+var swiper = new Swiper(".carrossel", {
+  slidesPerView: 0.9,
+  pagination: {
+    el: ".swiper-pagination",
+  },
+  lazyLoading: true,
+  loop: true,
+});

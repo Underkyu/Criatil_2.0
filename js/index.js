@@ -36,7 +36,7 @@ var swiper = new Swiper(".carrossel", {
     spaceBetween: 30,
 },    
 475: {
-  slidesPerView: 1.6,
+  slidesPerView: 1.5,
   spaceBetween: 30,
 },
 640: {
@@ -85,7 +85,7 @@ spaceBetween: 60,
   spaceBetween: 30,
 }, 
 475: {
-  slidesPerView: 1.6,
+  slidesPerView: 1.5,
   spaceBetween: 30,
 },
 640: {

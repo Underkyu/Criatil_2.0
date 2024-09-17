@@ -23,6 +23,7 @@
     display: flex;
     position: relative;
     align-items: center;
+    justify-content: center;
   }
 .form {/* Container do form */
     width: 65%;

@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/catalogo.css">
-    <script src="js/catalogo.js" defer></script>
+    <link rel="stylesheet" href="/css/card.css">
+    <link rel="stylesheet" href="/css/catalogo.css">
+    <script src="/js/catalogo.js" defer></script>
     <title>Catalogo</title><!--Página de catálogo-->
 </head>
 
@@ -16,13 +17,13 @@
                 <h1>FILTROS</h1>
             </div>
             <br>
-                <button id="prev-button"><img src="imagens/icons/arrow-24-64.png" alt="voltar"></button>
+                <button id="prev-button"><img src="/imagens/icons/arrow-24-64.png" alt="voltar"></button>
                 <div id="itemSlider1" class="variados">
                     <!--Filtro por parâmetros-->
                     <div class="tituloVariados toggleDiv">
                         <div class="iconeVariados">
                             <!--ícone do título-->
-                            <img src="imagens/Icons/cifrãobranco.png" alt="Preço">
+                            <img src="/imagens/Icons/cifrãobranco.png" alt="Preço">
                         </div>
                         <div class="textoVariados">
                             <!--Texto do título-->
@@ -55,7 +56,7 @@
                     <div class="tituloCategorias toggleDiv">
                         <div class="iconeCategorias">
                             <!--ícone do título-->
-                            <img src="imagens/Icons/filtrobranco.png" alt="Categorias">
+                            <img src="/imagens/Icons/filtrobranco.png" alt="Categorias">
                         </div>
                         <div class="textoCategorias">
                             <!--Texto do título-->
@@ -92,7 +93,7 @@
                     <div class="tituloInclusivos toggleDiv">
                         <div class="iconeInclusivos">
                             <!--ícone do título-->
-                            <img src="imagens/Icons/inclusivosbranco.png" alt="Inclusivos">
+                            <img src="/imagens/Icons/inclusivosbranco.png" alt="Inclusivos">
                         </div>
                         <div class="textoInclusivos">
                             <!--Texto do título-->
@@ -117,19 +118,119 @@
                         </form>
                     </div>
                 </div>
-                <button id="next-button"><img src="imagens/icons/arrow-24-64.png" alt="avançar"></button>
+                <button id="next-button"><img src="/imagens/icons/arrow-24-64.png" alt="avançar"></button>
         </div>
         <div class="caixaprodutos"><!--Caixa dos produtos-->
             <div class="tituloProdutos"><!--Titulo da janela-->
                 <h1>Produtos</h1>
             </div>
             <div class="produtos"><!--Cards-->
-                <div class="card">card de produto</div>
-                <div class="card">card de produto</div>
-                <div class="card">card de produto</div>
-                <div class="card">card de produto</div>
-                <div class="card">card de produto</div>
-                <div class="card">card de produto</div>
+                <!--CARD 1-->
+                <div class="card">
+                    <div class="imagem_card">
+                      <img src="../imagens/Produtos/Nerf/imagem1.png" alt="Arma Nerf" class="foto_card">
+                      <img src="../imagens/Selo/Desconto.png" alt="Selo de desconto" class="selo_desconto">
+                    </div>
+        
+                    <h4 class="titulo_card">Pistola Nerf</h4>
+                    <s class="texto_pequeno">R$99,99</s>
+                    <h3 class="preco">R$79,99</h3>
+        
+                    <button class="card"> <!--Botão de comprar-->
+                      <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+                      <p class="botao_card">Comprar!</p>
+                    </button>
+                  </div>
+                  <!--Fim do CARD 1-->
+
+                  <!--CARD 2-->
+                  <div class="card">
+                    <div class="imagem_card">
+                      <img src="../imagens/Produtos/Funko/imagem1.png" alt="Funko Pop Oshawott" class="foto_card">
+                    </div>
+        
+                    <h4 class="titulo_card">Funko Pop Oshawott</h4>
+                    <p class="texto_pequeno">Por apenas</p>
+                    <h3 class="preco">R$129,99</h3>
+        
+                    <button class="card"> <!--Botão de comprar-->
+                      <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+                      <p class="botao_card">Comprar!</p>
+                    </button>
+                  </div>
+                  <!--Fim do CARD 2-->
+
+                  <!--CARD 3-->
+                  <div class="card">
+                    <div class="imagem_card">
+                      <img src="../imagens/Produtos/Bola/imagem1.png" alt="Bola com Guizo" class="foto_card">
+                      <img src="../imagens/Selo/Visual.png" alt="Selo de deficiencia visual" class="selo_deficiencia">
+                    </div>
+        
+                    <h4 class="titulo_card">Bola com Guizo</h4>
+                    <p class="texto_pequeno">Por apenas</p>
+                    <h3 class="preco">R$119,99</h3>
+        
+                    <button class="card"> <!--Botão de comprar-->
+                      <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+                      <p class="botao_card">Comprar!</p>
+                    </button>
+                  </div>
+                  <!--Fim do CARD 3-->
+
+                  <!--CARD 4-->
+                  <div class="card">
+                    <div class="imagem_card">
+                      <img src="../imagens/Produtos/Libras/imagem1.png" alt="Jogo alfabeto em libras" class="foto_card">
+                      <img src="../imagens/Selo/Desconto.png" alt="Selo de desconto" class="selo_desconto">
+                      <img src="../imagens/Selo/Auditiva.png" alt="Selo de deficiencia auditiva" class="selo_deficiencia">
+                    </div>
+        
+                    <h4 class="titulo_card">Jogo Alfabeto em Libras</h4>
+                    <s class="texto_pequeno">R$69,99</s>
+                    <h3 class="preco">R$59,99</h3>
+        
+                    <button class="card"> <!--Botão de comprar-->
+                      <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+                      <p class="botao_card">Comprar!</p>
+                    </button>
+                  </div>
+                  <!--Fim do CARD 4-->
+
+                  <!--CARD 5-->
+                  <div class="card">
+                    <div class="imagem_card">
+                      <img src="../imagens/Produtos/Miku/Imagem1.png" alt="Pelúcia Hatsune Miku" class="foto_card">
+                    </div>
+          
+                    <h4 class="titulo_card">Pelúcia Hatsune Miku</h4>
+                    <p class="texto_pequeno">Por apenas</p>
+                    <h3 class="preco">R$99,99</h3>
+          
+                    <button class="card"> <!--Botão de comprar-->
+                      <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+                      <p class="botao_card">Comprar!</p>
+                    </button>
+                  </div>
+                  <!--Fim do CARD 5-->
+
+                  <!--CARD 6-->
+                  <div class="card">
+                    <div class="imagem_card">
+                      <img src="../imagens/Produtos/CuboMagico/imagem1.png" alt="Cubo Magico Tatil" class="foto_card">
+                      <img src="../imagens/Selo/Visual.png" alt="Selo de deficiencia visual" class="selo_deficiencia">
+                    </div>
+          
+                    <h4 class="titulo_card">Cubo Magico Tatil</h4>
+                    <p class="texto_pequeno">Por apenas</p>
+                    <h3 class="preco">R$39,99</h3>
+          
+                    <button class="card"> <!--Botão de comprar-->
+                      <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+                      <p class="botao_card">Comprar!</p>
+                    </button>
+                  </div>
+                  <!--Fim do CARD 6-->
             </div>
             <div class="vermais"><!--Botão de ver mais-->
                 <button class="btn-vermais">Ver Mais</button>

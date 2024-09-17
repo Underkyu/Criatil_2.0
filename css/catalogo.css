@@ -7,6 +7,9 @@
   background-color: none;
   font-family: "Roboto";
 }
+.texto_pequeno{
+    margin-top: 0;
+}
 body{
     display: flex;
     align-items: center;
@@ -14,6 +17,7 @@ body{
 }
 .SliderFiltro{
     display: none;
+    transition: 100ms ease-in-out;
 }
 .filtros{
     width: 25%;
@@ -27,6 +31,7 @@ body{
     padding: 10px;
     margin-right: 50px;
     border-radius: 1rem;
+    transition: 100ms ease-in-out;
 }
 .titulofiltro{
     margin: 10px;
@@ -35,10 +40,12 @@ body{
 .variados{
     height: 20%;
     margin: 10px;
+    transition: 100ms ease-in-out;
 }
 /*Estilo do filtro de inclusivos*/
 .inclusivos{
     height: 30%;
+    transition: 100ms ease-in-out;
 }
 
 /*Ajusta a posição vertical dos checkboxes*/
@@ -113,6 +120,7 @@ input[type="checkbox"]:hover {
     text-align: center;
     margin-left: 5px;
     margin-right: 5px;
+    border: none;
 }
 label{
     font-size: 20px;
@@ -156,12 +164,9 @@ label{
     height: fit-content;
 }
 .card{
-    width: 17.5rem;
-    height: 27.5rem;
-    text-align: center;
-    padding: 10px;
-    margin: 20px;
-    background-color: lightblue;
+    margin: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
 }
 .vermais{
     height: 10%;
@@ -196,6 +201,7 @@ label{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+  
   /* 2xl */
   @media (max-width: 1536px) {
     .containerCatalogo {
@@ -211,14 +217,9 @@ label{
         padding-right: 0.5rem;
       }
     .card{
-        width: 17.5rem;
-        height: 27.5rem;
-        text-align: center;
-        padding: 10px;
         margin: 10px;
         margin-left: 5px;
         margin-right: 5px;
-        background-color: lightblue;
     }
   }
   
@@ -237,14 +238,9 @@ label{
         padding-right: 0.5rem;
       }
     .card{
-        width: 17.5rem;
-        height: 27.5rem;
-        text-align: center;
-        padding: 10px;
         margin: 10px;
         margin-left: 5px;
         margin-right: 5px;
-        background-color: lightblue;
     }
     .filtros{
         margin-right: 0px;
@@ -330,14 +326,10 @@ label{
         width: 100%;
     }
     .card{
-        width: 17.5rem;
-        height: 27.5rem;
-        text-align: center;
-        padding: 10px;
+
         margin: 10px;
         margin-left: 5px;
         margin-right: 5px;
-        background-color: lightblue;
     }
     
   }
@@ -382,10 +374,16 @@ label{
         min-height: 80vh;
         display: flex;
         margin: 0px;
-        min-width: 475px;
         margin-left: auto;
         margin-right: auto;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
       }
+      #prev-button img, #next-button img {
+        width: 20px;
+        height: 20px;
+    }
+    h1{
+        font-size: 1.5rem;
+    }
   }

@@ -12,7 +12,7 @@
   height: auto;
   overflow: hidden;
   position: relative;
-  background-image: url(/imagens/backgrounds/Background2.svg);
+  background-image: url(../imagens/backgrounds/Background2.svg);
   background-size: cover;
 }
 .container {/* Container de todo conteúdo do form e logo*/
@@ -44,6 +44,11 @@
   }
 .background{
   background-image: none;
+  }
+  .form {/* Container do form */
+    width: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 }
 .imglogo{/* Tamanho da imagem da logo */
@@ -79,8 +84,7 @@
   padding: 10px;
   padding-left: 20px;
   width: 100%;
-  border-color: #0476D9;
-  border-width: 2px;
+  border: #0476D9 solid 2px;
   background-color: #ffffff;
   border-radius: 15px;
   margin: 10px;

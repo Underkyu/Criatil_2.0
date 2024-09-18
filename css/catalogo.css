@@ -68,6 +68,9 @@ body{
     align-items: center;
     margin-top: 5px;
 }
+.categorias{
+    margin-top: 5px;
+}
 .iconeVariados img, .iconeInclusivos img, .iconeCategorias img{
     height: 30px;
     width: 30px;
@@ -282,6 +285,8 @@ label{
     /*Estilo do filtro de categoria*/
     .variados{
         display: none;
+        width: 50%;
+        margin: 0;
     }
     /*Estilo do filtro de inclusivos*/
     .inclusivos{

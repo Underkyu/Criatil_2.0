@@ -1,43 +1,65 @@
-body {
+* {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     overflow: hidden;
     box-sizing: border-box;
 }   
-#carrinho {
-    width: calc(100% - 280px); /* 310px = largura do resumo + margem */
-    margin-right: 310px; /* largura do resumo e da margem */
-    height: auto;
-    background-color: #ffffff;
-    padding: 20px;
-    display: flex;  
-    flex-direction: column;
-    position: absolute;
-    bottom: 15%;
-    left: -25px;
-}
 #resumo {
     background-color: #0476D9;
-    position: absolute;
-    height: calc(100% + 10px);
-    width: 310px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 300px;
     color: white;
     display: flex;
-    justify-content:center;
-    align-items: center;
     flex-direction: column;
-    right: -1%;
-    top: -1%;
-    margin-left: 10px;
+    padding: 10px;
     border: solid #000000 2px;
+    z-index: 1000;
+    justify-content: space-around;
+    transition: transform 0.8s ease-in-out;
+}
+#resumo.exibido {
+    transform: translateY(0);
+}
+#botao-resumo {
+    font-weight: 500;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color:#0476D9;
+    color: white;
+    border-radius: 14px;
+    border: solid black 2px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1001;
+    display: none;
+    transition: transform 0.8s ease-in-out;
+}
+#resumo.exibido + #botao-resumo {
+    transform: translateX(-50%) translateY(-750%);
+}
+.conteudoresumo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+#botoes-resumo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 #resumo h1 {
     font-weight: 500;
     font-size: 38px;
     display: flex;
-    position: absolute;
-    top: 20%;
 }
 .resumopreco{
     display: flex;
@@ -46,128 +68,133 @@ body {
     font-size: 18px;
 }
 .botao-continuar {
-    width: 60%;
-    height: 40px;
-    bottom: 30%;
-    left: 50%;
-    position: absolute;
-    transform: translateX(-50%);
+    width: auto;
+    height: auto;
     border: solid white 3px;
     border-radius: 18px;   
     background-color: #0476D9;
     font-size: 16px;
     color: white;
-    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     cursor: pointer;
     text-decoration: none;
-    line-height: 2.5;
-    display: flex;
-    justify-content: center;
+    display:flex;
     align-items: center;
+    padding: 10px;
 }
 .botao-pagamento {
-    width: 80%;
+    width: auto;
     height: auto;
-    bottom: 22%;
-    left: 50%;
-    position: absolute;
-    transform: translateX(-50%);
-    border-radius: 10px;   
+    border-radius: 18px;   
     background-color: #F2AF00;
+    border: solid black 2px;
     color: #000000;
     font-size: 17px;
-    font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    padding-left: 10px;
-    padding-right: 10px;
     cursor: pointer;
     text-decoration: none;
-    line-height: 2.5;
     display: flex;
+    align-items: center;
+    padding: 10px;
+    white-space: nowrap;
+}
+#entrega {
+    font-weight: 500;
+    width: 520px;
+    height: auto;
+    text-decoration: underline;
+    margin-top: 5%;
+    padding: 20px;
+    display: flex;  
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
-    align-items: center;  
+    width: calc(100% - 280px);
+}
+#entrega div {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+#entrega h1 {
+    font-size: 17px;
+    margin-right: 100px;
+    margin-left: 5px;
+    cursor: pointer;
+    overflow:visible;
+}
+#entrega img {
+    width: auto;
+    height: auto;
+    max-width: 45px;
+    max-height: 45px;
+    min-width: 30px;
+    max-width: 30px;
+    cursor: pointer;
+}
+#carrinho-legenda {
+    display: flex;
+    justify-content: space-around;
+    font-weight: 500;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+.legenda-img, .legenda-nome, .legenda-qntd, .legenda-valor {
+    flex: 1;
+}
+#carrinho {
+    width: calc(100% - 300px);
+    height: auto;
+    display: flex;  
+    flex-direction: column;
+    margin-top: 50px;
 }
 .produto {
+    width: 100%;
+    height: 140px;
     display: flex;
     align-items:center;
-    flex-wrap: nowrap;
-    gap: 35px;
     font-size: 18px;
-    padding: 5px;
     border: solid #0476D9 2px;
+    border-left: none;
+    border-right: none;
 }
 .produto + .produto {
     border-top: none;
 }
 .produto-info {
-    flex: 1;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    width: 100%;
 }
 .produto-imagem {
     width: 130px;
     height: 130px;
-    object-fit: cover;
-    margin-left: 40px;
+    object-fit: contain;
+    flex: 1;
 }
 .produto-nome {
-    flex: 1;
-    font-size: 17px;
-    margin-left: 20px;
-    margin-right: 50px;
-}
-.produto-quantidade {
-    margin-left: 75px;
-    margin-right: 75px;
-    font-size: 19px;
-}
-.produto-valor {
-    flex: 1;
     font-size: 17px;
     font-weight: 500;
-    margin-left: 75px;
-    margin-right: 75px;
+    flex: 1;
+    text-align: center;
+    white-space: wrap;
 }
 .produto-nome, .produto-quantidade {
     font-weight: 500;
 }
-#carrinho-legenda {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 500;
-    margin-bottom: 10px;
-    width: calc(100% - 280px); /* largura do carrinho */
-}
-/* aq eu tive q fzr umas puta gambiarra de margem pra q a legenda fique no lugar certo em 
-   relação ao carrinho, se pensarem em algum jeito de fzr isso melhor podem falar ou mudar */
-.legenda-nome {
-    margin-left: 295px;
-}
-.legenda-qntd {
-    margin-left: 207px;
-    
-}.legenda-valor {
-    margin-left: 195px;
-}
-/* acho q seria interessante fazer uma animação pra fazer o botão da quantidade aparecer e expandir
-    ao invés de ficar sempre assim, principalmente pela responsividade, mas veremos no futuro */
 .produto-quantidade {
+    font-size: 19px;
+    flex: 1;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border: solid #F2AF00 3px;
-    border-radius: 8px;
-    height: 33px;
-    padding: 0 5px;
-    width: 85px;
-    box-sizing: border-box;
+    justify-content: center;
+    gap: 10px;
 }
 .quantidade-botao {
     border: none;
     background-color:#ffffff;
-    margin: 2px;
     font-size: 25px;
     cursor: pointer;
     font-weight: 500;
@@ -179,31 +206,151 @@ body {
     align-items: center;
     border-radius: 3px;
 }
-.produto-quantidade span {
-    margin: 5px;
-}
-#entrega {
+.produto-valor {
+    font-size: 17px;
     font-weight: 500;
-    justify-content: space-evenly;
-    width: 520px;
-    height: auto;
-    text-decoration: underline;
-    margin-top: 5%;
-    border-top: solid #0476D9 2px;
-    background-color: #ffffff;
-    padding: 20px;
-    display: flex;  
-    flex-direction: row;
-    width: calc(100% - 340px); /* 310px = largura do resumo + margem */
+    flex: 1;
+    text-align: center;
 }
-#frete, #metodo, #cupom {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+  /* estilos gerais da barra de rolagem */
+  #carrinho::-webkit-scrollbar {
+    height: 18px;
 }
-.entrega-imagem{
-    width: 30px;
-    height: 30px;
-    object-fit: cover;
-    margin-right: 8px; 
+
+/* estilos do trilho da barra de rolagem */
+#carrinho::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 1px;
+}
+
+/* estilos do polegar da barra de rolagem (parte que o usuário arrasta) */
+#carrinho::-webkit-scrollbar-thumb {
+    background-color: #c08a00;
+    border-radius: 8px; 
+    border: 3px solid #f1f1f1; 
+}
+@media (max-width: 900px) {
+    #carrinho {
+        overflow-x: auto;
+    }
+    .produto {
+        width: 800px;
+        min-width: 200px;
+    }
+    #carrinho-legenda {
+        display: flex;
+        justify-content: space-around;
+        font-weight: 500;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        width: 800px;
+        text-align: center;
+    }
+    #entrega h1{
+        font-size: 15px;
+    }
+}
+@media (max-width: 840px) {
+    #resumo h1 {
+        display: none;
+    }
+    #carrinho, .produto, #carrinho-legenda, #entrega {
+        width: 100%;
+    }
+    #resumo {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        top:auto;
+        left: auto;
+        height: 50%;
+        width: 100%;
+        transform: translateY(100%);
+    }
+    #botao-resumo {
+        display: block;
+    }
+    #entrega {
+        margin-top: 10%;
+        padding: 5px;
+        justify-content: space-evenly;
+    }
+    #entrega h1 {
+        font-size: 15px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin: 0;
+    }
+    #entrega img {
+        max-width: 45px;
+        max-height: 45px;
+        min-width: 30px;
+        max-width: 30px;
+    }
+}
+@media (max-width: 780px) {
+    .produto-imagem{
+        object-fit: cover;
+    }
+}
+@media (max-width: 555px) {
+    .produto-imagem {
+        height: 120px;
+        width: 120px;
+    }
+    .produto-nome, .produto-valor{
+        font-size: 15px;
+    }
+    .produto-quantidade {
+        font-size: 16px;
+    }
+    .quantidade-botao {
+        font-size: 22px;
+    }
+    #carrinho-legenda {
+        font-size: 15px;
+    }
+    #entrega h1{
+        font-size: 14px;
+    }
+}
+@media (max-width: 425px) {
+    .produto-imagem {
+        height: 100px;
+        width: 100px;
+    }
+    .produto-nome, .produto-valor{
+        font-size: 14px;
+    }
+    .produto-quantidade {
+        font-size: 15px;
+    }
+    .quantidade-botao {
+        font-size: 21px;
+    }
+    #carrinho-legenda {
+        font-size: 14px;
+    }
+    #entrega h1{
+        font-size: 13px;
+    }
+}
+@media (max-width: 370px) {
+    #botao-resumo {
+        font-size: 15px;
+    }
+    #resumo.exibido + #botao-resumo {
+        transform: translateX(-50%) translateY(-810%);
+    }
+}
+@media (max-width: 370px) {
+    #resumo.exibido + #botao-resumo {
+        transform: translateX(-50%) translateY(-800%);
+    }
+}
+@media (max-width: 313px) {
+    #resumo.exibido + #botao-resumo {
+        transform: translateX(-50%) translateY(-560%);
+    }
 }

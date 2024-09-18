@@ -46,7 +46,14 @@
     margin-top: 15px;
 }
 .pagina-selecionada{
-    font-weight: 500;
+    font-weight: bold;
+}
+.paginas-navbar, .pagina-selecionada{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding-top: 5px;
 }
 .paginas {
     display: flex;
@@ -83,43 +90,32 @@
     background-color: white;
     width: 95%;
     height: 85%;
-    padding-left: 20px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-
 }
-.informacoes {
+.produtos-container {
     display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-    font-size: 17px;
+    flex-direction: row;
+    overflow-x: auto; 
     white-space: nowrap;
-    margin-left: -20px;
-    overflow-y: auto;
-}
-.informacoes div {
-    margin-top: 8px;
+    width: 100%;
 }
 .produto {
-    width: auto;
+    width: 100%;
     height: 140px;
-    margin-left: -10px;
-    margin-right: -10px;
     display: flex;
     align-items:center;
-    flex-direction: row;
     font-size: 18px;
     border: solid #0476D9 2px;
-    gap: 25px;
+    border-left: none;
+    border-right: none;
 }
 .produto + .produto {
     border-top: none;
-    border-bottom: none;
 }
 .produto-info {
     display: flex;
-    justify-content: space-around;
     align-items: center;
     width: 100%;
 }
@@ -151,12 +147,196 @@
 .legenda-foto, .legenda-nome, .legenda-qntd, .legenda-data, .legenda-valor {
     flex: 1;
 }
-/* coisas da barra de scroll */
-::-webkit-scrollbar {
-    width: 5px;
-    height: 0px; /* 0 pra n ter barra de rolagem horizontal */
-    background: transparent;
-    background-color: #F2AF00;
-    border-radius: 100px;
-    border: solid white 1px;
+/* css do menu sanduíche */
+.sanduiche-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
+    width: 2rem;
+    transition-duration: 0.2s;
+}
+.girar {
+    transform: rotate(180deg);
+}
+  button.menuSanduiche{ /*Botão que abre o menu sanduiche*/
+    border: transparent;
+    display: none;
+    background-color: transparent;
+    font-size: 10px;
+    font-weight: 500;
+    align-items: center;
+    cursor: pointer;
+  }
+  div.link_sanduiche{ /*Conteudo do menu sanduiche*/
+    display: inherit;
+  }
+  div.menuSanduiche{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition-timing-function: ease-in;
+    transition-duration: 0.35s;
+    height: 0rem;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-bottom: 60px;
+  }
+  .open_header{ /*Classe que serve para tornar o menu sanduiche visivel*/
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    overflow: hidden;
+    transition-timing-function: ease-in;
+    transition-duration: 0.35s;
+    height: 3.6rem;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  /* fim do css do menu sanduíche */
+  /* estilos gerais da barra de rolagem */
+.produtos-container::-webkit-scrollbar {
+    height: 23px;
+}
+
+/* estilos do trilho da barra de rolagem */
+.produtos-container::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 0px;
+}
+
+/* estilos do polegar da barra de rolagem (parte que o usuário arrasta) */
+.produtos-container::-webkit-scrollbar-thumb {
+    background-color: #c08a00;
+    border-radius: 5px; 
+    border: 3px solid #f1f1f1; 
+}
+  /* responsividade */
+
+/* aviso importante sobre a responsividade: tive que fazer uma escolha entre fazer com que
+a legenda sempre fique no lugar correto ou a scroll apareça na maior parte dos dispositivos,
+ou fazer com que a legenda as vezes fique ligeiramente pra extremamente incorreta mas a scroll
+só apareça quando necessário. dá pra alterar isso quando quiser, verei a decisão do grupo
+futuramente */
+@media (max-width: 1240px) {
+    #navbar-conta {
+        margin-left: 2%;
+    }
+
+    #box {
+        height: 420px;
+    }
+
+    #box h1 {
+        font-size: 32px;
+    }
+
+    .editar {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .img-conta {
+        width: 115px;
+        height: 115px;
+    }
+
+    .nome-conta {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    #navbar-conta {
+        width: 290px;
+        margin-left: 0;
+    }
+
+    #box {
+        width: 70%; 
+    }
+
+    .img-conta {
+        width: 100px;
+        height: 100px;
+    }
+
+    .nome-conta {
+        font-size: 18px;
+    }
+
+    .editar {
+        font-size: 12px;
+        padding: 6px 14px;
+    }
+}
+@media (max-width: 1150px) {
+    .produto{
+        width: 750px;
+    }
+    #carrinho-legenda {
+        width: 750px;
+    }
+}
+/* leve aviso: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
+@media (max-width: 820px) {
+    button.menuSanduiche{/*Botão que abre o menu sanduiche*/
+        display: flex;
+      }
+      #navbar-conta {
+        display: none;
+      }
+      #box {
+        position:relative;
+        right: auto;
+        left: auto;
+        top: auto;
+        bottom: auto;
+        width: 96%;
+        margin: 0 auto;
+      }
+      .sanduiche-div{
+        display: flex;
+        margin-top: 10px;
+      }
+}
+@media (max-width: 700px) {
+    .produtos-container {
+        overflow-x: auto; /* Garante que a rolagem horizontal seja ativada em telas menores */
+    }
+
+    .produto {
+        width: 800px;
+        min-width: 200px; /* Define uma largura mínima para cada produto */
+    }
+    #carrinho-legenda {
+        display: flex;
+        justify-content: space-around;
+        font-weight: 500;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        width: 800px;
+        text-align: center;
+    }
+}
+@media (max-width: 550px) {
+    #box {
+        height: 380px;
+    }
+    #box h1 {
+        font-size: 28px;
+    }
+    .nome-conta {
+        font-size: 16px;
+    }
+    .pagina-selecionada, .paginas-navbar {
+        font-size: 16px;
+    }
+}
+@media (max-width: 380px) {
+    .pagina-selecionada, .paginas-navbar{
+        font-size: 14px;
+    }
 }

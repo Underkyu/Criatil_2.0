@@ -74,7 +74,7 @@
     background-color: #0476D9;
     width: 840px;
     height: 480px;
-    border-radius: 20px;  
+    border-radius: 20px;
 }
 #box h1 {
     position: relative;
@@ -83,7 +83,7 @@
     font-family: 'Arial';
     padding: 15px;
 }   
-#perfil {
+#pedidos {
     margin-top: 0;
     position: relative;
     bottom: 2%;
@@ -92,85 +92,61 @@
     height: 85%;
     border-radius: 20px;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
 }
-.informacoes {
+.produtos-container {
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    font-size: 16px;
-    margin-top: 40px;
-}
-.informacoes button {
-    height: 35px;
-    width: 20%;
-    border-radius: 12px;   
-    background-color: #F2AF00;
-    color: #000000;
-    font-size: 16px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    padding: 10px 20px;
-    cursor: pointer;
-    text-decoration: none;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;  
-    margin-top: 10px;
-}
-.info-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-.info-label {
-    font-weight: 500;
-    margin-right: 4vw;
+    overflow-x: auto; 
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    width: 100%;
 }
-.info-value {
-    text-align: right;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.produto {
+    width: 100%;
+    height: 140px;
+    display: flex;
+    align-items:center;
+    font-size: 18px;
+    border: solid #0476D9 2px;
+    border-left: none;
+    border-right: none;
 }
-.conta-box {
-    margin-top: 35px;
+.produto + .produto {
+    border-top: none;
+}
+.produto-info {
     display: flex;
     align-items: center;
-    flex-direction: column;
+    width: 100%;
+    flex: 1;
 }
-.img-conta {
-    width: 135px;
-    height: 135px;
-    border-radius: 100px;
-    border: solid #F2AF00 5px;
+.produto-imagem {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    flex: 1;
 }
-.nome-conta {
-    font-size: 24px;
+.produto-nome, .produto-quantidade, .produto-data, .produto-valor {
+    font-size: 17px;
     font-weight: 500;
-    margin-top: 10px;
+    flex: 1;
+    text-align: center;
 }
-.img-container {
-    position: relative;
-    display: inline-block;
+.produto-nome {
+    width: 20%;
+    white-space: wrap;
 }
-.editar-icone /* div q contém o ícone */ {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background-color: #F2AF00;      
-    border-radius: 100%;
-    padding: 1px;
-    cursor: pointer;
+#carrinho-legenda {
+    display: flex;
+    justify-content: space-around;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
 }
-.editar-icone img {
-    width: 40px;
-    height: 35px;
-    object-fit: cover;
+.legenda-foto, .legenda-nome, .legenda-qntd, .legenda-data, .legenda-valor {
+    flex: 1;
 }
 /* css do menu sanduíche */
 .sanduiche-div{
@@ -221,9 +197,31 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     align-items: center;
   }
   /* fim do css do menu sanduíche */
-/* responsividade */
+  /* estilos gerais da barra de rolagem */
+.produtos-container::-webkit-scrollbar {
+    height: 23px;
+}
 
-@media (max-width: 1160px) {
+/* estilos do trilho da barra de rolagem */
+.produtos-container::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 0px;
+}
+
+/* estilos do polegar da barra de rolagem (parte que o usuário arrasta) */
+.produtos-container::-webkit-scrollbar-thumb {
+    background-color: #c08a00;
+    border-radius: 5px; 
+    border: 3px solid #f1f1f1; 
+}
+  /* responsividade */
+  
+/* aviso importante sobre a responsividade: tive que fazer uma escolha entre fazer com que
+a legenda sempre fique no lugar correto ou a scroll apareça na maior parte dos dispositivos,
+ou fazer com que a legenda as vezes fique ligeiramente pra extremamente incorreta mas a scroll
+só apareça quando necessário. dá pra alterar isso quando quiser, verei a decisão do grupo
+futuramente */
+@media (max-width: 1240px) {
     #navbar-conta {
         margin-left: 2%;
     }
@@ -241,10 +239,6 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
         padding: 8px 16px;
     }
 
-    .informacoes {
-        font-size: 15px;
-    }
-
     .img-conta {
         width: 115px;
         height: 115px;
@@ -255,7 +249,7 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     }
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 1200px) {
     #navbar-conta {
         width: 290px;
         margin-left: 0;
@@ -263,10 +257,6 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
 
     #box {
         width: 70%; 
-    }
-
-    .informacoes {
-        font-size: 14px;
     }
 
     .img-conta {
@@ -281,6 +271,14 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     .editar {
         font-size: 12px;
         padding: 6px 14px;
+    }
+}
+@media (max-width: 1150px) {
+    .produto{
+        width: 750px;
+    }
+    #carrinho-legenda {
+        width: 750px;
     }
 }
 /* leve aviso: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
@@ -305,10 +303,26 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
         margin-top: 10px;
       }
 }
-@media (max-width: 550px) {
-    .informacoes {
-        font-size: 13px;
+@media (max-width: 700px) {
+    .produtos-container {
+        overflow-x: auto;
     }
+
+    .produto {
+        width: 800px;
+        min-width: 200px;
+    }
+    #carrinho-legenda {
+        display: flex;
+        justify-content: space-around;
+        font-weight: 500;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        width: 800px;
+        text-align: center;
+    }
+}
+@media (max-width: 550px) {
     #box {
         height: 380px;
     }
@@ -320,46 +334,6 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     }
     .pagina-selecionada, .paginas-navbar {
         font-size: 16px;
-    }
-    .informacoes button {
-        font-size: 14px;
-        width: 50px;
-        height: 30px;
-    }
-}
-@media (max-width: 490px) {
-    #box {
-        height: 500px;
-    }
-    #perfil {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-    }
-    .conta-box {
-        position: absolute;
-        margin: 0;
-        padding: 0;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .informacoes {
-        position: relative;
-        top: 80px;
-        margin: 0;
-        padding: 0;
-        align-items: flex-start;
-    }
-    .info-item {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin-bottom: 10px;
-    }  
-    .info-label {
-        margin-right: 5px;
     }
 }
 @media (max-width: 380px) {

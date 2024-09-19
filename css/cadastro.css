@@ -15,10 +15,6 @@ body {
     background-position:center;
 
 }
-/* as coisas q eu apliquei no body podem ser removidas e aplicadas
-   na tag main (tirando a margin), mas sinceramente n sei qual seria 
-   melhor tanto pra responsividade quanto pra padronização das 
-   páginas e pra facilidade de modificação no futuro. no futuro mudamos*/
 
 .cadastrinho {
     position: relative;
@@ -83,3 +79,70 @@ body {
     outline: none;
     line-height: 2.5;
 }
+
+.cadastrinho {
+    max-width: 1536px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  @media (max-width: 1536px) {
+    .cadastrinho {
+      max-width: 1280px;
+    }
+  }
+  
+  @media (max-width: 1280px) {
+    .cadastrinho {
+      max-width: 1024px;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .cadastrinho {
+      max-width: 768px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cadastrinho {
+      max-width: 640px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .cadastrinho {
+      max-width: 475px;
+      width: 350px;
+      height: 400px;
+    }
+    .input-login {
+        width: 50%;
+        height: 20px;
+    }
+    .botao-entrar{
+        height: 30px;
+        font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 475px) {
+    .cadastrinho {
+      width: 100%;
+      width: 250px;
+      height: 395px;
+    }
+    .cadastrinho img {
+        width: 75%;
+    }
+    .input-login {
+        width: 65%;
+        height: 20px;
+    }
+    .botao-entrar{
+        height: 30px;
+        font-size: 14px;
+    }
+  }

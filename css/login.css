@@ -15,23 +15,19 @@ body {
     background-position:center;
 
 }
-/* as coisas q eu apliquei no body podem ser removidas e aplicadas
-   na tag main (tirando a margin), mas sinceramente n sei qual seria 
-   melhor tanto pra responsividade quanto pra padronização das 
-   páginas e pra facilidade de modificação no futuro. no futuro mudamos*/
 
 .loginn {
     background-color: #ffffff;
     border-radius: 20px;
     width: 510px;
-    height: 500px;
+    height: 450px;
     padding: 0;
     box-sizing: border-box;
 }
 
 .loginn img {
     display: block;
-    width: 55%;
+    width: 65%;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -49,7 +45,7 @@ body {
 
 .input-login {
     width: 75%;
-    height: 45px;
+    height: 75px;
     padding: 12px;
     margin-bottom: 15px;
     border: 2px solid #0476D9;
@@ -99,3 +95,85 @@ body {
     line-height: 2.5;
     text-decoration: none;
 }
+
+.input-login {
+    width: 50%;
+    height: 20px;
+}
+
+.loginn {
+    max-width: 1536px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  @media (max-width: 1536px) {
+    .loginn {
+      max-width: 1280px;
+    }
+  }
+  
+  @media (max-width: 1280px) {
+    .loginn {
+      max-width: 1024px;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .loginn {
+      max-width: 768px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .loginn {
+      max-width: 640px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .loginn {
+      max-width: 475px;
+      width: 350px;
+      height: 375px;
+    }
+    .input-login {
+        width: 50%;
+        height: 20px;
+    }
+    .botao-entrar{
+        height: 30px;
+        font-size: 14px;
+    }
+    .botao-cadastrar{
+        height: 30px;
+        font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 475px) {
+    .loginn {
+      width: 100%;
+      width: 250px;
+      height: 295px;
+    }
+    .cadastrinho img {
+        width: 75%;
+    }
+    .input-login {
+        width: 65%;
+        height: 20px;
+    }
+    .botao-entrar{
+        width:65%;
+        height: 30px;
+        font-size: 14px;
+    }
+    .botao-cadastrar{
+        width: 65%;
+        height: 30px;
+        font-size: 14px;
+    }
+  }

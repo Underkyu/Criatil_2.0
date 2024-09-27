@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.main-container {
+    width: 80%;
+    margin: 180px 275px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.secaoPagamento {
+    width: 60%;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.secaoPagamento h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.opcoesPagamento {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+
+
+.option {
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid #b3b7b9;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+    flex: 1;
+    margin-right: 10px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+} 
+
+.option img {
+    width: 60px; 
+    height: 60px; 
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+.option.debito {
+    border-radius: 10px;
+    border-color: #525557;
+    border: #525557;
+}
+
+.option p {
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.option.selecionada {
+    border-color: #007bff;
+}
+
+.sumario {
+    width: 35%;
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.sumario h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.sumario p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+#continue-button, #back-button {
+    width: 100%;
+    background-color: #ffcc00;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+#continue-button:hover, #back-button:hover {
+    background-color: #ffbf00;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        margin: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .secaoPagamento, .sumario {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .opcoesPagamento {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .option img {
+        width: 80px; 
+        height: 80px;
+    }
+}

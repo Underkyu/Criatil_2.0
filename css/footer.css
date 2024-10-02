@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');/* Import da fonte padrão */
+
+* {/*Definição de parâmetros padrão */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: none;
+  font-family: "Roboto";
+}
+.footerContainer{
+    background-color: #0476D9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+.copyright{
+    font-size: smaller;
+    text-align: center;
+    width: 100%;
+    background-color: #0260b2;
+}
+.footerContent{
+    width: 80%;
+}
+.footerAnchors{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footerAnchors a{
+    margin: 10px;
+}
+.footerAnchors a:hover{
+    cursor: pointer;
+    filter: brightness(0.9);
+    transform: translateY(-1px);
+    transition: ease-in-out 200ms;
+}
+.footerAnchor{
+    font-weight: bold;
+    color: white;
+    width: 15%;
+}
+.footerSac,.footerSobreNos,.footerContato{
+    display: flex;
+    justify-content: center;
+}
+.footerLogo img{
+    width: 100%;
+    height: calc(100%/(240/95));
+}
+.footerLogo, .footerTelefone{
+    width: 20%;
+    max-width: 240px;
+    max-height: 95px;
+}
+.footerRedes{
+    display: flex;
+    justify-content: center;
+}
+.footerRedes a img{
+    width: 50px;
+    height: 50px;
+    margin: 10px
+}
+.footerRedes a img:hover{
+    cursor: pointer;
+    filter: brightness(0.9);
+    transform: translateY(-1px);
+    transition: ease-in-out 200ms;
+} 
+  /* 2xl */
+  @media (max-width: 1536px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+   
+  /* xl */
+  @media (max-width: 1280px) {
+    .footerLogo{
+        display: none;
+    }
+    .footerTelefone{
+        display: none;
+    }
+  }
+   
+  /* lg */
+  @media (max-width: 1024px) {
+    .container {
+      max-width: 768px;
+    }
+    .footerAnchors{
+      justify-content: space-around;
+    }
+    .footerAnchor{
+      width: 20%;
+    } 
+  }
+   
+  /* md */
+  @media (max-width: 768px) {
+      .footerAnchors{
+        justify-content: space-around;
+      }
+      .footerAnchor{
+        width: 20%;
+      }
+  }
+   
+  /* sm */
+  @media (max-width: 640px) {
+    .footerAnchors{
+        font-size: smaller;
+    }
+    .footerAnchor{
+      width: 30%;
+    }
+  }
+   
+  /* xs */
+  @media (max-width: 475px) {
+    .container {
+      width: 100%;
+    }
+    .footerAnchors a {
+      margin: 5px;
+  }
+  }

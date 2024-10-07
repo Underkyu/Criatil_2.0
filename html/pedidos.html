@@ -8,12 +8,11 @@
     <script src="../js/menuSanduicheCONTA.js" defer></script>
     <title>Criatil</title>
 </head>
-
 <body>
-    <main>
+    <div class="container">
     <!-- página da conta -->
-    <!-- 'navbar-conta' é a barra da esquerda com as páginas -->
-        <div class="container" id="navbar-conta"> 
+        <!-- 'navbar-conta' é a barra da esquerda com as páginas -->
+         <div class="navbar-container" id="navbar-conta"> 
              <div class="lateral-conta">
                   <img class="img-lateral" src="../imagens/Conta/rosana.jpg">
                   <h1 class="nome-lateral">Rosana Siqueira</h1>
@@ -21,7 +20,7 @@
              <div class="paginas">
                   <a href="./conta.html" class="paginas-navbar">Perfil</a>
                   <a href="#" class="pagina-selecionada">Pedidos</a>
-                  <a href="./desejados.html" class="paginas-navbar">Lista de Desejos</a>
+                  <a href="./desejos.html" class="paginas-navbar">Lista de Desejos</a>
                   <a href="./cartoes.html" class="paginas-navbar">Cartões</a>
                   <a href="" class="paginas-navbar">Sair</a>
              </div>
@@ -60,10 +59,11 @@
              <!-- fim da div do menu sanduíche-->
 
         <!-- 'box' é a caixa da direita com a informação da página escolhida -->
-        <div class="container" id="box">
+        <div class="box-container" id="box">
             <h1 class="titulo-box">Pedidos</h1>
                <div class="produtos-container" id="pedidos">
-
+                <div class="linha">
+                </div>
                         <div id="carrinho-legenda">
                             <div class="legenda-foto">Foto</div>
                             <div class="legenda-nome">Nome</div>
@@ -96,9 +96,9 @@
                                 </div>
                             </div>
                         </div>
-        </div>
-    </div>
+                    </div>
+                </div>
     <!-- fim da página da conta -->
-    </main>
+</div>
 </body>
 </html>

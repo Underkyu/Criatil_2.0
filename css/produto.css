@@ -386,6 +386,7 @@ div.product{ /* Div dos produtos*/
   justify-content: center;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 /* 2xl */

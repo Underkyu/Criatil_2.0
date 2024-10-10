@@ -42,6 +42,17 @@
     color: black;
     cursor: pointer;
     margin-top: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+#navbar-conta a:hover {
+    transform: scale(1.15);
+}
+#sair {
+    transition: transform 0.3s ease-in-out;
+}
+#sair:hover {
+    transform: scale(1.15);
+    color: rgb(212, 0, 0);
 }
 .pagina-selecionada{
     font-weight: bold;
@@ -117,6 +128,10 @@
     justify-content: center;
     align-items: center;  
     margin-top: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+.informacoes button:hover {
+    transform: scale(1.1);
 }
 .info-item {
     display: flex;
@@ -454,5 +469,21 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
 @media (max-width: 380px) {
     .pagina-selecionada, .paginas-navbar{
         font-size: 14px;
+    }
+    * {
+        box-sizing: border-box;
+    }
+    #box {
+        padding: 0;
+    }
+    .info-item {
+        width: 90%;
+    }
+    .informacoes {
+        align-items: center;
+    }
+    .editar-icone img {
+        width: 25px;
+        height: 20px;
     }
 }

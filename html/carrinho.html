@@ -5,13 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- link da fonte pro css saber que fonte usar -->
         <link rel="stylesheet" href="../css/carrinho.css">
-        <script src="../js/resumo.js" defer></script>
+        <script src="../js/carrinhoResumo.js" defer></script>
+        <script src="../js/carrinhoQuantidade.js" defer></script>
         <title>Criatil</title>
     </head>
     <body>
-        <div class="container">
     <!-- página do carrinho -->
-                <div id="entrega" class="entregabox">
+    <div class="container">
+        <div class="container-car">
+                <div id="entrega">
                     <div>
                         <img src="../imagens/Icons/frete.png">
                         <h1>Calcular Frete</h1>
@@ -25,7 +27,6 @@
                         <h1>Inserir Cupom</h1>
                     </div>
                 </div>
-
                 <div id="carrinho" class="carrinhobox">
 
                         <div id="carrinho-legenda">
@@ -40,9 +41,9 @@
                                 <img src="../imagens/Produtos/Miku/Imagem1.png" class="produto-imagem">
                                 <div class="produto-nome">Pelúcia Hatsune Miku</div>
                                 <div class="produto-quantidade">
-                                    <button class="quantidade-botao">-</button>
+                                    <button class="quantidade-botao" onclick="alterarQntd(this, -1)">-</button>
                                     <span class="quantidade-numero">1</span>
-                                    <button class="quantidade-botao">+</button>
+                                    <button class="quantidade-botao" onclick="alterarQntd(this, 1)">+</button>
                                 </div>
                                 <div class="produto-valor">
                                     <div class="valor-unidade">R$ 50,00/un.</div>
@@ -56,9 +57,9 @@
                                 <img src="../imagens/Produtos/Ralsei/ralseideltarune.png" class="produto-imagem">
                                 <div class="produto-nome">Pelúcia Ralsei Deltarune</div>
                                 <div class="produto-quantidade">
-                                    <button class="quantidade-botao">-</button>
+                                    <button class="quantidade-botao" onclick="alterarQntd(this, -1)">-</button>
                                     <span class="quantidade-numero">2</span>
-                                    <button class="quantidade-botao">+</button>
+                                    <button class="quantidade-botao" onclick="alterarQntd(this, 1)">+</button>
                                 </div>
                                 <div class="produto-valor">
                                     <div class="valor-unidade">R$ 30,00/un.</div>
@@ -68,7 +69,8 @@
                         </div>
                         
                 </div>
-                
+            </div>
+
                 <div id="resumo" class="resumobox">
                     <div class="conteudoresumo">
                         <h1>Resumo</h1>
@@ -91,6 +93,6 @@
         
                 <button id="botao-resumo">Resumo da Compra</button>
     <!-- fim da página do carrinho -->
-</div>
+     </div>
     </body>
     </html>

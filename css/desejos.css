@@ -42,6 +42,17 @@
     color: black;
     cursor: pointer;
     margin-top: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+#navbar-conta a:hover {
+    transform: scale(1.15);
+}
+#sair {
+    transition: transform 0.3s ease-in-out;
+}
+#sair:hover {
+    transform: scale(1.15);
+    color: rgb(212, 0, 0);
 }
 .pagina-selecionada{
     font-weight: bold;
@@ -91,12 +102,13 @@
     width: 99%;
 }
 .produtos-container {
+    flex-wrap: wrap;
     display: flex;
     flex-direction: row;
     overflow-x: hidden; 
     overflow-y: hidden;
     white-space: nowrap;
-    align-items: center;
+    align-items: stretch;
 }
 /* quando tiver back-end, o overflow-y vai precisar ser usado pra scrollar entre os produtos verticalmente.
     se precisar eu implemento */
@@ -278,14 +290,11 @@ só apareça quando necessário*/
         width: 290px;
         margin-left: 5%;
     }
-    #box {
-        height: 420px;
-    }
     #box h1 {
         font-size: 32px;
     }
     #box {
-        width: 70%; 
+        width: 65%; 
     }
     .img-conta {
         width: 100px;
@@ -332,8 +341,8 @@ só apareça quando necessário*/
 }
 @media (max-width: 700px) {
     .produto-imagem {
-        width: 90px;
-        height: 90px;
+        width: 120px;
+        height: 120px;
     }
     .produto-nome, .produto-valor {
         font-size: 14px;
@@ -359,12 +368,32 @@ só apareça quando necessário*/
         width: 500px;
     }
     .produto-imagem {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
     }
 }
 @media (max-width: 380px) {
+    #box h1 {
+        font-size: 28px;
+        margin-bottom: 5px;
+        color: black;
+    }
+    #box {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+    }
+    #box h1 {
+        font-size: 28px;
+    }
     .pagina-selecionada, .paginas-navbar{
         font-size: 14px;
+    }
+    * {
+        box-sizing: border-box;
+    }
+
+    .produto{
+        width: 500px;
     }
 }

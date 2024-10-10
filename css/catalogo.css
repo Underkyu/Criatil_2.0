@@ -107,8 +107,9 @@ body{
     border-radius: 100%;
 }
 /* Hover do checkbox */
-input[type="checkbox"]:hover {
-    border-color: lightgray;
+input[type="checkbox"]:hover, input[type="radio"]:hover{
+    transform: scale(1.1);
+    transition: ease-in-out 100ms;
 }
 .faixaPreco{
     display: flex;

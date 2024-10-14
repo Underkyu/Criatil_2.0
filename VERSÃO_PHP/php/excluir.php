@@ -1,6 +1,6 @@
 <?php 
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/criatilConexao/controller/usuarioController.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/Criatil_2.0/VERSÃO_PHP/php/controller/usuarioController.php";
 
 $codigo = $_GET['Codigo_Usu'];
 
@@ -21,26 +21,26 @@ $usuarios = $usuariocontroller->buscarPorCodigo($codigo);
     <div class="container">
         <h2>Excluir</h2>
         <!-- Formulário de cadastro -->
-        <form method="POST" action="controller/usuariocontroller.php"><!--Formulario onde os dados serão inseridos-->
+        <form method="POST" action="controller/usuarioController.php"><!--Formulario onde os dados serão inseridos-->
 <!-- começo -->
 <br>
             <label for="nome">Nome:</label>
-         <input type="text" id="nome" name="Nome_Usu" value="<?= $usuarios['Nome_Usu'] ?>" placeholder="Digite o nome"><br>
+         <input type="text" id="nome" name="Nome_Usu" value="<?= $usuarios['Nome_Usu'] ?>" placeholder="Digite o nome" disabled><br>
         <br>
           <label for="nascimento">Data de nascimento:</label>
-            <input type="date" id="nascimento" name="Nasc_Usu" value="<?= $usuarios['Nasc_Usu'] ?>" placeholder="Digite o nascimento"><br>
+            <input type="date" id="nascimento" name="Nasc_Usu" value="<?= $usuarios['Nasc_Usu'] ?>" placeholder="Digite o nascimento" disabled><br>
         <br>
           <label for="celular">Celular:</label>
-          <input type="text" id="celular" name="Celular_Usu" value="<?= $usuarios['Celular_Usu'] ?>" placeholder="Digite o celular"><br>
+          <input type="text" id="celular" name="Celular_Usu" value="<?= $usuarios['Celular_Usu'] ?>" placeholder="Digite o celular" disabled><br>
         <br>
            <label for="email">Email:</label>
-           <input type="text" id="email" name="Email_Usu" value="<?= $usuarios['Email_Usu'] ?>" placeholder="Digite o email"><br>
+           <input type="text" id="email" name="Email_Usu" value="<?= $usuarios['Email_Usu'] ?>" placeholder="Digite o email" disabled><br>
         <br>
            <label for="senha">Senha:</label>
-           <input type="password" id="senha" name="Senha_Usu" value="<?= $usuarios['Senha_Usu'] ?>" placeholder="Digite a senha"><br>
+           <input type="password" id="senha" name="Senha_Usu" value="<?= $usuarios['Senha_Usu'] ?>" placeholder="Digite a senha" disabled><br>
         <br>
           <label for="tipo">Tipo de conta:</label>
-        <input type="text" id="tipo" name="Tipo_Usu" value="<?= $usuarios['Tipo_Usu'] ?>" placeholder="Digite o tipo"><br>
+        <input type="text" id="tipo" name="Tipo_Usu" value="<?= $usuarios['Tipo_Usu'] ?>" placeholder="Digite o tipo" disabled><br>
         <br>
 <!-- fim -->
             <input type="hidden" class="form-control" name="crud" value="DELETE" disable >

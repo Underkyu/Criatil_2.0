@@ -1,0 +1,166 @@
+*{/*Zerar valores e aplicar fonte padrão (Roboto)*/
+  background-color: none;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(../imagens/backgrounds/fundo01.png); /* caminho da img de fundo */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+}
+.loginn {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 35%;
+  padding: 3.5% 1.5% 3.5% 1.5%;
+  height: max-content;
+  box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.loginn img {
+  display: flex;
+  align-self: center;
+  width: 300px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.form-login {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-login {
+  width: 75%;
+  height: 40px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #0476D9;
+  border-radius: 15px;
+  color: rgb(88, 88, 88);
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+}
+
+.botao-entrar {
+    width: 35%;
+    height: 40px;
+    border: none;
+    border-radius: 15px;
+    background-color: #F2AF00;
+    color: #000000;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    line-height: 2.5;
+    margin-bottom: 15px;
+}
+.botao-cadastrar {
+    width: 35%;
+    height: 40px;
+    border: none;
+    border-radius: 15px;
+    background-color: #F2AF00;
+    color: #000000;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    line-height: 2.5;
+    text-decoration: none;
+}
+
+.loginn {
+    max-width: 1536px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  @media (max-width: 1536px) {
+    .loginn {
+      max-width: 1280px;
+    }
+  }
+  
+  @media (max-width: 1280px) {
+    .loginn {
+      max-width: 1024px;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .loginn {
+      max-width: 768px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .loginn {
+      max-width: 640px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .loginn {
+      max-width: 475px;
+      width: 350px;
+      height: 375px;
+    }
+    .input-login {
+        width: 50%;
+        height: 20px;
+    }
+    .botao-entrar{
+        height: 30px;
+        font-size: 14px;
+    }
+    .botao-cadastrar{
+        height: 30px;
+        font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 475px) {
+    .loginn {
+      width: 100%;
+      width: 250px;
+      height: 295px;
+    }
+    .cadastrinho img {
+        width: 75%;
+    }
+    .input-login {
+        width: 65%;
+        height: 20px;
+    }
+    .botao-entrar{
+        width:65%;
+        height: 30px;
+        font-size: 14px;
+    }
+    .botao-cadastrar{
+        width: 65%;
+        height: 30px;
+        font-size: 14px;
+    }
+  }

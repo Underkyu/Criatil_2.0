@@ -15,11 +15,17 @@ class UsuarioController{
         if(isset($_POST['crud'])){
            
             if($_POST['crud']=="INSERT"){
+                //cadastro
                 $this->inserir();
             }elseif($_POST['crud']=="UPDATE"){
                  $this->atualizar();
+                 header("Location: /Criatil_2.0/VERSÃO_PHP/php/consultar.php"); // remover essa linha depois que editar for implementado no site
             }elseif($_POST['crud']=="DELETE"){
                 $this->deletar();
+                header("Location: /Criatil_2.0/VERSÃO_PHP/php/consultar.php"); // remover essa linha depois que editar for implementado no site
+            }elseif($_POST['crud']=="SELECT"){
+                //login
+                $this->entrar();
             }
         }else{
             $this->listar();
@@ -32,20 +38,16 @@ class UsuarioController{
         // Atribui os valores do formulário
         $this->usuario->setNome($_POST['Nome_Usu']);
         $this->usuario->setNasc($_POST['Nasc_Usu']);
-        $this->usuario->setCelular($_POST['Celular_Usu']);
         $this->usuario->setEmail($_POST['Email_Usu']);
         $this->usuario->setSenha($_POST['Senha_Usu']);
+        $this->usuario->setCelular($_POST['Celular_Usu']);
         $this->usuario->setTipo($_POST['Tipo_Usu']);
     
-        // Tenta inserir os dados
         if ($this->usuario->inserir()) {
-            // Redireciona para a página de sucesso
             header("Location: /Criatil_2.0/VERSÃO_PHP/php/sucesso.php");
         } else {
-            // Redireciona para a página de erro
             header("Location: /Criatil_2.0/VERSÃO_PHP/php/erro.php");
         }
-        exit; // Para garantir que nada mais seja executado após o redirecionamento
     }
     
     
@@ -73,6 +75,26 @@ class UsuarioController{
         $this->usuario->setCodigo($_POST['Codigo_Usu']);
         return $this->usuario->delete($this->usuario->getCodigo());
 
+    }
+
+    public function entrar() {
+        $this->usuario->setEmail($_POST['Email_Usu']);
+        $this->usuario->setSenha($_POST['Senha_Usu']);
+    
+        $fazerLogin = $this->usuario->entrar();
+    
+        if ($fazerLogin) {
+            echo "login realizado com sucesso, levando para a página principal";
+            sleep(1);
+            header("Location: /Criatil_2.0/VERSÃO_PHP/html/principal.php");
+        } elseif (!$fazerLogin) {
+            echo "informações inseridas incorretamente";
+            sleep(2);
+        } else {
+            echo "erro no código, redirecionando";
+            sleep(1);
+            header("Location: /Criatil_2.0/VERSÃO_PHP/php/erro.php");
+        }
     }
 }
 

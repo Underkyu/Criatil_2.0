@@ -1,6 +1,6 @@
 <?php 
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/criatilConexao/controller/usuarioController.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/Criatil_2.0/VERSÃO_PHP/php/controller/usuarioController.php";
 
 $codigo = $_GET['Codigo_Usu'];
 
@@ -17,7 +17,7 @@ $usuarios = $usuariocontroller->buscarPorCodigo($codigo);
 <body>
 <div class="container">
         <h2>Cadastro</h2> <!--Título-->
-        <form method="POST" action="controller/usuariocontroller.php"><!--Formulario onde os dados serão inseridos-->
+        <form method="POST" action="controller/usuarioController.php"><!--Formulario onde os dados serão inseridos-->
 <!-- começo -->
         <br>
             <label for="nome">Nome:</label>

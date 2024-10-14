@@ -1,5 +1,5 @@
 <?php
-    require_once  $_SERVER['DOCUMENT_ROOT'] . '/criatilConexao/controller/usuarioController.php';
+    require_once  $_SERVER['DOCUMENT_ROOT'] . '/Criatil_2.0/VERSÃO_PHP/php/controller/usuarioController.php';
 ?>
 <!DOCTYPE html>
 <html>

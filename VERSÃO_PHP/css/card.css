@@ -1,0 +1,207 @@
+/* Inicio CSS do card*/
+div.card{
+    width: 17.5rem;
+    height: 27.5rem;
+    border: solid #D9D9D9 4px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.foto_card { /*Classe da imagem do card*/
+    width: 15rem;
+    height: 15rem;
+    margin: 1rem;
+    object-fit: contain;
+}
+
+div.imagem_card{ /*div que contem a imagem do card*/
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}
+
+h4.titulo_card{
+    margin: 0px;
+    margin-left: 5px;
+    font-size: 1.43rem;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+
+}
+
+.texto_pequeno { /*aquele "por apenas" em baixo do titulo*/
+    margin: 0px;
+    margin-left: 5px;
+    margin-top: .75rem;
+    font-weight: 550;
+    color: #4A4A4A;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h3.preco{
+    margin:0px;
+    margin-left: 5px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #F2AF00;
+    font-size: 2rem;
+}
+
+button.card{ /*Botão de comprar no card*/
+    width: 16rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: .75rem;
+    display: flex;
+    align-items: center;
+    padding: .3rem;
+    border-radius: 10px;
+    background-color: #F2AF00;
+    border: #F2AF00;
+    padding: .5rem;
+    justify-content: center;
+    transition: ease-out 100ms;
+}
+button.card:hover{
+  transform: translateY(-3px);
+  transition: ease-in-out 200ms;
+}
+
+button.card:active{
+  filter: brightness(0.9);
+  transform: translateY(3px);
+  transition: ease-in-out 200ms;
+}
+img.botao_card { /*icon de carrinho no botão do card*/
+    height: 2.25rem;
+    width: 2.25rem;
+
+}
+
+p.botao_card{
+    font-weight: 600;
+    font-size: 1.25rem;
+    padding-left: .5rem;
+    margin: 0px;
+}
+
+div.imagem_card{ /*Div que contem imagens e selos de cards*/
+  position: relative;
+}
+
+img.selo_deficiencia{ /*Selos que indicam que o produto é adaptado à pessoas com algum tipo de condição especia*/
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  width: 4rem;
+}
+
+img.selo_desconto{
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  width: 4rem;
+}
+/*Fim CSS card*/
+
+
+/* 2xl */
+@media (max-width: 1536px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+  
+  /* xl */
+  @media (max-width: 1280px) {
+    .container {
+      max-width: 1024px;
+    }
+    h4.titulo_card{
+      font-size: 1.3rem;
+  }
+  button.card{ /*Botão de comprar no card*/
+    width: 14rem;
+  }
+  h3.preco{ /*Preço do produto*/
+    font-size: 2rem;
+  }
+  img.imagem_promocional{ /*Card promocional*/
+    width: 20rem;
+    height: 25.5rem;
+  }
+  
+  }
+  
+  /* lg */
+  @media (max-width: 1024px) {
+    .container {
+      max-width: 768px;
+    }
+  }
+  
+  /* md */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 700px;
+    }
+    img.imagem_promocional{ /*Card promocional*/
+      width: 19rem;
+      height: 24.5rem;
+    }
+    .foto_card { /*Classe da imagem do card*/
+      width: 14rem;
+      height: 14rem;
+      margin: 1rem;
+      object-fit: contain;
+  }
+  }
+  
+  /* sm */
+  @media (max-width: 640px) {
+    .container {
+      max-width: 600px;
+    }
+    .foto_card { /*Classe da imagem do card*/
+      width: 13rem;
+      height: 13rem;
+      margin: 1rem;
+      object-fit: contain;
+  }
+    button.card{ /*Botão de comprar no card*/
+    width: 13rem;
+  }
+  }
+  
+  /* sm */
+  @media (max-width: 555px) {
+
+  }
+  
+  /* xs */
+  @media (max-width: 475px) {
+    .container {
+      width: 100%;
+    }
+  }
+    /* xxs */
+  @media (max-width: 375px) {
+    .container {
+      width: 100%;
+    }
+    .foto_card { /*Classe da imagem do card*/
+      width: 12rem;
+      height: 12rem;
+      margin: 1rem;
+      object-fit: contain;
+  }
+    button.card{ /*Botão de comprar no card*/
+    width: 12rem;
+  }
+  }
+  

@@ -1,0 +1,205 @@
+*{/*Zerar valores e aplicar fonte padrão (Roboto)*/
+  background-color: none;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0px;
+  padding: 0px;
+  }
+
+body{
+  padding: 0;
+  margin: 0;
+}
+html{
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+
+/*Inicio CSS Carrossel*/
+
+ img#grande{ /*Imagens do carrossel (maior)*/
+    display: block;
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+}
+
+.swiper-pagination-bullet { /*Muda cor e tamanho das bolinhas de paginação do carrossel*/
+    opacity: 0.25;
+    background-color: black;
+    width: .75rem;
+    height: .75rem;
+    margin: .5rem;
+}
+
+.swiper-pagination-bullet-active { /*Muda cor da bolinha ativa*/
+    background-color: #0476D9;
+    opacity: 1;
+}
+
+/*Mudando cor das setinhas*/
+.swiper-button-prev {
+    color: #0476D9;
+
+}
+.swiper-button-next {
+    color: #0476D9;
+}
+/*Fim CSS do Carrossel*/
+
+
+
+
+
+/*Inicio CSS product slider 1*/
+div.product{ /* Div dos produtos*/
+  margin: 2rem;
+}
+
+/*Inicio CSS product slider 2*/
+div.product2{ /* Div dos produtos*/
+  margin: 2rem;
+}
+
+div.slider{ /* Div que contem o slider*/
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+div.seta{ /*setinhas*/
+  position: relative;
+}
+
+h1.titulo{
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3.5rem;
+  font-size: 2.5rem;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+/*Fim CSS product slider*/
+
+/*Inicio CSS das imagens promocionais*/
+img.imagem_promocional{
+  width: 22rem;
+  border-radius: 30px;
+  object-fit: cover;
+  height: 27.5rem;
+}
+
+div.promocionais{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4.5rem;
+  margin-bottom: 4.5rem;
+}
+/*Fim das imagens promcionais*/
+
+/*Responsividade*/
+.container {
+  max-width: 1425px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2xl */
+@media (max-width: 1536px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* xl */
+@media (max-width: 1280px) {
+  .container {
+    max-width: 1024px;
+  }
+
+}
+
+/* lg */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 768px;
+  }
+  img.img3 { /*Terceira imagem promocional*/
+    display: none;
+  }
+}
+
+/* md */
+@media (max-width: 768px) {
+  .container {
+    max-width: 700px;
+  }
+  img.imagem_promocional{ /*Card promocional*/
+    width: 19rem;
+    height: 24.5rem;
+  }
+
+img.imagem_carrossel1{
+content: url(../imagens/Carrossel/imagem1cll.png);
+}
+
+img.imagem_carrossel2{
+  content: url(../imagens/Carrossel/imagem2cll.png);
+}
+
+img.imagem_carrossel3{
+  content: url(../imagens/Carrossel/imagem3cll.png);
+}
+
+.swiper-button-prev {
+  display: none;
+
+}
+.swiper-button-next {
+  display: none;
+}
+
+}
+
+/* sm */
+@media (max-width: 640px) {
+  .container {
+    max-width: 600px;
+  }
+
+  img.imagem_promocional{ /*Card promocional*/
+  width: 18rem;
+  height: 23.5rem;
+}
+img.img2{
+  display: none;
+}
+}
+
+/* sm */
+@media (max-width: 555px) {
+  img.imagem_promocional{ /*Card promocional*/
+    width: 21rem;
+    height: 25.5rem;
+  }
+}
+
+/* xs */
+@media (max-width: 475px) {
+  .container {
+    width: 100%;
+  }
+}
+  /* xxs */
+@media (max-width: 375px) {
+  .container {
+    width: 100%;
+  }
+}

@@ -1,6 +1,6 @@
 <?php
 //Importa arquivo "conexao.php"
-require_once $_SERVER['DOCUMENT_ROOT'] . '/criatilConexao/controller/conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Criatil_2.0/VERSÃO_PHP/php/controller/conexao.php';
 
 //Classe que serve como modelo da entidade usuario
 class Usuario{

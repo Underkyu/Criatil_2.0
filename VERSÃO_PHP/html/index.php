@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criatil</title>
+
+  <!--CSS dos carrosseis e da pagina respectivamente-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/card.css">
+
+</head>
+
+<body>
+  <!--Inicio Carrossel-->
+  <section class="slider_carrossel">
+
+
+    <!-- Swiper -->
+    <div class="swiper carrossel" id="carrossel">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="../imagens/Carrossel/imagem1.png" alt="Barbie carrossel" id="grande" class="imagem_carrossel1">
+        </div>
+
+        <div class="swiper-slide">
+          <img src="../imagens/Carrossel/imagem2.png" alt="Hotwhells carrossel" id="grande" class="imagem_carrossel2">
+        </div>
+
+        <div class="swiper-slide">
+          <img src="../imagens/Carrossel/imagem3.png" alt="Squishmallows carrossel" id="grande" class="imagem_carrossel3">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+  <!--Fim carrossel-->
+
+  <!--Classe container para responsividade-->
+  <div class="container">
+    
+    <!--Inicio product slider 1-->
+    <h1 class="titulo">Novidades</h1>
+
+    <div class="slider">
+      <div class="swiper-button-prev seta prev-product"></div>
+      <div class="swiper product">
+        <div class="swiper-wrapper">
+
+          <!--Div que contem os elementos do card-->
+          <div class="card swiper-slide">
+            <div class="imagem_card">
+              <img src="../imagens/Produtos/Miku/Imagem1.png" alt="Pelúcia Hatsune Miku" class="foto_card">
+            </div>
+
+            <h4 class="titulo_card">Pelúcia Hatsune Miku</h4>
+            <p class="texto_pequeno">Por apenas</p>
+            <h3 class="preco">R$99,99</h3>
+
+            <button class="card"> <!--Botão de comprar-->
+              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+              <p class="botao_card">Comprar!</p>
+            </button>
+          </div>
+          <!--Fim card-->
+
+          <!--Div que contem os elementos do card-->
+          <div class="card swiper-slide">
+            <div class="imagem_card">
+              <img src="../imagens/Produtos/CuboMagico/imagem1.png" alt="Cubo Magico Tatil" class="foto_card">
+              <img src="../imagens/Selo/Visual.png" alt="Selo de deficiencia visual" class="selo_deficiencia">
+            </div>
+
+            <h4 class="titulo_card">Cubo Magico Tatil</h4>
+            <p class="texto_pequeno">Por apenas</p>
+            <h3 class="preco">R$39,99</h3>
+
+            <button class="card"> <!--Botão de comprar-->
+              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+              <p class="botao_card">Comprar!</p>
+            </button>
+          </div>
+          <!--Fim card-->
+
+          <!--Div que contem os elementos do card-->
+          <div class="card swiper-slide">
+            <div class="imagem_card">
+              <img src="../imagens/Produtos/Nerf/imagem1.png" alt="Arma Nerf" class="foto_card">
+              <img src="../imagens/Selo/Desconto.png" alt="Selo de desconto" class="selo_desconto">
+            </div>
+
+            <h4 class="titulo_card">Pistola Nerf</h4>
+            <s class="texto_pequeno">R$99,99</s>
+            <h3 class="preco">R$79,99</h3>
+
+            <button class="card"> <!--Botão de comprar-->
+              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+              <p class="botao_card">Comprar!</p>
+            </button>
+          </div>
+          <!--Fim card-->
+
+          <!--Div que contem os elementos do card-->
+          <div class="card swiper-slide">
+            <div class="imagem_card">
+              <img src="../imagens/Produtos/Funko/imagem1.png" alt="Funko Pop Oshawott" class="foto_card">
+            </div>
+
+            <h4 class="titulo_card">Funko Pop Oshawott</h4>
+            <p class="texto_pequeno">Por apenas</p>
+            <h3 class="preco">R$129,99</h3>
+
+            <button class="card"> <!--Botão de comprar-->
+              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+              <p class="botao_card">Comprar!</p>
+            </button>
+          </div>
+          <!--Fim card-->
+
+          <!--Div que contem os elementos do card-->
+          <div class="card swiper-slide">
+            <div class="imagem_card">
+              <img src="../imagens/Produtos/Bola/imagem1.png" alt="Bola com Guizo" class="foto_card">
+              <img src="../imagens/Selo/Visual.png" alt="Selo de deficiencia visual" class="selo_deficiencia">
+            </div>
+
+            <h4 class="titulo_card">Bola com Guizo</h4>
+            <p class="texto_pequeno">Por apenas</p>
+            <h3 class="preco">R$119,99</h3>
+
+            <button class="card"> <!--Botão de comprar-->
+              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+              <p class="botao_card">Comprar!</p>
+            </button>
+          </div>
+          <!--Fim card-->
+
+          <!--Div que contem os elementos do card-->
+          <div class="card swiper-slide">
+            <div class="imagem_card">
+              <img src="../imagens/Produtos/Libras/imagem1.png" alt="Jogo alfabeto em libras" class="foto_card">
+              <img src="../imagens/Selo/Desconto.png" alt="Selo de desconto" class="selo_desconto">
+              <img src="../imagens/Selo/Auditiva.png" alt="Selo de deficiencia auditiva" class="selo_deficiencia">
+            </div>
+
+            <h4 class="titulo_card">Jogo Alfabeto em Libras</h4>
+            <s class="texto_pequeno">R$69,99</s>
+            <h3 class="preco">R$59,99</h3>
+
+            <button class="card"> <!--Botão de comprar-->
+              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+              <p class="botao_card">Comprar!</p>
+            </button>
+          </div>
+          <!--Fim card-->
+
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="swiper-button-next seta next-product"></div>
+    </div>
+    <!--Fim product slider 1-->
+
+    <!--Inicio imagens promocionais-->
+    <div class="promocionais">
+      <img src="../imagens/Promocional/tamagotchi.png" alt="Tamagotchi" class="imagem_promocional img1">
+      <img src="../imagens/Promocional/curlimals.png" alt="Curlimals" class="imagem_promocional img2">
+      <img src="../imagens/Promocional/pkxd.png" alt="PKXD" class="imagem_promocional img3">
+    </div>
+    <!--FIm imagens promocionais-->
+
+    <!--Inicio product slider 2-->
+    <h1 class="titulo">Populares</h1>
+
+    <div class="slider">
+      <div class="swiper-button-prev seta prev-product2"></div>
+      <div class="swiper product2">
+        <div class="swiper-wrapper">
+
+        <!--Div que contem os elementos do card-->
+        <div class="card swiper-slide">
+          <div class="imagem_card">
+            <img src="../imagens/Produtos/Funko/imagem1.png" alt="Funko Pop Oshawott" class="foto_card">
+          </div>
+
+          <h4 class="titulo_card">Funko Pop Oshawott</h4>
+          <p class="texto_pequeno">Por apenas</p>
+          <h3 class="preco">R$129,99</h3>
+
+          <button class="card"> <!--Botão de comprar-->
+            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+            <p class="botao_card">Comprar!</p>
+          </button>
+        </div>
+        <!--Fim card-->
+
+        <!--Div que contem os elementos do card-->
+        <div class="card swiper-slide">
+          <div class="imagem_card">
+            <img src="../imagens/Produtos/Bola/imagem1.png" alt="Bola com Guizo" class="foto_card">
+            <img src="../imagens/Selo/Visual.png" alt="Selo de deficiencia visual" class="selo_deficiencia">
+          </div>
+
+          <h4 class="titulo_card">Bola com Guizo</h4>
+          <p class="texto_pequeno">Por apenas</p>
+          <h3 class="preco">R$119,99</h3>
+
+          <button class="card"> <!--Botão de comprar-->
+            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+            <p class="botao_card">Comprar!</p>
+          </button>
+        </div>
+        <!--Fim card-->
+
+        <!--Div que contem os elementos do card-->
+        <div class="card swiper-slide">
+          <div class="imagem_card">
+            <img src="../imagens/Produtos/Libras/imagem1.png" alt="Jogo alfabeto em libras" class="foto_card">
+            <img src="../imagens/Selo/Desconto.png" alt="Selo de desconto" class="selo_desconto">
+            <img src="../imagens/Selo/Auditiva.png" alt="Selo de deficiencia auditiva" class="selo_deficiencia">
+          </div>
+
+          <h4 class="titulo_card">Jogo Alfabeto em Libras</h4>
+          <s class="texto_pequeno">R$69,99</s>
+          <h3 class="preco">R$59,99</h3>
+
+          <button class="card"> <!--Botão de comprar-->
+            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+            <p class="botao_card">Comprar!</p>
+          </button>
+        </div>
+        <!--Fim card-->
+
+        <!--Div que contem os elementos do card-->
+        <div class="card swiper-slide">
+          <div class="imagem_card">
+            <img src="../imagens/Produtos/Miku/Imagem1.png" alt="Pelúcia Hatsune Miku" class="foto_card">
+          </div>
+
+          <h4 class="titulo_card">Pelúcia Hatsune Miku</h4>
+          <p class="texto_pequeno">Por apenas</p>
+          <h3 class="preco">R$99,99</h3>
+
+          <button class="card"> <!--Botão de comprar-->
+            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+            <p class="botao_card">Comprar!</p>
+          </button>
+        </div>
+        <!--Fim card-->
+
+        <!--Div que contem os elementos do card-->
+        <div class="card swiper-slide">
+          <div class="imagem_card">
+            <img src="../imagens/Produtos/CuboMagico/imagem1.png" alt="Cubo Magico Tatil" class="foto_card">
+            <img src="../imagens/Selo/Visual.png" alt="Selo de deficiencia visual" class="selo_deficiencia">
+          </div>
+
+          <h4 class="titulo_card">Cubo Magico Tatil</h4>
+          <p class="texto_pequeno">Por apenas</p>
+          <h3 class="preco">R$39,99</h3>
+
+          <button class="card"> <!--Botão de comprar-->
+            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+            <p class="botao_card">Comprar!</p>
+          </button>
+        </div>
+        <!--Fim card-->
+
+        <!--Div que contem os elementos do card-->
+        <div class="card swiper-slide">
+          <div class="imagem_card">
+            <img src="../imagens/Produtos/Nerf/imagem1.png" alt="Arma Nerf" class="foto_card">
+            <img src="../imagens/Selo/Desconto.png" alt="Selo de desconto" class="selo_desconto">
+          </div>
+
+          <h4 class="titulo_card">Pistola Nerf</h4>
+          <s class="texto_pequeno">R$99,99</s>
+          <h3 class="preco">R$79,99</h3>
+
+          <button class="card"> <!--Botão de comprar-->
+            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+            <p class="botao_card">Comprar!</p>
+          </button>
+        </div>
+        <!--Fim card-->
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="swiper-button-next seta next-product2"></div>
+    </div>
+    <!--Fim product slider 2-->
+
+  </div>
+  <!--Fim Container-->
+
+  
+
+
+  <!--JS dos carrosseis e da pagina respectivamente-->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script src="../js/index.js"> </script>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 <?php
 //Importa arquivo "usuario.php"
 //require_once '../model/usuario.php'; Vesão manual
-require_once $_SERVER['DOCUMENT_ROOT'] . '/criatilConexao/model/usuario.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Criatil_2.0/VERSÃO_PHP/php/model/usuario.php';
 
 //Classe que atribui os valores passados no "index.php" aos atributos da classe "Usuario"
 class UsuarioController{
@@ -21,7 +21,6 @@ class UsuarioController{
             }elseif($_POST['crud']=="DELETE"){
                 $this->deletar();
             }
-            header("Location:" . "../consultar.php");
         }else{
             $this->listar();
         }
@@ -30,18 +29,25 @@ class UsuarioController{
 
     //Função que insere informações da classe usuario
     public function inserir(){
-    //Pega os valores passados no formulario do arquivo "index.php" e os atribui aos atributos da classe "Usuario"
-    $this->usuario->setNome($_POST['Nome_Usu']);
-    $this->usuario->setNasc($_POST['Nasc_Usu']);
-    $this->usuario->setCelular($_POST['Celular_Usu']);
-    $this->usuario->setEmail($_POST['Email_Usu']);
-    $this->usuario->setSenha($_POST['Senha_Usu']);
-    $this->usuario->setTipo($_POST['Tipo_Usu']);
-
-    //Executa função "inserir" da classe "Usuario"
-    $this->usuario->inserir();
+        // Atribui os valores do formulário
+        $this->usuario->setNome($_POST['Nome_Usu']);
+        $this->usuario->setNasc($_POST['Nasc_Usu']);
+        $this->usuario->setCelular($_POST['Celular_Usu']);
+        $this->usuario->setEmail($_POST['Email_Usu']);
+        $this->usuario->setSenha($_POST['Senha_Usu']);
+        $this->usuario->setTipo($_POST['Tipo_Usu']);
     
+        // Tenta inserir os dados
+        if ($this->usuario->inserir()) {
+            // Redireciona para a página de sucesso
+            header("Location: /Criatil_2.0/VERSÃO_PHP/php/sucesso.php");
+        } else {
+            // Redireciona para a página de erro
+            header("Location: /Criatil_2.0/VERSÃO_PHP/php/erro.php");
+        }
+        exit; // Para garantir que nada mais seja executado após o redirecionamento
     }
+    
     
     //Chama a função listar da classe usuario
     public function listar(){

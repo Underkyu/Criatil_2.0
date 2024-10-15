@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">appCriatil</string>
+    <string name="saudacao">Olá,</string>
+    <string name="crieConta">Crie uma conta!</string>
+    <string name="primeiroNome">Primeiro Nome</string>
+    <string name="ultimoNome">Último Nome</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="esconderSenha">Esconder senha</string>
+    <string name="mostrarSenha">Mostrar Senha</string>
+    <string name="termos">Assinalar significa que você concorda com as políticas de privacidade e termos de uso</string>
+    <string name="TituloTermosECondicoes">Termos de uso</string>
+    <string name="TermosECondicoes">Fazendo o login você concorda que a criatil pode: Não responder legalmente a nenhuma queixa legal, e tem direito a todos os seus bens sem direito a devolução ou apelo legal.</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="ou">Ou</string>
+    <string name="irParaLogin">Já tem uma conta? Faça login</string>
+    <string name="bem_vindo_de_volta">Seja bem-vindo de volta!</string>
+    <string name="login">Login</string>
+    <string name="irParaCadastro">Não possui uma conta? Faça cadastro</string>
+</resources>

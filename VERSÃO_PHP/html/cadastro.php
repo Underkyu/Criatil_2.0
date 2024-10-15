@@ -1,3 +1,7 @@
+<?php 
+$message[];
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,7 +14,7 @@
     <title>Criatil - Cadastro</title>
 </head>
 <body>
-        <div class="cadastrinho">
+       <div class="cadastrinho">
             <img src="../imagens/Logo/criatillogo2.png"></img>
             <form class="form-login" method="POST" action="/Criatil_2.0/VERSÃO_PHP/php/controller/usuarioController.php?acao=inserir" onsubmit="return validarSenhas()">
            

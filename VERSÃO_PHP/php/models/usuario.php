@@ -12,7 +12,7 @@ class Usuario{
     private $email;
     private $senha;
     private $tipo;
-
+    // private $token;
     private $conexao;
     
     /*
@@ -141,5 +141,20 @@ class Usuario{
         $stmt->execute();
     }
 }
+/*
+guardando método DAO do curso caso for precisar
 
+interface UsuarioDAOInterface {
+    public function buildUser($data);
+    public function create(User $user, $authUser = false);
+    public function update(User $user);
+    public function findByToken($token);
+    public function verifyToken($protected = false);
+    public function setTokenToSession($token, $redirect = true);
+    public function authenticateUser($email, $password);
+    public function findByEmail($email);
+    public function findById($codigo);
+    public function changePassword(User $user);
+}
+*/
 ?>

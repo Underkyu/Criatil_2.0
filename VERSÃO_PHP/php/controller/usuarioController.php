@@ -1,7 +1,7 @@
 <?php
 //Importa arquivo "usuario.php"
 //require_once '../model/usuario.php'; Vesão manual
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Criatil_2.0/VERSÃO_PHP/php/model/usuario.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Criatil_2.0/VERSÃO_PHP/php/models/usuario.php';
 
 //Classe que atribui os valores passados no "index.php" aos atributos da classe "Usuario"
 class UsuarioController{

@@ -1,0 +1,399 @@
+*{/*Zerar valores e aplicar fonte padrão (Roboto)*/
+    background-color: none;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    }
+    #navbar-conta {
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+        padding: 1rem;
+        height: 100%;
+        width: 350px;
+        color: rgb(0, 0, 0);
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        flex-direction: column;
+    }
+.lateral-conta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;    
+    margin-bottom: 20px;
+    width: 100%;
+}
+.img-lateral {
+    width: 105px;
+    height: 105px;
+    object-fit: cover;  
+    border-radius: 100px;
+    border: solid #F2AF00 3px;
+}
+.nome-lateral {
+    font-size: 26px;
+    font-weight: 500;
+    padding: 17px;
+    flex-wrap: wrap;
+    width: 220px;
+}
+#navbar-conta a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+#navbar-conta a:hover {
+    transform: scale(1.15);
+}
+#sair {
+    transition: transform 0.3s ease-in-out;
+}
+#sair:hover {
+    transform: scale(1.15);
+    color: rgb(212, 0, 0);
+}
+.pagina-selecionada{
+    font-weight: bold;
+}
+.paginas-navbar, .pagina-selecionada{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding-top: 5px;
+}
+.paginas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 85%;
+    padding: 10px;
+}
+#box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #0476D9;
+    width: 940px;
+    height: 480px;
+    padding: 10px;
+    border-radius: 20px;  
+}
+#box h1 {
+    position: relative;
+    color: white;
+    font-size: 36px;
+    font-family: 'Arial';
+    padding: 15px;
+}  
+#pedidos {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    bottom: 2%;
+    background-color: white;
+    height: 85%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 99%;
+}
+.produtos-container {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden; 
+    overflow-y: hidden;
+    white-space: nowrap;
+    align-items: stretch;
+}
+/* quando tiver back-end, o overflow-y vai precisar ser usado pra scrollar entre os produtos verticalmente.
+    se precisar eu implemento */
+.produto {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    border: solid #0476D9 2px;
+    border-left: none;
+    border-right: none;
+}
+.produto + .produto {
+    border-top: none;
+}
+.produto-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.produto-imagem {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    flex: 1;
+}
+.produto-nome, .produto-valor {
+    font-size: 17px;
+    font-weight: 500;
+    flex: 1;
+    text-align: center;
+}
+.produto-nome {
+    white-space: wrap;
+}
+#carrinho-legenda {
+    display: flex;
+    justify-content: space-around;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+.linha {
+    width: 700px;
+}
+.legenda-foto, .legenda-nome, .legenda-qntd, .legenda-data, .legenda-valor {
+    flex: 1;
+}
+/* css do menu sanduíche */
+.sanduiche-div{
+    align-items: center;
+    justify-content: center;
+}
+img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
+    width: 2rem;
+    transition-duration: 0.2s;
+}
+.girar {
+    transform: rotate(180deg);
+}
+  button.menuSanduiche{ /*Botão que abre o menu sanduiche*/
+    border: transparent;
+    display: none;
+    background-color: transparent;
+    font-size: 10px;
+    font-weight: 500;
+    align-items: center;
+    cursor: pointer;
+  }
+  div.link_sanduiche{ /*Conteudo do menu sanduiche*/
+    display: inherit;
+  }
+  div.menuSanduiche{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-bottom: 60px;
+
+  }
+  .open_header{ /*Classe que serve para tornar o menu sanduiche visivel*/
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    height: 2.6rem;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  /* fim do css do menu sanduíche */
+  /* estilos gerais da barra de rolagem */
+  .produtos-container::-webkit-scrollbar {
+    height: 20px;
+}
+
+/* estilos do trilho da barra de rolagem */
+.produtos-container::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 0px;
+}
+
+/* estilos do polegar da barra de rolagem (parte que o usuário arrasta) */
+.produtos-container::-webkit-scrollbar-thumb {
+    background-color: #c08a00;
+    border-radius: 8px; 
+    border: 3px solid #f1f1f1; 
+}
+
+/*Responsividade*/
+.container {
+    max-width: 1425px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    padding: 1rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+  }
+    /* 2xl */
+    @media (max-width: 1536px) {
+        .container {
+          max-width: 1280px;
+        }
+      }
+      @media(min-width: 1440px) {
+        #navbar-conta a {
+            font-size: 26px;
+        }
+        .nome-lateral {
+            font-size: 28px;
+            white-space: nowrap;
+        }
+      }
+
+  /* responsividade hilario*/
+
+/* aviso importante sobre a responsividade: tive que fazer uma escolha entre fazer com que
+a legenda sempre fique no lugar correto ou a scroll apareça na maior parte dos dispositivos,
+ou fazer com que a legenda as vezes fique ligeiramente pra extremamente incorreta mas a scroll
+só apareça quando necessário*/
+@media (min-width: 1450px) {
+    .container {
+      max-width: 1550px;
+    }
+    #navbar-conta a {
+        font-size: 28px;
+    }
+    #box{
+        width: 1080px;
+    }
+    .info-label {
+        font-size: 23px;
+    }
+    .info-value {
+        font-size: 23px;
+    }
+    .informacoes button {
+        font-size: 20px;
+    }
+    .nome-lateral {
+        font-size: 30px;
+        white-space: nowrap;
+    }
+  }
+@media (max-width: 1200px) {
+    #navbar-conta {
+        width: 290px;
+        margin-left: 5%;
+    }
+    #box h1 {
+        font-size: 32px;
+    }
+    #box {
+        width: 65%; 
+    }
+    .img-conta {
+        width: 100px;
+        height: 100px;
+    }
+    .nome-conta {
+        font-size: 18px;
+    }
+
+    .editar {
+        font-size: 12px;
+        padding: 6px 14px;
+    }
+}
+@media (max-width: 700px) {
+    button.menuSanduiche{/*Botão que abre o menu sanduiche*/
+        display: flex;
+      }
+      #navbar-conta {
+        display: none;
+      }
+      #box {
+        position:relative;
+        right: auto;
+        left: auto;
+        top: auto;
+        bottom: auto;
+        width: 96%;
+        margin: 0 auto;
+      }
+      .sanduiche-div{
+        display: flex;
+        margin-top: 10px;
+      }
+      div.container{
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+      }
+      .linha {
+        display: none;
+      }
+}
+@media (max-width: 700px) {
+    .produto-imagem {
+        width: 120px;
+        height: 120px;
+    }
+    .produto-nome, .produto-valor {
+        font-size: 14px;
+    }
+    .legenda-foto, .legenda-nome, .legenda-valor {
+        font-size: 15px;
+    }
+}
+@media (max-width: 550px) {
+    .pagina-selecionada, .paginas-navbar {
+        font-size: 16px;
+    }
+}
+@media (max-width: 500px) {
+    .produtos-container {
+        overflow-x: auto;
+    }
+    .produto {
+        height: 140px;
+        width: 500px;
+    }
+    #carrinho-legenda {
+        width: 500px;
+    }
+    .produto-imagem {
+        width: 100px;
+        height: 100px;
+    }
+}
+@media (max-width: 380px) {
+    #box h1 {
+        font-size: 28px;
+        margin-bottom: 5px;
+        color: black;
+    }
+    #box {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+    }
+    #box h1 {
+        font-size: 28px;
+    }
+    .pagina-selecionada, .paginas-navbar{
+        font-size: 14px;
+    }
+    * {
+        box-sizing: border-box;
+    }
+
+    .produto{
+        width: 500px;
+    }
+}

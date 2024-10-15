@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>ocorreu um erro - não foi possível realizar o cadastro</h1>
-    <a href="/Criatil_2.0/VERSÃO_PHP/html/index.php">voltar para a página principal</a>
+    <a href="/Criatil_2.0/VERSÃO_PHP/html/principal.php">voltar para a página principal</a>
 </body>
 </html>

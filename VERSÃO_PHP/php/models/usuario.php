@@ -1,7 +1,9 @@
 <?php
 //Importa arquivo "conexao.php"
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Criatil_2.0/VERSÃO_PHP/php/controller/conexao.php';
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 //Classe que serve como modelo da entidade usuario
 class Usuario{
 
@@ -12,7 +14,7 @@ class Usuario{
     private $email;
     private $senha;
     private $tipo;
-
+    // private $token;
     private $conexao;
     
     /*
@@ -98,11 +100,26 @@ class Usuario{
 
     }
 
+    public function entrar(){
+        $sql = "SELECT `Email_Usu`, `Senha_Usu` FROM usuario WHERE `Email_Usu` = ? AND `Senha_Usu` = ?";
+        $stmt = $this->conexao->getConexao()->prepare($sql);
+        $stmt->bind_param('ss', $this->email, $this->senha); //Insere o dados no banco, relacionando as variveis aos atributos que representam
+        $stmt->execute();
+
+        $resultado = $stmt->get_result();
+
+        // verifica a quantidade de linhas encontradas no select, se for maior que 0, retorna true
+        // para confirmar login
+        if($resultado->num_rows > 0){
+            return true;
+        }
+    }
+
     //Função para inserir os dados da classe usuario no banco de dados
     public function inserir(){
-        $sql = "INSERT INTO usuario(`Nome_Usu`,`Nasc_Usu`,`Celular_Usu`,`Email_Usu`,`Senha_Usu`,`Tipo_Usu`) VALUES(?,?,?,?,?,?)";  // Declaração SQL que prepara a inserção de dados
+        $sql = "INSERT INTO usuario(`Nome_Usu`,`Nasc_Usu`,`Email_Usu`,`Senha_Usu`,`Celular_Usu`,`Tipo_Usu`) VALUES(?,?,?,?,?,?)";  // Declaração SQL que prepara a inserção de dados
         $stmt = $this->conexao->getConexao()->prepare($sql); //Prepara a declaração anterior
-        $stmt->bind_param('ssssss', $this->nome, $this->nasc, $this->celular, $this->email, $this->senha, $this->tipo); //Insere o dados no banco, relacionando as variveis aos atributos que representam
+        $stmt->bind_param('ssssss', $this->nome, $this->nasc, $this->email, $this->senha, $this->celular, $this->tipo); //Insere o dados no banco, relacionando as variveis aos atributos que representam
         return $stmt->execute(); //Executa a declaração e retorna resultado da execução
     }
 
@@ -126,5 +143,20 @@ class Usuario{
         $stmt->execute();
     }
 }
+/*
+guardando método DAO do curso caso for precisar
 
+interface UsuarioDAOInterface {
+    public function buildUser($data);
+    public function create(User $user, $authUser = false);
+    public function update(User $user);
+    public function findByToken($token);
+    public function verifyToken($protected = false);
+    public function setTokenToSession($token, $redirect = true);
+    public function authenticateUser($email, $password);
+    public function findByEmail($email);
+    public function findById($codigo);
+    public function changePassword(User $user);
+}
+*/
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15/10/2024 às 00:34
+-- Tempo de geração: 15/10/2024 às 05:38
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -176,7 +176,11 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Email_Usu`, `Senha_Usu`, `Tipo_Usu`) VALUES
 (1, 'Guilherme Cadastro de Lima', '1991-09-11', '', 'guilhermelima@hotmail.com', 'password', 'Cliente'),
-(2, 'Daniel de Login Carvalho', '1964-07-09', '(11) 97188-9901', 'danidani@gmail.com', '123', 'Cliente');
+(2, 'Daniel de Login Carvalho', '1964-07-09', '(11) 97188-9901', 'danidani@gmail.com', '123', 'Cliente'),
+(3, 'Teste', '2024-10-04', '', 'guilhermebragas@hotmail.com', 'adadsddd', 'Cliente'),
+(4, 'Teste', '2024-10-04', '', 'guilhermebragas@hotmail.com', 'adadsddd', 'Cliente'),
+(5, 'Teste', '2024-10-04', '', 'guilhermebragas@hotmail.com', 'adadsddd', 'Cliente'),
+(6, 'Jônatas Frinhani de Cadastro Lima', '2024-10-13', '(11) 97188-9902', 'jowjow2@hotmail.com', 'senha123', 'Gerente');
 
 --
 -- Índices para tabelas despejadas
@@ -309,7 +313,7 @@ ALTER TABLE `selo`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para tabelas despejadas

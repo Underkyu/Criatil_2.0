@@ -14,8 +14,9 @@ body {
     background-position:center;
     overflow: hidden;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+    flex-direction: column;
 }
 .cadastrinho {
     display: flex;
@@ -26,6 +27,7 @@ body {
     width: 550px;
     padding: 3.5% 1.5% 3.5% 1.5%;
     box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
+    margin-top: 3rem;
 }
 .cadastrinho img {
     display: flex;
@@ -87,6 +89,7 @@ body {
 .botao-entrar:hover {
   transform: scale(1.1);
 }
+
   @media (max-width: 1024px) {
     .cadastrinho {
       width: 50%;

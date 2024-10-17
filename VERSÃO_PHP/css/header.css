@@ -33,7 +33,7 @@ div.header_normal{ /*Div que contem o conteudo do header de pc*/
   width: 100%;
 }
 
-input[type=text] { /*Barra de pesquisa*/
+input.pesquisa { /*Barra de pesquisa*/
     width: 6rem;
     border-radius: 4px;
     font-size: 16px;

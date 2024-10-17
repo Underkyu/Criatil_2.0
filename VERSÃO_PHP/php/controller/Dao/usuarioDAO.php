@@ -1,28 +1,26 @@
 <?php 
-/* 
-guardando método DAO do curso caso for precisar
 
-require_once("VERSÃO_PHP\php\model\usuario.php");
+require_once("../../models/usuario.php");
 
 class UsuarioDAO implements UsuarioDAOInterface {   
     private $conexao;
     private $url;
 
-    public functon __construct(PDO $conexao, $url){
+    public function __construct(PDO $conexao, $url){
         $this->conexao = $conexao;
         $this->url = $url;
     }
     
     public function buildUser($data){
-        $user = new User();
-        $user->codigo = $data[""];
-        $user->codigo = [""];
-        $user->codigo = [""];
-        $user->codigo = [""];
-        $user->codigo = [""];
-        $user->codigo = [""];
-        $user->codigo = [""];
-        $user->codigo = [""];
+        $user = new Usuario();
+        $user->codigo = $data["codigo"];
+        $user->codigo = ["nome"];
+        $user->codigo = ["nasc"];
+        $user->codigo = ["celular"];
+        $user->codigo = ["email"];
+        $user->codigo = ["senha"];
+        $user->codigo = ["tipo"];
+        $user->codigo = ["token"];
 
         return user;
     }
@@ -55,5 +53,4 @@ class UsuarioDAO implements UsuarioDAOInterface {
     }
 }
 
-*/
 ?>

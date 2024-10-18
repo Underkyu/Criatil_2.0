@@ -84,3 +84,18 @@
 
 </body>
 </html>
+
+<!--Parte que checa se o há alguma variavel de sessão de mensagem e se sim exibe uma mensagem-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!--  php da mensagem; se a mensagem não estiver vazia, ela é inserida na página  -->
+<?php if (!empty($flashMessage["msg"])): ?>
+            <script>
+
+            Swal.fire({
+                icon: "<?= $flashMessage['type'] ?>", //Pega o tipo da mensagem (ex: error)
+                title: "<?= $flashMessage['titulo'] ?>", //Pega o titulo da mensagem
+                text: "<?= $flashMessage['msg'] ?>", //Pega a mensagem
+                toast: true //Variavel que serve para indicar que o card de mensagem não deve alterar o posicionamento do resto
+            });
+            </script>      
+<?php endif; ?>

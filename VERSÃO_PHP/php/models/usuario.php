@@ -9,6 +9,7 @@ class Usuario{
     private $email;
     private $senha;
     private $tipo;
+    private $imagem;
     private $token;
    
     
@@ -72,20 +73,44 @@ class Usuario{
     public function setTipo($tipo){
         $this->tipo = $tipo;
     }
+
+    public function getImagem(){
+        return $this->imagem;
+    }
+
+    public function setImagem($imagem){
+        $this->image = $imagem;
+    }
+
+    public function getToken(){
+        return $this->token;
+    }
+
+    public function setToken($token){
+        $this->token = $token;
+    }
+
+    public function gerarToken(){
+        return bin2hex(random_bytes(50));
+    }
+
+    public function gerarSenha($senha){
+        return password_hash($senha, PASSWORD_DEFAULT);
+    }
 }
 
 
 interface UsuarioDAOInterface {
     public function buildUser($data);
-    public function create(User $user, $authUser = false);
-    public function update(User $user);
+    public function criar(Usuario $usuario, $authUser = false);
+    public function update(Usuario $user);
     public function findByToken($token);
     public function verifyToken($protected = false);
     public function setTokenToSession($token, $redirect = true);
     public function authenticateUser($email, $password);
-    public function findByEmail($email);
+    public function pesquisarPorEmail($email);
     public function findById($codigo);
-    public function changePassword(User $user);
+    public function changePassword(Usuario $user);
 }
 
 ?>

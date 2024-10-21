@@ -9,6 +9,9 @@
     <title>Criatil</title>
 </head>
 <body>
+
+<?php include("header.php")?>
+
     <div class="container">
     <!-- página da conta -->
                 <!-- 'navbar-conta' é a barra da esquerda com as páginas -->
@@ -27,7 +30,7 @@
         </div>
                  <!-- botão do menu sanduíche-->
                   <div class="sanduiche-div">
-                       <button class="menuSanduiche" onclick="block()">
+                       <button class="menuSanduiche" onclick="blockConta()">
                         <h1>Minha Conta </h1>
                           <img id="imagemSanduiche" src="../imagens/Icons/arrow2.png" alt="Menu Sanduiche" class="menuSanduiche">
                         </button>
@@ -35,7 +38,7 @@
                   <!-- fim do botão do menu sanduíche-->
 
                 <!-- div do menu sanduíche -->
-                        <div class="menuSanduiche" id="menuSanduiche">
+                        <div class="menuSanduicheConta" id="menuSanduicheConta">
                             <div class="link_header link_sanduiche">
                                 <a href="#" class="pagina-selecionada">Perfil</a>
                             </div>

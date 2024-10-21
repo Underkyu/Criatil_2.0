@@ -17,7 +17,7 @@ class Message {
         $_SESSION["type"] = $type;
     
         if($redirect != "back"){
-            header("Location: $this-> url" . $redirect);
+            header("Location: $this->url" . $redirect);
         }  else {
             header("Location:" . $_SERVER["HTTP_REFERER"]);
         }

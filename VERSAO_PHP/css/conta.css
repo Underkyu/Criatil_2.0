@@ -210,7 +210,7 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
   div.link_sanduiche{ /*Conteudo do menu sanduiche*/
     display: inherit;
   }
-  div.menuSanduiche{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
+  div.menuSanduicheConta{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -223,7 +223,7 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     margin-bottom: 60px;
 
   }
-  .open_header{ /*Classe que serve para tornar o menu sanduiche visivel*/
+  .open_header_conta{ /*Classe que serve para tornar o menu sanduiche visivel*/
     display: flex;
     width: 100%;
     justify-content: space-evenly;

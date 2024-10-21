@@ -1,3 +1,21 @@
+<?php 
+require_once("../controller/global.php");
+require_once("../controller/conexao.php");
+require_once("../models/message.php");
+require_once("../Dao/usuarioDAO.php");
+
+$message = new Message($BASE_URL);
+$flashMessage = $message->getMessage();
+
+if(!empty($flashMessage["msg"])){
+    $message->clearMessage();
+}
+
+$userDao = new UsuarioDAO($conn,$BASE_URL);
+
+$usuarioData = $userDao->verificarToken(false);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,15 +40,7 @@
                     <img src="../imagens/Header/produtos.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno">Explorar</p>
-                        <p class="pequeno  negrito">Catalogo</p>
-                    </div>
-                </div>
-
-                <div class="link_header">
-                    <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
-                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                        <p class="pequeno">Realizar</p>
-                        <p class="pequeno  negrito">Login ou Cadastro</p>
+                        <p class="pequeno  negrito">Catalogo </p>
                     </div>
                 </div>
 
@@ -41,6 +51,19 @@
                         <p class="pequeno  negrito">carrinho</p>
                     </div>
                 </div>
+
+                <?php if($usuarioData): ?>
+                <p>Batata</p>
+                <?php else: ?>
+                    <div class="link_header">
+                    <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno">Realizar</p>
+                        <p class="pequeno  negrito">Login ou Cadastro</p>
+                    </div>
+                </div>
+                <?php endif; ?>
+
                 </div>
 
                 <!--Responsividade-->
@@ -61,20 +84,20 @@
                             <p class="pequeno  negrito">Catalogo</p>
                         </div>
                     </div>
-    
-                    <div class="link_header link_sanduiche">
-                        <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
-                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                            <p class="pequeno">Realizar</p>
-                            <p class="pequeno  negrito">Login ou Cadastro</p>
-                        </div>
-                    </div>
-    
+
                     <div class="link_header link_sanduiche">
                         <img src="../imagens/Header/carrinho.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                             <p class="pequeno">Meu</p>
                             <p class="pequeno  negrito">carrinho</p>
+                        </div>
+                    </div>
+                    
+                    <div class="link_header link_sanduiche">
+                        <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
+                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                            <p class="pequeno">Realizar</p>
+                            <p class="pequeno  negrito">Login ou Cadastro</p>
                         </div>
                     </div>
                 </div>

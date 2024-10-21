@@ -104,9 +104,9 @@ interface UsuarioDAOInterface {
     public function buildUser($data);
     public function criar(Usuario $usuario, $authUser = false);
     public function update(Usuario $user);
-    public function findByToken($token);
-    public function verifyToken($protected = false);
-    public function setTokenToSession($token, $redirect = true);
+    public function pesquisarPorToken($token);
+    public function verificarToken($protected = false);
+    public function tokenParaSessao($token, $redirect = true);
     public function authenticateUser($email, $password);
     public function pesquisarPorEmail($email);
     public function findById($codigo);

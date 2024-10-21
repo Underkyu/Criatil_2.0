@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12/10/2024 às 06:29
+-- Tempo de geração: 21/10/2024 às 07:48
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -167,15 +167,31 @@ CREATE TABLE `usuario` (
   `Celular_Usu` varchar(15) NOT NULL,
   `Email_Usu` varchar(100) NOT NULL,
   `Senha_Usu` varchar(50) NOT NULL,
-  `Tipo_Usu` varchar(20) NOT NULL
+  `Tipo_Usu` varchar(20) NOT NULL,
+  `Token` varchar(50) NOT NULL,
+  `Imagem` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuario`
 --
 
-INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Email_Usu`, `Senha_Usu`, `Tipo_Usu`) VALUES
-(13, 'Guilherme', '1769-02-28', '(11) 97188-9901', 'guilhermebragas@hotmail.com', 'password', 'GERENTE');
+INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Email_Usu`, `Senha_Usu`, `Tipo_Usu`, `Token`, `Imagem`) VALUES
+(1, 'Kasane Teto', '1999-04-01', '(11) 99922-5555', 'kasaneteto@gmail.com', 'kasan3teto', 'Cliente', 'qwfihn3uirtfhui23hnrtuin23h', 'imagem'),
+(2, 'Gumi', '2009-06-26', '(21)99887-4455', 'copycat63@gmail.com', '$2y$10$bev5ui1wsva.IugUq7rb1.o5X8Bwu0FgFc1RjJMZdoC', 'Cliente', 'cc92acdfd56a896bfe5bd20c4e8a2e5bbe240da55be7cc37b3', NULL),
+(3, 'Miku', '2006-05-11', '(11)99887-4455', 'miku@gmail.com', '$2y$10$fj8n3.zOViPo2V7FuEmZGOym0yiDhT7tv/fqbzKg4OB', 'Cliente', '02bb0832f957471461b332c5c218ecb8e54f9e5392ff6cecb7', NULL),
+(4, 'Luka', '2007-06-05', '(41)99887-4455', 'nigthfever@gmail.com', '$2y$10$/MKOy7mjw6FAbA7XzEkIWe5f83cmWJ5yU/tuRiovXol', 'Cliente', '79b7c27ce90523962baa582bd05c5b692205f98740eded6c60', NULL),
+(8, 'Cellbit', '2005-03-17', '(01)99887-4455', 'vivoturbo@gmail.com', '$2y$10$VPqtwv5399RUqPms8yAKqOVbXHYsEOPYiGCmuBqGObC', 'Cliente', 'bfaaa27ef58e6761496ce7406e16ab91ec9c57a04887e63a4d', NULL),
+(9, 'Carlos', '2024-02-20', '(21)99887-4455', 'carlos@gmail.com', '$2y$10$56qLjFbh9cHZalaZCygCse4Q5BcYrj5phlLrrm4tHfz', 'Cliente', '88f0b0431984e734a0748fbdeff1364832ad7e9d243b08e994', NULL),
+(10, 'soaidfgjoiwej', '2024-10-17', '1234124', 'wefgwef@gwegweg', '$2y$10$2nS1nSLwrZoEt1TK2/yj1u3D2Ce1oy2C732zZK.46aQ', 'Cliente', 'd0dff154ba23e2551c041e29e84b9bef03a011ceccbf3e4710', NULL),
+(11, '12r2r', '0000-00-00', '2323234234234', 'dsfwef@wsfgwef', '$2y$10$865Clwr4R883usK/ITKE7uoO0cnwnbXb1Ga5BZzhrQs', 'Cliente', '818b627b27e5ad4b5d7c580d227cbfc3908be107f21e8ac53e', NULL),
+(12, 'Gio', '2003-05-21', '12412423', 'copycat65@gmail.com', '$2y$10$.2RwYXeTwq/mweI/hUtM/eQBkcJzOYnrtSn6eSZNry7', 'Cliente', '55a496f179313c98251f7e7b6e73ea2653800be94cfc2592ab', NULL),
+(13, 'Kyu', '2001-05-09', '(21)99887-4455', 'qwe@qwed', '$2y$10$Cou0tpW/MRtd98iuex0VcOwWIMZty9XxEBFmHM6.16s', 'Cliente', '59fe028e76d75dfc4001093ff471afc9232177f57e4d6d8ce4', NULL),
+(14, 'qweqwe', '2001-05-09', '(21)99887-4455', 'qwe@qwedqwrfqw', '$2y$10$HOwvmBk9ElHlTrAsbG7JCuPUwgWN8Kd/sML31aZXm7r', 'Cliente', 'e447f68d98bfef6e225ea7f45779f0f07a018745961ffa166d', NULL),
+(15, 'Gio', '2003-05-21', '12412423', 'copycat66@gmail.com', '$2y$10$aJ59wF6iS7.FOSxgvjhFBOBSGHN72816pKcnwhfOR4g', 'Cliente', '9241cd2c775c085fc19b711740cca510f71f611c9f5cd932e2', NULL),
+(16, '12qweq43t', '2024-10-02', '255734625235', '234tg43tg34tg34t@t3rtwwert', '$2y$10$JGqpg9nxcgs9EP/y8sflIuRG9gxFW6q.q.8OPFM4.vc', 'Cliente', '1093ae763e608231bf8b29c5f884d03ee8d91aca35158c3b40', NULL),
+(17, '12qweq', '2024-10-02', '12412423', 'qwe@qwedqwrqw', '$2y$10$Hfg8Pxv61QQH9t3EG5c1GugYRETtI7WbYxK248//m.7', 'Cliente', '3a4b4c39d357ab6ac47c2ce29e8af67f15019125ee3f83fd10', NULL),
+(18, 'qwe', '2024-10-05', '12241241234', 'qwe@qwedwefgewfg', '$2y$10$PwFWJ/JyEldsm9l47h47Puui36wPCx0ZKnXXe/VYRFu', 'Cliente', 'a362da4e0ae427f0d090afbbf8fd7998641c095886727cb885', NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -308,7 +324,7 @@ ALTER TABLE `selo`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restrições para tabelas despejadas

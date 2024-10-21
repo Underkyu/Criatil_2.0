@@ -1,16 +1,3 @@
-<?php 
-require_once("../php/controller/global.php");
-require_once("../php/controller/conexao.php");
-require_once("../php/models/message.php");
-
-$message = new Message($BASE_URL);
-$flashMessage = $message->getMessage();
-
-if(!empty($flashMessage["msg"])){
-    $message->clearMessage();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -29,7 +16,7 @@ if(!empty($flashMessage["msg"])){
         <img src="../imagens/Logo/criatillogo2.png">
 
 
-            <form class="form-login" method="POST" action="/Criatil_2.0/VERSÃO_PHP/php/controller/process/cadastroProcess.php">
+            <form class="form-login" method="POST" action="/Criatil_2.0/VERSAO_PHP/controller/cadastroProcess.php">
            
             <div class="input-container">
                 <input type="text"  id="nome" name="Nome_Usu" placeholder="Nome completo" class="input-login">

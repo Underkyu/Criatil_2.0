@@ -35,6 +35,7 @@ $usuarioData = $userDao->verificarToken(false);
                 <input type="text" class="pesquisa" value placeholder="Pesquisa">  <!--Barra de pesquisa-->
 
                 <div class="links_normais">
+                <a href="catalogo.php">
                 <div class="link_header">
                     <img src="../imagens/Header/produtos.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
@@ -42,7 +43,9 @@ $usuarioData = $userDao->verificarToken(false);
                         <p class="pequeno  negrito">Catalogo </p>
                     </div>
                 </div>
+                </a>
 
+                <a href="carrinho.php">
                 <div class="link_header">
                     <img src="../imagens/Header/carrinho.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
@@ -50,10 +53,12 @@ $usuarioData = $userDao->verificarToken(false);
                         <p class="pequeno  negrito">carrinho</p>
                     </div>
                 </div>
+                </a>
 
                 <?php if($usuarioData): ?>
-                <p>Batata</p>
+                <img src="../imagens/Avaliacoes/teto_perfil.jpg" alt="" class="foto-perfil_header">
                 <?php else: ?>
+                    <a href="cadastro.php">
                     <div class="link_header">
                     <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
@@ -61,6 +66,7 @@ $usuarioData = $userDao->verificarToken(false);
                         <p class="pequeno  negrito">Login ou Cadastro</p>
                     </div>
                 </div>
+                </a>
                 <?php endif; ?>
 
                 </div>

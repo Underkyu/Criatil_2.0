@@ -130,6 +130,10 @@ input.pesquisa { /*Barra de pesquisa*/
     height: 5rem;
   }
 
+  a{
+    text-decoration: none;
+  }
+
 /*Responsividade*/
 .container {
     max-width: 1425px;

@@ -1,7 +1,7 @@
 <?php 
 
 require_once("../models/usuario.php");
-require_once("../models/mensagem.php");
+require_once("../models/message.php");
 
 class UsuarioDAO implements UsuarioDAOInterface {   
     private $conexao;
@@ -54,7 +54,7 @@ class UsuarioDAO implements UsuarioDAOInterface {
         $stmt->execute();
 
         if($authUsario){
-            $this->tokenParaSessao($token);
+            $this->tokenParaSessao($usuario->getToken());
         }
     }
     public function update(Usuario $user){

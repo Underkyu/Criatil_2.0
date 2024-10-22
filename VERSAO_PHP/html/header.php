@@ -10,7 +10,6 @@ $flashMessage = $message->getMessage();
 if(!empty($flashMessage["msg"])){
     $message->clearMessage();
 }
-
 $userDao = new UsuarioDAO($conn,$BASE_URL);
 
 $usuarioData = $userDao->verificarToken(false);

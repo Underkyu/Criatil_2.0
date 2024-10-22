@@ -16,7 +16,7 @@
         <img src="../imagens/Logo/criatillogo2.png">
 
 
-            <form class="form-login" method="POST" action="/Criatil_2.0/VERSAO_PHP/controller/cadastroProcess.php">
+            <form class="form-login" method="POST" action="../controller/cadastroProcess.php">
            
             <div class="input-container">
                 <input type="text"  id="nome" name="Nome_Usu" placeholder="Nome completo" class="input-login">

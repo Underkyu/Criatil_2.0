@@ -57,7 +57,7 @@ class UsuarioDAO implements UsuarioDAOInterface {
             $this->tokenParaSessao($usuario->getToken());
         }
     }
-    public function update(Usuario $user){
+    public function atualiza(Usuario $user){
 
     }
     public function pesquisarPorToken($token){
@@ -103,9 +103,16 @@ class UsuarioDAO implements UsuarioDAOInterface {
     public function autenticarUsuario($email, $password){
         $user = $this->pesquisarPorEmail($email );
         if($user){
-            if(password_verify($password, $user->password)){
+            if(password_verify($password, $user->getSenha())){
+                $token = $user->gerarToken();
 
-            }else{
+                $this->tokenParaSessao($token);
+
+                $user->setToken($token);    
+                $this->atualiza($user);
+                return true;
+            }
+            else{
                 return false;   
             }
         }else{

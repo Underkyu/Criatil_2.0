@@ -11,7 +11,8 @@
 </head>
 <body>
     <?php include("../html/header.php")?>
-
+    
+    <div class="cadastro">
     <div class="cadastrinho">
         <img src="../imagens/Logo/criatillogo2.png">
 
@@ -41,8 +42,10 @@
                 </div>
 
                 <div class="input-container">
-                <input type="text" id="celular" name="Celular_Usu" placeholder="Digite o celular (opcional)" class="input-login">
+                <input type="text" id="celular" name="Celular_Usu" placeholder="Digite o celular" class="input-login">
                 </div>
+
+                <a href="login.php" class="login">Fazer Login</a>
 
                 <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Cliente">
                 <input type="hidden" name="Tipo" value="Cadastro">
@@ -51,5 +54,6 @@
                 <button type="submit" class="botao-entrar">Cadastrar</button>
             </form>
         </div>
+    </div>
 </body>
 </html>

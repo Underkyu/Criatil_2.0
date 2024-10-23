@@ -107,10 +107,11 @@ interface UsuarioDAOInterface {
     public function pesquisarPorToken($token);
     public function verificarToken($protected = false);
     public function tokenParaSessao($token, $redirect = true);
-    public function authenticateUser($email, $password);
+    public function autenticarUsuario($email, $password);
     public function pesquisarPorEmail($email);
     public function findById($codigo);
     public function changePassword(Usuario $user);
+    public function destroirToken();
 }
 
 ?>

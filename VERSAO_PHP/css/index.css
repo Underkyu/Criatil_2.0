@@ -16,7 +16,6 @@ html{
 }
 
 /*Inicio CSS Carrossel*/
-
  img#grande{ /*Imagens do carrossel (maior)*/
     display: block;
     width: 100%;
@@ -40,10 +39,12 @@ html{
 /*Mudando cor das setinhas*/
 .swiper-button-prev {
     color: #0476D9;
+    margin-top: 2rem;
 
 }
 .swiper-button-next {
     color: #0476D9;
+    margin-top: 2rem;
 }
 /*Fim CSS do Carrossel*/
 

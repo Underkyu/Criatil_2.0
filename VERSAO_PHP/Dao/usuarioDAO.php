@@ -89,8 +89,8 @@ class UsuarioDAO implements UsuarioDAOInterface {
             } else if($protected){
                 $this->message->setMessage("Login expirado","Por favor fazer login novamente!","error","principal.php");
             }
-        }else{
-            return false;
+        }else if($protected){
+            $this->message->setMessage("Login expirado","Por favor fazer login novamente!","error","principal.php");
         }
     }
     public function tokenParaSessao($token, $redirect = true){
@@ -100,8 +100,17 @@ class UsuarioDAO implements UsuarioDAOInterface {
             $this->message->setMessage("Login bem sucedido","Bem vindo!","success","../html/conta.php");
         }
     }
-    public function authenticateUser($email, $password){
+    public function autenticarUsuario($email, $password){
+        $user = $this->pesquisarPorEmail($email );
+        if($user){
+            if(password_verify($password, $user->password)){
 
+            }else{
+                return false;   
+            }
+        }else{
+            return false;
+        }
     }
     public function pesquisarPorEmail($email){
         if($email != ""){
@@ -126,6 +135,11 @@ class UsuarioDAO implements UsuarioDAOInterface {
     }
     public function changePassword(Usuario $user){
 
+    }
+    public function destroirToken(){
+        $_SESSION["token"] = "";//Apaga o token da sessão
+        
+        $this->message->setMessage("Saida bem sucedida","Você saiu da sua conta com sucesso!","success","../html/principal.php");//Mensagem indicando que a saida da conta foi bem sucedida
     }
 }
 

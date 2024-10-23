@@ -1,3 +1,14 @@
+<?php
+require_once("../controller/global.php");
+require_once("../controller/conexao.php");
+require_once("../Dao/usuarioDAO.php");
+
+
+$userDao = new UsuarioDAO($conn,$BASE_URL);
+
+$usuarioData = $userDao->verificarToken(false);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -25,7 +36,7 @@
                   <a href="./pedidos.php" class="paginas-navbar">Pedidos</a>
                   <a href="./desejos.php" class="paginas-navbar">Lista de Desejos</a>
                   <a href="./cartoes.php" class="paginas-navbar">Cartões</a>
-                  <a href="" class="paginas-navbar" id="sair">Sair</a>
+                  <a href="../controller/logout.php" class="paginas-navbar" id="sair">Sair</a>
              </div>
         </div>
                  <!-- botão do menu sanduíche-->
@@ -56,7 +67,7 @@
                           </div>
 
                           <div class="link_header link_sanduiche">
-                            <a href="" class="paginas-navbar">Sair</a>
+                            <a href="../controller/logout.php" class="paginas-navbar">Sair</a>
                           </div>
                         </div>
                 <!-- fim da div do menu sanduíche-->

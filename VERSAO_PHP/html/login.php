@@ -1,12 +1,4 @@
-<?php 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/Criatil_2.0/VERSÃO_PHP/php/models/message.php";
 
-$message = new Message("http://" . $_SERVER['HTTP_HOST'] . "/Criatil_2.0/VERSÃO_PHP/");
-$flashMessage = $message->getMessage();
-
-$message->clearMessage();
-
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -21,30 +13,12 @@ $message->clearMessage();
     <title>Criatil - Login</title>
 </head>
 <body>
+<?php include("../html/header.php")?>
+    <div class="login">
         <div class="loginzinho">
         <img src="../imagens/Logo/criatillogo2.png">
-        
-<!--  php da mensagem; se a mensagem não estiver vazia, ela é inserida na página  -->
-<?php if (!empty($flashMessage["msg"])): ?>
-            <script>
-            Swal.fire({
-                toast: true,
-                target: 'loginzinho',
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                position: "top",
-                icon: "success",
-                title: "<?= $flashMessage['msg'] ?>", // coloca a mensagem do php no título
-                showConfirmButton: false,
-            });
-                    // redireciona depois de esperar 3 segundos (medido em milissegundos)
-                    setTimeout(function() {
-                        window.location.href = "http://<?= $_SERVER['HTTP_HOST'] ?>/Criatil_2.0/VERSÃO_PHP/";
-                    }, 2000);
-                </script>
-        <?php endif; ?>
 
-            <form class="form-login" method="POST" action="/Criatil_2.0/VERSÃO_PHP/php/controller/usuarioController.php">
+            <form class="form-login" method="POST" action="../controller/cadastroProcess.php">
                 <div class="input-container">
                    <input type="email" id="email" name="Email_Usu" placeholder="E-mail" class="input-login" required>
                 </div>       
@@ -54,10 +28,13 @@ $message->clearMessage();
                     <i class="bi bi-eye" id="botao-senha" onclick="mostrarSenha('senha', 'botao-senha')"></i>
                 </div>
 
+                <input type="hidden" name="Tipo" value="Login">
+
                   <input type="hidden" class="form-control" name="crud" value="SELECT">
                   <button type="submit" class="botao-entrar">Entrar</button>
                 <a href="cadastro.php" class="botao-cadastrar">Criar uma conta</a>
             </form>
         </div>
+    </div>
 </body>
 </html>

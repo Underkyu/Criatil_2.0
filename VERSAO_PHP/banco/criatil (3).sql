@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/10/2024 às 07:48
+-- Tempo de geração: 23/10/2024 às 06:52
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -166,9 +166,9 @@ CREATE TABLE `usuario` (
   `Nasc_Usu` date NOT NULL,
   `Celular_Usu` varchar(15) NOT NULL,
   `Email_Usu` varchar(100) NOT NULL,
-  `Senha_Usu` varchar(50) NOT NULL,
+  `Senha_Usu` varchar(200) NOT NULL,
   `Tipo_Usu` varchar(20) NOT NULL,
-  `Token` varchar(50) NOT NULL,
+  `Token` varchar(200) NOT NULL,
   `Imagem` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -191,7 +191,12 @@ INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Ema
 (15, 'Gio', '2003-05-21', '12412423', 'copycat66@gmail.com', '$2y$10$aJ59wF6iS7.FOSxgvjhFBOBSGHN72816pKcnwhfOR4g', 'Cliente', '9241cd2c775c085fc19b711740cca510f71f611c9f5cd932e2', NULL),
 (16, '12qweq43t', '2024-10-02', '255734625235', '234tg43tg34tg34t@t3rtwwert', '$2y$10$JGqpg9nxcgs9EP/y8sflIuRG9gxFW6q.q.8OPFM4.vc', 'Cliente', '1093ae763e608231bf8b29c5f884d03ee8d91aca35158c3b40', NULL),
 (17, '12qweq', '2024-10-02', '12412423', 'qwe@qwedqwrqw', '$2y$10$Hfg8Pxv61QQH9t3EG5c1GugYRETtI7WbYxK248//m.7', 'Cliente', '3a4b4c39d357ab6ac47c2ce29e8af67f15019125ee3f83fd10', NULL),
-(18, 'qwe', '2024-10-05', '12241241234', 'qwe@qwedwefgewfg', '$2y$10$PwFWJ/JyEldsm9l47h47Puui36wPCx0ZKnXXe/VYRFu', 'Cliente', 'a362da4e0ae427f0d090afbbf8fd7998641c095886727cb885', NULL);
+(18, 'qwe', '2024-10-05', '12241241234', 'qwe@qwedwefgewfg', '$2y$10$PwFWJ/JyEldsm9l47h47Puui36wPCx0ZKnXXe/VYRFu', 'Cliente', 'a362da4e0ae427f0d090afbbf8fd7998641c095886727cb885', NULL),
+(19, 'asfsafasf', '2006-02-21', '12412423', 'qwe@qwedqw', '$2y$10$LNgUJ7Hn02Q5hA9AQSir0OJDukQTxCt.EY/i29Y2rzL', 'Cliente', '4f55d7bf9687bdf943b4a0e640ca906444fd633443e0fc1a07', NULL),
+(20, 'EuOdeioProgramdores', '2004-03-21', '(21)99887-44552', 'qwe@qweddfdfdffddf', '$2y$10$JhjTklkF6GkdduMxacdNFerCAEj9km1S1ewCpsQPLLMkzr9hzSOKm', 'Cliente', '2e3aa260346b267331d18513f36765544e000bdc15ce85fa673adf76d79f2a6c0b1fa2e6561d22f2afc5b79694eb454d7011', NULL),
+(21, 'Doug', '2006-10-13', '12412423', 'wertwet@wetwet', '$2y$10$rSh6hy.EF/BucAY8J1clz.aA3qAlqjRFAUItXzsGvCiN9kfDB.Hei', 'Cliente', '4271e0c7aff809ae9707608df1175daba92e5b16614360bfa86c0a69d8feab1d2179e88cf5abc20757c89d4c251887264b4d', NULL),
+(22, 'wetwe', '2024-10-01', '(21)99887-4455', 'qwrqw@WERGWER', '$2y$10$9e.k4KLbVDCjPdMrkcAXzutOSMhAFAQtIj.ov1R0CewFaDKdAUlhO', 'Cliente', '8c6778c8e7fcafe265934e00e0218a4e8a01e7e3dcce1e728e7c5fbc1ec349abdbcc91af3c2765d4e1d569a722ad51fe45c5', NULL),
+(23, 'sdgsdg', '2024-10-04', '(21)99887-4455', 'wfgwegf@wegewg', '$2y$10$FGSiEwKgJ7HNOYKDojk58e7Mmbnust8ouMSEvy/Zf9/R5d3ya9KhW', 'Cliente', '9db7e36beab17a428ebcaf903971e0ec0527583e6ab10eed79fc6d212c68b2b3b41ec86c68fbf44ffa3f306759d72faed586', NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -324,7 +329,7 @@ ALTER TABLE `selo`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restrições para tabelas despejadas

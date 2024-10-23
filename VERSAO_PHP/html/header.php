@@ -56,7 +56,14 @@ $usuarioData = $userDao->verificarToken(false);
                 </a>
 
                 <?php if($usuarioData): ?>
-                <img src="../imagens/Avaliacoes/teto_perfil.jpg" alt="" class="foto-perfil_header">
+                    <a href="conta.php">
+                    <div class="link_header">
+                    <img src="../imagens/Avaliacoes/teto_perfil.jpg" alt="" class="foto_perfil_header"> <!--Foto do perfil-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno  negrito">Minha conta</p>
+                    </div>
+                </div>
+                </a>
                 <?php else: ?>
                     <a href="cadastro.php">
                     <div class="link_header">

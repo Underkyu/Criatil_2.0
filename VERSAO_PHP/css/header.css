@@ -65,6 +65,7 @@ input.pesquisa { /*Barra de pesquisa*/
 
   div.links_normais{/*Div com as anchors mostradas no cp*/
     display: flex;
+    align-items: center;
   }
 
   div.link_header { /*Div que contem icon e textos dos links para outras paginas que ficam dentro do header*/
@@ -132,6 +133,14 @@ input.pesquisa { /*Barra de pesquisa*/
 
   a{
     text-decoration: none;
+  }
+
+  img.foto_perfil_header{
+    width: 2.9rem;
+    height: 2.9rem;
+    border-radius: 100px;
+    border: 3px solid #F2AF00;
+    margin: .5rem;
   }
 
 /*Responsividade*/

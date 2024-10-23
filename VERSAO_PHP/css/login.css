@@ -15,8 +15,16 @@
       background-position:center;
       overflow: hidden;
       display: flex;
-      justify-content: center;
+      justify-content: start;
       align-items: center;
+      flex-direction: column;
+  }
+  div.login{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .loginzinho {
       display: flex;

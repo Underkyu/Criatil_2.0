@@ -18,6 +18,13 @@ body {
     align-items: center;
     flex-direction: column;
 }
+div.cadastro{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .cadastrinho {
     display: flex;
     align-items: stretch;
@@ -88,6 +95,13 @@ body {
 }
 .botao-entrar:hover {
   transform: scale(1.1);
+}
+
+a.login{
+  color: #0476D9;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
   @media (max-width: 1024px) {

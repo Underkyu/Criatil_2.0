@@ -54,5 +54,19 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
     }
 
     }
+} else if ($tipo == "Login"){
+    $email = filter_input(INPUT_POST, "Email_Usu");
+    $senha = filter_input(INPUT_POST, "Senha_Usu");
+
+    //Se login der certo
+    if($userDao->autenticarUsuario($email,$senha)){
+
+    }
+    //Se não
+    else{
+        $message->setMessage("Erro!","Email e/ou senha incorretos","error","back");
+    }
+} else {
+    $message->setMessage("Erro!","Informações invalidas","error","../html/principal.php");
 }
 ?>

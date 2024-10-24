@@ -30,7 +30,7 @@ class UsuarioDAO implements UsuarioDAOInterface {
     }
     public function criar(Usuario $usuario, $authUsario = false){
         $stmt = $this->conexao->prepare("INSERT INTO usuario(
-            Nome_Usu,Nasc_Usu,Celular_Usu,Email_Usu,Senha_Usu,Tipo_usu,Token
+            Nome_Usu,Nasc_Usu,Celular_Usu,Email_Usu,Senha_Usu,Tipo_Usu,Token
         ) VALUES (
             :nome, :nasc, :cel, :email, :senha, :tipo, :token
         )");
@@ -57,8 +57,40 @@ class UsuarioDAO implements UsuarioDAOInterface {
             $this->tokenParaSessao($usuario->getToken());
         }
     }
-    public function atualiza(Usuario $user){
+    public function atualiza(Usuario $usuario, $redirect = true){
+        $stmt = $this->conexao->prepare("UPDATE usuario SET
+        Nome_Usu = :nome,
+        Nasc_Usu = :nasc,
+        Celular_Usu = :cel,
+        Email_Usu = :email,
+        Senha_Usu = :senha,
+        Tipo_Usu = :tipo,
+        Token = :token 
+        WHERE Codigo_Usu = :codigo");
 
+        $user = $usuario->getNome();
+        $nasci = $usuario->getNasc();
+        $cel = $usuario->getCelular();
+        $email = $usuario->getEmail();
+        $senha = $usuario->getSenha();
+        $tipo = $usuario->getTipo();
+        $token = $usuario->getToken(); 
+        $codigo = $usuario->getCodigo();
+
+        $stmt->bindParam(":nome", $user);
+        $stmt->bindParam(":nasc", $nasci);
+        $stmt->bindParam(":cel", $cel);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":senha", $senha);
+        $stmt->bindParam(":tipo", $tipo);
+        $stmt->bindParam(":token", $token);
+        $stmt->bindParam(":codigo", $codigo);
+
+        $stmt->execute();
+
+        if($redirect) {
+            $this->message->setMessage("Informações alteradas!","Seus dados foram alterados com sucesso!","success","../html/conta.php");
+        }
     }
     public function pesquisarPorToken($token){
         if($token != ""){
@@ -106,10 +138,11 @@ class UsuarioDAO implements UsuarioDAOInterface {
             if(password_verify($password, $user->getSenha())){
                 $token = $user->gerarToken();
 
-                $this->tokenParaSessao($token);
+                $this->tokenParaSessao($token, false);
 
                 $user->setToken($token);    
                 $this->atualiza($user);
+                $this->atualiza($user, false);
                 return true;
             }
             else{

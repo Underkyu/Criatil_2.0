@@ -31,8 +31,8 @@
                 <input type="hidden" name="Tipo" value="Login">
 
                   <input type="hidden" class="form-control" name="crud" value="SELECT">
+                  <a href="cadastro.php" class="login">Fazer Cadastro</a>
                   <button type="submit" class="botao-entrar">Entrar</button>
-                <a href="cadastro.php" class="botao-cadastrar">Criar uma conta</a>
             </form>
         </div>
     </div>

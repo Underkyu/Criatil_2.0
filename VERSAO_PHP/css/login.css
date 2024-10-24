@@ -94,22 +94,14 @@
     margin-bottom: 15px;
     transition: transform 0.3s ease-in-out;
 }
-.botao-cadastrar {
-    width: 35%;
-    height: 40px;
-    border: none;
-    border-radius: 15px;
-    background-color: #F2AF00;
-    color: #000000;
-    font-size: 16px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    outline: none;
-    line-height: 2.5;
-    text-decoration: none;
-    transition: transform 0.3s ease-in-out;
+
+a.login{
+  color: #0476D9;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
+
 .botao-cadastrar:hover {
   transform: scale(1.1);
 }

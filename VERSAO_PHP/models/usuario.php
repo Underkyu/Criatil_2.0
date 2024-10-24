@@ -103,7 +103,7 @@ class Usuario{
 interface UsuarioDAOInterface {
     public function buildUser($data);
     public function criar(Usuario $usuario, $authUser = false);
-    public function atualiza(Usuario $user);
+    public function atualiza(Usuario $usuario, $redirect = true);
     public function pesquisarPorToken($token);
     public function verificarToken($protected = false);
     public function tokenParaSessao($token, $redirect = true);

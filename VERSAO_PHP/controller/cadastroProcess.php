@@ -60,7 +60,7 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
 
     //Se login der certo
     if($userDao->autenticarUsuario($email,$senha)){
-
+        $message->setMessage("Seja bme vindo!","Login bem sucedido","success","../html/conta.php");
     }
     //Se não
     else{

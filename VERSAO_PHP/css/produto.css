@@ -318,6 +318,47 @@ p.avaliacao{
   display: flex;
   align-items: center;
 }
+
+div.add_ava{
+  display: flex;
+  flex-direction: column;
+}
+div.titulo_ava{ /*Div onde ficam os imputs de titulo e número de estrelas da avaliação*/
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+input.titulo_ava{ /*Input na qual o cliente passará o titulo da */
+  border: #D4D4D4 solid 3px;
+  border-radius: 15px;
+  padding: .75rem;
+  height: 2.5rem;
+  width: 60%;
+  margin-right: 2rem;
+  font-size: 1.15rem;
+}
+select.num_estrelas{ /*Select do número de estrlas da avaliação*/
+  border: #D4D4D4 solid 3px;
+  border-radius: 15px;
+  padding: .75rem;
+  height: 4.3rem;
+  width: 5%;
+  font-size: 1.15rem;
+}
+
+input:focus {
+  outline: 0;
+}
+
+input.comentario{ /*Input na qual o cliente passará o titulo da */
+  border: #D4D4D4 solid 3px;
+  border-radius: 15px;
+  padding: .75rem;
+  height: 2.5rem;
+  width: 70%;
+  margin-right: 2rem;
+  font-size: 1.15rem;
+}
 /*Fim CSS avaçliações*/
 
 

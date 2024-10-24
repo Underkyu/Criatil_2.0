@@ -373,6 +373,24 @@
       </div>
       <!--Fim product slider 1-->
 
+      <h2 class="avaliacoes">Deixe sua avalição</h2>
+      <div class="add_ava">
+        <div class="titulo_ava">
+          <input type="text" class="titulo_ava" placeholder="Digite o título da avaliação">
+          <select name="" id="" class="num_estrelas"><!--Select com o tipo de cliente e no qual o garente irá mudar para bloqueado para bloquear o acesso da conta ao site-->
+            <option value= 5>5</option>
+            <option value= 4>4</option>
+            <option value= 3>3</option>
+            <option value= 2>2</option>
+            <option value= 1>1</option>
+          </select>
+        </div>
+        <div class="comentario">
+            <input type="text" class="comentario" placeholder="Deixe aqui sua opinião do produto">
+          </div>
+      </div>
+      
+      
       <h2 class="avaliacoes">Avaliações</h2>
       <!--Titulo avaliações-->
 

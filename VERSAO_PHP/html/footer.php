@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="PT-br">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/footer.css">
-    <title>Document</title>
+    <title>Footer</title>
 </head>
 <body>
     <div class="footerContainer">
@@ -25,10 +25,10 @@
                 <div class="footerAnchor footerTelefone">
                     <a>
                     <div class="footerUpperTel">
-                        Nos ligue
+                        Nos ligue!
                     </div>
                     <div class="footerDownTel">
-                        11 0800-5555
+                        (11) 0800-5555
                     </div>
                     </a>
                 </div>
@@ -36,13 +36,13 @@
             <center><hr></center>
             <div class="footerRedes">
                 <div class="footerIconRede">
-                    <a><img src="../imagens/Icons/facebookIconBranco.png"></a>
+                    <a href="https://www.instagram.com/toys_criatil/"><img src="../imagens/Icons/facebookIconBranco.png"></a>
                 </div>
                 <div class="footerIconRede">
-                    <a><img src="../imagens/Icons/instagramIconBranco.png"></a>
+                    <a href="https://www.instagram.com/toys_criatil/"><img src="../imagens/Icons/instagramIconBranco.png"></a>
                 </div>
                 <div class="footerIconRede">
-                    <a><img src="../imagens/Icons/youtubeIconBranco.png"></a>
+                    <a href="https://www.instagram.com/toys_criatil/"><img src="../imagens/Icons/youtubeIconBranco.png"></a>
                 </div>
             </div>
         </div>

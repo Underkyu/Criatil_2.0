@@ -13,7 +13,9 @@ div.corpo{ /*Basicamente so serve para dar cor pro fundo header*/
     padding: 0px;
     height: fit-content;
 }
-
+#fundoHeader { /* Basicamente so serve para deixar o header com o tamanho certo */
+    padding: 0;
+}
 div.header{ /*Div que contem o conteudo do header de pc e celular*/
     display: flex;
     flex-direction: column; /*Eu não sei oq eu fiz, tentando deixar o header com o menu sanduiche, mas agr pra ficar normal pra pc precisa disso ;-;*/
@@ -48,7 +50,6 @@ input.pesquisa { /*Barra de pesquisa*/
     width: 27rem;
     border-radius: 20px;
   }
-
   input.pesquisa::placeholder{
     color: #33363F;
     font-size: 1.1rem;
@@ -100,7 +101,7 @@ input.pesquisa { /*Barra de pesquisa*/
     width: 4rem;
   }
 
-  button.menuSanduiche{ /*Botão que abre o menu sanduiche*/
+  button.menuSanduicheHeader{ /*Botão que abre o menu sanduiche*/
     border: white 5px solid;
     background-color: transparent;
     border-radius: 15px; 
@@ -177,7 +178,7 @@ input.pesquisa { /*Barra de pesquisa*/
       max-width: 768px;
     }
     
-    button.menuSanduiche{/*Botão que abre o menu sanduiche*/
+    button.menuSanduicheHeader{/*Botão que abre o menu sanduiche*/
       display: block;
     }
     input[type=text] { /*Barra de pesquisa*/
@@ -225,7 +226,7 @@ input.pesquisa { /*Barra de pesquisa*/
     img.Logo_header{
       margin: 0;
     }
-    button.menuSanduiche{ /*Botão que abre o menu sanduiche*/
+    button.menuSanduicheHeader{ /*Botão que abre o menu sanduiche*/
       border: white 5px solid;
       background-color: transparent;
       margin: 0;
@@ -240,7 +241,7 @@ input.pesquisa { /*Barra de pesquisa*/
     input[type=text] { /*Barra de pesquisa*/
       margin-top: 1rem;
     }
-    button.menuSanduiche{ /*Botão que abre o menu sanduiche*/
+    button.menuSanduicheHeader{ /*Botão que abre o menu sanduiche*/
       margin-top: 1rem;
     }
     div.menuSanduiche{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/

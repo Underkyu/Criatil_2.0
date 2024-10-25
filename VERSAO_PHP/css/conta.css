@@ -12,8 +12,8 @@
     width: 350px;
     color: rgb(0, 0, 0);
     display: flex;
-    justify-content:center;
-    align-items: center;
+    justify-content: center;
+    align-items: stretch;
     flex-direction: column;
 }
 .lateral-conta { 
@@ -34,8 +34,7 @@
     font-size: 26px;
     font-weight: 500;
     padding: 17px;
-    flex-wrap: wrap;
-    width: 220px;
+    white-space: nowrap;
 }
 #navbar-conta a {
     text-decoration: none;
@@ -97,7 +96,7 @@
     position: relative;
     bottom: 2%;
     background-color: white;
-    width: 95%;
+    width: 99%;
     height: 85%;
     border-radius: 20px;
     display: flex;
@@ -250,6 +249,11 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     flex-direction: row;
   }
     /* 2xl */
+    @media (max-width: 1280px) {
+        .nome-lateral{
+            white-space: wrap;
+        }
+      }
     @media (max-width: 1536px) {
         .container {
           max-width: 1280px;
@@ -274,7 +278,6 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
         #box h1 {
             font-size: 32px;
         }
-    
 
     .editar {
         font-size: 14px;
@@ -322,28 +325,31 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
         font-size: 12px;
         padding: 6px 14px;
     }
+    #perfil {
+        gap: 20px;
+    }
 }
 @media (min-width: 1450px) {
     .container {
       max-width: 1550px;
     }
     #navbar-conta a {
-        font-size: 28px;
+        font-size: 24px;
     }
     #box{
         width: 1080px;
     }
     .info-label {
-        font-size: 23px;
-    }
-    .info-value {
-        font-size: 23px;
-    }
-    .informacoes button {
         font-size: 20px;
     }
+    .info-value {
+        font-size: 20px;
+    }
+    .informacoes button {
+        font-size: 18px;
+    }
     .nome-lateral {
-        font-size: 30px;
+        font-size: 28px;
         white-space: nowrap;
     }
   }

@@ -5,12 +5,15 @@
     padding: 0px;
     }
     #navbar-conta {
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+        padding: 1rem;
         height: 100%;
         width: 350px;
         color: rgb(0, 0, 0);
         display: flex;
-        justify-content:center;
-        align-items: center;
+        justify-content: center;
+        align-items: stretch;
         flex-direction: column;
     }
 .lateral-conta {
@@ -31,8 +34,7 @@
     font-size: 26px;
     font-weight: 500;
     padding: 17px;
-    flex-wrap: wrap;
-    width: 220px;
+    white-space: nowrap;
 }
 #navbar-conta a {
     text-decoration: none;
@@ -265,22 +267,13 @@ só apareça quando necessário*/
       max-width: 1550px;
     }
     #navbar-conta a {
-        font-size: 28px;
+        font-size: 24px;
     }
     #box{
         width: 1080px;
     }
-    .info-label {
-        font-size: 23px;
-    }
-    .info-value {
-        font-size: 23px;
-    }
-    .informacoes button {
-        font-size: 20px;
-    }
     .nome-lateral {
-        font-size: 30px;
+        font-size: 28px;
         white-space: nowrap;
     }
   }

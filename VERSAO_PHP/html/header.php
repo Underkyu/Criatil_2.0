@@ -16,23 +16,24 @@ $usuarioData = $userDao->verificarToken(false);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Header</title>
     <script src="../js/menuSanduiche.js" defer></script>
     <link rel="stylesheet" href="../css/header.css">
 </head>
 
 <body>
     <div class="corpo">
-        <div class="container">
+        <div class="container" id="fundoHeader">
             <div class="header">
                 <div class="header_normal">
                 <img src="../imagens/Header/LogoBranca.png" alt="Logo da Criatil na cor branca" class="Logo_header"> <!--Logo-->
                 
-                <input type="text" class="pesquisa" value placeholder="Pesquisa">  <!--Barra de pesquisa-->
+                <input type="text" class="pesquisa" name="Nome_Brinq" placeholder="Pesquisa">  <!--Barra de pesquisa-->
+                <input type="hidden" name="Tipo" value="Pesquisa"> <!-- Input pra definir o tipo (pesquisa de nome de produto) -->
 
                 <div class="links_normais">
                 <a href="catalogo.php">
@@ -40,7 +41,7 @@ $usuarioData = $userDao->verificarToken(false);
                     <img src="../imagens/Header/produtos.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno">Explorar</p>
-                        <p class="pequeno  negrito">Catalogo </p>
+                        <p class="pequeno negrito">Catalogo </p>
                     </div>
                 </div>
                 </a>
@@ -81,7 +82,7 @@ $usuarioData = $userDao->verificarToken(false);
                 <!--Responsividade-->
 
                 <!--Botão para abrir o menu sanduiche-->
-                <button class="menuSanduiche" onclick="block()">
+                <button class="menuSanduicheHeader" onclick="block()">
                     <img src="../imagens/Header/sanduiche.png" alt="Menu Sanduiche" class="menuSanduiche">
                 </button>
                 </div>

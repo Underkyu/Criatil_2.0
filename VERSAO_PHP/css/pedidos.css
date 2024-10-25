@@ -4,18 +4,18 @@
     margin: 0px;
     padding: 0px;
     }
-#navbar-conta {
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-    padding: 1rem;
-    height: 100%;
-    width: 350px;
-    color: rgb(0, 0, 0);
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    flex-direction: column;
-}
+    #navbar-conta {
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+        padding: 1rem;
+        height: 100%;
+        width: 350px;
+        color: rgb(0, 0, 0);
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        flex-direction: column;
+    }
 .lateral-conta {
     display: flex;
     flex-direction: row;
@@ -34,8 +34,7 @@
     font-size: 26px;
     font-weight: 500;
     padding: 17px;
-    flex-wrap: wrap;
-    width: 220px;
+    white-space: nowrap;
 }
 #navbar-conta a {
     text-decoration: none;
@@ -197,6 +196,19 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     margin-bottom: 60px;
 
   }
+  .open_header_conta{ /*Classe que serve para tornar o menu sanduiche visivel*/
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    height: 2.6rem;
+    margin-bottom: 20px;
+    align-items: center;
+  }
   .open_header{ /*Classe que serve para tornar o menu sanduiche visivel*/
     display: flex;
     width: 100%;
@@ -256,10 +268,6 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
       }
 /* responsividade hilario*/
 
-/* aviso importante sobre a responsividade: tive que fazer uma escolha entre fazer com que
-a legenda sempre fique no lugar correto ou a scroll apareça na maior parte dos dispositivos,
-ou fazer com que a legenda as vezes fique ligeiramente pra extremamente incorreta mas a scroll
-só apareça quando necessário*/
 @media (max-width: 1150px) {
     #navbar-conta {
         width: 290px;
@@ -289,22 +297,13 @@ só apareça quando necessário*/
       max-width: 1550px;
     }
     #navbar-conta a {
-        font-size: 28px;
+        font-size: 24px;
     }
     #box{
         width: 1080px;
     }
-    .info-label {
-        font-size: 23px;
-    }
-    .info-value {
-        font-size: 23px;
-    }
-    .informacoes button {
-        font-size: 20px;
-    }
     .nome-lateral {
-        font-size: 30px;
+        font-size: 28px;
         white-space: nowrap;
     }
   }

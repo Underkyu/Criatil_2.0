@@ -9,6 +9,9 @@
     <title>Criatil</title>
 </head>
 <body>
+
+<?php include("header.php")?>
+
     <div class="container">
     <!-- página da conta -->
         <!-- 'navbar-conta' é a barra da esquerda com as páginas -->

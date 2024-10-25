@@ -9,6 +9,8 @@
     <title>Criatil</title>
 </head>
 
+<?php include("header.php")?>
+
 <body>
     <div class="container">
     <!-- página da conta -->

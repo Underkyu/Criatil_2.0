@@ -26,7 +26,7 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
   <!--Inicio Carrossel-->
-  <section class="slider_carrossel">
+  <section class="slider_carrossel">  
 
 
     <!-- Swiper -->

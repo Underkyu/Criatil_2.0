@@ -1,3 +1,14 @@
+<?php
+require_once("../controller/conexao.php");
+require_once("../controller/global.php");
+
+$stmt = $conn->prepare("SELECT Codigo_Brinq, Nome_Brinq, Preco_Brinq FROM brinquedo");
+$stmt->execute();
+
+$brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// coloca os dados da tabela em um vetor
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -46,129 +57,38 @@
   <!--Classe container para responsividade-->
   <div class="container">
     
-    <!--Inicio product slider 1-->
-    <h1 class="titulo">Novidades</h1>
-
+<!--Inicio product slider 1-->
+<h1 class="titulo">Novidades</h1>
     <div class="slider">
       <div class="swiper-button-prev seta prev-product"></div>
       <div class="swiper product">
         <div class="swiper-wrapper">
-
+          <?php
+            foreach ($brinquedos as $brinquedo) {
+              // seleciona a img do brinquedo atual
+              $stmt = $conn->query("SELECT Imagem FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem LIMIT 1");
+              $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
+          ?>
           <!--Div que contem os elementos do card-->
           <div class="card swiper-slide">
             <div class="imagem_card">
-              <img src="../imagens/Produtos/Miku/Imagem1.png" alt="Pelúcia Hatsune Miku" class="foto_card">
+              <img src="<?php echo $imagem['Imagem']; ?>" class="foto_card">
             </div>
-
-            <h4 class="titulo_card">Pelúcia Hatsune Miku</h4>
-            <p class="texto_pequeno">Por apenas</p>
-            <h3 class="preco">R$99,99</h3>
-
-            <button class="card"> <!--Botão de comprar-->
+            <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
+            <h3 class="preco">R$<?php echo $brinquedo['Preco_Brinq']; ?></h3>
+            <button class="card">
               <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
               <p class="botao_card">Comprar!</p>
             </button>
-          </div>
-          <!--Fim card-->
-
-          <!--Div que contem os elementos do card-->
-          <div class="card swiper-slide">
-            <div class="imagem_card">
-              <img src="../imagens/Produtos/CuboMagico/imagem1.png" alt="Cubo Magico Tatil" class="foto_card">
-              <img src="../imagens/Selo/Visual.png" alt="Selo de deficiencia visual" class="selo_deficiencia">
             </div>
-
-            <h4 class="titulo_card">Cubo Magico Tatil</h4>
-            <p class="texto_pequeno">Por apenas</p>
-            <h3 class="preco">R$39,99</h3>
-
-            <button class="card"> <!--Botão de comprar-->
-              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-              <p class="botao_card">Comprar!</p>
-            </button>
-          </div>
           <!--Fim card-->
-
-          <!--Div que contem os elementos do card-->
-          <div class="card swiper-slide">
-            <div class="imagem_card">
-              <img src="../imagens/Produtos/Nerf/imagem1.png" alt="Arma Nerf" class="foto_card">
-              <img src="../imagens/Selo/Desconto.png" alt="Selo de desconto" class="selo_desconto">
-            </div>
-
-            <h4 class="titulo_card">Pistola Nerf</h4>
-            <s class="texto_pequeno">R$99,99</s>
-            <h3 class="preco">R$79,99</h3>
-
-            <button class="card"> <!--Botão de comprar-->
-              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-              <p class="botao_card">Comprar!</p>
-            </button>
-          </div>
-          <!--Fim card-->
-
-          <!--Div que contem os elementos do card-->
-          <div class="card swiper-slide">
-            <div class="imagem_card">
-              <img src="../imagens/Produtos/Funko/imagem1.png" alt="Funko Pop Oshawott" class="foto_card">
-            </div>
-
-            <h4 class="titulo_card">Funko Pop Oshawott</h4>
-            <p class="texto_pequeno">Por apenas</p>
-            <h3 class="preco">R$129,99</h3>
-
-            <button class="card"> <!--Botão de comprar-->
-              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-              <p class="botao_card">Comprar!</p>
-            </button>
-          </div>
-          <!--Fim card-->
-
-          <!--Div que contem os elementos do card-->
-          <div class="card swiper-slide">
-            <div class="imagem_card">
-              <img src="../imagens/Produtos/Bola/imagem1.png" alt="Bola com Guizo" class="foto_card">
-              <img src="../imagens/Selo/Visual.png" alt="Selo de deficiencia visual" class="selo_deficiencia">
-            </div>
-
-            <h4 class="titulo_card">Bola com Guizo</h4>
-            <p class="texto_pequeno">Por apenas</p>
-            <h3 class="preco">R$119,99</h3>
-
-            <button class="card"> <!--Botão de comprar-->
-              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-              <p class="botao_card">Comprar!</p>
-            </button>
-          </div>
-          <!--Fim card-->
-
-          <!--Div que contem os elementos do card-->
-          <div class="card swiper-slide">
-            <div class="imagem_card">
-              <img src="../imagens/Produtos/Libras/imagem1.png" alt="Jogo alfabeto em libras" class="foto_card">
-              <img src="../imagens/Selo/Desconto.png" alt="Selo de desconto" class="selo_desconto">
-              <img src="../imagens/Selo/Auditiva.png" alt="Selo de deficiencia auditiva" class="selo_deficiencia">
-            </div>
-
-            <h4 class="titulo_card">Jogo Alfabeto em Libras</h4>
-            <s class="texto_pequeno">R$69,99</s>
-            <h3 class="preco">R$59,99</h3>
-
-            <button class="card"> <!--Botão de comprar-->
-              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-              <p class="botao_card">Comprar!</p>
-            </button>
-          </div>
-          <!--Fim card-->
-
-
+          <?php } ?>
         </div>
         <div class="swiper-pagination"></div>
       </div>
       <div class="swiper-button-next seta next-product"></div>
     </div>
     <!--Fim product slider 1-->
-
     <!--Inicio imagens promocionais-->
     <div class="promocionais">
       <img src="../imagens/Promocional/tamagotchi.png" alt="Tamagotchi" class="imagem_promocional img1">
@@ -179,123 +99,49 @@
 
     <!--Inicio product slider 2-->
     <h1 class="titulo">Populares</h1>
-
+👎︎✌︎☼︎😐︎ 👎︎✌︎☼︎😐︎☜︎☼︎ ✡︎☜︎❄︎ 👎︎✌︎☼︎😐︎☜︎☼︎
+<br>
+❄︎☟︎☜︎ 👎︎✌︎☼︎😐︎☠︎☜︎💧︎💧︎ 😐︎☜︎☜︎🏱︎💧︎ ☝︎☼︎⚐︎🕈︎✋︎☠︎☝︎
+<br>
+❄︎☟︎✋︎💧︎ ☠︎☜︎✠︎❄︎ ☜︎✠︎🏱︎☜︎☼︎✋︎💣︎☜︎☠︎❄︎
+<br>
+💧︎☜︎☜︎💣︎💧︎
+<br>
+✞︎☜︎☼︎✡︎
+<br>
+✞︎☜︎☼︎✡︎
+<br>
+✋︎☠︎❄︎☜︎☼︎☜︎💧︎❄︎✋︎☠︎☝︎
+    <h1 class="titulo">Novidades</h1>
     <div class="slider">
-      <div class="swiper-button-prev seta prev-product2"></div>
-      <div class="swiper product2">
+      <div class="swiper-button-prev seta prev-product"></div>
+      <div class="swiper product">
         <div class="swiper-wrapper">
-
-        <!--Div que contem os elementos do card-->
-        <div class="card swiper-slide">
-          <div class="imagem_card">
-            <img src="../imagens/Produtos/Funko/imagem1.png" alt="Funko Pop Oshawott" class="foto_card">
-          </div>
-
-          <h4 class="titulo_card">Funko Pop Oshawott</h4>
-          <p class="texto_pequeno">Por apenas</p>
-          <h3 class="preco">R$129,99</h3>
-
-          <button class="card"> <!--Botão de comprar-->
-            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-            <p class="botao_card">Comprar!</p>
-          </button>
-        </div>
-        <!--Fim card-->
-
-        <!--Div que contem os elementos do card-->
-        <div class="card swiper-slide">
-          <div class="imagem_card">
-            <img src="../imagens/Produtos/Bola/imagem1.png" alt="Bola com Guizo" class="foto_card">
-            <img src="../imagens/Selo/Visual.png" alt="Selo de deficiencia visual" class="selo_deficiencia">
-          </div>
-
-          <h4 class="titulo_card">Bola com Guizo</h4>
-          <p class="texto_pequeno">Por apenas</p>
-          <h3 class="preco">R$119,99</h3>
-
-          <button class="card"> <!--Botão de comprar-->
-            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-            <p class="botao_card">Comprar!</p>
-          </button>
-        </div>
-        <!--Fim card-->
-
-        <!--Div que contem os elementos do card-->
-        <div class="card swiper-slide">
-          <div class="imagem_card">
-            <img src="../imagens/Produtos/Libras/imagem1.png" alt="Jogo alfabeto em libras" class="foto_card">
-            <img src="../imagens/Selo/Desconto.png" alt="Selo de desconto" class="selo_desconto">
-            <img src="../imagens/Selo/Auditiva.png" alt="Selo de deficiencia auditiva" class="selo_deficiencia">
-          </div>
-
-          <h4 class="titulo_card">Jogo Alfabeto em Libras</h4>
-          <s class="texto_pequeno">R$69,99</s>
-          <h3 class="preco">R$59,99</h3>
-
-          <button class="card"> <!--Botão de comprar-->
-            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-            <p class="botao_card">Comprar!</p>
-          </button>
-        </div>
-        <!--Fim card-->
-
-        <!--Div que contem os elementos do card-->
-        <div class="card swiper-slide">
-          <div class="imagem_card">
-            <img src="../imagens/Produtos/Miku/Imagem1.png" alt="Pelúcia Hatsune Miku" class="foto_card">
-          </div>
-
-          <h4 class="titulo_card">Pelúcia Hatsune Miku</h4>
-          <p class="texto_pequeno">Por apenas</p>
-          <h3 class="preco">R$99,99</h3>
-
-          <button class="card"> <!--Botão de comprar-->
-            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-            <p class="botao_card">Comprar!</p>
-          </button>
-        </div>
-        <!--Fim card-->
-
-        <!--Div que contem os elementos do card-->
-        <div class="card swiper-slide">
-          <div class="imagem_card">
-            <img src="../imagens/Produtos/CuboMagico/imagem1.png" alt="Cubo Magico Tatil" class="foto_card">
-            <img src="../imagens/Selo/Visual.png" alt="Selo de deficiencia visual" class="selo_deficiencia">
-          </div>
-
-          <h4 class="titulo_card">Cubo Magico Tatil</h4>
-          <p class="texto_pequeno">Por apenas</p>
-          <h3 class="preco">R$39,99</h3>
-
-          <button class="card"> <!--Botão de comprar-->
-            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-            <p class="botao_card">Comprar!</p>
-          </button>
-        </div>
-        <!--Fim card-->
-
-        <!--Div que contem os elementos do card-->
-        <div class="card swiper-slide">
-          <div class="imagem_card">
-            <img src="../imagens/Produtos/Nerf/imagem1.png" alt="Arma Nerf" class="foto_card">
-            <img src="../imagens/Selo/Desconto.png" alt="Selo de desconto" class="selo_desconto">
-          </div>
-
-          <h4 class="titulo_card">Pistola Nerf</h4>
-          <s class="texto_pequeno">R$99,99</s>
-          <h3 class="preco">R$79,99</h3>
-
-          <button class="card"> <!--Botão de comprar-->
-            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-            <p class="botao_card">Comprar!</p>
-          </button>
-        </div>
-        <!--Fim card-->
-
+          <?php
+            // Loop através dos brinquedos e exibição na página
+            foreach ($brinquedos as $brinquedo) {
+              // Seleciona as imagens do brinquedo atual
+              $stmt = $conn->query("SELECT Imagem FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem LIMIT 1");
+              $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
+          ?>
+          <!--Div que contem os elementos do card-->
+          <div class="card swiper-slide">
+            <div class="imagem_card">
+              <img src="<?php echo $imagem['Imagem']; ?>" class="foto_card">
+            </div>
+            <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
+            <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>
+            <button class="card">
+              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+              <p class="botao_card">Comprar!</p>
+            </button>
+            </div>
+          <!--Fim card-->
+          <?php } ?>
         </div>
         <div class="swiper-pagination"></div>
       </div>
-      <div class="swiper-button-next seta next-product2"></div>
+      <div class="swiper-button-next seta next-product"></div>
     </div>
     <!--Fim product slider 2-->
 
@@ -311,5 +157,4 @@
   <!-- Initialize Swiper -->
   <script src="../js/index.js"> </script>
 </body>
-
 </html>

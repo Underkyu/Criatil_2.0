@@ -79,7 +79,7 @@ class Usuario{
     }
 
     public function setImagem($imagem){
-        $this->image = $imagem;
+        $this->imagem = $imagem;
     }
 
     public function getToken(){

@@ -32,7 +32,6 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Swiper -->
     <div class="swiper carrossel" id="carrossel">
     <?php include("header.php")?>
-    <br>
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <img src="../imagens/Carrossel/imagem1.png" alt="Barbie carrossel" id="grande" class="imagem_carrossel1">

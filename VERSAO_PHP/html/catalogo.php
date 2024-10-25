@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <?php include("header.php") ?>
     <div class="containerCatalogo"><!--Container de todo conteúdo-->
         <div class="filtros"><!--Caixa dos filtros-->
             <div class="titulofiltro">

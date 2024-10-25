@@ -1,5 +1,5 @@
 <?php
-class Brinquedo {
+class Produto {
     private $Codigo_Brinq;
     private $Codigo_Selo;
     private $Codigo_Categoria;
@@ -81,5 +81,11 @@ class Brinquedo {
     public function setFaixaEtaria($Faixa_Etaria) {
         $this->Faixa_Etaria = $Faixa_Etaria;
     }
+}
+
+interface ProdutoDAOInterface {
+    public function buildProduct($data);
+    public function criarP(Produto $produto);
+    public function atualizaP(Produto $produto, $redirect = true);
 }
 ?>

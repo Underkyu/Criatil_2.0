@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23/10/2024 às 06:52
+-- Tempo de geração: 25/10/2024 às 20:31
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -54,6 +54,13 @@ CREATE TABLE `brinquedo` (
   `Faixa_Etaria` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `brinquedo`
+--
+
+INSERT INTO `brinquedo` (`Codigo_Brinq`, `Codigo_Selo`, `Codigo_Categoria`, `Nome_Brinq`, `Preco_Brinq`, `Nota`, `Fabricante`, `Descricao`, `Faixa_Etaria`) VALUES
+(1, 1, 1, 'Hatsune Miku Funko Pop', 89.99, 4.5, 'FunkoMake', 'Uma boneca hatsunemiku de funko pop para todas suas necessidades vocaloidescas', '13+');
+
 -- --------------------------------------------------------
 
 --
@@ -87,8 +94,15 @@ CREATE TABLE `carrinho` (
 
 CREATE TABLE `categoria` (
   `Codigo_Categoria` int(11) NOT NULL,
-  `Nome_Categoria` int(11) NOT NULL
+  `Nome_Categoria` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `categoria`
+--
+
+INSERT INTO `categoria` (`Codigo_Categoria`, `Nome_Categoria`) VALUES
+(1, 'Funko Pops');
 
 -- --------------------------------------------------------
 
@@ -151,8 +165,15 @@ CREATE TABLE `pedido` (
 
 CREATE TABLE `selo` (
   `Codigo_Selo` int(11) NOT NULL,
-  `Nome_Selo` int(11) NOT NULL
+  `Nome_Selo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `selo`
+--
+
+INSERT INTO `selo` (`Codigo_Selo`, `Nome_Selo`) VALUES
+(1, 'Deficiente Auditivo');
 
 -- --------------------------------------------------------
 
@@ -287,7 +308,7 @@ ALTER TABLE `avaliacao`
 -- AUTO_INCREMENT de tabela `brinquedo`
 --
 ALTER TABLE `brinquedo`
-  MODIFY `Codigo_Brinq` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo_Brinq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `brinqvendido`
@@ -299,7 +320,7 @@ ALTER TABLE `brinqvendido`
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `Codigo_Categoria` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `cupom`
@@ -323,7 +344,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de tabela `selo`
 --
 ALTER TABLE `selo`
-  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`

@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');/* Import da fonte padrão */
-
-* {/*Definição de parâmetros padrão */
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  background-color: none;
-  font-family: "Roboto";
-}
+*{/*Zerar valores e aplicar fonte padrão (Roboto)*/
+    background-color: none;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    }
 .texto_pequeno{
     margin-top: 0;
 }
@@ -14,6 +12,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 30px;
 }
 .SliderFiltro{
     display: none;

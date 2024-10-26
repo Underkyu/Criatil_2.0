@@ -98,18 +98,13 @@ public function atualizaP(Produto $produto, $redirect = true){
 }
 public function pesquisarPorNome($nomeBrinq) {
     if($nomeBrinq != "") {
-        // coloca % antes e dps do nome pra achar resultados parecidos
+        // coloca % antes e depois da variável pra achar resultados parecidos
         $nomeBrinq = '%' . $nomeBrinq . '%';
-
-        $stmt = $this->conexao->prepare("SELECT * FROM brinquedo WHERE Nome_Brinq LIKE :nome"); 
-        $stmt->bindParam(":nome", $nomeBrinq); 
-        $stmt->execute(); 
-
-        if($stmt->rowCount() > 0) { 
-            $data = $stmt->fetch();
-            $produto = $this->buildProduct($data); 
-
-            return $produto;   
+        $stmt = $this->conexao->prepare("SELECT * FROM brinquedo WHERE Nome_Brinq LIKE :nome");
+        $stmt->bindParam(":nome", $nomeBrinq);
+        $stmt->execute();
+        if($stmt->rowCount() > 0) {
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } else {
             return false;
         }
@@ -117,5 +112,6 @@ public function pesquisarPorNome($nomeBrinq) {
         return false;
     }
 }
+
 }
 ?>

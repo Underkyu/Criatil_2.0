@@ -34,7 +34,7 @@ $usuarioData = $userDao->verificarToken(false);
                     <img src="../imagens/Header/LogoBranca.png" alt="Logo da Criatil na cor branca" class="Logo_header">
                 </a>
                 <form method="POST" action="../controller/produtoProcess.php">
-                <input type="text" class="pesquisa" name="Nome_Brinq" placeholder="Pesquisa">  <!--Barra de pesquisa-->
+                <input type="text" class="pesquisa" name="Nome_Brinq" placeholder="Buscar na Criatil">  <!--Barra de pesquisa-->
                 <input type="hidden" name="Tipo" value="Pesquisa"> <!-- Input pra definir o tipo (pesquisa de nome de produto) -->
                 </form>
                 <div class="links_normais">

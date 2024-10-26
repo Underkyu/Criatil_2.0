@@ -19,12 +19,13 @@ if($tipo === "Pesquisa"){ // entra aqui caso $tipo tenha o valor Pesquisa
         $produtos = $produtoDao->pesquisarPorNome($nomeBrinq);
 
         if($produtos){
-            $message->setMessage("Pesquisa realizada com sucesso","Produtos encontrados","success","../html/catalogo.php");
+            $_SESSION['produtos'] = $produtos;
+            header("Location: ../html/catalogo.php");
         } else{
-            $message->setMessage("Nenhuma correspondência","Nenhum brinquedo encontrado","error","back");
+            $message->setMessage("Nenhuma correspondência","Nenhum brinquedo encontrado","error","../html/catalogo.php");
         }
-    } else{
-        $message->setMessage("Campo vazio","Por favor, preeencha o campo de pesquisa","error","back");
-    }
+    }else{
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+    }   
 }
 ?>

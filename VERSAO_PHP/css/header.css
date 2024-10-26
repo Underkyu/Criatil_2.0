@@ -38,7 +38,7 @@ div.header_normal{ /*Div que contem o conteudo do header de pc*/
 input.pesquisa { /*Barra de pesquisa*/
     width: 6rem;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 18px;
     background-color: white;
     background-image: url("../imagens/Header/Lupa.png");
     background-position: 380px 9px; 
@@ -49,10 +49,12 @@ input.pesquisa { /*Barra de pesquisa*/
     height: 3.3rem;
     width: 27rem;
     border-radius: 20px;
+    font-weight: 500;
   }
   input.pesquisa::placeholder{
     color: #33363F;
     font-size: 1.1rem;
+    font-weight: 500;
   }
 
   input:focus {

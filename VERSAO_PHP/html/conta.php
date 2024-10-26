@@ -79,31 +79,45 @@ $usuarioData = $userDao->verificarToken(false);
                 <div class="informacoes">
                     <div class="info-item">
                         <div class="info-label">Nome completo:</div>
-                        <div class="info-value">Rosana Siqueira</div>
+                        <div class="info-value">
+                            <input class="usuario-info" type="text" value="Rosana Siqueira" readonly>
+                        </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Data de nascimento:</div>
-                        <div class="info-value">01/04/1985</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value="01/04/1985" readonly>
+                        </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Email:</div>
-                        <div class="info-value">rosana.siqueiras@gmail.com</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value="rosanasiqueira@gmail.com" readonly>
+                        </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Telefone:</div>
-                        <div class="info-value">(11) 97905-7355</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value="(11) 97381-3812" readonly>
+                        </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">CEP:</div>
-                        <div class="info-value">03313-020</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value="3232323" readonly>
+                        </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Endereço:</div>
-                        <div class="info-value">R. Duarte de Azevedo 210</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value="R. Duarte de Azevedo 210" readonly>
+                        </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Complemento:</div>
-                        <div class="info-value">Nenhum complemento adicionado</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value="Nenhum complemento adicionado" readonly>
+                        </div>
                     </div>
                     <button class="editar">Editar</button>
                 </div>
@@ -112,7 +126,9 @@ $usuarioData = $userDao->verificarToken(false);
                     <div class="img-container"> 
                         <img src="../imagens/Conta/rosana.jpg" class="img-conta">
                         <div class="editar-icone">
+                        <button class="editar-img"> <!-- botão pra editar imagem do usuário-->
                             <img src="../imagens/Icons/Editar.png" class="icone-editar">
+                        </button>
                         </div>
                     </div>
                     <h2 class="nome-conta">Rosana Siqueira</h2>

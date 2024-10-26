@@ -103,9 +103,22 @@
     justify-content: space-evenly;
     gap: 50px;
 }
+.usuario-info{
+    font-weight: 500;
+    font-size: 18px;
+    background-color: none;
+    background: none;
+    border: 2px solid grey; 
+    text-align: end;
+    margin: 0;
+    padding: 1px;
+    width: 100%;
+    overflow: visible;
+}
 .informacoes {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     gap: 3px;
     font-size: 16px;
     margin-top: 40px;
@@ -136,6 +149,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+    width: 500px;
 }
 .info-label {
     font-weight: 500;
@@ -145,7 +159,7 @@
     text-overflow: ellipsis;
 }
 .info-value {
-    text-align: right;
+    text-align: end;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -167,23 +181,35 @@
     font-weight: 500;
     margin-top: 10px;
 }
-.img-container {
-    position: relative;
-    display: inline-block;
-}
-.editar-icone /* div q contém o ícone */ {
+.editar-img {
+    all: unset;
+    display: inline-flex;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  .editar-icone {
     position: absolute;
     bottom: 10px;
     right: 10px;
     background-color: #F2AF00;      
     border-radius: 100%;
     padding: 1px;
-    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
 }
 .editar-icone img {
     width: 40px;
     height: 35px;
     object-fit: cover;
+}
+.editar-img:hover {
+    transform: scale(1.1);
+  }
+  .editar-icone:hover {
+    transform: scale(1.3); /* Expande o círculo inteiro */
+}
+.img-container {
+    position: relative;
+    display: inline-block;
 }
 /* css do menu sanduíche */
 .sanduiche-div{
@@ -450,14 +476,12 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
         padding: 12px;
     }
     .conta-box {
-        position: absolute;
         margin: 0;
         top: 10px;
         left: 50%;
         transform: translateX(-50%);
     }
     .informacoes {
-        position: relative;
         top: 80px;
         margin: 0;
         align-items: flex-start;

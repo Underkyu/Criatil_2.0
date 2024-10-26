@@ -169,7 +169,7 @@
           </div>
 
           <button class="comprar">
-            <p class="comprar">Comprar</p>
+            <p class="comprar">Adiconar à lista de favoritos</p>
           </button>
 
           <button class="carrinho">
@@ -372,11 +372,17 @@
         <div class="swiper-button-next seta next-product"></div>
       </div>
       <!--Fim product slider 1-->
-
-      <h2 class="avaliacoes">Deixe sua avalição</h2>
       <div class="add_ava">
+        <div class="ava_container">
+      <h2 class="add_ava">Deixe sua avalição</h2>
         <div class="titulo_ava">
+          <div class="input_ava">
+          <h3 class="titulo_input_ava">Titulo</h3>
           <input type="text" class="titulo_ava" placeholder="Digite o título da avaliação">
+          </div>
+        
+          <div class="input_ava">
+          <h3 class="titulo_input_ava">Estrelas</h3>
           <select name="" id="" class="num_estrelas"><!--Select com o tipo de cliente e no qual o garente irá mudar para bloqueado para bloquear o acesso da conta ao site-->
             <option value= 5>5</option>
             <option value= 4>4</option>
@@ -384,9 +390,18 @@
             <option value= 2>2</option>
             <option value= 1>1</option>
           </select>
+          </div>
         </div>
         <div class="comentario">
+            <h3 class="titulo_input_ava">Comentario</h3>
             <input type="text" class="comentario" placeholder="Deixe aqui sua opinião do produto">
+        </div>
+        <div class="botao_ava">
+          <button class="add_ava">
+            <img src="../imagens/Gerente/mais.png" alt="Adicionar" class="add_ava_button">
+            <p class="add_ava_button">Adicionar avaliação</p>
+          </button>
+        </div>
           </div>
       </div>
       

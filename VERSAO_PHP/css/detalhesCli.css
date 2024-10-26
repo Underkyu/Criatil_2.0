@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html{
+    overflow-y: scroll;
+}
+h1.titulo{ /*Titulo da página*/
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+div.conteudo{ /*Div com todo o conteudo da página*/
+    display: flex;
+    flex-direction: column;
+    overflow: overlay;
+}
+
+div.detalhes{/*Div com as informaçõpes e foto do cliente*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img.foto_cliente{/*Foto do cliente*/
+    width: 15rem;
+    height: 15rem;
+    border-radius: 1000px;
+    border:  solid 1px #4A4A4A;
+    margin-right: 2rem;
+}
+
+div.inputs{ /*Div que contem todos os inputs*/
+    display: flex;
+}
+
+div.coluna2{ /*Segunda coluna de inputs*/
+    margin-left: 4rem;
+}
+
+h5.titulo{/*Tituço em cima do input com informação*/
+    font-size: 1.5rem;
+}
+
+input.informacao{/*Inputs que irão conter as infromações*/
+    border: solid #0476D9 3.5px;
+    border-radius: 15px;
+    width: 14rem;
+    height: 3rem;
+    margin-bottom: 1.5rem;
+    color: #737373;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+select.informacao{/*Inputs que irão conter as infromações*/
+    border: solid #0476D9 3.5px;
+    border-radius: 15px;
+    width: 14.3rem;
+    height: 3.3rem;
+    margin-bottom: 1.5rem;
+    color: #737373;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: .5rem;
+}
+
+div.botao{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+button.atualizar{ /*Botão de atualizar infromações do cliente*/
+    background-color: #F2AF00;
+    display: flex; 
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: .5rem;
+    border: none;
+    border-radius: 15px;
+    width: 15.5rem;
+    height: 3.5rem;
+  }
+
+button.atualizar:hover{ 
+    background-color: #e2a200; 
+    transition: all 0.3s ease-in-out;
+  }
+  
+  img.atualizar{/*Icon "+"  no botão de adicionar um novo brinquedo*/
+    width: 2.25rem;
+    margin-left: 1rem;
+  }
+
+/*Responsividade*/
+.container {
+    max-width: 1425px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 2xl */
+  @media (max-width: 1536px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+  
+  /* xl */
+  @media (max-width: 1280px) {
+    .container {
+      max-width: 1024px;
+    }
+    
+  }
+  
+  /* lg */
+  @media (max-width: 1024px) {
+    .container {
+      max-width: 768px;
+    }
+    div.detalhes{/*Div com as informaçõpes e foto do cliente*/
+        flex-direction: column;
+    }
+  }
+  
+  /* md */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 700px;
+    }
+  }
+  
+  /* sm */
+  @media (max-width: 640px) {
+    .container {
+      max-width: 600px;
+    }
+  
+  }
+  
+  /* sm */
+  @media (max-width: 555px) {
+    div.inputs{
+        flex-direction: column;
+    }
+    div.coluna2{
+        margin: 0px;
+    }
+    select.informacao{/*Inputs que irão conter as infromações*/
+        margin-bottom: 5rem;
+    }
+  }
+  
+  /* xs */
+  @media (max-width: 475px) {
+    .container {
+      width: 100%;
+      padding: 0;
+    }
+    
+  }
+    /* xxs */
+  @media (max-width: 375px) {
+    .container {
+      width: 100%;
+    }
+  }

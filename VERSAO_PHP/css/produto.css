@@ -122,6 +122,7 @@ p.comprar{ /*Texto dentro do botão de comprar*/
   font-size: 1.5rem;
   padding: 0;
   margin: 0;
+  font-weight: bold;
 }
 
 button.carrinho{ /*Botão de adoiconar ao carrinho*/
@@ -137,6 +138,7 @@ p.carrinho{ /*Texto dentro do botão de adicioanar ao carrinho*/
   font-size: 1.5rem;
   padding: 0;
   margin: 0;
+  font-weight: bold;
 }
 
   /*Css doido para fazer um botão igual o do figma*/
@@ -322,18 +324,32 @@ p.avaliacao{
 div.add_ava{
   display: flex;
   flex-direction: column;
+  background-color: #0476D9;
+  border-radius: 15px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem ;
+}
+div.ava_container{
+  width: 80%;
 }
 div.titulo_ava{ /*Div onde ficam os imputs de titulo e número de estrelas da avaliação*/
   display: flex;
-  justify-content: center;
   width: 100%;
+  justify-content: space-between;
+  margin-bottom: 2rem;
 }
 input.titulo_ava{ /*Input na qual o cliente passará o titulo da */
   border: #D4D4D4 solid 3px;
   border-radius: 15px;
   padding: .75rem;
   height: 2.5rem;
-  width: 60%;
+  width: 30rem;
   margin-right: 2rem;
   font-size: 1.15rem;
 }
@@ -342,11 +358,15 @@ select.num_estrelas{ /*Select do número de estrlas da avaliação*/
   border-radius: 15px;
   padding: .75rem;
   height: 4.3rem;
-  width: 5%;
+  width: 10rem;
   font-size: 1.15rem;
 }
 
 input:focus {
+  outline: 0;
+}
+
+select:focus {
   outline: 0;
 }
 
@@ -355,9 +375,58 @@ input.comentario{ /*Input na qual o cliente passará o titulo da */
   border-radius: 15px;
   padding: .75rem;
   height: 2.5rem;
-  width: 70%;
-  margin-right: 2rem;
+  width: 100%;
   font-size: 1.15rem;
+  height: 10rem;
+  margin-bottom: 3rem;
+  align-items: start;
+}
+
+h2.add_ava{/*Texto de adicionar avaliação*/
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  margin: 1rem;
+}
+
+div.comentario{ /*Div com o input de adicionar comentario*/
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+h3.titulo_input_ava{ /*Titulos que ficam em ciam dos inputs*/
+  color: white;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+div.botao_ava{ /*Div que contem o botão de adicionar comentario*/
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+img.add_ava_button{ /*Imagem de + que fica no botão*/
+  width: 3rem;
+  margin-right: 1rem;
+}
+button.add_ava{
+  border: none;
+  border-radius: 10px;
+  width: 16rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #F2AF00;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+}
+p.add_ava_button{
+  font-weight: bold;
+  font-size: 1rem;
 }
 /*Fim CSS avaçliações*/
 
@@ -443,6 +512,16 @@ div.product{ /* Div dos produtos*/
     max-width: 1024px;
   }
 
+  div.titulo_ava{ /*Div onde ficam os imputs de titulo e número de estrelas da avaliação*/
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-direction: column;
+  }
+  input.titulo_ava{ /*Input na qual o cliente passará o titulo da */
+    margin-bottom: 3rem;
+  }
 }
 
 /* lg */
@@ -503,6 +582,19 @@ div.product{ /* Div dos produtos*/
   div.carrossel{
     width:80%;
   }
+  div.ava_container{
+    width: 100%;
+  }
+  input.titulo_ava{ /*Input na qual o cliente passará o titulo da */
+    width: 90%;
+  }
+  input.comentario{ /*Input na qual o cliente passará o titulo da */
+    width:90%;
+  }
+  h2.add_ava{/*Texto de adicionar avaliação*/
+    width: 90%;
+  }
+  
 }
 
 /* sm */
@@ -538,6 +630,9 @@ div.product{ /* Div dos produtos*/
   p.texto_avaliacao{/*O texto da avalição*/
     font-size: 1.3rem;
   }
+  input.titulo_ava{ /*Input na qual o cliente passará o titulo da */
+    margin-right: 0rem;
+  }
 }
 
 @media (max-width: 580px) {
@@ -552,7 +647,9 @@ div.product{ /* Div dos produtos*/
     width: 25rem;
     height: 25rem;
   }
-  div.detalhes{}
+  h2.add_ava{/*Texto de adicionar avaliação*/
+    font-size: 1.75rem;
+  }
 }
 
 /* xs */
@@ -612,6 +709,9 @@ div.product{ /* Div dos produtos*/
     margin: 0;
     margin-top: 1rem;
     margin-bottom: .25rem;
+  }
+  h2.add_ava{/*Texto de adicionar avaliação*/
+    font-size: 1.7rem;
   }
 }
 

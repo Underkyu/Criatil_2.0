@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23/10/2024 às 06:52
+-- Tempo de geração: 25/10/2024 às 23:38
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -54,6 +54,18 @@ CREATE TABLE `brinquedo` (
   `Faixa_Etaria` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `brinquedo`
+--
+
+INSERT INTO `brinquedo` (`Codigo_Brinq`, `Codigo_Selo`, `Codigo_Categoria`, `Nome_Brinq`, `Preco_Brinq`, `Nota`, `Fabricante`, `Descricao`, `Faixa_Etaria`) VALUES
+(1, 1, 1, 'Hatsune Miku Funko Pop', 89.99, 4.5, 'FunkoMake', 'Uma boneca hatsunemiku de funko pop para todas suas necessidades vocaloidescas', '13+'),
+(2, 1, 1, 'Ralsei FunkoPop', 65.99, 4, 'FunkoCreate', 'Pelúcia do Ralsei from DeltaRune ele não', '7+'),
+(3, 1, 1, 'Bola de fut', 39.99, 3, 'FootSolutions', 'Uma bola de futebol para futebol', '0'),
+(4, 1, 1, 'Bola de fut', 39.99, 3, 'FootSolutions', 'Uma bola de futebol para futebol', '0'),
+(5, 1, 1, 'Bola de fut', 39.99, 3, 'FootSolutions', 'Uma bola de futebol para futebol', '0'),
+(6, 1, 1, 'Bola de fut', 39.99, 3, 'FootSolutions', 'Uma bola de futebol para futebol', '0');
+
 -- --------------------------------------------------------
 
 --
@@ -87,8 +99,15 @@ CREATE TABLE `carrinho` (
 
 CREATE TABLE `categoria` (
   `Codigo_Categoria` int(11) NOT NULL,
-  `Nome_Categoria` int(11) NOT NULL
+  `Nome_Categoria` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `categoria`
+--
+
+INSERT INTO `categoria` (`Codigo_Categoria`, `Nome_Categoria`) VALUES
+(1, 'Funko Pops');
 
 -- --------------------------------------------------------
 
@@ -115,6 +134,20 @@ CREATE TABLE `imagem` (
   `Imagem` varchar(300) NOT NULL,
   `Num_Imagem` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `imagem`
+--
+
+INSERT INTO `imagem` (`Codigo_Imagem`, `Codigo_Brinq`, `Imagem`, `Num_Imagem`) VALUES
+(1, 1, '../imagens/Produtos/Miku/Imagem1.png', 1),
+(2, 1, '../imagens/Produtos/Miku/imagem2.png', 2),
+(3, 1, '../imagens/Produtos/Miku/imagem3.png', 3),
+(4, 2, '../imagens/Produtos/Ralsei/ralseideltarune.png', 1),
+(5, 3, '../imagens/Produtos/Bola/imagem1.png', 1),
+(6, 4, '../imagens/Produtos/Bola/imagem1.png', 1),
+(7, 5, '../imagens/Produtos/Bola/imagem1.png', 1),
+(8, 6, '../imagens/Produtos/Bola/imagem1.png', 1);
 
 -- --------------------------------------------------------
 
@@ -151,8 +184,15 @@ CREATE TABLE `pedido` (
 
 CREATE TABLE `selo` (
   `Codigo_Selo` int(11) NOT NULL,
-  `Nome_Selo` int(11) NOT NULL
+  `Nome_Selo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `selo`
+--
+
+INSERT INTO `selo` (`Codigo_Selo`, `Nome_Selo`) VALUES
+(1, 'Deficiente Auditivo');
 
 -- --------------------------------------------------------
 
@@ -287,7 +327,7 @@ ALTER TABLE `avaliacao`
 -- AUTO_INCREMENT de tabela `brinquedo`
 --
 ALTER TABLE `brinquedo`
-  MODIFY `Codigo_Brinq` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo_Brinq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `brinqvendido`
@@ -299,7 +339,7 @@ ALTER TABLE `brinqvendido`
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `Codigo_Categoria` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `cupom`
@@ -311,7 +351,7 @@ ALTER TABLE `cupom`
 -- AUTO_INCREMENT de tabela `imagem`
 --
 ALTER TABLE `imagem`
-  MODIFY `Codigo_Imagem` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo_Imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `pedido`
@@ -323,7 +363,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de tabela `selo`
 --
 ALTER TABLE `selo`
-  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`

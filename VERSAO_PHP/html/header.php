@@ -30,11 +30,13 @@ $usuarioData = $userDao->verificarToken(false);
         <div class="container" id="fundoHeader">
             <div class="header">
                 <div class="header_normal">
-                <img src="../imagens/Header/LogoBranca.png" alt="Logo da Criatil na cor branca" class="Logo_header"> <!--Logo-->
-                
+                <a href="principal.php">
+                    <img src="../imagens/Header/LogoBranca.png" alt="Logo da Criatil na cor branca" class="Logo_header">
+                </a>
+                <form method="POST" action="../controller/produtoProcess.php">
                 <input type="text" class="pesquisa" name="Nome_Brinq" placeholder="Pesquisa">  <!--Barra de pesquisa-->
                 <input type="hidden" name="Tipo" value="Pesquisa"> <!-- Input pra definir o tipo (pesquisa de nome de produto) -->
-
+                </form>
                 <div class="links_normais">
                 <a href="catalogo.php">
                 <div class="link_header">
@@ -71,7 +73,7 @@ $usuarioData = $userDao->verificarToken(false);
                     <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno">Realizar</p>
-                        <p class="pequeno  negrito">Login ou Cadastro</p>
+                        <p class="pequeno negrito">Login ou Cadastro</p>
                     </div>
                 </div>
                 </a>

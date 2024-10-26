@@ -1,3 +1,30 @@
-<?php 
+<?php
+require_once("global.php");
+require_once("conexao.php");
+require_once("../Dao/produtoDAO.php");
+require_once("../models/brinquedo.php");
+require_once("../models/message.php");
 
+$message = new Message($BASE_URL); //Criação de uma objeto de mansagem
+
+$produtoDao = new ProdutoDAO($conn,$BASE_URL);
+
+$tipo = filter_input(INPUT_POST,"Tipo"); //Atibui o valor o input nomeado como "Tipo" a varivel $tipo
+
+if($tipo === "Pesquisa"){ // entra aqui caso $tipo tenha o valor Pesquisa
+    $nomeBrinq = filter_input(INPUT_POST, "Nome_Brinq");
+
+    if($nomeBrinq){ // verifica se o campo está preenchido
+        $produtoDao = new ProdutoDAO($conn,$BASE_URL);
+        $produtos = $produtoDao->pesquisarPorNome($nomeBrinq);
+
+        if($produtos){
+            $message->setMessage("Pesquisa realizada com sucesso","Produtos encontrados","success","../html/catalogo.php");
+        } else{
+            $message->setMessage("Nenhuma correspondência","Nenhum brinquedo encontrado","error","back");
+        }
+    } else{
+        $message->setMessage("Campo vazio","Por favor, preeencha o campo de pesquisa","error","back");
+    }
+}
 ?>

@@ -1,4 +1,4 @@
-![Logo](https://raw.githubusercontent.com/Underkyu/Criatil_2.0/646e3848dfc2b801b30709aebe450b1a2a3b293e/imagens/Header/LogoVetor.svg)
+![Logo](https://github.com/Underkyu/Criatil_2.0/blob/391995f5c6b6c3295acc67f50d77f9a43cc9129e/VERS%C3%83O_HTML/imagens/Logo/criatillogo.png)
 <center><b>Segunda versão do projeto web de uma loja de brinquedo fictícia chamada Criatil em parceria com com A ETEC da Zona Leste e a multinacional IBM.</b>
 
 # Sumário

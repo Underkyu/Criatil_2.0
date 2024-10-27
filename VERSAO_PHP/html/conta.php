@@ -2,11 +2,13 @@
 require_once("../controller/global.php");
 require_once("../controller/conexao.php");
 require_once("../Dao/usuarioDAO.php");
+require_once("../models/usuario.php");
 
 
 $userDao = new UsuarioDAO($conn,$BASE_URL);
 
-$usuarioData = $userDao->verificarToken(false);
+$usuarioData = $userDao->verificarToken(true);
+
 ?>
 
 <!DOCTYPE html>
@@ -17,11 +19,12 @@ $usuarioData = $userDao->verificarToken(false);
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- link da fonte pro css saber que fonte usar -->
     <link rel="stylesheet" href="../css/conta.css">
     <script src="../js/menuSanduicheCONTA.js" defer></script>
+    <script src="../js/conta.js" defer></script>
     <title>Criatil</title>
 </head>
 <body>
 
-<?php include("header.php")?>
+<?php include("header.php");?>
 
     <div class="container">
     <!-- página da conta -->
@@ -77,54 +80,62 @@ $usuarioData = $userDao->verificarToken(false);
             <h1 class="titulo-box">Perfil</h1>
                <div class="perfil-container" id="perfil">
                 <div class="informacoes">
+                    <form action="../controller/usuarioProccess.php" method="POST">
                     <div class="info-item">
                         <div class="info-label">Nome completo:</div>
                         <div class="info-value">
-                            <input class="usuario-info" type="text" value="Rosana Siqueira" readonly>
+                            <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getNome());?>>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Data de nascimento:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value="01/04/1985" readonly>
+                        <input class="usuario-info" type="date" value=<?php print_r($usuarioData->getNasc());?>>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Email:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value="rosanasiqueira@gmail.com" readonly>
+                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getEmail());?> readonly>
                         </div>
                     </div>
                     <div class="info-item">
-                        <div class="info-label">Telefone:</div>
+                        <div class="info-label">Celular:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value="(11) 97381-3812" readonly>
+                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getCelular());?>>
+                        </div>
+                    </div>
+                    <input type="hidden" name="Tipo" value="Atualizar">
+                    <button class="editar" type="submit">Editar</button>
+                    </form>
+                    
+                    <form action="../controller/usuarioProccess.php" method="POST">
+                    <h2 class="troque_senha">Troque sua senha</h2>
+                    <div class="info-item">
+                        <div class="info-label">Senha atual:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" placeholder="Senha atual">
                         </div>
                     </div>
                     <div class="info-item">
-                        <div class="info-label">CEP:</div>
+                        <div class="info-label">Senha nova:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value="3232323" readonly>
+                        <input class="usuario-info" type="text" placeholder="Senha nova">
                         </div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-label">Endereço:</div>
-                        <div class="info-value">
-                        <input class="usuario-info" type="text" value="R. Duarte de Azevedo 210" readonly>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Complemento:</div>
-                        <div class="info-value">
-                        <input class="usuario-info" type="text" value="Nenhum complemento adicionado" readonly>
-                        </div>
-                    </div>
-                    <button class="editar">Editar</button>
+                    <input type="hidden" name="Tipo" value="Senha">
+                    <button class="editar" type="submit">Atualizar</button>
+                    </form>
                 </div>
 
                 <div class="conta-box">
-                    <div class="img-container"> 
-                        <img src="../imagens/Conta/rosana.jpg" class="img-conta">
+                <input type="file" name="imagem_file" id="imagem_file">
+                    <div class="img-container" id="img-container"> 
+                        <img src=<?php
+                        if($usuarioData->getImagem() == "vazio") {
+                            $usuarioData->setImagem("../imagens/Conta/usuario.png");
+                        }
+                         print_r($usuarioData->getImagem());?> class="img-conta">
                         <div class="editar-icone">
                         <button class="editar-img"> <!-- botão pra editar imagem do usuário-->
                             <img src="../imagens/Icons/Editar.png" class="icone-editar">

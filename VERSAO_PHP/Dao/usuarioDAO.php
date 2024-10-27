@@ -30,9 +30,9 @@ class UsuarioDAO implements UsuarioDAOInterface {
     }
     public function criar(Usuario $usuario, $authUsario = false){
         $stmt = $this->conexao->prepare("INSERT INTO usuario(
-            Nome_Usu,Nasc_Usu,Celular_Usu,Email_Usu,Senha_Usu,Tipo_Usu,Token
+            Nome_Usu,Nasc_Usu,Celular_Usu,Email_Usu,Senha_Usu,Tipo_Usu,Token,Imagem
         ) VALUES (
-            :nome, :nasc, :cel, :email, :senha, :tipo, :token
+            :nome, :nasc, :cel, :email, :senha, :tipo, :token, :imagem
         )");
 
         $user = $usuario->getNome();
@@ -42,6 +42,7 @@ class UsuarioDAO implements UsuarioDAOInterface {
         $senha = $usuario->getSenha();
         $tipo = $usuario->getTipo();
         $token = $usuario->getToken(); 
+        $imagem = $usuario->getImagem();
 
         $stmt->bindParam(":nome", $user);
         $stmt->bindParam(":nasc", $nasci);
@@ -50,6 +51,7 @@ class UsuarioDAO implements UsuarioDAOInterface {
         $stmt->bindParam(":senha", $senha);
         $stmt->bindParam(":tipo", $tipo);
         $stmt->bindParam(":token", $token);
+        $stmt->bindParam(":imagem", $imagem);
 
         $stmt->execute();
 
@@ -65,7 +67,8 @@ class UsuarioDAO implements UsuarioDAOInterface {
         Email_Usu = :email,
         Senha_Usu = :senha,
         Tipo_Usu = :tipo,
-        Token = :token 
+        Token = :token,
+        Imagem = :imagem 
         WHERE Codigo_Usu = :codigo");
 
         $user = $usuario->getNome();
@@ -75,6 +78,7 @@ class UsuarioDAO implements UsuarioDAOInterface {
         $senha = $usuario->getSenha();
         $tipo = $usuario->getTipo();
         $token = $usuario->getToken(); 
+        $imagem = $usuario->getImagem();
         $codigo = $usuario->getCodigo();
 
         $stmt->bindParam(":nome", $user);
@@ -84,7 +88,9 @@ class UsuarioDAO implements UsuarioDAOInterface {
         $stmt->bindParam(":senha", $senha);
         $stmt->bindParam(":tipo", $tipo);
         $stmt->bindParam(":token", $token);
+        $stmt->bindParam(":token", $imagem);
         $stmt->bindParam(":codigo", $codigo);
+        $stmt->bindParam(":imagem", $imagem);
 
         $stmt->execute();
 

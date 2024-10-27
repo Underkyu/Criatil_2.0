@@ -19,10 +19,11 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
     $confirmar = filter_input(INPUT_POST, "Senha_Usu_Confirm");
     $celular = filter_input(INPUT_POST, "Celular_Usu");
     $tipo = filter_input(INPUT_POST, "Tipo_Usu");
+    $imagem = filter_input(INPUT_POST, "Imagem");
 
     if($nome && $nasc && $email && $senha && $confirmar && $celular && $tipo){ //Verifica se todos os campos estão preenchidos
         if($senha == $confirmar){//Verifica se a senha e confirmação são iguais
-            if(strlen($senha)>10){//Confere se a senha possui mais de dez caracteres
+            if(strlen($senha)>=10){//Confere se a senha possui mais de dez caracteres
                 if($userDao->pesquisarPorEmail($email) === false){
                 $usuario = new Usuario();
 
@@ -37,22 +38,24 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
                 $usuario->setTipo($tipo);
                 $usuario->setSenha($senhaFinal);
                 $usuario->setToken($usuarioToken);
+                $usuario->setImagem($imagem);
 
                 $auth = true;
 
                 $userDao->criar($usuario,$auth);
-            }
-            else{
+            }else{
                 $message->setMessage("Email já Cadastrado","O email inserido já possui um cadastro","error","back"); 
             }
         }else{
-            $message->setMessage("Falha na senha","A senha e a confirmação são diferente","error","back");
+            $message->setMessage("Senha curta","A senha deve conter ao menos 10 caracteres","error","back");
         }
 
     } else{
-        $message->setMessage("Erro!","Por favor, preeencha os campos faltantes","error","back");
+        $message->setMessage("Falha na senha","A senha e a confirmação são diferente","error","back");
     }
 
+    } else{
+        $message->setMessage("Erro!","Por favor, preeencha os campos faltantes","error","back");
     }
 } else if ($tipo == "Login"){
     $email = filter_input(INPUT_POST, "Email_Usu");

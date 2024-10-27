@@ -49,6 +49,7 @@
 
                 <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Cliente">
                 <input type="hidden" name="Tipo" value="Cadastro">
+                <input type="hidden" name="Imagem" value="vazio">
 
                 <input type="hidden" class="form-control" name="crud" value="INSERT">
                 <button type="submit" class="botao-entrar">Cadastrar</button>

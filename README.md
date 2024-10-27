@@ -1,8 +1,4 @@
-
-
-# <center><font size="+20">Criatil 2.0
 ![Logo](https://raw.githubusercontent.com/Underkyu/Criatil_2.0/646e3848dfc2b801b30709aebe450b1a2a3b293e/imagens/Header/LogoVetor.svg)
-
 <center><b>Segunda versão do projeto web de uma loja de brinquedo fictícia chamada Criatil em parceria com com A ETEC da Zona Leste e a multinacional IBM.</b>
 
 # Sumário
@@ -14,7 +10,6 @@
     - [Front end](#front-end)
     - [Back end](#back-end)
     - [Frameworks ](#frameworks)
-  - [Teste você mesmo!](#teste-você-mesmo)
   
 
 ## Diferencial
@@ -23,7 +18,7 @@
 
 - [@Underkyu](https://github.com/Underkyu)
 - [@LucasBonfimVilela01](https://github.com/LucasBonfimVilela01)
-- [@CNSinelli](https://github.com/CNSinelli)
+- [@nino-clmity](https://github.com/nino-clmity)
 - [@JoaoBispo18](https://github.com/JoaoBispo18)
 - [@Jonatasfrinhai](https://github.com/Jonatasfrinhai)
 
@@ -33,13 +28,13 @@
 - Página de produto 
 - Login e cadastro
 - Carrinho 
-- Tela de pagamento
-- Contato
+- Página de pagamento
+- SAC
 - Perfil 
 - Pedidos
-- Favoritos <b>WIP</b>
-- Tela de cadastro de cartões de crédito 
+- Lista de desejos
 - Sobre nós
+- 5 páginas de gerente
 
 ## Linguagens e tecnologias utilizadas
 
@@ -57,29 +52,28 @@
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> 
   </a>
 
+- <lable>Bootstrap</lable><a href="https://getbootstrap.com/" target="_blank" rel="noreferrer"> 
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg" alt="bootstrap" width="40" height="40"/> 
+  </a>
+    
+
 
 ### Back-end: 
-- A ser adicionado
+
+- <lable>PHP</lable><a href="https://www.php.net/" target="_blank" rel="noreferrer"> 
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="php" width="40" height="40"/> 
+  </a>
+
+- <lable>MySQL</lable><a href="https://www.w3schools.com/sql/" target="_blank" rel="noreferrer"> 
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" alt="sql" width="40" height="40"/> 
+  </a>
 
 ### Frameworks
 
 - <lable>Figma</lable><a href="https://www.figma.com/" target="_blank" rel="noreferrer"> 
     <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> 
   </a> 
-## Teste você mesmo
-1- Clona o projeto
-```bash
-  git clone https://github.com/Underkyu/Criatil_2.0
-```
 
-2-Entre na pasta do projeto
-
-```bash
-  cd Criatil_2_0
-```
-3-Entre na pasta de HTML
-```bash
-  cd html
-```
-4-Entre na pasta de HTML
- Procure pelo arquivo "index.html" e o abra.
+- <lable>UML</lable><a href="https://www.uml.org/" target="_blank" rel="noreferrer"> 
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/UML_logo.svg" alt="uml" width="40" height="40"/> 
+  </a> 

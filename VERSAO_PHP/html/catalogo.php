@@ -2,11 +2,14 @@
 require_once("../controller/conexao.php");
 require_once("../controller/global.php");
 
-$stmt = $conn->prepare("SELECT Codigo_Brinq, Nome_Brinq, Preco_Brinq FROM brinquedo");
-$stmt->execute();
-
-$brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// coloca os dados da tabela em um vetor
+// verifica se tem brinquedos na sessão (são armazenados pela pesquisa)
+if (isset($_SESSION['produtos'])) {
+    $brinquedos = $_SESSION['produtos'];
+    unset($_SESSION['produtos']); // tira da sessão depois de aplicar na pág
+} else {
+    // se não der resultado na pesquisa, deixa o vetor vazio
+    $brinquedos = [];
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +29,7 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="containerCatalogo"><!--Container de todo conteúdo-->
         <div class="filtros"><!--Caixa dos filtros-->
             <div class="titulofiltro">
-                <h1>FILTROS</h1>
+                <h1 class="filtros-titulo">FILTROS</h1>
             </div>
             <br>
                 <button id="prev-button"><img src="../imagens/icons/arrow-24-64.png" alt="voltar"></button>
@@ -134,39 +137,48 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="caixaprodutos"><!--Caixa dos produtos-->
             <div class="tituloProdutos"><!--Titulo da janela-->
-                <h1>Produtos</h1>
             </div>
-            <div class="produtos"><!--Cards-->
-                <!-- começo do php para carregar os produtos -->
+            <div class="produtos">
+                        <!-- parte dos cards -->
 
-                <?php 
-                    foreach ($brinquedos as $brinquedo) {
-                        // seleciona a img do brinquedo atual
+                   <?php /* if (empty($brinquedos)): */ ?>
+                   <!--<h1 class="no-products">Nenhum produto encontrado.</h1>-->
+                   <?php /* else: */ ?>
+                   <!-- essas linhas comentadas servem pra fazer aparecer algo na página
+                        caso não tenha produtos armazenados na sessão, mas decidi deixar
+                        comentado e usar o sistema de mensagens mesmo. facilmente
+                        alterável caso seja necessário -->
+
+                   <?php
+                        foreach ($brinquedos as $brinquedo) {
                         $stmt = $conn->query("SELECT Imagem FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem LIMIT 1");
                         $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
-                ?>
-                <!--CARD 1-->
-                <div class="card">
-                    <div class="imagem_card">
-                    <img src="<?php echo $imagem['Imagem']; ?>" class="foto_card">
+                    ?>
+                    <div class="card swiper-slide">
+                        <div class="imagem_card">
+                            <img src="<?php echo $imagem['Imagem']; ?>" class="foto_card">
+                        </div>
+                        <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
+                        <h3 class="preco">R$<?php echo $brinquedo['Preco_Brinq']; ?></h3>
+                        <button class="card">
+                            <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+                            <p class="botao_card">Comprar!</p>
+                        </button>
                     </div>
-        
-                    <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
-                    <h3 class="preco">R$<?php echo $brinquedo['Preco_Brinq']; ?></h3>
-        
-                    <button class="card"> <!--Botão de comprar-->
-                      <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-                      <p class="botao_card">Comprar!</p>
-                    </button>
-                  </div>
-                  <?php } ?>
-                  <!--Fim do CARD 1-->
+                    <?php } ?>
 
-            <div class="vermais"><!--Botão de ver mais-->
+                    <?php /* endif; */ ?>
+
+                    </div>
+                        <!-- fim da parte dos cards -->
+
+        <?php if (!empty($brinquedos)): ?>
+        <div class="vermais">
                 <button class="btn-vermais">Ver Mais</button>
             </div>
-        </div>
+            <?php endif; ?>
     </div>
+
     <script>
         function updateDisplayStyles() {
             const allSelectors = ['.variados', '.categorias', '.inclusivos'];

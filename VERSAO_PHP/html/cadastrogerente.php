@@ -9,7 +9,7 @@
     <script src="../js/cadastro.js"></script>
 </head>
 <body>
-<?php include("../html/header.php")?>
+<?php include("../html/headerGrnt.php")?>
 
     <form class="form-login" method="POST" action="../controller/cadastroProcess.php" onsubmit="return validarSenhas()">
     <h1>Cadastrar Gerente</h1>

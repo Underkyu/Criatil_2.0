@@ -33,30 +33,6 @@ div.header_normal{ /*Div que contem o conteudo do header de pc*/
   width: 100%;
 }
 
-input[type=text] { /*Barra de pesquisa*/
-    width: 6rem;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url("../imagens/Header/Lupa.png");
-    background-position: 380px 9px; 
-    background-size: 2rem;
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 20px;
-    border: none;
-    height: 3.3rem;
-    width: 27rem;
-    border-radius: 20px;
-  }
-
-  input.pesquisa::placeholder{
-    color: #33363F;
-    font-size: 1.1rem;
-  }
-
-  input:focus {
-    outline: 0;
-  }
 
   img.Logo_header{ /*Bem autoexplicativo*/
     height: 5.5rem;
@@ -103,7 +79,7 @@ input[type=text] { /*Barra de pesquisa*/
   }
 
   button.menuSanduiche{ /*Botão que abre o menu sanduiche*/
-    border: white 5px solid;
+    border: none;
     background-color: transparent;
     border-radius: 15px; 
     margin-left: 3rem;
@@ -166,11 +142,9 @@ input[type=text] { /*Barra de pesquisa*/
   /* xl */
   @media (max-width: 1280px) {
     .container {
-      max-width: 1024px;
+      max-width: '1024px';
     }
-    input[type=text] { /*Barra de pesquisa*/
-      background-position: 320px 9px; 
-    }
+
   }
   
   /* lg */
@@ -181,9 +155,6 @@ input[type=text] { /*Barra de pesquisa*/
     
     button.menuSanduiche{/*Botão que abre o menu sanduiche*/
       display: block;
-    }
-    input[type=text] { /*Barra de pesquisa*/
-      background-position: 340px 9px; 
     }
     div.links_normais{
       display: none;
@@ -226,15 +197,11 @@ input[type=text] { /*Barra de pesquisa*/
       flex-direction: row;
       flex-wrap: wrap;
     }
-    input[type=text] { /*Barra de pesquisa*/
-      background-position: 380px 9px; 
-    
-    }
     img.Logo_header{
       margin: 0;
     }
     button.menuSanduiche{ /*Botão que abre o menu sanduiche*/
-      border: white 5px solid;
+      border: none;
       background-color: transparent;
       margin: 0;
     }
@@ -244,9 +211,6 @@ input[type=text] { /*Barra de pesquisa*/
   @media (max-width: 521px) {
     .container {
       width: 100%;
-    }
-    input[type=text] { /*Barra de pesquisa*/
-      margin-top: 1rem;
     }
     button.menuSanduiche{ /*Botão que abre o menu sanduiche*/
       margin-top: 1rem;
@@ -286,22 +250,4 @@ input[type=text] { /*Barra de pesquisa*/
     .container {
       width: 100%;
     }
-    
-    input[type=text] { /*Barra de pesquisa*/
-      background-position: 340px 9px; 
-    
-    }
   }
-
-  /*xxs*/
-  @media (max-width: 375px) {
-    .container {
-      width: 100%;
-    }
-    input[type=text] { /*Barra de pesquisa*/
-      background-position: 285px 9px; 
-    
-    }
-  }
-  
-  

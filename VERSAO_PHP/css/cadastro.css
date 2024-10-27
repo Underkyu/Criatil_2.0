@@ -4,26 +4,16 @@
   margin: 0px;
   padding: 0px;
   }
-  html, body{
-    height: 100%;
-  }
 body {
     background-image: url(../imagens/backgrounds/fundo01.png); /* caminho da img de fundo */
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: fill;
     background-position:center;
     overflow: hidden;
     display: flex;
     justify-content: start;
     align-items: center;
     flex-direction: column;
-}
-div.cadastro{
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .cadastrinho {
     display: flex;
@@ -32,7 +22,7 @@ div.cadastro{
     background-color: #ffffff;
     border-radius: 20px;
     width: 550px;
-    padding: 3.5% 1.5% 3.5% 1.5%;
+    padding: 2.5% .5% 2.5% .5%;
     box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
     margin-top: 3rem;
 }
@@ -80,7 +70,7 @@ div.cadastro{
 .botao-entrar {
     width: 35%;
     height: 40px;
-    border: none;
+    border: 3px solid black;
     border-radius: 15px;
     background-color: #F2AF00;
     color: #000000;
@@ -89,21 +79,34 @@ div.cadastro{
     font-weight: bold;
     cursor: pointer;
     outline: none;
-    line-height: 2.5;
     transition: transform 0.3s ease-in-out;
-
 }
 .botao-entrar:hover {
   transform: scale(1.1);
 }
 
 a.login{
-  color: #0476D9;
-  text-decoration: underline;
+  width: 35%;
+  height: 40px;
+  border: none;
+  border-radius: 15px;
+  background-color: #008cffcb;
+  color: #000000;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  line-height: 2.5;
+  transition: transform 0.3s ease-in-out;
+  margin-top: 1rem;
 }
-
+a.login:hover {
+  transform: scale(1.1);
+}
   @media (max-width: 1024px) {
     .cadastrinho {
       width: 50%;
@@ -166,4 +169,54 @@ a.login{
     .cadastrinho img {
       margin-bottom: 20px;
     }
+}
+
+/* responsividade vertical pq essa página tá ruim */
+@media (max-height: 900px) {
+  .cadastrinho {
+      margin-top: 2rem;
+  }
+  .cadastrinho img {
+      width: 250px;
+  }
+}
+
+@media (max-height: 800px) {
+  .cadastrinho {
+      margin-top: 1rem;
+  }
+  .cadastrinho img {
+      width: 200px;
+  }
+}
+
+@media (max-height: 700px) {
+  .cadastrinho {
+      margin-top: 0.5rem;
+      padding: 2% .5% 2% .5%;
+  }
+}
+
+@media (max-height: 650px) {
+  .cadastrinho {
+      margin-top: 0rem;
+      padding: 1% .5% 1.5% .5%;
+  }
+  .botao-entrar, a.login {
+      width: 40%;
+      font-size: 14px;
+  }
+  .input-login {
+      width: 70%;
+  }
+}
+
+@media (max-height: 600px) {
+  .cadastrinho {
+      padding: .5% .5% 1% .5%;
+  }
+  .botao-entrar, a.login {
+      width: 45%;
+      font-size: 12px;
+  }
 }

@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- fonte roboto -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> <!-- css do bootstrap para ícone de mostrar senha -->
-    <script src="../js/cadastro.js"></script>
     <link rel="stylesheet" href="../css/cadastro.css"> <!-- css do cadastro -->
+    <script src="../js/cadastro.js"></script>
     <title>Criatil - Cadastro</title>
 </head>
 <body>
     <?php include("../html/header.php")?>
-    
-    <div class="cadastro">
+
     <div class="cadastrinho">
         <img src="../imagens/Logo/criatillogo2.png">
 
@@ -45,15 +44,12 @@
                 <input type="text" id="celular" name="Celular_Usu" placeholder="Digite o celular" class="input-login">
                 </div>
 
-                <a href="login.php" class="login">Fazer Login</a>
-
-                <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Cliente">
+                <input type="hidden" id="tipo" name="Tipo_Usu" class="input-login" value="Cliente">
                 <input type="hidden" name="Tipo" value="Cadastro">
 
-                <input type="hidden" class="form-control" name="crud" value="INSERT">
                 <button type="submit" class="botao-entrar">Cadastrar</button>
+                <a href="login.php" class="login">Já tem uma conta?</a>
             </form>
         </div>
-    </div>
 </body>
 </html>

@@ -7,22 +7,22 @@
     <link rel="stylesheet" href="../css/brinquedosGrnt.css">
 </head>
 <body>
+    <?php include("headerGrnt.php") ?>
     <div class="container">
 
         <h1 class="titulo">Brinquedos Cadastrados</h1> <!--Titulo em cima da caixa dos brinquedos-->
 
-        <div class="principal">
 
         <div class="fundo"> <!--Fundo azul que fica atrás dos brinquedos-->
 
             <div class="box_brinquedos"><!--Div que contem os brinquedos-->
 
                 <div class="titulos"> <!--Titulos que mostram a qual informação o valor é relativo-->
-                    <p class="titulo">Foto</p>
-                    <p class="titulo">Nome</p>
-                    <p class="titulo">Id</p>
-                    <p class="titulo">Valor</p>
-                    <p class="titulo">Editar Brinquedo</p>
+                    <div class="titulo">Foto</div>
+                    <div class="titulo">Nome</div>
+                    <div class="titulo">ID</div>
+                    <div class="titulo">Valor</div>
+                    <div class="titulo">Editar Brinquedo</div>
                 </div>
 
                 <div class="brinquedo"> <!--Div que contem um dos brinquedos-->
@@ -153,12 +153,10 @@
             </div>
         </div>
         <div class="acoes">
-            <button class="adicionar">Adicionar brinquedo <img src="../imagens/Gerente/mais.png" alt="Mais" class="adicionar"></button>
+            <button class="adicionar">Adicionar brinquedo</button>
             <div class="pesquisar">
                 <input type="text" class="pesquisar" placeholder="Pesquisar brinquedo">
-                <img src="../imagens/Header/Lupa.png" alt="Lupa" class="pesquisar">
             </div>
-        </div>
         </div>
     </div>
 </body>

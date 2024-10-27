@@ -27,7 +27,7 @@ $usuarioData = $userDao->verificarToken(false);
 
 <body>
     <div class="corpo">
-        <div class="container" id="fundoHeader">
+        <div id="fundoHeader">
             <div class="header">
                 <div class="header_normal">
                 <a href="principal.php">
@@ -43,7 +43,7 @@ $usuarioData = $userDao->verificarToken(false);
                     <img src="../imagens/Header/produtos.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno">Explorar</p>
-                        <p class="pequeno negrito">Catalogo </p>
+                        <p class="pequeno negrito">Catálogo</p>
                     </div>
                 </div>
                 </a>
@@ -53,7 +53,7 @@ $usuarioData = $userDao->verificarToken(false);
                     <img src="../imagens/Header/carrinho.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno">Meu</p>
-                        <p class="pequeno  negrito">carrinho</p>
+                        <p class="pequeno  negrito">Carrinho</p>
                     </div>
                 </div>
                 </a>
@@ -63,7 +63,7 @@ $usuarioData = $userDao->verificarToken(false);
                     <div class="link_header">
                     <img src="../imagens/Avaliacoes/teto_perfil.jpg" alt="" class="foto_perfil_header"> <!--Foto do perfil-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                        <p class="pequeno  negrito">Minha conta</p>
+                        <p class="pequeno  negrito">Minha Conta</p>
                     </div>
                 </div>
                 </a>
@@ -73,7 +73,7 @@ $usuarioData = $userDao->verificarToken(false);
                     <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno">Realizar</p>
-                        <p class="pequeno negrito">Login ou Cadastro</p>
+                        <p class="pequeno negrito">Login <span class="pequenospan">ou</span> Cadastro</p>
                     </div>
                 </div>
                 </a>
@@ -96,7 +96,7 @@ $usuarioData = $userDao->verificarToken(false);
                         <img src="../imagens/Header/produtos.png" alt="Catalogo icon" class="link_header" id="menuSanduiche"> <!--Icon da parte de explorar catalogo-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                             <p class="pequeno">Explorar</p>
-                            <p class="pequeno  negrito">Catalogo</p>
+                            <p class="pequeno  negrito">Catálogo</p>
                         </div>
                     </div>
 
@@ -104,7 +104,7 @@ $usuarioData = $userDao->verificarToken(false);
                         <img src="../imagens/Header/carrinho.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                             <p class="pequeno">Meu</p>
-                            <p class="pequeno  negrito">carrinho</p>
+                            <p class="pequeno  negrito">Carrinho</p>
                         </div>
                     </div>
                     
@@ -112,7 +112,7 @@ $usuarioData = $userDao->verificarToken(false);
                         <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                             <p class="pequeno">Realizar</p>
-                            <p class="pequeno  negrito">Login ou Cadastro</p>
+                            <p class="pequeno  negrito">Login <span class="pequenospan">ou</span> Cadastro</p>
                         </div>
                     </div>
                 </div>

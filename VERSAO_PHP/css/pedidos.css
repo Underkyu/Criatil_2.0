@@ -109,8 +109,6 @@
     white-space: nowrap;
     align-items: stretch;
 }
-/* quando tiver back-end, o overflow-y vai precisar ser usado pra scrollar entre os produtos verticalmente.
-    se precisar eu implemento */
 .produto {
     width: 100%;
     height: 160px;
@@ -153,11 +151,11 @@
     width: 100%;
     text-align: center;
 }
-.linha {
-    width: 700px;
-}
 .legenda-foto, .legenda-nome, .legenda-qntd, .legenda-data, .legenda-valor {
     flex: 1;
+}
+.linha {
+    width: 700px;
 }
 /* css do menu sanduíche */
 .sanduiche-div{
@@ -184,7 +182,7 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     display: inherit;
   }
   div.menuSanduiche{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
-    display: flex;
+    display: none;
     align-items: center;
     overflow: hidden;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
@@ -228,13 +226,12 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     height: 20px;
 }
 
-/* estilos do trilho da barra de rolagem */
 .produtos-container::-webkit-scrollbar-track {
     background-color: white;
     border-radius: 0px;
 }
 
-/* estilos do polegar da barra de rolagem (parte que o usuário arrasta) */
+/* estilos da barra de rolagem (parte que o usuário arrasta) */
 .produtos-container::-webkit-scrollbar-thumb {
     background-color: #c08a00;
     border-radius: 8px; 
@@ -379,6 +376,7 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     #box {
         background-color: white;
         padding: 0;
+        width: 100%;
         margin: 0;
     }
     .pagina-selecionada, .paginas-navbar{

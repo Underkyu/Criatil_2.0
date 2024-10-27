@@ -46,7 +46,7 @@
 
                 <input type="hidden" id="tipo" name="Tipo_Usu" class="input-login" value="Cliente">
                 <input type="hidden" name="Tipo" value="Cadastro">
-                <input type="hidden" name="Imagem" value="vazio">
+                <input type="hidden" name="Imagem" value="../imagens/Conta/usuario.png">
 
                 <button type="submit" class="botao-entrar">Cadastrar</button>
                 <a href="login.php" class="login">Já tem uma conta?</a>

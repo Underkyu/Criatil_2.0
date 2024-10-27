@@ -13,7 +13,10 @@ div.corpo{ /*Basicamente so serve para dar cor pro fundo header*/
     padding: 0px;
     height: fit-content;
 }
-
+a.linkk-header {
+  display: flex;
+  text-decoration: none;
+}
 div.header{ /*Div que contem o conteudo do header de pc e celular*/
     display: flex;
     flex-direction: column; /*Eu não sei oq eu fiz, tentando deixar o header com o menu sanduiche, mas agr pra ficar normal pra pc precisa disso ;-;*/
@@ -142,7 +145,7 @@ div.header_normal{ /*Div que contem o conteudo do header de pc*/
   /* xl */
   @media (max-width: 1280px) {
     .container {
-      max-width: '1024px';
+      max-width: 1024px;
     }
 
   }

@@ -3,6 +3,7 @@ require_once("../controller/global.php");
 require_once("../controller/conexao.php");
 require_once("../models/message.php");
 require_once("../Dao/usuarioDAO.php");
+require_once("../Dao/produtoDAO.php");
 
 $message = new Message($BASE_URL);
 $flashMessage = $message->getMessage();

@@ -112,6 +112,16 @@ public function pesquisarPorNome($nomeBrinq) {
         return false;
     }
 }
+public function getSelos() {
+    $stmt = $this->conexao->prepare("SELECT Codigo_Selo, Nome_Selo FROM selo");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
+public function getCategorias() {
+    $stmt = $this->conexao->prepare("SELECT Codigo_Categoria, Nome_Categoria FROM categoria");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 }
 ?>

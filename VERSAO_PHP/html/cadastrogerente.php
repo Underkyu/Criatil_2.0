@@ -11,6 +11,7 @@
 <body>
 <?php include("../html/headerGrnt.php")?>
 
+<!-- essa página tá finalizada mas por ser diferente das outras páginas de gerente não vou usar ela pra muita coisa por agora --> 
     <form class="form-login" method="POST" action="../controller/cadastroProcess.php" onsubmit="return validarSenhas()">
     <h1>Cadastrar Gerente</h1>
             <div class="inputgrupo">

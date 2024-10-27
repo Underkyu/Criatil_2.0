@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="../css/clientesGrnt.css">
 </head>
 <body>
+
+
+<!-- essa é a página de gerente MENOS atualizada, ainda vou fazer o front usando as outras de base, fazer o back, etc.
+ o que falta:
+ -tudo, não mexa nessa página porque eu ainda vou -->
+
+<?php include("headerGrnt.php") ?> 
     <div class="container">
 
         <h1 class="titulo">Clientes Cadastrados</h1> <!--Titulo em cima da caixa dos clientes-->

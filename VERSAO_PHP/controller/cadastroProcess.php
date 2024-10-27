@@ -23,7 +23,7 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
 
     if($nome && $nasc && $email && $senha && $confirmar && $celular && $tipo){ //Verifica se todos os campos estão preenchidos
         if($senha == $confirmar){//Verifica se a senha e confirmação são iguais
-            if(strlen($senha)>=10){//Confere se a senha possui mais de dez caracteres
+            if(strlen($senha)>=6){//Confere se a senha possui mais de (seis) caracteres
                 if($userDao->pesquisarPorEmail($email) === false){
                 $usuario = new Usuario();
 

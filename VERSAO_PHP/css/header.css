@@ -67,7 +67,7 @@ input.pesquisa { /*Barra de pesquisa*/
     margin-top: .1rem;
   }
 
-  div.links_normais{/*Div com as anchors mostradas no cp*/
+  div.links_normais{/*Div com as anchors mostradas no pc*/
     display: flex;
     align-items: center;
   }
@@ -145,6 +145,7 @@ input.pesquisa { /*Barra de pesquisa*/
     border-radius: 100px;
     border: 3px solid #F2AF00;
     margin: .5rem;
+    background-color: white;
   }
 
 /*Responsividade*/

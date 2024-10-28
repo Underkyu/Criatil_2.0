@@ -61,7 +61,13 @@ $usuarioData = $userDao->verificarToken(false);
                 <?php if($usuarioData): ?>
                     <a href="conta.php">
                     <div class="link_header">
-                    <img src="../imagens/Avaliacoes/teto_perfil.jpg" alt="" class="foto_perfil_header"> <!--Foto do perfil-->
+                    <img src=<?php
+                        if($usuarioData->getImagem() == "vazio") {;
+                            print_r("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                        }?> alt="" class="foto_perfil_header"> <!--Foto do perfil-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno  negrito">Minha conta</p>
                     </div>

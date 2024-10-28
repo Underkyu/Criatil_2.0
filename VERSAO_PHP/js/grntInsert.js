@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const botaoAdicionar = document.getElementById('btnAdicionar');
-    const containerFormulario = document.getElementById('form-container');
+    const containerFormulario = document.getElementById('form-container1');
 
     // faz o form aparecer
     botaoAdicionar.addEventListener('click', function() {

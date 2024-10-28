@@ -30,6 +30,7 @@ div.box_brinquedos{ /*Div que contem os brinquedos*/
     border-radius: 30px;
     width: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 div.titulos{ /*Titulos que mostram a qual informação o valor é relativo*/
     display: flex;
@@ -65,7 +66,12 @@ div.foto {
     justify-content: center;
     align-items: center;
 }
-
+.form-flex {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
 img.foto {
     /* Foto do brinquedo */
     max-width: 100%;
@@ -87,7 +93,7 @@ div.botao_editar{ /*DIv que contem o botão para levar a pagina de edição brin
     justify-content: center;
 }
 
-button.editar{  /*Botão para levar a pagina de edição brinquedo*/
+button.detalhes{  /*Botão para levar a pagina de edição brinquedo*/
     width: 6rem;
     height: 2.5rem;
     background-color: #F2AF00;
@@ -97,9 +103,10 @@ button.editar{  /*Botão para levar a pagina de edição brinquedo*/
     font-size: 1rem;
     transition-duration: .5s;
     transition-timing-function: linear;
+    cursor: pointer;
 }
 
-button.editar:hover{
+button.detalhes:hover{
     background-color: #e2a200; 
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
@@ -413,75 +420,79 @@ div.box_brinquedos::-webkit-scrollbar-thumb {
     }
   }
 
-  /* CSS do formulário de insert */
-.formInsert {
-  display: none;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.formInsert-Brinquedo {
-  display: flex;
-  align-items: center;
-  align-self: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #ffffff;
-  border-radius: 20px;
-  width: 500px;
-  height: 90%;
-  padding: 2.5% .5% 2.5% .5%;
-  box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
-}
-.formInsert-Brinquedo h2 {
-  display: flex;
-  align-self: center;
-  margin-bottom: 15px;
-  font-size: 36px;
-}
-.formInsert-Brinquedo input,
-.formInsert-Brinquedo select {
-  width: 70%;
-  margin-bottom: 15px;
-  height: 40px;
-  padding: 0 15px 0 15px;
-  border: 2px solid #0476D9;
-  border-radius: 12px;
-  color: black;
-  font-size: 16px;
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
-  outline: none;
-}
-.formInsert-Brinquedo input::placeholder,
-.formInsert-Brinquedo select::placeholder {
-  color: rgb(88, 88, 88);
-}
-.select-form {
-  padding: 0 15px 0 10px !important;
-}
-.formInsert-Brinquedo input:focus,
-.formInsert-Brinquedo select:focus {
-  border: 2px solid #191a19d3;
-}
-.formInsert-Brinquedo button {
-  width: 35%;
-  height: 50px;
-  border: 3px solid black;
-  border-radius: 15px;
-  background-color: #F2AF00;
-  color: #000000;
-  font-size: 16px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-  cursor: pointer;
-  outline: none;
-  transition: transform 0.3s ease-in-out;
-}
-.formInsert-Brinquedo button:hover {
-  transform: scale(1.1);
-}
+  /* CSS do formulário de select */
+  .formInsert {
+    display: none;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .formInsert-Brinquedo {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 500px;
+    height: 95%;
+    padding: 2.5% .5% 2.5% .5%;
+    box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
+  }
+  .formInsert-Brinquedo h2 {
+    display: flex;
+    align-self: center;
+    margin-bottom: 15px;
+    font-size: 36px;
+  }
+  .formInsert-Brinquedo input,
+  .formInsert-Brinquedo select {
+    width: 70%;
+    margin-bottom: 5px;
+    height: 45px;
+    padding: 0 15px 0 15px;
+    border: 2px solid #0476D9;
+    border-radius: 12px;
+    color: black;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+  }
+  .formInsert-Brinquedo input::placeholder,
+  .formInsert-Brinquedo select::placeholder {
+    color: rgb(88, 88, 88);
+  }
+  .select-form {
+    padding: 0 15px 0 10px !important;
+  }
+  .formInsert-Brinquedo input:focus,
+  .formInsert-Brinquedo select:focus {
+    border: 2px solid #191a19d3;
+  }
+  .formInsert-Brinquedo button {
+    width: 35%;
+    height: 50px;
+    border: 3px solid black;
+    border-radius: 15px;
+    background-color: #F2AF00;
+    color: #000000;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.3s ease-in-out;
+  }
+  .formInsert-Brinquedo button:hover {
+    transform: scale(1.1);
+  }
+  .formInsert-Brinquedo label {
+    font-size: 14px;
+    font-weight: 500;
+  }

@@ -39,6 +39,15 @@ $usuarioData = $userDao->verificarToken(false);
                 <div class="links_normais">
 
                 <div class="link_header">
+                <a href="avaliacoesGrnt.php" class="linkk-header">
+                    <img src="../imagens/Gerente/Avaliações.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno  negrito">Avaliações</p>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="link_header">
                     <a href="brinquedosGrnt.php" class="linkk-header">
                         <img src="../imagens/Gerente/Brinquedos.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
@@ -52,15 +61,6 @@ $usuarioData = $userDao->verificarToken(false);
                     <img src="../imagens/Gerente/Clientes.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno  negrito">Clientes</p>
-                    </div>
-                    </a>
-                </div>
-
-                <div class="link_header">
-                <a href="avaliacoesGrnt.php" class="linkk-header">
-                    <img src="../imagens/Gerente/Avaliações.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
-                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                        <p class="pequeno  negrito">Avaliações</p>
                     </div>
                     </a>
                 </div>

@@ -4,6 +4,7 @@ require_once("../controller/global.php");
 
 $stmt = $conn->prepare("SELECT * FROM usuario");
 $stmt->execute();
+
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -49,18 +50,18 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <p class="informacao"><?php echo $usuario['Tipo_Usu']; ?></p> <!--Status-->
                     
                     <form method="POST" action="" class="form-flex" id="detalhes-form-<?php echo $usuario['Codigo_Usu']; ?>">
-                        <input type="hidden" name="codigo_usuario" value="<?php echo $usuario['Codigo_Usu']; ?>">
                             <div class="botao_detalhes">
                             <!-- 'data-' é um tipo de atributo q guarda data; nesse caso tá guardando
                                   a info do usuário do foreach atual e enviando pro JS (grntDetalhes.js),
                                   que vai colocar essa informação no form usando as IDs das inputs -->
                             <button type="button" class="detalhes" 
-                                data-codigo="<?php echo $usuario['Codigo_Usu']; ?>"
-                                data-nome="<?php echo $usuario['Nome_Usu']; ?>"
-                                data-nascimento="<?php echo $usuario['Nasc_Usu']; ?>"
-                                data-celular="<?php echo $usuario['Celular_Usu']; ?>"
-                                data-email="<?php echo $usuario['Email_Usu']; ?>"
-                                data-tipo="<?php echo $usuario['Tipo_Usu']; ?>">
+                                data-tipo="usuario"
+                                data-codigoUsu="<?php echo $usuario['Codigo_Usu']; ?>"
+                                data-nomeUsu="<?php echo $usuario['Nome_Usu']; ?>"
+                                data-nascimentoUsu="<?php echo $usuario['Nasc_Usu']; ?>"
+                                data-celularUsu="<?php echo $usuario['Celular_Usu']; ?>"
+                                data-emailUsu="<?php echo $usuario['Email_Usu']; ?>"
+                                data-tipoUsu="<?php echo $usuario['Tipo_Usu']; ?>">
                                 Detalhes
                             </button>
                             </div>
@@ -81,23 +82,24 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2>Informação do Cliente</h2>
         
         <label for="nome">Código do Usuário:</label>
-        <input type="text" id="codigo" name="Codigo_Usu">
+        <input type="text" id="codigo" name="Codigo_Usu" disabled>
 
         <label for="preco">Nome do Usuário:</label>
-        <input type="text" id="nome" name="Nome_Usu">
+        <input type="text" id="nome" name="Nome_Usu" disabled>
 
         <label for="nascimento">Data de Nascimento:</label>
-        <input type="text" id="nascimento" name="Nasc_Usu">
+        <input type="text" id="nascimento" name="Nasc_Usu" disabled>
 
         <label for="celular">Celular:</label>
-        <input type="text" id="celular" name="Celular_Usu">
+        <input type="text" id="celular" name="Celular_Usu" disabled>
 
         <label for="email">E-mail:</label>
-        <input type="text" id="email" name="Email_Usu">
+        <input type="text" id="email" name="Email_Usu" disabled>
 
         <label for="tipo">Tipo de Usuário:</label>
-        <input type="text" id="tipo" name="Tipo_Usu">
+        <input type="text" id="tipo" name="Tipo_Usu" disabled>
 
     </form>
+</div>
 </body>
 </html>

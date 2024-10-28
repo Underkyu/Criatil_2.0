@@ -11,7 +11,6 @@
 </head>
 <body>
     <?php include("../html/header.php")?>
-
     <div class="cadastrinho">
         <img src="../imagens/Logo/criatillogo2.png">
 

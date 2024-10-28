@@ -55,21 +55,31 @@
     width: fit-content;
     height:30rem;
 }
+form {
+  display: flex;
+  flex-direction: column;
+}
 .contatoTitle{ /* Título do contato */
   font-weight: bolder;
 }
-.zapimg{ /* Tamanho da imagem do Whatsapp */
-  width: 3rem;
-  height: 3rem;
+.zapimg{ /* Tamanho da imagem do Instagram */
+  width: 4rem;
+  height: 4rem;
 }
-.zapbutton{ /*Estilo do botão do Whatsapp */
-    padding: 10px;
+.zapbutton{ /*Estilo do botão do Instagram */
+  padding: 10px;
   padding-left: 20px;
   width: 12rem;
   height: 4rem;
   border-color: #0476D9;
   border-width: 2px;
-  background-color: #52CE5F;
+  background: linear-gradient(135deg, 
+  #f09433 0%,   /* Laranja */
+  #e6683c 25%,  /* Laranja escuro */
+  #dc2743 50%,  /* Rosa avermelhado */
+  #cc2366 75%,  /* Rosa escuro */
+  #bc1888 100%  /* Roxo */
+);
   border-radius: 15px;
   margin: 10px;
   resize: none;
@@ -77,8 +87,15 @@
   display: flex;
   align-items:center;
   justify-content: space-evenly;
-  transition: 300ms ease-in-out;
+  transition: 200ms ease-in-out;
   color: white;
+  font-size: 20px;
+}
+.zapbutton:hover {
+  transform: scale(1.1);
+}
+.linkdozapkkkk{
+  text-decoration: none;
 }
 .formInput {/* Estilo dos campos do form*/
   padding: 10px;
@@ -90,10 +107,14 @@
   margin: 10px;
   resize: none;
   font-weight: bolder;
+  font-size: 16px;
   transition: 300ms ease-in-out;
 }
 .formInput input{/* Estilo das caixas de entrada(sem ser a área de texto) */
   height: 2rem;
+}
+.formInput:focus{
+  border: 2px solid #191a19d3;
 }
 .formInput input:focus{
   filter: brightness(0.8);

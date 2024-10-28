@@ -1,78 +1,93 @@
-* {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-h1.titulo{ /*Titulo em cima da div que mostra os clientes*/
+*{/*Zerar valores e aplicar fonte padrão (Roboto)*/
+  background-color: none;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0px;
+  padding: 0px;
+  }
+  html, body {
+    height: 100%; 
+  }
+h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
     width: 100%;
     display: flex;
     justify-content: center;
-    font-size: 3rem;
-    margin-bottom: 2.5rem;
+    font-size: 2.7rem;
     text-align: center;
+    font-weight: 500;
+    color: #232323
 }
-div.fundo{ /*Fundo azul atrás dos clientes*/
+div.fundo{ /*Fundo azul atrás dos brinquedos*/
     background-color: #0476D9;
     border-radius: 30px;
-    padding: 2rem;
+    padding: 1rem;
+    width: 80%;
+    display: flex;
+    align-self: center;
+    height: 80%;
 }
-
-div.box_clientes{ /*Div que contem os clientes*/
+div.box_brinquedos{ /*Div que contem os brinquedos*/
     background-color: white;
     border-radius: 30px;
-    max-height: 40rem;
-    overflow: overlay;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
-
 div.titulos{ /*Titulos que mostram a qual informação o valor é relativo*/
     display: flex;
-    justify-content: space-evenly;
-    margin-top: 1rem;
-}
-
-p.titulo{ /*Titulo que mostra a qual informação o valor é relativo*/
-    font-weight: bold;
-    font-size: 1.2rem;
+    justify-content: space-around;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
     width: 100%;
     text-align: center;
+    font-weight: bold;
 }
-
-div.cliente{ /*Div que mostra as informações de um cliente*/
+div.titulo{ /*Titulo que mostra a qual informação o valor é relativo*/
+  flex: 1;
+  line-height: 1rem;
+}
+div.brinquedo{ /*Div que mostra as informações de um brinquedo*/
     display: flex;
+    flex: 1;
+    width: 100%;
     justify-content: space-evenly;  
     align-items: center; 
     border-bottom: solid #0476D9 2px;
-    padding: 1rem 0px;
+    border-top: solid #0476D9 2px;
 }
-
-div.foto{ /*Div que contem a foto do cliente*/
+div.brinquedo + div.brinquedo {
+  border-top: none;
+}
+div.foto {
+    /* Div que contém a foto do brinquedo */
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-
-img.foto { /*Foto do cliente*/ 
-    width: 8rem;
-    border: #4A4A4A solid 1px;
-    border-radius: 100px;
+img.foto {
+    /* Foto do brinquedo */
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: 7.2rem;
+    object-fit: cover;
+    border: 3px solid #F2AF00;
 }
-
-p.informacao{ /*Textos que mostram nome, id e valor do cliente*/
+p.informacao{ /*Textos que mostram nome, id e valor do brinquedo*/
     width: 100%;
     text-align: center;
-    font-weight: bold;
-    font-size: 1.4rem;
+    font-weight: 500;
+    font-size: 1.2rem;
 }
-
-div.botao_detalhes{ /*Div que contem o botão para levar a pagina de detalhes do cliente*/
+div.botao_detalhes{ /*DIv que contem o botão para levar a pagina de edição brinquedo*/
     width: 100%;
     display: flex;
     justify-content: center;
 }
-
-button.detalhes{  /*Botão para levar a pagina de detalhes do cliente*/
+.form-flex {
+  width: 100%;
+}
+button.detalhes{  /*Botão para levar a pagina de edição brinquedo*/
     width: 6rem;
     height: 2.5rem;
     background-color: #F2AF00;
@@ -82,47 +97,69 @@ button.detalhes{  /*Botão para levar a pagina de detalhes do cliente*/
     font-size: 1rem;
     transition-duration: .5s;
     transition-timing-function: linear;
+    cursor: pointer;
+    margin-right: 5px;
 }
-
 button.detalhes:hover{
     background-color: #e2a200; 
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
 }
-
-
-img.adicionar{/*Icon "+"  no botão de adicionar um novo brinquedo*/
-  width: 2.25rem;
-  margin-left: 1rem;
-}
-
 div.acoes{
   display: flex;
-  margin-top: 1rem;
+  justify-content: center;
+  gap: 3%;
   width: 100%;
+  padding-bottom: 10px;
 }
-
 div.pesquisar{
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   border: solid #0476D9 3.5px;
-  border-radius: 15px;
-  width: 13.5rem;
-  height: 2.25rem;
-  padding: .5rem;
+  border-radius: 10px;
+  width: 14rem;
+  height: 2.8rem;
 }
-
 input.pesquisar{
   border: none;
   height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  padding: 0 35px 0 5px;
   outline: none;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: white;
+  background-image: url("../imagens/Header/Lupa.png");
+  background-position: 185px 2px;
+  background-size: 2rem;
+  background-repeat: no-repeat;
 }
-
+input.pesquisar::placeholder{
+  color:grey;
+}
 img.pesquisar{
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  justify-self: center;
+}
+/* estilos gerais da barra de rolagem */
+div.box_brinquedos::-webkit-scrollbar {
+  height: 20px;
 }
 
+div.box_brinquedos::-webkit-scrollbar-track {
+  background-color: lightgrey;
+  border-radius: 5px;
+}
+
+/* estilos da barra de rolagem (parte que o usuário arrasta) */
+div.box_brinquedos::-webkit-scrollbar-thumb {
+  background-color: #c08a00;
+  border-radius: 8px; 
+  border: 4px solid lightgrey; 
+}
 /*Responsividade*/
 .container {
     max-width: 1425px;
@@ -130,9 +167,10 @@ img.pesquisar{
     margin-right: auto;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    justify-content: center;
+    justify-content: space-around !important;
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
   
   /* 2xl */
@@ -141,15 +179,7 @@ img.pesquisar{
       max-width: 1280px;
     }
   }
-  
-  /* xl */
-  @media (max-width: 1280px) {
-    .container {
-      max-width: 1024px;
-    }
-    
-  }
-  
+
   /* lg */
   @media (max-width: 1024px) {
     .container {
@@ -157,6 +187,16 @@ img.pesquisar{
     }
     p.informacao{
         font-size: 1.1rem;
+    }
+    input.pesquisar {
+      background-position: 175px 4px;
+      background-size: 1.9rem;
+    }
+    input.pesquisar::placeholder {
+      font-size: 16px;
+    }
+    img.foto {
+      height: 5rem;
     }
   }
   
@@ -169,6 +209,23 @@ img.pesquisar{
     h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
         font-size: 2.5rem;
     }
+    div.pesquisar {
+      width: 25%;
+    }
+    input.pesquisar {
+      background-image: none;
+      text-align: left;
+    }
+    p.informacao{
+      font-size: 1rem;
+  }
+  button.editar {
+    width: 5rem;
+    height: 2.2rem;
+  }
+  input.pesquisar{
+  padding: 0 5px 0 5px;
+  }
   }
   
   /* sm */
@@ -176,56 +233,193 @@ img.pesquisar{
     .container {
       max-width: 600px;
     }
-  
+    div.pesquisar {
+      width: 30%;
+    }
+    img.foto {
+      height: 4rem;
+    }
   }
   
   /* sm */
-  @media (max-width: 555px) {
+  @media (max-width: 600px) {
     div.fundo{ /*Fundo azul atrás dos brinquedos*/
-        padding: .75rem;
+        padding: .60rem;
+        height: 65%;
+        margin-top: 2%;
     }
     h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin: 0 0 0 0;
     }
     div.acoes{
       flex-direction: column;
       align-items: center;
+      gap: 15px;
     }
     div.pesquisar{
-      margin-left: 0rem;
-      margin-top: 1rem;
+      height: 3rem;
+      width: 35%;
+    }
+    p.informacao{
+      font-size: .9rem;
+  }
+  button.editar {
+    width: 4.2rem;
+    height: 1.9rem;
+    font-size: .9rem;
+  }
+  div.titulo{
+    font-size: 1rem;
+  }
+  img.foto {
+    height: 3.5rem;
+  }
+  }
+  @media (max-width: 500px) {
+    div.pesquisar {
+      width: 40%;
+    }
+    div.fundo {
+      width: 90%;
+    }
+    button.detalhes {
+      width: 3.8rem;
+      height: 1.8rem;
+      font-size: .85rem;
     }
   }
-  
   /* xs */
   @media (max-width: 475px) {
     .container {
       width: 100%;
       padding: 0;
     }
-
-    p.titulo{ /*Titulo que mostra a qual informação o valor é relativo*/
-        font-weight: bold;
-        font-size: 1.2rem;
-        width: 100%;
-        text-align: center;
+    div.fundo {
+      width: 95%;
     }
-
-    p.titulo{ /*Titulo que mostra a qual informação o valor é relativo*/
+    img.foto {
+      height: 4.2rem;
+    }
+    button.editar {
+      width: 4rem;
+      height: 1.8rem;
+      font-size: .8rem;
+    }
+    div.titulo{ /*Titulo que mostra a qual informação o valor é relativo*/
         font-weight: bold;
         font-size: .9rem;
         width: 100%;
         text-align: center;
+        margin-bottom: 0;
     }
-
     p.informacao{
         font-size: .9rem;
     }
-    
+    div.pesquisar {
+      width: 44%;
+    }
+    input.pesquisar::placeholder {
+      font-size: 16px;
+    }
   }
-    /* xxs */
-  @media (max-width: 375px) {
-    .container {
+  @media (max-width: 395px) {
+    div.fundo {
       width: 100%;
     }
+    div.pesquisar {
+      width: 50%;
+      height: 2.5rem;
+    }
+    p.informacao{
+      font-size: .8rem;
+  }
+    input.pesquisar::placeholder{
+      font-size: 14px;  
+    }
+
+    img.foto {
+      height: 3.6rem;
+    }
+    .formInsert-Brinquedo h2 {
+      font-size: 30px !important;
+    }
+  }
+
+  /* CSS do formulário de select */
+  .formInsert {
+    display: none;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .formInsert-Brinquedo {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 500px;
+    height: 90%;
+    padding: 2.5% .5% 2.5% .5%;
+    box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
+  }
+  .formInsert-Brinquedo h2 {
+    display: flex;
+    align-self: center;
+    margin-bottom: 15px;
+    font-size: 36px;
+  }
+  .formInsert-Brinquedo input,
+  .formInsert-Brinquedo select {
+    width: 70%;
+    margin-bottom: 10px;
+    height: 55px;
+    padding: 0 15px 0 15px;
+    border: 2px solid #0476D9;
+    border-radius: 12px;
+    color: black;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+  }
+  .formInsert-Brinquedo input::placeholder,
+  .formInsert-Brinquedo select::placeholder {
+    color: rgb(88, 88, 88);
+  }
+  .select-form {
+    padding: 0 15px 0 10px !important;
+  }
+  .formInsert-Brinquedo input:focus,
+  .formInsert-Brinquedo select:focus {
+    border: 2px solid #191a19d3;
+  }
+  .formInsert-Brinquedo button {
+    width: 35%;
+    height: 50px;
+    border: 3px solid black;
+    border-radius: 15px;
+    background-color: #F2AF00;
+    color: #000000;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.3s ease-in-out;
+  }
+  .formInsert-Brinquedo button:hover {
+    transform: scale(1.1);
+  }
+  .formInsert-Brinquedo label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
   }

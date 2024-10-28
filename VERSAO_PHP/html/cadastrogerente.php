@@ -9,7 +9,6 @@
 </head>
 <body>
 <?php include("headerGrnt.php")?>
-
 <!-- essa página tá finalizada mas por ser diferente das outras páginas de gerente não vou usar ela pra muita coisa por agora --> 
     <form class="form-login" method="POST" action="../controller/cadastroProcess.php">
     <h1>Cadastrar Gerente</h1>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/10/2024 às 07:19
+-- Tempo de geração: 28/10/2024 às 09:59
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -42,7 +42,7 @@ CREATE TABLE `avaliacao` (
 
 INSERT INTO `avaliacao` (`Codigo_Ava`, `Codigo_Brinq`, `Codigo_Usu`, `Nota_Ava`, `Comentario`, `Titulo_Ava`) VALUES
 (1, 1, 1, 4.5, 'Eu amei a hatsune miku e ainda amo minha voidalosca favorita', 'Miku hatsune omg'),
-(2, 2, 2, 5, 'god FUCKING Dammit Kris where the FUCK are we?!', 'funkopop mt car'),
+(2, 2, 2, 2.5, 'god FUCKING Dammit Kris where the FUCK are we?!', 'funkopop mt car'),
 (3, 3, 3, 5, 'Bola de futebol é minha paixao interna', 'Eu amo joga bola'),
 (4, 4, 4, 2, 'Comprei pro meu filho e ele atirou no meu olho. Resultado: UTI. rs.', 'Perigosa');
 
@@ -196,9 +196,17 @@ CREATE TABLE `pedido` (
 
 CREATE TABLE `sac` (
   `Codigo_sac` int(11) NOT NULL,
+  `nome` varchar(30) NOT NULL,
   `email` varchar(255) NOT NULL,
   `mensagem` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `sac`
+--
+
+INSERT INTO `sac` (`Codigo_sac`, `nome`, `email`, `mensagem`) VALUES
+(1, 'Eu', 'pessoa@gmail.com', 'Ola tudo bem meu nome é ben10 ben10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10');
 
 -- --------------------------------------------------------
 
@@ -377,7 +385,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de tabela `sac`
 --
 ALTER TABLE `sac`
-  MODIFY `Codigo_sac` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo_sac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `selo`

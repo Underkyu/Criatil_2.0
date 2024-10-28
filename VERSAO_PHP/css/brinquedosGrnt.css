@@ -260,7 +260,7 @@ div.box_brinquedos::-webkit-scrollbar-thumb {
     }
     input.pesquisar {
       background-image: none;
-      text-align: center;
+      text-align: left;
     }
     .adicionar::after {
       content: none;
@@ -272,6 +272,9 @@ div.box_brinquedos::-webkit-scrollbar-thumb {
     width: 5rem;
     height: 2.2rem;
   }
+  input.pesquisar{
+    padding: 0 5px 0 5px;
+    }
   }
   
   /* sm */

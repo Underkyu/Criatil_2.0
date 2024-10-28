@@ -123,5 +123,26 @@ public function getCategorias() {
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+function renderizarEstrelas($nota) {
+    $estrelasInteiras = floor($nota);
+    $meiaEstrela = ($nota - $estrelasInteiras) >= 0.5 ? 1 : 0;
+    $estrelasVazias = 5 - ($estrelasInteiras + $meiaEstrela);
+
+    $htmlEstrelas = '';
+
+    for ($i = 0; $i < $estrelasInteiras; $i++) {
+        $htmlEstrelas .= '<img src="../imagens/Icons/estrela.png" alt="estrela" class="estrela" />';
+    }
+
+    if ($meiaEstrela) {
+        $htmlEstrelas .= '<img src="../imagens/Icons/meia_estrela.png" alt="meia estrela" class="estrela" />';
+    }
+
+    for ($i = 0; $i < $estrelasVazias; $i++) {
+        $htmlEstrelas .= '<img src="../imagens/Icons/estrela_vazia.png" alt="estrela vazia" class="estrela" />';
+    }
+
+    return $htmlEstrelas;
+}
 }
 ?>

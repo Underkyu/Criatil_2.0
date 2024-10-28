@@ -2,6 +2,28 @@
 require_once("../controller/conexao.php");
 require_once("../controller/global.php");
 
+function renderizarEstrelas($nota) {
+  $estrelasInteiras = floor($nota);
+  $meiaEstrela = ($nota - $estrelasInteiras) >= 0.5 ? 1 : 0;
+  $estrelasVazias = 5 - ($estrelasInteiras + $meiaEstrela);
+  
+  $htmlEstrelas = '';
+  
+  for ($i = 0; $i < $estrelasInteiras; $i++) {
+      $htmlEstrelas .= '<img src="../imagens/Icons/estrela.png" alt="estrela" class="estrela" />';
+  }
+  
+  if ($meiaEstrela) {
+      $htmlEstrelas .= '<img src="../imagens/Icons/meia_estrela.png" alt="meia estrela" class="estrela" />';
+  }
+  
+  for ($i = 0; $i < $estrelasVazias; $i++) {
+      $htmlEstrelas .= '<img src="../imagens/Icons/estrela_vazia.png" alt="estrela vazia" class="estrela" />';
+  }
+  
+  return $htmlEstrelas;
+}
+
 $stmt = $conn->prepare("SELECT * FROM avaliacao");
 $stmt->execute();
 
@@ -16,6 +38,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Avaliações</title>
     <link rel="stylesheet" href="../css/avaliacoesGrnt.css" />
+    <script src="../js/grntPesquisa.js"></script>
   </head>
   <body>
   <?php include("headerGrnt.php") ?>
@@ -31,7 +54,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <h1 class="titulo">Avaliações Recebidas</h1>
         <div class="fundo">
           <!--Fundo azul que fica atrás dos clientes-->
-          <div class="box_avaliacao">
+          <div class="box_avaliacao" id="avaliacoes-container">
             <!--Div que contem as avaliacoes-->
             
             <?php 
@@ -43,29 +66,27 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
               $nome = $stmt->fetch(PDO::FETCH_ASSOC);
             ?>
 
-                <!--Começo card avaliação-->
-                <div class="avaliacao">
-                    <img src="<?php echo $imagem['Imagem']; ?>" alt="Foto de perfil" class="foto_perfil"/><!--Foto de perifl da avalição-->
-                    <div class="detalhes_avaliacoes">
+              <!--Começo card avaliação-->
+              <div class="avaliacao">
+                  <img src="<?php echo $imagem['Imagem']; ?>" alt="Foto de perfil" class="foto_perfil"/><!--Foto de perfil da avaliação-->
+                  <div class="detalhes_avaliacoes">
                       <div class="nome_avaliacao">
-                        <h5 class="nome"><?php echo $nome['Nome_Usu']; ?></h5>
-                        <div class="estrelas">
-                          <img src="../imagens/Icons/estrela.png" alt="estrela" class="primeira_estrela" />
-                          <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                          <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                          <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                          <img src="../imagens/Icons/meia_estrela.png" alt="meia estrela"/>
-                        </div>
+                          <h5 class="nome"><?php echo $nome['Nome_Usu']; ?></h5>
                       </div>
-                      <p class="titulo_avaliacao"><?php echo $avaliacao['Titulo_Ava']; ?></p>
+                      <div class="titulo-da-avaliacao">
+                          <p class="titulo_avaliacao"><?php echo $avaliacao['Titulo_Ava']; ?></p>
+                          <div class="estrelas">
+                              <?php echo renderizarEstrelas($avaliacao['Nota_Ava']); ?>
+                          </div>
+                      </div>
                       <p class="texto_avaliacao"><?php echo $avaliacao['Comentario']; ?></p>
                   </div>
                   <div class="botao_deletar">
-                    <button class="deletar">Deletar</button>
+                      <button class="deletar">Deletar</button>
                   </div>
-                </div>
-
-            <!--Fim card avaliação-->
+              </div>
+              <!--Fim card avaliação-->
+            
             <?php } ?>
 
               </div>
@@ -73,7 +94,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="acoes">
           <div class="pesquisar">
-            <input type="text" class="pesquisar" placeholder="Pesquisar brinquedo"/>
+            <input type="text" id="txtPesquisa" class="pesquisar" placeholder="Pesquisar avaliação"/>
           </div>
         </div>
       </div>

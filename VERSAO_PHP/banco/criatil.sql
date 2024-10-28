@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/10/2024 às 00:15
+-- Tempo de geração: 28/10/2024 às 07:19
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -42,7 +42,7 @@ CREATE TABLE `avaliacao` (
 
 INSERT INTO `avaliacao` (`Codigo_Ava`, `Codigo_Brinq`, `Codigo_Usu`, `Nota_Ava`, `Comentario`, `Titulo_Ava`) VALUES
 (1, 1, 1, 4.5, 'Eu amei a hatsune miku e ainda amo minha voidalosca favorita', 'Miku hatsune omg'),
-(2, 2, 2, 5, 'god FUCKING Dammit Kris where the FUCK are we?!', 'ralsei from deltarun'),
+(2, 2, 2, 5, 'god FUCKING Dammit Kris where the FUCK are we?!', 'funkopop mt car'),
 (3, 3, 3, 5, 'Bola de futebol é minha paixao interna', 'Eu amo joga bola'),
 (4, 4, 4, 2, 'Comprei pro meu filho e ele atirou no meu olho. Resultado: UTI. rs.', 'Perigosa');
 
@@ -241,8 +241,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Email_Usu`, `Senha_Usu`, `Tipo_Usu`, `Token`, `Imagem`) VALUES
-(1, 'hilary', '1234-12-12', '(11) 97188-9901', 'danidani@gmail.com', '$2y$10$3Eqq3Fdh6/ZSCd0X115Mk.9KGjjF4PETQYuaVRSHKoHVWE28PRyB2', 'Cliente', 'bf4cf72c57fb5db1023538b49fc0cb10250ed128ffbe0e9fd6812bffed441c51c50786601841a3e0cdf8eb9050c53c55d5e5', '../imagens/Conta/usuario.png'),
-(2, 'daniel cadastro da silva', '1234-03-12', '(11) 97188-9903', 'guilhermebragas@hotmail.com', '$2y$10$1yoKbUehvpjOsieo3fFVye8qTwvvHKKT06QkVPaQTdq6zKsdZ63Ri', 'Cliente', '5535890485480cc6df129342de0bc34932553f86aa59b0f4a3c8c55e63b88ca419818433d40811fd797aa576af88d7414c82', '../imagens/Conta/usuario.png'),
+(1, 'Kasane Teto', '1234-12-12', '(11) 97188-9901', 'kasakasa@gmail.com', '$2y$10$3Eqq3Fdh6/ZSCd0X115Mk.9KGjjF4PETQYuaVRSHKoHVWE28PRyB2', 'Cliente', 'bf4cf72c57fb5db1023538b49fc0cb10250ed128ffbe0e9fd6812bffed441c51c50786601841a3e0cdf8eb9050c53c55d5e5', '../imagens/Conta/teto_perfil.jpg'),
+(2, 'Susana Deta Runês', '1234-03-12', '(11) 97188-9903', 'guilhermebragas@hotmail.com', '$2y$10$1yoKbUehvpjOsieo3fFVye8qTwvvHKKT06QkVPaQTdq6zKsdZ63Ri', 'Cliente', '5535890485480cc6df129342de0bc34932553f86aa59b0f4a3c8c55e63b88ca419818433d40811fd797aa576af88d7414c82', '../imagens/Conta/susie.png'),
 (3, 'eu pessoa da silva pereira castro', '1212-02-12', '(11) 97188-9901', 'jowjow2@hotmail.com', '$2y$10$VYLRc6zCy8XC8swKBucJq.sxAc3TOfSGRVQo2FB4Y3cwp.lCuIbyi', 'Cliente', '17fb64a6ff5be43fa21ad0c85dd072530abbb85a66450d58b2888382bef42c6cc63cdc12e50031054564997dc61c3653ffff', '../imagens/Conta/usuario.png'),
 (4, 'Rosana Siqueira Silva', '1983-01-01', '(11) 97188-9903', 'rosanasiq@gmail.com', '$2y$10$AaYGQGG6dI2PbidewmxLM.Gqros8D1pvat7Y3.2dIjs/He4S6MWQy', 'Cliente', 'vazio', '../imagens/Conta/rosana.jpg');
 

@@ -1,25 +1,48 @@
-// javascript das inputs de pesquisa do gerente; pesquisa por nome e por ID
-
 document.addEventListener("DOMContentLoaded", function() {
-    const pesquisaInput = document.getElementById('txtPesquisa');
-    const containerBrinquedos = document.getElementById('brinquedos-container');
-    const brinquedos = Array.from(containerBrinquedos.getElementsByClassName('brinquedo')); // converte as divs com a classe brinquedo pra vetor
+    // pesquisa por nome e ID de brinquedo
+    const pesquisaInputBrinquedos = document.getElementById('txtPesquisaBrinquedos');
+    if (pesquisaInputBrinquedos) {
+        const containerBrinquedos = document.getElementById('brinquedos-container');
+        const brinquedos = Array.from(containerBrinquedos.getElementsByClassName('brinquedo')); // converte as divs com a classe brinquedo para array
 
-    pesquisaInput.addEventListener('input', function() {
-        const termoPesquisa = pesquisaInput.value.toLowerCase();
-
-        // pra cada brinquedo (caixa brinquedo)
-        brinquedos.forEach(brinquedo => { 
-            const nomeBrinquedo = brinquedo.querySelector('.informacao:nth-of-type(1)').textContent.toLowerCase(); // pega o primeiro elemento com a classe "informacao"
-            const idBrinquedo = brinquedo.querySelector('.informacao:nth-of-type(2)').textContent.toLowerCase(); // pega o segundo elemento com a classe "informacao"
+        pesquisaInputBrinquedos.addEventListener('input', function() {
+            const termoPesquisa = pesquisaInputBrinquedos.value.toLowerCase();
             
-            //  se oq o usuário digitar for equivalente ao nome ou id do brinquedo no vetor
-            if (nomeBrinquedo.includes(termoPesquisa) || idBrinquedo.includes(termoPesquisa)) {
-                brinquedo.style.display = '';
-            } else {
-                brinquedo.style.display = 'none';
-            }  // esse if usa a propriedade display pra fzr ser exibido ou não. '' faz com q o display do que foi encontrado 
-               // fique padrão (exibido), 'none' faz com q o resto fique oculto
+            brinquedos.forEach(brinquedo => {
+                const nomeBrinquedo = brinquedo.querySelector('.informacao:nth-of-type(1)').textContent.toLowerCase(); // pega o primeiro elemento com a classe "informacao"
+                const idBrinquedo = brinquedo.querySelector('.informacao:nth-of-type(2)').textContent.toLowerCase(); // pega o segundo elemento com a classe "informacao"
+                
+                // se o que o usuário digitar for equivalente ao nome ou id do brinquedo no array
+                if (nomeBrinquedo.includes(termoPesquisa) || idBrinquedo.includes(termoPesquisa)) {
+                    brinquedo.style.display = '';
+                } else {
+                    brinquedo.style.display = 'none';
+                }
+            });
         });
-    });
+    }
+
+    // pesquisa por nome de user, título da avaliação ou comentário da avaliação
+    const pesquisaInputAvaliacoes = document.getElementById('txtPesquisa');
+    if (pesquisaInputAvaliacoes) {
+        const containerAvaliacoes = document.getElementById('avaliacoes-container');
+        const avaliacoes = Array.from(containerAvaliacoes.getElementsByClassName('avaliacao')); // converte as divs com a classe avaliacao pra vetor
+
+        pesquisaInputAvaliacoes.addEventListener('input', function() {
+            const termoPesquisa = pesquisaInputAvaliacoes.value.toLowerCase();
+            
+            avaliacoes.forEach(avaliacao => {
+                const nomeUsuario = avaliacao.querySelector('.nome').textContent.toLowerCase(); // pega o nome do usuário
+                const tituloAvaliacao = avaliacao.querySelector('.titulo_avaliacao').textContent.toLowerCase(); // pega o título da avaliação
+                const comentarioAvaliacao = avaliacao.querySelector('.texto_avaliacao').textContent.toLowerCase();
+                
+                // se o que o usuário digitar for equivalente a um desses no vetor 
+                if (nomeUsuario.includes(termoPesquisa) || tituloAvaliacao.includes(termoPesquisa) || comentarioAvaliacao.includes(termoPesquisa)) {
+                    avaliacao.style.display = '';
+                } else {
+                    avaliacao.style.display = 'none';
+                }
+            });
+        });
+    }
 });

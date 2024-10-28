@@ -47,13 +47,12 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
                 $message->setMessage("Email já Cadastrado","O email inserido já possui um cadastro","error","back"); 
             }
         }else{
-            $message->setMessage("Senha curta","A senha deve conter ao menos 10 caracteres","error","back");
+            $message->setMessage("Senha curta","A senha deve conter ao menos 6 caracteres","error","back");
         }
 
     } else{
         $message->setMessage("Falha na senha","A senha e a confirmação são diferente","error","back");
     }
-
     } else{
         $message->setMessage("Erro!","Por favor, preeencha os campos faltantes","error","back");
     }

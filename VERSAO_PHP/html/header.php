@@ -4,6 +4,9 @@ require_once("../controller/conexao.php");
 require_once("../models/message.php");
 require_once("../Dao/usuarioDAO.php");
 require_once("../Dao/produtoDAO.php");
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $message = new Message($BASE_URL);
 $flashMessage = $message->getMessage();
@@ -22,8 +25,8 @@ $usuarioData = $userDao->verificarToken(false);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
-    <script src="../js/menuSanduiche.js" defer></script>
     <link rel="stylesheet" href="../css/header.css">
+    <script src="../js/menuSanduiche.js" defer></script>
 </head>
 
 <body>

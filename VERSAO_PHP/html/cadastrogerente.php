@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criatil Gerentes</title>
     <link rel="stylesheet" href="../css/cadastrogerente.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/cadastro.js"></script>
 </head>
 <body>
-<?php include("../html/headerGrnt.php")?>
+<?php include("headerGrnt.php")?>
 
 <!-- essa página tá finalizada mas por ser diferente das outras páginas de gerente não vou usar ela pra muita coisa por agora --> 
-    <form class="form-login" method="POST" action="../controller/cadastroProcess.php" onsubmit="return validarSenhas()">
+    <form class="form-login" method="POST" action="../controller/cadastroProcess.php">
     <h1>Cadastrar Gerente</h1>
             <div class="inputgrupo">
                 <input type="text"  id="nome" name="Nome_Usu" placeholder="Nome completo" class="input-login">
@@ -29,6 +28,7 @@
                      não achei necessário ocultar os campos de senha -->
             </div>
             
+                <input type="hidden" name="Imagem" value="../imagens/Conta/usuario.png">
                 <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Gerente">
                 <input type="hidden" name="Tipo" value="Cadastro">
 

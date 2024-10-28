@@ -30,6 +30,7 @@ div.box_avaliacao{ /*Div que contem as avaliações*/
   border-radius: 30px;
   width: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 div.avaliacao{ /*Div que mostra as informações de uma avaliação*/
   display: flex;
@@ -111,15 +112,15 @@ input.pesquisar{
   background-size: 2rem;
   background-repeat: no-repeat;
 }
-
+input.pesquisar::placeholder{
+  color: grey;
+}
 img.pesquisar{
   width: 2.2rem;
   height: 2.2rem;
   display: flex;
   justify-self: center;
 }
-
-
 div.card_avaliacao{ /*Div que contem as avaliações em si*/
   margin: 0;
   display: flex;
@@ -127,18 +128,14 @@ div.card_avaliacao{ /*Div que contem as avaliações em si*/
   padding: .75rem;
   margin-bottom: 2rem;
 }
-
 div.detalhes_avaliacoes{/*Div que contem todos os cards de avaliação*/
   padding: 0 2rem 0 2rem;
   margin: 0;
   width: 100%;
 }
-
 img.primeira_estrela{ /*Primeira estrela ao lado do nome do usuário*/
   margin-left: 1rem;
 }
-
-
 div.avaliacoes{ /*Div com os cards de avaliações*/
   display: flex;
   flex-direction: column;
@@ -146,20 +143,17 @@ div.avaliacoes{ /*Div com os cards de avaliações*/
   margin: 0;
   margin-left: 4rem;
 }
-
 div.nome_avaliacao{/*Nome do perfil do avaliador*/
   display: flex;
   align-items: center;
   margin-top: .7rem;
 }
-
 img.foto_perfil{ /*Foto de perfil do usuario no card de avalição*/
   width: 5.5rem;
   height: 5.5rem;
   border: 3px solid #F2AF00;
   border-radius: 50px;
 }
-
 h5.nome{ /*Nome do perfil*/
   font-size: 2.25rem;
   margin: 0;
@@ -168,25 +162,26 @@ h5.nome{ /*Nome do perfil*/
   white-space: nowrap;
   max-width: 400px;
 }
-
 p.titulo_avaliacao{/*Titulo da avaliação*/
   font-weight: 500;
   font-size: 2rem;
   margin: 0;
   margin-top: .2rem;
 }
-
 p.texto_avaliacao{/*O texto da avalição*/
   font-size: 1.4rem;
   margin: 0;
   margin-top: .25rem;
   margin-bottom: .7rem;
 }
-
+.titulo-da-avaliacao{
+  display: flex;
+  gap: 10px;
+  max-width: 35rem;
+}
 div.estrelas{ /*Div que contem as estrelas das avaliações*/
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 p.avaliacao{
   display: flex;
@@ -251,7 +246,16 @@ div.box_avaliacao::-webkit-scrollbar-thumb {
       flex-direction: column;
     }
     div.detalhes_avaliacoes{/*Div que contem todos os cards de avaliação*/
-      max-width: 30rem;
+      max-width: 35rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .titulo-da-avaliacao {
+      align-items: center;
+      justify-content: center;
+    } 
+    div.nome_avaliacao {
+      justify-content: center;
     }
   }
   
@@ -277,8 +281,6 @@ div.box_avaliacao::-webkit-scrollbar-thumb {
     }
     div.nome_avaliacao{/*Div com o nome do usuario e as estrelas*/
       flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
     }
     img.primeira_estrela{
       margin: 0px;
@@ -289,6 +291,7 @@ div.box_avaliacao::-webkit-scrollbar-thumb {
     h5.nome{ /*Nome do perfil*/
       font-size: 1.75rem;
       margin: 0;
+      max-width: 100%;
     }
     
     p.titulo_avaliacao{/*Titulo da avaliação*/
@@ -315,6 +318,9 @@ div.box_avaliacao::-webkit-scrollbar-thumb {
     div.pesquisar{
       margin-left: 0rem;
       margin-top: 1rem;
+    }
+    div.fundo{
+      width: 90%;
     }
   }
   
@@ -350,10 +356,19 @@ div.box_avaliacao::-webkit-scrollbar-thumb {
       padding: 0px;
       padding: 1rem;
   }
+  div.fundo {
+    width: 100%;
+  }
+  h5.nome {
+    font-size: 1.5rem
+  }
   }
     /* xxs */
   @media (max-width: 375px) {
     .container {
       width: 100%;
+    }
+    p.titulo_avaliacao {
+      font-size: 1.2rem;
     }
   }

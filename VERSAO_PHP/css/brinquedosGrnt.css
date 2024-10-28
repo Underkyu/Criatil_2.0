@@ -167,9 +167,7 @@ input.pesquisar{
   background-repeat: no-repeat;
 }
 input.pesquisar::placeholder{
-  color: #000000;
-  font-size: 18px;
-  font-weight: 500;
+  color:grey;
 }
 img.pesquisar{
   width: 2.2rem;

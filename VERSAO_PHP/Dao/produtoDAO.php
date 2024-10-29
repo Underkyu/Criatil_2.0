@@ -2,6 +2,7 @@
 
 require_once("../models/brinquedo.php");
 require_once("../models/message.php");
+require_once("../models/imagem.php");
 
 class ProdutoDAO implements ProdutoDAOInterface {   
     private $conexao;
@@ -30,7 +31,6 @@ class ProdutoDAO implements ProdutoDAOInterface {
     }
     // usei 'produto' ao invés de brinquedo em muitos lugares, me confundi, mas ainda funciona, só n confunda
     public function criarP(Produto $produto, Imagem $imagem){
-        // Insere primeiro o brinquedo
         $stmt = $this->conexao->prepare("INSERT INTO brinquedo (Codigo_Selo, Codigo_Categoria, Nome_Brinq, Preco_Brinq, Nota, Fabricante, Descricao, Faixa_Etaria)
          VALUES (:codigoSelo, :codigoCategoria, :nomeBrinq, :precoBrinq, :nota, :fabricante, :descricao, :faixaEtaria)");
     
@@ -56,14 +56,22 @@ class ProdutoDAO implements ProdutoDAOInterface {
     
         // a função "lastInsertId" pega o ultimo ID com auto_increment inserido
         $lastInsertId = $this->conexao->lastInsertId();
+        
+        $this->inserirImagem($imagem, $lastInsertId);
+
+        return $lastInsertId;
+    }
+    public function inserirImagem(Imagem $imagem, $codigoBrinq) {
+        $stmt = $this->conexao->prepare("INSERT INTO imagem (Codigo_Brinq, Imagem, Num_Imagem) VALUES (:codigoBrinq, :imagem, :numImagem)");
+        
         $Imagem = $imagem->getImagem();
         $numImagem = $imagem->getNumImagem();
-        // insere a img com base no id do lastinsertid
-        $stmt2 = $this->conexao->prepare("INSERT INTO imagem (Codigo_Brinq, Imagem, Num_Imagem) VALUES (:codigoBrinq, :imagem, :numImagem)");
-        $stmt2->bindParam(":codigoBrinq", $lastInsertId);
-        $stmt2->bindParam(":imagem", $Imagem);
-        $stmt2->bindParam(":numImagem", $numImagem);
-        $stmt2->execute();
+
+        $stmt->bindParam(":codigoBrinq", $codigoBrinq);
+        $stmt->bindParam(":imagem", $Imagem);
+        $stmt->bindParam(":numImagem", $numImagem);
+        
+        $stmt->execute();
     }
 public function atualizaP(Produto $produto, $redirect = true){
     $stmt = $this->conexao->prepare("UPDATE brinquedo SET

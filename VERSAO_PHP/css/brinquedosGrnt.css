@@ -448,6 +448,7 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     justify-content: center;
     height: 100%;
     width: 100%;
+    margin-left: 15px;
   }
   .form-div-img {
     display: flex;
@@ -456,6 +457,7 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     justify-content: center;
     height: 100%;
     width: 100%;
+    margin-right: 15px;
   }
   .div-q-separa-socorro {
     display: flex;
@@ -528,11 +530,11 @@ input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs co
   margin: 0; 
 }
 .imagens-container {
-  width: 70%;
+  width: 80%;
   margin-bottom: 15px;
 }
 .imagem-input {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .imagem-input label {
   display: block;
@@ -552,5 +554,19 @@ input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs co
 .select-input label {
   display: block;
   margin-left: 2px;
+}
+.imagemPreview {
+  max-width: 50px;
+  object-fit: cover;
+}
+.preview-div {
+  display: none;
+  align-items: center;
+  margin: 0;
+  height: auto;
+}
+.preview-div label {
+  margin-right: 6px;
+  font-size: 12px;
 }
 /* responsividade forms */

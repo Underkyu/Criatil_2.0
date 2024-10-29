@@ -21,35 +21,54 @@ if($tipo === "Inserir") {
     $fabriBrinq = filter_input(INPUT_POST, "Fabricante");
     $descBrinq = filter_input(INPUT_POST, "Descricao");
     $faixaBrinq = filter_input(INPUT_POST, "Faixa_Etaria");
-    $imagemBrinq = filter_input(INPUT_POST, "Imagem");
-    $numImagem = filter_input(INPUT_POST, "Num_Imagem");
+    $imagem1 = filter_input(INPUT_POST, "Imagem1");
+    $imagem2 = filter_input(INPUT_POST, "Imagem2");
+    $imagem3 = filter_input(INPUT_POST, "Imagem3");
+    $numImagem1 = filter_input(INPUT_POST, "numImagem1");
+    $numImagem2 = filter_input(INPUT_POST, "numImagem2");
+    $numImagem3 = filter_input(INPUT_POST, "numImagem3");
 
     if($codSelo && $codCat){
         if($nomeBrinq === null || $nomeBrinq === "" || $precoBrinq === null || $precoBrinq === "" ||
          $notaBrinq === null || $notaBrinq === "" || $fabriBrinq === null || $fabriBrinq === "" ||
           $descBrinq === null || $descBrinq === "" || $faixaBrinq === null || $faixaBrinq === "" ||
-           $imagemBrinq === null || $imagemBrinq === "" || $numImagem === null || $numImagem === ""){
-             // tive q colocar essa verificação monstruosa pq percebi da pior forma q 0 é dado como false dentro de um if (perdi uma hora nisso)
+           $imagem1 === null || $imagem1 === "" || $numImagem1 === null || $numImagem1 === ""){
             $message->setMessage("Campos vazios","Alguns campos não foram preenchidos, tente novamente","error","back");
             exit;
-           }
-                $produto = new Produto();
-                $imagem = new Imagem();
+        }
 
-                $produto->setCodigoSelo($codSelo);
-                $produto->setCodigoCategoria($codCat);
-                $produto->setNomeBrinq($nomeBrinq);
-                $produto->setPrecoBrinq($precoBrinq);
-                $produto->setNota($notaBrinq);
-                $produto->setFabricante($fabriBrinq);
-                $produto->setDescricao($descBrinq);
-                $produto->setFaixaEtaria($faixaBrinq);
-                $imagem->setImagem($imagemBrinq);
-                $imagem->setNumImagem($numImagem);
-                
-                $produtoDao->criarP($produto, $imagem);
-                $message->setMessage("Brinquedo inserido", "O novo brinquedo foi adicionado ao catálogo.", "success", "back");
-    }else{
+        $produto = new Produto();
+        $imagem = new Imagem();
+        $produto->setCodigoSelo($codSelo);
+        $produto->setCodigoCategoria($codCat);
+        $produto->setNomeBrinq($nomeBrinq);
+        $produto->setPrecoBrinq($precoBrinq);
+        $produto->setNota($notaBrinq);
+        $produto->setFabricante($fabriBrinq);
+        $produto->setDescricao($descBrinq);
+        $produto->setFaixaEtaria($faixaBrinq);
+        $imagem->setImagem($imagem1);
+        $imagem->setNumImagem($numImagem1);
+        
+        // retorna o id do brinquedo criado pra poder cadastrar imagens
+        $codigoBrinq = $produtoDao->criarP($produto, $imagem);
+
+        // se a segunda e terceira imagem existir, dá insert nelas
+        if(!empty($imagem2)) {
+            $imagem = new Imagem();
+            $imagem->setImagem($imagem2);
+            $imagem->setNumImagem($numImagem2);
+            $produtoDao->inserirImagem($imagem, $codigoBrinq);
+        }
+        if(!empty($imagem3)) {
+            $imagem = new Imagem();
+            $imagem->setImagem($imagem3);
+            $imagem->setNumImagem($numImagem3);
+            $produtoDao->inserirImagem($imagem, $codigoBrinq);
+        }
+
+        $message->setMessage("Brinquedo inserido", "O novo brinquedo foi adicionado ao catálogo.", "success", "back");
+    } else {
         $message->setMessage("Campos vazios","Alguns campos não foram preenchidos, tente novamente","error","back");
     }
 }

@@ -26,6 +26,7 @@ $categorias = $produtoDao->getCategorias();
     <script src="../js/grntPesquisa.js"></script>
     <script src="../js/grntInsert.js"></script>
     <script src="../js/grntDetalhes.js"></script>
+    <script src="../js/grntImgPreview.js"></script>
 </head>
 <body>
     <?php include("headerGrnt.php") ?>
@@ -55,13 +56,20 @@ $categorias = $produtoDao->getCategorias();
                 <?php 
                     foreach ($brinquedos as $brinquedo) {
                         // seleciona a img do brinquedo
-                        $stmt = $conn->query("SELECT * FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq']);
-                        $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
+                        $stmt = $conn->query("SELECT * FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem");
+                        $imagens = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                        // imagens[0] = sempre a primeira imagem do brinquedo
+                        $imagem1 = $imagens[0];
+                        
+                        // caso esteja vazio, deixa como null pra não dar erro
+                        $imagem2 = $imagens[1] ?? "";
+                        $imagem3 = $imagens[2] ?? "";
                 ?>
 
                 <div class="brinquedo"> 
                     <div class="foto">
-                        <img src="<?php echo $imagem['Imagem']; ?>" alt="Foto do Brinquedo" class="foto"><!--Foto-->
+                        <img src="<?php echo $imagem1['Imagem']; ?>" alt="Foto do Brinquedo" class="foto"><!--Foto-->
                     </div>
                     <p class="informacao"><?php echo $brinquedo['Nome_Brinq']; ?></p> <!--Nome-->
                     <p class="informacao"><?php echo $brinquedo['Codigo_Brinq']; ?></p> <!--Id-->
@@ -83,8 +91,12 @@ $categorias = $produtoDao->getCategorias();
                                     data-fabri="<?php echo $brinquedo['Fabricante']; ?>"
                                     data-desc="<?php echo $brinquedo['Descricao']; ?>"
                                     data-faixa="<?php echo $brinquedo['Faixa_Etaria']; ?>"
-                                    data-imagem="<?php echo $imagem['Imagem']; ?>"
-                                    data-numimagem="<?php echo $imagem['Num_Imagem']; ?>">
+                                    data-imagem1="<?php echo $imagem1['Imagem']; ?>"
+                                    data-imagem2="<?php echo $imagem2['Imagem'] ?? ''; ?>"
+                                    data-imagem3="<?php echo $imagem3['Imagem'] ?? ''; ?>"
+                                    data-numimagem1="<?php echo $imagem1['Num_Imagem']; ?>"
+                                    data-numimagem2="<?php echo $imagem2['Num_Imagem'] ?? ''; ?>"
+                                    data-numimagem3="<?php echo $imagem3['Num_Imagem'] ?? ''; ?>">
                                     Editar
                                 </button>
                             </div>
@@ -127,8 +139,6 @@ $categorias = $produtoDao->getCategorias();
             <label for="selectCate">Categoria:</label>
             <select name="Codigo_Categoria" id="selectCate" class="select-form" required>
                 <option value="" selected disabled hidden></option>
-                <!-- a select é uma input que seleciona entre os selos disponíveis no banco - "selected disabled hidden" 
-                    serve pra deixar selecionado como 1ª opção, desligar como opção e deixar escondido ao expandir -->
                     <?php foreach ($categorias as $categoria) { ?>
                         <option required name="Codigo_Categoria" value="<?php echo $categoria['Codigo_Categoria'];?>"><?php echo $categoria['Nome_Categoria']; ?></option>
                     <?php } ?>
@@ -151,18 +161,18 @@ $categorias = $produtoDao->getCategorias();
         <div class="imagens-container">
     <div class="imagem-input">
         <label>Imagem Principal:</label>
-        <input type="text" name="Imagem[]" placeholder="Caminho da Imagem" required>
-        <input type="hidden" name="Num_Imagem[]" value="1">
+        <input type="text" name="Imagem1" placeholder="Caminho da Imagem" required>
+        <input type="hidden" name="numImagem1" value="1">
     </div>
     <div class="imagem-input">
         <label>Imagem 2 (opcional):</label>
-        <input type="text" name="Imagem[]" placeholder="Caminho da Imagem">
-        <input type="hidden" name="Num_Imagem[]" value="2">
+        <input type="text" name="Imagem2" placeholder="Caminho da Imagem">
+        <input type="hidden" name="numImagem2" value="2">
     </div>
     <div class="imagem-input">
         <label>Imagem 3 (opcional):</label>
-        <input type="text" name="Imagem[]" placeholder="Caminho da Imagem">
-        <input type="hidden" name="Num_Imagem[]" value="3">
+        <input type="text" name="Imagem3" placeholder="Caminho da Imagem">
+        <input type="hidden" name="numImagem3" value="3">
     </div>
 </div>
 
@@ -175,53 +185,90 @@ $categorias = $produtoDao->getCategorias();
     </form>
 </div>
 
+
 <!-- form de edição de brinquedos -->
 <div id="form-container" class="formInsert">
-    <form id="formInsert-Brinquedo" class="formInsert-Brinquedo">
-        <div class="form-div">
-        <h2>Editar Brinquedo</h2>
+    <form method="POST" id="formInsert-Brinquedo" class="formInsert-Brinquedo" action="../controller/produtoProcess.php">
+    <h2>Editar Brinquedo</h2>
+    <div class="div-q-separa-socorro">
+    <div class="form-div"><!-- div q contém as inputs -->
+
+        <div class="select-input">
+            <label for="selectSelo">Selo:</label>
+            <select name="Codigo_Selo" id="codigoSelo" class="select-form" required>
+                <option value="" selected disabled hidden></option> 
+                <?php foreach ($selos as $selo) { ?>
+                    <option required name="Codigo_Selo" value="<?php echo $selo['Codigo_Selo'];?>"><?php echo $selo['Nome_Selo']; ?></option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <div class="select-input">
+            <label for="selectCate">Categoria:</label>
+            <select name="Codigo_Categoria" id="codigoCate" class="select-form" required>
+                <option value="" selected disabled hidden></option>
+                <?php foreach ($categorias as $categoria) { ?>
+                    <option required name="Codigo_Categoria" value="<?php echo $categoria['Codigo_Categoria'];?>"><?php echo $categoria['Nome_Categoria']; ?></option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <input type="text" id="nomeBrinq" name="Nome_Brinq" placeholder="Nome" required>
+                
+        <input type="number" id="precoBrinq" step="0.01" min="0.01" name="Preco_Brinq" placeholder="Preço" required>
         
-        <label for="codigoSelo">Selo:</label>
-        <select id="codigoSelo" name="Codigo_Selo" class="select-form">
-            <?php foreach ($selos as $selo) { ?>
-                <option value="<?php echo $selo['Codigo_Selo']; ?>"><?php echo $selo['Nome_Selo']; ?></option>
-            <?php } ?>
-        </select>
-            <!-- bug possível q terei de investigar futuramente: qnd tiver varias categorias e selos, 
-                 ñ tenho ceerteza se vai exibir primeiro o que já tá no brinquedo selecionado ou se
-                 vai exibir na ordem dos códigos; se for na ordem dos códigos talvez tenha q arrumar -->
-        <label for="codigoCat">Categoria:</label>
-        <select  id="codigoCate" name="Codigo_Categoria" class="select-form">
-            <?php foreach ($categorias as $categoria) { ?>
-                <option value="<?php echo $categoria['Codigo_Categoria']; ?>"><?php echo $categoria['Nome_Categoria']; ?></option>
-            <?php } ?>
-        </select>
-
-        <label for="Nome">Nome:</label>
-        <input type="text" id="nomeBrinq" name="Nome_Brinq">
-
-        <label for="Preço">Preço:</label>
-        <input type="number"  id="precoBrinq" step="0.01" min="0.01" name="Preco_Brinq" placeholder="Preço">
-
-        <label for="Nota">Nota média:</label>
-        <input type="number" id="notaBrinq" step="0.5" min="0" max="5" name="Nota" placeholder="Nota">
-
-        <label for="Fabricante">Fabricante:</label>
-        <input type="text" id="fabriBrinq" name="Fabricante">
+        <input type="number" id="notaBrinq" step="0.5" min="0" max="5" name="Nota" placeholder="Nota" required>
         
-        <label for="Descrição">Descrição:</label>
-        <input type="text" id="descBrinq" name="Descricao">
+        <input type="text" id="fabriBrinq" name="Fabricante" placeholder="Fabricante" required>
+        
+        <input type="text" id="descBrinq" name="Descricao" placeholder="Descrição" required>
+        
+        <input type="text" id="faixaBrinq" name="Faixa_Etaria" placeholder="Faixa Etária" required>
+    </div>
+    <div class="form-div-img"> <!-- div q contém as imagens -->
+        <div class="imagens-container">
+            <div class="imagem-input">
+                <label>Imagem Principal:</label>
+                <input type="text" id="imagem1" name="Imagem1" placeholder="Caminho da Imagem" required>
 
-        <label for="Faixa">Faixa etária:</label>
-        <input type="text" id="faixaBrinq" name="Faixa_Etaria">
+                <div class="preview-div" id="previewdiv1">
+                <label>Preview da imagem:</label>
+                <img id="preview1" src="" class="imagemPreview">
+                </div>
 
-        <label for="Imagem">Caminho da Imagem:</label>
-        <input type="text" id="Imagem" name="Imagem">
+                
+            </div>
+            <div class="imagem-input">
+                <label>Imagem 2 (opcional):</label>
+                <input type="text" id="imagem2" name="Imagem2" placeholder="Caminho da Imagem">
 
-        <label for="Num_Imagem">Número da Imagem:</label>
-        <input type="number" id="numImagem" min="1" max="3" name="Num_Imagem">
+                <div class="preview-div" id="previewdiv2">
+                <label>Preview da imagem:</label>
+                <img id="preview2" src="" class="imagemPreview">
+                </div>
 
-        <button type="submit">Atualizar</button>
+                
+            </div>
+            <div class="imagem-input">
+                <label>Imagem 3 (opcional):</label>
+                <input type="text" id="imagem3" name="Imagem3" placeholder="Caminho da Imagem">
+
+                <div class="preview-div" id="previewdiv3">
+                <label>Preview da imagem:</label>
+                <img id="preview3" src="" class="imagemPreview">
+                </div>
+
+            </div>
+        </div>
+
+        <input type="hidden" id="numImagem1" name="numImagem1" value="1">
+        <input type="hidden" id="numImagem2" name="numImagem2" value="2">
+        <input type="hidden" id="numImagem3" name="numImagem3" value="3">
+        <input type="hidden" name="Tipo" value="Atualizar">
+        </div>
+        </div>
+        <div class="div-btn">
+        <button type="submit">Atualizar</button> 
         </div>
     </form>
 </div>

@@ -10,12 +10,11 @@ function prepararPreview(inputId, previewId, previewdivId) {
         if (input.value) {
             preview.src = input.value;
             previewdiv.style.display = 'flex';
-        } else {
+        }else {
             preview.src = '';
             previewdiv.style.display = 'none';
         }
     }
-
     input.addEventListener('input', updatePreview);
 }
 
@@ -25,7 +24,7 @@ window.addEventListener('load', () => {
     prepararPreview('imagem3', 'preview3', 'previewdiv3');
 });
 
-// atualiza todas as previews
+// atualiza todas as previews e 
 function updatePreviews() {
     ['1', '2', '3'].forEach(num => {
         const input = document.getElementById(`imagem${num}`);
@@ -36,7 +35,7 @@ function updatePreviews() {
             if (input.value) {
                 preview.src = input.value;
                 previewdiv.style.display = 'flex';
-            } else {
+            }else {
                 preview.src = '';
                 previewdiv.style.display = 'none';
             }

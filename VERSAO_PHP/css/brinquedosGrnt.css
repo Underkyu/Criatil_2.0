@@ -18,8 +18,8 @@ h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
 }
 div.fundo{ /*Fundo azul atrás dos brinquedos*/
     background-color: #0476D9;
-    border-radius: 30px;
-    padding: 1rem;
+    border-radius: 25px;
+    padding: .8rem;
     width: 80%;
     display: flex;
     align-self: center;
@@ -27,7 +27,7 @@ div.fundo{ /*Fundo azul atrás dos brinquedos*/
 }
 div.box_brinquedos{ /*Div que contem os brinquedos*/
     background-color: white;
-    border-radius: 30px;
+    border-radius: 25px;
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -49,7 +49,6 @@ div.titulo{ /*Titulo que mostra a qual informação o valor é relativo*/
 
 div.brinquedo{ /*Div que mostra as informações de um brinquedo*/
     display: flex;
-    flex: 1;
     width: 100%;
     justify-content: space-evenly;  
     align-items: center; 
@@ -58,6 +57,9 @@ div.brinquedo{ /*Div que mostra as informações de um brinquedo*/
 }
 div.brinquedo + div.brinquedo {
   border-top: none;
+}
+div.brinquedo:last-child {
+  border-bottom: none;
 }
 div.foto {
     /* Div que contém a foto do brinquedo */
@@ -123,7 +125,7 @@ button.adicionar{ /*Botão de adicionar um novo brinquedo no sistema*/
   height: 95%;
   border: none;
   border-radius: 10px;
-  background-color: #F2AF00;
+  background-color: #f7b100;
   color: #000000;
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
@@ -182,21 +184,15 @@ img.pesquisar{
   display: flex;
   justify-self: center;
 }
-/* estilos gerais da barra de rolagem */
 div.box_brinquedos::-webkit-scrollbar {
-  height: 20px;
+  width: 10px;  
 }
-
-div.box_brinquedos::-webkit-scrollbar-track {
-  background-color: lightgrey;
-  border-radius: 5px;
-}
-
-/* estilos da barra de rolagem (parte que o usuário arrasta) */
 div.box_brinquedos::-webkit-scrollbar-thumb {
-  background-color: #c08a00;
-  border-radius: 8px; 
-  border: 4px solid lightgrey; 
+  background-color: #F2AF00;
+  border-radius: 10px; 
+}
+div.box_brinquedos::-webkit-scrollbar-thumb:hover {
+  background-color: #dc9e00; 
 }
 /*Responsividade*/
 .container {
@@ -424,6 +420,7 @@ div.box_brinquedos::-webkit-scrollbar-thumb {
   .formInsert {
     display: none;
     justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -439,16 +436,46 @@ div.box_brinquedos::-webkit-scrollbar-thumb {
     flex-direction: column;
     background-color: #ffffff;
     border-radius: 20px;
-    width: 500px;
+    width: 70%;
     height: 95%;
-    padding: 2.5% .5% 2.5% .5%;
     box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
+    border: 4px solid #0476D9;
+  }
+  .form-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  .form-div-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  .div-q-separa-socorro {
+    display: flex;
+    width: 100%;
+  }
+  .div-btn {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    height: min-content;
+    margin-top: 10px;
   }
   .formInsert-Brinquedo h2 {
     display: flex;
     align-self: center;
-    margin-bottom: 15px;
-    font-size: 36px;
+    margin-bottom: 5px;
+    font-size: 2.7rem;
+    text-align: center;
+    font-weight: 500;
+    color: #232323
   }
   .formInsert-Brinquedo input,
   .formInsert-Brinquedo select {
@@ -458,7 +485,6 @@ div.box_brinquedos::-webkit-scrollbar-thumb {
     padding: 0 15px 0 15px;
     border: 2px solid #0476D9;
     border-radius: 12px;
-    color: black;
     font-size: 16px;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
@@ -477,9 +503,9 @@ div.box_brinquedos::-webkit-scrollbar-thumb {
   }
   .formInsert-Brinquedo button {
     width: 35%;
-    height: 50px;
+    height: 45px;
     border: 3px solid black;
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: #F2AF00;
     color: #000000;
     font-size: 16px;
@@ -496,3 +522,35 @@ div.box_brinquedos::-webkit-scrollbar-thumb {
     font-size: 14px;
     font-weight: 500;
   }
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs com type=number */
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.imagens-container {
+  width: 70%;
+  margin-bottom: 15px;
+}
+.imagem-input {
+  margin-bottom: 20px;
+}
+.imagem-input label {
+  display: block;
+  margin-bottom: 5px;
+}
+.imagem-input input[type="text"] {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.select-input {
+  width: 70%;
+}
+.select-input select {
+  width: 100% !important;
+  margin-bottom: 10px;
+}
+.select-input label {
+  display: block;
+  margin-left: 2px;
+}
+/* responsividade forms */

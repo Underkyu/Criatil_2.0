@@ -29,34 +29,41 @@ class ProdutoDAO implements ProdutoDAOInterface {
         return $produto;
     }
     // usei 'produto' ao invés de brinquedo em muitos lugares, me confundi, mas ainda funciona, só n confunda
-    public function criarP(Produto $produto){
-        $stmt = $this->conexao->prepare("INSERT INTO brinquedo(
-            Codigo_Selo, Codigo_Categoria, Nome_Brinq, Preco_Brinq, Nota, Fabricante, Descricao, Faixa_Etaria
-
-        ) VALUES (
-            :codigoS, :codigoCat, :nome, :preco, :nota, :fabricante, :descricao, :faixaEtaria
-        )"); 
-
-        $codigoCategoria = $produto->getCodigoCategoria();
+    public function criarP(Produto $produto, Imagem $imagem){
+        // Insere primeiro o brinquedo
+        $stmt = $this->conexao->prepare("INSERT INTO brinquedo (Codigo_Selo, Codigo_Categoria, Nome_Brinq, Preco_Brinq, Nota, Fabricante, Descricao, Faixa_Etaria)
+         VALUES (:codigoSelo, :codigoCategoria, :nomeBrinq, :precoBrinq, :nota, :fabricante, :descricao, :faixaEtaria)");
+    
         $codigoSelo = $produto->getCodigoSelo();
+        $codigoCategoria = $produto->getCodigoCategoria();
         $nomeBrinq = $produto->getNomeBrinq();
         $precoBrinq = $produto->getPrecoBrinq();
         $nota = $produto->getNota();
         $fabricante = $produto->getFabricante();
         $descricao = $produto->getDescricao();
         $faixaEtaria = $produto->getFaixaEtaria();
-
-        $stmt->bindParam(":codigoS", $codigoSelo);
-        $stmt->bindParam(":codigoCat", $codigoCategoria);
-        $stmt->bindParam(":nome", $nomeBrinq);
-        $stmt->bindParam(":preco", $precoBrinq);
+    
+        $stmt->bindParam(":codigoSelo", $codigoSelo);
+        $stmt->bindParam(":codigoCategoria", $codigoCategoria);
+        $stmt->bindParam(":nomeBrinq", $nomeBrinq);
+        $stmt->bindParam(":precoBrinq", $precoBrinq);
         $stmt->bindParam(":nota", $nota);
         $stmt->bindParam(":fabricante", $fabricante);
         $stmt->bindParam(":descricao", $descricao);
         $stmt->bindParam(":faixaEtaria", $faixaEtaria);
-
+    
         $stmt->execute();
-
+    
+        // a função "lastInsertId" pega o ultimo ID com auto_increment inserido
+        $lastInsertId = $this->conexao->lastInsertId();
+        $Imagem = $imagem->getImagem();
+        $numImagem = $imagem->getNumImagem();
+        // insere a img com base no id do lastinsertid
+        $stmt2 = $this->conexao->prepare("INSERT INTO imagem (Codigo_Brinq, Imagem, Num_Imagem) VALUES (:codigoBrinq, :imagem, :numImagem)");
+        $stmt2->bindParam(":codigoBrinq", $lastInsertId);
+        $stmt2->bindParam(":imagem", $Imagem);
+        $stmt2->bindParam(":numImagem", $numImagem);
+        $stmt2->execute();
     }
 public function atualizaP(Produto $produto, $redirect = true){
     $stmt = $this->conexao->prepare("UPDATE brinquedo SET
@@ -93,7 +100,7 @@ public function atualizaP(Produto $produto, $redirect = true){
     $stmt->execute();
 
     if($redirect) {
-        $this->message->setMessage("Informações alteradas!","Os dados do produto foram alterados com sucesso","success","../html/conta.php");
+        $this->message->setMessage("Informações alteradas!","Os dados do produto foram alterados com sucesso","success","../html/brinquedosGrnt.php");
     }
 }
 public function pesquisarPorNome($nomeBrinq) {

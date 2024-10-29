@@ -4,6 +4,7 @@ require_once("conexao.php");
 require_once("../Dao/produtoDAO.php");
 require_once("../models/brinquedo.php");
 require_once("../models/message.php");
+require_once("../models/imagem.php");
 
 $message = new Message($BASE_URL); //Criação de uma objeto de mansagem
 
@@ -11,6 +12,7 @@ $produtoDao = new ProdutoDAO($conn,$BASE_URL);
 
 $tipo = filter_input(INPUT_POST, "Tipo"); //Atibui o valor o input nomeado como "Tipo" a varivel $tipo
 if($tipo === "Inserir") {
+
     $codSelo = filter_input(INPUT_POST, "Codigo_Selo");
     $codCat = filter_input(INPUT_POST, "Codigo_Categoria");
     $nomeBrinq = filter_input(INPUT_POST, "Nome_Brinq");
@@ -20,8 +22,17 @@ if($tipo === "Inserir") {
     $descBrinq = filter_input(INPUT_POST, "Descricao");
     $faixaBrinq = filter_input(INPUT_POST, "Faixa_Etaria");
     $imagemBrinq = filter_input(INPUT_POST, "Imagem");
+    $numImagem = filter_input(INPUT_POST, "Num_Imagem");
 
-    if($codSelo && $codCat && $nomeBrinq && $precoBrinq && $notaBrinq && $fabriBrinq && $descBrinq && $faixaBrinq && $imagemBrinq){ //Verifica se todos os campos estão preenchidos
+    if($codSelo && $codCat){
+        if($nomeBrinq === null || $nomeBrinq === "" || $precoBrinq === null || $precoBrinq === "" ||
+         $notaBrinq === null || $notaBrinq === "" || $fabriBrinq === null || $fabriBrinq === "" ||
+          $descBrinq === null || $descBrinq === "" || $faixaBrinq === null || $faixaBrinq === "" ||
+           $imagemBrinq === null || $imagemBrinq === "" || $numImagem === null || $numImagem === ""){
+             // tive q colocar essa verificação monstruosa pq percebi da pior forma q 0 é dado como false dentro de um if (perdi uma hora nisso)
+            $message->setMessage("Campos vazios","Alguns campos não foram preenchidos, tente novamente","error","back");
+            exit;
+           }
                 $produto = new Produto();
                 $imagem = new Imagem();
 
@@ -34,8 +45,10 @@ if($tipo === "Inserir") {
                 $produto->setDescricao($descBrinq);
                 $produto->setFaixaEtaria($faixaBrinq);
                 $imagem->setImagem($imagemBrinq);
-
-                $produtoDao->criarP($produto);
+                $imagem->setNumImagem($numImagem);
+                
+                $produtoDao->criarP($produto, $imagem);
+                $message->setMessage("Brinquedo inserido", "O novo brinquedo foi adicionado ao catálogo.", "success", "back");
     }else{
         $message->setMessage("Campos vazios","Alguns campos não foram preenchidos, tente novamente","error","back");
     }

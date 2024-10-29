@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 const fabriBrinq = this.getAttribute('data-fabri');
                 const descBrinq = this.getAttribute('data-desc');
                 const faixaBrinq = this.getAttribute('data-faixa');
+                const imagemBrinq = this.getAttribute('data-imagem');
+                const numimagemBrinq = this.getAttribute('data-numimagem');
 
                 // preenche os campos do form usando a const de acordo com a id da input
                 document.getElementById('codigoSelo').value = codigoSelo;
@@ -44,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById('fabriBrinq').value = fabriBrinq;
                 document.getElementById('descBrinq').value = descBrinq;
                 document.getElementById('faixaBrinq').value = faixaBrinq;
+                document.getElementById('Imagem').value = imagemBrinq;
+                document.getElementById('numImagem').value = numimagemBrinq;
             }
 
             // faz o form aparecer

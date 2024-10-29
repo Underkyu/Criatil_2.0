@@ -34,6 +34,7 @@ $categorias = $produtoDao->getCategorias();
  o que falta fazer aqui:
  -botão de editar realmente editar
  -botão de insert (ver comentários no fundo do código)
+ -responsividade do form: botão de x (fechar) pra telas menores
 -->
 
     <div class="container">
@@ -54,13 +55,13 @@ $categorias = $produtoDao->getCategorias();
                 <?php 
                     foreach ($brinquedos as $brinquedo) {
                         // seleciona a img do brinquedo
-                        $stmt = $conn->query("SELECT Imagem FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq']);
+                        $stmt = $conn->query("SELECT * FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq']);
                         $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
                 ?>
 
                 <div class="brinquedo"> 
                     <div class="foto">
-                        <img src="<?php echo $imagem['Imagem']; ?>" alt="Pelucia Miku" class="foto"><!--Foto-->
+                        <img src="<?php echo $imagem['Imagem']; ?>" alt="Foto do Brinquedo" class="foto"><!--Foto-->
                     </div>
                     <p class="informacao"><?php echo $brinquedo['Nome_Brinq']; ?></p> <!--Nome-->
                     <p class="informacao"><?php echo $brinquedo['Codigo_Brinq']; ?></p> <!--Id-->
@@ -72,18 +73,20 @@ $categorias = $produtoDao->getCategorias();
                             <!-- 'data-' é um tipo de atributo q guarda data; nesse caso tá guardando
                                   a info do usuário do foreach atual e enviando pro JS (grntDetalhes.js),
                                   que vai colocar essa informação no form usando as IDs das inputs -->
-                            <button type="button" class="detalhes" 
-                                data-tipo="brinquedo"
-                                data-codigoselo="<?php echo $brinquedo['Codigo_Selo']; ?>"
-                                data-codigocate="<?php echo $brinquedo['Codigo_Categoria']; ?>"
-                                data-nomebrinq="<?php echo $brinquedo['Nome_Brinq']; ?>"
-                                data-preco="<?php echo $brinquedo['Preco_Brinq']; ?>"
-                                data-nota="<?php echo $brinquedo['Nota']; ?>"
-                                data-fabri="<?php echo $brinquedo['Fabricante']; ?>"
-                                data-desc="<?php echo $brinquedo['Descricao']; ?>"
-                                data-faixa="<?php echo $brinquedo['Faixa_Etaria']; ?>">
-                                Editar
-                            </button>
+                                  <button type="button" class="detalhes" 
+                                    data-tipo="brinquedo"
+                                    data-codigoselo="<?php echo $brinquedo['Codigo_Selo']; ?>"
+                                    data-codigocate="<?php echo $brinquedo['Codigo_Categoria']; ?>"
+                                    data-nomebrinq="<?php echo $brinquedo['Nome_Brinq']; ?>"
+                                    data-preco="<?php echo $brinquedo['Preco_Brinq']; ?>"
+                                    data-nota="<?php echo $brinquedo['Nota']; ?>"
+                                    data-fabri="<?php echo $brinquedo['Fabricante']; ?>"
+                                    data-desc="<?php echo $brinquedo['Descricao']; ?>"
+                                    data-faixa="<?php echo $brinquedo['Faixa_Etaria']; ?>"
+                                    data-imagem="<?php echo $imagem['Imagem']; ?>"
+                                    data-numimagem="<?php echo $imagem['Num_Imagem']; ?>">
+                                    Editar
+                                </button>
                             </div>
                     </form>
                     </div>
@@ -104,58 +107,78 @@ $categorias = $produtoDao->getCategorias();
 <!-- form de adicionar brinquedos -->
 <div id="form-container1" class="formInsert">
     <form method="POST" id="formInsert-Brinquedo" class="formInsert-Brinquedo" action="../controller/produtoProcess.php">
-        <h2>Adicionar Brinquedo</h2>
-        <p> LEIA COMENTÁRIOS EM BAIXO DO BOTÃO NO CÓDIGO </p>
-        
-        <select name="Codigo_Selo" class="select-form">
-            <option value="" selected disabled hidden>Selo</option> 
-            <!-- a select é uma input que seleciona entre os selos disponíveis no banco - "selected disabled hidden" 
-             pode parecer engraçado mas serve pra deixar selecionado como 1ª opção,
-             desligar como opção e deixar escondido ao expandir -->
-            <?php foreach ($selos as $selo) { ?>
-                <option value="<?php echo $selo['Codigo_Selo']; ?>"><?php echo $selo['Nome_Selo']; ?></option>
-            <?php } ?>
-        </select>
+    <h2>Adicionar Brinquedo</h2>
+    <div class="div-q-separa-socorro">
+    <div class="form-div"><!-- div q contém as inputs -->
 
-        <select name="Codigo_Categoria" class="select-form">
-            <option value="" selected disabled hidden>Categoria</option>
-                        <!-- a select é uma input que seleciona entre os selos disponíveis no banco - "selected disabled hidden" 
-             pode parecer engraçado mas serve pra deixar selecionado como 1ª opção,
-             desligar como opção e deixar escondido ao expandir -->
-            <?php foreach ($categorias as $categoria) { ?>
-                <option value="<?php echo $categoria['Codigo_Categoria']; ?>"><?php echo $categoria['Nome_Categoria']; ?></option>
-            <?php } ?>
-        </select>
-        
-        <input type="text" id="nome" name="Nome_Brinq" placeholder="Nome">
+        <div class="select-input">
+            <label for="selectSelo">Selo:</label>
+            <select name="Codigo_Selo" id="selectSelo" class="select-form" required>
+                <option value="" selected disabled hidden></option> 
+                <!-- a select é uma input que seleciona entre os selos disponíveis no banco - "selected disabled hidden" 
+                    serve pra deixar selecionado como 1ª opção, desligar como opção e deixar escondido ao expandir -->
+                    <?php foreach ($selos as $selo) { ?>
+                        <option required name="Codigo_Selo" value="<?php echo $selo['Codigo_Selo'];?>"><?php echo $selo['Nome_Selo']; ?></option>
+                    <?php } ?>
+            </select>
+        </div>
+
+            <div class="select-input">
+            <label for="selectCate">Categoria:</label>
+            <select name="Codigo_Categoria" id="selectCate" class="select-form" required>
+                <option value="" selected disabled hidden></option>
+                <!-- a select é uma input que seleciona entre os selos disponíveis no banco - "selected disabled hidden" 
+                    serve pra deixar selecionado como 1ª opção, desligar como opção e deixar escondido ao expandir -->
+                    <?php foreach ($categorias as $categoria) { ?>
+                        <option required name="Codigo_Categoria" value="<?php echo $categoria['Codigo_Categoria'];?>"><?php echo $categoria['Nome_Categoria']; ?></option>
+                    <?php } ?>
+            </select>
+        </div>
+
+        <input type="text" id="nome" name="Nome_Brinq" placeholder="Nome" required>
                 
-        <input type="text" name="Preco_Brinq" placeholder="Preço">
+        <input type="number" step="0.01" min="0.01" name="Preco_Brinq" placeholder="Preço" required>
         
-        <input type="text" name="Nota" placeholder="Nota">
+        <input type="number" step="0.5" min="0" max="5" name="Nota" placeholder="Nota" required>
         
-        <input type="text" name="Fabricante" placeholder="Fabricante">
+        <input type="text" name="Fabricante" placeholder="Fabricante" required>
         
-        <input type="text" name="Descricao" placeholder="Descrição">
+        <input type="text" name="Descricao" placeholder="Descrição" required>
         
-        <input type="text" name="Faixa_Etaria" placeholder="Faixa Etária">
-
-        <input type="file" name="Imagem">
+        <input type="text" name="Faixa_Etaria" placeholder="Faixa Etária" required>
+    </div>
+    <div class="form-div-img"> <!-- div q contém as imagens -->
+        <div class="imagens-container">
+    <div class="imagem-input">
+        <label>Imagem Principal:</label>
+        <input type="text" name="Imagem[]" placeholder="Caminho da Imagem" required>
+        <input type="hidden" name="Num_Imagem[]" value="1">
+    </div>
+    <div class="imagem-input">
+        <label>Imagem 2 (opcional):</label>
+        <input type="text" name="Imagem[]" placeholder="Caminho da Imagem">
+        <input type="hidden" name="Num_Imagem[]" value="2">
+    </div>
+    <div class="imagem-input">
+        <label>Imagem 3 (opcional):</label>
+        <input type="text" name="Imagem[]" placeholder="Caminho da Imagem">
+        <input type="hidden" name="Num_Imagem[]" value="3">
+    </div>
+</div>
 
         <input type="hidden" name="Tipo" value="Inserir">
+        </div>
+        </div>
+        <div class="div-btn">
         <button type="submit">Confirmar</button> 
-        <!-- pro insert funcionar ainda precisa:
-             - ver sobre a inserção em foreign key (imagem) no produtoprocess -> produtodao
-             - arrumar a msg do sweetalert que por algum motivo só aparece quando
-             coloca o header normal, mas não vai de jeito nenhum com o headerGrnt
-             - arrumar essa chain de insert produto em geral
-             - ver como funciona inserir arquivo/img ou ver se vms usar caminho (tentar deixar opcional por enquanto? sla)
-         -->
+        </div>
     </form>
 </div>
 
 <!-- form de edição de brinquedos -->
 <div id="form-container" class="formInsert">
     <form id="formInsert-Brinquedo" class="formInsert-Brinquedo">
+        <div class="form-div">
         <h2>Editar Brinquedo</h2>
         
         <label for="codigoSelo">Selo:</label>
@@ -178,10 +201,10 @@ $categorias = $produtoDao->getCategorias();
         <input type="text" id="nomeBrinq" name="Nome_Brinq">
 
         <label for="Preço">Preço:</label>
-        <input type="text" id="precoBrinq" name="Preco_Brinq">
+        <input type="number"  id="precoBrinq" step="0.01" min="0.01" name="Preco_Brinq" placeholder="Preço">
 
         <label for="Nota">Nota média:</label>
-        <input type="text" id="notaBrinq" name="Nota">
+        <input type="number" id="notaBrinq" step="0.5" min="0" max="5" name="Nota" placeholder="Nota">
 
         <label for="Fabricante">Fabricante:</label>
         <input type="text" id="fabriBrinq" name="Fabricante">
@@ -192,7 +215,14 @@ $categorias = $produtoDao->getCategorias();
         <label for="Faixa">Faixa etária:</label>
         <input type="text" id="faixaBrinq" name="Faixa_Etaria">
 
+        <label for="Imagem">Caminho da Imagem:</label>
+        <input type="text" id="Imagem" name="Imagem">
+
+        <label for="Num_Imagem">Número da Imagem:</label>
+        <input type="number" id="numImagem" min="1" max="3" name="Num_Imagem">
+
         <button type="submit">Atualizar</button>
+        </div>
     </form>
 </div>
 </body>

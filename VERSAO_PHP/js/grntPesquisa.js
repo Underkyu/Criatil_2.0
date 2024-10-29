@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     
 // pesquisa por nome e ID de brinquedo
-const pesquisaInputBrinquedos = document.getElementById('txtPesquisaBrinquedos');
+const pesquisaInputBrinquedos = document.getElementById('txtPesquisa');
 if (pesquisaInputBrinquedos) {
     const containerBrinquedos = document.getElementById('brinquedos-container');
     const brinquedos = Array.from(containerBrinquedos.getElementsByClassName('brinquedo')); // converte as divs com a classe brinquedo para array

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,7 +12,6 @@
 </head>
 <body>
 <?php include("../html/header.php")?>
-    <div class="login">
         <div class="loginzinho">
         <img src="../imagens/Logo/criatillogo2.png">
 
@@ -30,11 +27,10 @@
 
                 <input type="hidden" name="Tipo" value="Login">
 
-                  <input type="hidden" class="form-control" name="crud" value="SELECT">
-                  <a href="cadastro.php" class="login">Fazer Cadastro</a>
                   <button type="submit" class="botao-entrar">Entrar</button>
+                  <a href="cadastro.php" class="login">Não tem uma conta?</a>
+
             </form>
         </div>
-    </div>
 </body>
 </html>

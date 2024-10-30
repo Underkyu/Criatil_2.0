@@ -74,7 +74,7 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
               <img src="<?php echo $imagem['Imagem']; ?>" class="foto_card">
             </div>
             <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
-            <h3 class="preco">R$<?php echo $brinquedo['Preco_Brinq']; ?></h3>
+            <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>
             <button class="card">
               <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
               <p class="botao_card">Comprar!</p>

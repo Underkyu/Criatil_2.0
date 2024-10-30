@@ -1,9 +1,30 @@
+<?php 
+require_once("../controller/global.php");
+require_once("../controller/conexao.php");
+require_once("../models/message.php");
+require_once("../Dao/usuarioDAO.php");
+require_once("../Dao/produtoDAO.php");
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$message = new Message($BASE_URL);
+$flashMessage = $message->getMessage();
+
+if(!empty($flashMessage["msg"])){
+    $message->clearMessage();
+}
+$userDao = new UsuarioDAO($conn,$BASE_URL);
+
+$usuarioData = $userDao->verificarToken(false);
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Header Gerente</title>
     <link rel="stylesheet" href="../css/headerGrnt.css">
     <script src="../js/menuSanduiche.js" defer></script>
 </head>
@@ -14,41 +35,49 @@
             <div class="header">
                 <div class="header_normal">
                 <img src="../imagens/Header/LogoBranca.png" alt="Logo da Criatil na cor branca" class="Logo_header"> <!--Logo-->
-                
-                
-
+    
                 <div class="links_normais">
-                <div class="link_header">
-                    <img src="../imagens/Gerente/Brinquedos.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
-                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                        <p class="pequeno  negrito">Brinquedos</p>
-                    </div>
-                </div>
 
                 <div class="link_header">
-                    <img src="../imagens/Gerente/Clientes.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
-                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                        <p class="pequeno  negrito">Clientes</p>
-                    </div>
-                </div>
-
-                <div class="link_header">
+                <a href="avaliacoesGrnt.php" class="linkk-header">
                     <img src="../imagens/Gerente/Avaliações.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno  negrito">Avaliações</p>
                     </div>
+                    </a>
                 </div>
 
                 <div class="link_header">
+                    <a href="brinquedosGrnt.php" class="linkk-header">
+                        <img src="../imagens/Gerente/Brinquedos.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
+                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                            <p class="pequeno  negrito">Brinquedos</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="link_header">
+                <a href="clientesGrnt.php" class="linkk-header">
+                    <img src="../imagens/Gerente/Clientes.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno  negrito">Clientes</p>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="link_header">
+                <a href="cadastrogerente.php" class="linkk-header">
                     <img src="../imagens/Gerente/CadastrarGerente.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno  negrito">Cadastrar Gerente</p>
                     </div>
+                    </a>
                 </div>
                 </div>
 
+                <a href="conta.php" class="linkk-header">
                 <img src="../imagens/Gerente/FotoGerente.webp" alt="Foto genrente" class="foto_gerente">
-               
+                </a>
 
                 <!--Responsividade-->
 
@@ -62,43 +91,52 @@
                 <!--Div do menu sanduiche e so aparece no celular-->
                 <div class="menuSanduiche" id="menuSanduiche">
                     <div class="link_header link_sanduiche">
+                    <a href="brinquedosGrnt.php" class="linkk-header">
                         <img src="../imagens/Gerente/Brinquedos.png" alt="Catalogo icon" class="link_header" id="menuSanduiche"> <!--Icon da parte de explorar catalogo-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                             <p class="pequeno  negrito">Brinquedos</p>
                         </div>
+                        </a>
                     </div>
     
                     <div class="link_header link_sanduiche">
+                    <a href="clientesGrnt.php" class="linkk-header">
                         <img src="../imagens/Gerente/Clientes.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                             <p class="pequeno  negrito">Clientes</p>
                         </div>
+                        </a>
                     </div>
     
                     <div class="link_header link_sanduiche">
+                    <a href="avaliacoesGrnt.php" class="linkk-header">
                         <img src="../imagens/Gerente/Avaliações.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                             <p class="pequeno  negrito">Avaliações</p>
                         </div>
+                        </a>
                     </div>
 
                     <div class="link_header link_sanduiche">
+                    <a href="cadastrogerente.php" class="linkk-header">
                         <img src="../imagens/Gerente/CadastrarGerente.png" alt="Catalogo icon" class="link_header" id="menuSanduiche"> <!--Icon da parte de explorar catalogo-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                             <p class="pequeno  negrito">Cadastrar Gerente</p>
                         </div>
+                        </a>
                     </div>
 
                     <div class="link_header link_sanduiche">
+                    <a href="conta.php" class="linkk-header">
                         <img src="../imagens/Gerente/FotoGerente.webp" alt="Carrinho icon" class="link_header perfil"> <!--Icon do carrinho-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                             <p class="pequeno  negrito">Perfil</p>
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 </html>

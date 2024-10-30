@@ -10,8 +10,9 @@
         <title>Criatil</title>
     </head>
     <body>
+    <?php include("header.php") ?>
     <!-- página do carrinho -->
-    <div class="container">
+    <div class="container-pag">
         <div class="container-car">
                 <div id="entrega">
                     <div>

@@ -23,7 +23,7 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
 
     if($nome && $nasc && $email && $senha && $confirmar && $celular && $tipo){ //Verifica se todos os campos estão preenchidos
         if($senha == $confirmar){//Verifica se a senha e confirmação são iguais
-            if(strlen($senha)>=10){//Confere se a senha possui mais de dez caracteres
+            if(strlen($senha)>=6){//Confere se a senha possui mais de (seis) caracteres
                 if($userDao->pesquisarPorEmail($email) === false){
                 $usuario = new Usuario();
 
@@ -47,13 +47,12 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
                 $message->setMessage("Email já Cadastrado","O email inserido já possui um cadastro","error","back"); 
             }
         }else{
-            $message->setMessage("Senha curta","A senha deve conter ao menos 10 caracteres","error","back");
+            $message->setMessage("Senha curta","A senha deve conter ao menos 6 caracteres","error","back");
         }
 
     } else{
         $message->setMessage("Falha na senha","A senha e a confirmação são diferente","error","back");
     }
-
     } else{
         $message->setMessage("Erro!","Por favor, preeencha os campos faltantes","error","back");
     }

@@ -8,6 +8,6 @@ $userDao = new UsuarioDAO($conn,$BASE_URL);
 $usuarioData = $userDao->verificarToken(false);
 
 if($usuarioData){
-    $userDao-> destroirToken();
+    $userDao->destroirToken();
 }
 ?>

@@ -2,7 +2,7 @@
 class Avaliacao {
     private $Codigo_Ava;
     private $Codigo_Brinq;
-    private $Codigo_Cli;
+    private $Codigo_Usu;
     private $Nota_Ava;
     private $Comentario;
     private $Titulo_Ava;
@@ -15,8 +15,8 @@ class Avaliacao {
         return $this->Codigo_Brinq;
     }
 
-    public function getCodigoCli() {
-        return $this->Codigo_Cli;
+    public function getCodigoUsu() {
+        return $this->Codigo_Usu;
     }
 
     public function getNotaAva() {
@@ -39,8 +39,8 @@ class Avaliacao {
         $this->Codigo_Brinq = $Codigo_Brinq;
     }
 
-    public function setCodigoCli($Codigo_Cli) {
-        $this->Codigo_Cli = $Codigo_Cli;
+    public function setCodigoUsu($Codigo_Usu) {
+        $this->Codigo_Usu = $Codigo_Usu;
     }
 
     public function setNotaAva($Nota_Ava) {

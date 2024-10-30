@@ -26,6 +26,7 @@ div.header{ /*Div que contem o conteudo do header de pc e celular*/
     overflow: hidden;
     transition-timing-function: ease-in;
     transition-duration: 2s;
+    width: 100%;
 }
 
 div.header_normal{ /*Div que contem o conteudo do header de pc*/
@@ -44,7 +45,7 @@ input.pesquisa { /*Barra de pesquisa*/
     background-position: 380px 9px; 
     background-size: 2rem;
     background-repeat: no-repeat;
-    padding: 12px 20px 12px 20px;
+    padding: 12px 55px 12px 20px;
     border: none;
     height: 3.3rem;
     width: 27rem;
@@ -95,6 +96,11 @@ input.pesquisa { /*Barra de pesquisa*/
     
     color: white;
   }
+  .pequenospan{
+    color: white;
+    all: unset;
+    font-weight: normal;
+  }
 
   p.negrito{
     font-weight: bold;
@@ -105,17 +111,16 @@ input.pesquisa { /*Barra de pesquisa*/
   }
 
   button.menuSanduicheHeader{ /*Botão que abre o menu sanduiche*/
-    border: white 5px solid;
+    border: none;
     background-color: transparent;
     border-radius: 15px; 
-    margin-left: 3rem;
     display: none;
   }
   div.link_sanduiche{ /*Conteudo do menu sanduiche*/
     display: inherit;
   }
   div.menuSanduiche{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
-    display: flex;
+    display: none;
     overflow: hidden;
     transition-timing-function: ease-in;
     transition-duration: 0.5s;
@@ -128,7 +133,6 @@ input.pesquisa { /*Barra de pesquisa*/
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    padding: 1rem;
     overflow: hidden;
     transition-timing-function: ease-in;
     transition-duration: 0.5s;
@@ -171,9 +175,7 @@ input.pesquisa { /*Barra de pesquisa*/
     .container {
       max-width: 1024px;
     }
-    input[type=text] { /*Barra de pesquisa*/
-      background-position: 320px 9px; 
-    }
+
   }
   
   /* lg */
@@ -185,15 +187,11 @@ input.pesquisa { /*Barra de pesquisa*/
     button.menuSanduicheHeader{/*Botão que abre o menu sanduiche*/
       display: block;
     }
-    input[type=text] { /*Barra de pesquisa*/
-      background-position: 340px 9px; 
-    }
+
     div.links_normais{
       display: none;
     }
-    div.header{ /*Div que contem o conteudo do header de pc e celular*/
-      flex-direction: column;
-  }
+
   }
   
   /* md */
@@ -201,26 +199,14 @@ input.pesquisa { /*Barra de pesquisa*/
     .container {
       max-width: 700px;
     }
-    input[type=text] { /*Barra de pesquisa*/
-      background-position: 275px 9px; 
-    }
-  }
-
-   /* sm */
-   @media (max-width: 680px) {
-    input[type=text] { /*Barra de pesquisa*/
-      background-position: 230px 9px; 
-    }
   }
   
   /* sm */
-  @media (max-width: 640px) {
+  @media (max-width: 678px) {
     .container {
       max-width: 600px;
     }
-
     div.header_normal{ /*Div que contem o conteudo do header de pc*/
-      flex-direction: row;
       flex-wrap: wrap;
     }
     input[type=text] { /*Barra de pesquisa*/
@@ -231,7 +217,7 @@ input.pesquisa { /*Barra de pesquisa*/
       margin: 0;
     }
     button.menuSanduicheHeader{ /*Botão que abre o menu sanduiche*/
-      border: white 5px solid;
+      border: none;
       background-color: transparent;
       margin: 0;
     }
@@ -242,40 +228,58 @@ input.pesquisa { /*Barra de pesquisa*/
     .container {
       width: 100%;
     }
-    input[type=text] { /*Barra de pesquisa*/
-      margin-top: 1rem;
+  }
+  @media (max-width: 495px) {
+    input.pesquisa{
+      height: 3rem;
+      width: 24rem;
     }
-    button.menuSanduicheHeader{ /*Botão que abre o menu sanduiche*/
-      margin-top: 1rem;
+  }
+  @media (max-width: 447px) {
+    input.pesquisa{
+      height: 2.8rem;
+      width: 20rem;
     }
+  }
+  @media (max-width: 410px){
     div.menuSanduiche{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
       flex-direction: column;
-    
     }
-    
     .open_header{ /*Classe que serve para tornar o menu sanduiche visivel*/
       flex-direction: column;
-      height: 15rem;
+      height: 11rem;
+      border-top: solid 2.5px #c08a00;
     }
-
     div.link_header { /*Div que contem icon e textos dos links para outras paginas que ficam dentro do header*/
       margin: 0;
-      margin-top: .5rem;
+      align-items: center;
+      justify-content: center;
+    }
+    img.link_header{/*Icon que fica ao lado dos links para outras páginas*/
+      margin-right: .5rem;
+      width: 3.1rem;
+      height: 3.1rem;
+    }
+    p.pequeno {
+      font-size: 17px;
     }
 
-    img.link_header{/*Icon que fica ao lado dos links para outras páginas*/
-      width: 3.5rem;
-      height: 3.5rem;
-      margin-right: .5rem;
+    p.negrito {
+      font-size: 17px;
     }
-  
-  
-    p.pequeno{/*Texto pequeno que vão ao lado do icon no header*/
-      font-size: 1.4rem;
+  }
+  @media (max-width: 383px) {
+    input.pesquisa{
+      height: 2.6rem;
+      width: 16rem;
     }
-  
-    p.negrito{
-      font-size: 1.4rem;
+    input.pesquisa::placeholder{
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 319px) {
+    input.pesquisa{
+      width: 14rem;
     }
   }
    /*Meio termo*/

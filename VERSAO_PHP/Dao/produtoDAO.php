@@ -108,8 +108,40 @@ public function atualizaP(Produto $produto, $redirect = true){
     $stmt->execute();
 
     if($redirect) {
-        $this->message->setMessage("Informações alteradas!","Os dados do produto foram alterados com sucesso","success","../html/brinquedosGrnt.php");
+        $this->message->setMessage("Informações alteradas!","Os dados do produto foram alterados com sucesso","success","back");
     }
+}
+
+public function editaImagem($imagem, $codigoImagem, $codigoBrinq, $numImagem) {
+        // se ainda n tiver código da img mas ter a img, dá insert
+        if (empty($codigoImagem) && !empty($imagem)) {
+            $novaImagem = new Imagem($imagem, $numImagem); // cria outra instância da classe imagem passando os parâmetros pra poder inserir
+            $this->inserirImagem($novaImagem, $codigoBrinq);
+}
+
+        // se tiver código da img mas a img estiver vazia, dá delete
+        elseif (!empty($codigoImagem) && empty($imagem)) {
+            $this->deletaImagem($codigoImagem);
+}
+
+        //se tiver código de img e a img, dá update
+        elseif (!empty($codigoImagem) && !empty($imagem)) {
+        
+        $stmt = $this->conexao->prepare("UPDATE imagem SET Imagem = :imagem WHERE Codigo_Imagem = :codigoImagem");
+
+        $stmt->bindParam(":imagem", $imagem);
+        $stmt->bindParam(":codigoImagem", $codigoImagem);
+
+        $stmt->execute();
+}
+}
+public function deletaImagem($codigoImagem) {
+    // pra apagar a imagem do produto caso ela seja apagada na edição
+    $stmt = $this->conexao->prepare("DELETE FROM imagem WHERE Codigo_Imagem  = :codigoImagem");
+    
+    $stmt->bindParam(":codigoImagem", $codigoImagem);
+
+    $stmt->execute();
 }
 public function pesquisarPorNome($nomeBrinq) {
     if($nomeBrinq != "") {

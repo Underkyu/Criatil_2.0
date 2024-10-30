@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 // pega os dados do brinquedo
                 const codigoSelo = this.getAttribute('data-codigoselo');
                 const codigoCate = this.getAttribute('data-codigocate');
+                const codigoBrinq = this.getAttribute('data-codigobrinq');
                 const nomeBrinq = this.getAttribute('data-nomebrinq');
                 const precoBrinq = this.getAttribute('data-preco');
                 const notaBrinq = this.getAttribute('data-nota');
@@ -40,13 +41,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 const imagem1Brinq = this.getAttribute('data-imagem1');
                 const imagem2Brinq = this.getAttribute('data-imagem2');
                 const imagem3Brinq = this.getAttribute('data-imagem3');
-                const numImagem1Brinq = this.getAttribute('data-numimagem1');
-                const numImagem2Brinq = this.getAttribute('data-numimagem2');
-                const numImagem3Brinq = this.getAttribute('data-numimagem3');
+                const codigoImagem1 = this.getAttribute('data-codigoimagem1');
+                const codigoImagem2 = this.getAttribute('data-codigoimagem2');
+                const codigoImagem3 = this.getAttribute('data-codigoimagem3');
 
                 // preenche os campos do form usando a const de acordo com a id da input
                 document.getElementById('codigoSelo').value = codigoSelo;
                 document.getElementById('codigoCate').value = codigoCate;
+                document.getElementById('codigoBrinq').value = codigoBrinq;
                 document.getElementById('nomeBrinq').value = nomeBrinq;
                 document.getElementById('precoBrinq').value = precoBrinq;
                 document.getElementById('notaBrinq').value = notaBrinq;
@@ -56,9 +58,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById('imagem1').value = imagem1Brinq;
                 document.getElementById('imagem2').value = imagem2Brinq;
                 document.getElementById('imagem3').value = imagem3Brinq;
-                document.getElementById('numImagem1').value = numImagem1Brinq;
-                document.getElementById('numImagem2').value = numImagem2Brinq;
-                document.getElementById('numImagem3').value = numImagem3Brinq;
+                document.getElementById('numImagem1').value = '1';
+                document.getElementById('numImagem2').value = '2';
+                document.getElementById('numImagem3').value = '3';
+                document.getElementById('codigoImagem1').value = codigoImagem1;
+                document.getElementById('codigoImagem2').value = codigoImagem2;
+                document.getElementById('codigoImagem3').value = codigoImagem3;
 
                 if (typeof updatePreviews === 'function') {
                     updatePreviews();

@@ -85,6 +85,7 @@ $categorias = $produtoDao->getCategorias();
                                     data-tipo="brinquedo"
                                     data-codigoselo="<?php echo $brinquedo['Codigo_Selo']; ?>"
                                     data-codigocate="<?php echo $brinquedo['Codigo_Categoria']; ?>"
+                                    data-codigobrinq="<?php echo $brinquedo['Codigo_Brinq']; ?>"
                                     data-nomebrinq="<?php echo $brinquedo['Nome_Brinq']; ?>"
                                     data-preco="<?php echo $brinquedo['Preco_Brinq']; ?>"
                                     data-nota="<?php echo $brinquedo['Nota']; ?>"
@@ -94,9 +95,9 @@ $categorias = $produtoDao->getCategorias();
                                     data-imagem1="<?php echo $imagem1['Imagem']; ?>"
                                     data-imagem2="<?php echo $imagem2['Imagem'] ?? ''; ?>"
                                     data-imagem3="<?php echo $imagem3['Imagem'] ?? ''; ?>"
-                                    data-numimagem1="<?php echo $imagem1['Num_Imagem']; ?>"
-                                    data-numimagem2="<?php echo $imagem2['Num_Imagem'] ?? ''; ?>"
-                                    data-numimagem3="<?php echo $imagem3['Num_Imagem'] ?? ''; ?>">
+                                    data-codigoimagem1="<?php echo $imagem1['Codigo_Imagem'] ?? ''; ?>"
+                                    data-codigoimagem2="<?php echo $imagem2['Codigo_Imagem'] ?? ''; ?>"
+                                    data-codigoimagem3="<?php echo $imagem3['Codigo_Imagem'] ?? ''; ?>">
                                     Editar
                                 </button>
                             </div>
@@ -189,8 +190,6 @@ $categorias = $produtoDao->getCategorias();
             <input type="hidden" name="numImagem3" value="3">
         </div>
     </div>
-</div>
-
         <input type="hidden" name="Tipo" value="Inserir">
         </div>
         </div>
@@ -227,6 +226,8 @@ $categorias = $produtoDao->getCategorias();
                 <?php } ?>
             </select>
         </div>
+
+        <input type="hidden" id="codigoBrinq" name="codigoBrinq" required>
 
         <input type="text" id="nomeBrinq" name="Nome_Brinq" placeholder="Nome" required>
                 
@@ -279,7 +280,10 @@ $categorias = $produtoDao->getCategorias();
 
         <input type="hidden" id="numImagem1" name="numImagem1" value="1">
         <input type="hidden" id="numImagem2" name="numImagem2" value="2">
-        <input type="hidden" id="numImagem3" name="numImagem3" value="3">
+        <input type="hidden" id="numImagem3" name="numImagem3" value="3"> <!-- sim, todos esses campos hidden são absolutamente necessários -->
+        <input type="hidden" id="codigoImagem1" name="codigoImagem1">
+        <input type="hidden" id="codigoImagem2" name="codigoImagem2">
+        <input type="hidden" id="codigoImagem3" name="codigoImagem3">
         <input type="hidden" name="Tipo" value="Atualizar">
         </div>
         </div>

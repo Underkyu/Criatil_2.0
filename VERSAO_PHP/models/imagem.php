@@ -5,7 +5,11 @@ class Imagem {
     private $Imagem;
     private $Num_Imagem;
 
-
+    public function __construct($imagem = "", $numImagem = null) {
+        $this->Imagem = $imagem;
+        $this->Num_Imagem = $numImagem;
+    }
+    
     public function getCodigoImagem() {
         return $this->Codigo_Imagem;
     }

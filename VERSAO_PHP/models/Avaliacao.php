@@ -55,4 +55,8 @@ class Avaliacao {
         $this->Titulo_Ava = $Titulo_Ava;
     }
 }
+
+interface AvaliacaoDAOInterface {
+    public function deleta(Avaliacao $avaliacao, $redirect = true);
+}
 ?>

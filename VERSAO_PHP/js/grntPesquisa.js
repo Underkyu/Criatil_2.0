@@ -2,8 +2,10 @@ document.addEventListener("DOMContentLoaded", function() {
     
 // pesquisa por nome e ID de brinquedo
 const pesquisaInputBrinquedos = document.getElementById('txtPesquisa');
-if (pesquisaInputBrinquedos) {
-    const containerBrinquedos = document.getElementById('brinquedos-container');
+const containerBrinquedos = document.getElementById('brinquedos-container');
+
+// se ambos estiverem presentes na página, executa o código
+if (pesquisaInputBrinquedos && containerBrinquedos) {
     const brinquedos = Array.from(containerBrinquedos.getElementsByClassName('brinquedo')); // converte as divs com a classe brinquedo para array
 
      pesquisaInputBrinquedos.addEventListener('input', function() {
@@ -25,12 +27,14 @@ if (pesquisaInputBrinquedos) {
 
 // pesquisa por nome de user, título da avaliação ou comentário da avaliação
 const pesquisaInputAvaliacoes = document.getElementById('txtPesquisa');
-if (pesquisaInputAvaliacoes) {
-    const containerAvaliacoes = document.getElementById('avaliacoes-container');
+const containerAvaliacoes = document.getElementById('avaliacoes-container');
+
+// se ambos estiverem presentes na página, executa o código
+if (pesquisaInputAvaliacoes && containerAvaliacoes) {
     const avaliacoes = Array.from(containerAvaliacoes.getElementsByClassName('avaliacao'));
 
     pesquisaInputAvaliacoes.addEventListener('input', function() {
-        const termoPesquisa = this.value.toLowerCase().trim();
+        const termoPesquisa = this.value.toLowerCase();
         
         avaliacoes.forEach(avaliacao => {
             const nomeUsuario = avaliacao.querySelector('.nome').textContent.toLowerCase();
@@ -50,8 +54,10 @@ if (pesquisaInputAvaliacoes) {
 
 // pesquisa por nome, ID ou tipo de usuário
 const pesquisaInputClientes = document.getElementById('txtPesquisa');
-if (pesquisaInputClientes) {
-    const containerClientes = document.getElementById('brinquedos-container');
+const containerClientes = document.getElementById('brinquedos-container');
+
+// se ambos estiverem presentes na página, executa o código
+if (pesquisaInputClientes && containerClientes) {
     const clientes = Array.from(containerClientes.getElementsByClassName('brinquedo'));
 
         pesquisaInputClientes.addEventListener('input', function() {

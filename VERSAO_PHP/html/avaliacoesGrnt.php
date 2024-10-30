@@ -39,16 +39,25 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Avaliações</title>
     <link rel="stylesheet" href="../css/avaliacoesGrnt.css" />
     <script src="../js/grntPesquisa.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
   <?php include("headerGrnt.php") ?>
-
-
-<!-- USAR brinquedosGrnt.php COMO BASE PRA TERMINAR ESSA PÁG!!!
- o que falta:
- - fazer delete de ava funcionar (deve ser bem fácil, faço dps) 
- - responsividade do form: botão de x (fechar) pra telas menores
--->
+  <script>
+        // verifica se tem uma msg de sucesso armazenada, e se tiver, exibe
+        const message = sessionStorage.getItem('message');
+        if (message) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Sucesso',
+                text: message,
+                confirmButtonText: 'Ok',
+                toast: true
+            });
+            // limpa a msg
+            sessionStorage.removeItem('message');
+        }
+    </script>
     <div class="container">
       <h1 class="titulo">Avaliações Recebidas</h1>
         <div class="fundo">
@@ -58,11 +67,13 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
             <?php 
             foreach ($avaliacoes as $avaliacao) {
-              // seleciona a img de usuario da avaliacao atual
+              // seleciona a img de usuario, nome de usuario e nome de brinquedo da avaliacao atual
               $stmt = $conn->query("SELECT Imagem FROM usuario WHERE Codigo_Usu = " . $avaliacao['Codigo_Usu']);
               $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
               $stmt = $conn->query("SELECT Nome_Usu FROM usuario WHERE Codigo_Usu = " . $avaliacao['Codigo_Usu']);
-              $nome = $stmt->fetch(PDO::FETCH_ASSOC);
+              $nomeUsu = $stmt->fetch(PDO::FETCH_ASSOC);
+              $stmt = $conn->query("SELECT Nome_Brinq FROM brinquedo WHERE Codigo_Brinq = " . $avaliacao['Codigo_Brinq']);
+              $nomeBrinq = $stmt->fetch(PDO::FETCH_ASSOC);
             ?>
 
               <!--Começo card avaliação-->
@@ -70,7 +81,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   <img src="<?php echo $imagem['Imagem']; ?>" alt="Foto de perfil" class="foto_perfil"/><!--Foto de perfil da avaliação-->
                   <div class="detalhes_avaliacoes">
                       <div class="nome_avaliacao">
-                          <h5 class="nome"><?php echo $nome['Nome_Usu']; ?></h5>
+                          <h5 class="nome"><?php echo $nomeUsu['Nome_Usu']; ?></h5>
                       </div>
                       <div class="titulo-da-avaliacao">
                           <p class="titulo_avaliacao"><?php echo $avaliacao['Titulo_Ava']; ?></p>
@@ -81,7 +92,12 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                       <p class="texto_avaliacao"><?php echo $avaliacao['Comentario']; ?></p>
                   </div>
                   <div class="botao_deletar">
-                      <button class="deletar">Deletar</button>
+                    <form method="POST" action="../controller/avaliacaoProcess.php">
+                      <input type="hidden" name="Tipo" value="Deletar">
+                      <input type="hidden" name="codigoAva" value="<?php echo $avaliacao['Codigo_Ava']; ?>">
+                      <input type="hidden" name="nomeUsu" value="<?php echo $nomeUsu['Nome_Usu']; ?>">
+                      <button type="button" class="deletar" onclick="confirmDelete(<?php echo $avaliacao['Codigo_Ava']; ?>, '<?php echo $nomeUsu['Nome_Usu']; ?>')">Deletar</button>
+                      </form>
                   </div>
               </div>
               <!--Fim card avaliação-->
@@ -98,4 +114,39 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
   </body>
+<script>
+function confirmDelete(codigoAva, nomeUsu) {
+    Swal.fire({
+        title: 'Tem certeza?',
+        text: "Você confirma a deleção da avaliação de " + nomeUsu + "?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#0476D9',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar',
+        allowOutsideClick: false,
+        toast: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const form = new FormData();
+            form.append('Tipo', 'Deletar');
+            form.append('codigoAva', codigoAva);
+            form.append('nomeUsu', nomeUsu);
+
+            fetch('../controller/avaliacaoProcess.php', { // fetch é praticamente um jeito alternativo de fazer um submit pra enviar formulários
+                method: 'POST',
+                body: form
+            }).then(response => {
+                if (response.ok) {
+                    // guarda a msg pra ser exibida no script do começo
+                    sessionStorage.setItem('message', 'Avaliação removida com sucesso!');
+                    // recarrega a pag
+                    location.reload();
+                }
+            });
+        }
+    });
+}
+</script>
 </html>

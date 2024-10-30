@@ -66,6 +66,7 @@ button.deletar{  /*Botão para levar a pagina de detalhes do cliente*/
   font-size: 1rem;
   transition-duration: .5s;
   transition-timing-function: linear;
+  cursor: pointer;
 }
 
 button.deletar:hover{

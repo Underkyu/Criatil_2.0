@@ -64,9 +64,37 @@ document.addEventListener("DOMContentLoaded", function() {
                     updatePreviews();
                     // integração com grntImgPreview.js pra atualizar a img assim que o form abrir
                 }
+
+            //se data-tipo="avaliacao"
+            }else if (tipo === 'avaliacao') { 
+                const codigoAva = this.getAttribute('data-codigo');
+                
+                if (confirm('Tem certeza que deseja deletar esta avaliação?')) {
+                    fetch('../controller/deletarAvaliacao.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: 'codigo=' + codigoAva
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            this.closest('.avaliacao').remove();
+                        } else {
+                            alert('Erro ao deletar avaliação: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro:', error);
+                        alert('Ocorreu um erro ao deletar a avaliação.');
+                    });
+                }
+                return; // Evita que o formulário seja exibido para avaliações
             }
 
-            // faz o form aparecer
+
+            // faz o form aparecer (brinquedos)
             if (containerFormulario) {
                 containerFormulario.style.display = 'flex';
             }

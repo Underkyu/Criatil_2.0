@@ -1,4 +1,4 @@
-<?php 
+    <?php 
 require_once("../controller/global.php");
 require_once("../controller/conexao.php");
 require_once("../models/message.php");

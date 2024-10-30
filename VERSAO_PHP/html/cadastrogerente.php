@@ -27,7 +27,7 @@
                      não achei necessário ocultar os campos de senha -->
             </div>
             
-                <input type="hidden" name="Imagem" value="../imagens/Conta/usuario.png">
+                <input type="hidden" name="Imagem" value="vazio">
                 <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Gerente">
                 <input type="hidden" name="Tipo" value="Cadastro">
 

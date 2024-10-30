@@ -62,7 +62,15 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
 
     //Se login der certo
     if($userDao->autenticarUsuario($email,$senha)){
-        $message->setMessage("Seja bem vindo!","Login bem sucedido","success","../html/conta.php");
+        $conta = $userDao->pesquisarPorEmail($email);
+        
+        if($conta->getTipo() == "Cliente"){
+            $message->setMessage("Seja bem vindo!","Login bem sucedido","success","../html/conta.php");
+        }else if($conta->getTipo() == "Gerente"){
+            $message->setMessage("Seja bem vindo!","Login bem sucedido","success","../html/clientesGrnt.php");
+        }else if($conta->getTipo() == "Bloqueado"){
+            $message->setMessage("Conta Bloqueada!","Sua conta foi bloqueada, entre em contato para mais detalhes","error","../html/principal.php");
+        }
     }else{
         $message->setMessage("Erro!","Email e/ou senha incorretos","error","back");
     }

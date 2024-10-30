@@ -17,8 +17,14 @@
         <!-- 'navbar-conta' é a barra da esquerda com as páginas -->
          <div class="navbar-container" id="navbar-conta"> 
              <div class="lateral-conta">
-                  <img class="img-lateral" src="../imagens/Conta/rosana.jpg">
-                  <h1 class="nome-lateral">Rosana Siqueira</h1>
+                  <img class="img-lateral" src=<?php
+                        if($usuarioData->getImagem() == "vazio") {;
+                            print_r("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                        }?>>
+                  <h1 class="nome-lateral"><?php print_r($usuarioData->getNome());?></h1>
              </div>
              <div class="paginas">
                   <a href="./conta.php" class="paginas-navbar">Perfil</a>
@@ -38,7 +44,7 @@
                <!-- fim do botão do menu sanduíche-->
 
              <!-- div do menu sanduíche -->
-                     <div class="menuSanduiche" id="menuSanduiche">
+                    <div class="menuSanduicheConta" id="menuSanduicheConta">
                          <div class="link_header link_sanduiche">
                              <a href="./conta.php" class="paginas-navbar">Perfil</a>
                          </div>

@@ -88,7 +88,6 @@ class UsuarioDAO implements UsuarioDAOInterface {
         $stmt->bindParam(":senha", $senha);
         $stmt->bindParam(":tipo", $tipo);
         $stmt->bindParam(":token", $token);
-        $stmt->bindParam(":token", $imagem);
         $stmt->bindParam(":codigo", $codigo);
         $stmt->bindParam(":imagem", $imagem);
 

@@ -31,8 +31,14 @@ $usuarioData = $userDao->verificarToken(true);
                 <!-- 'navbar-conta' é a barra da esquerda com as páginas -->
          <div class="navbar-container" id="navbar-conta"> 
              <div class="lateral-conta">
-                  <img class="img-lateral" src="../imagens/Conta/rosana.jpg">
-                  <h1 class="nome-lateral">Rosana Siqueira</h1>
+                  <img class="img-lateral" src=<?php
+                        if($usuarioData->getImagem() == "vazio") {;
+                            print_r("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                        }?>>
+                  <h1 class="nome-lateral"><?php print_r($usuarioData->getNome());?></h1>
              </div>
              <div class="paginas">
                   <a href="#" class="pagina-selecionada">Perfil</a>
@@ -80,69 +86,77 @@ $usuarioData = $userDao->verificarToken(true);
             <h1 class="titulo-box">Perfil</h1>
                <div class="perfil-container" id="perfil">
                 <div class="informacoes">
-                    <form action="../controller/usuarioProccess.php" method="POST">
+
+                     <!--Formulario de troca de dados-->   
+                    <form action="../controller/usuarioProccess.php" method="POST" enctype="multipart/form-data">
                     <div class="info-item">
                         <div class="info-label">Nome completo:</div>
                         <div class="info-value">
-                            <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getNome());?>>
+                            <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getNome());?> name="Nome_Usu">
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Data de nascimento:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="date" value=<?php print_r($usuarioData->getNasc());?>>
+                        <input class="usuario-info" type="date" value=<?php print_r($usuarioData->getNasc());?> name="Nasc_Usu">
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Email:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getEmail());?> readonly>
+                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getEmail());?> name="Email_Usu" readonly>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Celular:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getCelular());?>>
+                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getCelular());?> name="Celular_Usu">
                         </div>
                     </div>
-                    <input type="hidden" name="Tipo" value="Atualizar">
+                    <input type="hidden" name="Tipo" value="Atualizar"> <!--Input para identificar que operação será feita-->
+                    <input type="file" name="imagem_file" id="imagem_file">
+                    <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Cliente">
                     <button class="editar" type="submit">Editar</button>
                     </form>
                     
+                    <!--Formulario de troca de senha-->
                     <form action="../controller/usuarioProccess.php" method="POST">
                     <h2 class="troque_senha">Troque sua senha</h2>
                     <div class="info-item">
                         <div class="info-label">Senha atual:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" placeholder="Senha atual">
+                        <input class="usuario-info" type="text" placeholder="Senha atual" name="Atual_Senha">
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Senha nova:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" placeholder="Senha nova">
+                        <input class="usuario-info" type="text" placeholder="Senha nova" name="Nova_Senha">
                         </div>
                     </div>
-                    <input type="hidden" name="Tipo" value="Senha">
+                    <input type="hidden" name="Tipo" value="Senha"> <!--Input para identificar que operação será feita-->
                     <button class="editar" type="submit">Atualizar</button>
                     </form>
                 </div>
 
                 <div class="conta-box">
-                <input type="file" name="imagem_file" id="imagem_file">
                     <div class="img-container" id="img-container"> 
                         <img src=<?php
-                        if($usuarioData->getImagem() == "vazio") {
-                            $usuarioData->setImagem("../imagens/Conta/usuario.png");
-                        }
-                         print_r($usuarioData->getImagem());?> class="img-conta">
+                        if($usuarioData->getImagem() == "vazio") {;
+                            print_r("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                        }?> class="img-conta">
+
+
                         <div class="editar-icone">
                         <button class="editar-img"> <!-- botão pra editar imagem do usuário-->
                             <img src="../imagens/Icons/Editar.png" class="icone-editar">
                         </button>
                         </div>
                     </div>
-                    <h2 class="nome-conta">Rosana Siqueira</h2>
+                    <h2 class="nome-conta"><?php print_r($usuarioData->getNome()) ?></h2>
                 </div>
                </div>   
         </div>

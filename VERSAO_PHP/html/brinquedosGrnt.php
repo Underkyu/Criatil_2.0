@@ -157,22 +157,37 @@ $categorias = $produtoDao->getCategorias();
         
         <input type="text" name="Faixa_Etaria" placeholder="Faixa Etária" required>
     </div>
-    <div class="form-div-img"> <!-- div q contém as imagens -->
-        <div class="imagens-container">
-    <div class="imagem-input">
-        <label>Imagem Principal:</label>
-        <input type="text" name="Imagem1" placeholder="Caminho da Imagem" required>
-        <input type="hidden" name="numImagem1" value="1">
-    </div>
-    <div class="imagem-input">
-        <label>Imagem 2 (opcional):</label>
-        <input type="text" name="Imagem2" placeholder="Caminho da Imagem">
-        <input type="hidden" name="numImagem2" value="2">
-    </div>
-    <div class="imagem-input">
-        <label>Imagem 3 (opcional):</label>
-        <input type="text" name="Imagem3" placeholder="Caminho da Imagem">
-        <input type="hidden" name="numImagem3" value="3">
+    <div class="form-div-img">
+    <div class="imagens-container">
+        <div class="imagem-input">
+            <label>Imagem Principal:</label>
+            <input type="text" id="inserirImagem1" name="Imagem1" placeholder="Caminho da Imagem" required>
+            <div class="preview-div" id="inserirPreviewdiv1">
+                <label>Preview da imagem:</label>
+                <img id="inserirPreview1" src="" class="imagemPreview">
+            </div>
+            <input type="hidden" name="numImagem1" value="1">
+        </div>
+        
+        <div class="imagem-input">
+            <label>Imagem 2 (opcional):</label>
+            <input type="text" id="inserirImagem2" name="Imagem2" placeholder="Caminho da Imagem">
+            <div class="preview-div" id="inserirPreviewdiv2">
+                <label>Preview da imagem:</label>
+                <img id="inserirPreview2" src="" class="imagemPreview">
+            </div>
+            <input type="hidden" name="numImagem2" value="2">
+        </div>
+
+        <div class="imagem-input">
+            <label>Imagem 3 (opcional):</label>
+            <input type="text" id="inserirImagem3" name="Imagem3" placeholder="Caminho da Imagem">
+            <div class="preview-div" id="inserirPreviewdiv3">
+                <label>Preview da imagem:</label>
+                <img id="inserirPreview3" src="" class="imagemPreview">
+            </div>
+            <input type="hidden" name="numImagem3" value="3">
+        </div>
     </div>
 </div>
 
@@ -226,8 +241,9 @@ $categorias = $produtoDao->getCategorias();
         <input type="text" id="faixaBrinq" name="Faixa_Etaria" placeholder="Faixa Etária" required>
     </div>
     <div class="form-div-img"> <!-- div q contém as imagens -->
+        
         <div class="imagens-container">
-            <div class="imagem-input">
+        <div class="imagem-input">
                 <label>Imagem Principal:</label>
                 <input type="text" id="imagem1" name="Imagem1" placeholder="Caminho da Imagem" required>
 

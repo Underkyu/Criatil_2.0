@@ -73,7 +73,9 @@ if($tipo === "Inserir") {
     }
 }
 
-
+if($tipo === "Atualizar") {
+    // lógica de update vo roubar do migel
+}
 if($tipo === "Pesquisa"){ // entra aqui caso $tipo tenha o valor Pesquisa
     $nomeBrinq = filter_input(INPUT_POST, "Nome_Brinq");
 

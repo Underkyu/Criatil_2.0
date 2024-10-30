@@ -46,7 +46,6 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- USAR brinquedosGrnt.php COMO BASE PRA TERMINAR ESSA PÁG!!!
  o que falta:
- - fazer input de pesquisa funcionar (tá no brinquedosGrnt.php e no grntPesquisa.js)
  - fazer delete de ava funcionar (deve ser bem fácil, faço dps) 
  - responsividade do form: botão de x (fechar) pra telas menores
 -->

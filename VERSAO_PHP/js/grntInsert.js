@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     botaoAdicionar.addEventListener('click', function() {
         console.log('Botão clicado');
         containerFormulario.style.display = 'flex';
+        
     });
 
     // fecha qnd clicar fora

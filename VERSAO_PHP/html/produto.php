@@ -1,5 +1,16 @@
+<?php
+require_once("../Dao/produtoDAO.php");
+require_once("../models/brinquedo.php");
+require_once("../controller/global.php");
+require_once("../controller/conexao.php");
+
+$prodDAO = new ProdutoDAO($conn,$BASE_URL);
+$brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="w" />
@@ -15,6 +26,8 @@
   </head>
 
   <body>
+  <?php include("header.php");?>
+  
     <div class="container">
       <!--Inicio div produto-->
       <div class="produto">
@@ -130,7 +143,7 @@
 
         <div class="detalhes">
           <!--Div que contem os detalhes dos produtos-->
-          <h3 class="titulo">Pelucia Miku</h3>
+          <h3 class="titulo"><?php print_r($brinquedo->getNomeBrinq());?></h3>
           <!--Nome do produto-->
 
           <div class="avaliacoes_anuncio">
@@ -144,10 +157,9 @@
             </div>
             <p class="avaliacao">12.6K</p>
           </div>
-          <h2 class="preco">R$79,99</h2>
+          <h2 class="preco">R$<?php print_r($brinquedo->getPrecoBrinq());?></h2>
           <p class="descricao">
-            Boneco de pelucia inspirado na famosa cantora virtual hatsune miku,
-            perfeito para pessoas de qualquer idade
+          <?php print_r($brinquedo->getDescricao());?>
           </p>
 
           <p class="quantidade">Quantidade</p>
@@ -167,14 +179,18 @@
               +
             </button>
           </div>
-
+          <form action=""></form>
           <button class="comprar">
             <p class="comprar">Adiconar à lista de favoritos</p>
           </button>
 
+          <form action="../controller/carrinhoProccess.php" class="form" method="POST">
+          <input type="hidden" name="Operacao" value="Adicionar">
+          <input type="hidden" name="Codigo" value=<?php print_r($_GET['codigo'])?>>
           <button class="carrinho">
             <p class="carrinho">Adiconar ao carrinho</p>
           </button>
+          </form>
         </div>
       </div>
       <!--Fim div produto-->
@@ -486,7 +502,7 @@
           <!--Começo card avaliação-->
           <div class="card_avaliacao">
             <img
-              src="../imagens/Avaliacoes/teto_perfil.jpg"
+              src="../imagens/usuarios/c33ea36009bd947b52c4af7a04462acf9b6090d5c10c3fb988b0137a390fd4e9998305aaedc42b3b7f7b65a8555a023fcf8f4450db2031b64ef86f74.jpeg"
               alt="Foto de perfil"
               class="foto_perfil"
             /><!--Foto de perifl da avalição-->
@@ -529,7 +545,7 @@
           <!--Começo card avaliação-->
           <div class="card_avaliacao">
             <img
-              src="../imagens/Avaliacoes/gumi_perfil.jpeg"
+              src="../imagens/usuarios/4e013b07ab6cef43b541146e37ef01352f11ba946179b07bd4486042a250335f8cbc03694a1e7f5a6874461103e1e19c6e774a135ead7ba1652e7b0b.jpeg"
               alt="Foto de perfil"
               class="foto_perfil"
             /><!--Foto de perifl da avalição-->

@@ -11,7 +11,7 @@ class Message {
         $this->url = $url;
     }
 
-    public function setMessage($titulo, $msg, $type, $redirect = "index.php") {
+    public function setMessage($titulo, $msg, $type, $redirect = "../html/index.php") {
         $_SESSION["titulo"] = $titulo;
         $_SESSION["msg"] = $msg;
         $_SESSION["type"] = $type;

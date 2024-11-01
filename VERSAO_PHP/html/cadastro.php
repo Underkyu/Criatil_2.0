@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> <!-- css do bootstrap para ícone de mostrar senha -->
     <link rel="stylesheet" href="../css/cadastro.css"> <!-- css do cadastro -->
     <script src="../js/cadastro.js"></script>
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Criatil - Cadastro</title>
 </head>
 <body>
@@ -51,5 +52,7 @@
                 <a href="login.php" class="login">Já tem uma conta?</a>
             </form>
         </div>
+
+    <?php include("footer.php") ?>
 </body>
 </html>

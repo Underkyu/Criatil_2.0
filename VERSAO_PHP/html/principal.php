@@ -14,7 +14,8 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criatil</title>
+  <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
+  <title>Criatil - pagina principal</title>
 
   <!--CSS dos carrosseis e da pagina respectivamente-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -145,5 +146,7 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   <!-- Initialize Swiper -->
   <script src="../js/index.js"> </script>
+
+<?php include("footer.php") ?>
 </body>
 </html>

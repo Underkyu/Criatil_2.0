@@ -21,8 +21,8 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
     />
     <link rel="stylesheet" href="../css/produto.css" />
     <link rel="stylesheet" href="../css/card.css" />
-
-    <title>Pelucia Miku</title>
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
+    <title>Criatil - produto</title>
   </head>
 
   <body>
@@ -608,5 +608,6 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
 
     <!-- Initialize Swiper -->
     <script src="../js/produto.js"></script>
+  <?php include("footer.php") ?>
   </body>
 </html>

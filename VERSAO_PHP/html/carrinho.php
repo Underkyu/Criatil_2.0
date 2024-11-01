@@ -22,7 +22,8 @@ require_once("../models/brinquedo.php");
         <link rel="stylesheet" href="../css/carrinho.css">
         <script src="../js/carrinhoResumo.js" defer></script>
         <script src="../js/carrinhoQuantidade.js" defer></script>
-        <title>Criatil</title>
+        <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
+        <title>Criatil - Carrinho</title>
     </head>
     <body>
     <?php include("header.php") ?>
@@ -120,5 +121,7 @@ require_once("../models/brinquedo.php");
                 <button id="botao-resumo">Resumo da Compra</button>
     <!-- fim da página do carrinho -->
      </div>
+
+     <?php include("footer.php") ?>
     </body>
     </html>

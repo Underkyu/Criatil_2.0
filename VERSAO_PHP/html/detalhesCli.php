@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Detalhes do cliente</title>
     <link rel="stylesheet" href="../css/detalhesCli.css">
 </head>
 <body>
+<?php include("header.php") ?>
     <div class="container">
         <div class="conteudo"><!--Div com todo o conteudo da página-->
             <h1 class="titulo">Detalhes do Cliente</h1><!--Titulo da página-->
@@ -47,5 +49,6 @@
         </form>
         </div>
     </div>
+<?php include("footer.php") ?>
 </body>
 </html>

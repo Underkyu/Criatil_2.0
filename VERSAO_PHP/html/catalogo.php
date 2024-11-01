@@ -21,7 +21,8 @@ if (isset($_SESSION['produtos'])) {
     <link rel="stylesheet" href="../css/card.css">
     <link rel="stylesheet" href="../css/catalogo.css">
     <script src="../js/catalogo.js" defer></script>
-    <title>Catalogo</title><!--Página de catálogo-->
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
+    <title>Criatil - Catalogo</title><!--Página de catálogo-->
 </head>
 
 <body>
@@ -222,6 +223,8 @@ if (isset($_SESSION['produtos'])) {
         // Adiciona um listener para quando a janela é redimensionada
         window.addEventListener('resize', updateDisplayStyles);
     </script>
+
+    <?php include("footer.php") ?>
 </body>
 
 </html>

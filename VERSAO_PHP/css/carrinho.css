@@ -260,6 +260,47 @@ transition: all 0.3s ease-in-out;
     border: 3px solid #f1f1f1; 
 }
 
+img.excluir{ /*Imagem de X para excluir item do carrinho*/
+    width: 2rem;
+}
+button.excluir{ /*Botão que exclui um item do carrinho*/
+    background-color: transparent;
+    border: none;
+}
+
+div.excluir-item{/*Div que contem o botão que exclui um item do carrinho*/
+    font-size: 19px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+div.botao-deletar{ /*Botão que exclui todos os itens do carrinho*/
+    width: 100%;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+button.deletar{ /*Div que contem o botão que exclui todos os itens do carrinho*/ 
+    border: #000000 3px solid;
+    background-color: #F2AF00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: .25rem;
+}
+img.deletar{
+    width: 2.5rem;
+}
+p.deletar{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+
+
 /* responsividade */
 @media (max-width: 900px) {
     #carrinho {

@@ -1,3 +1,18 @@
+<?php
+require_once("../controller/global.php");
+require_once("../controller/conexao.php");
+require_once("../Dao/carrinhoDAO.php");
+require_once("../models/message.php");
+require_once("../Dao/produtoDAO.php");
+require_once("../models/brinquedo.php");
+
+
+    $prodDAO = new ProdutoDAO($conn,$BASE_URL);
+
+    $carrinhoDao = new carrinhoDao($conn,$BASE_URL);
+    $carrinho = $carrinhoDao->getCarrinho();
+    $quantidade = 1;
+    ?>
     <!DOCTYPE html>
     <html lang="pt-br">
     <head>
@@ -35,40 +50,50 @@
                             <p class="legenda-nome">Nome</p>
                             <p class="legenda-qntd">Quantidade</p>
                             <p class="legenda-valor">Valor</p>
+                            <p class="legenda-valor">Excluir</p>
                         </div>
 
-                        <div class="produto">
+                        <?php
+                            foreach ($carrinho as $produto) {
+                                $brinquedo = $prodDAO->pesquisarPorCodigo($produto);
+                                ?>
+                            <div class="produto">
                             <div class="produto-info">
                                 <img src="../imagens/Produtos/Miku/Imagem1.png" class="produto-imagem">
-                                <div class="produto-nome">Pelúcia Hatsune Miku</div>
+                                <div class="produto-nome"><?php print_r($brinquedo->getNomeBrinq()); ?></div>
                                 <div class="produto-quantidade">
-                                    <button class="quantidade-botao" onclick="alterarQntd(this, -1)">-</button>
+                                    <button class="quantidade-botao" onclick="alterarQntd(this, -1)" onclick=<?php $quantidade++; ?>>-</button>
                                     <span class="quantidade-numero">1</span>
-                                    <button class="quantidade-botao" onclick="alterarQntd(this, 1)">+</button>
+                                    <button class="quantidade-botao" onclick="alterarQntd(this, 1)" onclick=<?php $quantidade++; ?>>+</button>
                                 </div>
                                 <div class="produto-valor">
-                                    <div class="valor-unidade">R$ 50,00/un.</div>
-                                    <div class="valor-total">R$ 50,00</div>
+                                    <div class="valor_flex">
+                                        <div class="valor-unidade">R$<?php print_r($brinquedo->getPrecoBrinq()); ?>/un.</div>
+                                        <div class="valor-total">R$<?php print_r(($brinquedo->getPrecoBrinq()*$quantidade)); ?></div>
+                                    </div>
+                                </div>
+                                <div class="excluir-item">
+                                    <button class="excluir">
+                                        <img src="../imagens/Icons/x.png" alt="Excluir item" class="excluir">
+                                    </button>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="produto">
-                            <div class="produto-info">
-                                <img src="../imagens/Produtos/Ralsei/ralseideltarune.png" class="produto-imagem">
-                                <div class="produto-nome">Pelúcia Ralsei Deltarune</div>
-                                <div class="produto-quantidade">
-                                    <button class="quantidade-botao" onclick="alterarQntd(this, -1)">-</button>
-                                    <span class="quantidade-numero">2</span>
-                                    <button class="quantidade-botao" onclick="alterarQntd(this, 1)">+</button>
-                                </div>
-                                <div class="produto-valor">
-                                    <div class="valor-unidade">R$ 30,00/un.</div>
-                                    <div class="valor-total">R$ 60,00</div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                            }
+                        ?>
+
                         
+                </div>
+                <div class="botao-deletar">
+                    <form method="POST" action="../controller/carrinhoProccess.php">
+                    <input type="hidden" name="Operacao" value="Deletar">
+                    <button class="deletar">
+                        <img src="../imagens/Icons/lixeira.png" alt="Lixeira" class="deletar">
+                        <p class="deletar">Deletar todos os itens</p>
+                    </button>
+                    </form>
                 </div>
             </div>
 

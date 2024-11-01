@@ -14,9 +14,13 @@ $codigo = filter_input(INPUT_POST,"Codigo"); //Atibui o valor o input nomeado co
 $carrinho = $carrinhoDao->getCarrinho() ;
 
 if($operacao == "Adicionar"){
-    $flag = array_search($codigo, $carrinho);
+    foreach($carrinho as $produto){
+        if($produto == $codigo){
+            $flag = true;
+        }
+    }
 
-    if($flag != false){
+    if($flag == false){
         $a = $carrinho;
         $carrinhoDao->adicionarItemCarrinho($codigo);
         $message->setMessage("Adicionado","Item adicionado no carrinho ","success","back");
@@ -24,6 +28,9 @@ if($operacao == "Adicionar"){
     else{
         $message->setMessage("Brinquedo já adicionado ", "Este brinquedo já foi adicionado no carrinho", "error", "back");
     }
+}else if($operacao == "Deletar"){
+    $carrinhoDao->deletarTodosItensCarrinho();
+    $message->setMessage("Itens deletados","Todos os itens dos carrinhos foram deletados","success","back");
 }
 
 ?>

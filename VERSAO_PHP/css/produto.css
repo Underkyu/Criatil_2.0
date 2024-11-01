@@ -27,9 +27,11 @@ div.imagens_menores{/*Imagens menores do produto*/
 
 img.imagem_menor{/*Imagem menor do produto*/
   width: 7.5rem;
+  height: 7.5rem;
   border-radius: 15px;
   border:#D4D4D4 solid 2px;
   margin-bottom: 1rem;
+  object-fit: cover;
 }
 
 div.imagem_menor{
@@ -55,6 +57,7 @@ img.imagem_maior{/*Imagem maior do produto*/
   height: 30rem;
   border-radius: 25px;
   border:#D4D4D4 solid 2px;
+  object-fit: cover;
 }
 
 div.estrela{/*Div que contem as estrelas de avaliações*/

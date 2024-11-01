@@ -21,6 +21,7 @@ $categorias = $produtoDao->getCategorias();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Brinquedos cadastrados</title>
     <link rel="stylesheet" href="../css/brinquedosGrnt.css">
     <script src="../js/grntPesquisa.js"></script>
@@ -292,5 +293,7 @@ $categorias = $produtoDao->getCategorias();
         </div>
     </form>
 </div>
+
+    <?php include("footer.php") ?>
 </body>
 </html>

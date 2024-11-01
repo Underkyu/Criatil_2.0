@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criatil</title>
+    <title>Criatil - Sobre nós</title>
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/sobrenos.css">
 </head>
 <body>
+<?php include("header.php") ?>
     <div class="container">
         <section class="sobreNos">
             <div class="ParteDeCima">
@@ -58,5 +60,6 @@
             </div>
         </div>
     </div>
+<?php include("footer.php") ?>
 </body>
 </html>

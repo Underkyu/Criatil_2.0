@@ -36,6 +36,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Avaliações</title>
     <link rel="stylesheet" href="../css/avaliacoesGrnt.css" />
     <script src="../js/grntPesquisa.js"></script>
@@ -113,6 +114,8 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
           </div>
         </div>
       </div>
+
+  <?php include("footer.php") ?>
   </body>
 <script>
 function confirmDelete(codigoAva, nomeUsu) {

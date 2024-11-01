@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Criatil Gerentes</title>
     <link rel="stylesheet" href="../css/cadastrogerente.css">
     <script src="../js/cadastro.js"></script>
@@ -33,5 +34,7 @@
 
                 <button type="submit" class="botao-entrar">Cadastrar</button>
     </form>
+
+<?php include("footer.php") ?>
 </body>
 </html>

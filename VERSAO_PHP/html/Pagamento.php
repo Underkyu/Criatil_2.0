@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criatil</title>
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
+    <title>Criatil - pagamento</title>
     <link rel="stylesheet" href="../css/Pagamento.css">
 </head>
 <body>
+<?php include("header.php") ?>
     <div class="main-container">
         <div class="secaoPagamento">
             <h2>Selecione um método de pagamento</h2>
@@ -41,5 +43,6 @@
         </div>
     </div>
     <script src="../js/Pagamento.js"></script>
+<?php include("footer.php") ?>
 </body>
 </html>

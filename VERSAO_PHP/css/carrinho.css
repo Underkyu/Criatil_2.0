@@ -205,6 +205,13 @@
     justify-content: center;
     gap: 10px;
 }
+input.quantidade-numero{
+    background-color: transparent;
+    border: none;
+    width: 1rem;
+    font-size: 1.25rem;
+    color: black;
+}
 .quantidade-botao {
     border: none;
     background-color:#ffffff;

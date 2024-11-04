@@ -57,7 +57,7 @@ img.imagem_maior{/*Imagem maior do produto*/
   height: 30rem;
   border-radius: 25px;
   border:#D4D4D4 solid 2px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 div.estrela{/*Div que contem as estrelas de avaliações*/

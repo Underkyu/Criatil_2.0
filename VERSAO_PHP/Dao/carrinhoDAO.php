@@ -20,6 +20,10 @@ class carrinhoDao {
             $arrayCarrinho = [];
             setcookie("carrinho", json_encode($arrayCarrinho), time() + (86400 * 30), "/"); // Cookie expira em 30 dias
         }
+        if (!isset($_COOKIE["quantidade"])) {
+            $arrayQuantidade= [];
+            setcookie("quantidade", json_encode($arrayQuantidade), time() + (86400 * 30), "/"); // Cookie expira em 30 dias
+        }
     }
 
     public function getCarrinho(){
@@ -65,4 +69,58 @@ class carrinhoDao {
             return false;
         }
     }
+
+
+    public function getItemQuantidade($codigo){
+        if (isset($_COOKIE["quantidade"])) {
+            $carrinhoArray = json_decode($_COOKIE["quantidade"], true); // Decodifica o JSON em array associativo
+            
+            return $carrinhoArray[$codigo];
+            
+        }
+        else{
+            return false;
+        }
+    }
+    public function adicionarItemQuantidade(){
+        if (isset($_COOKIE["quantidade"])) {
+            $carrinhoArray = json_decode($_COOKIE["quantidade"], true); // Decodifica o JSON em array associativo
+            
+            $carrinhoArray[] = 1;
+            
+            // Atualiza o cookie com o novo array
+            setcookie("quantidade", json_encode($carrinhoArray), time() + (86400 * 30), "/"); // Renova por mais 30 dias
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function adicionarUmQuantidade($codigo){
+        if (isset($_COOKIE["quantidade"])) {
+            $carrinhoArray = json_decode($_COOKIE["quantidade"], true); // Decodifica o JSON em array associativo
+            
+            $carrinhoArray[$codigo] = $carrinhoArray[$codigo] + 1;
+            
+            
+            // Atualiza o cookie com o novo array
+            setcookie("quantidade", json_encode($carrinhoArray), time() + (86400 * 30), "/"); // Renova por mais 30 dias
+        }else{
+            return false;
+        }
+    } 
+
+    public function diminuirUmQuantidade($codigo){
+        if (isset($_COOKIE["quantidade"])) {
+            $carrinhoArray = json_decode($_COOKIE["quantidade"], true); // Decodifica o JSON em array associativo
+            
+            $carrinhoArray[$codigo] = $carrinhoArray[$codigo] - 1;
+            
+            
+            // Atualiza o cookie com o novo array
+            setcookie("quantidade", json_encode($carrinhoArray), time() + (86400 * 30), "/"); // Renova por mais 30 dias
+        }else{
+            return false;
+        }
+    } 
 }

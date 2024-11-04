@@ -209,6 +209,23 @@ public function pesquisarImagemPorCodigoBrinq($codigoBrinq) {
     }
 }
 
+public function pesquisarPrimeiraImagemPorCodigoBrinq($codigoBrinq) {
+    if($codigoBrinq != "") {
+        $stmt = $this->conexao->prepare("SELECT * FROM imagem WHERE Codigo_Brinq = :codigo AND Num_Imagem = 1");
+        $stmt->bindParam(":codigo", $codigoBrinq);
+        $stmt->execute();
+        if($stmt->rowCount() > 0) {
+            $data = $stmt->fetchAll();
+            $imagem = $this->buildImagem($data);
+            return $imagem;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
 public function getSelos() {
     $stmt = $this->conexao->prepare("SELECT Codigo_Selo, Nome_Selo FROM selo");
     $stmt->execute();

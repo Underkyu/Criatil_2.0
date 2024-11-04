@@ -11,7 +11,14 @@ require_once("../models/brinquedo.php");
 
     $carrinhoDao = new carrinhoDao($conn,$BASE_URL);
     $carrinho = $carrinhoDao->getCarrinho();
-    $quantidade = 1;
+    $contador = 0;
+
+    function button1( $quantidade) {
+        $quantidade = $quantidade - 1;
+    }
+    function button2($quantidade) {
+        $quantidade = $quantidade + 1;
+    }
     ?>
     <!DOCTYPE html>
     <html lang="pt-br">
@@ -51,21 +58,47 @@ require_once("../models/brinquedo.php");
                             <p class="legenda-nome">Nome</p>
                             <p class="legenda-qntd">Quantidade</p>
                             <p class="legenda-valor">Valor</p>
-                            <p class="legenda-valor">Excluir</p>
+                            <p class="legenda-valor"> </p>
                         </div>
 
                         <?php
                             foreach ($carrinho as $produto) {
                                 $brinquedo = $prodDAO->pesquisarPorCodigo($produto);
+                                $imagens[] = $prodDAO->pesquisarImagemPorCodigoBrinq($brinquedo->getCodigoBrinq());
+                                $imagem = $imagens[$contador];
                                 ?>
                             <div class="produto">
+                            <?php 
+                                $quantidade = 10;
+                                if(array_key_exists('botao_menos', $_POST)) {
+                                    button1($quantidade);
+                                }
+                                else if(array_key_exists('botao_mais', $_POST)) {
+                                    button2($quantidade);
+                                }
+                                ?>
                             <div class="produto-info">
-                                <img src="../imagens/Produtos/Miku/Imagem1.png" class="produto-imagem">
+                                <img src=<?php  print_r($imagem[0]->getImagem()) ?> class="produto-imagem">
                                 <div class="produto-nome"><?php print_r($brinquedo->getNomeBrinq()); ?></div>
                                 <div class="produto-quantidade">
-                                    <button class="quantidade-botao" onclick="alterarQntd(this, -1)" onclick=<?php $quantidade++; ?>>-</button>
-                                    <span class="quantidade-numero">1</span>
-                                    <button class="quantidade-botao" onclick="alterarQntd(this, 1)" onclick=<?php $quantidade++; ?>>+</button>
+
+                                <form method="POST" action="../controller/carrinhoProccess.php">
+                                <input type="hidden" name="Contador" value=<?php print_r($contador)?>>
+                                <input type="hidden" name="Operacao" value="Diminuir">
+                                <button class="quantidade-botao" name="botao_menos">-</button>
+                                </form>
+
+                                    <span class="quantidade-numero" style="display: flex;"><?php
+                                    $carrinhoArray = json_decode($_COOKIE["quantidade"], true); // Decodifica o JSON em array associativo
+            
+                                    print_r($carrinhoArray[$contador]); 
+                                    ?></span>
+                                    
+                                    <form method="POST" action="../controller/carrinhoProccess.php">
+                                    <input type="hidden" name="Contador" value=<?php print_r($contador)?>>
+                                    <input type="hidden" name="Operacao" value="AdicionarQuant">
+                                    <button class="quantidade-botao"  name="botao_mais">+</button>
+                                    </form>
                                 </div>
                                 <div class="produto-valor">
                                     <div class="valor_flex">
@@ -74,14 +107,19 @@ require_once("../models/brinquedo.php");
                                     </div>
                                 </div>
                                 <div class="excluir-item">
+                                <form method="POST" action="../controller/carrinhoProccess.php">
+                                <input type="hidden" name="Operacao" value="Excluir">
+                                <input type="hidden" name="Contador" value=<?php print_r($contador)?>>
                                     <button class="excluir">
                                         <img src="../imagens/Icons/x.png" alt="Excluir item" class="excluir">
                                     </button>
+                                </form>
                                 </div>
                             </div>
                         </div>
 
                         <?php
+                            $contador++;
                             }
                         ?>
 
@@ -95,6 +133,8 @@ require_once("../models/brinquedo.php");
                         <p class="deletar">Deletar todos os itens</p>
                     </button>
                     </form>
+
+                    <button onclick=print(<?php print_r($quantidade) ?>>asdfgasd</button>
                 </div>
             </div>
 
@@ -118,7 +158,7 @@ require_once("../models/brinquedo.php");
                     </div>
                 </div>
         
-                <button id="botao-resumo">Resumo da Compra</button>
+                
     <!-- fim da página do carrinho -->
      </div>
 

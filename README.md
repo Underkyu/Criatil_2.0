@@ -13,11 +13,11 @@
 - Site pensado na melhor variedade de produtos inclusivos para crianças com deficiências.
 ## Autores
 
-- [@Underkyu](https://github.com/Underkyu)
-- [@LucasBonfimVilela01](https://github.com/LucasBonfimVilela01)
-- [@nino-clmity](https://github.com/nino-clmity)
-- [@JoaoBispo18](https://github.com/JoaoBispo18)
-- [@Jonatasfrinhai](https://github.com/Jonatasfrinhai)
+- Miguel Yudi Baba [@Underkyu](https://github.com/Underkyu)
+- Lucas Bonfim Vilela [@LucasBonfimVilela01](https://github.com/LucasBonfimVilela01)
+- Nicolas Sinelli [@nino-clmity](https://github.com/nino-clmity)
+- João Pedro Bispo [@JoaoBispo18](https://github.com/JoaoBispo18)
+- Jônatas Frinhani [@Jonatasfrinhai](https://github.com/Jonatasfrinhai)
 
 ## Páginas
 - Página principal 

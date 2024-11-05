@@ -13,7 +13,3 @@ function alterarQntd(elemento, valor, id) {
     qntdInput.value = qntdNovo;
 
 }
-
-function print(texto){
-    alert(texto);
-}

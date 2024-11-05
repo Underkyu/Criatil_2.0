@@ -3,6 +3,7 @@ require_once("global.php");
 require_once("conexao.php");
 require_once("../Dao/carrinhoDAO.php");
 require_once("../models/message.php");
+require_once("../Dao/usuarioDAO.php");
 
 
 $message = new Message($BASE_URL); //Criação de uma objeto de mansagem
@@ -12,6 +13,7 @@ $carrinhoDao = new carrinhoDao($conn,$BASE_URL);
 $operacao = filter_input(INPUT_POST,"Operacao"); //Atibui o valor o input nomeado como "Tipo" a varivel $tipo
 $codigo = filter_input(INPUT_POST,"Codigo"); //Atibui o valor o input nomeado como "Tipo" a varivel $tipo
 $carrinho = $carrinhoDao->getCarrinho() ;
+$userDao = new UsuarioDAO($conn,$BASE_URL);
 
 if ($operacao == "AdicionarQuant") {
     $contador = filter_input(INPUT_POST,"Contador");
@@ -37,6 +39,13 @@ else if($operacao == "Adicionar"){
     }
     else{
         $message->setMessage("Brinquedo já adicionado ", "Este brinquedo já foi adicionado no carrinho", "error", "back");
+    }
+}else if($operacao == "Compra"){
+    $usuarioData = $userDao->verificarToken(false);
+    if($usuarioData){
+        header("Location: ../html/Pagamento.php");
+    }else{
+        $message->setMessage("Faça login","É necessario entrar em uma conta antes de finalizar a compra","error","back");
     }
 }
 else if($operacao == "Deletar"){

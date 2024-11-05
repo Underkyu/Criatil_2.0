@@ -133,8 +133,6 @@ require_once("../models/brinquedo.php");
                         <p class="deletar">Deletar todos os itens</p>
                     </button>
                     </form>
-
-                    <button onclick=print(<?php print_r($quantidade) ?>>asdfgasd</button>
                 </div>
             </div>
 
@@ -154,7 +152,10 @@ require_once("../models/brinquedo.php");
                     </div>
                     <div id="botoes-resumo">
                         <a href="./principal.php" class="botao-continuar">Continuar Comprando</a>
-                        <a href="" class="botao-pagamento">Escolher método de pagamento</a>
+                        <form method="POST" action="../controller/carrinhoProccess.php">
+                        <input type="hidden" name="Operacao" value="Compra">
+                        <button class="botao-pagamento">Escolher método de pagamento</button>
+                        </form>
                     </div>
                 </div>
         

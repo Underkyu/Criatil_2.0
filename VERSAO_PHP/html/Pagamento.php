@@ -14,19 +14,19 @@
             <h2>Selecione um método de pagamento</h2>
             <div class="opcoesPagamento">
                 
-                <div class="option" id="credito" onclick="selectPayment('Credito')">
+                <div class="option" id="credito" onclick="selectPayment('Credito');mudarForma('Credito')">
                     <img src="../imagens/pagamento/Cartão-Visa-Gold.webp" alt="Crédito">
                     <p>Crédito</p>
                 </div>
-                <div class="option" id="debito" onclick="selectPayment('Debito')">
+                <div class="option" id="debito" onclick="selectPayment('Debito');mudarForma('Debito')">
                     <img src="../imagens/pagamento/debito.png" alt="Débito">
                     <p>Débito</p>
                 </div>
-                <div class="option" id="boleto" onclick="selectPayment('Boleto')">
+                <div class="option" id="boleto" onclick="selectPayment('Boleto');mudarForma('Boleto')">
                     <img src="../imagens/pagamento/boleto.png" alt="Boleto">
                     <p>Boleto</p>
                 </div>
-                <div class="option" id="pix" onclick="selectPayment('Pix')">
+                <div class="option" id="pix" onclick="selectPayment('Pix');mudarForma('Pix')"> 
                     <img src="../imagens/pagamento/logo-pix.png" alt="Pix">
                     <p>Pix</p>
                 </div>
@@ -39,6 +39,7 @@
             <p>Total:</p>
             <p id="pagamentoSelecionado">Pagamento:</p>
             <button id="back-button">Voltar</button>
+            <input type="text" name="formaPagamento" value="" id="forma"> <!--Input que armazenará a tipo de pagamento-->
             <button id="continue-button">Continuar para o pagamento</button>
         </div>
     </div>

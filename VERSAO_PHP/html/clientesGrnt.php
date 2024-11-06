@@ -13,6 +13,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Clientes cadastrados</title>
     <link rel="stylesheet" href="../css/clientesGrnt.css">
     <script src="../js/grntPesquisa.js"></script>
@@ -43,7 +44,13 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 <div class="brinquedo">
                     <div class="foto">
-                        <img src="<?php echo $usuario['Imagem']; ?>" alt="Foto de Perfil" class="foto"><!--Foto-->
+                        <img src=<?php
+                        if($usuario['Imagem'] == "vazio") {;
+                            print_r("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            print_r("../imagens/usuarios/".$usuario['Imagem'].".jpeg");
+                        }?> alt="Foto de Perfil" class="foto"><!--Foto-->
                     </div>
                     <p class="informacao"><?php echo $usuario['Nome_Usu']; ?></p> <!--Nome-->
                     <p class="informacao"><?php echo $usuario['Codigo_Usu']; ?></p> <!--Id-->
@@ -101,5 +108,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     </form>
 </div>
+
+<?php include("footer.php") ?>
 </body>
 </html>

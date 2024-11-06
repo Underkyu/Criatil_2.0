@@ -6,7 +6,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- link da fonte pro css saber que fonte usar -->
     <link rel="stylesheet" href="../css/cartoes.css">
     <script src="../js/menuSanduicheCONTA.js" defer></script>
-    <title>Criatil</title>
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
+    <title>Criatil - Cartões salvos</title>
 </head>
 
 <?php include("header.php")?>
@@ -98,4 +99,7 @@
     <!-- fim da página da conta -->
   </div>
 </body>
+
+<?php include("footer.php") ?>
+
 </html>

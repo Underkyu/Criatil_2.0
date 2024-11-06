@@ -14,7 +14,8 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criatil</title>
+  <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
+  <title>Criatil - pagina principal</title>
 
   <!--CSS dos carrosseis e da pagina respectivamente-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -75,10 +76,12 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
             <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>
-            <button class="card">
+            <a href=<?php print_r("produto.php?codigo=" . $brinquedo['Codigo_Brinq'] )?>>
+              <button class="card">
               <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-              <p class="botao_card">Comprar!</p>
-            </button>
+              <p class="botao_card"> Comprar!</p>
+              </button>
+            </a>
             </div>
           <!--Fim card-->
           <?php } ?>
@@ -97,7 +100,7 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!--FIm imagens promocionais-->
 
     <!--Inicio product slider 2-->
-    <h1 class="titulo">Novidades</h1>
+    <h1 class="titulo">Populares</h1>
     <div class="slider">
       <div class="swiper-button-prev seta prev-product"></div>
       <div class="swiper product">
@@ -116,10 +119,12 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
             <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>
-            <button class="card">
+            <a href=<?php print_r("produto.php?codigo=" . $brinquedo['Codigo_Brinq'] )?>>
+              <button class="card">
               <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
-              <p class="botao_card">Comprar!</p>
-            </button>
+              <p class="botao_card"> Comprar!</p>
+              </button>
+            </a>
             </div>
           <!--Fim card-->
           <?php } ?>
@@ -141,5 +146,7 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   <!-- Initialize Swiper -->
   <script src="../js/index.js"> </script>
+
+<?php include("footer.php") ?>
 </body>
 </html>

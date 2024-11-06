@@ -1,3 +1,25 @@
+<?php
+require_once("../controller/global.php");
+require_once("../controller/conexao.php");
+require_once("../Dao/carrinhoDAO.php");
+require_once("../models/message.php");
+require_once("../Dao/produtoDAO.php");
+require_once("../models/brinquedo.php");
+
+
+    $prodDAO = new ProdutoDAO($conn,$BASE_URL);
+
+    $carrinhoDao = new carrinhoDao($conn,$BASE_URL);
+    $carrinho = $carrinhoDao->getCarrinho();
+    $contador = 0;
+
+    function button1( $quantidade) {
+        $quantidade = $quantidade - 1;
+    }
+    function button2($quantidade) {
+        $quantidade = $quantidade + 1;
+    }
+    ?>
     <!DOCTYPE html>
     <html lang="pt-br">
     <head>
@@ -7,7 +29,8 @@
         <link rel="stylesheet" href="../css/carrinho.css">
         <script src="../js/carrinhoResumo.js" defer></script>
         <script src="../js/carrinhoQuantidade.js" defer></script>
-        <title>Criatil</title>
+        <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
+        <title>Criatil - Carrinho</title>
     </head>
     <body>
     <?php include("header.php") ?>
@@ -35,40 +58,81 @@
                             <p class="legenda-nome">Nome</p>
                             <p class="legenda-qntd">Quantidade</p>
                             <p class="legenda-valor">Valor</p>
+                            <p class="legenda-valor"> </p>
                         </div>
 
-                        <div class="produto">
+                        <?php
+                            foreach ($carrinho as $produto) {
+                                $brinquedo = $prodDAO->pesquisarPorCodigo($produto);
+                                $imagens[] = $prodDAO->pesquisarImagemPorCodigoBrinq($brinquedo->getCodigoBrinq());
+                                $imagem = $imagens[$contador];
+                                ?>
+                            <div class="produto">
+                            <?php 
+                                $quantidade = 10;
+                                if(array_key_exists('botao_menos', $_POST)) {
+                                    button1($quantidade);
+                                }
+                                else if(array_key_exists('botao_mais', $_POST)) {
+                                    button2($quantidade);
+                                }
+                                ?>
                             <div class="produto-info">
-                                <img src="../imagens/Produtos/Miku/Imagem1.png" class="produto-imagem">
-                                <div class="produto-nome">Pelúcia Hatsune Miku</div>
+                                <img src=<?php  print_r($imagem[0]->getImagem()) ?> class="produto-imagem">
+                                <div class="produto-nome"><?php print_r($brinquedo->getNomeBrinq()); ?></div>
                                 <div class="produto-quantidade">
-                                    <button class="quantidade-botao" onclick="alterarQntd(this, -1)">-</button>
-                                    <span class="quantidade-numero">1</span>
-                                    <button class="quantidade-botao" onclick="alterarQntd(this, 1)">+</button>
+
+                                <form method="POST" action="../controller/carrinhoProccess.php">
+                                <input type="hidden" name="Contador" value=<?php print_r($contador)?>>
+                                <input type="hidden" name="Operacao" value="Diminuir">
+                                <button class="quantidade-botao" name="botao_menos">-</button>
+                                </form>
+
+                                    <span class="quantidade-numero" style="display: flex;"><?php
+                                    $carrinhoArray = json_decode($_COOKIE["quantidade"], true); // Decodifica o JSON em array associativo
+            
+                                    print_r($carrinhoArray[$contador]); 
+                                    ?></span>
+                                    
+                                    <form method="POST" action="../controller/carrinhoProccess.php">
+                                    <input type="hidden" name="Contador" value=<?php print_r($contador)?>>
+                                    <input type="hidden" name="Operacao" value="AdicionarQuant">
+                                    <button class="quantidade-botao"  name="botao_mais">+</button>
+                                    </form>
                                 </div>
                                 <div class="produto-valor">
-                                    <div class="valor-unidade">R$ 50,00/un.</div>
-                                    <div class="valor-total">R$ 50,00</div>
+                                    <div class="valor_flex">
+                                        <div class="valor-unidade">R$<?php print_r($brinquedo->getPrecoBrinq()); ?>/un.</div>
+                                        <div class="valor-total">R$<?php print_r(($brinquedo->getPrecoBrinq()*$quantidade)); ?></div>
+                                    </div>
+                                </div>
+                                <div class="excluir-item">
+                                <form method="POST" action="../controller/carrinhoProccess.php">
+                                <input type="hidden" name="Operacao" value="Excluir">
+                                <input type="hidden" name="Contador" value=<?php print_r($contador)?>>
+                                    <button class="excluir">
+                                        <img src="../imagens/Icons/x.png" alt="Excluir item" class="excluir">
+                                    </button>
+                                </form>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="produto">
-                            <div class="produto-info">
-                                <img src="../imagens/Produtos/Ralsei/ralseideltarune.png" class="produto-imagem">
-                                <div class="produto-nome">Pelúcia Ralsei Deltarune</div>
-                                <div class="produto-quantidade">
-                                    <button class="quantidade-botao" onclick="alterarQntd(this, -1)">-</button>
-                                    <span class="quantidade-numero">2</span>
-                                    <button class="quantidade-botao" onclick="alterarQntd(this, 1)">+</button>
-                                </div>
-                                <div class="produto-valor">
-                                    <div class="valor-unidade">R$ 30,00/un.</div>
-                                    <div class="valor-total">R$ 60,00</div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                            $contador++;
+                            }
+                        ?>
+
                         
+                </div>
+                <div class="botao-deletar">
+                    <form method="POST" action="../controller/carrinhoProccess.php">
+                    <input type="hidden" name="Operacao" value="Deletar">
+                    <button class="deletar">
+                        <img src="../imagens/Icons/lixeira.png" alt="Lixeira" class="deletar">
+                        <p class="deletar">Deletar todos os itens</p>
+                    </button>
+                    </form>
                 </div>
             </div>
 
@@ -88,12 +152,17 @@
                     </div>
                     <div id="botoes-resumo">
                         <a href="./principal.php" class="botao-continuar">Continuar Comprando</a>
-                        <a href="" class="botao-pagamento">Escolher método de pagamento</a>
+                        <form method="POST" action="../controller/carrinhoProccess.php">
+                        <input type="hidden" name="Operacao" value="Compra">
+                        <button class="botao-pagamento">Escolher método de pagamento</button>
+                        </form>
                     </div>
                 </div>
         
-                <button id="botao-resumo">Resumo da Compra</button>
+                
     <!-- fim da página do carrinho -->
      </div>
+
+     <?php include("footer.php") ?>
     </body>
     </html>

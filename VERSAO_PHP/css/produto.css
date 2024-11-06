@@ -27,9 +27,11 @@ div.imagens_menores{/*Imagens menores do produto*/
 
 img.imagem_menor{/*Imagem menor do produto*/
   width: 7.5rem;
+  height: 7.5rem;
   border-radius: 15px;
   border:#D4D4D4 solid 2px;
   margin-bottom: 1rem;
+  object-fit: cover;
 }
 
 div.imagem_menor{
@@ -55,6 +57,7 @@ img.imagem_maior{/*Imagem maior do produto*/
   height: 30rem;
   border-radius: 25px;
   border:#D4D4D4 solid 2px;
+  object-fit: contain;
 }
 
 div.estrela{/*Div que contem as estrelas de avaliações*/
@@ -131,6 +134,7 @@ button.carrinho{ /*Botão de adoiconar ao carrinho*/
   background-color: #F2AF00;
   padding: .5rem;
   margin-top: 1rem;
+  width: 100%;
 }
 
 p.carrinho{ /*Texto dentro do botão de adicioanar ao carrinho*/
@@ -139,6 +143,10 @@ p.carrinho{ /*Texto dentro do botão de adicioanar ao carrinho*/
   padding: 0;
   margin: 0;
   font-weight: bold;
+}
+
+form.form{
+  width: 100%;
 }
 
   /*Css doido para fazer um botão igual o do figma*/
@@ -428,7 +436,7 @@ p.add_ava_button{
   font-weight: bold;
   font-size: 1rem;
 }
-/*Fim CSS avaçliações*/
+/*Fim CSS avaliações*/
 
 
 /*Inicio CSS Carrossel*/

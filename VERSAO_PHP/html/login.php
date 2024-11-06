@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/cadastro.js"></script>
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Criatil - Login</title>
 </head>
 <body>
@@ -32,5 +33,6 @@
 
             </form>
         </div>
+<?php include("footer.php") ?>
 </body>
 </html>

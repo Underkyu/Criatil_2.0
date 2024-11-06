@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> <!-- css do bootstrap para ícone de mostrar senha -->
     <link rel="stylesheet" href="../css/cadastro.css"> <!-- css do cadastro -->
     <script src="../js/cadastro.js"></script>
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Criatil - Cadastro</title>
 </head>
 <body>
@@ -45,11 +46,13 @@
 
                 <input type="hidden" id="tipo" name="Tipo_Usu" class="input-login" value="Cliente">
                 <input type="hidden" name="Tipo" value="Cadastro">
-                <input type="hidden" name="Imagem" value="../imagens/Conta/usuario.png">
+                <input type="hidden" name="Imagem" value="vazio">
 
                 <button type="submit" class="botao-entrar">Cadastrar</button>
                 <a href="login.php" class="login">Já tem uma conta?</a>
             </form>
         </div>
+
+    <?php include("footer.php") ?>
 </body>
 </html>

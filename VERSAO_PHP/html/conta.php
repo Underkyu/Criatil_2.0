@@ -20,7 +20,8 @@ $usuarioData = $userDao->verificarToken(true);
     <link rel="stylesheet" href="../css/conta.css">
     <script src="../js/menuSanduicheCONTA.js" defer></script>
     <script src="../js/conta.js" defer></script>
-    <title>Criatil</title>
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
+    <title>Criatil - Conta</title>
 </head>
 <body>
 
@@ -162,5 +163,7 @@ $usuarioData = $userDao->verificarToken(true);
         </div>
             <!-- fim da página da conta -->
     </div>
+
+<?php include("footer.php") ?>
 </body>
 </html>

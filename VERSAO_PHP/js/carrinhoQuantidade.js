@@ -1,5 +1,6 @@
-function alterarQntd(elemento, valor) {
+function alterarQntd(elemento, valor, id) {
     const qntdSpan = elemento.parentElement.querySelector('.quantidade-numero');
+    const qntdInput = document.getElementById(id);
     let qntdNovo = parseInt(qntdSpan.textContent);
     
     qntdNovo += valor;
@@ -9,4 +10,6 @@ function alterarQntd(elemento, valor) {
     }
 
     qntdSpan.textContent = qntdNovo;
+    qntdInput.value = qntdNovo;
+
 }

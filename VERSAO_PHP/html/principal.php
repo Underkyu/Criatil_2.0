@@ -97,20 +97,6 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!--FIm imagens promocionais-->
 
     <!--Inicio product slider 2-->
-    <h1 class="titulo">Populares</h1>
-👎︎✌︎☼︎😐︎ 👎︎✌︎☼︎😐︎☜︎☼︎ ✡︎☜︎❄︎ 👎︎✌︎☼︎😐︎☜︎☼︎
-<br>
-❄︎☟︎☜︎ 👎︎✌︎☼︎😐︎☠︎☜︎💧︎💧︎ 😐︎☜︎☜︎🏱︎💧︎ ☝︎☼︎⚐︎🕈︎✋︎☠︎☝︎
-<br>
-❄︎☟︎✋︎💧︎ ☠︎☜︎✠︎❄︎ ☜︎✠︎🏱︎☜︎☼︎✋︎💣︎☜︎☠︎❄︎
-<br>
-💧︎☜︎☜︎💣︎💧︎
-<br>
-✞︎☜︎☼︎✡︎
-<br>
-✞︎☜︎☼︎✡︎
-<br>
-✋︎☠︎❄︎☜︎☼︎☜︎💧︎❄︎✋︎☠︎☝︎
     <h1 class="titulo">Novidades</h1>
     <div class="slider">
       <div class="swiper-button-prev seta prev-product"></div>

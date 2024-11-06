@@ -68,8 +68,9 @@ img.foto {
     /* Foto do brinquedo */
     max-width: 100%;
     max-height: 100%;
-    width: auto;
+    width: 7.2rem;
     height: 7.2rem;
+    border-radius: 60px;
     object-fit: cover;
     border: 3px solid #F2AF00;
 }

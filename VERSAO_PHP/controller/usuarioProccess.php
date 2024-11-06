@@ -25,7 +25,7 @@ if($tipo === "Atualizar"){
     $userData->setNasc($nasc);   
     $userData->setCelular($celular);
     $userData->setNome($nome);
-    $userData->setTipo($tipo);
+    $userData->setTipo($tipo_usu);
     $userData->setToken($_SESSION["token"]);
 
     //Parte que cria imagem

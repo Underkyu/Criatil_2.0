@@ -87,13 +87,12 @@ $usuarioData = $userDao->verificarToken(true);
             <h1 class="titulo-box">Perfil</h1>
                <div class="perfil-container" id="perfil">
                 <div class="informacoes">
-
                      <!--Formulario de troca de dados-->   
                     <form action="../controller/usuarioProccess.php" method="POST" enctype="multipart/form-data">
                     <div class="info-item">
                         <div class="info-label">Nome completo:</div>
                         <div class="info-value">
-                            <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getNome());?> name="Nome_Usu">
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getNome()); ?>" name="Nome_Usu">
                         </div>
                     </div>
                     <div class="info-item">
@@ -111,7 +110,7 @@ $usuarioData = $userDao->verificarToken(true);
                     <div class="info-item">
                         <div class="info-label">Celular:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getCelular());?> name="Celular_Usu">
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Nome_Usu">
                         </div>
                     </div>
                     <input type="hidden" name="Tipo" value="Atualizar"> <!--Input para identificar que operação será feita-->

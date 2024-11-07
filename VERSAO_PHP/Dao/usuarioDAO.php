@@ -59,6 +59,37 @@ class UsuarioDAO implements UsuarioDAOInterface {
             $this->tokenParaSessao($usuario->getToken());
         }
     }
+    public function criarG(Usuario $usuario, $authUsario = false){
+        $stmt = $this->conexao->prepare("INSERT INTO usuario(
+            Nome_Usu,Nasc_Usu,Celular_Usu,Email_Usu,Senha_Usu,Tipo_Usu,Token,Imagem
+        ) VALUES (
+            :nome, :nasc, :cel, :email, :senha, :tipo, :token, :imagem
+        )");
+
+        $user = $usuario->getNome();
+        $nasci = $usuario->getNasc();
+        $cel = $usuario->getCelular();
+        $email = $usuario->getEmail();
+        $senha = $usuario->getSenha();
+        $tipo = $usuario->getTipo();
+        $token = $usuario->getToken(); 
+        $imagem = $usuario->getImagem();
+
+        $stmt->bindParam(":nome", $user);
+        $stmt->bindParam(":nasc", $nasci);
+        $stmt->bindParam(":cel", $cel);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":senha", $senha);
+        $stmt->bindParam(":tipo", $tipo);
+        $stmt->bindParam(":token", $token);
+        $stmt->bindParam(":imagem", $imagem);
+
+        $stmt->execute();
+
+        if($authUsario){
+            $this->tokenParaSessaoG($usuario->getToken());
+        }
+    }
     public function atualiza(Usuario $usuario, $redirect = true){
         $stmt = $this->conexao->prepare("UPDATE usuario SET
         Nome_Usu = :nome,
@@ -135,6 +166,13 @@ class UsuarioDAO implements UsuarioDAOInterface {
 
         if($redirect) {
             $this->message->setMessage("Login bem sucedido","Bem vindo!","success","../html/conta.php");
+        }
+    }
+    public function tokenParaSessaoG($token, $redirect = true){
+        $_SESSION["token"] = $token;
+
+        if($redirect) {
+            $this->message->setMessage("Cadastro bem sucedido","O gerente foi adicionado à database","success","../html/clientesGrnt.php");
         }
     }
     public function autenticarUsuario($email, $password){

@@ -18,16 +18,17 @@ h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
 }
 div.fundo{ /*Fundo azul atrás dos brinquedos*/
     background-color: #0476D9;
-    border-radius: 25px;
+    border-radius: 30px;
     padding: .9rem;
     width: 80%;
     display: flex;
     align-self: center;
     max-height: 80%;
+    margin: 20px 0 20px 0;
   }
 div.box_brinquedos{ /*Div que contem os brinquedos*/
     background-color: white;
-    border-radius: 25px;
+    border-radius: 30px;
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;

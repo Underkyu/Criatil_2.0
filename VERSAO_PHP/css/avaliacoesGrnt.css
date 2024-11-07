@@ -24,6 +24,7 @@ div.fundo{ /*Fundo azul atrás das avaliações*/
   display: flex;
   align-self: center;
   max-height: 80%;
+  margin: 20px 0 20px 0;
 }
 div.box_avaliacao{ /*Div que contem as avaliações*/
   background-color: white;

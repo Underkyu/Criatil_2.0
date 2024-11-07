@@ -68,13 +68,13 @@ button.card{ /*Botão de comprar no card*/
     transition: ease-out 100ms;
 }
 button.card:hover{
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   transition: ease-in-out 200ms;
 }
 
 button.card:active{
   filter: brightness(0.9);
-  transform: translateY(3px);
+  transform: translateY(2px);
   transition: ease-in-out 200ms;
 }
 img.botao_card { /*icon de carrinho no botão do card*/

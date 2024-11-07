@@ -13,8 +13,13 @@ body {
     gap: 30px;
 }
 h1 {
-    color:#232323;
-    font-size: 2.7rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 2.7rem;
+  text-align: center;
+  font-weight: 500;
+  color: #232323
 }
 .inputgrupo {
     width: 70%;

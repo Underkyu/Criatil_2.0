@@ -74,6 +74,51 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
     }else{
         $message->setMessage("Erro!","Email e/ou senha incorretos","error","back");
     }
+}elseif($tipo === "CadastroG"){ //Entra aqui caso $tipo tenha o valor Cadastro
+    $nome = filter_input(INPUT_POST, "Nome_Usu");
+    $nasc = filter_input(INPUT_POST, "Nasc_Usu");
+    $email = filter_input(INPUT_POST, "Email_Usu");
+    $senha = filter_input(INPUT_POST, "Senha_Usu");
+    $confirmar = filter_input(INPUT_POST, "Senha_Usu_Confirm");
+    $celular = filter_input(INPUT_POST, "Celular_Usu");
+    $tipo = filter_input(INPUT_POST, "Tipo_Usu");
+    $imagem = filter_input(INPUT_POST, "Imagem");
+
+    if($nome && $nasc && $email && $senha && $confirmar && $celular && $tipo){ //Verifica se todos os campos estão preenchidos
+        if($senha == $confirmar){//Verifica se a senha e confirmação são iguais
+            if(strlen($senha)>=6){//Confere se a senha possui mais de (seis) caracteres
+                if($userDao->pesquisarPorEmail($email) === false){
+                $usuario = new Usuario();
+
+                //Criando token e senha
+                $usuarioToken = $usuario->gerarToken();
+                $senhaFinal = $usuario->gerarSenha($senha);
+
+                $usuario->setNome($nome);
+                $usuario->setNasc($nasc);
+                $usuario->setEmail($email);
+                $usuario->setCelular($celular);
+                $usuario->setTipo($tipo);
+                $usuario->setSenha($senhaFinal);
+                $usuario->setToken($usuarioToken);
+                $usuario->setImagem($imagem);
+
+                $auth = true;
+
+                $userDao->criarG($usuario,$auth);
+            }else{
+                $message->setMessage("Email já Cadastrado","O email inserido já possui um cadastro","error","back"); 
+            }
+        }else{
+            $message->setMessage("Senha curta","A senha deve conter ao menos 6 caracteres","error","back");
+        }
+
+    } else{
+        $message->setMessage("Falha na senha","A senha e a confirmação são diferente","error","back");
+    }
+    } else{
+        $message->setMessage("Erro!","Por favor, preeencha os campos faltantes","error","back");
+    }
 } else {
     $message->setMessage("Erro!","Informações invalidas","error","../html/principal.php");
 }

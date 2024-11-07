@@ -107,7 +107,6 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
               </div>
           </div>
-        </div>
         <div class="acoes">
           <div class="pesquisar">
             <input type="text" id="txtPesquisa" class="pesquisar" placeholder="Pesquisar avaliação"/>

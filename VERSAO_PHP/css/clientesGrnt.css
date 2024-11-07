@@ -24,7 +24,8 @@ div.fundo{ /*Fundo azul atrás dos brinquedos*/
     display: flex;
     align-self: center;
     max-height: 80%;
-  }
+    margin: 20px 0 20px 0;
+}
 div.box_brinquedos{ /*Div que contem os brinquedos*/
     background-color: white;
     border-radius: 30px;

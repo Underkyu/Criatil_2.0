@@ -34,8 +34,6 @@ $categorias = $produtoDao->getCategorias();
 
 <!--
  o que falta fazer aqui:
- -botão de editar realmente editar
- -botão de insert (ver comentários no fundo do código)
  -responsividade do form: botão de x (fechar) pra telas menores
 -->
 

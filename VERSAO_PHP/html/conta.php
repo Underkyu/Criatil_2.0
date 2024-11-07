@@ -1,4 +1,4 @@
-<?php
+ <?php
 require_once("../controller/global.php");
 require_once("../controller/conexao.php");
 require_once("../Dao/usuarioDAO.php");
@@ -45,7 +45,6 @@ $usuarioData = $userDao->verificarToken(true);
                   <a href="#" class="pagina-selecionada">Perfil</a>
                   <a href="./pedidos.php" class="paginas-navbar">Pedidos</a>
                   <a href="./desejos.php" class="paginas-navbar">Lista de Desejos</a>
-                  <a href="./cartoes.php" class="paginas-navbar">Cartões</a>
                   <a href="../controller/logout.php" class="paginas-navbar" id="sair">Sair</a>
              </div>
         </div>
@@ -70,10 +69,6 @@ $usuarioData = $userDao->verificarToken(true);
             
                           <div class="link_header link_sanduiche">
                             <a href="./desejos.php" class="paginas-navbar">Lista de Desejos</a>
-                          </div>
-
-                          <div class="link_header link_sanduiche">
-                            <a href="./cartoes.php" class="paginas-navbar">Cartões</a>
                           </div>
 
                           <div class="link_header link_sanduiche">

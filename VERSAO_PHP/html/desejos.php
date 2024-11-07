@@ -31,7 +31,6 @@
                   <a href="./conta.php" class="paginas-navbar">Perfil</a>
                   <a href="./pedidos.php" class="paginas-navbar">Pedidos</a>
                   <a href="#" class="pagina-selecionada">Lista de Desejos</a>
-                  <a href="./cartoes.php" class="paginas-navbar">Cartões</a>
                   <a href="" class="paginas-navbar" id="sair">Sair</a>
              </div>
         </div>
@@ -56,10 +55,6 @@
          
                        <div class="link_header link_sanduiche">
                          <a href="#" class="pagina-selecionada">Lista de Desejos</a>
-                       </div>
-
-                       <div class="link_header link_sanduiche">
-                         <a href="./cartoes.php" class="paginas-navbar">Cartões</a>
                        </div>
 
                        <div class="link_header link_sanduiche">

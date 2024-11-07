@@ -8,14 +8,13 @@
         height: 100%;
     }
 #resumo {
-    background-color: #0476D9;
+    background-color: #0484d9;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     padding: 10px;
     transition: transform 0.8s ease-in-out;
-    border-left: 3px solid black;
 }
 .container-car {
     display: flex;

@@ -181,13 +181,8 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
   div.link_sanduiche{ /*Conteudo do menu sanduiche*/
     display: inherit;
   }
-<<<<<<< HEAD
-  div.menuSanduicheConta{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
-    display: flex;
-=======
   div.menuSanduiche{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
     display: none;
->>>>>>> 74fd0211e6faeef1ad52b2b5f05ad4854418f79e
     align-items: center;
     overflow: hidden;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;

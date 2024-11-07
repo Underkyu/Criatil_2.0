@@ -69,6 +69,7 @@
     align-items: flex-start;
     width: 85%;
     padding: 10px;
+    gap: 5px;
 }
 #box{
     display: flex;

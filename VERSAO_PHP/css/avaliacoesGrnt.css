@@ -23,7 +23,7 @@ div.fundo{ /*Fundo azul atrás das avaliações*/
   width: 80%;
   display: flex;
   align-self: center;
-  height: 90%;
+  max-height: 80%;
 }
 div.box_avaliacao{ /*Div que contem as avaliações*/
   background-color: white;
@@ -75,7 +75,6 @@ button.deletar:hover{
   transition: all 0.3s ease-in-out;
 }
 
-
 img.adicionar{/*Icon "+"  no botão de adicionar um novo brinquedo*/
   width: 2.25rem;
   margin-left: 1rem;
@@ -84,7 +83,6 @@ img.adicionar{/*Icon "+"  no botão de adicionar um novo brinquedo*/
 div.acoes{
   display: flex;
   justify-content: center;
-  gap: 3%;
   width: 100%;
   padding-bottom: 10px;
 }
@@ -189,21 +187,15 @@ p.avaliacao{
   align-items: center;
 }
 /*Fim CSS avaliações*/
-/* estilos gerais da barra de rolagem */
 div.box_avaliacao::-webkit-scrollbar {
-  height: 20px;
+  width: 10px;  
 }
-
-div.box_avaliacao::-webkit-scrollbar-track {
-  background-color: lightgrey;
-  border-radius: 5px;
-}
-
-/* estilos da barra de rolagem (parte que o usuário arrasta) */
 div.box_avaliacao::-webkit-scrollbar-thumb {
-  background-color: #c08a00;
-  border-radius: 8px; 
-  border: 4px solid lightgrey; 
+  background-color: #F2AF00;
+  border-radius: 10px; 
+}
+div.box_avaliacao::-webkit-scrollbar-thumb:hover {
+  background-color: #dc9e00; 
 }
 /*Responsividade*/
 .container {
@@ -212,8 +204,8 @@ div.box_avaliacao::-webkit-scrollbar-thumb {
   margin-right: auto;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  justify-content: space-around !important;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   height: 100%;
   }

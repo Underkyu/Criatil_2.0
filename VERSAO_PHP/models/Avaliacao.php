@@ -58,5 +58,6 @@ class Avaliacao {
 
 interface AvaliacaoDAOInterface {
     public function deleta(Avaliacao $avaliacao, $redirect = true);
+    public function criarA(Avaliacao $avaliacao);
 }
 ?>

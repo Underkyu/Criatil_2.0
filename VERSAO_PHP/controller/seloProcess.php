@@ -13,7 +13,7 @@ $seloDao = new SeloDAO($conn,$BASE_URL);
 $nome = filter_input(INPUT_POST, 'nome');
 $icon = filter_input(INPUT_POST, 'icon');
 
-if ($nome, $icon) {
+if ($nome && $icon) {
     $selo = new Selo();
 
     $selo->setNomeSelo($nome);

@@ -5,8 +5,33 @@ require_once("../controller/global.php");
 require_once("../controller/conexao.php");
 
 $prodDAO = new ProdutoDAO($conn,$BASE_URL);
-$brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
+$brinquedo = $prodDAO->pesquisarPorCodigo(codigoBrinq: $_GET['codigo']);
 
+$stmt = $conn->prepare("SELECT * FROM avaliacao WHERE Codigo_Brinq=".$brinquedo->getCodigoBrinq());
+$stmt->execute();
+$avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+function renderizarEstrelas($nota) {
+  $estrelasInteiras = floor($nota);
+  $meiaEstrela = ($nota - $estrelasInteiras) >= 0.5 ? 1 : 0;
+  $estrelasVazias = 5 - ($estrelasInteiras + $meiaEstrela);
+  
+  $htmlEstrelas = '';
+  
+  for ($i = 0; $i < $estrelasInteiras; $i++) {
+      $htmlEstrelas .= '<img src="../imagens/Icons/estrela.png" alt="estrela" class="estrela" />';
+  }
+  
+  if ($meiaEstrela) {
+      $htmlEstrelas .= '<img src="../imagens/Icons/meia_estrela.png" alt="meia estrela" class="estrela" />';
+  }
+  
+  for ($i = 0; $i < $estrelasVazias; $i++) {
+      $htmlEstrelas .= '<img src="../imagens/Icons/estrela_vazia.png" alt="estrela vazia" class="estrela" />';
+  }
+  
+  return $htmlEstrelas;
+}
 ?>
 
 <!DOCTYPE html>
@@ -407,32 +432,41 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
         <div class="swiper-button-next seta next-product"></div>
       </div>
       <!--Fim product slider 1-->
+
+      <form method="POST" action="../controller/avaliacaoProcess.php">
       <div class="add_ava">
         <div class="ava_container">
-      <h2 class="add_ava">Deixe sua avalição</h2>
+      <h2 class="add_ava">Deixe sua avaliação</h2>
         <div class="titulo_ava">
           <div class="input_ava">
           <h3 class="titulo_input_ava">Titulo</h3>
-          <input type="text" class="titulo_ava" placeholder="Digite o título da avaliação">
+          <input type="text" class="titulo_ava" name="Titulo_Ava" placeholder="Digite o título da avaliação">
           </div>
         
+    
           <div class="input_ava">
           <h3 class="titulo_input_ava">Estrelas</h3>
-          <select name="" id="" class="num_estrelas"><!--Select com o tipo de cliente e no qual o garente irá mudar para bloqueado para bloquear o acesso da conta ao site-->
-            <option value= 5>5</option>
-            <option value= 4>4</option>
-            <option value= 3>3</option>
-            <option value= 2>2</option>
+          <select name="Nota_Ava" id="" class="num_estrelas"><!--Select com o tipo de cliente e no qual o garente irá mudar para bloqueado para bloquear o acesso da conta ao site-->
+            <option value= 1>0</option>
+            <option value= 1>0,5</option>
             <option value= 1>1</option>
+            <option value= 2>1,5</option>
+            <option value= 1>2</option>
+            <option value= 3>2,5</option>
+            <option value= 1>3</option>
+            <option value= 4>3,5</option>
+            <option value= 1>4</option>
+            <option value= 5>4,5</option>
+            <option value= 5>5</option>
           </select>
           </div>
         </div>
         <div class="comentario">
             <h3 class="titulo_input_ava">Comentario</h3>
-            <input type="text" class="comentario" placeholder="Deixe aqui sua opinião do produto">
+            <input type="text" class="comentario" name="Comentario" placeholder="Deixe aqui sua opinião do produto">
         </div>
         <div class="botao_ava">
-          <button class="add_ava">
+          <button class="add_ava" type="submit">
             <img src="../imagens/Gerente/mais.png" alt="Adicionar" class="add_ava_button">
             <p class="add_ava_button">Adicionar avaliação</p>
           </button>
@@ -440,6 +474,9 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
           </div>
       </div>
       
+      <input type="hidden" name="Codigo_Brinq" value=<?php print_r($_GET['codigo']) ?>>
+      <input type="hidden" name="Tipo" value="Criar">
+      </form>
       
       <h2 class="avaliacoes">Avaliações</h2>
       <!--Titulo avaliações-->
@@ -518,10 +555,24 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
         <div class="avaliacoes">
           <!--Avalições em si-->
 
+          <?php
+            foreach ($avaliacoes as $avaliacao) {
+              // seleciona a img do brinquedo atual
+              $stmt = $conn->query("SELECT Imagem FROM usuario WHERE Codigo_Usu  = " . $avaliacao['Codigo_Usu']);
+              $imagem = $stmt->fetch(mode: PDO::FETCH_ASSOC);
+              $stmt2 = $conn->query("SELECT Nome_Usu FROM usuario WHERE Codigo_Usu  = " . $avaliacao['Codigo_Usu']);
+              $nome = $stmt2->fetch(mode: PDO ::FETCH_ASSOC);
+          ?>
           <!--Começo card avaliação-->
           <div class="card_avaliacao">
             <img
-              src="../imagens/usuarios/c33ea36009bd947b52c4af7a04462acf9b6090d5c10c3fb988b0137a390fd4e9998305aaedc42b3b7f7b65a8555a023fcf8f4450db2031b64ef86f74.jpeg"
+              src=<?php
+                        if($imagem['Imagem'] == "vazio") {;
+                            print_r("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            print_r("../imagens/usuarios/".$imagem['Imagem'].".jpeg");
+                        }?>
               alt="Foto de perfil"
               class="foto_perfil"
             /><!--Foto de perifl da avalição-->
@@ -529,77 +580,24 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
               <!--Detalhes como nome do avaliador e a avaliação em si-->
 
               <div class="nome_avaliacao">
-                <h5 class="nome">Kasane Teto</h5>
+                <h5 class="nome"><?php print_r($nome['Nome_Usu']); ?></h5>
                 <!--Nome da conta-->
 
                 <!--Estrelas ao lado do nome-->
                 <div class="estrelas">
-                <img
-                  src="../imagens/Icons/estrela.png"
-                  alt="estrela"
-                  class="primeira_estrela"
-                />
-                <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                <img
-                  src="../imagens/Icons/meia_estrela.png"
-                  alt="meia estrela"
-                />
-              </div>
+                <?php echo renderizarEstrelas($avaliacao['Nota_Ava']); ?>
+               </div>
               </div>
 
-              <p class="titulo_avaliacao">Amei</p>
+              <p class="titulo_avaliacao"><?php echo($avaliacao['Titulo_Ava']); ?></p>
               <!--Titulo da avaliacao-->
 
-              <p class="texto_avaliacao">
-                Produto de otima qualidade, entrega rápida e é a hatsune miku
-                \o/
-              </p>
+              <p class="texto_avaliacao"> <?php echo($avaliacao['Comentario']); ?></p>
               <!--Texto da avaliacao-->
             </div>
           </div>
           <!--Fim card avaliação-->
-
-          <!--Começo card avaliação-->
-          <div class="card_avaliacao">
-            <img
-              src="../imagens/usuarios/4e013b07ab6cef43b541146e37ef01352f11ba946179b07bd4486042a250335f8cbc03694a1e7f5a6874461103e1e19c6e774a135ead7ba1652e7b0b.jpeg"
-              alt="Foto de perfil"
-              class="foto_perfil"
-            /><!--Foto de perifl da avalição-->
-            <div class="detalhes_avaliacoes">
-              <!--Detalhes como nome do avaliador e a avaliação em si-->
-
-              <div class="nome_avaliacao">
-                <h5 class="nome">Gumi</h5>
-                <!--Nome da conta-->
-
-                <!--Estrelas ao lado do nome-->
-                <div class="estrelas">
-                  <img
-                    src="../imagens/Icons/estrela.png"
-                    alt="estrela"
-                    class="primeira_estrela"
-                  />
-                  <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                  <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                  <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                  <img
-                    src="../imagens/Icons/meia_estrela.png"
-                    alt="meia estrela"
-                  />
-                </div>
-              </div>
-
-              <p class="titulo_avaliacao">Miku</p>
-              <!--Titulo da avaliacao-->
-
-              <p class="texto_avaliacao">Miku you can call me Miku</p>
-              <!--Texto da avaliacao-->
-            </div>
-          </div>
-          <!--Fim card avaliação-->
+          <?php } ?>
         </div>
       </div>
     </div>

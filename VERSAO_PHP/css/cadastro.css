@@ -1,9 +1,10 @@
-*{/*Zerar valores e aplicar fonte padrão (Roboto)*/
+* { /*Zerar valores e aplicar fonte padrão (Roboto)*/
   background-color: none;
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0px;
   padding: 0px;
-  }
+}
+
 body {
     background-image: url(../imagens/backgrounds/fundo01.png); /* caminho da img de fundo */
     background-repeat: no-repeat;
@@ -16,6 +17,7 @@ body {
     flex-direction: column;
     overflow-y: scroll;
 }
+
 .cadastrinho {
     display: flex;
     align-items: stretch;
@@ -27,6 +29,7 @@ body {
     box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
     margin-top: 3rem;
 }
+
 .cadastrinho img {
     display: flex;
     align-self: center;
@@ -34,17 +37,20 @@ body {
     height: auto;
     margin-bottom: 30px;
 }
+
 .form-login {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .input-container {
   position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
 }
+
 .input-container i {
   font-size: 24px;
   cursor: pointer;
@@ -52,6 +58,7 @@ body {
   right: 15%;
   top: 10%;
 }
+
 .input-login {
     width: 75%;
     margin-bottom: 15px;
@@ -65,9 +72,11 @@ body {
     font-family: 'Roboto', sans-serif;
     outline: none;
 }
+
 .input-login:focus{
   border: 2px solid #191a19d3;
 }
+
 .botao-entrar {
     width: 35%;
     height: 40px;
@@ -82,6 +91,7 @@ body {
     outline: none;
     transition: transform 0.3s ease-in-out;
 }
+
 .botao-entrar:hover {
   transform: scale(1.1);
 }
@@ -105,16 +115,18 @@ a.login{
   transition: transform 0.3s ease-in-out;
   margin-top: 1rem;
 }
+
 a.login:hover {
   transform: scale(1.1);
 }
-  @media (max-width: 1024px) {
+
+@media (max-width: 1024px) {
     .cadastrinho {
       width: 50%;
     }
 }
-  
-  @media (max-width: 910px) {
+
+@media (max-width: 910px) {
     .input-login{
       font-size: 15px;
     }
@@ -129,15 +141,14 @@ a.login:hover {
       width: 450px;
     }
 }
-  
-  @media (max-width: 612px) {
 
+@media (max-width: 612px) {
     .cadastrinho {
       width: 75%;
     }
 }
-  
-  @media (max-width: 475px) {
+
+@media (max-width: 475px) {
     .input-login{
       font-size: 14px;
     }
@@ -147,13 +158,13 @@ a.login:hover {
     }
 }
 
-  @media (max-width: 450px) {
+@media (max-width: 450px) {
     .cadastrinho {
       width: 80%;
     }
 }
 
-  @media (max-width: 450px) {
+@media (max-width: 450px) {
     .cadastrinho {
       width: 85%;
     }
@@ -172,7 +183,6 @@ a.login:hover {
     }
 }
 
-/* responsividade vertical pq essa página tá ruim */
 @media (max-height: 900px) {
   .cadastrinho {
       margin-top: 2rem;
@@ -220,4 +230,94 @@ a.login:hover {
       width: 45%;
       font-size: 12px;
   }
+}
+
+/* Estilos do footer */
+.footerContainer {
+    width: 100%;
+    background-color: #0476D9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+}
+
+.copyright {
+    font-size: smaller;
+    text-align: center;
+    width: 100%;
+    background-color: #0260b2;
+    padding: 10px 0;
+}
+
+.footerContent {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.footerAnchors {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.footerAnchors a {
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+    transition: filter 0.3s ease;
+}
+
+.footerAnchors a:hover {
+    filter: brightness(1.1);
+}
+
+.footerRedes {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.footerRedes a img {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.footerRedes a:hover img {
+    filter: brightness(1.1);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 1024px) {
+    .footerLogo {
+        display: none;
+    }
+    .footerTelefone {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .footerAnchors {
+        font-size: smaller;
+        justify-content: space-around;
+    }
+    .footerAnchor {
+        width: 30%;
+    }
+}
+
+@media (max-width: 475px) {
+    .footerAnchors a {
+        margin: 5px;
+    }
 }

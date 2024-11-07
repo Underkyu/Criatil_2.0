@@ -11,38 +11,34 @@
         <div class="footerContent">
             <div class="footerAnchors">
                 <div class="footerAnchor footerLogo">
-                    <a><img src="../imagens/Header/LogoBranca.png" alt="Logo"></a>
+                    <a href="principal.php"><img src="../imagens/Header/LogoBranca.png" alt="Logo"></a>
                 </div>
                 <div class="footerAnchor footerSac">
-                    <a>SAC</a>
+                    <a href="contato.php">SAC</a>
                 </div>
                 <div class="footerAnchor footerSobreNos">
-                    <a>Sobre Nós</a>
+                    <a href="sobrenos.php">Sobre Nós</a>
                 </div>
                 <div class="footerAnchor footerContato">
-                    <a>Contato</a>
+                    <a href="contato.php">Contato</a>
                 </div>
                 <div class="footerAnchor footerTelefone">
                     <a>
-                    <div class="footerUpperTel">
-                        Nos ligue!
-                    </div>
-                    <div class="footerDownTel">
-                        (11) 0800-5555
-                    </div>
+                        <div class="footerUpperTel">Nos ligue!</div>
+                        <div class="footerDownTel">(11) 0800-5555</div>
                     </a>
                 </div>
             </div>
             <center><hr></center>
             <div class="footerRedes">
                 <div class="footerIconRede">
-                    <a href="https://www.instagram.com/toys_criatil/"><img src="../imagens/Icons/facebookIconBranco.png"></a>
+                    <a href="https://www.facebook.com"><img src="../imagens/Icons/facebookIconBranco.png" alt="Facebook"></a>
                 </div>
                 <div class="footerIconRede">
-                    <a href="https://www.instagram.com/toys_criatil/"><img src="../imagens/Icons/instagramIconBranco.png"></a>
+                    <a href="https://www.instagram.com/toys_criatil/"><img src="../imagens/Icons/instagramIconBranco.png" alt="Instagram"></a>
                 </div>
                 <div class="footerIconRede">
-                    <a href="https://www.instagram.com/toys_criatil/"><img src="../imagens/Icons/youtubeIconBranco.png"></a>
+                    <a href="https://www.youtube.com"><img src="../imagens/Icons/youtubeIconBranco.png" alt="YouTube"></a>
                 </div>
             </div>
         </div>

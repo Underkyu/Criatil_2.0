@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{/*Zerar valores e aplicar fonte padrão (Roboto)*/
     background-color: none;
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -84,115 +85,227 @@ html, body {
     cursor: pointer;
     outline: none;
     transition: transform 0.3s ease-in-out;
+=======
+* { /*Zerar valores e aplicar fonte padrão (Roboto)*/
+  background-color: none;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0px;
+  padding: 0px;
+  }
+
+html, body {
+height: 100%;
+}
+
+body {
+background-image: url(../imagens/backgrounds/fundo01.png); /* caminho da img de fundo */
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+overflow: hidden;
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+
+.loginzinho {
+  display: flex;
+  margin-top: 100px;
+  align-items: stretch;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 500px;
+  padding: 3.5% 1.5% 3.5% 1.5%;
+  box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.loginzinho img {
+  display: flex;
+  align-self: center;
+  width: 300px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.form-login {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.input-container {
+position: relative;
+display: flex;
+justify-content: center;
+width: 100%;
+}
+
+.input-container i {
+font-size: 24px;
+cursor: pointer;
+position: absolute;
+right: 15%;
+top: 10%;
+}
+
+.input-login {
+  width: 75%;
+  margin-bottom: 15px;
+  height: 40px;
+  padding: 0 15px 0 12px;
+  border: 2px solid #0476D9;
+  border-radius: 12px;
+  color: rgb(88, 88, 88);
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+}
+
+.input-login:focus{
+border: 2px solid #191a19d3;
+}
+
+.botao-entrar {
+width: 35%;
+height: 40px;
+border: 3px solid black;
+border-radius: 15px;
+background-color: #F2AF00;
+color: #000000;
+font-size: 16px;
+font-family: 'Roboto', sans-serif;
+font-weight: bold;
+cursor: pointer;
+outline: none;
+transition: transform 0.3s ease-in-out;
+>>>>>>> a08224454e13cbcdb3c327a3c353442b618d9384
 }
 
 a.login{
-  width: 35%;
-  height: 40px;
-  border: none;
-  border-radius: 15px;
-  background-color: #008cffcb;
-  color: #000000;
-  font-size: 16px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  outline: none;
-  line-height: 2.5;
-  transition: transform 0.3s ease-in-out;
-  margin-top: .5rem;
+width: 35%;
+height: 40px;
+border: none;
+border-radius: 15px;
+background-color: #008cffcb;
+color: #000000;
+font-size: 16px;
+font-family: 'Roboto', sans-serif;
+font-weight: bold;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+outline: none;
+line-height: 2.5;
+transition: transform 0.3s ease-in-out;
+margin-top: .5rem;
 }
+
 a.login:hover {
-  transform: scale(1.1);
+transform: scale(1.1);
 }
 
 .botao-cadastrar:hover {
-  transform: scale(1.1);
+transform: scale(1.1);
 }
+
 .botao-entrar:hover {
-  transform: scale(1.1);
+transform: scale(1.1);
 }
-    @media (max-width: 1024px) {
-      .loginzinho {
-        width: 50%;
-      }
+
+.footerContainer {
+  background-color: #0476D9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.footerContent {
+  width: 80%;
+}
+
+.footerAnchors {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footerAnchors a {
+  margin: 10px;
+  color: white;
+  text-decoration: none;
+  transition: filter 0.3s ease;
+}
+
+.footerAnchors a:hover {
+  filter: brightness(1.1);
+}
+
+.footerLogo img {
+  width: 100%;
+  height: auto;
+}
+
+.footerRedes {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.footerRedes a img {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.footerRedes a:hover img {
+  filter: brightness(1.2);
+  transform: translateY(-3px);
+}
+
+.copyright {
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  background-color: #0260b2;
+  padding: 10px;
+}
+
+@media (max-width: 1024px) {
+  .loginzinho {
+    width: 50%;
   }
-    
-    @media (max-width: 910px) {
-      .input-login{
-        font-size: 15px;
-      }
-      .input-container i {
-        font-size: 22px;
-        top: 12%;
-      }
-      .loginzinho img {
-        width: 70%;
-      }
-      .loginzinho {
-        width: 450px;
-      }
+}
+
+@media (max-width: 910px) {
+  .input-login{
+      font-size: 15px;
   }
-    
-    @media (max-width: 612px) {
-  
-      .loginzinho {
-        width: 75%;
-      }
+  .loginzinho img {
+      width: 70%;
   }
-    
-    @media (max-width: 475px) {
-      .input-login{
-        font-size: 14px;
-      }
-      .input-container i {
-        font-size: 20px;
-        top: 15%;
-      }
+}
+
+@media (max-width: 612px) {
+  .loginzinho {
+    width: 75%;
   }
-  
-    @media (max-width: 450px) {
-      .loginzinho {
-        width: 80%;
-      }
+}
+
+@media (max-width: 475px) {
+  .input-login{
+      font-size: 14px;
   }
-  
-    @media (max-width: 455px) {
-      .loginzinho {
-        width: 85%;
-      }
-      .botao-cadastrar {
-        font-size: 14px;
-        line-height: 2.6;
-        height: 35px;
-        width: 40%;
-      }
-      .botao-entrar {
-        font-size: 14px;
-        width: 40%;
-        height: 35px;
-        line-height: 2.5;
-      }
+}
+
+@media (max-width: 450px) {
+  .loginzinho {
+      width: 80%;
   }
-  
-  @media (max-width: 390px) {
-      .loginzinho {
-        width: 90%;
-        padding: 5% 1.5% 5% 1.5%;
-      }
-      .input-login{
-        font-size: 13px;
-      }
-      .loginzinho img {
-        margin-bottom: 20px;
-      }
-      .botao-cadastrar {
-        width: 45%;
-      }
-      .botao-entrar {
-        width: 45%;
-      }
-  }
+}

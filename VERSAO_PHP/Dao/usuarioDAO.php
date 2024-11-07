@@ -138,7 +138,7 @@ class UsuarioDAO implements UsuarioDAOInterface {
         }
     }
     public function autenticarUsuario($email, $password){
-        $user = $this->pesquisarPorEmail($email );
+        $user = $this->pesquisarPorEmail($email);
         if($user){
             if(password_verify($password, $user->getSenha())){
                 $token = $user->gerarToken();

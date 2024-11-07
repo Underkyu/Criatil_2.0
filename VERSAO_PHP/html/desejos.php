@@ -36,7 +36,7 @@
         </div>
                  <!-- botão do menu sanduíche-->
                  <div class="sanduiche-div">
-                    <button class="menuSanduiche" onclick="block()">
+                    <button class="menuSanduiche" onclick="blockConta()">
                      <h1>Minha Conta </h1>
                        <img id="imagemSanduiche" src="../imagens/Icons/arrow2.png" alt="Menu Sanduiche" class="menuSanduiche">
                      </button>

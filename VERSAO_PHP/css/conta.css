@@ -26,6 +26,8 @@
 .img-lateral {
     width: 105px;
     height: 105px;
+    max-width: 105px;
+    max-height: 105px;
     object-fit: cover;  
     border-radius: 100px;
     border: solid #F2AF00 3px;

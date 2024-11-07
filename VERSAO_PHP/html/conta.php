@@ -105,7 +105,7 @@ $usuarioData = $userDao->verificarToken(true);
                     <div class="info-item">
                         <div class="info-label">Celular:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Nome_Usu">
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu">
                         </div>
                     </div>
                     <input type="hidden" name="Tipo" value="Atualizar"> <!--Input para identificar que operação será feita-->

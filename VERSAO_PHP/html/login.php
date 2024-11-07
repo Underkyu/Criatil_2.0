@@ -33,10 +33,6 @@
 
             </form>
         </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 2dfa8f06ab9bf39e10427dd3885261383ad9797c
 </body>
 <?php include("footer.php") ?>
 </html>

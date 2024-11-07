@@ -52,5 +52,6 @@
                 <a href="login.php" class="login">Já tem uma conta?</a>
             </form>
         </div>
+        <?php include("footer.php") ?>
 </body>
 </html>

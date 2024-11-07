@@ -15,7 +15,10 @@
     justify-content: space-around;
     padding: 10px;
     transition: transform 0.8s ease-in-out;
-    border-left: 3px solid black;
+    margin-bottom: -3rem;
+}
+.footerContainer{
+   margin: 0;
 }
 .container-car {
     display: flex;

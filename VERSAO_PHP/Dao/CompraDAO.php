@@ -18,3 +18,4 @@ class carrinhoDao {
 
     public function setCompra() {
 }
+}

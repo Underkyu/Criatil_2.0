@@ -150,6 +150,7 @@ input.pesquisa { /*Barra de pesquisa*/
     border: 3px solid #F2AF00;
     margin: .5rem;
     background-color: white;
+    overflow: hidden;
   }
 
 /*Responsividade*/

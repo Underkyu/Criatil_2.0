@@ -179,6 +179,7 @@ if (isset($_SESSION['produtos'])) {
             </div>
             <?php endif; ?>
     </div>
+    </div>
 
     <script>
         function updateDisplayStyles() {
@@ -225,6 +226,6 @@ if (isset($_SESSION['produtos'])) {
     </script>
 
     <?php include("footer.php") ?>
-</body>
 
+</body>
 </html>

@@ -14,7 +14,7 @@ h1.titulo{ /*Titulo em cima da div que mostra as avaliações*/
   font-size: 2.7rem;
   text-align: center;
   font-weight: 500;
-  color: #232323
+  color: #232323;
 }
 div.fundo{ /*Fundo azul atrás das avaliações*/
   background-color: #0476D9;

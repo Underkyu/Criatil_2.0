@@ -5,16 +5,34 @@
 package com.example.appcriatil.components
 
 import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -24,41 +42,32 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.appcriatil.R
-import com.example.appcriatil.ui.theme.BgColor
-import com.example.appcriatil.ui.theme.Primary
+import com.example.appcriatil.navigation.CriatilAppRouter
+import com.example.appcriatil.navigation.Screen
 import com.example.appcriatil.ui.theme.TextColor
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.Divider
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.withStyle
-import com.example.appcriatil.ui.theme.Secondary
+import com.example.appcriatil.ui.theme.WhiteColor
 
 @Composable
 fun ElementoTextoBasico(value:String){
@@ -105,13 +114,14 @@ fun ElementoTextField(labelValue: String, painterResource: Painter){
     OutlinedTextField(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(4.dp))
-            .background(BgColor),
+            .clip(RoundedCornerShape(1.dp))
+            .background(WhiteColor),
         label = { Text(text = labelValue) },
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = Primary,
-            focusedLabelColor = Primary,
-            cursorColor = Primary
+            unfocusedBorderColor = Color(0xFF0476D9),
+            focusedBorderColor = Color(0xFF0476D9),
+            focusedLabelColor = Color(0xFF0476D9),
+            cursorColor = Color(0xFF0476D9)
         ),
         keyboardOptions = KeyboardOptions.Default,
         value = textValue.value,
@@ -124,6 +134,7 @@ fun ElementoTextField(labelValue: String, painterResource: Painter){
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ElementoSenhaTextField(labelValue: String, painterResource: Painter){
 
@@ -139,12 +150,13 @@ fun ElementoSenhaTextField(labelValue: String, painterResource: Painter){
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(4.dp))
-            .background(BgColor),
+            .background(WhiteColor),
         label = { Text(text = labelValue) },
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = Primary,
-            focusedLabelColor = Primary,
-            cursorColor = Primary
+            unfocusedBorderColor = Color(0xFF0476D9),
+            focusedBorderColor = Color(0xFF0476D9),
+            focusedLabelColor = Color(0xFF0476D9),
+            cursorColor = Color(0xFF0476D9)
         ),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         value = senha.value,
@@ -186,6 +198,9 @@ fun ElementoCheckbox(value: String, onTextSelected: (String) -> Unit) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Checkbox(
+            colors = CheckboxDefaults.colors(
+                checkedColor = Color(0xFF0476D9)
+            ),
             checked = checkedState.value,
             onCheckedChange = { newValue ->
                 checkedState.value = newValue
@@ -242,13 +257,13 @@ fun ElementoBotao(value: String, onClick: () -> Unit){
                 .fillMaxWidth()
                 .heightIn(48.dp)
                 .background(
-                    brush = Brush.horizontalGradient(listOf(Secondary, Primary)),
+                    Brush.horizontalGradient(colors = listOf(Color(0xFFF2AF00), Color(0xFFF2AF00))),
                     shape = RoundedCornerShape(50.dp)
                 ),
                 contentAlignment = Alignment.Center
             ){
                 Text(text = value,
-                    fontSize = 18.sp,
+                    fontSize = 24.sp,
                     fontWeight = FontWeight.Bold)
             }
     }
@@ -353,4 +368,114 @@ fun ElementoTextoCadastroClicavel(value: String , onTextSelected: (String) -> Un
                 }
 
         })
+}
+
+@Composable
+fun ElementoHeaderNav(value: String, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .background(Color(0xFF0476D9))
+            .fillMaxWidth()
+            .heightIn(min = 64.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Button(
+            onClick = onClick,
+            modifier = Modifier
+                .heightIn(64.dp)
+                .wrapContentSize(), // Wrap the entire button content
+            contentPadding = PaddingValues(),
+            colors = ButtonDefaults.buttonColors(Color.Transparent)
+        ) {
+            Box(
+                modifier = Modifier
+                    .heightIn(64.dp)
+                    .wrapContentSize() // Wrap the Box content
+                    .background(
+                        color = Color.Transparent,
+                        shape = RoundedCornerShape(50.dp)
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = "Arrow",
+                        tint = Color.White
+                    )
+                    Text(
+                        text = value,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+        }
+        Image(
+            painter = painterResource(id = R.drawable.logobranca),
+            contentDescription = "Image",
+            modifier = Modifier
+                .heightIn(64.dp)
+                .widthIn(128.dp)
+        )
+    }
+}
+
+@Composable
+fun ElementoIconeFooter(text: String, painterResource: Painter, onClick: () -> Unit) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.clickable { onClick() }
+    ) {
+        Icon(
+            painter = painterResource,
+            contentDescription = text,
+            tint = Color.White,
+            modifier = Modifier.size(48.dp)
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(text = text, fontSize = 14.sp, color = Color.White, fontWeight = FontWeight.Bold)
+    }
+}
+
+@Composable
+fun ElementoFooter(modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .heightIn(min = 48.dp)
+            .background(Color(0xFF0476D9))
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        ElementoIconeFooter(
+            text = "Home",
+            painterResource = painterResource(id = R.drawable.homeicon),
+            onClick = { CriatilAppRouter.navigateTo(Screen.Home) }
+        ) // Example copyright text
+        ElementoIconeFooter(
+            text = "Carrinho",
+            painterResource = painterResource(id = R.drawable.carrinho),
+            onClick = { /* TODO */ }
+        )
+        ElementoIconeFooter(
+            text = "Perfil",
+            painterResource = painterResource(id = R.drawable.icon_profile),
+            onClick = { CriatilAppRouter.navigateTo(Screen.TelaDeLogin) }
+        )
+    }
+}
+
+@Composable
+fun PaddedItem(content: @Composable () -> Unit) {
+    Box(modifier = Modifier.padding(horizontal = 16.dp)) {
+        content()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ElementoPreview(){
 }

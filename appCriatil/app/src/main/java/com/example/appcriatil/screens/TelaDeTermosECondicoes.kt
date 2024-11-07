@@ -7,13 +7,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.graphics.*
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.appcriatil.components.ElementoTextoTitulo
 import com.example.appcriatil.R
-import com.example.appcriatil.components.*
+import com.example.appcriatil.components.ElementoTextoBasico
+import com.example.appcriatil.components.ElementoTextoTitulo
 import com.example.appcriatil.navigation.CriatilAppRouter
 import com.example.appcriatil.navigation.Screen
 import com.example.appcriatil.navigation.SystemBackButtonHandler

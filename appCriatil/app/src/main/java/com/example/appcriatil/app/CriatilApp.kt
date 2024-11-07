@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.appcriatil.navigation.CriatilAppRouter
 import com.example.appcriatil.navigation.Screen
+import com.example.appcriatil.screens.Home
 import com.example.appcriatil.screens.TelaCadastro
 import com.example.appcriatil.screens.TelaDeLogin
 import com.example.appcriatil.screens.TelaDeTermosECondicoes
@@ -23,6 +24,7 @@ fun CriatilApp(){
                 is Screen.TelaCadastro -> TelaCadastro()
                 is Screen.TelaDeTermosECondicoes -> TelaDeTermosECondicoes()
                 is Screen.TelaDeLogin -> TelaDeLogin()
+                is Screen.Home -> Home()
             }
         }
     }

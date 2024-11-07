@@ -44,13 +44,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 <div class="brinquedo">
                     <div class="foto">
-                        <img src=<?php
-                        if($usuario['Imagem'] == "vazio") {;
-                            print_r("../imagens/usuarios/usuario.png"); 
-                            
-                        }else{
-                            print_r("../imagens/usuarios/".$usuario['Imagem'].".jpeg");
-                        }?> alt="Foto de Perfil" class="foto"><!--Foto-->
+                    <img src="<?php echo $usuario['Imagem']; ?>" alt="Foto de perfil" class="foto"/><!--Foto-->
                     </div>
                     <p class="informacao"><?php echo $usuario['Nome_Usu']; ?></p> <!--Nome-->
                     <p class="informacao"><?php echo $usuario['Codigo_Usu']; ?></p> <!--Id-->

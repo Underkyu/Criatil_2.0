@@ -1,18 +1,19 @@
 <?php
 require_once("../controller/conexao.php");
 require_once("../controller/global.php");
-require_once("../Dao/produtoDAO.php");
+require_once("../Dao/categoriaDAO.php");
+require_once("../Dao/seloDAO.php");
 
-$stmt = $conn->prepare("SELECT * FROM brinquedo");
-$stmt->execute();
 
-$brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// coloca os dados da tabela em um vetor
+$stmt1 = $conn->prepare("SELECT * FROM categoria");
+$stmt1->execute();
+$categorias = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+$categoriaDao = new CategoriaDAO($conn, $BASE_URL);
 
-$produtoDao = new ProdutoDAO($conn, $BASE_URL); // inicialização do produtoDao pra fazer o insert
-
-$selos = $produtoDao->getSelos();
-$categorias = $produtoDao->getCategorias();
+$stmt2 = $conn->prepare("SELECT * FROM selo");
+$stmt2->execute();
+$selos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+$seloDao = new SeloDAO($conn, $BASE_URL);
 
 ?>
 
@@ -22,8 +23,8 @@ $categorias = $produtoDao->getCategorias();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-    <title>Brinquedos cadastrados</title>
-    <link rel="stylesheet" href="../css/brinquedosGrnt.css">
+    <title>Categorias & Selos</title>
+    <link rel="stylesheet" href="../css/selos&categoriasGrnt.css">
     <script src="../js/grntPesquisa.js"></script>
     <script src="../js/grntInsert.js"></script>
     <script src="../js/grntDetalhes.js"></script>
@@ -32,126 +33,47 @@ $categorias = $produtoDao->getCategorias();
 <body>
     <?php include("headerGrnt.php") ?>
 
-<!--
- o que falta fazer aqui:
- -responsividade do form: botão de x (fechar) pra telas menores
--->
-
     <div class="container">
-        <h1 class="titulo">Brinquedos Cadastrados</h1> <!--Titulo em cima da caixa dos brinquedos-->
+        <h1 class="titulo">Categorias & Selos</h1> <!--Titulo em cima da caixa dos brinquedos-->
         <div class="fundo"> <!--Fundo azul que fica atrás dos brinquedos-->
             <div class="box_brinquedos" id="brinquedos-container"><!--Div que contem os brinquedos-->
 
                 <div class="titulos"> <!--Titulos que mostram a qual informação o valor é relativo-->
-                    <div class="titulo">Foto</div>
-                    <div class="titulo">Nome</div>
                     <div class="titulo">ID</div>
-                    <div class="titulo">Valor</div>
-                    <div class="titulo">Editar Brinquedo</div>
+                    <div class="titulo">Nome</div>
                 </div>
 
-                <!--começo da div que contém um dos brinquedos-->
+                <!--começo da div que contém uma das categorias-->
 
                 <?php 
-                    foreach ($brinquedos as $brinquedo) {
-                        // seleciona a img do brinquedo
-                        $stmt = $conn->query("SELECT * FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem");
-                        $imagens = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                
-                        // imagens[0] = sempre a primeira imagem do brinquedo
-                        $imagem1 = $imagens[0];
-                        
-                        // caso esteja vazio, deixa como null pra não dar erro
-                        $imagem2 = $imagens[1] ?? "";
-                        $imagem3 = $imagens[2] ?? "";
+                    foreach ($categorias as $categoria) {
                 ?>
 
                 <div class="brinquedo"> 
-                    <div class="foto">
-                        <img src="<?php echo $imagem1['Imagem']; ?>" alt="Foto do Brinquedo" class="foto"><!--Foto-->
-                    </div>
-                    <p class="informacao"><?php echo $brinquedo['Nome_Brinq']; ?></p> <!--Nome-->
-                    <p class="informacao"><?php echo $brinquedo['Codigo_Brinq']; ?></p> <!--Id-->
-                    <p class="informacao">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></p> <!--Valor-->
+                    <p class="informacao"><?php echo $categoria['Codigo_Categoria']; ?></p> <!--Id-->
+                    <p class="informacao"><?php echo $categoria['Nome_Categoria']; ?></p> <!--Nome-->
+                </div>
 
-                    
-                    <form method="POST" action="" class="form-flex" id="detalhes-form-<?php echo $brinquedo['Codigo_Brinq']; ?>">
-                            <div class="botao_detalhes">
-                            <!-- 'data-' é um tipo de atributo q guarda data; nesse caso tá guardando
-                                  a info do usuário do foreach atual e enviando pro JS (grntDetalhes.js),
-                                  que vai colocar essa informação no form usando as IDs das inputs -->
-                                  <button type="button" class="detalhes" 
-                                    data-tipo="brinquedo"
-                                    data-codigoselo="<?php echo $brinquedo['Codigo_Selo']; ?>"
-                                    data-codigocate="<?php echo $brinquedo['Codigo_Categoria']; ?>"
-                                    data-codigobrinq="<?php echo $brinquedo['Codigo_Brinq']; ?>"
-                                    data-nomebrinq="<?php echo $brinquedo['Nome_Brinq']; ?>"
-                                    data-preco="<?php echo $brinquedo['Preco_Brinq']; ?>"
-                                    data-nota="<?php echo $brinquedo['Nota']; ?>"
-                                    data-fabri="<?php echo $brinquedo['Fabricante']; ?>"
-                                    data-desc="<?php echo $brinquedo['Descricao']; ?>"
-                                    data-faixa="<?php echo $brinquedo['Faixa_Etaria']; ?>"
-                                    data-imagem1="<?php echo $imagem1['Imagem']; ?>"
-                                    data-imagem2="<?php echo $imagem2['Imagem'] ?? ''; ?>"
-                                    data-imagem3="<?php echo $imagem3['Imagem'] ?? ''; ?>"
-                                    data-codigoimagem1="<?php echo $imagem1['Codigo_Imagem'] ?? ''; ?>"
-                                    data-codigoimagem2="<?php echo $imagem2['Codigo_Imagem'] ?? ''; ?>"
-                                    data-codigoimagem3="<?php echo $imagem3['Codigo_Imagem'] ?? ''; ?>">
-                                    Editar
-                                </button>
-                            </div>
-                    </form>
-                    </div>
                 <?php } ?>
 
-                <!--fim da div que contém um dos brinquedos-->
+                <!--fim da div que contém uma das categorias-->
                 
             </div>
         </div>
         <div class="acoes">
-            <button class="adicionar" id="btnAdicionar">Adicionar brinquedo</button>
+            <button class="adicionar" id="btnAdicionar">Adicionar categoria</button>
             <div class="pesquisar">
-                <input type="text" id="txtPesquisa" class="pesquisar" placeholder="Pesquisar brinquedo">
+                <input type="text" id="txtPesquisa" class="pesquisar" placeholder="Pesquisar categoria">
             </div>
         </div>
     </div>
 
-<!-- form de adicionar brinquedos -->
+<!-- form de adicionar categorias -->
 <div id="form-container1" class="formInsert">
     <form method="POST" id="formInsert-Brinquedo" class="formInsert-Brinquedo" action="../controller/produtoProcess.php">
-    <h2>Adicionar Brinquedo</h2>
+    <h2>Adicionar Categoria</h2>
     <div class="div-q-separa-socorro">
     <div class="form-div"><!-- div q contém as inputs -->
-
-        <div class="select-input">
-            <label for="selectSelo">Selo:</label>
-            <select name="Codigo_Selo" id="selectSelo" class="select-form" required>
-                <option value="" selected disabled hidden></option> 
-                <!-- a select é uma input que seleciona entre os selos disponíveis no banco - "selected disabled hidden" 
-                    serve pra deixar selecionado como 1ª opção, desligar como opção e deixar escondido ao expandir -->
-                    <?php foreach ($selos as $selo) { ?>
-                        <option required name="Codigo_Selo" value="<?php echo $selo['Codigo_Selo'];?>"><?php echo $selo['Nome_Selo']; ?></option>
-                    <?php } ?>
-            </select>
-        </div>
-
-            <div class="select-input">
-            <label for="selectCate">Categoria:</label>
-            <select name="Codigo_Categoria" id="selectCate" class="select-form" required>
-                <option value="" selected disabled hidden></option>
-                    <?php foreach ($categorias as $categoria) { ?>
-                        <option required name="Codigo_Categoria" value="<?php echo $categoria['Codigo_Categoria'];?>"><?php echo $categoria['Nome_Categoria']; ?></option>
-                    <?php } ?>
-            </select>
-        </div>
-
-        <input type="text" id="nome" name="Nome_Brinq" placeholder="Nome" required>
-                
-        <input type="number" step="0.01" min="0.01" name="Preco_Brinq" placeholder="Preço" required>
-        
-        <input type="number" step="0.5" min="0" max="5" name="Nota" placeholder="Nota" required>
-        
-        <input type="text" name="Fabricante" placeholder="Fabricante" required>
         
         <input type="text" name="Descricao" placeholder="Descrição" required>
         

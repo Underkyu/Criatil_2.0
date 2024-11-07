@@ -29,6 +29,16 @@ class ProdutoDAO implements ProdutoDAOInterface {
 
         return $produto;
     }
+
+    public function buildImagem($data){
+        $imagem = new Imagem();
+    
+        $imagem->setCodigoImagem($data["Codigo_Imagem"]);
+        $imagem->setCodigoBrinq($data["Codigo_Brinq"]);
+        $imagem->setImagem($data["Imagem"]);
+        $imagem->setNumImagem($data["Num_Imagem"]);
+        return $imagem;
+    }
     // usei 'produto' ao invés de brinquedo em muitos lugares, me confundi, mas ainda funciona, só n confunda
     public function criarP(Produto $produto, Imagem $imagem){
         $stmt = $this->conexao->prepare("INSERT INTO brinquedo (Codigo_Selo, Codigo_Categoria, Nome_Brinq, Preco_Brinq, Nota, Fabricante, Descricao, Faixa_Etaria)
@@ -171,6 +181,43 @@ public function pesquisarPorCodigo($codigoBrinq) {
             $brinq = $this->buildProduct($data); 
 
             return $brinq;  
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+public function pesquisarImagemPorCodigoBrinq($codigoBrinq) {
+    if($codigoBrinq != "") {
+        $stmt = $this->conexao->prepare("SELECT * FROM imagem WHERE Codigo_Brinq = :codigo");
+        $stmt->bindParam(":codigo", $codigoBrinq);
+        $stmt->execute();
+        if($stmt->rowCount() > 0) {
+            $imagens = [];
+            $data = $stmt->fetchAll();
+            foreach($data as $arrayData) {
+                $imagens[] = $this->buildImagem($arrayData);
+            }
+            return $imagens;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+public function pesquisarPrimeiraImagemPorCodigoBrinq($codigoBrinq) {
+    if($codigoBrinq != "") {
+        $stmt = $this->conexao->prepare("SELECT * FROM imagem WHERE Codigo_Brinq = :codigo AND Num_Imagem = 1");
+        $stmt->bindParam(":codigo", $codigoBrinq);
+        $stmt->execute();
+        if($stmt->rowCount() > 0) {
+            $data = $stmt->fetchAll();
+            $imagem = $this->buildImagem($data);
+            return $imagem;
         } else {
             return false;
         }

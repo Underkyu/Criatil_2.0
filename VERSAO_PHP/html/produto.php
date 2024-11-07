@@ -71,70 +71,89 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
         <div class="imagens_menores">
           <!--Imagens pequnas que ficam ao lado da maior-->
 
-          <div
-            class="imagem_menor"
-            onclick="mudarImagem('../imagens/Produtos/Miku/Imagem1.png','block','none','none')"
-          >
-            <img
-              src="../imagens/Produtos/Miku/Imagem1.png"
-              alt="Pelucia Miku de frente"
+          <?php
+             $imagens[] = $prodDAO->pesquisarImagemPorCodigoBrinq($brinquedo->getCodigoBrinq());
+             $imagem = $imagens[0];
+  
+             if(count($imagens)>=1){
+              $imagem1 = $imagem[0];
+             ?>
+              <div
               class="imagem_menor"
-            />
-            <div class="barra_ativo">
+              onclick="mudarImagem('<?php print_r($imagem1->getImagem());?>','block','none','none')"
+            >
               <img
-                src="../imagens/Produtos/barra_ativo.png"
-                alt="barra ativo"
-                class="barra_ativo"
-                id="um"
+                src=<?php print_r($imagem1->getImagem());?>
+                alt="Pelucia Miku de frente"
+                class="imagem_menor"
               />
-              <!--Aquela barrinha do lado da imagem pra mostrar qual imagem ta selecionada-->
+              <div class="barra_ativo">
+                <img
+                  src="../imagens/Produtos/barra_ativo.png"
+                  alt="barra ativo"
+                  class="barra_ativo"
+                  id="um"
+                />
+                <!--Aquela barrinha do lado da imagem pra mostrar qual imagem ta selecionada-->
+              </div>
             </div>
-          </div>
+            <?php
+             }if(count($imagem)>=2){
+              $imagem1 = $imagem[1];
+              ?>
+            <div
+              class="imagem_menor"
+              onclick="mudarImagem('<?php print_r($imagem1->getImagem());?>','none','block','none')"
+            >
+              <img
+                src=<?php print_r($imagem1->getImagem());?>
+                alt="Pelucia Miku de frente"
+                class="imagem_menor"
+              />
+              <div class="barra_ativo">
+                <img
+                  src="../imagens/Produtos/barra_ativo.png"
+                  alt="barra ativo"
+                  class="barra_ativo"
+                  id="dois"
+                />
+                <!--Aquela barrinha do lado da imagem pra mostrar qual imagem ta selecionada-->
+              </div>
+            </div>
+            <?php
+             }if(count($imagem)>= 3){
+              $imagem1 = $imagem[2];
+              ?>
+                <div
+              class="imagem_menor"
+              onclick="mudarImagem('<?php print_r($imagem1->getImagem());?>','none','none','block')"
+            >
+              <img
+                src=<?php print_r($imagem1->getImagem());?>
+                alt="Pelucia Miku de frente"
+                class="imagem_menor"
+              />
+              <div class="barra_ativo">
+                <img
+                  src="../imagens/Produtos/barra_ativo.png"
+                  alt="barra ativo"
+                  class="barra_ativo"
+                  id="tres"
+                />
+                <!--Aquela barrinha do lado da imagem pra mostrar qual imagem ta selecionada-->
+              </div>
+            </div>
+              <?php
+             }
 
-          <div
-            class="imagem_menor"
-            onclick="mudarImagem('../imagens/Produtos/Miku/Imagem2.png','none','block','none')"
-          >
-            <img
-              src="../imagens/Produtos/Miku/Imagem2.png"
-              alt="Pelucia Miku de frente"
-              class="imagem_menor"
-            />
-            <div class="barra_ativo">
-              <img
-                src="../imagens/Produtos/barra_ativo.png"
-                alt="barra ativo"
-                class="barra_ativo"
-                id="dois"
-              />
-              <!--Aquela barrinha do lado da imagem pra mostrar qual imagem ta selecionada-->
-            </div>
-          </div>
-
-          <div
-            class="imagem_menor"
-            onclick="mudarImagem('../imagens/Produtos/Miku/Imagem3.png','none','none','block')"
-          >
-            <img
-              src="../imagens/Produtos/Miku/Imagem3.png"
-              alt="Pelucia Miku de frente"
-              class="imagem_menor"
-            />
-            <div class="barra_ativo">
-              <img
-                src="../imagens/Produtos/barra_ativo.png"
-                alt="barra ativo"
-                class="barra_ativo"
-                id="tres"
-              />
-              <!--Aquela barrinha do lado da imagem pra mostrar qual imagem ta selecionada-->
-            </div>
-          </div>
+          ?>
         </div>
         <!--Fim imagens pequenas-->
-
+        <?php
+          $imagem1 = $imagem[0];
+        ?>
         <img
-          src="../imagens/Produtos/Miku/Imagem1.png"
+          src="<?php print_r($imagem1->getImagem());?>"
           alt="Imagem maior do produto"
           class="imagem_maior"
           id="imagem_maior"

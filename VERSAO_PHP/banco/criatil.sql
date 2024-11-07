@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/10/2024 às 09:59
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Tempo de geração: 06-Nov-2024 às 19:19
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `avaliacao`
+-- Estrutura da tabela `avaliacao`
 --
 
 CREATE TABLE `avaliacao` (
@@ -34,22 +34,25 @@ CREATE TABLE `avaliacao` (
   `Nota_Ava` double NOT NULL,
   `Comentario` varchar(150) NOT NULL,
   `Titulo_Ava` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `avaliacao`
+-- Extraindo dados da tabela `avaliacao`
 --
 
 INSERT INTO `avaliacao` (`Codigo_Ava`, `Codigo_Brinq`, `Codigo_Usu`, `Nota_Ava`, `Comentario`, `Titulo_Ava`) VALUES
-(1, 1, 1, 4.5, 'Eu amei a hatsune miku e ainda amo minha voidalosca favorita', 'Miku hatsune omg'),
-(2, 2, 2, 2.5, 'god FUCKING Dammit Kris where the FUCK are we?!', 'funkopop mt car'),
-(3, 3, 3, 5, 'Bola de futebol é minha paixao interna', 'Eu amo joga bola'),
-(4, 4, 4, 2, 'Comprei pro meu filho e ele atirou no meu olho. Resultado: UTI. rs.', 'Perigosa');
+(2, 1, 1, 5, 'Essa boneca deixou minha filha Kasane muito feliz', 'Ótima para crianças'),
+(3, 2, 4, 4, 'Ralsei do DeltaRune, onde fui parar?', 'Kris'),
+(4, 3, 3, 4.5, 'Jogar um fut com essa bola foi legal', 'Futebol daora'),
+(5, 4, 2, 2, 'O cubo quebrou antes de eu conseguir resolver', 'Quebra fácil'),
+(6, 5, 1, 5, 'Coleciono pokemons e esse eu achei muito bonito, nem parece plástico', 'Lindo boneco'),
+(7, 6, 2, 5, 'Meu amigo aprendeu libras com isso', 'Útil'),
+(8, 7, 3, 3.5, 'Machuca muito, bem perigoso, mas divertido', 'Forte e legal');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `brinquedo`
+-- Estrutura da tabela `brinquedo`
 --
 
 CREATE TABLE `brinquedo` (
@@ -62,23 +65,25 @@ CREATE TABLE `brinquedo` (
   `Fabricante` varchar(100) NOT NULL,
   `Descricao` varchar(250) NOT NULL,
   `Faixa_Etaria` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `brinquedo`
+-- Extraindo dados da tabela `brinquedo`
 --
 
 INSERT INTO `brinquedo` (`Codigo_Brinq`, `Codigo_Selo`, `Codigo_Categoria`, `Nome_Brinq`, `Preco_Brinq`, `Nota`, `Fabricante`, `Descricao`, `Faixa_Etaria`) VALUES
-(1, 1, 1, 'Hatsune Miku Funko Pop', 89.99, 4.5, 'FunkoMake', 'Uma boneca hatsunemiku de funko pop para todas suas necessidades vocaloidescas', '13+'),
-(2, 1, 1, 'Ralsei FunkoPop', 65.99, 4, 'FunkoCreate', 'Pelúcia do Ralsei from DeltaRune ele não', '7+'),
-(3, 1, 1, 'Bola de fut', 39.99, 3, 'FootSolutions', 'Uma bola de futebol para futebol', '0'),
-(4, 1, 1, 'Nerf', 119.99, 2, 'Guns', 'Uma nerf pra nerfar tudo', '14+'),
-(5, 1, 1, 'Cubo mágico', 39.99, 4, 'Squares', 'Um quadrado pra todas suas necessidades nerds', '7+');
+(1, 1, 1, 'Hatsune Miku FunkoPop', 89.99, 4.5, 'FunkoMake', 'Uma boneca hatsunemiku de funko pop para todas suas necessidades vocaloidescas', '13+'),
+(2, 1, 1, 'Ralsei FunkoPop', 65.99, 4, 'FunkoCreate', 'Pelúcia do Ralsei from DeltaRune', '7+'),
+(3, 1, 1, 'Bola de Futebol', 39.99, 3, 'FootSolutions', 'Uma bola de futebol para futebol', '0'),
+(4, 2, 2, 'Cubo Mágico', 90.99, 3, 'MagicSolutions', 'Um cubo mágico para suas necessidades puzzlescas', '6+'),
+(5, 2, 1, 'Funko Oshawott', 99.99, 4, 'FunkoMake', 'Um funko pop do Oshawott de Pokemon para Oshawott fans', '9+'),
+(6, 1, 2, 'Alfabeto Libras', 49.99, 5, 'DefSolutions', 'Um alfabeto de libras para pessoas aprenderem libras', '0'),
+(7, 2, 2, 'Arma Nerf', 109.99, 4.5, 'ELITE20', 'Uma arma nerf para diversão com toda a família', '13+');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `brinqvendido`
+-- Estrutura da tabela `brinqvendido`
 --
 
 CREATE TABLE `brinqvendido` (
@@ -86,42 +91,43 @@ CREATE TABLE `brinqvendido` (
   `Codigo_Pedido` int(11) NOT NULL,
   `Codigo_Brinq` int(11) NOT NULL,
   `Quantidade` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `carrinho`
+-- Estrutura da tabela `carrinho`
 --
 
 CREATE TABLE `carrinho` (
   `Codigo_Brinq` int(11) NOT NULL,
   `Codigo_Usu` int(11) NOT NULL,
   `Quantidade` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `categoria`
+-- Estrutura da tabela `categoria`
 --
 
 CREATE TABLE `categoria` (
   `Codigo_Categoria` int(11) NOT NULL,
   `Nome_Categoria` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `categoria`
+-- Extraindo dados da tabela `categoria`
 --
 
 INSERT INTO `categoria` (`Codigo_Categoria`, `Nome_Categoria`) VALUES
-(1, 'Funko Pops');
+(1, 'Funko Pops'),
+(2, 'Gerais');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cupom`
+-- Estrutura da tabela `cupom`
 --
 
 CREATE TABLE `cupom` (
@@ -129,12 +135,12 @@ CREATE TABLE `cupom` (
   `Nome_Cupom` varchar(50) NOT NULL,
   `Status_Cupom` tinyint(1) NOT NULL,
   `Porcentagem_Cupom` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `imagem`
+-- Estrutura da tabela `imagem`
 --
 
 CREATE TABLE `imagem` (
@@ -142,10 +148,10 @@ CREATE TABLE `imagem` (
   `Codigo_Brinq` int(11) NOT NULL,
   `Imagem` varchar(300) NOT NULL,
   `Num_Imagem` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `imagem`
+-- Extraindo dados da tabela `imagem`
 --
 
 INSERT INTO `imagem` (`Codigo_Imagem`, `Codigo_Brinq`, `Imagem`, `Num_Imagem`) VALUES
@@ -154,28 +160,34 @@ INSERT INTO `imagem` (`Codigo_Imagem`, `Codigo_Brinq`, `Imagem`, `Num_Imagem`) V
 (3, 1, '../imagens/Produtos/Miku/imagem3.png', 3),
 (4, 2, '../imagens/Produtos/Ralsei/ralseideltarune.png', 1),
 (5, 3, '../imagens/Produtos/Bola/imagem1.png', 1),
-(6, 4, '../imagens/Produtos/Nerf/imagem1.png', 1),
-(7, 4, '../imagens/Produtos/Nerf/imagem2.png', 2),
-(8, 4, '../imagens/Produtos/Nerf/imagem3.png', 3),
-(9, 5, '../imagens/Produtos/CuboMagico/imagem1.png', 1),
-(10, 5, '../imagens/Produtos/CuboMagico/imagem2.png', 2),
-(11, 5, '../imagens/Produtos/CuboMagico/imagem3.png', 3);
+(6, 4, '../imagens/Produtos/CuboMagico/imagem1.png', 1),
+(7, 4, '../imagens/Produtos/CuboMagico/imagem2.png', 2),
+(8, 4, '../imagens.', 3),
+(9, 5, '../imagens/Produtos/Funko/imagem2.png', 1),
+(10, 5, '../imagens/Produtos/Funko/imagem1.png', 2),
+(11, 5, '../imagens/Produtos/Funko/imagem3.png', 3),
+(12, 6, '../imagens/Produtos/Libras/imagem1.png', 1),
+(13, 6, '../imagens/Produtos/Libras/imagem2.png', 2),
+(14, 6, '../imagens/Produtos/Libras/imagem3.png', 3),
+(15, 7, '../imagens/Produtos/Nerf/imagem3.png', 1),
+(16, 7, '../imagens/Produtos/Nerf/imagem2.png', 2),
+(17, 7, '../imagens/Produtos/Nerf/imagem1.png', 3);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `listadefavoritos`
+-- Estrutura da tabela `listadefavoritos`
 --
 
 CREATE TABLE `listadefavoritos` (
   `Codigo_Brinq` int(11) NOT NULL,
   `Codigo_Usu` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pedido`
+-- Estrutura da tabela `pedido`
 --
 
 CREATE TABLE `pedido` (
@@ -184,14 +196,15 @@ CREATE TABLE `pedido` (
   `Codigo_Usu` int(11) NOT NULL,
   `Codigo_Cupom` int(11) NOT NULL,
   `Preco_Total` double NOT NULL,
+  `Forma_Pagamento` varchar(20) NOT NULL,
   `Data` date NOT NULL,
   `Status_Pedido` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `sac`
+-- Estrutura da tabela `sac`
 --
 
 CREATE TABLE `sac` (
@@ -199,10 +212,10 @@ CREATE TABLE `sac` (
   `nome` varchar(30) NOT NULL,
   `email` varchar(255) NOT NULL,
   `mensagem` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `sac`
+-- Extraindo dados da tabela `sac`
 --
 
 INSERT INTO `sac` (`Codigo_sac`, `nome`, `email`, `mensagem`) VALUES
@@ -211,25 +224,27 @@ INSERT INTO `sac` (`Codigo_sac`, `nome`, `email`, `mensagem`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `selo`
+-- Estrutura da tabela `selo`
 --
 
 CREATE TABLE `selo` (
   `Codigo_Selo` int(11) NOT NULL,
-  `Nome_Selo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `Nome_Selo` varchar(50) NOT NULL,
+  `Imagem_Selo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `selo`
+-- Extraindo dados da tabela `selo`
 --
 
-INSERT INTO `selo` (`Codigo_Selo`, `Nome_Selo`) VALUES
-(1, 'Deficiente Auditivo');
+INSERT INTO `selo` (`Codigo_Selo`, `Nome_Selo`, `Imagem_Selo`) VALUES
+(1, 'Deficiente Auditivo', 0),
+(2, 'Geral', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuario`
+-- Estrutura da tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -241,25 +256,25 @@ CREATE TABLE `usuario` (
   `Senha_Usu` varchar(200) NOT NULL,
   `Tipo_Usu` varchar(20) NOT NULL,
   `Token` varchar(200) NOT NULL,
-  `Imagem` varchar(300) NOT NULL DEFAULT '../imagens/Conta/usuario.png'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `Imagem` varchar(300) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `usuario`
+-- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Email_Usu`, `Senha_Usu`, `Tipo_Usu`, `Token`, `Imagem`) VALUES
-(1, 'Kasane Teto', '1234-12-12', '(11) 97188-9901', 'kasakasa@gmail.com', '$2y$10$3Eqq3Fdh6/ZSCd0X115Mk.9KGjjF4PETQYuaVRSHKoHVWE28PRyB2', 'Cliente', 'bf4cf72c57fb5db1023538b49fc0cb10250ed128ffbe0e9fd6812bffed441c51c50786601841a3e0cdf8eb9050c53c55d5e5', '../imagens/Conta/teto_perfil.jpg'),
-(2, 'Susana Deta Runês', '1234-03-12', '(11) 97188-9903', 'guilhermebragas@hotmail.com', '$2y$10$1yoKbUehvpjOsieo3fFVye8qTwvvHKKT06QkVPaQTdq6zKsdZ63Ri', 'Cliente', '5535890485480cc6df129342de0bc34932553f86aa59b0f4a3c8c55e63b88ca419818433d40811fd797aa576af88d7414c82', '../imagens/Conta/susie.png'),
-(3, 'eu pessoa da silva pereira castro', '1212-02-12', '(11) 97188-9901', 'jowjow2@hotmail.com', '$2y$10$VYLRc6zCy8XC8swKBucJq.sxAc3TOfSGRVQo2FB4Y3cwp.lCuIbyi', 'Cliente', '17fb64a6ff5be43fa21ad0c85dd072530abbb85a66450d58b2888382bef42c6cc63cdc12e50031054564997dc61c3653ffff', '../imagens/Conta/usuario.png'),
-(4, 'Rosana Siqueira Silva', '1983-01-01', '(11) 97188-9903', 'rosanasiq@gmail.com', '$2y$10$AaYGQGG6dI2PbidewmxLM.Gqros8D1pvat7Y3.2dIjs/He4S6MWQy', 'Cliente', 'vazio', '../imagens/Conta/rosana.jpg');
+(1, 'Rosana', '1973-08-15', '11 971889900', 'rosanasiq@gmail.com', '$2y$10$TEj2qHP30EgbslBfd5LIFe.GOKcrREhUId8xvUUNqYM9lu/ISI8SW', 'Cliente', 'f6e4379fc912278a1f14440a98e8960905b999921189bdf6f72950a45a311fbe6927c44e14d3b70e2b677761017298659a67', '../imagens/Conta/rosana.jpg'),
+(2, 'Kasane', '2001-02-19', '89821-2122', 'kasaneteto@yahoo.com', '$2y$10$fuDLTvvCk6YNcgxBHbz/7eQ/okUdf9tZ01mN0rkQOaoQ8XixF6uMq', 'Cliente', '97204f8cf2dbba1ac0cda3275e9b42f7adf97efff70e064c670a6570abc51b2b470d43b11f95c8f14f8ef4945a20b92b5267', '../imagens/usuarios/2e58d04b77f8f3caf84caf5c31c107358a1d95c76410c8591be94878e3393515d74b68fad7e2f2e7b6d34f17dd0e618665aea3581b904df6827fab96.jpeg'),
+(3, 'Jônatas', '2000-08-11', '1187192-1221', 'jowjow@gmail.com', '$2y$10$gEBH0nDybAB7ASvGo9x1ru1ebgk9QUL/E2LX7bPhnZ3NuZOnIy4se', 'Cliente', 'b0f9e9e538bb2c39ca316fc3bda5eab66311a9af7fee1a1ff49edae530fb865cedf9fda6e4cb4ed770b37110b707550eb6cc', '../imagens/usuarios/4e013b07ab6cef43b541146e37ef01352f11ba946179b07bd4486042a250335f8cbc03694a1e7f5a6874461103e1e19c6e774a135ead7ba1652e7b0b.jpeg'),
+(4, 'Susana Deta Runês', '2020-01-12', '1199999-9999', 'susanarune@gmail.com', '$2y$10$4J7fiOZVOG5dhm8tuciXHea4HJp36VQ17hdhzwN1Iu1sNpEVbLpdW', 'Cliente', 'b22bd90f35dbfdfed789e3af3509a6d1b8eee93b043efc15389802cab9d38aa0486db78b0f61c94b1ae4c6f55d9a9b04b7d0', '../imagens/Conta/susie.png');
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `avaliacao`
+-- Índices para tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
   ADD PRIMARY KEY (`Codigo_Ava`),
@@ -267,7 +282,7 @@ ALTER TABLE `avaliacao`
   ADD KEY `Codigo_Usu_Ava` (`Codigo_Usu`);
 
 --
--- Índices de tabela `brinquedo`
+-- Índices para tabela `brinquedo`
 --
 ALTER TABLE `brinquedo`
   ADD PRIMARY KEY (`Codigo_Brinq`),
@@ -275,7 +290,7 @@ ALTER TABLE `brinquedo`
   ADD KEY `Codigo_Categoria_Brinq` (`Codigo_Categoria`);
 
 --
--- Índices de tabela `brinqvendido`
+-- Índices para tabela `brinqvendido`
 --
 ALTER TABLE `brinqvendido`
   ADD PRIMARY KEY (`Codigo_BrinqVendido`),
@@ -283,33 +298,33 @@ ALTER TABLE `brinqvendido`
   ADD KEY `Codigo_Brinq_BrinqVendido` (`Codigo_Brinq`);
 
 --
--- Índices de tabela `carrinho`
+-- Índices para tabela `carrinho`
 --
 ALTER TABLE `carrinho`
   ADD KEY `Codigo_Brinq_Carrinho` (`Codigo_Brinq`),
   ADD KEY `Codigo_Usu_Carrinho` (`Codigo_Usu`);
 
 --
--- Índices de tabela `categoria`
+-- Índices para tabela `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`Codigo_Categoria`);
 
 --
--- Índices de tabela `cupom`
+-- Índices para tabela `cupom`
 --
 ALTER TABLE `cupom`
   ADD PRIMARY KEY (`Codigo_Cupom`);
 
 --
--- Índices de tabela `imagem`
+-- Índices para tabela `imagem`
 --
 ALTER TABLE `imagem`
   ADD PRIMARY KEY (`Codigo_Imagem`),
   ADD KEY `Codigo_Brinq_Imagem` (`Codigo_Brinq`);
 
 --
--- Índices de tabela `pedido`
+-- Índices para tabela `pedido`
 --
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`Codigo_Pedido`),
@@ -318,38 +333,38 @@ ALTER TABLE `pedido`
   ADD KEY `Codigo_Cupom_Pedido` (`Codigo_Cupom`);
 
 --
--- Índices de tabela `sac`
+-- Índices para tabela `sac`
 --
 ALTER TABLE `sac`
   ADD PRIMARY KEY (`Codigo_sac`);
 
 --
--- Índices de tabela `selo`
+-- Índices para tabela `selo`
 --
 ALTER TABLE `selo`
   ADD PRIMARY KEY (`Codigo_Selo`);
 
 --
--- Índices de tabela `usuario`
+-- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`Codigo_Usu`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
-  MODIFY `Codigo_Ava` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Codigo_Ava` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `brinquedo`
 --
 ALTER TABLE `brinquedo`
-  MODIFY `Codigo_Brinq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Codigo_Brinq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `brinqvendido`
@@ -361,7 +376,7 @@ ALTER TABLE `brinqvendido`
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `Codigo_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Codigo_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `cupom`
@@ -373,7 +388,7 @@ ALTER TABLE `cupom`
 -- AUTO_INCREMENT de tabela `imagem`
 --
 ALTER TABLE `imagem`
-  MODIFY `Codigo_Imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Codigo_Imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `pedido`
@@ -391,54 +406,54 @@ ALTER TABLE `sac`
 -- AUTO_INCREMENT de tabela `selo`
 --
 ALTER TABLE `selo`
-  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `avaliacao`
+-- Limitadores para a tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
   ADD CONSTRAINT `Codigo_Brinq_Ava` FOREIGN KEY (`Codigo_Brinq`) REFERENCES `brinquedo` (`Codigo_Brinq`),
   ADD CONSTRAINT `Codigo_Usu_Ava` FOREIGN KEY (`Codigo_Usu`) REFERENCES `usuario` (`Codigo_Usu`);
 
 --
--- Restrições para tabelas `brinquedo`
+-- Limitadores para a tabela `brinquedo`
 --
 ALTER TABLE `brinquedo`
   ADD CONSTRAINT `Codigo_Categoria_Brinq` FOREIGN KEY (`Codigo_Categoria`) REFERENCES `categoria` (`Codigo_Categoria`),
   ADD CONSTRAINT `Codigo_Selo_Brinq` FOREIGN KEY (`Codigo_Selo`) REFERENCES `selo` (`Codigo_Selo`);
 
 --
--- Restrições para tabelas `brinqvendido`
+-- Limitadores para a tabela `brinqvendido`
 --
 ALTER TABLE `brinqvendido`
   ADD CONSTRAINT `Codigo_Brinq_BrinqVendido` FOREIGN KEY (`Codigo_Brinq`) REFERENCES `brinquedo` (`Codigo_Brinq`),
   ADD CONSTRAINT `Codigo_Pedido_BrinqVendido` FOREIGN KEY (`Codigo_Pedido`) REFERENCES `pedido` (`Codigo_Pedido`);
 
 --
--- Restrições para tabelas `carrinho`
+-- Limitadores para a tabela `carrinho`
 --
 ALTER TABLE `carrinho`
   ADD CONSTRAINT `Codigo_Brinq_Carrinho` FOREIGN KEY (`Codigo_Brinq`) REFERENCES `brinquedo` (`Codigo_Brinq`),
   ADD CONSTRAINT `Codigo_Usu_Carrinho` FOREIGN KEY (`Codigo_Usu`) REFERENCES `usuario` (`Codigo_Usu`);
 
 --
--- Restrições para tabelas `imagem`
+-- Limitadores para a tabela `imagem`
 --
 ALTER TABLE `imagem`
   ADD CONSTRAINT `Codigo_Brinq_Imagem` FOREIGN KEY (`Codigo_Brinq`) REFERENCES `brinquedo` (`Codigo_Brinq`);
 
 --
--- Restrições para tabelas `pedido`
+-- Limitadores para a tabela `pedido`
 --
 ALTER TABLE `pedido`
   ADD CONSTRAINT `Codigo_Brinq_Pedido` FOREIGN KEY (`Codigo_Brinq`) REFERENCES `brinquedo` (`Codigo_Brinq`),

@@ -1,131 +1,142 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');/* Import da fonte padrão */
 
-* {/*Definição de parâmetros padrão */
+* { /*Definição de parâmetros padrão */
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   background-color: none;
   font-family: "Roboto";
 }
-.footerContainer{
+
+.footerContainer {
     background-color: #0476D9;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
 }
-.copyright{
+
+.copyright {
     font-size: smaller;
     text-align: center;
     width: 100%;
     background-color: #0260b2;
 }
-.footerContent{
+
+.footerContent {
     width: 80%;
 }
-.footerAnchors{
+
+.footerAnchors {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.footerAnchors a{
+
+.footerAnchors a {
     margin: 10px;
+    color: white;
+    text-decoration: none;
+    transition: filter 0.3s ease;
 }
-.footerAnchors a:hover{
-    cursor: pointer;
-    filter: brightness(0.9);
-    transform: translateY(-1px);
-    transition: ease-in-out 200ms;
+
+.footerAnchors a:hover {
+    filter: brightness(1.1);
 }
-.footerAnchor{
+
+.footerAnchors a:active {
+    color: white;
+}
+
+.footerAnchor {
     font-weight: bold;
     color: white;
     width: 15%;
 }
-.footerSac,.footerSobreNos,.footerContato{
+
+.footerSac, .footerSobreNos, .footerContato {
     display: flex;
     justify-content: center;
 }
-.footerLogo img{
+
+.footerLogo img {
     width: 100%;
     height: calc(100%/(240/95));
 }
-.footerLogo, .footerTelefone{
+
+.footerLogo, .footerTelefone {
     width: 20%;
     max-width: 240px;
     max-height: 95px;
 }
-.footerRedes{
+
+.footerRedes {
     display: flex;
     justify-content: center;
 }
-.footerRedes a img{
+
+.footerRedes a img {
     width: 50px;
     height: 50px;
-    margin: 10px
+    margin: 10px;
+    transition: filter 0.3s ease, transform 0.3s ease;
 }
-.footerRedes a img:hover{
-    cursor: pointer;
-    filter: brightness(0.9);
-    transform: translateY(-1px);
-    transition: ease-in-out 200ms;
-} 
-  /* 2xl */
-  @media (max-width: 1536px) {
+
+.footerRedes a:hover img {
+    filter: brightness(1.1);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 1536px) {
     .container {
       max-width: 1280px;
     }
-  }
-   
-  /* xl */
-  @media (max-width: 1280px) {
-    .footerLogo{
+}
+
+@media (max-width: 1280px) {
+    .footerLogo {
         display: none;
     }
-    .footerTelefone{
+    .footerTelefone {
         display: none;
     }
-  }
-   
-  /* lg */
-  @media (max-width: 1024px) {
+}
+
+@media (max-width: 1024px) {
     .container {
       max-width: 768px;
     }
-    .footerAnchors{
+    .footerAnchors {
       justify-content: space-around;
     }
-    .footerAnchor{
+    .footerAnchor {
       width: 20%;
     } 
-  }
-   
-  /* md */
-  @media (max-width: 768px) {
-      .footerAnchors{
-        justify-content: space-around;
-      }
-      .footerAnchor{
-        width: 20%;
-      }
-  }
-   
-  /* sm */
-  @media (max-width: 640px) {
-    .footerAnchors{
+}
+
+@media (max-width: 768px) {
+    .footerAnchors {
+      justify-content: space-around;
+    }
+    .footerAnchor {
+      width: 20%;
+    }
+}
+
+@media (max-width: 640px) {
+    .footerAnchors {
         font-size: smaller;
     }
-    .footerAnchor{
+    .footerAnchor {
       width: 30%;
     }
-  }
-   
-  /* xs */
-  @media (max-width: 475px) {
+}
+
+@media (max-width: 475px) {
     .container {
       width: 100%;
     }
     .footerAnchors a {
       margin: 5px;
-  }
-  }
+    }
+}

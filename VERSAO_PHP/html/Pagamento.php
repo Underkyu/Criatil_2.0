@@ -39,7 +39,7 @@
             <p>Total:</p>
             <p id="pagamentoSelecionado">Pagamento:</p>
             <button id="back-button">Voltar</button>
-            <input type="text" name="formaPagamento" value="" id="forma"> <!--Input que armazenará a tipo de pagamento-->
+            <input type="hidden" name="formaPagamento" value="" id="forma"> <!--Input que armazenará a tipo de pagamento-->
             <button id="continue-button">Continuar para o pagamento</button>
         </div>
     </div>

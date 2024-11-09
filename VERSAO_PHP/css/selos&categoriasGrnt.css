@@ -16,6 +16,10 @@
       font-weight: 500;
       color: #232323
   }
+  .boxes {
+    display: flex;
+    flex-direction: row;
+  }
   div.fundo{ /*Fundo azul atrás dos brinquedos*/
       background-color: #0476D9;
       border-radius: 25px;

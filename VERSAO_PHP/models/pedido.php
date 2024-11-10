@@ -1,23 +1,18 @@
 <?php
 class Pedido {
     private $Codigo_Pedido;
-    private $Codigo_Brinq;
-    private $Codigo_Cli;
+    private $Codigo_Usu;
     private $Codigo_Cupom;
     private $Preco_Total;
-    private $Data;
+    private $Forma_Pagamento;
+    private $Data_Pedido;
     private $Status_Pedido;
 
     public function getCodigoPedido() {
         return $this->Codigo_Pedido;
     }
-
-    public function getCodigoBrinq() {
-        return $this->Codigo_Brinq;
-    }
-
-    public function getCodigoCli() {
-        return $this->Codigo_Cli;
+    public function getCodigoUsu() {
+        return $this->Codigo_Usu;
     }
 
     public function getCodigoCupom() {
@@ -28,8 +23,12 @@ class Pedido {
         return $this->Preco_Total;
     }
 
-    public function getData() {
-        return $this->Data;
+    public function getFormaPagamento() {
+        return $this->Forma_Pagamento;
+    }
+
+    public function getDataPedido() {
+        return $this->Data_Pedido;
     }
 
     public function getStatusPedido() {
@@ -39,13 +38,9 @@ class Pedido {
     public function setCodigoPedido($Codigo_Pedido) {
         $this->Codigo_Pedido = $Codigo_Pedido;
     }
-
-    public function setCodigoBrinq($Codigo_Brinq) {
-        $this->Codigo_Brinq = $Codigo_Brinq;
-    }
-
-    public function setCodigoCli($Codigo_Cli) {
-        $this->Codigo_Cli = $Codigo_Cli;
+    
+    public function setCodigoUsu($Codigo_Usu) {
+        $this->Codigo_Usu = $Codigo_Usu;
     }
 
     public function setCodigoCupom($Codigo_Cupom) {
@@ -56,8 +51,12 @@ class Pedido {
         $this->Preco_Total = $Preco_Total;
     }
 
-    public function setData($Data) {
-        $this->Data = $Data;
+    public function setFormaPagamento($Forma_Pagamento) {
+        $this->Forma_Pagamento = $Forma_Pagamento;
+    }
+
+    public function setDataPedido($Data_Pedido) {
+        $this->Data_Pedido = $Data_Pedido;
     }
 
     public function setStatusPedido($Status_Pedido) {

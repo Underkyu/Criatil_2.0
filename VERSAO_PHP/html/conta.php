@@ -29,9 +29,8 @@ $usuarioData = $userDao->verificarToken(true);
 
     <div class="container">
     <!-- página da conta -->
-                <!-- 'navbar-conta' é a barra da esquerda com as páginas -->
-         <div class="navbar-container" id="navbar-conta"> 
-             <div class="lateral-conta">
+            <div class="navbar-container"> 
+                <div class="ft-lateral">
                   <img class="img-lateral" src=<?php
                         if($usuarioData->getImagem() == "vazio") {;
                             print_r("../imagens/usuarios/usuario.png"); 
@@ -39,15 +38,17 @@ $usuarioData = $userDao->verificarToken(true);
                         }else{
                             print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
                         }?>>
-                  <h1 class="nome-lateral"><?php print_r($usuarioData->getNome());?></h1>
-             </div>
-             <div class="paginas">
-                  <a href="#" class="pagina-selecionada">Perfil</a>
-                  <a href="./pedidos.php" class="paginas-navbar">Pedidos</a>
-                  <a href="./desejos.php" class="paginas-navbar">Lista de Desejos</a>
-                  <a href="../controller/logout.php" class="paginas-navbar" id="sair">Sair</a>
-             </div>
-        </div>
+                        <div class="nomelat-div">
+                         <h1 class="nome-lateral"><?php print_r($usuarioData->getNome());?></h1>
+                        </div>
+                        </div>
+                    <div class="paginas">
+                        <a href="#" class="pagina-selecionada">Perfil</a>
+                        <a href="./pedidos.php" class="paginas-navbar">Pedidos</a>
+                        <a href="./desejos.php" class="paginas-navbar">Lista de Desejos</a>
+                        <a href="../controller/logout.php" class="paginas-navbar" id="sair">Sair</a>
+                    </div>
+            </div>
                  <!-- botão do menu sanduíche-->
                   <div class="sanduiche-div">
                        <button class="menuSanduiche" onclick="blockConta()">
@@ -87,13 +88,13 @@ $usuarioData = $userDao->verificarToken(true);
                     <div class="info-item">
                         <div class="info-label">Nome completo:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getNome()); ?>" name="Nome_Usu">
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getNome()); ?>" name="Nome_Usu" readonly>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Data de nascimento:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="date" value=<?php print_r($usuarioData->getNasc());?> name="Nasc_Usu">
+                        <input class="usuario-info" type="date" value=<?php print_r($usuarioData->getNasc());?> name="Nasc_Usu" readonly>
                         </div>
                     </div>
                     <div class="info-item">
@@ -105,17 +106,22 @@ $usuarioData = $userDao->verificarToken(true);
                     <div class="info-item">
                         <div class="info-label">Celular:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu">
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu" readonly>
                         </div>
                     </div>
-                    <input type="hidden" name="Tipo" value="Atualizar"> <!--Input para identificar que operação será feita-->
+                    <!--
+                    <input type="hidden" name="Tipo" value="Atualizar">
                     <input type="file" name="imagem_file" id="imagem_file">
                     <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Cliente">
-                    <button class="editar" type="submit">Editar</button>
+                    -->
+                    <div class="botoes">
+                    <button class="editar" type="submit">Editar Perfil</button>
+                    <button class="editar" type="submit">Atualizar Senha</button>
+                    </div>
                     </form>
                     
                     <!--Formulario de troca de senha-->
-                    <form action="../controller/usuarioProccess.php" method="POST">
+                    <!--  <form action="../controller/usuarioProccess.php" method="POST">
                     <h2 class="troque_senha">Troque sua senha</h2>
                     <div class="info-item">
                         <div class="info-label">Senha atual:</div>
@@ -129,9 +135,9 @@ $usuarioData = $userDao->verificarToken(true);
                         <input class="usuario-info" type="text" placeholder="Senha nova" name="Nova_Senha">
                         </div>
                     </div>
-                    <input type="hidden" name="Tipo" value="Senha"> <!--Input para identificar que operação será feita-->
-                    <button class="editar" type="submit">Atualizar</button>
+                    <input type="hidden" name="Tipo" value="Senha">
                     </form>
+                     -->
                 </div>
 
                 <div class="conta-box">

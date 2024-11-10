@@ -11,14 +11,8 @@ require_once("../models/brinquedo.php");
 
     $carrinhoDao = new carrinhoDao($conn,$BASE_URL);
     $carrinho = $carrinhoDao->getCarrinho();
-    $contador = 0;
-
-    function button1( $quantidade) {
-        $quantidade = $quantidade - 1;
-    }
-    function button2($quantidade) {
-        $quantidade = $quantidade + 1;
-    }
+    $contador = 0;//Variavel que irá servir para percorrer arrays mais a frente no código
+    $precoTotal = 0;
     ?>
     <!DOCTYPE html>
     <html lang="pt-br">
@@ -69,13 +63,7 @@ require_once("../models/brinquedo.php");
                                 ?>
                             <div class="produto">
                             <?php 
-                                $quantidade = 10;
-                                if(array_key_exists('botao_menos', $_POST)) {
-                                    button1($quantidade);
-                                }
-                                else if(array_key_exists('botao_mais', $_POST)) {
-                                    button2($quantidade);
-                                }
+                                $quantidade = 1;
                                 ?>
                             <div class="produto-info">
                                 <img src=<?php  print_r($imagem[0]->getImagem()) ?> class="produto-imagem">
@@ -89,9 +77,9 @@ require_once("../models/brinquedo.php");
                                 </form>
 
                                     <span class="quantidade-numero" style="display: flex;"><?php
-                                    $carrinhoArray = json_decode($_COOKIE["quantidade"], true); // Decodifica o JSON em array associativo
+                                    $quantidadeArray = json_decode($_COOKIE["quantidade"], true); // Decodifica o JSON em array associativo
             
-                                    print_r($carrinhoArray[$contador]); 
+                                    print_r($quantidadeArray[$contador]); 
                                     ?></span>
                                     
                                     <form method="POST" action="../controller/carrinhoProccess.php">
@@ -103,7 +91,7 @@ require_once("../models/brinquedo.php");
                                 <div class="produto-valor">
                                     <div class="valor_flex">
                                         <div class="valor-unidade">R$<?php print_r($brinquedo->getPrecoBrinq()); ?>/un.</div>
-                                        <div class="valor-total">R$<?php print_r(($brinquedo->getPrecoBrinq()*$quantidade)); ?></div>
+                                        <div class="valor-total">R$<?php print_r(($brinquedo->getPrecoBrinq()*$quantidadeArray[$contador])); ?></div>
                                     </div>
                                 </div>
                                 <div class="excluir-item">
@@ -119,7 +107,9 @@ require_once("../models/brinquedo.php");
                         </div>
 
                         <?php
+                            $precoTotal += $brinquedo->getPrecoBrinq()*$quantidadeArray[$contador];
                             $contador++;
+
                             }
                         ?>
 
@@ -145,8 +135,8 @@ require_once("../models/brinquedo.php");
                                 <div class="legenda">Total:</div>
                             </div>
                             <div class="precos">
-                                <div class="preco" id="subtotal">R$ 110,00</div>
-                                <div class="preco" id="total">R$ 110,00</div>
+                                <div class="preco" id="subtotal"><?php print_r($precoTotal) ?></div>
+                                <div class="preco" id="total"><?php print_r($precoTotal)?></div>
                             </div>
                         </div>
                     </div>

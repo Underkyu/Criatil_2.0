@@ -368,6 +368,9 @@
       div.fundo {
         width: 90%;
       }
+      .boxes{
+        flex-direction: column;
+      }
     }
     /* xs */
     @media (max-width: 475px) {

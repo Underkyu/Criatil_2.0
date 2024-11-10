@@ -38,13 +38,7 @@ if($tipo === "Deletar"){
     $comentAva = filter_input(INPUT_POST, "Comentario");
     $tituloAva = filter_input(INPUT_POST, "Titulo_Ava");
 
-    if($notaAva && $comentAva && $tituloAva){
-        if($notaAva === null || $notaAva === "" || $comentAva === null || $comentAva === "" ||
-         $tituloAva === null || $tituloAva === ""){
-            $message->setMessage("Campos vazios","Alguns campos da avaliação estão vazios, tente novamente","error","back");
-            exit;
-        }
-
+    if(isset($notaAva, $comentAva, $tituloAva) && $notaAva !== '' && $comentAva !== '' && $tituloAva !== '') {
         $avaliacao = new Avaliacao();
 
         $avaliacao->setCodigoBrinq($codBrinq);

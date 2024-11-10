@@ -36,7 +36,7 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
     <div class="boxes">
 
         <div class="catdiv">
-        <h2 class="titulo">Categorias</h2>
+        <h2 class="titulo">Categorias Cadastradas</h2>
             <div class="fundo"> <!--Fundo azul que fica atrás dos brinquedos-->
                 <div class="box_brinquedos" id="brinquedos-container"><!--Div que contem os brinquedos-->
                     <div class="titulos"> <!--Titulos que mostram a qual informação o valor é relativo-->
@@ -58,7 +58,7 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
         </div>
 
         <div class="selodiv">
-        <h2 class="titulo">Selos</h2>
+        <h2 class="titulo">Selos Cadastrados</h2>
             <div class="fundo"> <!--Fundo azul que fica atrás dos brinquedos-->
                 <div class="box_brinquedos" id="brinquedos-container"><!--Div que contem os brinquedos-->
                     <div class="titulos"> <!--Titulos que mostram a qual informação o valor é relativo-->

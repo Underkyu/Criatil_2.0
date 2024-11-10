@@ -31,57 +31,59 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
     <script src="../js/grntImgPreview.js"></script>
 </head>
 <body>
-    <?php include("headerGrnt.php") ?>
+<?php include("headerGrnt.php") ?>
+<div class="container">
+    <div class="boxes">
 
-    <div class="container">
-        <div class="boxes">
         <div class="catdiv">
         <h2 class="titulo">Categorias</h2>
-        <div class="fundo"> <!--Fundo azul que fica atrás dos brinquedos-->
-            <div class="box_brinquedos" id="brinquedos-container"><!--Div que contem os brinquedos-->
-
-                <div class="titulos"> <!--Titulos que mostram a qual informação o valor é relativo-->
-                    <div class="titulo">ID</div>
-                    <div class="titulo">Nome</div>
-                </div>
-
-                
-                <?php 
-                    foreach ($categorias as $categoria) {
-                ?>
-                <!-- div que contém as categorias -->
-                <div class="brinquedo"> 
-                    <p class="informacao"><?php echo $categoria['Codigo_Categoria']; ?></p> <!--Id-->
-                    <p class="informacao"><?php echo $categoria['Nome_Categoria']; ?></p> <!--Nome-->
-                </div>
-                <?php } ?>
-                </div>
+            <div class="fundo"> <!--Fundo azul que fica atrás dos brinquedos-->
+                <div class="box_brinquedos" id="brinquedos-container"><!--Div que contem os brinquedos-->
+                    <div class="titulos"> <!--Titulos que mostram a qual informação o valor é relativo-->
+                        <div class="titulo">ID</div>
+                        <div class="titulo">Nome</div>
                     </div>
-                    </div>
-                    <div class="selodiv">
-                    <h2 class="titulo">Selos</h2>
-                    <div class="fundo"> <!--Fundo azul que fica atrás dos brinquedos-->
-            <div class="box_brinquedos" id="brinquedos-container"><!--Div que contem os brinquedos-->
+                    
+                        <?php 
+                            foreach ($categorias as $categoria) {
+                        ?>
+                            <div class="brinquedo" id="cats"> 
+                                <p class="informacao"><?php echo $categoria['Codigo_Categoria']; ?></p> <!--Id-->
+                                <p class="informacao"><?php echo $categoria['Nome_Categoria']; ?></p> <!--Nome-->
+                            </div>
+                        <?php } ?>
 
-                <div class="titulos"> <!--Titulos que mostram a qual informação o valor é relativo-->
-                    <div class="titulo">ID</div>
-                    <div class="titulo">Nome</div>
                 </div>
-                <?php 
-                    foreach ($selos as $selo) {
-                ?>
-                <!-- div que contém os selos -->
-                <div class="brinquedo"> 
-                    <p class="informacao"><?php echo $selo['Codigo_Selo']; ?></p> <!--Id-->
-                    <p class="informacao"><?php echo $selo['Nome_Selo']; ?></p> <!--Nome-->
-                </div>
-                <?php } ?>
-                </div>
-
-                
             </div>
         </div>
+
+        <div class="selodiv">
+        <h2 class="titulo">Selos</h2>
+            <div class="fundo"> <!--Fundo azul que fica atrás dos brinquedos-->
+                <div class="box_brinquedos" id="brinquedos-container"><!--Div que contem os brinquedos-->
+                    <div class="titulos"> <!--Titulos que mostram a qual informação o valor é relativo-->
+                        <div class="titulo">Imagem</div>
+                        <div class="titulo">ID</div>
+                        <div class="titulo">Nome</div>
+                    </div>
+
+                        <?php 
+                            foreach ($selos as $selo) {
+                        ?>
+                            <div class="brinquedo"> 
+                            <div class="foto">
+                            <img src=<?php echo $selo['Imagem_Selo']; ?> alt="Imagem do Selo" class="foto"><!--Imagem-->
+                            </div>
+                                <p class="informacao"><?php echo $selo['Codigo_Selo']; ?></p> <!--Id-->
+                                <p class="informacao"><?php echo $selo['Nome_Selo']; ?></p> <!--Nome-->
+                            </div>
+                        <?php } ?>
+
+                </div>
+            </div>
         </div>
+    </div>
+
         <!-- 
         <div class="acoes">
             <button class="adicionar" id="btnAdicionar">Adicionar categoria</button>

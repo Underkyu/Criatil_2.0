@@ -275,7 +275,7 @@ div.card_avaliacao { /*Div que contem as avaliações em si*/
   border: #D4D4D4 solid 3px;
   border-radius: 15px;
   padding: .75rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -295,13 +295,13 @@ div.avaliacoes { /*Div com os cards de avaliações*/
   flex-direction: column;
   justify-content: flex-end;
   margin: 0;
-  margin-left: 4rem;
+  margin-left: 2rem;
 }
 
 div.nome_avaliacao {/*Nome do perfil do avaliador*/
   display: flex;
   align-items: center;
-  margin-top: 1.5rem;
+  margin-top: .5rem;
 }
 
 img.foto_perfil { /*Foto de perfil do usuario no card de avalição*/
@@ -310,23 +310,22 @@ img.foto_perfil { /*Foto de perfil do usuario no card de avalição*/
   border: 1px solid black;
   border-radius: 50px;
 }
-
 h5.nome { /*Nome do perfil*/
-  font-size: 2.25rem;
-  margin: 0;
-}
-
-p.titulo_avaliacao {/*Titulo da avaliação*/
-  font-weight: bold;
   font-size: 2rem;
   margin: 0;
-  margin-top: .75rem;
+  margin-right: .4rem;
 }
-
-p.texto_avaliacao {/*O texto da avalição*/
-  font-size: 1.4rem;
+p.titulo_avaliacao {/*Titulo da avaliação*/
+  font-size: 1.6rem;
   margin: 0;
-  margin-top: .25rem;
+  margin-top: .3rem;
+}
+p.texto_avaliacao {/*O texto da avalição*/
+  font-size: 1.2rem;
+  margin: 0;
+  margin-top: .10rem;
+  margin-left: .15rem;
+  max-width: 550px;
 }
 
 div.estrelas { /*Div que contem as estrelas das avaliações*/

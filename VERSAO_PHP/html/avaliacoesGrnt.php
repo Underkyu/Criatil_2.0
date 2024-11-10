@@ -79,7 +79,13 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
               <!--Começo card avaliação-->
               <div class="avaliacao">
-                  <img src="<?php echo $imagem['Imagem']; ?>" alt="Foto de perfil" class="foto_perfil"/><!--Foto de perfil da avaliação-->
+                  <img src=<?php
+                        if($imagem['Imagem'] == "vazio") {;
+                            print_r("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            print_r("../imagens/usuarios/".$imagem['Imagem'].".jpeg");
+                        }?> alt="Foto de perfil" class="foto_perfil"/><!--Foto de perfil da avaliação-->
                   <div class="detalhes_avaliacoes">
                       <div class="nome_avaliacao">
                           <h5 class="nome"><?php echo $nomeUsu['Nome_Usu']; ?></h5>

@@ -291,21 +291,20 @@ function renderizarEstrelas($nota) {
           <h3 class="titulo_input_ava">Titulo</h3>
           <input type="text" class="titulo_ava" name="Titulo_Ava" placeholder="Digite o título da avaliação">
           </div>
-        
     
           <div class="input_ava">
           <h3 class="titulo_input_ava">Estrelas</h3>
-          <select name="Nota_Ava" id="" class="num_estrelas"><!--Select com o tipo de cliente e no qual o garente irá mudar para bloqueado para bloquear o acesso da conta ao site-->
-            <option value= 1>0</option>
-            <option value= 1>0,5</option>
+          <select name="Nota_Ava" class="num_estrelas">
+            <option value= 0>0</option>
+            <option value= 0.5>0,5</option>
             <option value= 1>1</option>
-            <option value= 2>1,5</option>
-            <option value= 1>2</option>
-            <option value= 3>2,5</option>
-            <option value= 1>3</option>
-            <option value= 4>3,5</option>
-            <option value= 1>4</option>
-            <option value= 5>4,5</option>
+            <option value= 1.5>1,5</option>
+            <option value= 2>2</option>
+            <option value= 2.5>2,5</option>
+            <option value= 3>3</option>
+            <option value= 3.5>3,5</option>
+            <option value= 4>4</option>
+            <option value= 4.5>4,5</option>
             <option value= 5>5</option>
           </select>
           </div>

@@ -63,6 +63,8 @@ class compraDao {
         $stmt->bindParam(":forma_pagamento", $forma_pagamento);
         $stmt->bindParam(":data_pedido", $data_pedido);
         $stmt->bindParam(":status_pedido", $status_pedido);
+
+        $stmt->execute();
 }
 public function setBrinqVendido(BrinqVendido $brinqVendido) {//Funação que irá registrar um brinquedo vendido no banco de dados
     //Preparando comando sql
@@ -81,6 +83,8 @@ public function setBrinqVendido(BrinqVendido $brinqVendido) {//Funação que ir�
     $stmt->bindParam(":codigo_pedido", $codigo_pedido);
     $stmt->bindParam(":codigo_brinq", $codigo_brinq);
     $stmt->bindParam(":quantidade", $quantidade);
+
+    $stmt->execute();
 
 }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10/11/2024 às 22:18
+-- Tempo de geração: 10/11/2024 às 23:05
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -93,6 +93,18 @@ CREATE TABLE `brinqvendido` (
   `Quantidade` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `brinqvendido`
+--
+
+INSERT INTO `brinqvendido` (`Codigo_BrinqVendido`, `Codigo_Pedido`, `Codigo_Brinq`, `Quantidade`) VALUES
+(1, 9, 1, 5),
+(2, 9, 2, 5),
+(3, 10, 1, 5),
+(4, 10, 2, 5),
+(5, 11, 1, 1),
+(6, 11, 5, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -137,6 +149,13 @@ CREATE TABLE `cupom` (
   `Porcentagem_Cupom` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `cupom`
+--
+
+INSERT INTO `cupom` (`Codigo_Cupom`, `Nome_Cupom`, `Status_Cupom`, `Porcentagem_Cupom`) VALUES
+(2, ' ', 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -162,7 +181,6 @@ INSERT INTO `imagem` (`Codigo_Imagem`, `Codigo_Brinq`, `Imagem`, `Num_Imagem`) V
 (5, 3, '../imagens/Produtos/Bola/imagem1.png', 1),
 (6, 4, '../imagens/Produtos/CuboMagico/imagem1.png', 1),
 (7, 4, '../imagens/Produtos/CuboMagico/imagem2.png', 2),
-(8, 4, '../imagens.', 3),
 (9, 5, '../imagens/Produtos/Funko/imagem2.png', 1),
 (10, 5, '../imagens/Produtos/Funko/imagem1.png', 2),
 (11, 5, '../imagens/Produtos/Funko/imagem3.png', 3),
@@ -194,11 +212,20 @@ CREATE TABLE `pedido` (
   `Codigo_Pedido` int(11) NOT NULL,
   `Codigo_Usu` int(11) NOT NULL,
   `Codigo_Cupom` int(11) DEFAULT NULL,
-  `Preco_Total` datetime NOT NULL,
+  `Preco_Total` double NOT NULL,
   `Forma_Pagamento` varchar(20) NOT NULL,
   `Data_Pedido` datetime NOT NULL,
   `Status_Pedido` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `pedido`
+--
+
+INSERT INTO `pedido` (`Codigo_Pedido`, `Codigo_Usu`, `Codigo_Cupom`, `Preco_Total`, `Forma_Pagamento`, `Data_Pedido`, `Status_Pedido`) VALUES
+(9, 8, 2, 0, '', '2024-11-10 22:58:15', 'Finalizado'),
+(10, 8, 2, 779.9, 'Credito', '2024-11-10 23:01:12', 'Finalizado'),
+(11, 8, 2, 189.98, 'Debito', '2024-11-10 23:04:08', 'Finalizado');
 
 -- --------------------------------------------------------
 
@@ -371,7 +398,7 @@ ALTER TABLE `brinquedo`
 -- AUTO_INCREMENT de tabela `brinqvendido`
 --
 ALTER TABLE `brinqvendido`
-  MODIFY `Codigo_BrinqVendido` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo_BrinqVendido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
@@ -383,7 +410,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de tabela `cupom`
 --
 ALTER TABLE `cupom`
-  MODIFY `Codigo_Cupom` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo_Cupom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `imagem`
@@ -395,7 +422,7 @@ ALTER TABLE `imagem`
 -- AUTO_INCREMENT de tabela `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `Codigo_Pedido` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo_Pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `sac`

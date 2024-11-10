@@ -71,14 +71,14 @@ require_once("../models/usuario.php");
             <p>Total:</p>
             <p id="pagamentoSelecionado">Pagamento:</p>
             <button id="back-button">Voltar</button>
-            <form method="POST" action="../controller">
+            <form method="POST" action="../controller/compraProccess.php">
             <input type="hidden" name="formaPagamento" value="" id="forma"> <!--Input que armazenará a tipo de pagamento-->
             <input type="hidden" name="precoTotal" value=<?php print_r($precoTotal) ?>> 
             <input type="hidden" name="statusPedido" value="Finalizado"> 
-            <input type="hidden" name="cupom" value=" "> 
+            <input type="hidden" name="cupom" value="2"> 
             <input type="hidden" name="dataPedido" value=<?php print_r($agora) ?>> 
             <input type="hidden" name="codigoUsu" value=<?php print_r($usuarioData->getCodigo()) ?>> 
-            <button id="continue-button">Continuar para o pagamento <?php print_r($agora) ?></button>
+            <button id="continue-button">Continuar para o pagamento</button>
             </form>
         </div>
     </div>

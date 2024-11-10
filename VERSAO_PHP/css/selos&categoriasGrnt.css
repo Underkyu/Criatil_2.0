@@ -16,6 +16,20 @@
       font-weight: 500;
       color: #232323
   }
+  h2.titulo{
+    display: flex;
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 500;
+    color: #232323;
+  }
+  .catdiv, .selodiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
   .boxes {
     display: flex;
     flex-direction: row;
@@ -24,10 +38,11 @@
       background-color: #0476D9;
       border-radius: 25px;
       padding: .8rem;
-      width: 35%;
+      width: 75%;
       display: flex;
       align-self: center;
-      height: 80%;
+      height: 350px;
+      margin-top: 40px;
   }
   div.box_brinquedos{ /*Div que contem os brinquedos*/
       background-color: white;
@@ -39,18 +54,15 @@
   div.titulos{ /*Titulos que mostram a qual informação o valor é relativo*/
       display: flex;
       justify-content: space-around;
-      margin-top: 0.4rem;
-      margin-bottom: 0.4rem;
+      margin-top: 0.3rem;
+      margin-bottom: 0.3rem;
       width: 100%;
       text-align: center;
       font-weight: bold;
   }
-  
-  div.titulo{ /*Titulo que mostra a qual informação o valor é relativo*/
+  div.titulo {
     flex: 1;
-    line-height: 1rem;
   }
-  
   div.brinquedo{ /*Div que mostra as informações de um brinquedo*/
       display: flex;
       width: 100%;
@@ -88,6 +100,7 @@
   }
   p.informacao{ /*Textos que mostram nome, id e valor do brinquedo*/
       width: 100%;
+      margin: 3px 0 3px 0;
       text-align: center;
       font-weight: 500;
       font-size: 1.3rem;

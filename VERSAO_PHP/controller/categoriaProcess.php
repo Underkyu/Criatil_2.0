@@ -1,28 +1,24 @@
 <?php
 require_once("global.php");
 require_once("conexao.php");
-require_once("../Dao/seloDAO.php");
-require_once("../models/selo.php");
+require_once("../Dao/categoriaDAO.php");
+require_once("../models/categoria.php");
 require_once("../models/message.php");
 
 $message = new Message($BASE_URL); //Criação de uma objeto de mansagem
 
-$seloDao = new SeloDAO($conn,$BASE_URL);
+$categoriaDao = new CategoriaDAO($conn,$BASE_URL);
 
 // Captura os dados do formulário
 $nome = filter_input(INPUT_POST, 'nome');
-$imagem = filter_input(INPUT_POST, 'imagem');
 
 if ($nome && $imagem) {
-    $selo = new Selo();
+    $categoria = new Categoria();
 
-    $selo->setNomeSelo($nome);
-    $selo->setImagemSelo($imagem);
+    $categoria->setNomeCategoria($nome);
 
-    $seloDao = new SeloDao($conn);
-
-    if ($seloDao->inserirSelo($selo)) {
-        $message->setMessage("Selo adicionado", "O selo foi adicionado ao site", "success", "back");
+    if ($categoriaDao->inserirCategoria($categoria)) {
+        $message->setMessage("Categoria adicionada", "A categoria foi adicionada ao site", "success", "back");
     } else {
         $message->setMessage("Erro", "Houve um erro ao inserir a categoria", "error", "back");
     }

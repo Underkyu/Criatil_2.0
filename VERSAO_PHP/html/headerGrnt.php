@@ -67,6 +67,15 @@ $usuarioData = $userDao->verificarToken(false);
                 </div>
 
                 <div class="link_header">
+                <a href="selos&categoriasGrnt.php" class="linkk-header">
+                    <img src="../imagens/Gerente/selos&cats.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno  negrito">Categorias & Selos</p>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="link_header">
                 <a href="cadastrogerente.php" class="linkk-header">
                     <img src="../imagens/Gerente/CadastrarGerente.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
@@ -91,6 +100,16 @@ $usuarioData = $userDao->verificarToken(false);
 
                 <!--Div do menu sanduiche e so aparece no celular-->
                 <div class="menuSanduiche" id="menuSanduiche">
+
+                <div class="link_header link_sanduiche">
+                    <a href="avaliacoesGrnt.php" class="linkk-header">
+                        <img src="../imagens/Gerente/Avaliações.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
+                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                            <p class="pequeno  negrito">Avaliações</p>
+                        </div>
+                        </a>
+                    </div>
+                    
                     <div class="link_header link_sanduiche">
                     <a href="brinquedosGrnt.php" class="linkk-header">
                         <img src="../imagens/Gerente/Brinquedos.png" alt="Catalogo icon" class="link_header" id="menuSanduiche"> <!--Icon da parte de explorar catalogo-->
@@ -109,14 +128,16 @@ $usuarioData = $userDao->verificarToken(false);
                         </a>
                     </div>
     
-                    <div class="link_header link_sanduiche">
-                    <a href="avaliacoesGrnt.php" class="linkk-header">
-                        <img src="../imagens/Gerente/Avaliações.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
-                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                            <p class="pequeno  negrito">Avaliações</p>
-                        </div>
-                        </a>
+
+
+                    <div class="link_header">
+                  <a href="selos&categoriasGrnt.php" class="linkk-header">
+                    <img src="../imagens/Gerente/selos&cats.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno  negrito">Categorias & Selos</p>
                     </div>
+                    </a>
+                </div>
 
                     <div class="link_header link_sanduiche">
                     <a href="cadastrogerente.php" class="linkk-header">

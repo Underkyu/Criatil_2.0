@@ -23,7 +23,7 @@ div.fundo{ /*Fundo azul atrás das avaliações*/
   width: 80%;
   display: flex;
   align-self: center;
-  max-height: 80%;
+  max-height: 75%;
   margin: 20px 0 20px 0;
 }
 div.box_avaliacao{ /*Div que contem as avaliações*/
@@ -50,7 +50,7 @@ p.informacao{ /*Textos que mostram nome, id e valor do cliente*/
     width: 100%;
     text-align: center;
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 div.botao_deeletar{ /*Div que contem o botão para levar a pagina de deletar uma avaliação*/
   width: 100%;
@@ -155,7 +155,7 @@ img.foto_perfil{ /*Foto de perfil do usuario no card de avalição*/
   border-radius: 50px;
 }
 h5.nome{ /*Nome do perfil*/
-  font-size: 2.25rem;
+  font-size: 2rem;
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -164,12 +164,12 @@ h5.nome{ /*Nome do perfil*/
 }
 p.titulo_avaliacao{/*Titulo da avaliação*/
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin: 0;
   margin-top: .2rem;
 }
 p.texto_avaliacao{/*O texto da avalição*/
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   margin: 0;
   margin-top: .25rem;
   margin-bottom: .7rem;

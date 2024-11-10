@@ -9,7 +9,14 @@ $brinquedo = $prodDAO->pesquisarPorCodigo(codigoBrinq: $_GET['codigo']);
 
 $stmt = $conn->prepare("SELECT * FROM avaliacao WHERE Codigo_Brinq=".$brinquedo->getCodigoBrinq());
 $stmt->execute();
+$numAvaliacoes = $stmt->rowCount();
 $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+$stmt2 = $conn->prepare("SELECT Codigo_Brinq, Nome_Brinq, Preco_Brinq FROM brinquedo");
+$stmt2->execute();
+
+$brinquedos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 function renderizarEstrelas($nota) {
   $estrelasInteiras = floor($nota);
@@ -197,11 +204,11 @@ function renderizarEstrelas($nota) {
               <img src="../imagens/Icons/estrela.png" alt="estrela" />
               <img src="../imagens/Icons/estrela.png" alt="estrela" />
               <img src="../imagens/Icons/estrela.png" alt="estrela" />
-              <img src="../imagens/Icons/meia_estrela.png" alt="estrela" />
+              <img src="../imagens/Icons/estrela.png" alt="estrela" />
             </div>
-            <p class="avaliacao">12.6K</p>
+            <p class="avaliacao"><?php echo number_format($numAvaliacoes); ?></p>
           </div>
-          <h2 class="preco">R$<?php print_r($brinquedo->getPrecoBrinq());?></h2>
+          <h2 class="preco">R$<?php echo number_format($brinquedo->getPrecoBrinq(), 2, ',', '.'); ?></h2>
           <p class="descricao">
           <?php print_r($brinquedo->getDescricao());?>
           </p>
@@ -225,14 +232,14 @@ function renderizarEstrelas($nota) {
           </div>
           <form action=""></form>
           <button class="comprar">
-            <p class="comprar">Adiconar à lista de favoritos</p>
+            <p class="comprar">Adicionar à lista de desejos</p>
           </button>
 
           <form action="../controller/carrinhoProccess.php" class="form" method="POST">
           <input type="hidden" name="Operacao" value="Adicionar">
           <input type="hidden" name="Codigo" value=<?php print_r($_GET['codigo'])?>>
           <button class="carrinho">
-            <p class="carrinho">Adiconar ao carrinho</p>
+            <p class="carrinho">Adicionar ao carrinho</p>
           </button>
           </form>
         </div>
@@ -246,186 +253,28 @@ function renderizarEstrelas($nota) {
         <div class="swiper-button-prev seta prev-product"></div>
         <div class="swiper product">
           <div class="swiper-wrapper">
-            <!--Div que contem os elementos do card-->
-            <div class="card swiper-slide">
-              <div class="imagem_card">
-                <img
-                  src="../imagens/Produtos/Miku/Imagem1.png"
-                  alt="Pelúcia Hatsune Miku"
-                  class="foto_card"
-                />
-              </div>
-
-              <h4 class="titulo_card">Pelúcia Hatsune Miku</h4>
-              <p class="texto_pequeno">Por apenas</p>
-              <h3 class="preco">R$99,99</h3>
-
-              <button class="card">
-                <!--Botão de comprar-->
-                <img
-                  src="../imagens/Icons/carrinho.png"
-                  alt="Carrinho"
-                  class="botao_card"
-                />
-                <p class="botao_card">Comprar!</p>
-              </button>
+          <?php
+            foreach ($brinquedos as $brinquedo) {
+              // seleciona a img do brinquedo atual
+              $stmt = $conn->query("SELECT Imagem FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem LIMIT 1");
+              $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
+          ?>
+          <!--Div que contem os elementos do card-->
+          <div class="card swiper-slide">
+            <div class="imagem_card">
+              <img src="<?php echo $imagem['Imagem']; ?>" class="foto_card">
             </div>
-            <!--Fim card-->
-
-            <!--Div que contem os elementos do card-->
-            <div class="card swiper-slide">
-              <div class="imagem_card">
-                <img
-                  src="../imagens/Produtos/CuboMagico/imagem1.png"
-                  alt="Cubo Magico Tatil"
-                  class="foto_card"
-                />
-                <img
-                  src="../imagens/Selo/Visual.png"
-                  alt="Selo de deficiencia visual"
-                  class="selo_deficiencia"
-                />
-              </div>
-
-              <h4 class="titulo_card">Cubo Magico Tatil</h4>
-              <p class="texto_pequeno">Por apenas</p>
-              <h3 class="preco">R$39,99</h3>
-
+            <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
+            <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>
+            <a href=<?php print_r("produto.php?codigo=" . $brinquedo['Codigo_Brinq'] )?>>
               <button class="card">
-                <!--Botão de comprar-->
-                <img
-                  src="../imagens/Icons/carrinho.png"
-                  alt="Carrinho"
-                  class="botao_card"
-                />
-                <p class="botao_card">Comprar!</p>
+              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+              <p class="botao_card"> Comprar!</p>
               </button>
+            </a>
             </div>
-            <!--Fim card-->
-
-            <!--Div que contem os elementos do card-->
-            <div class="card swiper-slide">
-              <div class="imagem_card">
-                <img
-                  src="../imagens/Produtos/Nerf/imagem1.png"
-                  alt="Arma Nerf"
-                  class="foto_card"
-                />
-                <img
-                  src="../imagens/Selo/Desconto.png"
-                  alt="Selo de desconto"
-                  class="selo_desconto"
-                />
-              </div>
-
-              <h4 class="titulo_card">Pistola Nerf</h4>
-              <s class="texto_pequeno">R$99,99</s>
-              <h3 class="preco">R$79,99</h3>
-
-              <button class="card">
-                <!--Botão de comprar-->
-                <img
-                  src="../imagens/Icons/carrinho.png"
-                  alt="Carrinho"
-                  class="botao_card"
-                />
-                <p class="botao_card">Comprar!</p>
-              </button>
-            </div>
-            <!--Fim card-->
-
-            <!--Div que contem os elementos do card-->
-            <div class="card swiper-slide">
-              <div class="imagem_card">
-                <img
-                  src="../imagens/Produtos/Funko/imagem1.png"
-                  alt="Funko Pop Oshawott"
-                  class="foto_card"
-                />
-              </div>
-
-              <h4 class="titulo_card">Funko Pop Oshawott</h4>
-              <p class="texto_pequeno">Por apenas</p>
-              <h3 class="preco">R$129,99</h3>
-
-              <button class="card">
-                <!--Botão de comprar-->
-                <img
-                  src="../imagens/Icons/carrinho.png"
-                  alt="Carrinho"
-                  class="botao_card"
-                />
-                <p class="botao_card">Comprar!</p>
-              </button>
-            </div>
-            <!--Fim card-->
-
-            <!--Div que contem os elementos do card-->
-            <div class="card swiper-slide">
-              <div class="imagem_card">
-                <img
-                  src="../imagens/Produtos/Bola/imagem1.png"
-                  alt="Bola com Guizo"
-                  class="foto_card"
-                />
-                <img
-                  src="../imagens/Selo/Visual.png"
-                  alt="Selo de deficiencia visual"
-                  class="selo_deficiencia"
-                />
-              </div>
-
-              <h4 class="titulo_card">Bola com Guizo</h4>
-              <p class="texto_pequeno">Por apenas</p>
-              <h3 class="preco">R$119,99</h3>
-
-              <button class="card">
-                <!--Botão de comprar-->
-                <img
-                  src="../imagens/Icons/carrinho.png"
-                  alt="Carrinho"
-                  class="botao_card"
-                />
-                <p class="botao_card">Comprar!</p>
-              </button>
-            </div>
-            <!--Fim card-->
-
-            <!--Div que contem os elementos do card-->
-            <div class="card swiper-slide">
-              <div class="imagem_card">
-                <img
-                  src="../imagens/Produtos/Libras/imagem1.png"
-                  alt="Jogo alfabeto em libras"
-                  class="foto_card"
-                />
-                <img
-                  src="../imagens/Selo/Desconto.png"
-                  alt="Selo de desconto"
-                  class="selo_desconto"
-                />
-                <img
-                  src="../imagens/Selo/Auditiva.png"
-                  alt="Selo de deficiencia auditiva"
-                  class="selo_deficiencia"
-                />
-              </div>
-
-              <h4 class="titulo_card">Jogo Alfabeto em Libras</h4>
-              <s class="texto_pequeno">R$69,99</s>
-              <h3 class="preco">R$59,99</h3>
-
-              <button class="card">
-                <!--Botão de comprar-->
-                <img
-                  src="../imagens/Icons/carrinho.png"
-                  alt="Carrinho"
-                  class="botao_card"
-                />
-                <p class="botao_card">Comprar!</p>
-              </button>
-            </div>
-            <!--Fim card-->
+          <!--Fim card-->
+          <?php } ?>
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -462,8 +311,8 @@ function renderizarEstrelas($nota) {
           </div>
         </div>
         <div class="comentario">
-            <h3 class="titulo_input_ava">Comentario</h3>
-            <input type="text" class="comentario" name="Comentario" placeholder="Deixe aqui sua opinião do produto">
+            <h3 class="titulo_input_ava">Comentário</h3>
+            <input type="text" maxlength="150" class="comentario" name="Comentario" placeholder="Deixe aqui sua opinião do produto">
         </div>
         <div class="botao_ava">
           <button class="add_ava" type="submit">

@@ -7,6 +7,7 @@
 
 div.produto{/*Div que contem as fotos e a descrição do produto*/
   display: flex;
+  margin-top: 20px;
 }
 
 div.detalhes{
@@ -66,7 +67,7 @@ div.estrela{/*Div que contem as estrelas de avaliações*/
 
 div.avaliacoes_anuncio{/*Div que contem o numero de avialações e estrelas ao lado do nome do produto*/
  display: flex;
- margin-top: 1rem;
+ margin-top: .6rem;
  align-items: flex-end;
 }
 
@@ -81,8 +82,9 @@ div.avaliacoes{ /*Div que contem o numero de avialações e estrelas*/
 p.avaliacao{ /*Texto que fica ao lado das estrelas de avaliação*/
   color: #F2AF00;
   font-weight: bold;
-  font-size: 1.4rem;
-  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.4rem;
+  margin-left: 10px;
 }
 
 h3.titulo{ /*Nome do produto*/
@@ -189,8 +191,8 @@ div.quantidade{
 }
 /*Fim do CSS doido*/
 
-/*Inicio CSS avalições*/
-h2.avaliacoes{
+/*Inicio CSS avaliações*/
+h2.avaliacoes {
   margin: 0;
   margin-left: auto;
   margin-right: auto;
@@ -200,7 +202,7 @@ h2.avaliacoes{
   font-size: 2.5rem;
 }
 
-div.avaliacao{
+div.avaliacao {
   display: flex;
   width: fit-content;
   padding: 1rem;
@@ -209,10 +211,13 @@ div.avaliacao{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   justify-content: center;
-
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-div.estatisticas{/*Parte que mostra a porcentagem de cada tipo de avaliação*/
+div.estatisticas {/*Parte que mostra a porcentagem de cada tipo de avaliação*/
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -220,23 +225,25 @@ div.estatisticas{/*Parte que mostra a porcentagem de cada tipo de avaliação*/
   border-radius: 15px;
   height: fit-content;
   padding: 1rem;
+  background-color: #f7f7f7;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-h3.estatisticas{ /*Titulo "Estatisticas"*/
-  margin:0;
+h3.estatisticas { /*Titulo "Estatisticas"*/
+  margin: 0;
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
 
-div.cinco, div.quatro, div.tres, div.dois, div.um{ /*Dic que inculuem texto de procentagem e de número de estrelas, além do grafico referente a cada um*/
+div.cinco, div.quatro, div.tres, div.dois, div.um { /*Dic que inculuem texto de procentagem e de número de estrelas, além do grafico referente a cada um*/
   display: flex;
   max-height: 2rem;
   align-items: center;
   margin-bottom: 1rem;
 }
 
-p.numero_estrelas, p.porcentagem{ /*Textos do número de estrelas e de porcentagem*/
+p.numero_estrelas, p.porcentagem { /*Textos do número de estrelas e de porcentagem*/
   color: #F2AF00;
   font-weight: bold;
   font-size: 1.5rem;
@@ -244,43 +251,46 @@ p.numero_estrelas, p.porcentagem{ /*Textos do número de estrelas e de porcentag
   padding: 0;
 }
 
-div.amarelo{ /*Div vazio que compões a parte amarela do gráfico de barra*/
+div.amarelo { /*Div vazio que compões a parte amarela do gráfico de barra*/
   color: #F2AF00;
   border: solid 3px #F2AF00;
   margin-left: 1rem;
   height: 1.25rem;
   border-radius: 15px 0px 0px 15px;
   background-color: #F2AF00;
+  flex-grow: 1;
 }
 
-div.branco{ /*Div vazio que compões a parte branca do gráfico de barra*/
+div.branco { /*Div vazio que compões a parte branca do gráfico de barra*/
   border: solid 3px #F2AF00;
   margin-right: 1rem;
   height: 1.25rem;
   border-radius: 0px 15px 15px 0px;
+  flex-grow: 1;
 }
 
-div.card_avaliacao{ /*Div que contem as avaliações em si*/
+div.card_avaliacao { /*Div que contem as avaliações em si*/
   margin: 0;
   display: flex;
   border: #D4D4D4 solid 3px;
   border-radius: 15px;
   padding: .75rem;
   margin-bottom: 2rem;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-div.detalhes_avaliacoes{/*Div que contem todos os cards de avaliação*/
+div.detalhes_avaliacoes {/*Div que contem todos os cards de avaliação*/
   padding: 0;
   margin: 0;
   margin-left: 1rem;
 }
 
-img.primeira_estrela{ /*Primeira estrela ao lado do nome do usuário*/
+img.primeira_estrela { /*Primeira estrela ao lado do nome do usuário*/
   margin-left: 1rem;
 }
 
-
-div.avaliacoes{ /*Div com os cards de avaliações*/
+div.avaliacoes { /*Div com os cards de avaliações*/
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -288,51 +298,52 @@ div.avaliacoes{ /*Div com os cards de avaliações*/
   margin-left: 4rem;
 }
 
-div.nome_avaliacao{/*Nome do perfil do avaliador*/
+div.nome_avaliacao {/*Nome do perfil do avaliador*/
   display: flex;
   align-items: center;
   margin-top: 1.5rem;
 }
 
-img.foto_perfil{ /*Foto de perfil do usuario no card de avalição*/
+img.foto_perfil { /*Foto de perfil do usuario no card de avalição*/
   width: 5.75rem;
   height: 5.75rem;
   border: 1px solid black;
   border-radius: 50px;
 }
 
-h5.nome{ /*Nome do perfil*/
+h5.nome { /*Nome do perfil*/
   font-size: 2.25rem;
   margin: 0;
 }
 
-p.titulo_avaliacao{/*Titulo da avaliação*/
+p.titulo_avaliacao {/*Titulo da avaliação*/
   font-weight: bold;
   font-size: 2rem;
   margin: 0;
   margin-top: .75rem;
 }
 
-p.texto_avaliacao{/*O texto da avalição*/
+p.texto_avaliacao {/*O texto da avalição*/
   font-size: 1.4rem;
   margin: 0;
   margin-top: .25rem;
 }
 
-div.estrelas{ /*Div que contem as estrelas das avaliações*/
+div.estrelas { /*Div que contem as estrelas das avaliações*/
   display: flex;
   align-items: center;
   justify-content: center;
 }
-p.avaliacao{
+
+p.avaliacao {
   display: flex;
   align-items: center;
 }
 
-div.add_ava{
+div.add_ava {
   display: flex;
   flex-direction: column;
-  background-color: #0476D9;
+  background-color: white;
   border-radius: 15px;
   width: 80%;
   margin-left: auto;
@@ -341,18 +352,23 @@ div.add_ava{
   padding-right: 0.5rem;
   align-items: center;
   margin-top: 1rem;
-  margin-bottom: 2rem ;
+  margin-bottom: 2rem;
+  border: 2px solid black;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-div.ava_container{
+
+div.ava_container {
   width: 80%;
 }
-div.titulo_ava{ /*Div onde ficam os imputs de titulo e número de estrelas da avaliação*/
+
+div.titulo_ava { /*Div onde ficam os imputs de titulo e número de estrelas da avaliação*/
   display: flex;
   width: 100%;
   justify-content: space-between;
   margin-bottom: 2rem;
 }
-input.titulo_ava{ /*Input na qual o cliente passará o titulo da */
+
+input.titulo_ava { /*Input na qual o cliente passará o titulo da */
   border: #D4D4D4 solid 3px;
   border-radius: 15px;
   padding: .75rem;
@@ -361,7 +377,8 @@ input.titulo_ava{ /*Input na qual o cliente passará o titulo da */
   margin-right: 2rem;
   font-size: 1.15rem;
 }
-select.num_estrelas{ /*Select do número de estrlas da avaliação*/
+
+select.num_estrelas { /*Select do número de estrlas da avaliação*/
   border: #D4D4D4 solid 3px;
   border-radius: 15px;
   padding: .75rem;
@@ -372,56 +389,59 @@ select.num_estrelas{ /*Select do número de estrlas da avaliação*/
 
 input:focus {
   outline: 0;
+  border-color: #0476D9;
+  box-shadow: 0 0 5px rgba(4, 118, 217, 0.5);
 }
 
 select:focus {
   outline: 0;
+  border-color: #0476D9;
+  box-shadow: 0 0 5px rgba(4, 118, 217, 0.5);
 }
 
-input.comentario{ /*Input na qual o cliente passará o titulo da */
+input.comentario { /*Input na qual o cliente passará o titulo da */
   border: #D4D4D4 solid 3px;
   border-radius: 15px;
   padding: .75rem;
-  height: 2.5rem;
   width: 100%;
   font-size: 1.15rem;
-  height: 10rem;
   margin-bottom: 3rem;
-  align-items: start;
 }
 
-h2.add_ava{/*Texto de adicionar avaliação*/
+h2.add_ava {/*Texto de adicionar avaliação*/
   width: 100%;
   text-align: center;
   font-size: 2.5rem;
-  color: white;
+  color: black;
   margin: 1rem;
 }
 
-div.comentario{ /*Div com o input de adicionar comentario*/
+div.comentario { /*Div com o input de adicionar comentario*/
   width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-h3.titulo_input_ava{ /*Titulos que ficam em ciam dos inputs*/
-  color: white;
+
+h3.titulo_input_ava { /*Titulos que ficam em ciam dos inputs*/
+  color: black;
   width: 100%;
   font-size: 1.5rem;
 }
 
-div.botao_ava{ /*Div que contem o botão de adicionar comentario*/
+div.botao_ava { /*Div que contem o botão de adicionar comentario*/
   width: 100%;
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
 }
 
-img.add_ava_button{ /*Imagem de + que fica no botão*/
-  width: 3rem;
-  margin-right: 1rem;
+img.add_ava_button { /*Imagem de + que fica no botão*/
+  width: 1.7rem;
+  margin-right: .8rem;
 }
-button.add_ava{
+
+button.add_ava {
   border: none;
   border-radius: 10px;
   width: 16rem;
@@ -430,13 +450,23 @@ button.add_ava{
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background-color: #F2AF00;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+  background-color: #F2AF00;
+  transition: all 0.3s ease;
 }
-p.add_ava_button{
+
+button.add_ava:hover {
+  background-color: #e2a200;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
+
+p.add_ava_button {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 /*Fim CSS avaliações*/
+
+
 
 
 /*Inicio CSS Carrossel*/

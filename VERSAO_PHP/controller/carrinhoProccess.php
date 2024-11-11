@@ -43,7 +43,11 @@ else if($operacao == "Adicionar"){
 }else if($operacao == "Compra"){
     $usuarioData = $userDao->verificarToken(false);
     if($usuarioData){
-        header("Location: ../html/Pagamento.php");
+        if(count($carrinho) == 0){
+            $message->setMessage("Carrinho vazio","O carrinho está vazio, coloque brinquedos nele para realizar uma compra","error","back");
+        }else{
+            header("Location: ../html/Pagamento.php");
+        }
     }else{
         $message->setMessage("Faça login","É necessario entrar em uma conta antes de finalizar a compra","error","back");
     }

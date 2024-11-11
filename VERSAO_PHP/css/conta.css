@@ -3,18 +3,16 @@
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0px;
     padding: 0px;
-    }
-#navbar-conta {
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-    padding: 1rem;
-    height: 100%;
-    width: 350px;
-    color: rgb(0, 0, 0);
+}
+.navbar-container {
+    padding: 1.5rem;
+    color: black;
     display: flex;
-    justify-content: center;
-    align-items: stretch;
     flex-direction: column;
+    align-items: stretch;
+}
+.ft-lateral{
+    display: flex;
 }
 .lateral-conta { 
     display: flex;
@@ -24,19 +22,23 @@
     width: 100%;
 }
 .img-lateral {
-    width: 105px;
-    height: 105px;
-    max-width: 105px;
-    max-height: 105px;
-    object-fit: cover;  
+    object-fit: cover;
     border-radius: 100px;
     border: solid #F2AF00 3px;
+    width: 110px;
+    height: 110px;
+}
+.nomelat-div {
+    width: 100%;
+    display: flex;
 }
 .nome-lateral {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 500;
-    padding: 17px;
-    white-space: nowrap;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #navbar-conta a {
     text-decoration: none;
@@ -71,7 +73,8 @@
     align-items: flex-start;
     width: 85%;
     padding: 10px;
-    gap: 5px;
+    margin-top: 15px;
+    gap: 20px;
 }
 #box{
     display: flex;
@@ -80,7 +83,7 @@
     flex-direction: column;
     background-color: #0476D9;
     width: 940px;
-    height: 600px; /*Mudar altura aqui*/
+    height: 500px; /*Mudar altura aqui*/
     padding: 10px;
     border-radius: 20px;  
 }
@@ -92,10 +95,7 @@
     padding: 15px;
 }  
 #perfil {
-    margin-top: 0;
     padding: 1rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
     position: relative;
     bottom: 2%;
     background-color: white;
@@ -103,22 +103,20 @@
     height: 85%;
     border-radius: 20px;
     display: flex;
-    justify-content: space-evenly;
-    gap: 50px;
 }
 .usuario-info{
     font-weight: 500;
     font-size: 18px;
-    background-color: none;
-    background: none;
+    text-align: right;
     border: 2px solid #D4D4D4; 
-    text-align: end;
     margin: 0;
-    padding: 1px;
     width: 100%;
-    overflow: visible;
     border-radius: 10px;
-    padding: .2rem;
+    padding: .25rem;
+}
+form {
+    display: flex;
+    flex-direction: column;
 }
 .informacoes {
     display: flex;
@@ -126,15 +124,16 @@
     align-items: stretch;
     gap: 3px;
     font-size: 16px;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 .informacoes button {
     height: 35px;
-    width: 20%;
-    border-radius: 12px;   
+    width: 28%;
+    border-radius: 50px;   
     background-color: #F2AF00;
     color: #000000;
     font-size: 16px;
+    white-space: nowrap;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     padding: 10px 20px;
@@ -144,7 +143,7 @@
     display: flex;
     justify-content: center;
     align-items: center;  
-    margin-top: 10px;
+    margin-top: 20px;
     transition: transform 0.2s ease-in-out;
 }
 .informacoes button:hover {
@@ -153,39 +152,50 @@
 .info-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     width: 500px;
 }
 .info-label {
     font-weight: 500;
-    margin-right: 4vw;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.info-item:last-child{
+    margin-bottom: 0;
+}
 .info-value {
-    text-align: end;
+    width: 220px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .conta-box {
-    margin-top: 35px;
+    width: 80%;
+    margin: 15px 10px 0 10px;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 .img-conta {
-    width: 135px;
-    height: 135px;
+    width: 150px;
+    height: 150px;
     overflow: hidden;
     border-radius: 100px;
     border: solid #F2AF00 5px;
 }
+.botoes {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
 .nome-conta {
     font-size: 24px;
     font-weight: 500;
-    margin-top: 10px;
 }
 .editar-img {
     all: unset;
@@ -227,6 +237,7 @@ h2.troque_senha{
 /* css do menu sanduíche */
 .sanduiche-div{
     align-items: center;
+    display: none;
     justify-content: center;
 }
 img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
@@ -249,7 +260,7 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     display: inherit;
   }
   div.menuSanduicheConta{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
-    display: flex;
+    display: none;
     align-items: center;
     overflow: hidden;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
@@ -279,115 +290,13 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
 
 /*Responsividade*/
 .container {
-    max-width: 1425px;
     margin-left: 0.5%;
     margin-right: 0.5%;
     padding: 1rem;
     justify-content: center;
-    display: flex;
-    flex-direction: row;
   }
-    /* 2xl */
 
-    @media (max-width: 1536px) {
-        .container {
-          max-width: 1280px;
-        }
-      }
-      @media(min-width: 1440px) {
-        #navbar-conta a {
-            font-size: 26px;
-        }
-        .nome-lateral {
-            font-size: 28px;
-            white-space: nowrap;
-        }
-      }
   /* responsividade Hilario*/
-
-@media (max-width: 1240px) {
-
-        #box {
-            height: 420px;
-        }
-        #box h1 {
-            font-size: 32px;
-        }
-
-    .editar {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    .informacoes {
-        font-size: 15px;
-    }
-
-    .img-conta {
-        width: 115px;
-        height: 115px;
-    }
-
-    .nome-conta {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 1020px) {
-    #navbar-conta {
-        width: 290px;
-        margin-left: 5%;
-    }
-
-    #box {
-        width: 70%; 
-    }
-
-    .informacoes {
-        font-size: 14px;
-    }
-
-    .img-conta {
-        width: 100px;
-        height: 100px;
-    }
-
-    .nome-conta {
-        font-size: 18px;
-    }
-
-    .editar {
-        font-size: 12px;
-        padding: 6px 14px;
-    }
-    #perfil {
-        gap: 20px;
-    }
-}
-@media (min-width: 1450px) {
-    .container {
-      max-width: 1550px;
-    }
-    #navbar-conta a {
-        font-size: 24px;
-    }
-    #box{
-        width: 1080px;
-    }
-    .info-label {
-        font-size: 20px;
-    }
-    .info-value {
-        font-size: 20px;
-    }
-    .informacoes button {
-        font-size: 18px;
-    }
-    .nome-lateral {
-        font-size: 28px;
-        white-space: nowrap;
-    }
-  }
 @media (max-width: 850px) {
     button.menuSanduiche{/*Botão que abre o menu sanduiche*/
         display: flex;

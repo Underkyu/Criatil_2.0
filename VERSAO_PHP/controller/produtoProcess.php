@@ -1,4 +1,4 @@
-<?php
+    <?php
 require_once("global.php");
 require_once("conexao.php");
 require_once("../Dao/produtoDAO.php");
@@ -127,6 +127,7 @@ if($tipo === "Pesquisa"){ // entra aqui caso $tipo tenha o valor Pesquisa
             $_SESSION['produtos'] = $produtos;
             header("Location: ../html/catalogo.php");
         } else{
+            $_SESSION['produtos'] = [];
             $message->setMessage("Nenhuma correspondência","Nenhum brinquedo encontrado","error","../html/catalogo.php");
         }
     }else{

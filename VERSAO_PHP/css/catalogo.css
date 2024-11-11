@@ -200,6 +200,7 @@ label{
     padding: 10px;
     width: 200px;
     transition: 100ms ease-in-out;
+    cursor: pointer;
 }
 .btn-vermais:hover{/* Hover do botão de ver mais */
     transform: translateY(-3px);

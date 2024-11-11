@@ -64,6 +64,7 @@ button.card{ /*Botão de comprar no card*/
     background-color: #F2AF00;
     border: #F2AF00;
     padding: .5rem;
+    cursor: pointer;
     justify-content: center;
     transition: ease-out 100ms;
 }

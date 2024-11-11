@@ -7,8 +7,10 @@ if (isset($_SESSION['produtos'])) {
     $brinquedos = $_SESSION['produtos'];
     unset($_SESSION['produtos']); // tira da sessão depois de aplicar na pág
 } else {
-    // se não der resultado na pesquisa, deixa o vetor vazio
-    $brinquedos = [];
+    $stmt = $conn->prepare("SELECT * FROM brinquedo");
+    $stmt->execute();
+    
+    $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 

@@ -19,7 +19,8 @@ $carrinhoDao = new carrinhoDao($conn,$BASE_URL);
     $formaPagamento = filter_input(INPUT_POST,"formaPagamento");
     $cupom = filter_input(INPUT_POST,"cupom");
 
-    $pedido = new Pedido();
+    if ($formaPagamento != "vazio"){
+        $pedido = new Pedido();
 
     $pedido->setCodigoUsu($codigoUsu);
     $pedido->setDataPedido($dataPedido);
@@ -51,5 +52,8 @@ $carrinhoDao = new carrinhoDao($conn,$BASE_URL);
         $carrinhoDao->deletarTodosItensCarrinho();
 
         $message->setMessage("Compra finalizada", "Sua compra foi realizada com sucesso", "success", "../html/principal.php");
+    }else{
+        $message->setMessage("Escolha o método de pagamento","Escolha um método de pagamento para proseguir com a compra","error","back");
+    }
 
 ?>

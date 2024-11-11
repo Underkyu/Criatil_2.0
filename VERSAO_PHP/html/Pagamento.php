@@ -21,6 +21,8 @@ require_once("../models/usuario.php");
     $contador = 0;//Variavel que irá servir para percorrer arrays mais a frente no código
     $precoTotal = 0;
     $quantidadeArray = json_decode($_COOKIE["quantidade"], true); // Decodifica o JSON em array associativo
+
+    date_default_timezone_set('America/Sao_Paulo');
     $agora = date('Y-m-d\TH:i:s'); //Variavel que guar a data e hora atual
 
     foreach ($carrinho as $produto) {
@@ -72,7 +74,7 @@ require_once("../models/usuario.php");
             <p id="pagamentoSelecionado">Pagamento:</p>
             <button id="back-button">Voltar</button>
             <form method="POST" action="../controller/compraProccess.php">
-            <input type="hidden" name="formaPagamento" value="" id="forma"> <!--Input que armazenará a tipo de pagamento-->
+            <input type="hidden" name="formaPagamento" value="vazio" id="forma"> <!--Input que armazenará a tipo de pagamento-->
             <input type="hidden" name="precoTotal" value=<?php print_r($precoTotal) ?>> 
             <input type="hidden" name="statusPedido" value="Finalizado"> 
             <input type="hidden" name="cupom" value="2"> 

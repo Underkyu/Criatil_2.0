@@ -143,7 +143,7 @@ function confirmDelete(codigoAva, nomeUsu) {
             form.append('nomeUsu', nomeUsu);
 
             fetch('../controller/avaliacaoProcess.php', { // fetch é praticamente um jeito alternativo de fazer um submit pra enviar formulários
-                method: 'POST',
+                method: 'POST',             
                 body: form
             }).then(response => {
                 if (response.ok) {

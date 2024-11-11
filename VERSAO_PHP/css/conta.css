@@ -6,6 +6,7 @@
 }
 .navbar-container {
     padding: 1.5rem;
+    margin-right: 3vw;
     color: black;
     display: flex;
     flex-direction: column;
@@ -33,7 +34,7 @@
     display: flex;
 }
 .nome-lateral {
-    font-size: 24px;
+    font-size: 1.6vw;
     font-weight: 500;
     padding-left: 10px;
     display: flex;
@@ -64,7 +65,7 @@
     text-decoration: none;
     color: black;
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size:calc(4px + 1.5vw); /* MANO isso aqui define o tamanho minimo da fonte e é genial */
     padding-top: 5px;
 }
 .paginas {
@@ -82,8 +83,8 @@
     justify-content: center;
     flex-direction: column;
     background-color: #0476D9;
-    width: 940px;
-    height: 500px; /*Mudar altura aqui*/
+    width: 800px;
+    height: 500px;
     padding: 10px;
     border-radius: 20px;  
 }
@@ -95,7 +96,7 @@
     padding: 15px;
 }  
 #perfil {
-    padding: 1rem;
+    padding: 2.2rem 1.6rem 0 1.6rem;
     position: relative;
     bottom: 2%;
     background-color: white;
@@ -124,15 +125,15 @@ form {
     align-items: stretch;
     gap: 3px;
     font-size: 16px;
-    margin-top: 20px;
 }
 .informacoes button {
     height: 35px;
-    width: 28%;
+    width: 100%;
+    max-width: 140px;
     border-radius: 50px;   
     background-color: #F2AF00;
     color: #000000;
-    font-size: 16px;
+    font-size: 18px;
     white-space: nowrap;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
@@ -175,15 +176,14 @@ form {
     text-overflow: ellipsis;
 }
 .conta-box {
-    width: 80%;
-    margin: 15px 10px 0 10px;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 .img-conta {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     overflow: hidden;
     border-radius: 100px;
     border: solid #F2AF00 5px;
@@ -194,8 +194,12 @@ form {
     gap: 20px;
 }
 .nome-conta {
-    font-size: 24px;
+    font-size: 1.6vw;
     font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 0 25px;
 }
 .editar-img {
     all: unset;
@@ -293,12 +297,65 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     margin-left: 0.5%;
     margin-right: 0.5%;
     padding: 1rem;
+    align-items: center;
     justify-content: center;
-  }
-
+}
   /* responsividade Hilario*/
+  @media (min-width: 1500px) {
+    .container {
+        margin: 0 1rem 0 1rem;
+    }
+    #box {
+        width: 1100px;
+    }
+    .informacoes button {
+        font-size: 18px;
+    }
+    .info-label {
+        font-size: 20px;
+    }
+    .usuario-info {
+        font-size: 20px;
+    }
+    .info-item {
+        width: 580px;
+    }
+    .info-value {
+        width: 240px;
+    }
+}
+@media (max-width: 1024px) {
+    .navbar-container {
+        margin: 0;
+        padding: 0;
+        padding-right: .2%;
+    }
+    #box {
+        height: 450px;
+        width:  740px;
+    }
+    .container {
+        max-width: 99% !important;
+    }
+    .conta-box {
+        margin: 10px;
+    }
+    .nome-lateral {
+        padding-right: 10px;
+    }
+    .img-conta{
+        width: 130px;
+        height: 130px;
+    }
+    .nome-conta {
+        font-size: 1.7vw;
+    }
+    .info-item {
+        width: 400px;
+    }
+}
 @media (max-width: 850px) {
-    button.menuSanduiche{/*Botão que abre o menu sanduiche*/
+      button.menuSanduiche{/*Botão que abre o menu sanduiche*/
         display: flex;
       }
       #navbar-conta {

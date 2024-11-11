@@ -18,16 +18,17 @@ body {
     overflow-y: scroll;
 }
 
-.cadastrinho {
+div.cadastrinho {
     display: flex;
     align-items: stretch;
     flex-direction: column;
     background-color: #ffffff;
     border-radius: 20px;
     width: 550px;
-    padding: 2.5% .5% 2.5% .5%;
+    padding: 2.5% .2% 2.5% .2%;
     box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
-    margin-top: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .cadastrinho img {

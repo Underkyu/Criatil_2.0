@@ -15,7 +15,6 @@
     align-items: center;
     color: white;
     width: 100%;
-    margin-top: 3rem;
 }
 
 .copyright {
@@ -89,12 +88,6 @@
     transform: translateY(-3px);
 }
 
-@media (max-width: 1536px) {
-    .container {
-      max-width: 1280px;
-    }
-}
-
 @media (max-width: 1280px) {
     .footerLogo {
         display: none;
@@ -105,9 +98,6 @@
 }
 
 @media (max-width: 1024px) {
-    .container {
-      max-width: 768px;
-    }
     .footerAnchors {
       justify-content: space-around;
     }

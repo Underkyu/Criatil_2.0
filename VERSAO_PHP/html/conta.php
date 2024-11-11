@@ -86,7 +86,7 @@ $usuarioData = $userDao->verificarToken(true);
                      <!--Formulario de troca de dados-->   
                     <form action="../controller/usuarioProccess.php" method="POST" enctype="multipart/form-data">
                     <div class="info-item">
-                        <div class="info-label">Nome completo:</div>
+                        <div class="info-label">Nome e sobrenome:</div>
                         <div class="info-value">
                         <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getNome()); ?>" name="Nome_Usu" readonly>
                         </div>

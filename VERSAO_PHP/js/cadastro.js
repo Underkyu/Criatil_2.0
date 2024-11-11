@@ -1,3 +1,4 @@
+// verificar se senha == confirmar senha
 function validarSenhas() {
     var senha = document.getElementById('senha').value;
     var cofSenha = document.getElementById('cof_senha').value;
@@ -9,6 +10,7 @@ function validarSenhas() {
     return true;
 }
 
+// botões de mostrar senha
 function mostrarSenha(idInput, idBotao) {
     const input = document.getElementById(idInput);
     const botao = document.getElementById(idBotao);
@@ -21,4 +23,8 @@ function mostrarSenha(idInput, idBotao) {
         botao.classList.replace('bi-eye-slash', 'bi-eye');
     }
 }
-// função simples p verificar se senha == confirmar senha
+
+// máscara do celular
+$(document).ready(function(){
+    $('#celular').mask('(00) 00000-0000');
+  });

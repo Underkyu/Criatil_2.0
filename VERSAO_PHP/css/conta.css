@@ -6,7 +6,7 @@
 }
 .navbar-container {
     padding: 1.5rem;
-    margin-right: 3vw;
+    width: 35%;
     color: black;
     display: flex;
     flex-direction: column;
@@ -65,7 +65,7 @@
     text-decoration: none;
     color: black;
     cursor: pointer;
-    font-size:calc(4px + 1.5vw); /* MANO isso aqui define o tamanho minimo da fonte e é genial */
+    font-size:calc(4px + 1.3vw); /* MANO isso aqui define o tamanho minimo da fonte mas ainda sendo responsivo e é genial */
     padding-top: 5px;
 }
 .paginas {
@@ -83,7 +83,7 @@
     justify-content: center;
     flex-direction: column;
     background-color: #0476D9;
-    width: 800px;
+    width: 60%;
     height: 500px;
     padding: 10px;
     border-radius: 20px;  
@@ -154,7 +154,7 @@ form {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    width: 500px;
+    width: 26rem;
 }
 .info-label {
     font-weight: 500;
@@ -177,13 +177,15 @@ form {
 }
 .conta-box {
     width: 100%;
+    margin-left: 1rem;
+    margin-right: auto;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 .img-conta {
-    width: 130px;
-    height: 130px;
+    width: auto;
+    height: 7rem;
     overflow: hidden;
     border-radius: 100px;
     border: solid #F2AF00 5px;
@@ -199,7 +201,6 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 0 0 25px;
 }
 .editar-img {
     all: unset;
@@ -246,6 +247,7 @@ h2.troque_senha{
 }
 img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     width: 2rem;
+    margin-left: .5rem;
     transition-duration: 0.2s;
 }
 .girar {
@@ -286,7 +288,6 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     opacity: 1;
     visibility: visible;
     height: 2.6rem;
-    margin-bottom: 20px;
     align-items: center;
   }
   /* fim do css do menu sanduíche */
@@ -297,7 +298,6 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     margin-left: 0.5%;
     margin-right: 0.5%;
     padding: 1rem;
-    align-items: center;
     justify-content: center;
 }
   /* responsividade Hilario*/
@@ -325,170 +325,197 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     }
 }
 @media (max-width: 1024px) {
-    .navbar-container {
-        margin: 0;
-        padding: 0;
-        padding-right: .2%;
-    }
     #box {
         height: 450px;
-        width:  740px;
+        width:  600px;
+        margin-right: 10px;
+    }
+    .navbar-container {
+        width: 200px;
+        margin: 0;
+        padding: 0;
     }
     .container {
-        max-width: 99% !important;
+        padding: 1rem 0 1rem 0;
+        justify-content: space-between !important;
+    }
+    #perfil {
+        padding: 2rem 1.4rem 0 1.4rem;
     }
     .conta-box {
         margin: 10px;
-    }
-    .nome-lateral {
-        padding-right: 10px;
-    }
+    }   
     .img-conta{
-        width: 130px;
-        height: 130px;
+        height: 115px;
     }
     .nome-conta {
         font-size: 1.7vw;
+        padding: 0;
+    }
+    h1.nome-lateral {
+        font-size: 18px;
     }
     .info-item {
         width: 400px;
     }
-}
-@media (max-width: 850px) {
-      button.menuSanduiche{/*Botão que abre o menu sanduiche*/
-        display: flex;
-      }
-      #navbar-conta {
-        display: none;
-      }
-      #box {
-        position:relative;
-        right: auto;
-        left: auto;
-        top: auto;
-        bottom: auto;
-        width: 96%;
-        margin: 0 auto;
-      }
-      .sanduiche-div{
-        display: flex;
-        margin-top: 10px;
-      }
-      div.container{
-        flex-direction: column;
-        gap: 0;
-        margin: 0;
-        padding: 0;
-      }
-      .informacoes {
-        font-size: 18px;
-      }
-      .informacoes button {
+    .info-label {
         font-size: 16px;
-      }
-      .nome-conta {
-        font-size: 22px;
-      }
-}
-@media (max-width: 730px) {
-    .informacoes {
-        font-size: 16px;
-      }
-      .informacoes button {
-        font-size: 14px;
-      }
-      .nome-conta {
-        font-size: 18px;
-      }
-      .img-conta {
-        width: 90px;
-        height: 90px;
-      }
-}
-@media (max-width: 600px) {
-      .nome-conta {
-        font-size: 17px;
-      }
-      .img-conta {
-        width: 85px;
-        height: 85px;
-      }
-      #perfil {
-        gap: 25px;
-      }
-}
-@media (max-width: 550px) {
-    .informacoes {
-        font-size: 13px;
     }
-    #box {
-        height: 380px;
-    }
-    #box h1 {
-        font-size: 28px;
-    }
-    .nome-conta {
+    .usuario-info {
         font-size: 16px;
     }
     .informacoes button {
-        font-size: 14px;
-        width: 50px;
-        height: 30px;
+        font-size: 16px;
     }
-    .img-conta {
-        width: 80px;
-        height: 80px;
+    .paginas-navbar, .pagina-selecionada {
+        font-size: calc(4px + 1.6vw);
       }
 }
-@media (max-width: 490px) {
+@media (max-width: 875px) {
+      button.menuSanduiche{/*Botão que abre o menu sanduiche*/
+        display: flex;
+        font-size: calc(4px + 1.2vw);
+      }
+      .navbar-container {
+        display: none;
+      }
+      #box {
+        width: 95%;
+        margin-top: .8rem;
+        margin-bottom: .8rem;
+        margin-right: 0;
+        margin-left: 0;
+      }
+      .container {
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center !important;
+      }
+      .sanduiche-div{
+        display: flex;
+      }
+      .info-value {
+        width: 200px;
+    }
+      .paginas-navbar, .pagina-selecionada {
+        font-size: calc(4px + 1.8vw);
+        padding: 0;
+      }
+      .conta-box {
+        width: 50%;
+      }
+      .info-item { 
+        width: 480px;
+      }
+      .nome-conta {
+        font-size: 2.2vw;
+      }
+      .info-item {
+        width: 400px;
+    }
+    #perfil {
+        padding: 1.8rem 1.2rem 0 1.2rem;
+    }
+}
+@media (max-width: 700px) {
+    #box {
+        padding: 5px;
+        height: 400px;
+    }
+    #box h1 {
+        font-size: 30px;
+    }
+    #perfil {
+        padding: 1.6rem 0 0 1rem;
+    }
+    .info-item {
+        width: 360px;
+        justify-content: space-between;
+    }
+    .conta-box {
+        width: 200px;
+        margin-left: 2%;
+    }
+    .info-label {
+        font-size: 14px;
+    }
+    .usuario-info {
+        font-size: 14px;
+    }
+    .informacoes button {
+        font-size: 14px;
+    }
+    .img-conta {
+        height: 90px;
+    }
+    .editar-icone img {
+        width: 30px;
+        height: 25px;
+    }
+    .info-value {
+        width: 180px;
+    }
+    h2.nome-conta {
+        font-size: 16px;
+    }
+}
+@media (max-width: 650px) {
+    .info-item {
+        width: 320px;
+    }
+}
+@media (max-width: 570px) {
+    #perfil {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 12px;
+        padding-top: 0;
+        gap: 10px;
+    }
     #box {
         height: 500px;
     }
-    #perfil {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 12px;
-    }
-    .conta-box {
-        margin: 0;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .informacoes {
-        top: 80px;
-        margin: 0;
-        align-items: flex-start;
-    }
-    .info-item {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin-bottom: 10px;
-    }  
-    .info-label {
-        margin-right: 5px;
+    .img-conta{
+        height: 100px;
     }
 }
-@media (max-width: 380px) {
-    .pagina-selecionada, .paginas-navbar{
-        font-size: 14px;
-    }
-    * {
-        box-sizing: border-box;
-    }
+@media (max-width: 420px) { 
     #box {
-        padding: 0;
+        width: 100%;
+        padding: 3px;
+    }
+    .container {
+        margin: 0;
+        padding-left: 0.1rem !important;
+        padding-right: 0.1rem !important;
+    }
+}
+@media (max-width: 370px) {
+    #perfil {
+    bottom: 1%;
+    width: 99%;
+    height: 95%;
+    gap: 25px;
+    }
+    #box h1 {
+        font-size: 28px;
+        padding: .5rem;
+        padding-bottom: 1rem;
+    }
+    .info-value {
+        width: 145px;
     }
     .info-item {
-        width: 90%;
+        width: 275px;
     }
-    .informacoes {
+    .informacoes button {
+        height: 30px;
+        max-width: 110px;
+    }
+    .botoes {
         align-items: center;
-    }
-    .editar-icone img {
-        width: 25px;
-        height: 20px;
+        justify-content: center;
     }
 }

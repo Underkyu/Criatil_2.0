@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.example.appcriatil.R
 import com.example.appcriatil.components.ElementoFooter
 import com.example.appcriatil.components.ElementoHeaderNav
+import com.example.appcriatil.components.ElementoHomeHeader
 import com.example.appcriatil.components.PaddedItem
 import com.example.appcriatil.navigation.CriatilAppRouter
 import com.example.appcriatil.navigation.Screen
@@ -40,9 +41,7 @@ fun Home(){
                 contentPadding = PaddingValues(horizontal = 0.dp)
             ) {
                 stickyHeader {
-                    ElementoHeaderNav(value = stringResource(id = R.string.Cadastro), onClick = {
-                        CriatilAppRouter.navigateTo(Screen.TelaCadastro)
-                    })
+                    ElementoHomeHeader()
                 }
                 item {
                     PaddedItem { // Espaçamento

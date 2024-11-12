@@ -5,6 +5,7 @@
 package com.example.appcriatil.components
 
 import android.util.Log
+import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,6 +20,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -454,7 +456,7 @@ fun ElementoFooter(modifier: Modifier = Modifier) {
             text = "Home",
             painterResource = painterResource(id = R.drawable.homeicon),
             onClick = { CriatilAppRouter.navigateTo(Screen.Home) }
-        ) // Example copyright text
+        )
         ElementoIconeFooter(
             text = "Carrinho",
             painterResource = painterResource(id = R.drawable.carrinho),
@@ -475,7 +477,91 @@ fun PaddedItem(content: @Composable () -> Unit) {
     }
 }
 
-@Preview(showBackground = true)
+@Composable
+fun ElementoHomeHeader() {
+    val textValue = remember {
+        mutableStateOf("")
+    }
+    Column(modifier = Modifier
+        .background(Color(0xFF0476D9))
+        .fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 64.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            val onClick = { /*TODO*/ }
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .clickable { onClick() }
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.menu),
+                    contentDescription = "Menu",
+                    tint = Color.White,
+                    modifier = Modifier.size(36.dp)
+                )
+            }
+            Image(
+                painter = painterResource(id = R.drawable.logobranca),
+                contentDescription = "Image",
+                modifier = Modifier
+                    .heightIn(64.dp)
+                    .widthIn(128.dp)
+            )
+            Spacer(modifier = Modifier.size(36.dp).padding(16.dp))
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            OutlinedTextField(
+                value = textValue.value,
+                onValueChange = { textValue.value = it },
+                label = {
+                    Text(
+                        text = stringResource(id = R.string.encontreBrinquedo),
+                        style = TextStyle(
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal,
+                            fontStyle = FontStyle.Normal
+                        )
+                    )
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .clip(RoundedCornerShape(25.dp))
+                    .background(Color.White)
+                    .height(50.dp)
+                    .padding(bottom = 8.dp),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = Color(0xFF0476D9),
+                    unfocusedBorderColor = Color.LightGray
+                ),
+                trailingIcon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.search),
+                        contentDescription = "Search",
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun ElementoPreview(){
+    Column () {
+        Spacer(modifier = Modifier.height(45.dp))
+        ElementoHomeHeader()
+    }
 }
+

@@ -21,4 +21,5 @@
     <string name="CEP">CEP</string>
     <string name="Cadastro">Cadastro</string>
     <string name="Login">Login</string>
+    <string name="encontreBrinquedo">Encontre seu brinquedo aqui!</string>
 </resources>

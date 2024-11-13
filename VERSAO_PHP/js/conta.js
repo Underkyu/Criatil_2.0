@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const formEditarPerfil = document.getElementById('formEditarPerfil');
     const formAtualizarSenha = document.getElementById('formAtualizarSenha');
 
-    formEditarPerfil.style.display = 'none';
+    formEditarPerfil.style.display = 'none'; // pra deixar escondido por padrão (sim nao vou mexer em css)
     formAtualizarSenha.style.display = 'none';
 
     // editar perfil
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (formEditarPerfil.style.display === "none" || formEditarPerfil.style.display === "") {
             formEditarPerfil.style.display = "flex";
             formEditarPerfil.classList.add('fade-in'); 
-            formAtualizarSenha.style.display = 'none'; // Esconde o formulário de atualizar senha
+            formAtualizarSenha.style.display = 'none';
         } else {
             formEditarPerfil.classList.remove('fade-in'); 
             setTimeout(() => {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (formAtualizarSenha.style.display === "none" || formAtualizarSenha.style.display === "") {
             formAtualizarSenha.style.display = "flex";
             formAtualizarSenha.classList.add('fade-in'); 
-            formEditarPerfil.style.display = 'none'; // Esconde o formulário de editar perfil
+            formEditarPerfil.style.display = 'none';
         } else {
             formAtualizarSenha.classList.remove('fade-in'); 
             setTimeout(() => {

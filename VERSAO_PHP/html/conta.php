@@ -24,7 +24,6 @@ $usuarioData = $userDao->verificarToken(true);
     <title>Criatil - Conta</title>
 </head>
 <body>
-
 <?php include("header.php");?>
 
     <div class="container">
@@ -83,7 +82,6 @@ $usuarioData = $userDao->verificarToken(true);
             <h1 class="titulo-box">Perfil</h1>
                <div class="perfil-container" id="perfil">
                 <div class="informacoes">
-                <form action="../controller/usuarioProccess.php" method="POST" enctype="multipart/form-data">
                     <div class="info-item">
                         <div class="info-label">Nome e sobrenome:</div>
                         <div class="info-value">
@@ -116,9 +114,6 @@ $usuarioData = $userDao->verificarToken(true);
                     <button class="editar" type="submit" id="btnEditarPerfil">Editar Perfil</button>
                     <button class="editar" type="submit" id="btnAtualizarSenha">Atualizar Senha</button>
                     </div>
-                    
-
-
                 </div>
 
                 <div class="conta-box">
@@ -130,8 +125,6 @@ $usuarioData = $userDao->verificarToken(true);
                         }else{
                             print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
                         }?> class="img-conta">
-
-
                         <div class="editar-icone">
                             <img src="../imagens/Icons/Editar.png" class="icone-editar">
                         </div>
@@ -139,7 +132,6 @@ $usuarioData = $userDao->verificarToken(true);
                     <h2 class="nome-conta"><?php print_r($usuarioData->getNome()) ?></h2>
                     <button type="submit" class="editar">Salvar Foto</button>
                 </div>
-                </form>
                </div>   
         </div>
             <!-- fim da página da conta -->

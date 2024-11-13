@@ -220,12 +220,12 @@ button.editar:hover {
     transition: transform 0.3s ease-in-out;
 }
 .fade-in {
-    animation: fadeIn 0.3s forwards; /* Animação para mostrar */
+    animation: fadeIn 0.3s forwards;
 }
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-10px); /* Move para cima ao aparecer */
+        transform: translateY(-10px);
     }
     to {
         opacity: 1;
@@ -301,6 +301,7 @@ button.editar:hover {
     border-radius: 100%;
     padding: 1px;
     transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 }
 .editar-icone img {
     width: 40px;

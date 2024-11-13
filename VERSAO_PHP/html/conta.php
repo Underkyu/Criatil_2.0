@@ -83,8 +83,7 @@ $usuarioData = $userDao->verificarToken(true);
             <h1 class="titulo-box">Perfil</h1>
                <div class="perfil-container" id="perfil">
                 <div class="informacoes">
-                     <!--Formulario de troca de dados-->   
-                    <form action="../controller/usuarioProccess.php" method="POST" enctype="multipart/form-data">
+                <form action="../controller/usuarioProccess.php" method="POST" enctype="multipart/form-data">
                     <div class="info-item">
                         <div class="info-label">Nome e sobrenome:</div>
                         <div class="info-value">
@@ -109,35 +108,17 @@ $usuarioData = $userDao->verificarToken(true);
                         <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu" readonly>
                         </div>
                     </div>
-                    <!--
                     <input type="hidden" name="Tipo" value="Atualizar">
                     <input type="file" name="imagem_file" id="imagem_file">
                     <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Cliente">
-                    -->
-                    <div class="botoes">
-                    <button class="editar" type="submit">Editar Perfil</button>
-                    <button class="editar" type="submit">Atualizar Senha</button>
-                    </div>
-                    </form>
                     
-                    <!--Formulario de troca de senha-->
-                    <!--  <form action="../controller/usuarioProccess.php" method="POST">
-                    <h2 class="troque_senha">Troque sua senha</h2>
-                    <div class="info-item">
-                        <div class="info-label">Senha atual:</div>
-                        <div class="info-value">
-                        <input class="usuario-info" type="text" placeholder="Senha atual" name="Atual_Senha">
-                        </div>
+                    <div class="botoes">
+                    <button class="editar" type="submit" id="btnEditarPerfil">Editar Perfil</button>
+                    <button class="editar" type="submit" id="btnAtualizarSenha">Atualizar Senha</button>
                     </div>
-                    <div class="info-item">
-                        <div class="info-label">Senha nova:</div>
-                        <div class="info-value">
-                        <input class="usuario-info" type="text" placeholder="Senha nova" name="Nova_Senha">
-                        </div>
-                    </div>
-                    <input type="hidden" name="Tipo" value="Senha">
-                    </form>
-                     -->
+                    
+
+
                 </div>
 
                 <div class="conta-box">
@@ -152,18 +133,73 @@ $usuarioData = $userDao->verificarToken(true);
 
 
                         <div class="editar-icone">
-                        <button class="editar-img"> <!-- botão pra editar imagem do usuário-->
                             <img src="../imagens/Icons/Editar.png" class="icone-editar">
-                        </button>
                         </div>
                     </div>
                     <h2 class="nome-conta"><?php print_r($usuarioData->getNome()) ?></h2>
+                    <button type="submit" class="editar">Salvar Foto</button>
                 </div>
+                </form>
                </div>   
         </div>
             <!-- fim da página da conta -->
-    </div>
 
+            <!--Formulario de troca de senha-->
+            <div class="trocarSenha" id="formAtualizarSenha">
+                    <form action="../controller/usuarioProccess.php" method="POST" class="form-bg-senha">
+                    <h2 class="troque_senha">Troque sua senha</h2>
+                    <div class="info-item">
+                        <div class="info-label">Senha atual:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" placeholder="Senha atual" name="Atual_Senha">
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Senha nova:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" placeholder="Senha nova" name="Nova_Senha">
+                        </div>
+                    </div>
+                    <input type="hidden" name="Tipo" value="Senha">
+                    <button class="editar" type="submit">Confirmar</button>
+                    </form>
+                    </div>
+             </div>
+
+             <!--Formulario de troca de dados-->   
+             <div class="editarPerfil" id="formEditarPerfil">
+             <form action="../controller/usuarioProccess.php" method="POST" enctype="multipart/form-data" class="form-bg-perfil">
+             <h2 class="edite_perfil">Altere suas informações</h2>
+                    <div class="info-item">
+                        <div class="info-label">Nome e sobrenome:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getNome()); ?>" name="Nome_Usu" readonly>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Data de nascimento:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="date" value=<?php print_r($usuarioData->getNasc());?> name="Nasc_Usu" readonly>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Email:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getEmail());?> name="Email_Usu" readonly>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Celular:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu" readonly>
+                        </div>
+                    </div>
+                    <input type="hidden" name="Tipo" value="Atualizar">
+                    <input type="file" name="imagem_file" id="imagem_file">
+                    <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Cliente">
+                    <button class="editar" type="submit">Salvar</button>
+                    </form>
+                </div>
 <?php include("footer.php") ?>
 </body>
 </html>

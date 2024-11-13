@@ -150,6 +150,30 @@ form {
 .informacoes button:hover {
     transform: scale(1.1);
 }
+button.editar {
+    height: 35px;
+    width: 100%;
+    max-width: 140px;
+    border-radius: 50px;   
+    background-color: #F2AF00;
+    color: #000000;
+    font-size: 18px;
+    white-space: nowrap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    margin-top: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+button.editar:hover {
+    transform: scale(1.1);
+}
 .info-item {
     display: flex;
     justify-content: space-between;
@@ -182,6 +206,67 @@ form {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+#formAtualizarSenha {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    transition: transform 0.3s ease-in-out;
+}
+.fade-in {
+    animation: fadeIn 0.3s forwards; /* Animação para mostrar */
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px); /* Move para cima ao aparecer */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.form-bg-senha{
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 40%;
+    height: 45%;
+    box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
+}
+#formEditarPerfil {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    transition: transform 0.3s ease-in-out;
+}
+.form-bg-perfil {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 40%;
+    height: 60%;
+    box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
 }
 .img-conta {
     width: auto;
@@ -236,6 +321,10 @@ form {
    display: none;
 }
 h2.troque_senha{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+h2.edite_perfil {
     margin-top: 2rem;
     margin-bottom: 1rem;
 }

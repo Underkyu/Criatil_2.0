@@ -3,6 +3,12 @@ require_once("../Dao/produtoDAO.php");
 require_once("../models/brinquedo.php");
 require_once("../controller/global.php");
 require_once("../controller/conexao.php");
+require_once("../Dao/usuarioDAO.php");
+require_once("../models/usuario.php");
+
+$userDao = new UsuarioDAO($conn,$BASE_URL);
+
+$usuarioData = $userDao->verificarToken(false);
 
 $prodDAO = new ProdutoDAO($conn,$BASE_URL);
 $brinquedo = $prodDAO->pesquisarPorCodigo(codigoBrinq: $_GET['codigo']);
@@ -226,10 +232,14 @@ function renderizarEstrelas($nota) {
               +
             </button>
           </div>
-          <form action=""></form>
+          <form action="../controller/desejosProccess.php" method="POST">
+          <input type="hidden" name="Operacao" value="Adicionar">
+          <input type="text" name="codigoUsu" value=<?php print_r($usuarioData) ?>> 
+          <input type="text" name="codigoBrinq" value=<?php print_r($_GET['codigo'])?>>
           <button class="comprar">
             <p class="comprar">Adicionar à lista de desejos</p>
           </button>
+          </form>
 
           <form action="../controller/carrinhoProccess.php" class="form" method="POST">
           <input type="hidden" name="Operacao" value="Adicionar">

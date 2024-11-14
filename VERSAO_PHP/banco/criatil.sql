@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10/11/2024 às 23:05
+-- Tempo de geração: 14/11/2024 às 03:18
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -256,7 +256,7 @@ INSERT INTO `sac` (`Codigo_sac`, `nome`, `email`, `mensagem`) VALUES
 CREATE TABLE `selo` (
   `Codigo_Selo` int(11) NOT NULL,
   `Nome_Selo` varchar(50) NOT NULL,
-  `Imagem_Selo` int(11) NOT NULL
+  `Imagem_Selo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -264,8 +264,8 @@ CREATE TABLE `selo` (
 --
 
 INSERT INTO `selo` (`Codigo_Selo`, `Nome_Selo`, `Imagem_Selo`) VALUES
-(1, 'Deficiente Auditivo', 0),
-(2, 'Geral', 0);
+(1, 'Deficiente Auditivo', '../imagens/Selo/Auditiva.png'),
+(2, 'Deficiente Visual', '../imagens/Selo/Visual.png');
 
 -- --------------------------------------------------------
 
@@ -290,13 +290,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Email_Usu`, `Senha_Usu`, `Tipo_Usu`, `Token`, `Imagem`) VALUES
-(1, 'Rosana', '1973-08-15', '11 971889900', 'rosanasiq@gmail.com', '$2y$10$TEj2qHP30EgbslBfd5LIFe.GOKcrREhUId8xvUUNqYM9lu/ISI8SW', 'Cliente', 'f6e4379fc912278a1f14440a98e8960905b999921189bdf6f72950a45a311fbe6927c44e14d3b70e2b677761017298659a67', '../imagens/Conta/rosana.jpg'),
-(2, 'Kasane', '2001-02-19', '89821-2122', 'kasaneteto@yahoo.com', '$2y$10$fuDLTvvCk6YNcgxBHbz/7eQ/okUdf9tZ01mN0rkQOaoQ8XixF6uMq', 'Cliente', '97204f8cf2dbba1ac0cda3275e9b42f7adf97efff70e064c670a6570abc51b2b470d43b11f95c8f14f8ef4945a20b92b5267', '../imagens/usuarios/2e58d04b77f8f3caf84caf5c31c107358a1d95c76410c8591be94878e3393515d74b68fad7e2f2e7b6d34f17dd0e618665aea3581b904df6827fab96.jpeg'),
-(3, 'Jônatas', '2000-08-11', '1187192-1221', 'jowjow@gmail.com', '$2y$10$gEBH0nDybAB7ASvGo9x1ru1ebgk9QUL/E2LX7bPhnZ3NuZOnIy4se', 'Cliente', 'b0f9e9e538bb2c39ca316fc3bda5eab66311a9af7fee1a1ff49edae530fb865cedf9fda6e4cb4ed770b37110b707550eb6cc', '../imagens/usuarios/4e013b07ab6cef43b541146e37ef01352f11ba946179b07bd4486042a250335f8cbc03694a1e7f5a6874461103e1e19c6e774a135ead7ba1652e7b0b.jpeg'),
-(4, 'Susana Deta Runês', '2020-01-12', '1199999-9999', 'susanarune@gmail.com', '$2y$10$4J7fiOZVOG5dhm8tuciXHea4HJp36VQ17hdhzwN1Iu1sNpEVbLpdW', 'Cliente', 'b22bd90f35dbfdfed789e3af3509a6d1b8eee93b043efc15389802cab9d38aa0486db78b0f61c94b1ae4c6f55d9a9b04b7d0', '../imagens/Conta/susie.png'),
-(6, '(21)99887-4455', '1999-11-11', '', 'gumi@gmail.com', '$2y$10$eVL78sLrwRS6ipHflzX05eVLs6fKmMh1d/x6sQ3VR96YUPk8KlXYS', 'Cliente', 'd6dfcbcff361234960b92114fa84675120b3565683f6988ce62115f32c171a28a4615dd365fa48e1848329e1bfecae59afba', '12e93c37eabedddcdb0db7eb0959d2efc0676ac6048a879f490c268b5a39ac7cf0efe5ae8407c49ea5978e16f4d357688e620b87b7b729328c222f62'),
-(7, '12412423', '2002-11-11', '', 'ado@gmail.com', '$2y$10$QE8P4kzG1BH2vlXOJnRAoeQJDnBtLWxqSm2O3pk5YmrRN2UdEohBK', 'Cliente', '61947a4d1e92ab9a0793e825ef5a1a9b6103f3215142f96d3d88f8e1e332bfe3c80897ae880caaa01c3445befff096f490dc', 'cb25b50b3e8f7e1c275056cfea3fc60af7114a02c7b6e0889dedebecaab17c2dc7bb759e5e54533ab3b12bca24105687d2dd8e627514589b884c6ba4'),
-(8, 'Chrono', '1999-11-11', '(21)99887-4455', 'chronorapper@gmail.com', '$2y$10$x3UJb2wmZm5ob/4T/D1pIecc0/bBWV/IXTOndW8RKh.Da9/CXO3dK', 'Cliente', 'd38666c4be4de8ced1b3a81d5fad11a9ade8bf1f45be3f3ec62e61ddee41f2ade3ced0b806eab8cf0fbfcae3c8f878af002c', 'vazio');
+(1, 'Rosana Siqueira', '1987-12-09', '(11) 97521-1889', 'rosanasiq@gmail.com', '$2y$10$XZK56CKhQ99iIsuxIqIpTOrYEKlrOcvHerqZ8XR.bs62ZYWr.aiva', 'Cliente', '0d07950e4b66af163b072f370b03bf34c1db0ec5a0762c6ed0bf46818945d78c3c1a99c574feaddefb7b3b6e559779274fd6', '31b61e901b185be6e8a58a0730a45c4a75e1c2c491b720ae24786dd2d786b69cfd62157c144af03783c31ba3450d9c3455022457774b236727435b7f'),
+(2, 'Ricardo Souza', '1993-11-09', '(11) 97492-1221', 'ricas@hotmail.com', '$2y$10$NJ.vVoz7s6UaPGYYx3qh3e85K12lqcbeSNaN6tFk8dIcBnKT41doa', 'Cliente', '6ee4c54eb63ec1e147030dcfcf128f8668a3fe811883ab42b2f8195080f52328fd42ea4da7a66e9127cfb658cd15c8167f98', '36ca795a7aef34ad8ad99a7bf4cf7847f0d74978c951cd6ad331f46f94194884f137e6d7e0fae988378005de66359163acc30516b5e85029fc8c7ada'),
+(3, 'Cássio Gomes', '2006-12-01', '(11) 95853-3922', 'elcassio@gmail.com', '$2y$10$vozGTgSShePrI59.WxRnEeIObXf9mLD00FpkNhblQcO11g4e7v/XW', 'Cliente', 'e94d5498fafc9495ec2c02ae5fb6816c78112d3a76e74564ced749fb0f72f68700c26930884e0f7ed293743954f03ff3150e', 'c3b56e4dada6e6b3cdc4fcfa8db41604afc45a8b90d6705937096632b65a6d0448779658fdffda754009182bcc15a0bd3f0256e72467b2d9c3cedf25'),
+(4, 'Guilherme Britos', '1993-01-03', '(11) 93812-1221', 'guigui@gmail.com', '$2y$10$IeX0NVHaz1QFrCcyU55SHOngBpYOPF.M2AjNa5x6l3mT7.i2azxIy', 'Cliente', 'f45743d8716100d1f325ebfae89461f200deacb16edce4caea592b020268dc8588f186697f6bca7d0141c04a9885caec8b80', '0e8d29d27681f1049882ba048a7ad6b394746a1a18d09663701fd94fdf4e012fe9282659daab86ad6f44f788ab9b8040f5a7d94b8227a542c86f3903');
 
 --
 -- Índices para tabelas despejadas
@@ -440,7 +437,7 @@ ALTER TABLE `selo`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para tabelas despejadas

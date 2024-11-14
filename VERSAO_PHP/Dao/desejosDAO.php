@@ -38,7 +38,7 @@ class desejosDao {
         
         //Trocando valores no comando sql, pelos valores do objeto de pedido
         $stmt->bindParam(":codigo_usu", $codigo_usu);
-        $stmt->bindParam(":codigo_cupom", $codigo_cupom);
+        $stmt->bindParam(":codigo_brinq", $codigo_brinq);
 
         $stmt->execute();
     

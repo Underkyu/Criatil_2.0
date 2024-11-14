@@ -33,7 +33,6 @@ div.header_normal{ /*Div que contem o conteudo do header de pc*/
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 100%;
 }
 
 input.pesquisa { /*Barra de pesquisa*/
@@ -220,7 +219,7 @@ input.pesquisa { /*Barra de pesquisa*/
   /* xs */
   @media (max-width: 521px) {
     .container {
-      width: 100%;
+      max-width: 100%;
     }
     input.pesquisa {
       width: 16rem;

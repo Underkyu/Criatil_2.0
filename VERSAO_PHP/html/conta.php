@@ -17,7 +17,6 @@ $usuarioData = $userDao->verificarToken(true);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- link da fonte pro css saber que fonte usar -->
-    <link rel="stylesheet" href="../css/conta.css">
     <script src="../js/menuSanduicheCONTA.js" defer></script>
     <script src="../js/conta.js" defer></script>
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
@@ -198,5 +197,15 @@ $usuarioData = $userDao->verificarToken(true);
                     </form>
                 </div>
 <?php include("footer.php") ?>
+
+<!--JAVA LIBRAS-->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
+
+<head>
+<link rel="stylesheet" href="../css/conta.css">
+</head>
 </html>

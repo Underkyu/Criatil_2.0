@@ -234,8 +234,8 @@ function renderizarEstrelas($nota) {
           </div>
           <form action="../controller/desejosProccess.php" method="POST">
           <input type="hidden" name="Operacao" value="Adicionar">
-          <input type="text" name="codigoUsu" value=<?php print_r($usuarioData) ?>> 
-          <input type="text" name="codigoBrinq" value=<?php print_r($_GET['codigo'])?>>
+          <input type="hidden" name="codigoUsu" value=<?php print_r($usuarioData->getCodigo()) ?>> 
+          <input type="hidden" name="codigoBrinq" value=<?php print_r($_GET['codigo'])?>>
           <button class="comprar">
             <p class="comprar">Adicionar à lista de desejos</p>
           </button>

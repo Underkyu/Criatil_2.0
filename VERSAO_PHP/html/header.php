@@ -118,13 +118,32 @@ $usuarioData = $userDao->verificarToken(false);
                         </div>
                     </div>
                     
-                    <div class="link_headerHeader link_sanduicheHeader">
-                        <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_headerHeader"> <!--Icon do perfil-->
-                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                            <p class="pequeno">Realizar</p>
-                            <p class="pequeno  negrito">Login <span class="pequenospan">ou</span> Cadastro</p>
-                        </div>
+                    <?php if($usuarioData): ?>
+                    <a href="conta.php">
+                    <div class="link_headerHeader">
+                    <img src=<?php
+                        if($usuarioData->getImagem() == "vazio") {;
+                            print_r("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                        }?> alt="" class="foto_perfil_header"> <!--Foto do perfil-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno  negrito">Minha Conta</p>
                     </div>
+                </div>
+                </a>
+                <?php else: ?>
+                    <a href="cadastro.php">
+                    <div class="link_headerHeader">
+                    <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_headerHeader"> <!--Icon do perfil-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno">Realizar</p>
+                        <p class="pequeno negrito">Login <span class="pequenospan">ou</span> Cadastro</p>
+                    </div>
+                </div>
+                </a>
+                <?php endif; ?>
                 </div>
             </div>
         </div>

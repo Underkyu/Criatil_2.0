@@ -32,7 +32,7 @@ img.imagem_menor{/*Imagem menor do produto*/
   border-radius: 15px;
   border:#D4D4D4 solid 2px;
   margin-bottom: 1rem;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 div.imagem_menor{
@@ -120,6 +120,7 @@ button.comprar{ /*Botão de comprar*/
   background-color: #0476D9;
   padding: .5rem;
   margin-top: 1rem;
+  width: 100%;
 }
 
 p.comprar{ /*Texto dentro do botão de comprar*/

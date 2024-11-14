@@ -64,7 +64,6 @@ function renderizarEstrelas($nota) {
       <!--Inicio div produto-->
       <div class="produto">
         <!--Div que contem as informações principais do produto-->
-
         <!--Inicio Carrossel que só aprece na responsividade-->
         <section class="slider_carrossel">
           <!-- Swiper -->
@@ -77,7 +76,6 @@ function renderizarEstrelas($nota) {
                 class="imagem_maior carrossel"
                 />
               </div>
-
               <div class="swiper-slide">
                 <img
                 src="../imagens/Produtos/Miku/Imagem2.png"
@@ -85,7 +83,6 @@ function renderizarEstrelas($nota) {
                 class="imagem_maior carrossel"
                 />
               </div>
-
               <div class="swiper-slide">
                 <img
                 src="../imagens/Produtos/Miku/Imagem3.png"
@@ -97,7 +94,6 @@ function renderizarEstrelas($nota) {
             <div class="swiper-pagination"></div>
           </div>
         </section>
-
         <!--Fim carrossel-->
 
         <div class="imagens_menores">

@@ -151,6 +151,7 @@ div.nome_avaliacao{/*Nome do perfil do avaliador*/
 img.foto_perfil{ /*Foto de perfil do usuario no card de avalição*/
   width: 5.5rem;
   height: 5.5rem;
+  object-fit: cover;
   border: 3px solid #F2AF00;
   border-radius: 50px;
 }

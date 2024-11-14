@@ -71,9 +71,7 @@ if($tipo === "Inserir") {
     } else {
         $message->setMessage("Campos vazios","Alguns campos não foram preenchidos, tente novamente","error","back");
     }
-}
-
-if($tipo === "Atualizar") {
+}elseif($tipo === "Atualizar") {
 
     $produto = new Produto();
     $imagem = new Imagem();
@@ -115,8 +113,7 @@ if($tipo === "Atualizar") {
     
 
     $produtoDao->atualizaP($produto, true);
-}
-if($tipo === "Pesquisa"){ // entra aqui caso $tipo tenha o valor Pesquisa
+}elseif($tipo === "Pesquisa"){ // entra aqui caso $tipo tenha o valor Pesquisa
     $nomeBrinq = filter_input(INPUT_POST, "Nome_Brinq");
 
     if($nomeBrinq){ // verifica se o campo está preenchido
@@ -133,5 +130,53 @@ if($tipo === "Pesquisa"){ // entra aqui caso $tipo tenha o valor Pesquisa
     }else{
         header("Location: " . $_SERVER['HTTP_REFERER']);
     }   
+}elseif ($tipo === "Filtragem") {
+    // recebe como string pra poder trocar , pra .
+    $precoMin = filter_input(INPUT_POST, "precoMin");
+    $precoMax = filter_input(INPUT_POST, "precoMax");
+
+    if ($precoMin) {
+        $precoMin = str_replace(',', '.', $precoMin);
+    }
+    if ($precoMax) {
+        $precoMax = str_replace(',', '.', $precoMax);
+    }
+
+    // verifica que os valores recebidos são preços válidos
+    $precoMin = filter_var($precoMin, FILTER_VALIDATE_FLOAT);
+    $precoMax = filter_var($precoMax, FILTER_VALIDATE_FLOAT);
+
+    $precoFix = filter_input(INPUT_POST, "precoFix");
+
+    if ($precoFix) {
+        switch ($precoFix) {
+            case '0-45':
+                $precoMin = 0;
+                $precoMax = 45;
+                break;
+            case '45-100':
+                $precoMin = 45;
+                $precoMax = 100;
+                break;
+            case '100+':
+                $precoMin = 100;
+                $precoMax = 999999999;
+                break;
+            default:
+                $precoMin = null;
+                $precoMax = null;
+                break;
+        }
+    }
+    $produtos = $produtoDao->filtraProdutos($precoMin, $precoMax);
+    $_SESSION['produtos'] = $produtos;
+
+    if (!$produtos) {
+        $message->setMessage("Nenhuma correspondência", "Nenhum brinquedo encontrado", "error", "../html/catalogo.php");
+    } else {
+        header("Location: ../html/catalogo.php");
+    }
+}else{
+    $message->setMessage("Erro!","Informações invalidas","error","back");
 }
 ?>

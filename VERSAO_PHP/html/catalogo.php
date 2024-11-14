@@ -34,7 +34,6 @@ if (isset($_SESSION['produtos'])) {
             <div class="titulofiltro">
                 <h1 class="filtros-titulo">FILTROS</h1>
             </div>
-            <br>
                 <button id="prev-button"><img src="../imagens/icons/arrow-24-64.png" alt="voltar"></button>
                 <div id="itemSlider1" class="variados">
                     <!--Filtro por parâmetros-->
@@ -49,26 +48,33 @@ if (isset($_SESSION['produtos'])) {
                         </div>
                     </div>
                     <div class="formFiltro hidden">
-                        <form>
+                        <form method="POST" action="../controller/produtoProcess.php">
                             <!--Filtro por preço-->
                             <div class="formItem">
-                                <input type="radio" class="radioButton" name="precoFix" id="radioPreco1" /><label>Até R$45</label>
+                            <input type="radio" class="radioButton" name="precoFix" id="radioPreco1" value="0-45" />
+                            <label>Até R$45</label>
                             </div>
                             <div class="formItem">
-                                <input type="radio" class="radioButton" name="precoFix" id="radioPreco2" /><label>R$45 - R$100</label>
+                            <input type="radio" class="radioButton" name="precoFix" id="radioPreco2" value="45-100" />
+                            <label>R$45 - R$100</label>
                             </div>
                             <div class="formItem">
-                                <input type="radio" class="radioButton" name="precoFix" id="radioPreco3" /><label>Acima de R$100</label>
+                            <input type="radio" class="radioButton" name="precoFix" id="radioPreco3" value="100+" />
+                            <label>Acima de R$100</label>
                             </div>
+                            <div class="faixaPreco2">
                             <div class="faixaPreco">
-                                <input type="number" class="inputPreco" name="precoMin" id="filtroPrecoMin" placeholder="Min">
+                                <input type="text" class="inputPreco" name="precoMin" id="filtroPrecoMin" placeholder="Min" oninput="validarNumero(this)">
                                 <p>-</p>
-                                <input type="number" class="inputPreco" name="precoMax" id="filtroPrecoMax" placeholder="Max">
+                                <input type="text" class="inputPreco" name="precoMax" id="filtroPrecoMax" placeholder="Max" oninput="validarNumero(this)">
                             </div>
+                                <button type="submit" class="filtrarbotao">Filtrar</button>
+                            </div>
+                            <input type="hidden" name="Tipo" value="Filtragem" />
                         </form>
                     </div>
                 </div>
-                
+
                 <div id="itemSlider2" class="categorias">
                     <!--Filtros de categorias definidas-->
                     <div class="tituloCategorias toggleDiv">
@@ -163,10 +169,12 @@ if (isset($_SESSION['produtos'])) {
                         </div>
                         <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
                         <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>
+                        <a href=<?php print_r("produto.php?codigo=" . $brinquedo['Codigo_Brinq'] )?>>
                         <button class="card">
                             <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
                             <p class="botao_card">Comprar!</p>
                         </button>
+                        </a>
                     </div>
                     <?php } ?>
 
@@ -226,7 +234,26 @@ if (isset($_SESSION['produtos'])) {
         // Adiciona um listener para quando a janela é redimensionada
         window.addEventListener('resize', updateDisplayStyles);
     </script>
+<script>
+  function validarNumero(input) {
+    // remove o que não for número
+    input.value = input.value.replace(/[^0-9,\.]/g, ''); 
 
+    // substitui ponto por vírgula no filtro
+    input.value = input.value.replace('.', ','); 
+
+    // limita a duas casas decimais
+    const partes = input.value.split(',');
+    if (partes.length > 1 && partes[1].length > 2) {
+        input.value = partes[0] + ',' + partes[1].substring(0, 2);
+    }
+
+    // impede a adição de qlqr coisa dps das 2 casas decimais
+    if (partes.length > 2) {
+    input.value = partes[0] + ',' + partes[1];
+    }
+  }
+</script>
     <?php include("footer.php") ?>
 
 </body>

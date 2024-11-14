@@ -28,7 +28,8 @@ $usuarioData = $userDao->verificarToken(true);
 
     <div class="container">
     <!-- página da conta -->
-            <div class="navbar-container"> 
+            <div class="navbar-container">
+                <div class="ft-nome-lateral">
                 <div class="ft-lateral">
                   <img class="img-lateral" src=<?php
                         if($usuarioData->getImagem() == "vazio") {;
@@ -37,6 +38,7 @@ $usuarioData = $userDao->verificarToken(true);
                         }else{
                             print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
                         }?>>
+                </div>
                         <div class="nomelat-div">
                          <h1 class="nome-lateral"><?php print_r($usuarioData->getNome());?></h1>
                         </div>
@@ -85,29 +87,28 @@ $usuarioData = $userDao->verificarToken(true);
                     <div class="info-item">
                         <div class="info-label">Nome e sobrenome:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getNome()); ?>" name="Nome_Usu" readonly>
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getNome()); ?>" name="Nome_Usu" disabled>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Data de nascimento:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="date" value=<?php print_r($usuarioData->getNasc());?> name="Nasc_Usu" readonly>
+                        <input class="usuario-info" type="date" value=<?php print_r($usuarioData->getNasc());?> name="Nasc_Usu" disabled>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Email:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getEmail());?> name="Email_Usu" readonly>
+                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getEmail());?> name="Email_Usu" disabled>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Celular:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu" readonly>
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu" disabled>
                         </div>
                     </div>
                     <input type="hidden" name="Tipo" value="Atualizar">
-                    <input type="file" name="imagem_file" id="imagem_file">
                     <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Cliente">
                     
                     <div class="botoes">
@@ -125,12 +126,16 @@ $usuarioData = $userDao->verificarToken(true);
                         }else{
                             print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
                         }?> class="img-conta">
+                    <form action="../controller/usuarioProccess.php" method="POST" enctype="multipart/form-data" id="formSalvarFoto">
                         <div class="editar-icone">
                             <img src="../imagens/Icons/Editar.png" class="icone-editar">
                         </div>
-                    </div>
-                    <h2 class="nome-conta"><?php print_r($usuarioData->getNome()) ?></h2>
-                    <button type="submit" class="editar">Salvar Foto</button>
+                        </div>
+                        <h2 class="nome-conta"><?php print_r($usuarioData->getNome()) ?></h2>
+                        <input type="file" name="imagem_file" id="imagem_file" required>
+                        <input type="hidden" name="Tipo" value="updateImagem">
+                        <button type="submit" class="editar">Salvar Foto</button>
+                    </form>
                 </div>
                </div>   
         </div>

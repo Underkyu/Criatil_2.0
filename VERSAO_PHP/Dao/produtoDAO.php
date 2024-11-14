@@ -208,6 +208,24 @@ public function pesquisarImagemPorCodigoBrinq($codigoBrinq) {
         return false;
     }
 }
+public function filtraProdutos($precoMin, $precoMax) {
+    if ($precoMin !== false && $precoMax !== false) {
+        $stmt = $this->conexao->prepare("SELECT * FROM brinquedo WHERE Preco_Brinq BETWEEN :precoMin AND :precoMax");
+        $stmt->bindParam(':precoMin', $precoMin);
+        $stmt->bindParam(':precoMax', $precoMax);
+
+    } elseif ($precoMin !== false && $precoMax !== false) {
+        $stmt = $this->conexao->prepare("SELECT * FROM brinquedo WHERE Preco_Brinq BETWEEN :precoMin AND :precoMax");
+        $stmt->bindParam(':precoMin', $precoMin);
+        $stmt->bindParam(':precoMax', $precoMax);
+
+    } else {
+        $stmt = $this->conexao->prepare("SELECT * FROM brinquedo");
+    }
+
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
 public function pesquisarPrimeiraImagemPorCodigoBrinq($codigoBrinq) {
     if($codigoBrinq != "") {

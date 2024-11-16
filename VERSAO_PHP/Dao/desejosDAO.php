@@ -62,7 +62,27 @@ class desejosDao {
             return false;
         }
 }
+public function checarSeExiste($codigo_usu,$codigo_brinq){
+    $stmt = $this->conexao->prepare("SELECT * FROM listadefavoritos WHERE Codigo_Usu = :codigo_usu AND Codigo_Brinq = :codigo_brinq");
+    $stmt->bindParam(":codigo_usu",$codigo_usu);
+    $stmt->bindParam(":codigo_brinq",$codigo_brinq);
+    $stmt->execute();
+
+    if($stmt->rowCount() > 0){ //Ve se o número de linhas retornada é maior que zero, basicamente vendo se retornou algo do banco
+        return false;
+    }else{
+        return true;
+    }
 }
 
+public function deletaritem($codigo_usu,$codigo_brinq){
+    $stmt = $this->conexao->prepare("DELETE FROM listadefavoritos WHERE Codigo_Usu = :codigo_usu AND Codigo_Brinq = :codigo_brinq");
 
+    $stmt->bindParam(":codigo_usu",$codigo_usu);
+    $stmt->bindParam(":codigo_brinq",$codigo_brinq);
+
+    $stmt->execute();
+}
+
+}
 ?>

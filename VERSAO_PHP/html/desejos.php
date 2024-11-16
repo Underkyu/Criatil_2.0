@@ -90,6 +90,7 @@ $itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
                             <div class="legenda-foto">Foto</div>
                             <div class="legenda-nome">Nome</div>
                             <div class="legenda-valor">Valor</div>
+                            <div class="legenda-espaco"> </div>
                         </div>
                         <?php
                             foreach($itensLista as $item) {
@@ -102,6 +103,16 @@ $itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
                                 <div class="produto-nome"><?php print_r($produto->getNomeBrinq()) ?></div>
                                 <div class="produto-valor">
                                     <div class="valor-unidade"><?php print_r($produto->getPrecoBrinq()) ?></div>
+                                </div>
+                                <div class="excluir-item">
+                                <form method="POST" action="../controller/desejosProccess.php">
+                                <input type="hidden" name="Operacao" value="Excluir">
+                                <input type="hidden" name="codigoBrinq" value=<?php print_r($produto->getCodigoBrinq())?>>
+                                <input type="hidden" name="codigoUsu" value=<?php print_r($usuarioData->getCodigo())?>>
+                                    <button class="excluir">
+                                        <img src="../imagens/Icons/x.png" alt="Excluir item" class="excluir">
+                                    </button>
+                                </form>
                                 </div>
                             </div>
                         </div>

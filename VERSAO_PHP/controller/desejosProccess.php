@@ -20,6 +20,7 @@ if($operacao == "Adicionar"){
     }
 
     else{
+    if($desejosDao->checarSeExiste($Codigo_Usu, $Codigo_Brinq)){
     $item = new ListaDeFavoritos($conn,$BASE_URL);
     $item->setCodigoBrinq($Codigo_Brinq);
     $item->setCodigoUsu($Codigo_Usu);
@@ -27,7 +28,17 @@ if($operacao == "Adicionar"){
     $desejosDao->setItemLista($item);
 
     $message->setMessage("Item adicionado","Item adicionado à lista de favoritos com sucesso","success","back");
+    }else{
+        $message->setMessage("Item já adicionado","Esse item já foi adicionado na lista de desejos","error","back");
     }
+}
+}else if($operacao == "Excluir"){
+    $Codigo_Usu = filter_input(INPUT_POST,"codigoUsu");
+    $Codigo_Brinq = filter_input(INPUT_POST,"codigoBrinq");
+
+    $desejosDao->deletaritem($Codigo_Usu,$Codigo_Brinq);
+
+    $message->setMessage("Item excluido","O item foi excluido da lista de desejos","success","back");
 }
 
 

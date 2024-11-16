@@ -57,8 +57,6 @@ function renderizarEstrelas($nota) {
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="../css/produto.css" />
-    <link rel="stylesheet" href="../css/card.css" />
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Criatil - produto</title>
   </head>
@@ -234,7 +232,12 @@ function renderizarEstrelas($nota) {
           </div>
           <form action="../controller/desejosProccess.php" method="POST">
           <input type="hidden" name="Operacao" value="Adicionar">
-          <input type="hidden" name="codigoUsu" value=<?php print_r($usuarioData->getCodigo()) ?>> 
+          <input type="hidden" name="codigoUsu" value=<?php 
+          if($usuarioData){
+            print_r($usuarioData->getCodigo());
+          }else{
+            print_r("");
+          } ?>> 
           <input type="hidden" name="codigoBrinq" value=<?php print_r($_GET['codigo'])?>>
           <button class="comprar">
             <p class="comprar">Adicionar à lista de desejos</p>
@@ -462,4 +465,9 @@ function renderizarEstrelas($nota) {
     <script src="../js/produto.js"></script>
   <?php include("footer.php") ?>
   </body>
+
+  <head>
+  <link rel="stylesheet" href="../css/produto.css" />
+  <link rel="stylesheet" href="../css/card.css" />
+  </head>
 </html>

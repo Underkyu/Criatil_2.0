@@ -1,3 +1,20 @@
+<?php
+require_once("../controller/global.php");
+require_once("../controller/conexao.php");
+require_once("../Dao/usuarioDAO.php");
+require_once("../Dao/desejosDAO.php");
+require_once("../Dao/produtoDAO.php");
+require_once("../models/usuario.php");
+
+$desejosDao = new desejosDao($conn, $BASE_URL);
+$userDao = new UsuarioDAO($conn,$BASE_URL);
+$prodDao = new ProdutoDAO($conn,$BASE_URL);
+
+$usuarioData = $userDao->verificarToken(true);
+
+$itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -74,29 +91,28 @@
                             <div class="legenda-nome">Nome</div>
                             <div class="legenda-valor">Valor</div>
                         </div>
-                        <div class="produto">
+                        <?php
+                            foreach($itensLista as $item) {
+                                $produto = $prodDao->pesquisarPorCodigo($item->getCodigoBrinq()); 
+                        ?>
+                         <div class="produto">
                             <div class="produto-info">
-                                <img src="../imagens/Produtos/Miku/Imagem1.png" class="produto-imagem">
-                                <div class="produto-nome">Pelúcia Hatsune Miku</div>
+                                <img src=<?php $imagem = $prodDao->pesquisarPrimeiraImagemPorCodigoBrinq($produto->getCodigoBrinq()); 
+                                print_r($imagem->getImagem()); ?> class="produto-imagem">
+                                <div class="produto-nome"><?php print_r($produto->getNomeBrinq()) ?></div>
                                 <div class="produto-valor">
-                                    <div class="valor-unidade">R$ 50,00</div>
+                                    <div class="valor-unidade"><?php print_r($produto->getPrecoBrinq()) ?></div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="produto">
-                            <div class="produto-info">
-                                <img src="../imagens/Produtos/Ralsei/ralseideltarune.png" class="produto-imagem">
-                                <div class="produto-nome">Pelúcia Ralsei Deltarune</div>
-                                <div class="produto-valor">
-                                    <div class="valor-unidade">R$ 30,00</div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                            }
+                        ?>
                      </div>   
         </div>
         
     <!-- fim da página da conta -->
+</div>
 </div>
 <?php include("footer.php") ?>
 </body>

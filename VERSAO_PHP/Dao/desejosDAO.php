@@ -26,7 +26,7 @@ class desejosDao {
     }
 
     public function setItemLista(ListaDeFavoritos $itemLista){
-        $stmt = $this->conexao->prepare("INSERT INTO pedido(
+        $stmt = $this->conexao->prepare("INSERT INTO listadefavoritos(
             Codigo_Brinq,Codigo_Usu
         ) VALUES (
              :codigo_brinq, :codigo_usu
@@ -44,6 +44,25 @@ class desejosDao {
     
     }
 
+    public function getItensLista($codigo_usu){
+        $stmt = $this->conexao->prepare("SELECT * FROM listadefavoritos WHERE Codigo_Usu = :codigo_usu");
+        $stmt->bindParam(":codigo_usu",$codigo_usu);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){ //Ve se o número de linhas retornada é maior que zero, basicamente vendo se retornou algo do banco
+            $data = $stmt->fetchAll();
+            $users = [];
+
+            foreach ($data as $item) {
+                $users[] = $this->buildItemLista($item);    
+            }
+        
+            return $users;
+        }else{
+            return false;
+        }
 }
+}
+
 
 ?>

@@ -233,7 +233,7 @@ public function pesquisarPrimeiraImagemPorCodigoBrinq($codigoBrinq) {
         $stmt->bindParam(":codigo", $codigoBrinq);
         $stmt->execute();
         if($stmt->rowCount() > 0) {
-            $data = $stmt->fetchAll();
+            $data = $stmt->fetch();
             $imagem = $this->buildImagem($data);
             return $imagem;
         } else {

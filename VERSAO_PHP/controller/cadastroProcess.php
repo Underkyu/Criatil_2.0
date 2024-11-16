@@ -21,7 +21,7 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
     $tipo = filter_input(INPUT_POST, "Tipo_Usu");
     $imagem = filter_input(INPUT_POST, "Imagem");
 
-    if($nome && $nasc && $email && $senha && $confirmar && $celular && $tipo){ //Verifica se todos os campos estão preenchidos
+    if($nome && $nasc && $email && $senha && $confirmar && $tipo){ //Verifica se todos os campos estão preenchidos
          // validação do nome e sobrenome
         $palavras = explode(" ", trim($nome));
         if (count($palavras) != 2) {
@@ -40,7 +40,9 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
                 $usuario->setNome($nome);
                 $usuario->setNasc($nasc);
                 $usuario->setEmail($email);
+                if($celular) {
                 $usuario->setCelular($celular);
+                }
                 $usuario->setTipo($tipo);
                 $usuario->setSenha($senhaFinal);
                 $usuario->setToken($usuarioToken);

@@ -78,15 +78,14 @@ $usuarioData = $userDao->verificarToken(false);
                 </div>
                 </a>
                 <?php else: ?>
-                    <a href="cadastro.php">
+                    
                     <div class="link_headerHeader">
                     <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_headerHeader"> <!--Icon do perfil-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno">Realizar</p>
-                        <p class="pequeno negrito">Login <span class="pequenospan">ou</span> Cadastro</p>
+                        <p class="pequeno negrito"> <a href="login.php" class="login-a">Login</a> <span class="pequenospan">ou</span> <a href="cadastro.php" class="login-a">Cadastro</a> </p>
                     </div>
                 </div>
-                </a>
                 <?php endif; ?>
 
                 </div>

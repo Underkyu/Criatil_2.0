@@ -27,6 +27,10 @@ if($tipo === "Inserir") {
     $numImagem1 = filter_input(INPUT_POST, "numImagem1");
     $numImagem2 = filter_input(INPUT_POST, "numImagem2");
     $numImagem3 = filter_input(INPUT_POST, "numImagem3");
+    $status = filter_input(INPUT_POST, "Status", FILTER_VALIDATE_INT);
+    if ($status === null) {
+        $status = 0;  // se não estiver marcada, retorna 0 (não oculto)
+    }
 
     if($codSelo && $codCat){
         if($nomeBrinq === null || $nomeBrinq === "" || $precoBrinq === null || $precoBrinq === "" ||
@@ -47,6 +51,7 @@ if($tipo === "Inserir") {
         $produto->setFabricante($fabriBrinq);
         $produto->setDescricao($descBrinq);
         $produto->setFaixaEtaria($faixaBrinq);
+        $produto->setStatus($status);
         $imagem->setImagem($imagem1);
         $imagem->setNumImagem($numImagem1);
 
@@ -85,6 +90,10 @@ if($tipo === "Inserir") {
     $fabriBrinq = filter_input(INPUT_POST,"Fabricante");
     $descBrinq = filter_input(INPUT_POST,"Descricao");
     $faixaBrinq = filter_input(INPUT_POST,"Faixa_Etaria");
+    $status = filter_input(INPUT_POST, "Status", FILTER_VALIDATE_INT);
+    if ($status === null) {
+        $status = 0;  // se não estiver marcada, retorna 0 (não oculto)
+    }
 
     $imagem1 = filter_input(INPUT_POST, "Imagem1");
     $imagem2 = filter_input(INPUT_POST, "Imagem2");
@@ -105,6 +114,7 @@ if($tipo === "Inserir") {
     $produto->setFabricante($fabriBrinq);
     $produto->setDescricao($descBrinq);
     $produto->setFaixaEtaria($faixaBrinq);
+    $produto->setStatus($status);
 
     
     $produtoDao->editaImagem($imagem1, $codigoImagem1, $codigoBrinq, $numImagem1);

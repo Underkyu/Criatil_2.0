@@ -213,6 +213,15 @@ class UsuarioDAO implements UsuarioDAOInterface {
             return false;
         }
     }
+
+    public function atualizaTipo($codigoUsu, $tipoUsu) {
+        $stmt = $this->conexao->prepare("UPDATE usuario SET Tipo_Usu = :tipo WHERE Codigo_Usu = :codigo");
+
+        $stmt->bindParam(":tipo", $tipoUsu);
+        $stmt->bindParam(":codigo", $codigoUsu);
+    
+        $stmt->execute();
+    }
     public function findById($codigo){
 
     }

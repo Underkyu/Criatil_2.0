@@ -54,6 +54,8 @@ $categorias = $produtoDao->getCategorias();
 
                 <?php 
                     foreach ($brinquedos as $brinquedo) {
+                        $status = $brinquedo['Status']; // criando variável que recebe a status do brinquedo atual
+
                         // seleciona a img do brinquedo
                         $stmt = $conn->query("SELECT * FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem");
                         $imagens = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -64,9 +66,15 @@ $categorias = $produtoDao->getCategorias();
                         // caso esteja vazio, deixa como null pra não dar erro
                         $imagem2 = $imagens[1] ?? "";
                         $imagem3 = $imagens[2] ?? "";
+
+                        if ($status == 1) {
+                            $classeAdd = 'brinquedo-oculto';
+                        } elseif ($status == 0) {
+                            $classeAdd = '';
+                        }
                 ?>
 
-                <div class="brinquedo"> 
+                <div class="brinquedo <?php echo $classeAdd; ?>"> 
                     <div class="foto">
                         <img src="<?php echo $imagem1['Imagem']; ?>" alt="Foto do Brinquedo" class="foto"><!--Foto-->
                     </div>
@@ -91,6 +99,7 @@ $categorias = $produtoDao->getCategorias();
                                     data-fabri="<?php echo $brinquedo['Fabricante']; ?>"
                                     data-desc="<?php echo $brinquedo['Descricao']; ?>"
                                     data-faixa="<?php echo $brinquedo['Faixa_Etaria']; ?>"
+                                    data-status="<?php echo $brinquedo['Status']; ?>"
                                     data-imagem1="<?php echo $imagem1['Imagem']; ?>"
                                     data-imagem2="<?php echo $imagem2['Imagem'] ?? ''; ?>"
                                     data-imagem3="<?php echo $imagem3['Imagem'] ?? ''; ?>"
@@ -192,8 +201,12 @@ $categorias = $produtoDao->getCategorias();
         <input type="hidden" name="Tipo" value="Inserir">
         </div>
         </div>
-        <div class="div-btn">
+        <div class="btn-form">
         <button type="submit">Confirmar</button> 
+        <div class="checkbox-div">
+        <label for="Status">Oculto</label>
+        <input type="checkbox" name="Status" id="StatusInsert" value="1">
+        </div>
         </div>
     </form>
 </div>
@@ -283,15 +296,19 @@ $categorias = $produtoDao->getCategorias();
         <input type="hidden" id="codigoImagem1" name="codigoImagem1">
         <input type="hidden" id="codigoImagem2" name="codigoImagem2">
         <input type="hidden" id="codigoImagem3" name="codigoImagem3">
+
         <input type="hidden" name="Tipo" value="Atualizar">
         </div>
         </div>
-        <div class="div-btn">
+        <div class="btn-form">
         <button type="submit">Atualizar</button> 
+        <div class="checkbox-div">
+        <label for="Status">Oculto</label>
+        <input type="checkbox" name="Status" id="Status" value="1">
+        </div>
         </div>
     </form>
 </div>
-
     <?php include("footer.php") ?>
 </body>
 </html>

@@ -106,6 +106,16 @@ if($tipo === "Atualizar"){
             $message->setMessage("Erro!","Tipo de imagem invalido, insira png ou jpg","error","back");
         }
     }
+}elseif ($tipo === "AtualizarTipo") {
+    $codigoUsu = filter_input(INPUT_POST, "Codigo_Usu");
+    $tipoUsu = filter_input(INPUT_POST, "Tipo_Usu");
+
+    if ($codigoUsu && $tipoUsu) {
+        $userDao->atualizaTipo($codigoUsu, $tipoUsu);
+        $message->setMessage("Usuário atualizado", "O usuário foi atualizado com sucesso.", "success", "back");
+    } else {
+        $message->setMessage("Erro!", "Dados inválidos, tente novamente", "error", "back");
+    }
 } else {
     $message->setMessage("Erro!","Informações invalidas","error","back");
 }

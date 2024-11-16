@@ -2,11 +2,15 @@
 require_once("../controller/conexao.php");
 require_once("../controller/global.php");
 
-$stmt = $conn->prepare("SELECT Codigo_Brinq, Nome_Brinq, Preco_Brinq FROM brinquedo");
+$stmt = $conn->prepare("SELECT Codigo_Brinq, Nome_Brinq, Preco_Brinq FROM brinquedo WHERE Status <> 1");
 $stmt->execute();
-
 $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // coloca os dados da tabela em um vetor
+
+$stmt_recentes = $conn->prepare("SELECT Codigo_Brinq, Nome_Brinq, Preco_Brinq FROM brinquedo WHERE Status <> 1 ORDER BY Codigo_Brinq DESC LIMIT 6");
+$stmt_recentes->execute();
+$brinquedos_recentes = $stmt_recentes->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +66,7 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <div class="swiper product">
         <div class="swiper-wrapper">
           <?php
-            foreach ($brinquedos as $brinquedo) {
+            foreach ($brinquedos_recentes as $brinquedo) {
               // seleciona a img do brinquedo atual
               $stmt = $conn->query("SELECT Imagem FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem LIMIT 1");
               $imagem = $stmt->fetch(PDO::FETCH_ASSOC);

@@ -26,6 +26,7 @@ class ProdutoDAO implements ProdutoDAOInterface {
         $produto->setFabricante($data["Fabricante"]);
         $produto->setDescricao($data["Descricao"]);
         $produto->setFaixaEtaria($data["Faixa_Etaria"]);
+        $produto->setStatus($data["Status"]);
 
         return $produto;
     }
@@ -41,8 +42,8 @@ class ProdutoDAO implements ProdutoDAOInterface {
     }
     // usei 'produto' ao invés de brinquedo em muitos lugares, me confundi, mas ainda funciona, só n confunda
     public function criarP(Produto $produto, Imagem $imagem){
-        $stmt = $this->conexao->prepare("INSERT INTO brinquedo (Codigo_Selo, Codigo_Categoria, Nome_Brinq, Preco_Brinq, Nota, Fabricante, Descricao, Faixa_Etaria)
-         VALUES (:codigoSelo, :codigoCategoria, :nomeBrinq, :precoBrinq, :nota, :fabricante, :descricao, :faixaEtaria)");
+        $stmt = $this->conexao->prepare("INSERT INTO brinquedo (Codigo_Selo, Codigo_Categoria, Nome_Brinq, Preco_Brinq, Nota, Fabricante, Descricao, Faixa_Etaria, Status)
+         VALUES (:codigoSelo, :codigoCategoria, :nomeBrinq, :precoBrinq, :nota, :fabricante, :descricao, :faixaEtaria, :status)");
     
         $codigoSelo = $produto->getCodigoSelo();
         $codigoCategoria = $produto->getCodigoCategoria();
@@ -52,6 +53,7 @@ class ProdutoDAO implements ProdutoDAOInterface {
         $fabricante = $produto->getFabricante();
         $descricao = $produto->getDescricao();
         $faixaEtaria = $produto->getFaixaEtaria();
+        $status = $produto->getStatus();
     
         $stmt->bindParam(":codigoSelo", $codigoSelo);
         $stmt->bindParam(":codigoCategoria", $codigoCategoria);
@@ -61,6 +63,7 @@ class ProdutoDAO implements ProdutoDAOInterface {
         $stmt->bindParam(":fabricante", $fabricante);
         $stmt->bindParam(":descricao", $descricao);
         $stmt->bindParam(":faixaEtaria", $faixaEtaria);
+        $stmt->bindParam(":status", $status);
     
         $stmt->execute();
     
@@ -93,7 +96,8 @@ public function atualizaP(Produto $produto, $redirect = true){
     Nota = :nota,
     Fabricante = :fabricante,
     Descricao = :descricao,
-    Faixa_Etaria = :faixaEtaria
+    Faixa_Etaria = :faixaEtaria,
+    Status = :status
     WHERE Codigo_Brinq = :codigo");
 
     $codigoSelo = $produto->getCodigoSelo();
@@ -104,6 +108,7 @@ public function atualizaP(Produto $produto, $redirect = true){
     $fabricante = $produto->getFabricante();
     $descricao = $produto->getDescricao();
     $faixaEtaria = $produto->getFaixaEtaria();
+    $status = $produto->getStatus();
     $codigo = $produto->getCodigoBrinq();
 
     $stmt->bindParam(":codigoSelo", $codigoSelo);
@@ -114,6 +119,7 @@ public function atualizaP(Produto $produto, $redirect = true){
     $stmt->bindParam(":fabricante", $fabricante);
     $stmt->bindParam(":descricao", $descricao);
     $stmt->bindParam(":faixaEtaria", $faixaEtaria);
+    $stmt->bindParam(":status", $status);
     $stmt->bindParam(":codigo", $codigo);
 
     $stmt->execute();
@@ -158,7 +164,7 @@ public function pesquisarPorNome($nomeBrinq) {
     if($nomeBrinq != "") {
         // coloca % antes e depois da variável pra achar resultados parecidos
         $nomeBrinq = '%' . $nomeBrinq . '%';
-        $stmt = $this->conexao->prepare("SELECT * FROM brinquedo WHERE Nome_Brinq LIKE :nome");
+        $stmt = $this->conexao->prepare("SELECT * FROM brinquedo WHERE Nome_Brinq LIKE :nome AND Status <> 1");
         $stmt->bindParam(":nome", $nomeBrinq);
         $stmt->execute();
         if($stmt->rowCount() > 0) {

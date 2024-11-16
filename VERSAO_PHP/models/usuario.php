@@ -116,6 +116,7 @@ interface UsuarioDAOInterface {
     public function findById($codigo);
     public function changePassword(Usuario $user);
     public function destroirToken();
+    public function atualizaTipo($codigoUsu, $tipoUsu);
 }
 
 ?>

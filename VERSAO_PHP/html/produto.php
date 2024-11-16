@@ -12,14 +12,14 @@ $usuarioData = $userDao->verificarToken(false);
 
 $prodDAO = new ProdutoDAO($conn,$BASE_URL);
 $brinquedo = $prodDAO->pesquisarPorCodigo(codigoBrinq: $_GET['codigo']);
+$statusBrinq = $brinquedo->getStatus(); // armazenando status pra exibir mensagem caso essa página não deveria ser acessível
 
 $stmt = $conn->prepare("SELECT * FROM avaliacao WHERE Codigo_Brinq=".$brinquedo->getCodigoBrinq());
 $stmt->execute();
 $numAvaliacoes = $stmt->rowCount();
 $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-$stmt2 = $conn->prepare("SELECT Codigo_Brinq, Nome_Brinq, Preco_Brinq FROM brinquedo");
+$stmt2 = $conn->prepare("SELECT Codigo_Brinq, Nome_Brinq, Preco_Brinq FROM brinquedo WHERE Status <> 1");
 $stmt2->execute();
 
 $brinquedos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
@@ -53,10 +53,8 @@ function renderizarEstrelas($nota) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="w" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Criatil - produto</title>
   </head>
@@ -465,7 +463,25 @@ function renderizarEstrelas($nota) {
     <script src="../js/produto.js"></script>
   <?php include("footer.php") ?>
   </body>
-
+  <?php
+  if ($statusBrinq == 1){
+?>
+  <script>
+    Swal.fire({
+      title: 'ATENÇÃO',
+      text: 'Você não deveria estar vendo essa página. Só prossiga se souber o que está fazendo.',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Voltar',
+      confirmButtonText: 'Continuar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+      } else {
+        window.history.back(); // caso usuário selecione voltar, redireciona pra página anterior
+      }
+    });
+  </script>
+<?php } ?>
   <head>
   <link rel="stylesheet" href="../css/produto.css" />
   <link rel="stylesheet" href="../css/card.css" />

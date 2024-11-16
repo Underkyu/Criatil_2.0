@@ -372,8 +372,7 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     margin-bottom: 15px;
     font-size: 36px;
   }
-  .formInsert-Brinquedo input,
-  .formInsert-Brinquedo select {
+  .formInsert-Brinquedo input {
     width: 70%;
     margin-bottom: 10px;
     height: 55px;
@@ -385,6 +384,7 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     outline: none;
+    background-color: #f0f0f0;
   }
   .formInsert-Brinquedo input::placeholder,
   .formInsert-Brinquedo select::placeholder {
@@ -393,9 +393,25 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
   .select-form {
     padding: 0 15px 0 10px !important;
   }
-  .formInsert-Brinquedo input:focus,
-  .formInsert-Brinquedo select:focus {
+  .formInsert-Brinquedo input:focus {
     border: 2px solid #191a19d3;
+  }
+  .formInsert-Brinquedo select{
+    width: 70%;
+    margin-bottom: 10px;
+    height: 55px;
+    padding: 0 15px 0 15px;
+    border: 3px solid #0476D9;
+    border-radius: 12px;
+    color: black;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+    background-color: white;
+  }
+  .formInsert-Brinquedo select:focus {
+    border: 3px solid #191a19d3;
   }
   .formInsert-Brinquedo button {
     width: 35%;

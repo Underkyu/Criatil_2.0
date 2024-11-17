@@ -22,4 +22,13 @@
     <string name="Cadastro">Cadastro</string>
     <string name="Login">Login</string>
     <string name="encontreBrinquedo">Encontre seu brinquedo aqui!</string>
+    <string name="porapenas">Por apenas</string>
+    <string name="peluciaralsei">Pelúcia Ralsei Deltarune</string>
+    <string name="precopeluciaralsei">R$ 100,00</string>
+    <string name="nerf">Nerf blaster</string>
+    <string name="preconerf">R$ 120,00</string>
+    <string name="peluciamiku">"Pelúsia Miku "</string>
+    <string name="precomiku">R$ 50,00</string>
+    <string name="funko">Boneco Funko Pop</string>
+    <string name="precofunko">R$ 200,00</string>
 </resources>

@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,11 +24,17 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
@@ -42,14 +49,19 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.modifier.modifierLocalMapOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
@@ -70,6 +82,7 @@ import com.example.appcriatil.navigation.CriatilAppRouter
 import com.example.appcriatil.navigation.Screen
 import com.example.appcriatil.ui.theme.TextColor
 import com.example.appcriatil.ui.theme.WhiteColor
+import kotlinx.coroutines.delay
 
 @Composable
 fun ElementoTextoBasico(value:String){
@@ -477,6 +490,7 @@ fun PaddedItem(content: @Composable () -> Unit) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ElementoHomeHeader() {
     val textValue = remember {
@@ -513,7 +527,9 @@ fun ElementoHomeHeader() {
                     .heightIn(64.dp)
                     .widthIn(128.dp)
             )
-            Spacer(modifier = Modifier.size(36.dp).padding(16.dp))
+            Spacer(modifier = Modifier
+                .size(36.dp)
+                .padding(16.dp))
         }
         Row(
             modifier = Modifier
@@ -556,12 +572,126 @@ fun ElementoHomeHeader() {
     }
 }
 
+@Composable
+fun ElementoImageCarousel(images: List<Int>) {
+    val lazyListState = rememberLazyListState()
+
+    LazyRow(
+        state = lazyListState,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 32.dp)
+    ) {
+        items(images.size * 3) { index ->
+            val imageIndex = index % images.size
+            Image(
+                painter = painterResource(id = images[imageIndex]),
+                contentDescription = "Carrossel de imagem",
+                modifier = Modifier
+                    .size(310.dp)
+                    .padding(16.dp)
+                    .shadow(elevation = 10.dp, shape = RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(10.dp))
+            )
+        }
+    }
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(6000) // Delay
+            lazyListState.animateScrollToItem(lazyListState.firstVisibleItemIndex + 1)
+            if (lazyListState.firstVisibleItemIndex == images.size * 1) {
+
+                lazyListState.scrollToItem(images.size, 0)
+            }
+        }
+    }
+}
+
+data class IconData(val iconResId: Int, val label: String)
+
+@Composable
+fun ElementoIconCarousel(iconDataList: List<IconData>, modifier: Modifier = Modifier) {
+    val itemsPerPage = 3
+    val totalPages = (iconDataList.size + itemsPerPage - 1) / itemsPerPage
+    var currentPage by remember { mutableStateOf(0) }
+    val iconsize = 90.dp
+    val lazyListState = rememberLazyListState()
+
+    Box(modifier = modifier) {
+        LazyRow(
+            state = lazyListState,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(iconsize),
+            horizontalArrangement = Arrangement.SpaceAround,
+            contentPadding = PaddingValues(horizontal = 40.dp)
+        ) {
+            itemsIndexed(iconDataList.subList(currentPage * itemsPerPage, minOf((currentPage + 1) * itemsPerPage, iconDataList.size))) { index, iconData ->
+                Icon(
+                    painter = painterResource(id = iconData.iconResId),
+                    contentDescription = iconData.label,
+                    tint = Color.Unspecified,
+                    modifier = Modifier
+                        .size(iconsize)
+                        .clip(CircleShape)
+                        .padding(8.dp)
+                        .border(3.dp, Color(0xFFF2AF00), CircleShape)
+                )
+            }
+        }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.Center),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            IconButton(onClick = { currentPage = maxOf(0, currentPage - 1) }, enabled = currentPage > 0) {
+                Icon(Icons.Filled.ArrowBack, contentDescription = "Voltar")
+            }
+            IconButton(onClick = { currentPage = minOf(totalPages - 1, currentPage + 1) }, enabled = currentPage < totalPages - 1) {
+                Icon(Icons.Filled.ArrowForward, contentDescription = "Próximo")
+            }
+        }
+    }
+}
+
+@Composable
+fun ElementoCardProduto(texto: String, preco: String,painterResource: Painter, onClick: () -> Unit) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .clickable { onClick() }
+            .padding(8.dp)
+            .width(170.dp)
+            .border(1.dp, Color.LightGray, RoundedCornerShape(8.dp))
+            .shadow(elevation = 8.dp, shape = RoundedCornerShape(8.dp))
+            .background(color = Color.White)
+    ) {
+        Image(
+            painter = painterResource,
+            contentDescription = texto,
+            modifier = Modifier.fillMaxWidth()
+                .height(170.dp)
+                .padding(8.dp)
+                .clip(RoundedCornerShape(8.dp))
+            )
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(text = texto, fontSize = 14.sp, color = Color.Black, fontWeight = FontWeight.Bold, modifier = Modifier.padding(4.dp))
+        Text(text = stringResource(R.string.porapenas), fontSize = 14.sp, color = Color.Black, modifier = Modifier.padding(4.dp))
+        Text(text = preco, fontSize = 24.sp, color = Color(0xFFF2AF00), fontWeight = FontWeight.Bold, modifier = Modifier.padding(4.dp))
+    }
+}
+
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun ElementoPreview(){
     Column () {
         Spacer(modifier = Modifier.height(45.dp))
-        ElementoHomeHeader()
+        ElementoCardProduto("Pelúcia Ralsei Deltarune", "R$ 100,00",painterResource(id = R.drawable.ralseideltarune), onClick = ({
+
+        }))
     }
 }
 

@@ -17,7 +17,7 @@ div.detalhes{
   margin-right: auto;
   padding-left: 2rem;
   padding-right: 2rem;
-  max-width: 650px;
+  width: 650px;
 }
 
 div.imagens_menores{/*Imagens menores do produto*/
@@ -150,6 +150,12 @@ p.carrinho{ /*Texto dentro do botão de adicioanar ao carrinho*/
 
 form.form{
   width: 100%;
+}
+
+div.center_imagem{
+  width: 90%;
+  display: flex;
+  justify-content: center;
 }
 
   /*Css doido para fazer um botão igual o do figma*/
@@ -634,7 +640,13 @@ div.product{ /* Div dos produtos*/
   }
   
 }
-
+@media (max-width: 655px) {
+  div.detalhes{ 
+    width: auto;
+    max-width: 650px;
+  }
+  
+}
 /* sm */
 @media (max-width: 640px) {
   .container {

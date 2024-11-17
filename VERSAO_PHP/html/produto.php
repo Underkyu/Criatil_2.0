@@ -24,6 +24,9 @@ $stmt2->execute();
 
 $brinquedos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
+$imagens[] = $prodDAO->pesquisarImagemPorCodigoBrinq($brinquedo->getCodigoBrinq());
+$contador = 0;
+
 function renderizarEstrelas($nota) {
   $estrelasInteiras = floor($nota);
   $meiaEstrela = ($nota - $estrelasInteiras) >= 0.5 ? 1 : 0;
@@ -73,27 +76,20 @@ function renderizarEstrelas($nota) {
           <!-- Swiper -->
           <div class="swiper carrossel" id="carrossel">
             <div class="swiper-wrapper">
+              <?php
+                foreach($imagens as $img){
+                foreach($img as $imagem){
+              ?>
               <div class="swiper-slide">
+                <div class="center_imagem">
                 <img
-                src="../imagens/Produtos/Miku/Imagem1.png"
+                src=<?php print_r($imagem->getImagem()); ?>
                 alt="Primeira imagem"
                 class="imagem_maior carrossel"
                 />
+                </div>
               </div>
-              <div class="swiper-slide">
-                <img
-                src="../imagens/Produtos/Miku/Imagem2.png"
-                alt="Segunda imagem"
-                class="imagem_maior carrossel"
-                />
-              </div>
-              <div class="swiper-slide">
-                <img
-                src="../imagens/Produtos/Miku/Imagem3.png"
-                alt="Terceira imagem"
-                class="imagem_maior carrossel"
-                />
-              </div>
+              <?php $contador++;} }?>
             </div>
             <div class="swiper-pagination"></div>
           </div>
@@ -104,7 +100,6 @@ function renderizarEstrelas($nota) {
           <!--Imagens pequnas que ficam ao lado da maior-->
 
           <?php
-             $imagens[] = $prodDAO->pesquisarImagemPorCodigoBrinq($brinquedo->getCodigoBrinq());
              $imagem = $imagens[0];
   
              if(count($imagens)>=1){

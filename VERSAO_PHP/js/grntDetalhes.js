@@ -24,7 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById('nascimento').value = nascimentoUsuario;
                 document.getElementById('celular').value = celularUsuario;
                 document.getElementById('email').value = emailUsuario;
-                document.getElementById('tipo').value = tipoUsuario;
+
+                const tipoSelect = document.getElementById('tipo');
+                tipoSelect.value = tipoUsuario;
 
             //se data-tipo="brinquedo"
             } else if (tipo === 'brinquedo') { 
@@ -38,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const fabriBrinq = this.getAttribute('data-fabri');
                 const descBrinq = this.getAttribute('data-desc');
                 const faixaBrinq = this.getAttribute('data-faixa');
+                const statusBrinq = this.getAttribute('data-status');
                 const imagem1Brinq = this.getAttribute('data-imagem1');
                 const imagem2Brinq = this.getAttribute('data-imagem2');
                 const imagem3Brinq = this.getAttribute('data-imagem3');
@@ -55,6 +58,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById('fabriBrinq').value = fabriBrinq;
                 document.getElementById('descBrinq').value = descBrinq;
                 document.getElementById('faixaBrinq').value = faixaBrinq;
+                const statusCheckbox = document.getElementById('Status');
+                if (parseInt(statusBrinq) === 1) {
+                    statusCheckbox.checked = true;
+                } else {
+                    statusCheckbox.checked = false;
+                }                
                 document.getElementById('imagem1').value = imagem1Brinq;
                 document.getElementById('imagem2').value = imagem2Brinq;
                 document.getElementById('imagem3').value = imagem3Brinq;

@@ -185,6 +185,14 @@ img.pesquisar{
   display: flex;
   justify-self: center;
 }
+.brinquedo-oculto { /* classe q é aplicada qnd a visibilidade do produto é igual a 1 (oculto) */
+  background-color: #f0f0f0; 
+  opacity: 0.7;
+}
+
+.brinquedo-oculto .foto img {
+  filter: grayscale(100%);
+}
 div.box_brinquedos::-webkit-scrollbar {
   width: 10px;  
 }
@@ -460,6 +468,15 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     width: 100%;
     margin-right: 15px;
   }
+  .btn-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    gap: 30px;
+    margin-top: 4%;
+  }
   .div-q-separa-socorro {
     display: flex;
     width: 100%;
@@ -474,7 +491,7 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
   .formInsert-Brinquedo h2 {
     display: flex;
     align-self: center;
-    margin-bottom: 5px;
+    margin-bottom: 3%;
     font-size: 2.7rem;
     text-align: center;
     font-weight: 500;
@@ -493,6 +510,15 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     font-family: 'Roboto', sans-serif;
     outline: none;
   }
+  input[type="checkbox"] {
+  width: 25px !important;
+  height: 25px !important;
+}
+.checkbox-div{
+  display: flex;
+  align-items: inherit;
+  gap: 10px;
+}
   .formInsert-Brinquedo input::placeholder,
   .formInsert-Brinquedo select::placeholder {
     color: rgb(88, 88, 88);

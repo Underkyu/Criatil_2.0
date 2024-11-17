@@ -106,7 +106,9 @@ input.pesquisa { /*Barra de pesquisa*/
   img.menuSanduicheHeader{ /*Imagem do icon de menu sanduiche*/
     width: 4rem;
   }
-
+  .login-a {
+    color: white;
+  }
   button.menuSanduicheHeader{ /*Botão que abre o menu sanduiche*/
     border: none;
     background-color: transparent;

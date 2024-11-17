@@ -7,7 +7,7 @@ if (isset($_SESSION['produtos'])) {
     $brinquedos = $_SESSION['produtos'];
     unset($_SESSION['produtos']); // tira da sessão depois de aplicar na pág
 } else {
-    $stmt = $conn->prepare("SELECT * FROM brinquedo");
+    $stmt = $conn->prepare("SELECT * FROM brinquedo WHERE Status <> 1");
     $stmt->execute();
     
     $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);

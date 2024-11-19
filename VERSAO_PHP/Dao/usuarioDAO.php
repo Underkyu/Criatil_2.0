@@ -151,7 +151,7 @@ class UsuarioDAO implements UsuarioDAOInterface {
             $token = $_SESSION["token"];
 
             $user = $this->pesquisarPorToken($token);
-
+            
             if($user){
                return $user;
             } else if($protected){
@@ -178,6 +178,10 @@ class UsuarioDAO implements UsuarioDAOInterface {
     public function autenticarUsuario($email, $password){
         $user = $this->pesquisarPorEmail($email);
         if($user){
+            if($user->getTipo() == 'Bloqueado'){
+                $this->message->setMessage("Conta Bloqueada!","Sua conta foi bloqueada, entre em contato para mais detalhes","error","../html/principal.php");
+                exit();
+            }
             if(password_verify($password, $user->getSenha())){
                 $token = $user->gerarToken();
 

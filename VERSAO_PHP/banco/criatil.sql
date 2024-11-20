@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14/11/2024 às 03:18
+-- Tempo de geração: 20/11/2024 às 04:24
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -64,21 +64,24 @@ CREATE TABLE `brinquedo` (
   `Nota` double NOT NULL,
   `Fabricante` varchar(100) NOT NULL,
   `Descricao` varchar(250) NOT NULL,
-  `Faixa_Etaria` varchar(10) NOT NULL
+  `Faixa_Etaria` varchar(10) NOT NULL,
+  `Status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `brinquedo`
 --
 
-INSERT INTO `brinquedo` (`Codigo_Brinq`, `Codigo_Selo`, `Codigo_Categoria`, `Nome_Brinq`, `Preco_Brinq`, `Nota`, `Fabricante`, `Descricao`, `Faixa_Etaria`) VALUES
-(1, 1, 1, 'Hatsune Miku FunkoPop', 89.99, 4.5, 'FunkoMake', 'Uma boneca hatsunemiku de funko pop para todas suas necessidades vocaloidescas', '13+'),
-(2, 1, 1, 'Ralsei FunkoPop', 65.99, 4, 'FunkoCreate', 'Pelúcia do Ralsei from DeltaRune', '7+'),
-(3, 1, 1, 'Bola de Futebol', 39.99, 3, 'FootSolutions', 'Uma bola de futebol para futebol', '0'),
-(4, 2, 2, 'Cubo Mágico', 90.99, 3, 'MagicSolutions', 'Um cubo mágico para suas necessidades puzzlescas', '6+'),
-(5, 2, 1, 'Funko Oshawott', 99.99, 4, 'FunkoMake', 'Um funko pop do Oshawott de Pokemon para Oshawott fans', '9+'),
-(6, 1, 2, 'Alfabeto Libras', 49.99, 5, 'DefSolutions', 'Um alfabeto de libras para pessoas aprenderem libras', '0'),
-(7, 2, 2, 'Arma Nerf', 109.99, 4.5, 'ELITE20', 'Uma arma nerf para diversão com toda a família', '13+');
+INSERT INTO `brinquedo` (`Codigo_Brinq`, `Codigo_Selo`, `Codigo_Categoria`, `Nome_Brinq`, `Preco_Brinq`, `Nota`, `Fabricante`, `Descricao`, `Faixa_Etaria`, `Status`) VALUES
+(1, 1, 1, 'Pelúcia Hatsune Miku', 59.99, 5, 'Plush Japan', 'Uma pelúcia da Hatsune Miku do grupo artístico VOCALOID - 100% Algodão', 'Livre', 0),
+(2, 1, 2, 'Ralsei Funko Pop', 109.99, 4.5, 'FunkoMake', 'Um Funko Pop do personagem Ralsei criado por Toby Fox em DELTARUNE - Feito na China.', 'Livre', 0),
+(3, 1, 1, 'Pelúcia Ralsei', 49.99, 2, 'Plush Japan', 'Uma pelúcia do personagem Ralsei (ASRIEL) de DELTARUNE - Embarque em mundos mágicos e sombrios com esse boneco exclusivo. 100% ALGODÃO [PRODUTO EM FALTA]', 'Livre', 1),
+(4, 2, 10, 'Alfabeto Libras', 49.9, 4, 'TOYSTER', 'Aprendendo o alfabeto em libras - Ensine seus filhos o alfabeto em libras de uma maneira simples e divertida!', '4+', 0),
+(5, 3, 6, 'Jogo da Velha Tátil', 19.99, 4, 'Montesorri', 'Um tabuleiro de jogo da velha interativo/tátil para divertir as crianças - Feito com base de madeira, ele possui peças igualmente em madeira, essa peça é uma ótima opção para um jogo rápido entre filhos, familiares e amigos!', '4+', 0),
+(6, 3, 8, 'Bola de Futebol Acessível', 160.5, 5, 'FUT-5', 'Desenvolvida com guizos internos para melhor localização dos atletas com deficiência visual, a Bola para Futebol Acessível possui a alta tecnologia da marca Ludwig - Diversão igual para todos!', '7+', 0),
+(7, 1, 8, 'Nerf Elite 2.0', 104, 3, 'NERF', 'Com os blasters Nerf Elite 2.0, a batalha atinge um novo nível. Se divirta com todos os amigos no campo! ', '13+', 0),
+(8, 1, 2, 'Oshawott Funko Pop', 101.99, 4.5, 'Funko Pop', 'Leve o pokémon Oshawott para sua coleção! Este Funko Pop original captura o charme único do Pokémon aquático de Unova - Perfeito para fãs e colecionadores!', 'Livre', 0),
+(9, 1, 9, 'Cubo Mágico', 30.99, 4, 'Puzzle Solutions', 'O clássico Cubo Mágico; o desafio ideal para a diversão. Não recomendado para menores de 4 anos - peças digestíveis.', '4+', 0);
 
 -- --------------------------------------------------------
 
@@ -92,18 +95,6 @@ CREATE TABLE `brinqvendido` (
   `Codigo_Brinq` int(11) NOT NULL,
   `Quantidade` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `brinqvendido`
---
-
-INSERT INTO `brinqvendido` (`Codigo_BrinqVendido`, `Codigo_Pedido`, `Codigo_Brinq`, `Quantidade`) VALUES
-(1, 9, 1, 5),
-(2, 9, 2, 5),
-(3, 10, 1, 5),
-(4, 10, 2, 5),
-(5, 11, 1, 1),
-(6, 11, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -133,8 +124,16 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`Codigo_Categoria`, `Nome_Categoria`) VALUES
-(1, 'Funko Pops'),
-(2, 'Gerais');
+(1, 'Pelúcias'),
+(2, 'Funko Pop'),
+(3, 'Carrinhos'),
+(4, 'Eletrônica'),
+(5, 'Arte'),
+(6, 'Tabuleiro'),
+(7, 'Cartas'),
+(8, 'Esportes'),
+(9, 'Quebra-Cabeças'),
+(10, 'Educativos');
 
 -- --------------------------------------------------------
 
@@ -148,13 +147,6 @@ CREATE TABLE `cupom` (
   `Status_Cupom` tinyint(1) NOT NULL,
   `Porcentagem_Cupom` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `cupom`
---
-
-INSERT INTO `cupom` (`Codigo_Cupom`, `Nome_Cupom`, `Status_Cupom`, `Porcentagem_Cupom`) VALUES
-(2, ' ', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -174,22 +166,25 @@ CREATE TABLE `imagem` (
 --
 
 INSERT INTO `imagem` (`Codigo_Imagem`, `Codigo_Brinq`, `Imagem`, `Num_Imagem`) VALUES
-(1, 1, '../imagens/Produtos/Miku/Imagem1.png', 1),
-(2, 1, '../imagens/Produtos/Miku/imagem2.png', 2),
-(3, 1, '../imagens/Produtos/Miku/imagem3.png', 3),
-(4, 2, '../imagens/Produtos/Ralsei/ralseideltarune.png', 1),
-(5, 3, '../imagens/Produtos/Bola/imagem1.png', 1),
-(6, 4, '../imagens/Produtos/CuboMagico/imagem1.png', 1),
-(7, 4, '../imagens/Produtos/CuboMagico/imagem2.png', 2),
-(9, 5, '../imagens/Produtos/Funko/imagem2.png', 1),
-(10, 5, '../imagens/Produtos/Funko/imagem1.png', 2),
-(11, 5, '../imagens/Produtos/Funko/imagem3.png', 3),
-(12, 6, '../imagens/Produtos/Libras/imagem1.png', 1),
-(13, 6, '../imagens/Produtos/Libras/imagem2.png', 2),
-(14, 6, '../imagens/Produtos/Libras/imagem3.png', 3),
-(15, 7, '../imagens/Produtos/Nerf/imagem3.png', 1),
-(16, 7, '../imagens/Produtos/Nerf/imagem2.png', 2),
-(17, 7, '../imagens/Produtos/Nerf/imagem1.png', 3);
+(1, 1, '0d45235dcaf59b4b85c47d65c1f24318e9f04dbd90b6e6b43b1a849cd21ef87a3477ba2105116a3ec70cd60484e4c5511f6470fce1e5e8a8defb9624', 1),
+(2, 1, '01917e3755cb8ea2a9787a9aa8df593369e9130e887c3a03bf0f1152d7de9ae300ca2a2991ecf8a2664a34838dda9b375417312313bbeaacab92270b_2', 2),
+(3, 1, '22288f801386223a25ffd894beed26b649ac2cdd924883b5a36c326597bb1b7f551566c1763c6a53a853a6f83c3f325dcebb5171bb156a5886cc56cd_3', 3),
+(4, 2, '8c9c3f4301c8f25f2f23f53b2db84e366003c3d0b0a46ab54f5172d8d397997e856cd8d08bc069c9858e30c5a0e831f71aa3c20189ee5c0a362e22e5', 1),
+(5, 2, '435e53224c0cd2247b1464884b98639e3cf05303e4eb8895259c5557620d093047a3298bc777303b4090d579cfa6fb8733927520d703d389ada27ed2_2', 2),
+(6, 3, '421b79a1850b1771cf0d1fe17db14cec2858fa4ff9c2b9e63a4ba822537575d55a5dad08e356cc6a7e11b92f7f4c8f38271d691930aaf49b87090ae7', 1),
+(7, 4, '2133673d536e5ee7f7952e9f2cd75262b7f016c717633f893de50f40c2928509e0f75b72047627d76efa2edb12f68358a967e12be8e985388724a681', 1),
+(8, 4, 'a2f9399bd69b1d6357f9ca49a98a7b9d38eefdb2a589d5f7a6cc20a8ceb05998471a846a4f30a2beb4ed5fc3116e24ec4f12b392958b1ae118769c95_2', 2),
+(9, 4, '2c965b54e9bc109139c8bc36243172711e54fa8b4a80a69c6b4a375a2098ba4bb80aa3ad17b1c18a023c945da0a7e6edb1b25615942292e346a030b5_3', 3),
+(10, 5, 'b29b14ef1fe82daf45e44248e7dd94e6b3940bbac9e26618eecad645b6feba2dfd33d43443f2c1771627fa769ed190a94a3528443c5f5d1e0dc34d36', 1),
+(11, 6, 'daeebdec01a5958c9c21903b3a9d2d1e75235d9d6c95729239660bc87341ae304f309444ddfd086b955548622ed0b58c49bfe1c41434600bfb4bf186', 1),
+(12, 7, '4dcb1184dadd322301ed9eab39829759433bc7c59daac5240bccb447702a2e400c2c7126640cecef9305f09fb9daf6d5bae1d26eab7393902236bf23', 1),
+(13, 7, '92a41987f282c7d008aa430ac0ba81edf5c2931751663e7ef03c0a4ac665acffa89cec10ba91fa6db3f2fe4165ae7b1351ad6f7e2ccb099893f75452_2', 2),
+(14, 7, '2995cdb3620ed27101bd7c39d8e57c7725eee7e64a40041ccc9768cc76c4ffadbaac6d46bce36fbefb1b90ca174f3fe21b1d45fc037e036b39166f33_3', 3),
+(15, 8, 'e44c625f72a4cc7815624fbe3e1c218ab90f85c7649a1a454391d667fdcecf9befb16607d0111c08a0cd2f5e4e61211d5aab3a171a97001cc32008da', 1),
+(16, 8, 'dec67f0a10baaa7c881d6f9656fefed9163f675c30d2d0bcfaa160cfa345fc569fed275a44b26feef493a53984e3af0f5acecec4e1b8c12456dcf8bf_2', 2),
+(17, 8, '28da9435c9dc2e46580894e40b6bd93c6e2fd44d7c23b537f5e70993745dad0152cda9be3ec2e7941dd9bbe2962f381926e015fbafd83f13b4e7f37d_3', 3),
+(18, 9, 'e1366b5baf33a41bef793394a0d9c1e0953152024232889dc9293abe5579f7d95128c7b40f71df79784b23193698d0c7301a838de28185d810054242', 1),
+(19, 9, '01164b07cfa657cbcbc99d9827646416c23a20af713f6bf58898fd228c45c776b25e9c3eea688d36a99dc66c7fd525f6bc079aa354fd9fe515cf3c68_2', 2);
 
 -- --------------------------------------------------------
 
@@ -201,6 +196,15 @@ CREATE TABLE `listadefavoritos` (
   `Codigo_Brinq` int(11) NOT NULL,
   `Codigo_Usu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `listadefavoritos`
+--
+
+INSERT INTO `listadefavoritos` (`Codigo_Brinq`, `Codigo_Usu`) VALUES
+(8, 6),
+(6, 6),
+(4, 6);
 
 -- --------------------------------------------------------
 
@@ -218,15 +222,6 @@ CREATE TABLE `pedido` (
   `Status_Pedido` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `pedido`
---
-
-INSERT INTO `pedido` (`Codigo_Pedido`, `Codigo_Usu`, `Codigo_Cupom`, `Preco_Total`, `Forma_Pagamento`, `Data_Pedido`, `Status_Pedido`) VALUES
-(9, 8, 2, 0, '', '2024-11-10 22:58:15', 'Finalizado'),
-(10, 8, 2, 779.9, 'Credito', '2024-11-10 23:01:12', 'Finalizado'),
-(11, 8, 2, 189.98, 'Debito', '2024-11-10 23:04:08', 'Finalizado');
-
 -- --------------------------------------------------------
 
 --
@@ -239,13 +234,6 @@ CREATE TABLE `sac` (
   `email` varchar(255) NOT NULL,
   `mensagem` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `sac`
---
-
-INSERT INTO `sac` (`Codigo_sac`, `nome`, `email`, `mensagem`) VALUES
-(1, 'Eu', 'pessoa@gmail.com', 'Ola tudo bem meu nome é ben10 ben10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10 bn10');
 
 -- --------------------------------------------------------
 
@@ -264,8 +252,9 @@ CREATE TABLE `selo` (
 --
 
 INSERT INTO `selo` (`Codigo_Selo`, `Nome_Selo`, `Imagem_Selo`) VALUES
-(1, 'Deficiente Auditivo', '../imagens/Selo/Auditiva.png'),
-(2, 'Deficiente Visual', '../imagens/Selo/Visual.png');
+(1, 'Sem Selo', ''),
+(2, 'Deficiência Auditiva', 'Auditiva'),
+(3, 'Deficiência Visual', 'Visual');
 
 -- --------------------------------------------------------
 
@@ -277,7 +266,7 @@ CREATE TABLE `usuario` (
   `Codigo_Usu` int(11) NOT NULL,
   `Nome_Usu` varchar(50) NOT NULL,
   `Nasc_Usu` date NOT NULL,
-  `Celular_Usu` varchar(15) NOT NULL,
+  `Celular_Usu` varchar(15) DEFAULT NULL,
   `Email_Usu` varchar(100) NOT NULL,
   `Senha_Usu` varchar(200) NOT NULL,
   `Tipo_Usu` varchar(20) NOT NULL,
@@ -293,7 +282,8 @@ INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Ema
 (1, 'Rosana Siqueira', '1987-12-09', '(11) 97521-1889', 'rosanasiq@gmail.com', '$2y$10$XZK56CKhQ99iIsuxIqIpTOrYEKlrOcvHerqZ8XR.bs62ZYWr.aiva', 'Cliente', '0d07950e4b66af163b072f370b03bf34c1db0ec5a0762c6ed0bf46818945d78c3c1a99c574feaddefb7b3b6e559779274fd6', '31b61e901b185be6e8a58a0730a45c4a75e1c2c491b720ae24786dd2d786b69cfd62157c144af03783c31ba3450d9c3455022457774b236727435b7f'),
 (2, 'Ricardo Souza', '1993-11-09', '(11) 97492-1221', 'ricas@hotmail.com', '$2y$10$NJ.vVoz7s6UaPGYYx3qh3e85K12lqcbeSNaN6tFk8dIcBnKT41doa', 'Cliente', '6ee4c54eb63ec1e147030dcfcf128f8668a3fe811883ab42b2f8195080f52328fd42ea4da7a66e9127cfb658cd15c8167f98', '36ca795a7aef34ad8ad99a7bf4cf7847f0d74978c951cd6ad331f46f94194884f137e6d7e0fae988378005de66359163acc30516b5e85029fc8c7ada'),
 (3, 'Cássio Gomes', '2006-12-01', '(11) 95853-3922', 'elcassio@gmail.com', '$2y$10$vozGTgSShePrI59.WxRnEeIObXf9mLD00FpkNhblQcO11g4e7v/XW', 'Cliente', 'e94d5498fafc9495ec2c02ae5fb6816c78112d3a76e74564ced749fb0f72f68700c26930884e0f7ed293743954f03ff3150e', 'c3b56e4dada6e6b3cdc4fcfa8db41604afc45a8b90d6705937096632b65a6d0448779658fdffda754009182bcc15a0bd3f0256e72467b2d9c3cedf25'),
-(4, 'Guilherme Britos', '1993-01-03', '(11) 93812-1221', 'guigui@gmail.com', '$2y$10$IeX0NVHaz1QFrCcyU55SHOngBpYOPF.M2AjNa5x6l3mT7.i2azxIy', 'Cliente', 'f45743d8716100d1f325ebfae89461f200deacb16edce4caea592b020268dc8588f186697f6bca7d0141c04a9885caec8b80', '0e8d29d27681f1049882ba048a7ad6b394746a1a18d09663701fd94fdf4e012fe9282659daab86ad6f44f788ab9b8040f5a7d94b8227a542c86f3903');
+(4, 'Guilherme Britos', '1993-01-03', '(11) 93812-1221', 'guigui@gmail.com', '$2y$10$IeX0NVHaz1QFrCcyU55SHOngBpYOPF.M2AjNa5x6l3mT7.i2azxIy', 'Cliente', 'f45743d8716100d1f325ebfae89461f200deacb16edce4caea592b020268dc8588f186697f6bca7d0141c04a9885caec8b80', '0e8d29d27681f1049882ba048a7ad6b394746a1a18d09663701fd94fdf4e012fe9282659daab86ad6f44f788ab9b8040f5a7d94b8227a542c86f3903'),
+(5, 'Brito Carrero', '1988-12-08', '(11) 98612-3871', 'brito@gmail.com', '$2y$10$o0WKp5VMVhg21KDDf4bUi.dY37TWVFQYpA7fuItZc7DnTfpn87oNG', 'Cliente', '756a229c0886b4ae0c9b13b488ca9234a2220f4a2b93b52b8b8c084cbcede53f8faa4ad988bd7768a938734c56021848ca0e', '41e988ec496a950e9b049be21b5f6ec8250fad053a968625421e8fcfc87fb01120b232ce90917010110e519d64565a3bfce8529928a27e1a5907b651');
 
 --
 -- Índices para tabelas despejadas
@@ -389,55 +379,55 @@ ALTER TABLE `avaliacao`
 -- AUTO_INCREMENT de tabela `brinquedo`
 --
 ALTER TABLE `brinquedo`
-  MODIFY `Codigo_Brinq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Codigo_Brinq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `brinqvendido`
 --
 ALTER TABLE `brinqvendido`
-  MODIFY `Codigo_BrinqVendido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Codigo_BrinqVendido` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `Codigo_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Codigo_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `cupom`
 --
 ALTER TABLE `cupom`
-  MODIFY `Codigo_Cupom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Codigo_Cupom` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `imagem`
 --
 ALTER TABLE `imagem`
-  MODIFY `Codigo_Imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `Codigo_Imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `Codigo_Pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Codigo_Pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `sac`
 --
 ALTER TABLE `sac`
-  MODIFY `Codigo_sac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Codigo_sac` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `selo`
 --
 ALTER TABLE `selo`
-  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para tabelas despejadas

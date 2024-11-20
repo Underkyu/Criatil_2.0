@@ -269,12 +269,11 @@ if($tipo === "Inserir") {
     }
 
     // verifica que os valores recebidos são preços válidos
-    $precoMin = filter_var($precoMin, FILTER_VALIDATE_FLOAT);
-    $precoMax = filter_var($precoMax, FILTER_VALIDATE_FLOAT);
+
 
     $precoFix = filter_input(INPUT_POST, "precoFix");
 
-    if ($precoFix) {
+    if (isset($precoFix)) {
         switch ($precoFix) {
             case '0-45':
                 $precoMin = 0;
@@ -293,16 +292,25 @@ if($tipo === "Inserir") {
                 $precoMax = null;
                 break;
         }
+    }elseif(!empty($precoMin || !empty($precoMax))){
+        $precoMin = filter_var($precoMin, FILTER_VALIDATE_FLOAT);
+        $precoMax = filter_var($precoMax, FILTER_VALIDATE_FLOAT);
+        if(($precoMin > $precoMax) && (!empty($precoMin) && !empty($precoMax))){
+            $message->setMessage("Parâmetros incorretos", "Por favor tente novamente.", "error", "back");
+            exit();
+        }
     }
+    if((empty($precoMax) || empty($precoMin)) && (!isset($precoFix))){
+        $message->setMessage("Campos vazios", "Por favor, insira algo nos campos.", "warning", "back");
+        exit();
+    }
+
+    if(isset($precoMin) && isset($precoMax)){
     $produtos = $produtoDao->filtraProdutos($precoMin, $precoMax);
     $_SESSION['produtos'] = $produtos;
-
-    if (!$produtos) {
-        $message->setMessage("Nenhuma correspondência", "Nenhum brinquedo encontrado", "error", "../html/catalogo.php");
-    } else {
-        header("Location: ../html/catalogo.php");
+    header("Location: ../html/catalogo.php");
     }
 }else{
-    $message->setMessage("Erro!","Informações invalidas","error","back");
+    $message->setMessage("Erro!","Informações invalidas","warning","back");
 }
 ?>

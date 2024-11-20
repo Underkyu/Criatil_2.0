@@ -66,12 +66,12 @@ require_once("../models/brinquedo.php");
                                 $quantidade = 1;
                                 ?>
                             <div class="produto-info">
-                                <img src=<?php  print_r($imagem[0]->getImagem()) ?> class="produto-imagem">
-                                <div class="produto-nome"><?php print_r($brinquedo->getNomeBrinq()); ?></div>
+                                <img src=<?php echo("../imagens/Produtos/".$imagem[0]->getImagem().".jpeg") ?> class="produto-imagem">
+                                <div class="produto-nome"><?php echo($brinquedo->getNomeBrinq()); ?></div>
                                 <div class="produto-quantidade">
 
                                 <form method="POST" action="../controller/carrinhoProccess.php">
-                                <input type="hidden" name="Contador" value=<?php print_r($contador)?>>
+                                <input type="hidden" name="Contador" value=<?php echo($contador)?>>
                                 <input type="hidden" name="Operacao" value="Diminuir">
                                 <button class="quantidade-botao" name="botao_menos">-</button>
                                 </form>
@@ -79,25 +79,25 @@ require_once("../models/brinquedo.php");
                                     <span class="quantidade-numero" style="display: flex;"><?php
                                     $quantidadeArray = json_decode($_COOKIE["quantidade"], true); // Decodifica o JSON em array associativo
             
-                                    print_r($quantidadeArray[$contador]); 
+                                    echo($quantidadeArray[$contador]); 
                                     ?></span>
                                     
                                     <form method="POST" action="../controller/carrinhoProccess.php">
-                                    <input type="hidden" name="Contador" value=<?php print_r($contador)?>>
+                                    <input type="hidden" name="Contador" value=<?php echo($contador)?>>
                                     <input type="hidden" name="Operacao" value="AdicionarQuant">
                                     <button class="quantidade-botao"  name="botao_mais">+</button>
                                     </form>
                                 </div>
                                 <div class="produto-valor">
                                     <div class="valor_flex">
-                                        <div class="valor-unidade">R$<?php print_r($brinquedo->getPrecoBrinq()); ?>/un.</div>
-                                        <div class="valor-total">R$<?php print_r(($brinquedo->getPrecoBrinq()*$quantidadeArray[$contador])); ?></div>
+                                        <div class="valor-unidade">R$<?php echo(number_format($brinquedo->getPrecoBrinq(), 2, ',', '.')); ?>/un.</div>
+                                        <div class="valor-total">R$<?php echo(number_format(($brinquedo->getPrecoBrinq()*$quantidadeArray[$contador]), 2, ',', '.')); ?></div>
                                     </div>
                                 </div>
                                 <div class="excluir-item">
                                 <form method="POST" action="../controller/carrinhoProccess.php">
                                 <input type="hidden" name="Operacao" value="Excluir">
-                                <input type="hidden" name="Contador" value=<?php print_r($contador)?>>
+                                <input type="hidden" name="Contador" value=<?php echo($contador)?>>
                                     <button class="excluir">
                                         <img src="../imagens/Icons/x.png" alt="Excluir item" class="excluir">
                                     </button>
@@ -135,8 +135,10 @@ require_once("../models/brinquedo.php");
                                 <div class="legenda">Total:</div>
                             </div>
                             <div class="precos">
-                                <div class="preco" id="subtotal"><?php print_r($precoTotal) ?></div>
-                                <div class="preco" id="total"><?php print_r($precoTotal)?></div>
+                                <div class="precos">
+                                    <div class="preco" id="subtotal">R$<?php echo(number_format($precoTotal, 2, ',', '.')); ?></div>
+                                    <div class="preco" id="total">R$<?php echo(number_format($precoTotal, 2, ',', '.')); ?></div>
+                                </div>
                             </div>
                         </div>
                     </div>

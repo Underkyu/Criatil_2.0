@@ -35,13 +35,12 @@ $itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
                 <div class="ft-lateral">
                   <img class="img-lateral" src=<?php
                         if($usuarioData->getImagem() == "vazio") {;
-                            print_r("../imagens/usuarios/usuario.png"); 
-                            
+                            echo("../imagens/usuarios/usuario.png"); 
                         }else{
-                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                            echo("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
                         }?>>
                         <div class="nomelat-div">
-                         <h1 class="nome-lateral"><?php print_r($usuarioData->getNome());?></h1>
+                         <h1 class="nome-lateral"><?php echo($usuarioData->getNome());?></h1>
                         </div>
                         </div>
                     <div class="paginas">
@@ -99,16 +98,16 @@ $itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
                          <div class="produto">
                             <div class="produto-info">
                                 <img src=<?php $imagem = $prodDao->pesquisarPrimeiraImagemPorCodigoBrinq($produto->getCodigoBrinq()); 
-                                print_r($imagem->getImagem()); ?> class="produto-imagem">
-                                <div class="produto-nome"><?php print_r($produto->getNomeBrinq()) ?></div>
+                                echo("../imagens/Produtos/".$imagem->getImagem().".jpeg"); ?> class="produto-imagem">
+                                <div class="produto-nome"><?php echo($produto->getNomeBrinq()) ?></div>
                                 <div class="produto-valor">
-                                    <div class="valor-unidade"><?php print_r($produto->getPrecoBrinq()) ?></div>
+                                    <div class="valor-unidade"><?php echo"R$".(number_format($produto->getPrecoBrinq(), 2, ',', '.')) ?></div>
                                 </div>
                                 <div class="excluir-item">
                                 <form method="POST" action="../controller/desejosProccess.php">
                                 <input type="hidden" name="Operacao" value="Excluir">
-                                <input type="hidden" name="codigoBrinq" value=<?php print_r($produto->getCodigoBrinq())?>>
-                                <input type="hidden" name="codigoUsu" value=<?php print_r($usuarioData->getCodigo())?>>
+                                <input type="hidden" name="codigoBrinq" value=<?php echo($produto->getCodigoBrinq())?>>
+                                <input type="hidden" name="codigoUsu" value=<?php echo($usuarioData->getCodigo())?>>
                                     <button class="excluir">
                                         <img src="../imagens/Icons/x.png" alt="Excluir item" class="excluir">
                                     </button>

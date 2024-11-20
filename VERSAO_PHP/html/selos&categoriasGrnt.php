@@ -72,7 +72,11 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
                         ?>
                             <div class="brinquedo"> 
                             <div class="foto">
-                            <img src=<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".png"; ?> alt="Imagem do Selo" class="foto"><!--Imagem-->
+                            <?php if($selo['Imagem_Selo'] == "") { ?>
+                                    <img src="../imagens/Selo/Sem-Selo.png" alt="Sem Selo" class="foto">
+                            <?php } else { ?>
+                                <img src=<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".png"; ?> alt="Imagem do Selo" class="foto"><!--Imagem-->
+                            <?php } ?>
                             </div>
                                 <p class="informacao"><?php echo $selo['Codigo_Selo']; ?></p> <!--Id-->
                                 <p class="informacao"><?php echo $selo['Nome_Selo']; ?></p> <!--Nome-->

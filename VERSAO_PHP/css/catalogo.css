@@ -21,8 +21,7 @@ body{
 }
 .filtros{
     width: 20%;
-    min-height: 1000px;
-    max-height: 100vh;
+    max-height: 1020px;
     display: flex;
     flex-direction: column;
     align-items: center;

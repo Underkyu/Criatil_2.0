@@ -91,22 +91,34 @@ if (isset($_SESSION['produtos'])) {
                         <form>
                             <!--Filtro por categorias-->
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaBoneco" id="checkCategoria1" /><label>Bonecos</label>
+                                <input type="checkbox" class="checkbox" name="categoriaBoneco" id="checkCategoria1" /><label>Arte</label>
                             </div>
                             <div class="formItem">
                                 <input type="checkbox" class="checkbox" name="categoriaCarrinhos" id="checkCategoria2" /><label>Carrinhos</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaPelucia" id="checkCategoria3" /><label>Pelúcia</label>
+                                <input type="checkbox" class="checkbox" name="categoriaPelucia" id="checkCategoria3" /><label>Cartas</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaTecnicos" id="checkCategoria4" /><label>Técnicos</label>
+                                <input type="checkbox" class="checkbox" name="categoriaTecnicos" id="checkCategoria4" /><label>Educativos</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaEletronicos" id="checkCategoria5" /><label>Eletrônicos</label>
+                                <input type="checkbox" class="checkbox" name="categoriaEletronicos" id="checkCategoria5" /><label>Eletrônica</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Artisticos</label>
+                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Esportes</label>
+                            </div>
+                            <div class="formItem">
+                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Funko Pop</label>
+                            </div>
+                            <div class="formItem">
+                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Pelúcias</label>
+                            </div>
+                            <div class="formItem">
+                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Quebra-Cabeças</label>
+                            </div>
+                            <div class="formItem">
+                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Tabuleiro</label>
                             </div>
                         </form>
                     </div>
@@ -165,7 +177,7 @@ if (isset($_SESSION['produtos'])) {
                     ?>
                     <div class="card swiper-slide">
                         <div class="imagem_card">
-                            <img src="<?php echo $imagem['Imagem']; ?>" class="foto_card">
+                            <img src="<?php echo "../imagens/Produtos/".$imagem['Imagem'].".jpeg"; ?>" class="foto_card">
                         </div>
                         <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
                         <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>

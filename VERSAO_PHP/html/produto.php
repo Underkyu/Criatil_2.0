@@ -19,10 +19,9 @@ $stmt->execute();
 $numAvaliacoes = $stmt->rowCount();
 $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt2 = $conn->prepare("SELECT Codigo_Brinq, Nome_Brinq, Preco_Brinq FROM brinquedo WHERE Status <> 1");
-$stmt2->execute();
-
-$brinquedos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+$stmt_recentes = $conn->prepare("SELECT * FROM brinquedo WHERE Status <> 1 ORDER BY Codigo_Brinq DESC LIMIT 6");
+$stmt_recentes->execute();
+$brinquedos_recentes = $stmt_recentes->fetchAll(PDO::FETCH_ASSOC);
 
 $imagens[] = $prodDAO->pesquisarImagemPorCodigoBrinq($brinquedo->getCodigoBrinq());
 $contador = 0;
@@ -81,7 +80,7 @@ function renderizarEstrelas($nota) {
               <div class="swiper-slide">
                 <div class="center_imagem">
                 <img
-                src=<?php print_r($imagem->getImagem()); ?>
+                src=<?php echo("../imagens/Produtos/".$imagem->getImagem().".jpeg"); ?>
                 alt="Primeira imagem"
                 class="imagem_maior carrossel"
                 />
@@ -105,10 +104,10 @@ function renderizarEstrelas($nota) {
              ?>
               <div
               class="imagem_menor"
-              onclick="mudarImagem('<?php print_r($imagem1->getImagem());?>','block','none','none')"
+              onclick="mudarImagem('<?php echo "../imagens/Produtos/".$imagem1->getImagem().".jpeg"; ?>','block','none','none')"
             >
               <img
-                src=<?php print_r($imagem1->getImagem());?>
+                src=<?php echo("../imagens/Produtos/".$imagem1->getImagem().".jpeg");?>
                 alt="Pelucia Miku de frente"
                 class="imagem_menor"
               />
@@ -128,10 +127,10 @@ function renderizarEstrelas($nota) {
               ?>
             <div
               class="imagem_menor"
-              onclick="mudarImagem('<?php print_r($imagem1->getImagem());?>','none','block','none')"
+              onclick="mudarImagem('<?php echo "../imagens/Produtos/".$imagem1->getImagem().".jpeg"; ?>','none','block','none')"
             >
               <img
-                src=<?php print_r($imagem1->getImagem());?>
+                src=<?php echo("../imagens/Produtos/".$imagem1->getImagem().".jpeg");?>
                 alt="Pelucia Miku de frente"
                 class="imagem_menor"
               />
@@ -151,10 +150,10 @@ function renderizarEstrelas($nota) {
               ?>
                 <div
               class="imagem_menor"
-              onclick="mudarImagem('<?php print_r($imagem1->getImagem());?>','none','none','block')"
+              onclick="mudarImagem('<?php echo "../imagens/Produtos/".$imagem1->getImagem().".jpeg"; ?>','none','none','block')"
             >
               <img
-                src=<?php print_r($imagem1->getImagem());?>
+                src=<?php echo("../imagens/Produtos/".$imagem1->getImagem().".jpeg");?>
                 alt="Pelucia Miku de frente"
                 class="imagem_menor"
               />
@@ -178,7 +177,7 @@ function renderizarEstrelas($nota) {
           $imagem1 = $imagem[0];
         ?>
         <img
-          src="<?php print_r($imagem1->getImagem());?>"
+          src="<?php echo("../imagens/Produtos/".$imagem1->getImagem().".jpeg");?>"
           alt="Imagem maior do produto"
           class="imagem_maior"
           id="imagem_maior"
@@ -187,7 +186,7 @@ function renderizarEstrelas($nota) {
 
         <div class="detalhes">
           <!--Div que contem os detalhes dos produtos-->
-          <h3 class="titulo"><?php print_r($brinquedo->getNomeBrinq());?></h3>
+          <h3 class="titulo"><?php echo($brinquedo->getNomeBrinq());?></h3>
           <!--Nome do produto-->
 
           <div class="avaliacoes_anuncio">
@@ -203,7 +202,7 @@ function renderizarEstrelas($nota) {
           </div>
           <h2 class="preco">R$<?php echo number_format($brinquedo->getPrecoBrinq(), 2, ',', '.'); ?></h2>
           <p class="descricao">
-          <?php print_r($brinquedo->getDescricao());?>
+          <?php echo($brinquedo->getDescricao());?>
           </p>
 
           <p class="quantidade">Quantidade</p>
@@ -227,11 +226,11 @@ function renderizarEstrelas($nota) {
           <input type="hidden" name="Operacao" value="Adicionar">
           <input type="hidden" name="codigoUsu" value=<?php 
           if($usuarioData){
-            print_r($usuarioData->getCodigo());
+            echo($usuarioData->getCodigo());
           }else{
-            print_r("");
+            echo("");
           } ?>> 
-          <input type="hidden" name="codigoBrinq" value=<?php print_r($_GET['codigo'])?>>
+          <input type="hidden" name="codigoBrinq" value=<?php echo($_GET['codigo'])?>>
           <button class="comprar">
             <p class="comprar">Adicionar à lista de desejos</p>
           </button>
@@ -239,7 +238,7 @@ function renderizarEstrelas($nota) {
 
           <form action="../controller/carrinhoProccess.php" class="form" method="POST">
           <input type="hidden" name="Operacao" value="Adicionar">
-          <input type="hidden" name="Codigo" value=<?php print_r($_GET['codigo'])?>>
+          <input type="hidden" name="Codigo" value=<?php echo($_GET['codigo'])?>>
           <button class="carrinho">
             <p class="carrinho">Adicionar ao carrinho</p>
           </button>
@@ -256,19 +255,25 @@ function renderizarEstrelas($nota) {
         <div class="swiper product">
           <div class="swiper-wrapper">
           <?php
-            foreach ($brinquedos as $brinquedo) {
+            foreach ($brinquedos_recentes as $brinquedo) {
               // seleciona a img do brinquedo atual
               $stmt = $conn->query("SELECT Imagem FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem LIMIT 1");
               $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
+
+              $stmt2 = $conn->query("SELECT Imagem_Selo FROM selo WHERE Codigo_Selo = " . $brinquedo['Codigo_Selo']);
+              $selo = $stmt2->fetch(PDO::FETCH_ASSOC);
           ?>
           <!--Div que contem os elementos do card-->
           <div class="card swiper-slide">
             <div class="imagem_card">
-              <img src="<?php echo $imagem['Imagem']; ?>" class="foto_card">
+            <img src=<?php echo("../imagens/Produtos/".$imagem['Imagem'].".jpeg"); ?> class="foto_card">
+              <?php  if ($selo['Imagem_Selo'] != null) { ?>
+                <img src="<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".png"; ?>" class="selo">
+                <?php } ?>
             </div>
             <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
             <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>
-            <a href=<?php print_r("produto.php?codigo=" . $brinquedo['Codigo_Brinq'] )?>>
+            <a href=<?php echo("produto.php?codigo=" . $brinquedo['Codigo_Brinq'] )?>>
               <button class="card">
               <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
               <p class="botao_card"> Comprar!</p>
@@ -324,7 +329,7 @@ function renderizarEstrelas($nota) {
           </div>
       </div>
       
-      <input type="hidden" name="Codigo_Brinq" value=<?php print_r($_GET['codigo']) ?>>
+      <input type="hidden" name="Codigo_Brinq" value=<?php echo($_GET['codigo']) ?>>
       <input type="hidden" name="Tipo" value="Criar">
       </form>
       
@@ -418,10 +423,10 @@ function renderizarEstrelas($nota) {
             <img
               src=<?php
                         if($imagem['Imagem'] == "vazio") {;
-                            print_r("../imagens/usuarios/usuario.png"); 
+                            echo("../imagens/usuarios/usuario.png"); 
                             
                         }else{
-                            print_r("../imagens/usuarios/".$imagem['Imagem'].".jpeg");
+                            echo("../imagens/usuarios/".$imagem['Imagem'].".jpeg");
                         }?>
               alt="Foto de perfil"
               class="foto_perfil"
@@ -430,7 +435,7 @@ function renderizarEstrelas($nota) {
               <!--Detalhes como nome do avaliador e a avaliação em si-->
 
               <div class="nome_avaliacao">
-                <h5 class="nome"><?php print_r($nome['Nome_Usu']); ?></h5>
+                <h5 class="nome"><?php echo($nome['Nome_Usu']); ?></h5>
                 <!--Nome da conta-->
 
                 <!--Estrelas ao lado do nome-->

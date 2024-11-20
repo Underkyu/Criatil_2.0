@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.querySelectorAll('.detalhes').forEach(botao => {
         botao.addEventListener('click', function() {
-            console.log('botão click');
+            console.log('botão de editar clicado');
             const tipo = this.getAttribute('data-tipo');
 
             //se data-tipo="usuario"
@@ -24,7 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById('nascimento').value = nascimentoUsuario;
                 document.getElementById('celular').value = celularUsuario;
                 document.getElementById('email').value = emailUsuario;
-                document.getElementById('tipo').value = tipoUsuario;
+
+                const tipoSelect = document.getElementById('tipo');
+                tipoSelect.value = tipoUsuario;
 
             //se data-tipo="brinquedo"
             } else if (tipo === 'brinquedo') { 
@@ -38,9 +40,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 const fabriBrinq = this.getAttribute('data-fabri');
                 const descBrinq = this.getAttribute('data-desc');
                 const faixaBrinq = this.getAttribute('data-faixa');
-                const imagem1Brinq = this.getAttribute('data-imagem1');
-                const imagem2Brinq = this.getAttribute('data-imagem2');
-                const imagem3Brinq = this.getAttribute('data-imagem3');
+                const statusBrinq = this.getAttribute('data-status');
+                const imagem1 = this.getAttribute('data-nimagem1');
+                const imagem2 = this.getAttribute('data-nimagem2');
+                const imagem3 = this.getAttribute('data-nimagem3');
                 const codigoImagem1 = this.getAttribute('data-codigoimagem1');
                 const codigoImagem2 = this.getAttribute('data-codigoimagem2');
                 const codigoImagem3 = this.getAttribute('data-codigoimagem3');
@@ -55,20 +58,36 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById('fabriBrinq').value = fabriBrinq;
                 document.getElementById('descBrinq').value = descBrinq;
                 document.getElementById('faixaBrinq').value = faixaBrinq;
-                document.getElementById('imagem1').value = imagem1Brinq;
-                document.getElementById('imagem2').value = imagem2Brinq;
-                document.getElementById('imagem3').value = imagem3Brinq;
-                document.getElementById('numImagem1').value = '1';
-                document.getElementById('numImagem2').value = '2';
-                document.getElementById('numImagem3').value = '3';
+                const statusCheckbox = document.getElementById('Status');
+                if (parseInt(statusBrinq) === 1) {
+                    statusCheckbox.checked = true;
+                } else {
+                    statusCheckbox.checked = false;
+                }           
+
+                // define o src das imagens de pré-visualização
+                if (imagem1) {
+                    document.getElementById('Imagem1E').src = "../imagens/Produtos/" + imagem1 + ".jpeg";
+                    document.getElementById('Imagem1E').style.display = 'flex';
+                }
+                
+                if (imagem2) {
+                    document.getElementById('Imagem2E').src = "../imagens/Produtos/" + imagem2 + ".jpeg";
+                    document.getElementById('Imagem2E').style.display = 'flex';
+                } else {
+                    document.getElementById('Imagem2E').style.display = 'none';
+                }
+                
+                if (imagem3) {
+                    document.getElementById('Imagem3E').src = "../imagens/Produtos/" + imagem3 + ".jpeg";
+                    document.getElementById('Imagem3E').style.display = 'flex';
+                } else {
+                    document.getElementById('Imagem3E').style.display = 'none';
+                }
+                
                 document.getElementById('codigoImagem1').value = codigoImagem1;
                 document.getElementById('codigoImagem2').value = codigoImagem2;
                 document.getElementById('codigoImagem3').value = codigoImagem3;
-
-                if (typeof updatePreviews === 'function') {
-                    updatePreviews();
-                    // integração com grntImgPreview.js pra atualizar a img assim que o form abrir
-                }
 
             //se data-tipo="avaliacao"
             }else if (tipo === 'avaliacao') { 

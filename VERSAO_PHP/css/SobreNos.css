@@ -122,6 +122,10 @@ body {
     margin-top: 10px;
 }
 
+#corpo{
+    display: flex;
+    flex-direction: column;
+}
 @media (max-width: 768px) {
     .ParteDeCima {
         padding: 20px;
@@ -137,5 +141,23 @@ body {
     .logo img {
         margin-left: 0;
         margin-top: 0px;
+    }
+    .ParteDeBaixo { /*div q contem os quadrados com informações*/
+        justify-content: center;
+    }
+    .content { /*quadrados com informações*/
+        width: 65%;
+    }
+    .LinhaDoTempo::after {
+        z-index: -1;
+    }
+    .LinhaDoTempo {
+        gap: 100px;
+    }
+}
+
+@media (max-width: 430px) {
+    .content { /*quadrados com informações*/
+        width: 95%;
     }
 }

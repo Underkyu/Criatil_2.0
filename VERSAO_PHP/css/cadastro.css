@@ -15,24 +15,26 @@ body {
     justify-content: start;
     align-items: center;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
-.cadastrinho {
+div.cadastrinho {
     display: flex;
     align-items: stretch;
     flex-direction: column;
     background-color: #ffffff;
     border-radius: 20px;
     width: 550px;
-    padding: 2.5% .5% 2.5% .5%;
+    padding: 2.5% .2% 2.5% .2%;
     box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
-    margin-top: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .cadastrinho img {
     display: flex;
     align-self: center;
-    width: 300px;
+    width: 250px;
     height: auto;
     margin-bottom: 30px;
 }
@@ -180,55 +182,6 @@ a.login:hover {
     .cadastrinho img {
       margin-bottom: 20px;
     }
-}
-
-@media (max-height: 900px) {
-  .cadastrinho {
-      margin-top: 2rem;
-  }
-  .cadastrinho img {
-      width: 250px;
-  }
-}
-
-@media (max-height: 800px) {
-  .cadastrinho {
-      margin-top: 1rem;
-  }
-  .cadastrinho img {
-      width: 200px;
-  }
-}
-
-@media (max-height: 700px) {
-  .cadastrinho {
-      margin-top: 0.5rem;
-      padding: 2% .5% 2% .5%;
-  }
-}
-
-@media (max-height: 650px) {
-  .cadastrinho {
-      margin-top: 0rem;
-      padding: 1% .5% 1.5% .5%;
-  }
-  .botao-entrar, a.login {
-      width: 40%;
-      font-size: 14px;
-  }
-  .input-login {
-      width: 70%;
-  }
-}
-
-@media (max-height: 600px) {
-  .cadastrinho {
-      padding: .5% .5% 1% .5%;
-  }
-  .botao-entrar, a.login {
-      width: 45%;
-      font-size: 12px;
-  }
 }
 
 /* Estilos do footer */

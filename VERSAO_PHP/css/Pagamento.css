@@ -8,7 +8,7 @@ body {
 
 .main-container {
     width: 80%;
-    margin: 180px 275px;
+    margin: 250px auto;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -107,7 +107,7 @@ body {
 
 @media (max-width: 768px) {
     .main-container {
-        margin: 20px;
+        margin: 20px auto; 
         flex-direction: column;
         align-items: center;
     }

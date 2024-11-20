@@ -1,3 +1,20 @@
+<?php
+require_once("../controller/global.php");
+require_once("../controller/conexao.php");
+require_once("../Dao/usuarioDAO.php");
+require_once("../Dao/desejosDAO.php");
+require_once("../Dao/produtoDAO.php");
+require_once("../models/usuario.php");
+
+$desejosDao = new desejosDao($conn, $BASE_URL);
+$userDao = new UsuarioDAO($conn,$BASE_URL);
+$prodDao = new ProdutoDAO($conn,$BASE_URL);
+
+$usuarioData = $userDao->verificarToken(true);
+
+$itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,59 +26,58 @@
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Criatil - Lista de desejos</title>
 </head>
-
-<?php include("header.php")?>
-
 <body>
-    <div class="container">
+<?php include("header.php");?>
+
+<div class="container">
     <!-- página da conta -->
-    <!-- 'navbar-conta' é a barra da esquerda com as páginas -->
-        <div class="navbar-container" id="navbar-conta"> 
-             <div class="lateral-conta">
+            <div class="navbar-container"> 
+                <div class="ft-lateral">
                   <img class="img-lateral" src=<?php
                         if($usuarioData->getImagem() == "vazio") {;
-                            print_r("../imagens/usuarios/usuario.png"); 
-                            
+                            echo("../imagens/usuarios/usuario.png"); 
                         }else{
-                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                            echo("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
                         }?>>
-                  <h1 class="nome-lateral"><?php print_r($usuarioData->getNome());?></h1>
-             </div>
-             <div class="paginas">
-                  <a href="./conta.php" class="paginas-navbar">Perfil</a>
-                  <a href="./pedidos.php" class="paginas-navbar">Pedidos</a>
-                  <a href="#" class="pagina-selecionada">Lista de Desejos</a>
-                  <a href="" class="paginas-navbar" id="sair">Sair</a>
-             </div>
-        </div>
+                        <div class="nomelat-div">
+                         <h1 class="nome-lateral"><?php echo($usuarioData->getNome());?></h1>
+                        </div>
+                        </div>
+                    <div class="paginas">
+                        <a href="./conta.php" class="paginas-navbar">Perfil</a>
+                        <a href="./pedidos.php" class="paginas-navbar">Pedidos</a>
+                        <a href="#" class="pagina-selecionada">Lista de Desejos</a>
+                        <a href="../controller/logout.php" class="paginas-navbar" id="sair">Sair</a>
+                    </div>
+            </div>
                  <!-- botão do menu sanduíche-->
-                 <div class="sanduiche-div">
-                    <button class="menuSanduiche" onclick="block()">
-                     <h1>Minha Conta </h1>
-                       <img id="imagemSanduiche" src="../imagens/Icons/arrow2.png" alt="Menu Sanduiche" class="menuSanduiche">
-                     </button>
-               </div>
-               <!-- fim do botão do menu sanduíche-->
+                  <div class="sanduiche-div">
+                       <button class="menuSanduiche" onclick="blockConta()">
+                        <h1>Minha Conta </h1>
+                          <img id="imagemSanduiche" src="../imagens/Icons/arrow2.png" alt="Menu Sanduiche" class="menuSanduiche">
+                        </button>
+                  </div>
+                  <!-- fim do botão do menu sanduíche-->
 
-             <!-- div do menu sanduíche -->
-                    <div class="menuSanduicheConta" id="menuSanduicheConta">
-                         <div class="link_header link_sanduiche">
-                             <a href="./conta.php" class="paginas-navbar">Perfil</a>
-                         </div>
-         
-                         <div class="link_header link_sanduiche">
-                             <a href="./pedidos.php" class="paginas-navbar">Pedidos</a>
-                         </div>
-         
-                       <div class="link_header link_sanduiche">
-                         <a href="#" class="pagina-selecionada">Lista de Desejos</a>
-                       </div>
+                <!-- div do menu sanduíche -->
+                        <div class="menuSanduicheConta" id="menuSanduicheConta">
+                            <div class="link_header link_sanduiche">
+                                <a href="#" class="pagina-selecionada">Perfil</a>
+                            </div>
+            
+                            <div class="link_header link_sanduiche">
+                                <a href="./pedidos.php" class="paginas-navbar">Pedidos</a>
+                            </div>
+            
+                          <div class="link_header link_sanduiche">
+                            <a href="./desejos.php" class="paginas-navbar">Lista de Desejos</a>
+                          </div>
 
-                       <div class="link_header link_sanduiche">
-                         <a href="" class="paginas-navbar">Sair</a>
-                       </div>
-                     </div>
-             <!-- fim da div do menu sanduíche-->
+                          <div class="link_header link_sanduiche">
+                            <a href="../controller/logout.php" class="paginas-navbar">Sair</a>
+                          </div>
+                        </div>
+                <!-- fim da div do menu sanduíche-->
 
         <!-- 'box' é a caixa da direita com a informação da página escolhida -->
         <div class="box-container" id="box">
@@ -73,30 +89,40 @@
                             <div class="legenda-foto">Foto</div>
                             <div class="legenda-nome">Nome</div>
                             <div class="legenda-valor">Valor</div>
+                            <div class="legenda-espaco"> </div>
                         </div>
-                        <div class="produto">
+                        <?php
+                            foreach($itensLista as $item) {
+                                $produto = $prodDao->pesquisarPorCodigo($item->getCodigoBrinq()); 
+                        ?>
+                         <div class="produto">
                             <div class="produto-info">
-                                <img src="../imagens/Produtos/Miku/Imagem1.png" class="produto-imagem">
-                                <div class="produto-nome">Pelúcia Hatsune Miku</div>
+                                <img src=<?php $imagem = $prodDao->pesquisarPrimeiraImagemPorCodigoBrinq($produto->getCodigoBrinq()); 
+                                echo("../imagens/Produtos/".$imagem->getImagem().".jpeg"); ?> class="produto-imagem">
+                                <div class="produto-nome"><?php echo($produto->getNomeBrinq()) ?></div>
                                 <div class="produto-valor">
-                                    <div class="valor-unidade">R$ 50,00</div>
+                                    <div class="valor-unidade"><?php echo"R$".(number_format($produto->getPrecoBrinq(), 2, ',', '.')) ?></div>
+                                </div>
+                                <div class="excluir-item">
+                                <form method="POST" action="../controller/desejosProccess.php">
+                                <input type="hidden" name="Operacao" value="Excluir">
+                                <input type="hidden" name="codigoBrinq" value=<?php echo($produto->getCodigoBrinq())?>>
+                                <input type="hidden" name="codigoUsu" value=<?php echo($usuarioData->getCodigo())?>>
+                                    <button class="excluir">
+                                        <img src="../imagens/Icons/x.png" alt="Excluir item" class="excluir">
+                                    </button>
+                                </form>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="produto">
-                            <div class="produto-info">
-                                <img src="../imagens/Produtos/Ralsei/ralseideltarune.png" class="produto-imagem">
-                                <div class="produto-nome">Pelúcia Ralsei Deltarune</div>
-                                <div class="produto-valor">
-                                    <div class="valor-unidade">R$ 30,00</div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                            }
+                        ?>
                      </div>   
         </div>
         
     <!-- fim da página da conta -->
+</div>
 </div>
 <?php include("footer.php") ?>
 </body>

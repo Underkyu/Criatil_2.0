@@ -17,6 +17,10 @@ if(!empty($flashMessage["msg"])){
 $userDao = new UsuarioDAO($conn,$BASE_URL);
 
 $usuarioData = $userDao->verificarToken(false);
+if($usuarioData){
+if($usuarioData->getTipo() == 'Bloqueado'){
+    $message->setMessage("Conta Bloqueada!","Sua conta foi bloqueada, entre em contato para mais detalhes","error","../html/principal.php");
+}}  
 ?>
 
 <!DOCTYPE html>
@@ -43,8 +47,8 @@ $usuarioData = $userDao->verificarToken(false);
                 </form>
                 <div class="links_normais">
                 <a href="catalogo.php">
-                <div class="link_header">
-                    <img src="../imagens/Header/produtos.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
+                <div class="link_headerHeader">
+                    <img src="../imagens/Header/produtos.png" alt="Catalogo icon" class="link_headerHeader"> <!--Icon da parte de explorar catalogo-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno">Explorar</p>
                         <p class="pequeno negrito">Catálogo</p>
@@ -53,8 +57,8 @@ $usuarioData = $userDao->verificarToken(false);
                 </a>
 
                 <a href="carrinho.php">
-                <div class="link_header">
-                    <img src="../imagens/Header/carrinho.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
+                <div class="link_headerHeader">
+                    <img src="../imagens/Header/carrinho.png" alt="Carrinho icon" class="link_headerHeader"> <!--Icon do carrinho-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno">Meu</p>
                         <p class="pequeno  negrito">Carrinho</p>
@@ -64,7 +68,62 @@ $usuarioData = $userDao->verificarToken(false);
 
                 <?php if($usuarioData): ?>
                     <a href="conta.php">
-                    <div class="link_header">
+                    <div class="link_headerHeader">
+                    <img src=<?php
+                        if($usuarioData->getImagem() == "vazio") {;
+                            print_r("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                        }?> alt="" class="foto_perfil_header"> <!--Foto do perfil-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno  negrito">Minha Conta</p>
+                    </div>
+                </div>
+                </a>
+                <?php else: ?>
+                    
+                    <div class="link_headerHeader">
+                    <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_headerHeader"> <!--Icon do perfil-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno">Realizar</p>
+                        <p class="pequeno negrito"> <a href="login.php" class="login-a">Login</a> <span class="pequenospan">ou</span> <a href="cadastro.php" class="login-a">Cadastro</a> </p>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                </div>
+
+                <!--Responsividade-->
+
+                <!--Botão para abrir o menu sanduiche-->
+                <button class="menuSanduicheHeader" onclick="block()">
+                    <img src="../imagens/Header/sanduiche.png" alt="Menu Sanduiche" class="menuSanduicheHeader">
+                </button>
+                </div>
+
+
+                <!--Div do menu sanduiche e so aparece no celular-->
+                <div class="menuSanduicheHeader" id="menuSanduicheHeader">
+                    <div class="link_headerHeader link_sanduicheHeader">
+                        <img src="../imagens/Header/produtos.png" alt="Catalogo icon" class="link_headerHeader" id="menuSanduicheHeader"> <!--Icon da parte de explorar catalogo-->
+                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                            <p class="pequeno">Explorar</p>
+                            <p class="pequeno  negrito">Catálogo</p>
+                        </div>
+                    </div>
+
+                    <div class="link_headerHeader link_sanduicheHeader">
+                        <img src="../imagens/Header/carrinho.png" alt="Carrinho icon" class="link_headerHeader"> <!--Icon do carrinho-->
+                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                            <p class="pequeno">Meu</p>
+                            <p class="pequeno  negrito">Carrinho</p>
+                        </div>
+                    </div>
+                    
+                    <?php if($usuarioData): ?>
+                    <a href="conta.php">
+                    <div class="link_headerHeader">
                     <img src=<?php
                         if($usuarioData->getImagem() == "vazio") {;
                             print_r("../imagens/usuarios/usuario.png"); 
@@ -79,8 +138,8 @@ $usuarioData = $userDao->verificarToken(false);
                 </a>
                 <?php else: ?>
                     <a href="cadastro.php">
-                    <div class="link_header">
-                    <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
+                    <div class="link_headerHeader">
+                    <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_headerHeader"> <!--Icon do perfil-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno">Realizar</p>
                         <p class="pequeno negrito">Login <span class="pequenospan">ou</span> Cadastro</p>
@@ -88,43 +147,6 @@ $usuarioData = $userDao->verificarToken(false);
                 </div>
                 </a>
                 <?php endif; ?>
-
-                </div>
-
-                <!--Responsividade-->
-
-                <!--Botão para abrir o menu sanduiche-->
-                <button class="menuSanduicheHeader" onclick="block()">
-                    <img src="../imagens/Header/sanduiche.png" alt="Menu Sanduiche" class="menuSanduiche">
-                </button>
-                </div>
-
-
-                <!--Div do menu sanduiche e so aparece no celular-->
-                <div class="menuSanduiche" id="menuSanduiche">
-                    <div class="link_header link_sanduiche">
-                        <img src="../imagens/Header/produtos.png" alt="Catalogo icon" class="link_header" id="menuSanduiche"> <!--Icon da parte de explorar catalogo-->
-                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                            <p class="pequeno">Explorar</p>
-                            <p class="pequeno  negrito">Catálogo</p>
-                        </div>
-                    </div>
-
-                    <div class="link_header link_sanduiche">
-                        <img src="../imagens/Header/carrinho.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
-                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                            <p class="pequeno">Meu</p>
-                            <p class="pequeno  negrito">Carrinho</p>
-                        </div>
-                    </div>
-                    
-                    <div class="link_header link_sanduiche">
-                        <img src="../imagens/Header/perfil.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
-                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                            <p class="pequeno">Realizar</p>
-                            <p class="pequeno  negrito">Login <span class="pequenospan">ou</span> Cadastro</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

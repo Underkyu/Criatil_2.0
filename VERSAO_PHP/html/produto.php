@@ -3,10 +3,50 @@ require_once("../Dao/produtoDAO.php");
 require_once("../models/brinquedo.php");
 require_once("../controller/global.php");
 require_once("../controller/conexao.php");
+require_once("../Dao/usuarioDAO.php");
+require_once("../models/usuario.php");
+
+$userDao = new UsuarioDAO($conn,$BASE_URL);
+
+$usuarioData = $userDao->verificarToken(false);
 
 $prodDAO = new ProdutoDAO($conn,$BASE_URL);
-$brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
+$brinquedo = $prodDAO->pesquisarPorCodigo(codigoBrinq: $_GET['codigo']);
+$statusBrinq = $brinquedo->getStatus(); // armazenando status pra exibir mensagem caso essa página não deveria ser acessível
 
+$stmt = $conn->prepare("SELECT * FROM avaliacao WHERE Codigo_Brinq=".$brinquedo->getCodigoBrinq());
+$stmt->execute();
+$numAvaliacoes = $stmt->rowCount();
+$avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt_recentes = $conn->prepare("SELECT * FROM brinquedo WHERE Status <> 1 ORDER BY Codigo_Brinq DESC LIMIT 6");
+$stmt_recentes->execute();
+$brinquedos_recentes = $stmt_recentes->fetchAll(PDO::FETCH_ASSOC);
+
+$imagens[] = $prodDAO->pesquisarImagemPorCodigoBrinq($brinquedo->getCodigoBrinq());
+$contador = 0;
+
+function renderizarEstrelas($nota) {
+  $estrelasInteiras = floor($nota);
+  $meiaEstrela = ($nota - $estrelasInteiras) >= 0.5 ? 1 : 0;
+  $estrelasVazias = 5 - ($estrelasInteiras + $meiaEstrela);
+  
+  $htmlEstrelas = '';
+  
+  for ($i = 0; $i < $estrelasInteiras; $i++) {
+      $htmlEstrelas .= '<img src="../imagens/Icons/estrela.png" alt="estrela" class="estrela" />';
+  }
+  
+  if ($meiaEstrela) {
+      $htmlEstrelas .= '<img src="../imagens/Icons/meia_estrela.png" alt="meia estrela" class="estrela" />';
+  }
+  
+  for ($i = 0; $i < $estrelasVazias; $i++) {
+      $htmlEstrelas .= '<img src="../imagens/Icons/estrela_vazia.png" alt="estrela vazia" class="estrela" />';
+  }
+  
+  return $htmlEstrelas;
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,12 +55,8 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
     <meta charset="UTF-8" />
     <meta name="viewport" content="w" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link rel="stylesheet" href="../css/produto.css" />
-    <link rel="stylesheet" href="../css/card.css" />
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Criatil - produto</title>
   </head>
@@ -32,47 +68,35 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
       <!--Inicio div produto-->
       <div class="produto">
         <!--Div que contem as informações principais do produto-->
-
         <!--Inicio Carrossel que só aprece na responsividade-->
         <section class="slider_carrossel">
           <!-- Swiper -->
           <div class="swiper carrossel" id="carrossel">
             <div class="swiper-wrapper">
+              <?php
+                foreach($imagens as $img){
+                foreach($img as $imagem){
+              ?>
               <div class="swiper-slide">
+                <div class="center_imagem">
                 <img
-                src="../imagens/Produtos/Miku/Imagem1.png"
+                src=<?php echo("../imagens/Produtos/".$imagem->getImagem().".jpeg"); ?>
                 alt="Primeira imagem"
                 class="imagem_maior carrossel"
                 />
+                </div>
               </div>
-
-              <div class="swiper-slide">
-                <img
-                src="../imagens/Produtos/Miku/Imagem2.png"
-                alt="Segunda imagem"
-                class="imagem_maior carrossel"
-                />
-              </div>
-
-              <div class="swiper-slide">
-                <img
-                src="../imagens/Produtos/Miku/Imagem3.png"
-                alt="Terceira imagem"
-                class="imagem_maior carrossel"
-                />
-              </div>
+              <?php $contador++;} }?>
             </div>
             <div class="swiper-pagination"></div>
           </div>
         </section>
-
         <!--Fim carrossel-->
 
         <div class="imagens_menores">
           <!--Imagens pequnas que ficam ao lado da maior-->
 
           <?php
-             $imagens[] = $prodDAO->pesquisarImagemPorCodigoBrinq($brinquedo->getCodigoBrinq());
              $imagem = $imagens[0];
   
              if(count($imagens)>=1){
@@ -80,10 +104,10 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
              ?>
               <div
               class="imagem_menor"
-              onclick="mudarImagem('<?php print_r($imagem1->getImagem());?>','block','none','none')"
+              onclick="mudarImagem('<?php echo "../imagens/Produtos/".$imagem1->getImagem().".jpeg"; ?>','block','none','none')"
             >
               <img
-                src=<?php print_r($imagem1->getImagem());?>
+                src=<?php echo("../imagens/Produtos/".$imagem1->getImagem().".jpeg");?>
                 alt="Pelucia Miku de frente"
                 class="imagem_menor"
               />
@@ -103,10 +127,10 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
               ?>
             <div
               class="imagem_menor"
-              onclick="mudarImagem('<?php print_r($imagem1->getImagem());?>','none','block','none')"
+              onclick="mudarImagem('<?php echo "../imagens/Produtos/".$imagem1->getImagem().".jpeg"; ?>','none','block','none')"
             >
               <img
-                src=<?php print_r($imagem1->getImagem());?>
+                src=<?php echo("../imagens/Produtos/".$imagem1->getImagem().".jpeg");?>
                 alt="Pelucia Miku de frente"
                 class="imagem_menor"
               />
@@ -126,10 +150,10 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
               ?>
                 <div
               class="imagem_menor"
-              onclick="mudarImagem('<?php print_r($imagem1->getImagem());?>','none','none','block')"
+              onclick="mudarImagem('<?php echo "../imagens/Produtos/".$imagem1->getImagem().".jpeg"; ?>','none','none','block')"
             >
               <img
-                src=<?php print_r($imagem1->getImagem());?>
+                src=<?php echo("../imagens/Produtos/".$imagem1->getImagem().".jpeg");?>
                 alt="Pelucia Miku de frente"
                 class="imagem_menor"
               />
@@ -153,7 +177,7 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
           $imagem1 = $imagem[0];
         ?>
         <img
-          src="<?php print_r($imagem1->getImagem());?>"
+          src="<?php echo("../imagens/Produtos/".$imagem1->getImagem().".jpeg");?>"
           alt="Imagem maior do produto"
           class="imagem_maior"
           id="imagem_maior"
@@ -162,7 +186,7 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
 
         <div class="detalhes">
           <!--Div que contem os detalhes dos produtos-->
-          <h3 class="titulo"><?php print_r($brinquedo->getNomeBrinq());?></h3>
+          <h3 class="titulo"><?php echo($brinquedo->getNomeBrinq());?></h3>
           <!--Nome do produto-->
 
           <div class="avaliacoes_anuncio">
@@ -172,13 +196,13 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
               <img src="../imagens/Icons/estrela.png" alt="estrela" />
               <img src="../imagens/Icons/estrela.png" alt="estrela" />
               <img src="../imagens/Icons/estrela.png" alt="estrela" />
-              <img src="../imagens/Icons/meia_estrela.png" alt="estrela" />
+              <img src="../imagens/Icons/estrela.png" alt="estrela" />
             </div>
-            <p class="avaliacao">12.6K</p>
+            <p class="avaliacao"><?php echo number_format($numAvaliacoes); ?></p>
           </div>
-          <h2 class="preco">R$<?php print_r($brinquedo->getPrecoBrinq());?></h2>
+          <h2 class="preco">R$<?php echo number_format($brinquedo->getPrecoBrinq(), 2, ',', '.'); ?></h2>
           <p class="descricao">
-          <?php print_r($brinquedo->getDescricao());?>
+          <?php echo($brinquedo->getDescricao());?>
           </p>
 
           <p class="quantidade">Quantidade</p>
@@ -198,16 +222,25 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
               +
             </button>
           </div>
-          <form action=""></form>
+          <form action="../controller/desejosProccess.php" method="POST">
+          <input type="hidden" name="Operacao" value="Adicionar">
+          <input type="hidden" name="codigoUsu" value=<?php 
+          if($usuarioData){
+            echo($usuarioData->getCodigo());
+          }else{
+            echo("");
+          } ?>> 
+          <input type="hidden" name="codigoBrinq" value=<?php echo($_GET['codigo'])?>>
           <button class="comprar">
-            <p class="comprar">Adiconar à lista de favoritos</p>
+            <p class="comprar">Adicionar à lista de desejos</p>
           </button>
+          </form>
 
           <form action="../controller/carrinhoProccess.php" class="form" method="POST">
           <input type="hidden" name="Operacao" value="Adicionar">
-          <input type="hidden" name="Codigo" value=<?php print_r($_GET['codigo'])?>>
+          <input type="hidden" name="Codigo" value=<?php echo($_GET['codigo'])?>>
           <button class="carrinho">
-            <p class="carrinho">Adiconar ao carrinho</p>
+            <p class="carrinho">Adicionar ao carrinho</p>
           </button>
           </form>
         </div>
@@ -221,218 +254,74 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
         <div class="swiper-button-prev seta prev-product"></div>
         <div class="swiper product">
           <div class="swiper-wrapper">
-            <!--Div que contem os elementos do card-->
-            <div class="card swiper-slide">
-              <div class="imagem_card">
-                <img
-                  src="../imagens/Produtos/Miku/Imagem1.png"
-                  alt="Pelúcia Hatsune Miku"
-                  class="foto_card"
-                />
-              </div>
+          <?php
+            foreach ($brinquedos_recentes as $brinquedo) {
+              // seleciona a img do brinquedo atual
+              $stmt = $conn->query("SELECT Imagem FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem LIMIT 1");
+              $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
 
-              <h4 class="titulo_card">Pelúcia Hatsune Miku</h4>
-              <p class="texto_pequeno">Por apenas</p>
-              <h3 class="preco">R$99,99</h3>
-
-              <button class="card">
-                <!--Botão de comprar-->
-                <img
-                  src="../imagens/Icons/carrinho.png"
-                  alt="Carrinho"
-                  class="botao_card"
-                />
-                <p class="botao_card">Comprar!</p>
-              </button>
+              $stmt2 = $conn->query("SELECT Imagem_Selo FROM selo WHERE Codigo_Selo = " . $brinquedo['Codigo_Selo']);
+              $selo = $stmt2->fetch(PDO::FETCH_ASSOC);
+          ?>
+          <!--Div que contem os elementos do card-->
+          <div class="card swiper-slide">
+            <div class="imagem_card">
+            <img src=<?php echo("../imagens/Produtos/".$imagem['Imagem'].".jpeg"); ?> class="foto_card">
+              <?php  if ($selo['Imagem_Selo'] != null) { ?>
+                <img src="<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".png"; ?>" class="selo">
+                <?php } ?>
             </div>
-            <!--Fim card-->
-
-            <!--Div que contem os elementos do card-->
-            <div class="card swiper-slide">
-              <div class="imagem_card">
-                <img
-                  src="../imagens/Produtos/CuboMagico/imagem1.png"
-                  alt="Cubo Magico Tatil"
-                  class="foto_card"
-                />
-                <img
-                  src="../imagens/Selo/Visual.png"
-                  alt="Selo de deficiencia visual"
-                  class="selo_deficiencia"
-                />
-              </div>
-
-              <h4 class="titulo_card">Cubo Magico Tatil</h4>
-              <p class="texto_pequeno">Por apenas</p>
-              <h3 class="preco">R$39,99</h3>
-
+            <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
+            <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>
+            <a href=<?php echo("produto.php?codigo=" . $brinquedo['Codigo_Brinq'] )?>>
               <button class="card">
-                <!--Botão de comprar-->
-                <img
-                  src="../imagens/Icons/carrinho.png"
-                  alt="Carrinho"
-                  class="botao_card"
-                />
-                <p class="botao_card">Comprar!</p>
+              <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
+              <p class="botao_card"> Comprar!</p>
               </button>
+            </a>
             </div>
-            <!--Fim card-->
-
-            <!--Div que contem os elementos do card-->
-            <div class="card swiper-slide">
-              <div class="imagem_card">
-                <img
-                  src="../imagens/Produtos/Nerf/imagem1.png"
-                  alt="Arma Nerf"
-                  class="foto_card"
-                />
-                <img
-                  src="../imagens/Selo/Desconto.png"
-                  alt="Selo de desconto"
-                  class="selo_desconto"
-                />
-              </div>
-
-              <h4 class="titulo_card">Pistola Nerf</h4>
-              <s class="texto_pequeno">R$99,99</s>
-              <h3 class="preco">R$79,99</h3>
-
-              <button class="card">
-                <!--Botão de comprar-->
-                <img
-                  src="../imagens/Icons/carrinho.png"
-                  alt="Carrinho"
-                  class="botao_card"
-                />
-                <p class="botao_card">Comprar!</p>
-              </button>
-            </div>
-            <!--Fim card-->
-
-            <!--Div que contem os elementos do card-->
-            <div class="card swiper-slide">
-              <div class="imagem_card">
-                <img
-                  src="../imagens/Produtos/Funko/imagem1.png"
-                  alt="Funko Pop Oshawott"
-                  class="foto_card"
-                />
-              </div>
-
-              <h4 class="titulo_card">Funko Pop Oshawott</h4>
-              <p class="texto_pequeno">Por apenas</p>
-              <h3 class="preco">R$129,99</h3>
-
-              <button class="card">
-                <!--Botão de comprar-->
-                <img
-                  src="../imagens/Icons/carrinho.png"
-                  alt="Carrinho"
-                  class="botao_card"
-                />
-                <p class="botao_card">Comprar!</p>
-              </button>
-            </div>
-            <!--Fim card-->
-
-            <!--Div que contem os elementos do card-->
-            <div class="card swiper-slide">
-              <div class="imagem_card">
-                <img
-                  src="../imagens/Produtos/Bola/imagem1.png"
-                  alt="Bola com Guizo"
-                  class="foto_card"
-                />
-                <img
-                  src="../imagens/Selo/Visual.png"
-                  alt="Selo de deficiencia visual"
-                  class="selo_deficiencia"
-                />
-              </div>
-
-              <h4 class="titulo_card">Bola com Guizo</h4>
-              <p class="texto_pequeno">Por apenas</p>
-              <h3 class="preco">R$119,99</h3>
-
-              <button class="card">
-                <!--Botão de comprar-->
-                <img
-                  src="../imagens/Icons/carrinho.png"
-                  alt="Carrinho"
-                  class="botao_card"
-                />
-                <p class="botao_card">Comprar!</p>
-              </button>
-            </div>
-            <!--Fim card-->
-
-            <!--Div que contem os elementos do card-->
-            <div class="card swiper-slide">
-              <div class="imagem_card">
-                <img
-                  src="../imagens/Produtos/Libras/imagem1.png"
-                  alt="Jogo alfabeto em libras"
-                  class="foto_card"
-                />
-                <img
-                  src="../imagens/Selo/Desconto.png"
-                  alt="Selo de desconto"
-                  class="selo_desconto"
-                />
-                <img
-                  src="../imagens/Selo/Auditiva.png"
-                  alt="Selo de deficiencia auditiva"
-                  class="selo_deficiencia"
-                />
-              </div>
-
-              <h4 class="titulo_card">Jogo Alfabeto em Libras</h4>
-              <s class="texto_pequeno">R$69,99</s>
-              <h3 class="preco">R$59,99</h3>
-
-              <button class="card">
-                <!--Botão de comprar-->
-                <img
-                  src="../imagens/Icons/carrinho.png"
-                  alt="Carrinho"
-                  class="botao_card"
-                />
-                <p class="botao_card">Comprar!</p>
-              </button>
-            </div>
-            <!--Fim card-->
+          <!--Fim card-->
+          <?php } ?>
           </div>
           <div class="swiper-pagination"></div>
         </div>
         <div class="swiper-button-next seta next-product"></div>
       </div>
       <!--Fim product slider 1-->
+
+      <form method="POST" action="../controller/avaliacaoProcess.php">
       <div class="add_ava">
         <div class="ava_container">
-      <h2 class="add_ava">Deixe sua avalição</h2>
+      <h2 class="add_ava">Deixe sua avaliação</h2>
         <div class="titulo_ava">
           <div class="input_ava">
           <h3 class="titulo_input_ava">Titulo</h3>
-          <input type="text" class="titulo_ava" placeholder="Digite o título da avaliação">
+          <input type="text" class="titulo_ava" name="Titulo_Ava" placeholder="Digite o título da avaliação">
           </div>
-        
+    
           <div class="input_ava">
           <h3 class="titulo_input_ava">Estrelas</h3>
-          <select name="" id="" class="num_estrelas"><!--Select com o tipo de cliente e no qual o garente irá mudar para bloqueado para bloquear o acesso da conta ao site-->
-            <option value= 5>5</option>
-            <option value= 4>4</option>
-            <option value= 3>3</option>
-            <option value= 2>2</option>
+          <select name="Nota_Ava" class="num_estrelas">
+            <option value= 0>0</option>
+            <option value= 0.5>0,5</option>
             <option value= 1>1</option>
+            <option value= 1.5>1,5</option>
+            <option value= 2>2</option>
+            <option value= 2.5>2,5</option>
+            <option value= 3>3</option>
+            <option value= 3.5>3,5</option>
+            <option value= 4>4</option>
+            <option value= 4.5>4,5</option>
+            <option value= 5>5</option>
           </select>
           </div>
         </div>
         <div class="comentario">
-            <h3 class="titulo_input_ava">Comentario</h3>
-            <input type="text" class="comentario" placeholder="Deixe aqui sua opinião do produto">
+            <h3 class="titulo_input_ava">Comentário</h3>
+            <input type="text" maxlength="150" class="comentario" name="Comentario" placeholder="Deixe aqui sua opinião do produto">
         </div>
         <div class="botao_ava">
-          <button class="add_ava">
+          <button class="add_ava" type="submit">
             <img src="../imagens/Gerente/mais.png" alt="Adicionar" class="add_ava_button">
             <p class="add_ava_button">Adicionar avaliação</p>
           </button>
@@ -440,6 +329,9 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
           </div>
       </div>
       
+      <input type="hidden" name="Codigo_Brinq" value=<?php echo($_GET['codigo']) ?>>
+      <input type="hidden" name="Tipo" value="Criar">
+      </form>
       
       <h2 class="avaliacoes">Avaliações</h2>
       <!--Titulo avaliações-->
@@ -518,10 +410,24 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
         <div class="avaliacoes">
           <!--Avalições em si-->
 
+          <?php
+            foreach ($avaliacoes as $avaliacao) {
+              // seleciona a img do brinquedo atual
+              $stmt = $conn->query("SELECT Imagem FROM usuario WHERE Codigo_Usu  = " . $avaliacao['Codigo_Usu']);
+              $imagem = $stmt->fetch(mode: PDO::FETCH_ASSOC);
+              $stmt2 = $conn->query("SELECT Nome_Usu FROM usuario WHERE Codigo_Usu  = " . $avaliacao['Codigo_Usu']);
+              $nome = $stmt2->fetch(mode: PDO ::FETCH_ASSOC);
+          ?>
           <!--Começo card avaliação-->
           <div class="card_avaliacao">
             <img
-              src="../imagens/usuarios/c33ea36009bd947b52c4af7a04462acf9b6090d5c10c3fb988b0137a390fd4e9998305aaedc42b3b7f7b65a8555a023fcf8f4450db2031b64ef86f74.jpeg"
+              src=<?php
+                        if($imagem['Imagem'] == "vazio") {;
+                            echo("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            echo("../imagens/usuarios/".$imagem['Imagem'].".jpeg");
+                        }?>
               alt="Foto de perfil"
               class="foto_perfil"
             /><!--Foto de perifl da avalição-->
@@ -529,77 +435,24 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
               <!--Detalhes como nome do avaliador e a avaliação em si-->
 
               <div class="nome_avaliacao">
-                <h5 class="nome">Kasane Teto</h5>
+                <h5 class="nome"><?php echo($nome['Nome_Usu']); ?></h5>
                 <!--Nome da conta-->
 
                 <!--Estrelas ao lado do nome-->
                 <div class="estrelas">
-                <img
-                  src="../imagens/Icons/estrela.png"
-                  alt="estrela"
-                  class="primeira_estrela"
-                />
-                <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                <img
-                  src="../imagens/Icons/meia_estrela.png"
-                  alt="meia estrela"
-                />
-              </div>
+                <?php echo renderizarEstrelas($avaliacao['Nota_Ava']); ?>
+               </div>
               </div>
 
-              <p class="titulo_avaliacao">Amei</p>
+              <p class="titulo_avaliacao"><?php echo($avaliacao['Titulo_Ava']); ?></p>
               <!--Titulo da avaliacao-->
 
-              <p class="texto_avaliacao">
-                Produto de otima qualidade, entrega rápida e é a hatsune miku
-                \o/
-              </p>
+              <p class="texto_avaliacao"> <?php echo($avaliacao['Comentario']); ?></p>
               <!--Texto da avaliacao-->
             </div>
           </div>
           <!--Fim card avaliação-->
-
-          <!--Começo card avaliação-->
-          <div class="card_avaliacao">
-            <img
-              src="../imagens/usuarios/4e013b07ab6cef43b541146e37ef01352f11ba946179b07bd4486042a250335f8cbc03694a1e7f5a6874461103e1e19c6e774a135ead7ba1652e7b0b.jpeg"
-              alt="Foto de perfil"
-              class="foto_perfil"
-            /><!--Foto de perifl da avalição-->
-            <div class="detalhes_avaliacoes">
-              <!--Detalhes como nome do avaliador e a avaliação em si-->
-
-              <div class="nome_avaliacao">
-                <h5 class="nome">Gumi</h5>
-                <!--Nome da conta-->
-
-                <!--Estrelas ao lado do nome-->
-                <div class="estrelas">
-                  <img
-                    src="../imagens/Icons/estrela.png"
-                    alt="estrela"
-                    class="primeira_estrela"
-                  />
-                  <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                  <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                  <img src="../imagens/Icons/estrela.png" alt="estrela" />
-                  <img
-                    src="../imagens/Icons/meia_estrela.png"
-                    alt="meia estrela"
-                  />
-                </div>
-              </div>
-
-              <p class="titulo_avaliacao">Miku</p>
-              <!--Titulo da avaliacao-->
-
-              <p class="texto_avaliacao">Miku you can call me Miku</p>
-              <!--Texto da avaliacao-->
-            </div>
-          </div>
-          <!--Fim card avaliação-->
+          <?php } ?>
         </div>
       </div>
     </div>
@@ -610,4 +463,27 @@ $brinquedo = $prodDAO->pesquisarPorCodigo($_GET['codigo']);
     <script src="../js/produto.js"></script>
   <?php include("footer.php") ?>
   </body>
+  <?php
+  if ($statusBrinq == 1){
+?>
+  <script>
+    Swal.fire({
+      title: 'ATENÇÃO',
+      text: 'Você não deveria estar vendo essa página. Só prossiga se souber o que está fazendo.',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Voltar',
+      confirmButtonText: 'Continuar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+      } else {
+        window.history.back(); // caso usuário selecione voltar, redireciona pra página anterior
+      }
+    });
+  </script>
+<?php } ?>
+  <head>
+  <link rel="stylesheet" href="../css/produto.css" />
+  <link rel="stylesheet" href="../css/card.css" />
+  </head>
 </html>

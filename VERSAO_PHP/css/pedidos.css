@@ -3,20 +3,19 @@
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0px;
     padding: 0px;
-    }
-    #navbar-conta {
-        margin-left: 0.5%;
-        margin-right: 0.5%;
-        padding: 1rem;
-        height: 100%;
-        width: 350px;
-        color: rgb(0, 0, 0);
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        flex-direction: column;
-    }
-.lateral-conta {
+}
+.navbar-container {
+    padding: 1.5rem;
+    width: 35%;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.ft-lateral{
+    display: flex;
+}
+.lateral-conta { 
     display: flex;
     flex-direction: row;
     align-items: center;    
@@ -24,17 +23,23 @@
     width: 100%;
 }
 .img-lateral {
-    width: 105px;
-    height: 105px;
-    object-fit: cover;  
+    object-fit: cover;
     border-radius: 100px;
     border: solid #F2AF00 3px;
+    width: 110px;
+    height: 110px;
+}
+.nomelat-div {
+    width: 100%;
+    display: flex;
 }
 .nome-lateral {
-    font-size: 26px;
+    font-size: 1.6vw;
     font-weight: 500;
-    padding: 17px;
-    white-space: nowrap;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #navbar-conta a {
     text-decoration: none;
@@ -60,7 +65,7 @@
     text-decoration: none;
     color: black;
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size:calc(4px + 1.3vw); /* MANO isso aqui define o tamanho minimo da fonte mas ainda sendo responsivo e é genial */
     padding-top: 5px;
 }
 .paginas {
@@ -69,6 +74,8 @@
     align-items: flex-start;
     width: 85%;
     padding: 10px;
+    margin-top: 15px;
+    gap: 20px;
 }
 #box{
     display: flex;
@@ -76,8 +83,8 @@
     justify-content: center;
     flex-direction: column;
     background-color: #0476D9;
-    width: 940px;
-    height: 480px;
+    width: 60%;
+    height: 500px;
     padding: 10px;
     border-radius: 20px;  
 }
@@ -87,7 +94,7 @@
     font-size: 36px;
     font-family: 'Arial';
     padding: 15px;
-}  
+}   
 #pedidos {
     margin-left: 2rem;
     margin-right: 2rem;
@@ -160,10 +167,12 @@
 /* css do menu sanduíche */
 .sanduiche-div{
     align-items: center;
+    display: none;
     justify-content: center;
 }
 img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     width: 2rem;
+    margin-left: .5rem;
     transition-duration: 0.2s;
 }
 .girar {
@@ -181,7 +190,7 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
   div.link_sanduiche{ /*Conteudo do menu sanduiche*/
     display: inherit;
   }
-  div.menuSanduiche{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
+  div.menuSanduicheConta{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
     display: none;
     align-items: center;
     overflow: hidden;
@@ -204,23 +213,10 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     opacity: 1;
     visibility: visible;
     height: 2.6rem;
-    margin-bottom: 20px;
-    align-items: center;
-  }
-  .open_header{ /*Classe que serve para tornar o menu sanduiche visivel*/
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    overflow: hidden;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-    height: 2.6rem;
-    margin-bottom: 20px;
     align-items: center;
   }
   /* fim do css do menu sanduíche */
+
   /* estilos gerais da barra de rolagem */
   .produtos-container::-webkit-scrollbar {
     height: 20px;
@@ -240,31 +236,23 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
 
 /*Responsividade*/
 .container {
-    max-width: 1425px;
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     justify-content: center;
-    display: flex;
-    flex-direction: row;
-  }
-    /* 2xl */
-    @media (max-width: 1536px) {
-        .container {
-          max-width: 1280px;
-        }
-      }
-      @media(min-width: 1440px) {
-        #navbar-conta a {
-            font-size: 26px;
-        }
-        .nome-lateral {
-            font-size: 28px;
-            white-space: nowrap;
-        }
-      }
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 /* responsividade hilario*/
-
+@media (min-width: 1500px) {
+    .container {
+        margin: 0 1rem 0 1rem;
+    }
+    #box {
+        width: 1100px;
+    }
+}
 @media (max-width: 1150px) {
     #navbar-conta {
         width: 290px;

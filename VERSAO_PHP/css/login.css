@@ -3,39 +3,38 @@
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0px;
   padding: 0px;
-  }
-
-html, body {
-height: 100%;
 }
 
 body {
-background-image: url(../imagens/backgrounds/fundo01.png); /* caminho da img de fundo */
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
-overflow: hidden;
-display: flex;
-align-items: center;
-flex-direction: column;
+  background-image: url(../imagens/backgrounds/fundo01.png); /* caminho da img de fundo */
+  background-repeat: no-repeat;
+  background-size: fill;
+  background-position:center;
+  overflow: hidden;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
 }
 
 .loginzinho {
   display: flex;
-  margin-top: 100px;
   align-items: stretch;
   flex-direction: column;
   background-color: #ffffff;
   border-radius: 20px;
   width: 500px;
-  padding: 3.5% 1.5% 3.5% 1.5%;
+  padding: 2.5% .2% 2.5% .2%;
   box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .loginzinho img {
   display: flex;
   align-self: center;
-  width: 300px;
+  width: 250px;
   height: auto;
   margin-bottom: 30px;
 }

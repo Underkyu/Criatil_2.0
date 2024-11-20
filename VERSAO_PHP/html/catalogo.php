@@ -7,8 +7,10 @@ if (isset($_SESSION['produtos'])) {
     $brinquedos = $_SESSION['produtos'];
     unset($_SESSION['produtos']); // tira da sessão depois de aplicar na pág
 } else {
-    // se não der resultado na pesquisa, deixa o vetor vazio
-    $brinquedos = [];
+    $stmt = $conn->prepare("SELECT * FROM brinquedo WHERE Status <> 1");
+    $stmt->execute();
+    
+    $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 
@@ -32,7 +34,6 @@ if (isset($_SESSION['produtos'])) {
             <div class="titulofiltro">
                 <h1 class="filtros-titulo">FILTROS</h1>
             </div>
-            <br>
                 <button id="prev-button"><img src="../imagens/icons/arrow-24-64.png" alt="voltar"></button>
                 <div id="itemSlider1" class="variados">
                     <!--Filtro por parâmetros-->
@@ -47,26 +48,33 @@ if (isset($_SESSION['produtos'])) {
                         </div>
                     </div>
                     <div class="formFiltro hidden">
-                        <form>
+                        <form method="POST" action="../controller/produtoProcess.php">
                             <!--Filtro por preço-->
                             <div class="formItem">
-                                <input type="radio" class="radioButton" name="precoFix" id="radioPreco1" /><label>Até R$45</label>
+                            <input type="radio" class="radioButton" name="precoFix" id="radioPreco1" value="0-45" />
+                            <label>Até R$45</label>
                             </div>
                             <div class="formItem">
-                                <input type="radio" class="radioButton" name="precoFix" id="radioPreco2" /><label>R$45 - R$100</label>
+                            <input type="radio" class="radioButton" name="precoFix" id="radioPreco2" value="45-100" />
+                            <label>R$45 - R$100</label>
                             </div>
                             <div class="formItem">
-                                <input type="radio" class="radioButton" name="precoFix" id="radioPreco3" /><label>Acima de R$100</label>
+                            <input type="radio" class="radioButton" name="precoFix" id="radioPreco3" value="100+" />
+                            <label>Acima de R$100</label>
                             </div>
+                            <div class="faixaPreco2">
                             <div class="faixaPreco">
-                                <input type="number" class="inputPreco" name="precoMin" id="filtroPrecoMin" placeholder="Min">
+                                <input type="text" class="inputPreco" name="precoMin" id="filtroPrecoMin" placeholder="Min" oninput="validarNumero(this)">
                                 <p>-</p>
-                                <input type="number" class="inputPreco" name="precoMax" id="filtroPrecoMax" placeholder="Max">
+                                <input type="text" class="inputPreco" name="precoMax" id="filtroPrecoMax" placeholder="Max" oninput="validarNumero(this)">
                             </div>
+                                <button type="submit" class="filtrarbotao">Filtrar</button>
+                            </div>
+                            <input type="hidden" name="Tipo" value="Filtragem" />
                         </form>
                     </div>
                 </div>
-                
+
                 <div id="itemSlider2" class="categorias">
                     <!--Filtros de categorias definidas-->
                     <div class="tituloCategorias toggleDiv">
@@ -83,22 +91,34 @@ if (isset($_SESSION['produtos'])) {
                         <form>
                             <!--Filtro por categorias-->
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaBoneco" id="checkCategoria1" /><label>Bonecos</label>
+                                <input type="checkbox" class="checkbox" name="categoriaBoneco" id="checkCategoria1" /><label>Arte</label>
                             </div>
                             <div class="formItem">
                                 <input type="checkbox" class="checkbox" name="categoriaCarrinhos" id="checkCategoria2" /><label>Carrinhos</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaPelucia" id="checkCategoria3" /><label>Pelúcia</label>
+                                <input type="checkbox" class="checkbox" name="categoriaPelucia" id="checkCategoria3" /><label>Cartas</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaTecnicos" id="checkCategoria4" /><label>Técnicos</label>
+                                <input type="checkbox" class="checkbox" name="categoriaTecnicos" id="checkCategoria4" /><label>Educativos</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaEletronicos" id="checkCategoria5" /><label>Eletrônicos</label>
+                                <input type="checkbox" class="checkbox" name="categoriaEletronicos" id="checkCategoria5" /><label>Eletrônica</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Artisticos</label>
+                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Esportes</label>
+                            </div>
+                            <div class="formItem">
+                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Funko Pop</label>
+                            </div>
+                            <div class="formItem">
+                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Pelúcias</label>
+                            </div>
+                            <div class="formItem">
+                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Quebra-Cabeças</label>
+                            </div>
+                            <div class="formItem">
+                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Tabuleiro</label>
                             </div>
                         </form>
                     </div>
@@ -157,14 +177,16 @@ if (isset($_SESSION['produtos'])) {
                     ?>
                     <div class="card swiper-slide">
                         <div class="imagem_card">
-                            <img src="<?php echo $imagem['Imagem']; ?>" class="foto_card">
+                            <img src="<?php echo "../imagens/Produtos/".$imagem['Imagem'].".jpeg"; ?>" class="foto_card">
                         </div>
                         <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
                         <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>
+                        <a href=<?php print_r("produto.php?codigo=" . $brinquedo['Codigo_Brinq'] )?>>
                         <button class="card">
                             <img src="../imagens/Icons/carrinho.png" alt="Carrinho" class="botao_card">
                             <p class="botao_card">Comprar!</p>
                         </button>
+                        </a>
                     </div>
                     <?php } ?>
 
@@ -178,6 +200,7 @@ if (isset($_SESSION['produtos'])) {
                 <button class="btn-vermais">Ver Mais</button>
             </div>
             <?php endif; ?>
+    </div>
     </div>
 
     <script>
@@ -223,8 +246,27 @@ if (isset($_SESSION['produtos'])) {
         // Adiciona um listener para quando a janela é redimensionada
         window.addEventListener('resize', updateDisplayStyles);
     </script>
+<script>
+  function validarNumero(input) {
+    // remove o que não for número
+    input.value = input.value.replace(/[^0-9,\.]/g, ''); 
 
+    // substitui ponto por vírgula no filtro
+    input.value = input.value.replace('.', ','); 
+
+    // limita a duas casas decimais
+    const partes = input.value.split(',');
+    if (partes.length > 1 && partes[1].length > 2) {
+        input.value = partes[0] + ',' + partes[1].substring(0, 2);
+    }
+
+    // impede a adição de qlqr coisa dps das 2 casas decimais
+    if (partes.length > 2) {
+    input.value = partes[0] + ',' + partes[1];
+    }
+  }
+</script>
     <?php include("footer.php") ?>
-</body>
 
+</body>
 </html>

@@ -9,6 +9,7 @@ class Produto {
     private $Fabricante;
     private $Descricao;
     private $Faixa_Etaria;
+    private $Status;
 
     public function getCodigoBrinq() {
         return $this->Codigo_Brinq;
@@ -46,6 +47,10 @@ class Produto {
         return $this->Faixa_Etaria;
     }
 
+    public function getStatus() {
+        return $this->Status;
+    }
+
     public function setCodigoBrinq($Codigo_Brinq) {
         $this->Codigo_Brinq = $Codigo_Brinq;
     }
@@ -81,11 +86,15 @@ class Produto {
     public function setFaixaEtaria($Faixa_Etaria) {
         $this->Faixa_Etaria = $Faixa_Etaria;
     }
+
+    public function setStatus($Status) {
+        $this->Status = $Status;
+    }
 }
 
 interface ProdutoDAOInterface {
     public function buildProduct($data);
-    public function criarP(Produto $produto, Imagem $imagem);
+    public function criarP(Produto $produto);
     public function atualizaP(Produto $produto, $redirect = true);
 }
 ?>

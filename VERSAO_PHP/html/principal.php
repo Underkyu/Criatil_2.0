@@ -2,11 +2,15 @@
 require_once("../controller/conexao.php");
 require_once("../controller/global.php");
 
-$stmt = $conn->prepare("SELECT Codigo_Brinq, Nome_Brinq, Preco_Brinq FROM brinquedo");
+$stmt = $conn->prepare("SELECT * FROM brinquedo WHERE Status <> 1");
 $stmt->execute();
-
 $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // coloca os dados da tabela em um vetor
+
+$stmt_recentes = $conn->prepare("SELECT * FROM brinquedo WHERE Status <> 1 ORDER BY Codigo_Brinq DESC LIMIT 6");
+$stmt_recentes->execute();
+$brinquedos_recentes = $stmt_recentes->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +23,6 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   <!--CSS dos carrosseis e da pagina respectivamente-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="../css/index.css">
-  <link rel="stylesheet" href="../css/card.css">
 
 </head>
 
@@ -64,15 +66,21 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <div class="swiper product">
         <div class="swiper-wrapper">
           <?php
-            foreach ($brinquedos as $brinquedo) {
+            foreach ($brinquedos_recentes as $brinquedo) {
               // seleciona a img do brinquedo atual
               $stmt = $conn->query("SELECT Imagem FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem LIMIT 1");
               $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
+
+              $stmt2 = $conn->query("SELECT Imagem_Selo FROM selo WHERE Codigo_Selo = " . $brinquedo['Codigo_Selo']);
+              $selo = $stmt2->fetch(PDO::FETCH_ASSOC);
           ?>
           <!--Div que contem os elementos do card-->
           <div class="card swiper-slide">
             <div class="imagem_card">
-              <img src="<?php echo $imagem['Imagem']; ?>" class="foto_card">
+              <img src=<?php echo("../imagens/Produtos/".$imagem['Imagem'].".jpeg"); ?> class="foto_card">
+              <?php  if ($selo['Imagem_Selo'] != null) { ?>
+                <img src="<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".png"; ?>" class="selo">
+                <?php } ?>
             </div>
             <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
             <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>
@@ -115,7 +123,10 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <!--Div que contem os elementos do card-->
           <div class="card swiper-slide">
             <div class="imagem_card">
-              <img src="<?php echo $imagem['Imagem']; ?>" class="foto_card">
+            <img src=<?php echo("../imagens/Produtos/".$imagem['Imagem'].".jpeg"); ?> class="foto_card">
+              <?php  if ($selo['Imagem_Selo'] != null) { ?>
+                <img src="<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".png"; ?>" class="selo">
+                <?php } ?>
             </div>
             <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
             <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>
@@ -149,4 +160,9 @@ $brinquedos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?php include("footer.php") ?>
 </body>
+
+<head>
+<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="../css/card.css">
+</head>
 </html>

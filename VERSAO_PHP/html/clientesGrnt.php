@@ -1,6 +1,7 @@
 <?php
 require_once("../controller/conexao.php");
 require_once("../controller/global.php");
+require_once("../Dao/usuarioDAO.php");
 
 $stmt = $conn->prepare("SELECT * FROM usuario");
 $stmt->execute();
@@ -41,14 +42,22 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
  <!--Div que contem um dos clientes-->
                 <?php 
                     foreach ($usuarios as $usuario) {
+
+                    $usuarioData = $userDao->pesquisarPorEmail($usuario['Email_Usu']);    
                 ?>
                 <div class="brinquedo">
                     <div class="foto">
-                    <img src="<?php echo $usuario['Imagem']; ?>" alt="Foto de perfil" class="foto"/><!--Foto-->
+                    <img src=<?php
+                        if($usuarioData->getImagem() == "vazio") {;
+                            print_r("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                        }?> alt="Foto de perfil" class="foto"/><!--Foto-->
                     </div>
-                    <p class="informacao"><?php echo $usuario['Nome_Usu']; ?></p> <!--Nome-->
-                    <p class="informacao"><?php echo $usuario['Codigo_Usu']; ?></p> <!--Id-->
-                    <p class="informacao"><?php echo $usuario['Tipo_Usu']; ?></p> <!--Status-->
+                    <p class="informacao"><?php echo $usuarioData->getNome(); ?></p> <!--Nome-->
+                    <p class="informacao"><?php echo $usuarioData->getCodigo(); ?></p> <!--Id-->
+                    <p class="informacao"><?php echo $usuarioData->getTipo(); ?></p> <!--Status-->
                     
                     <form method="POST" action="" class="form-flex" id="detalhes-form-<?php echo $usuario['Codigo_Usu']; ?>">
                             <div class="botao_detalhes">
@@ -79,27 +88,31 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <div id="form-container" class="formInsert">
-    <form id="formInsert-Brinquedo" class="formInsert-Brinquedo">
+    <form id="formInsert-Brinquedo" class="formInsert-Brinquedo" method="POST" action="../controller/usuarioProccess.php">
         <h2>Informação do Cliente</h2>
         
         <label for="nome">Código do Usuário:</label>
-        <input type="text" id="codigo" name="Codigo_Usu" disabled>
+        <input type="text" id="codigo" name="Codigo_Usu" readonly>
 
         <label for="preco">Nome do Usuário:</label>
-        <input type="text" id="nome" name="Nome_Usu" disabled>
+        <input type="text" id="nome" name="Nome_Usu" readonly>
 
         <label for="nascimento">Data de Nascimento:</label>
-        <input type="text" id="nascimento" name="Nasc_Usu" disabled>
+        <input type="text" id="nascimento" name="Nasc_Usu" readonly>
 
         <label for="celular">Celular:</label>
-        <input type="text" id="celular" name="Celular_Usu" disabled>
+        <input type="text" id="celular" name="Celular_Usu" readonly>
 
         <label for="email">E-mail:</label>
-        <input type="text" id="email" name="Email_Usu" disabled>
+        <input type="text" id="email" name="Email_Usu" readonly>
 
         <label for="tipo">Tipo de Usuário:</label>
-        <input type="text" id="tipo" name="Tipo_Usu" disabled>
-
+        <select id="tipo" name="Tipo_Usu" onchange="this.form.submit()" class="select-tipo">
+            <option value="Cliente" <?php if (isset($usuario['Tipo_Usu']) && $usuario['Tipo_Usu'] === 'Cliente') echo 'selected'; ?>>Cliente</option>
+            <option value="Gerente" <?php if (isset($usuario['Tipo_Usu']) && $usuario['Tipo_Usu'] === 'Gerente') echo 'selected'; ?>>Gerente</option>
+            <option value="Bloqueado" <?php if (isset($usuario['Tipo_Usu']) && $usuario['Tipo_Usu'] === 'Bloqueado') echo 'selected'; ?>>Bloqueado</option>
+        </select>
+        <input type="hidden" name="Tipo" value="AtualizarTipo">
     </form>
 </div>
 

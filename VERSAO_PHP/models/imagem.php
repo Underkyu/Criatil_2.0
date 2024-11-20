@@ -41,5 +41,9 @@ class Imagem {
     public function setNumImagem($Num_Imagem) {
         $this->Num_Imagem = $Num_Imagem;
     }
+
+    public function imageGenerateName(){
+        return bin2hex(random_bytes(60));
+    }
 }
 ?>

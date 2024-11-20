@@ -14,6 +14,7 @@
   position: relative;
   background-image: url(../imagens/backgrounds/Background2.svg);
   background-size: cover;
+  margin-bottom: -3rem;
 }
 .container {/* Container de todo conteúdo do form e logo*/
     width: 100%;

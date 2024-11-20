@@ -64,17 +64,18 @@ button.card{ /*Botão de comprar no card*/
     background-color: #F2AF00;
     border: #F2AF00;
     padding: .5rem;
+    cursor: pointer;
     justify-content: center;
     transition: ease-out 100ms;
 }
 button.card:hover{
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   transition: ease-in-out 200ms;
 }
 
 button.card:active{
   filter: brightness(0.9);
-  transform: translateY(3px);
+  transform: translateY(2px);
   transition: ease-in-out 200ms;
 }
 img.botao_card { /*icon de carrinho no botão do card*/
@@ -94,17 +95,16 @@ div.imagem_card{ /*Div que contem imagens e selos de cards*/
   position: relative;
 }
 
-img.selo_deficiencia{ /*Selos que indicam que o produto é adaptado à pessoas com algum tipo de condição especia*/
+img.selo{
   position: absolute;
-  bottom: 8px;
-  right: 16px;
+  bottom: 14px;
+  right: 28px;
   width: 4rem;
 }
-
-img.selo_desconto{
+img.selodesconto{
   position: absolute;
-  bottom: 8px;
-  left: 16px;
+  bottom: 14px;
+  left: 28px;
   width: 4rem;
 }
 /*Fim CSS card*/

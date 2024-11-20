@@ -48,11 +48,11 @@ if($tipo === "Atualizar"){
                 // Define a imagem no usuário
                 $userData->setImagem($imageNome);
             } else {
-                $message->setMessage("Erro!", "Erro ao salvar a imagem","error","../html/principal.php");
+                $message->setMessage("Erro!", "Erro ao salvar a imagem","error","back");
             }
             
     }else{
-        $message->setMessage("Erro!","Tipo de imagem invalido, insira png ou jpg","error","../html/principal.php");
+        $message->setMessage("Erro!","Tipo de imagem inválido, insira um arquivo .PNG ou .JPG","error","back");
     }
 }
 
@@ -75,6 +75,47 @@ if($tipo === "Atualizar"){
     }else{
         $message->setMessage("Erro!","Senha atual incorreta","error","back");
     }
+}elseif ($tipo === "updateImagem"){
+    $userData = $userDao->verificarToken();
+
+    // Parte que cria imagem
+    if(isset($_FILES["imagem_file"]) && !empty($_FILES["imagem_file"]["tmp_name"])){
+        $image = $_FILES["imagem_file"];
+        $tiposImagem = ["image/jpeg", "image/jpg", "image/png"];
+        $jpgArray = ["image/jpeg","image/jpg"];
+
+        if(in_array($image["type"],$tiposImagem)){
+            if(in_array($image["type"],$jpgArray)){
+                $imagefile = imagecreatefromjpeg($image["tmp_name"]);
+            } else {// Imagem é png
+                $imagefile = imagecreatefrompng($image["tmp_name"]);
+            }
+
+            $imageNome = $user->imageGenerateName();
+
+            // Salva a imagem como JPEG no diretório especificado
+            if (imagejpeg($imagefile, "../imagens/usuarios/" . $imageNome .".jpeg", 100)) {
+                // Define a imagem no usuário
+                $userData->setImagem($imageNome);
+                $userDao->atualiza($userData, true);
+                $message->setMessage("Sucesso!", "Foto de perfil atualizada com sucesso!", "success", "back");
+            } else {
+                $message->setMessage("Erro!", "Erro ao salvar a imagem","error","back");
+            }
+        } else {
+            $message->setMessage("Erro!","Tipo de imagem inválido, insira um arquivo .PNG ou .JPG","error","back");
+        }
+    }
+}elseif ($tipo === "AtualizarTipo") {
+    $codigoUsu = filter_input(INPUT_POST, "Codigo_Usu");
+    $tipoUsu = filter_input(INPUT_POST, "Tipo_Usu");
+
+    if ($codigoUsu && $tipoUsu) {
+        $userDao->atualizaTipo($codigoUsu, $tipoUsu);
+        $message->setMessage("Usuário atualizado", "O usuário foi atualizado com sucesso.", "success", "back");
+    } else {
+        $message->setMessage("Erro!", "Dados inválidos, tente novamente", "error", "back");
+    }
 } else {
-    $message->setMessage("Erro!","Informações invalidas","error","../html/principal.php");
+    $message->setMessage("Erro!","Informações invalidas","error","back");
 }

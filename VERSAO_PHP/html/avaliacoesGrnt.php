@@ -79,7 +79,14 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
               <!--Começo card avaliação-->
               <div class="avaliacao">
-                  <img src="<?php echo $imagem['Imagem']; ?>" alt="Foto de perfil" class="foto_perfil"/><!--Foto de perfil da avaliação-->
+                <div class="foto">
+                  <img src=<?php
+                        if($imagem['Imagem'] == "vazio") {;
+                            print_r("../imagens/usuarios/usuario.png");      
+                        }else{
+                            print_r("../imagens/usuarios/".$imagem['Imagem'].".jpeg");
+                        }?> alt="Foto de perfil" class="foto_perfil"/><!--Foto de perfil da avaliação-->
+                </div>
                   <div class="detalhes_avaliacoes">
                       <div class="nome_avaliacao">
                           <h5 class="nome"><?php echo $nomeUsu['Nome_Usu']; ?></h5>
@@ -107,7 +114,6 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
               </div>
           </div>
-        </div>
         <div class="acoes">
           <div class="pesquisar">
             <input type="text" id="txtPesquisa" class="pesquisar" placeholder="Pesquisar avaliação"/>
@@ -138,7 +144,7 @@ function confirmDelete(codigoAva, nomeUsu) {
             form.append('nomeUsu', nomeUsu);
 
             fetch('../controller/avaliacaoProcess.php', { // fetch é praticamente um jeito alternativo de fazer um submit pra enviar formulários
-                method: 'POST',
+                method: 'POST',             
                 body: form
             }).then(response => {
                 if (response.ok) {

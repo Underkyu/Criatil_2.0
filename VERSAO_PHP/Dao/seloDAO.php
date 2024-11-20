@@ -10,10 +10,10 @@ class SeloDAO {
     }
 
 public function inserirSelo(Selo $selo) {
-    $stmt = $this->conn->prepare("INSERT INTO sac (Nome_Selo, Icon_Selo) VALUES (:nome, :icon)");
+    $stmt = $this->conn->prepare("INSERT INTO selo (Nome_Selo, Imagem_Selo) VALUES (:nome, :imagem)");
 
     $stmt->bindParam(':nome', $selo->getNomeSelo());
-    $stmt->bindParam(':email', $selo->getIconSelo());
+    $stmt->bindParam(':imagem', $selo->getImagemSelo());
 
     return $stmt->execute();
 }

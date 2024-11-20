@@ -3,18 +3,17 @@
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0px;
     padding: 0px;
-    }
-#navbar-conta {
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-    padding: 1rem;
-    height: 100%;
-    width: 350px;
-    color: rgb(0, 0, 0);
+}
+.navbar-container {
+    padding: 1.5rem;
+    width: 35%;
+    color: black;
     display: flex;
-    justify-content: center;
-    align-items: stretch;
     flex-direction: column;
+    align-items: stretch;
+}
+.ft-nome-lateral{
+    display: flex;
 }
 .lateral-conta { 
     display: flex;
@@ -24,17 +23,23 @@
     width: 100%;
 }
 .img-lateral {
-    width: 105px;
-    height: 105px;
-    object-fit: cover;  
-    border-radius: 100px;
+    object-fit: cover;
+    border-radius: 50%;
     border: solid #F2AF00 3px;
+    width: 110px;
+    height: 110px;
+}
+.nomelat-div {
+    width: 100%;
+    display: flex;
 }
 .nome-lateral {
-    font-size: 26px;
+    font-size: 1.6vw;
     font-weight: 500;
-    padding: 17px;
-    white-space: nowrap;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #navbar-conta a {
     text-decoration: none;
@@ -60,7 +65,7 @@
     text-decoration: none;
     color: black;
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size:calc(4px + 1.3vw); /* MANO isso aqui define o tamanho minimo da fonte mas ainda sendo responsivo e é genial */
     padding-top: 5px;
 }
 .paginas {
@@ -69,7 +74,8 @@
     align-items: flex-start;
     width: 85%;
     padding: 10px;
-    gap: 5px;
+    margin-top: 15px;
+    gap: 20px;
 }
 #box{
     display: flex;
@@ -77,8 +83,8 @@
     justify-content: center;
     flex-direction: column;
     background-color: #0476D9;
-    width: 940px;
-    height: 600px; /*Mudar altura aqui*/
+    width: 60%;
+    height: 500px;
     padding: 10px;
     border-radius: 20px;  
 }
@@ -90,10 +96,7 @@
     padding: 15px;
 }  
 #perfil {
-    margin-top: 0;
-    padding: 1rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    padding: 2.2rem 1.6rem 0 1.6rem;
     position: relative;
     bottom: 2%;
     background-color: white;
@@ -101,22 +104,20 @@
     height: 85%;
     border-radius: 20px;
     display: flex;
-    justify-content: space-evenly;
-    gap: 50px;
 }
 .usuario-info{
     font-weight: 500;
     font-size: 18px;
-    background-color: none;
-    background: none;
+    text-align: right;
     border: 2px solid #D4D4D4; 
-    text-align: end;
     margin: 0;
-    padding: 1px;
     width: 100%;
-    overflow: visible;
     border-radius: 10px;
-    padding: .2rem;
+    padding: .25rem;
+}
+form {
+    display: flex;
+    flex-direction: column;
 }
 .informacoes {
     display: flex;
@@ -124,15 +125,16 @@
     align-items: stretch;
     gap: 3px;
     font-size: 16px;
-    margin-top: 40px;
 }
 .informacoes button {
     height: 35px;
-    width: 20%;
-    border-radius: 12px;   
+    width: 100%;
+    max-width: 140px;
+    border-radius: 50px;   
     background-color: #F2AF00;
     color: #000000;
-    font-size: 16px;
+    font-size: 18px;
+    white-space: nowrap;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     padding: 10px 20px;
@@ -142,48 +144,148 @@
     display: flex;
     justify-content: center;
     align-items: center;  
-    margin-top: 10px;
+    margin-top: 20px;
     transition: transform 0.2s ease-in-out;
 }
 .informacoes button:hover {
     transform: scale(1.1);
 }
+button.editar {
+    height: 35px;
+    width: 100%;
+    max-width: 140px;
+    border-radius: 50px;   
+    background-color: #F2AF00;
+    color: #000000;
+    font-size: 18px;
+    white-space: nowrap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    margin-top: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+button.editar:hover {
+    transform: scale(1.1);
+}
 .info-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    width: 500px;
+    margin-bottom: 20px;
+    width: 26rem;
 }
 .info-label {
     font-weight: 500;
-    margin-right: 4vw;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.info-item:last-child{
+    margin-bottom: 0;
+}
 .info-value {
-    text-align: end;
+    width: 220px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .conta-box {
-    margin-top: 35px;
+    width: 100%;
+    margin-left: 1rem;
+    margin-right: auto;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+#formAtualizarSenha {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    transition: transform 0.3s ease-in-out;
+}
+.fade-in {
+    animation: fadeIn 0.3s forwards;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.form-bg-senha{
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 40%;
+    height: 45%;
+    box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
+}
+#formEditarPerfil {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    transition: transform 0.3s ease-in-out;
+}
+.form-bg-perfil {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 40%;
+    height: 60%;
+    box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
+}
 .img-conta {
-    width: 135px;
-    height: 135px;
+    width: 9rem;
+    height: 9rem;
     overflow: hidden;
     border-radius: 100px;
     border: solid #F2AF00 5px;
 }
+.botoes {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
 .nome-conta {
-    font-size: 24px;
+    font-size: 1.6vw;
     font-weight: 500;
-    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .editar-img {
     all: unset;
@@ -199,6 +301,7 @@
     border-radius: 100%;
     padding: 1px;
     transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 }
 .editar-icone img {
     width: 40px;
@@ -209,7 +312,7 @@
     transform: scale(1.1);
   }
   .editar-icone:hover {
-    transform: scale(1.3); /* Expande o círculo inteiro */
+    transform: scale(1.3);
 }
 .img-container {
     position: relative;
@@ -222,13 +325,19 @@ h2.troque_senha{
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
+h2.edite_perfil {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
 /* css do menu sanduíche */
 .sanduiche-div{
     align-items: center;
+    display: none;
     justify-content: center;
 }
 img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     width: 2rem;
+    margin-left: .5rem;
     transition-duration: 0.2s;
 }
 .girar {
@@ -247,7 +356,7 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     display: inherit;
   }
   div.menuSanduicheConta{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
-    display: flex;
+    display: none;
     align-items: center;
     overflow: hidden;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
@@ -269,7 +378,6 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     opacity: 1;
     visibility: visible;
     height: 2.6rem;
-    margin-bottom: 20px;
     align-items: center;
   }
   /* fim do css do menu sanduíche */
@@ -277,250 +385,246 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
 
 /*Responsividade*/
 .container {
-    max-width: 1425px;
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     justify-content: center;
-    display: flex;
-    flex-direction: row;
-  }
-    /* 2xl */
-
-    @media (max-width: 1536px) {
-        .container {
-          max-width: 1280px;
-        }
-      }
-      @media(min-width: 1440px) {
-        #navbar-conta a {
-            font-size: 26px;
-        }
-        .nome-lateral {
-            font-size: 28px;
-            white-space: nowrap;
-        }
-      }
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
   /* responsividade Hilario*/
-
-@media (max-width: 1240px) {
-
-        #box {
-            height: 420px;
-        }
-        #box h1 {
-            font-size: 32px;
-        }
-
-    .editar {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    .informacoes {
-        font-size: 15px;
-    }
-
-    .img-conta {
-        width: 115px;
-        height: 115px;
-    }
-
-    .nome-conta {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 1020px) {
-    #navbar-conta {
-        width: 290px;
-        margin-left: 5%;
-    }
-
+  @media (min-width: 1500px) {
     #box {
-        width: 70%; 
-    }
-
-    .informacoes {
-        font-size: 14px;
-    }
-
-    .img-conta {
-        width: 100px;
-        height: 100px;
-    }
-
-    .nome-conta {
-        font-size: 18px;
-    }
-
-    .editar {
-        font-size: 12px;
-        padding: 6px 14px;
-    }
-    #perfil {
-        gap: 20px;
-    }
-}
-@media (min-width: 1450px) {
-    .container {
-      max-width: 1550px;
-    }
-    #navbar-conta a {
-        font-size: 24px;
-    }
-    #box{
-        width: 1080px;
-    }
-    .info-label {
-        font-size: 20px;
-    }
-    .info-value {
-        font-size: 20px;
+        width: 1100px;
     }
     .informacoes button {
         font-size: 18px;
     }
-    .nome-lateral {
-        font-size: 28px;
-        white-space: nowrap;
+    .info-label {
+        font-size: 20px;
     }
-  }
-@media (max-width: 850px) {
-    button.menuSanduiche{/*Botão que abre o menu sanduiche*/
-        display: flex;
+    .usuario-info {
+        font-size: 20px;
+    }
+    .info-item {
+        width: 580px;
+    }
+    .info-value {
+        width: 240px;
+    }
+}
+@media (max-width: 1080px) {
+    #box {
+        height: 450px;
+        width:  600px;
+        margin-right: 10px;
+    }
+    .navbar-container {
+        width: 200px;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        padding: 1rem 0 1rem 0;
+        justify-content: space-between !important;
+    }
+    #perfil {
+        padding: 2rem 1.4rem 0 1.4rem;
+    }
+    .conta-box {
+        margin: 10px;
+    }   
+    .img-conta{
+        height: 115px;
+        width: 115px;
+    }
+    .nome-conta {
+        font-size: 1.7vw;
+        padding: 0;
+    }
+    h1.nome-lateral {
+        font-size: 18px;
+    }
+    .info-item {
+        width: 400px;
+    }
+    .info-label {
+        font-size: 16px;
+    }
+    .usuario-info {
+        font-size: 16px;
+    }
+    .informacoes button {
+        font-size: 16px;
+    }
+    .paginas-navbar, .pagina-selecionada {
+        font-size: calc(4px + 1.6vw);
       }
-      #navbar-conta {
+      .form-bg-senha{
+        width: 60%;
+        height: 45%;
+    }
+}
+@media (max-width: 875px) {
+      button.menuSanduiche{/*Botão que abre o menu sanduiche*/
+        display: flex;
+        font-size: calc(4px + 1.2vw);
+      }
+      .navbar-container {
         display: none;
       }
       #box {
-        position:relative;
-        right: auto;
-        left: auto;
-        top: auto;
-        bottom: auto;
-        width: 96%;
-        margin: 0 auto;
+        width: 95%;
+        margin-top: .8rem;
+        margin-bottom: .8rem;
+        margin-right: 0;
+        margin-left: 0;
+      }
+      .container {
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center !important;
       }
       .sanduiche-div{
         display: flex;
-        margin-top: 10px;
       }
-      div.container{
-        flex-direction: column;
-        gap: 0;
-        margin: 0;
+      .info-value {
+        width: 200px;
+    }
+      .paginas-navbar, .pagina-selecionada {
+        font-size: calc(4px + 1.8vw);
         padding: 0;
       }
-      .informacoes {
-        font-size: 18px;
+      .conta-box {
+        width: 50%;
       }
-      .informacoes button {
-        font-size: 16px;
-      }
-      .nome-conta {
-        font-size: 22px;
-      }
-}
-@media (max-width: 730px) {
-    .informacoes {
-        font-size: 16px;
-      }
-      .informacoes button {
-        font-size: 14px;
+      .info-item { 
+        width: 480px;
       }
       .nome-conta {
-        font-size: 18px;
+        font-size: 2.2vw;
       }
-      .img-conta {
-        width: 90px;
-        height: 90px;
-      }
-}
-@media (max-width: 600px) {
-      .nome-conta {
-        font-size: 17px;
-      }
-      .img-conta {
-        width: 85px;
-        height: 85px;
-      }
-      #perfil {
-        gap: 25px;
-      }
-}
-@media (max-width: 550px) {
-    .informacoes {
-        font-size: 13px;
+      .info-item {
+        width: 400px;
     }
+    #perfil {
+        padding: 1.8rem 1.2rem 0 1.2rem;
+    }
+}
+@media (max-width: 700px) {
     #box {
-        height: 380px;
+        padding: 5px;
+        height: 400px;
     }
     #box h1 {
-        font-size: 28px;
+        font-size: 30px;
     }
-    .nome-conta {
-        font-size: 16px;
+    #perfil {
+        padding: 1.6rem 0 0 1rem;
+    }
+    .info-item {
+        width: 360px;
+        justify-content: space-between;
+    }
+    .conta-box {
+        width: 200px;
+        margin-left: 2%;
+    }
+    .info-label {
+        font-size: 14px;
+    }
+    .usuario-info {
+        font-size: 14px;
     }
     .informacoes button {
         font-size: 14px;
-        width: 50px;
-        height: 30px;
     }
     .img-conta {
-        width: 80px;
-        height: 80px;
-      }
-}
-@media (max-width: 490px) {
-    #box {
-        height: 500px;
-    }
-    #perfil {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 12px;
-    }
-    .conta-box {
-        margin: 0;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .informacoes {
-        top: 80px;
-        margin: 0;
-        align-items: flex-start;
-    }
-    .info-item {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin-bottom: 10px;
-    }  
-    .info-label {
-        margin-right: 5px;
-    }
-}
-@media (max-width: 380px) {
-    .pagina-selecionada, .paginas-navbar{
-        font-size: 14px;
-    }
-    * {
-        box-sizing: border-box;
-    }
-    #box {
-        padding: 0;
-    }
-    .info-item {
-        width: 90%;
-    }
-    .informacoes {
-        align-items: center;
+        height: 90px;
+        width: 90px;
     }
     .editar-icone img {
-        width: 25px;
-        height: 20px;
+        width: 30px;
+        height: 25px;
+    }
+    .info-value {
+        width: 180px;
+    }
+    h2.nome-conta {
+        font-size: 16px;
+    }
+}
+@media (max-width: 650px) {
+    .info-item {
+        width: 320px;
+    }
+}
+@media (max-width: 570px) {
+    #perfil {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 12px;
+        padding-top: 0;
+        gap: 10px;
+    }
+    #box {
+        height: 600px;
+    }
+    .img-conta{
+        height: 100px;
+        width: 100px;
+    }
+    .paginas-navbar, .pagina-selecionada {
+        font-size: calc(4px + 2.6vw);
+        padding: 0;
+      }
+      .form-bg-senha{
+        width: 80%;
+        height: 45%;
+    }
+}
+@media (max-width: 420px) { 
+    #box {
+        width: 100%;
+        padding: 3px;
+    }
+    .container {
+        margin: 0;
+        padding-left: 0.1rem !important;
+        padding-right: 0.1rem !important;
+    }
+    .form-bg-senha{
+        width: 95%;
+        height: 45%;
+    }
+}
+@media (max-width: 370px) {
+    #perfil {
+    bottom: 1%;
+    width: 99%;
+    height: 95%;
+    gap: 25px;
+    }
+    #box h1 {
+        font-size: 28px;
+        padding: .5rem;
+        padding-bottom: 1rem;
+    }
+    .info-value {
+        width: 145px;
+    }
+    .info-item {
+        width: 275px;
+    }
+    .informacoes button {
+        height: 30px;
+        max-width: 110px;
+    }
+    .botoes {
+        align-items: center;
+        justify-content: center;
     }
 }

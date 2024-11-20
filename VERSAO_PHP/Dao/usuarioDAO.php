@@ -59,6 +59,37 @@ class UsuarioDAO implements UsuarioDAOInterface {
             $this->tokenParaSessao($usuario->getToken());
         }
     }
+    public function criarG(Usuario $usuario, $authUsario = false){
+        $stmt = $this->conexao->prepare("INSERT INTO usuario(
+            Nome_Usu,Nasc_Usu,Celular_Usu,Email_Usu,Senha_Usu,Tipo_Usu,Token,Imagem
+        ) VALUES (
+            :nome, :nasc, :cel, :email, :senha, :tipo, :token, :imagem
+        )");
+
+        $user = $usuario->getNome();
+        $nasci = $usuario->getNasc();
+        $cel = $usuario->getCelular();
+        $email = $usuario->getEmail();
+        $senha = $usuario->getSenha();
+        $tipo = $usuario->getTipo();
+        $token = $usuario->getToken(); 
+        $imagem = $usuario->getImagem();
+
+        $stmt->bindParam(":nome", $user);
+        $stmt->bindParam(":nasc", $nasci);
+        $stmt->bindParam(":cel", $cel);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":senha", $senha);
+        $stmt->bindParam(":tipo", $tipo);
+        $stmt->bindParam(":token", $token);
+        $stmt->bindParam(":imagem", $imagem);
+
+        $stmt->execute();
+
+        if($authUsario){
+            $this->tokenParaSessaoG($usuario->getToken());
+        }
+    }
     public function atualiza(Usuario $usuario, $redirect = true){
         $stmt = $this->conexao->prepare("UPDATE usuario SET
         Nome_Usu = :nome,
@@ -120,7 +151,7 @@ class UsuarioDAO implements UsuarioDAOInterface {
             $token = $_SESSION["token"];
 
             $user = $this->pesquisarPorToken($token);
-
+            
             if($user){
                return $user;
             } else if($protected){
@@ -137,9 +168,20 @@ class UsuarioDAO implements UsuarioDAOInterface {
             $this->message->setMessage("Login bem sucedido","Bem vindo!","success","../html/conta.php");
         }
     }
+    public function tokenParaSessaoG($token, $redirect = true){
+        $_SESSION["token"] = $token;
+
+        if($redirect) {
+            $this->message->setMessage("Cadastro bem sucedido","O gerente foi adicionado à database","success","../html/clientesGrnt.php");
+        }
+    }
     public function autenticarUsuario($email, $password){
         $user = $this->pesquisarPorEmail($email);
         if($user){
+            if($user->getTipo() == 'Bloqueado'){
+                $this->message->setMessage("Conta Bloqueada!","Sua conta foi bloqueada, entre em contato para mais detalhes","error","../html/principal.php");
+                exit();
+            }
             if(password_verify($password, $user->getSenha())){
                 $token = $user->gerarToken();
 
@@ -174,6 +216,15 @@ class UsuarioDAO implements UsuarioDAOInterface {
         }else{
             return false;
         }
+    }
+
+    public function atualizaTipo($codigoUsu, $tipoUsu) {
+        $stmt = $this->conexao->prepare("UPDATE usuario SET Tipo_Usu = :tipo WHERE Codigo_Usu = :codigo");
+
+        $stmt->bindParam(":tipo", $tipoUsu);
+        $stmt->bindParam(":codigo", $codigoUsu);
+    
+        $stmt->execute();
     }
     public function findById($codigo){
 

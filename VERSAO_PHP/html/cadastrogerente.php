@@ -30,9 +30,10 @@
             
                 <input type="hidden" name="Imagem" value="vazio">
                 <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Gerente">
-                <input type="hidden" name="Tipo" value="Cadastro">
+                <input type="hidden" name="Tipo" value="CadastroG">
 
                 <button type="submit" class="botao-entrar">Cadastrar</button>
     </form>
+    <?php include("footer.php"); ?>
 </body>
 </html>

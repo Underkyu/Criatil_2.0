@@ -25,6 +25,8 @@ if (pesquisaInputBrinquedos && containerBrinquedos) {
         });
     }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // pesquisa por nome de user, título da avaliação ou comentário da avaliação
 const pesquisaInputAvaliacoes = document.getElementById('txtPesquisa');
 const containerAvaliacoes = document.getElementById('avaliacoes-container');
@@ -51,6 +53,8 @@ if (pesquisaInputAvaliacoes && containerAvaliacoes) {
         });
     });
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // pesquisa por nome, ID ou tipo de usuário
 const pesquisaInputClientes = document.getElementById('txtPesquisa');

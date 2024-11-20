@@ -12,9 +12,13 @@
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 50px;
     padding: 10px;
     transition: transform 0.8s ease-in-out;
+}
+.footerContainer{
+   margin: 0;
 }
 .container-car {
     display: flex;
@@ -68,7 +72,7 @@
 }
 #resumo h1 {
     font-weight: 500;
-    font-size: 38px;
+    font-size: 44px;
     display: flex;
 }
 .resumopreco{
@@ -113,7 +117,7 @@
     width: 520px;
     height: auto;
     text-decoration: underline;
-    margin-top: 5%;
+    margin-top: 1%;
     padding: 20px;
     display: flex;  
     flex-direction: row;
@@ -157,9 +161,11 @@
 #carrinho {
     width: 100%;
     height: auto;
+    max-height: 405px;
     display: flex;  
     flex-direction: column;
     margin-top: 50px;
+    overflow-y: scroll;
 }
 .produto {
     width: 100%;

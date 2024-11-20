@@ -94,7 +94,7 @@ class Produto {
 
 interface ProdutoDAOInterface {
     public function buildProduct($data);
-    public function criarP(Produto $produto, Imagem $imagem);
+    public function criarP(Produto $produto);
     public function atualizaP(Produto $produto, $redirect = true);
 }
 ?>

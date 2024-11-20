@@ -13,7 +13,7 @@ public function inserirSelo(Selo $selo) {
     $stmt = $this->conn->prepare("INSERT INTO selo (Nome_Selo, Imagem_Selo) VALUES (:nome, :imagem)");
 
     $stmt->bindParam(':nome', $selo->getNomeSelo());
-    $stmt->bindParam(':imagem', $selo->getIconSelo());
+    $stmt->bindParam(':imagem', $selo->getImagemSelo());
 
     return $stmt->execute();
 }

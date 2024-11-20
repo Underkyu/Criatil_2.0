@@ -9,24 +9,27 @@ $message = new Message($BASE_URL); //Criação de uma objeto de mansagem
 
 $seloDao = new SeloDAO($conn,$BASE_URL);
 
-// Captura os dados do formulário
-$nome = filter_input(INPUT_POST, 'nome');
-$imagem = filter_input(INPUT_POST, 'imagem');
+$tipo = filter_input(INPUT_POST, "Tipo");
 
-if ($nome && $imagem) {
+if($tipo === "Inserir") {
+    $nome = filter_input(INPUT_POST, 'Nome');
+$imagem = filter_input(INPUT_POST, 'Imagem');
+
+if (!empty($nome) && !empty($imagem)) {
     $selo = new Selo();
 
     $selo->setNomeSelo($nome);
     $selo->setImagemSelo($imagem);
 
-    $seloDao = new SeloDao($conn);
-
     if ($seloDao->inserirSelo($selo)) {
-        $message->setMessage("Selo adicionado", "O selo foi adicionado ao site", "success", "back");
+        $message->setMessage("Selo adicionado", "O selo foi adicionado ao sistema", "success", "back");
     } else {
-        $message->setMessage("Erro", "Houve um erro ao inserir a categoria", "error", "back");
+        $message->setMessage("Erro", "Houve um erro ao inserir o selo", "error", "back");
     }
 } else {
-    $message->setMessage("Erro!", "Por favor, preencha o campo.", "error", "back");
+    $message->setMessage("Erro!", "Por favor, preencha todos os campos.", "error", "back");
+}
+}else{
+    $message->setMessage("Erro!", "Tipo não encontrado.", "error", "back");
 }
 ?>

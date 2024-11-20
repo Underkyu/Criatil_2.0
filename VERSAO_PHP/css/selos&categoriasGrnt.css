@@ -42,7 +42,7 @@
       display: flex;
       align-self: center;
       height: 350px;
-      margin-top: 40px;
+      margin: 30px 0 30px 0;
   }
   div.box_brinquedos{ /*Div que contem os brinquedos*/
       background-color: white;
@@ -144,7 +144,7 @@
     padding-bottom: 10px;
   }
   button.adicionar{ /*Botão de adicionar um novo brinquedo no sistema*/
-    width: 16%;
+    width: 35%;
     height: 95%;
     border: none;
     border-radius: 10px;
@@ -153,6 +153,7 @@
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+    margin-top: 10px;
     cursor: pointer;
     outline: none;
     white-space: nowrap;
@@ -169,7 +170,7 @@
     /* isso aqui é o + na direita do texto cadastrar */
   }
   button.adicionar:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
   img.adicionar{/*Icon "+"  no botão de adicionar um novo brinquedo*/
     width: 2.25rem;
@@ -462,8 +463,8 @@
       flex-direction: column;
       background-color: #ffffff;
       border-radius: 20px;
-      width: 70%;
-      height: 95%;
+      width: 35%;
+      height: 60%;
       box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
       border: 4px solid #0476D9;
     }
@@ -500,15 +501,16 @@
       display: flex;
       align-self: center;
       margin-bottom: 5px;
-      font-size: 2.7rem;
+      font-size: 2.4rem;
       text-align: center;
       font-weight: 500;
       color: #232323
     }
     .formInsert-Brinquedo input,
     .formInsert-Brinquedo select {
-      width: 70%;
-      margin-bottom: 5px;
+      width: 50%;
+      margin-bottom: 15px;
+      margin-top: 15px;
       height: 45px;
       padding: 0 15px 0 15px;
       border: 2px solid #0476D9;
@@ -530,7 +532,7 @@
       border: 2px solid #191a19d3;
     }
     .formInsert-Brinquedo button {
-      width: 35%;
+      width: 50%;
       height: 45px;
       border: 3px solid black;
       border-radius: 10px;

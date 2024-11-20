@@ -12,7 +12,7 @@ class CategoriaDAO {
 public function inserirCategoria(Categoria $categoria) {
     $stmt = $this->conn->prepare("INSERT INTO categoria (Nome_Categoria) VALUES (:nome)");
 
-    $stmt->bindParam(':nome', $selo->getNomeCategoria());
+    $stmt->bindParam(':nome', $categoria->getNomeCategoria());
 
     return $stmt->execute();
 }

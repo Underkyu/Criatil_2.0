@@ -25,13 +25,10 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Categorias & Selos</title>
     <link rel="stylesheet" href="../css/selos&categoriasGrnt.css">
-    <script src="../js/grntPesquisa.js"></script>
     <script src="../js/grntInsert.js"></script>
-    <script src="../js/grntDetalhes.js"></script>
-    <script src="../js/grntImgPreview.js"></script>
 </head>
 <body>
-<?php include("headerGrnt.php") ?>
+<?php include("headerGrnt.php"); ?>
 <div class="container">
     <div class="boxes">
 
@@ -55,6 +52,9 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
 
                 </div>
             </div>
+            <div class="acoes">
+            <button class="adicionar" id="btnAdicionarCategoria">Adicionar categoria</button>
+        </div>
         </div>
 
         <div class="selodiv">
@@ -72,7 +72,7 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
                         ?>
                             <div class="brinquedo"> 
                             <div class="foto">
-                            <img src=<?php echo $selo['Imagem_Selo']; ?> alt="Imagem do Selo" class="foto"><!--Imagem-->
+                            <img src=<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".png"; ?> alt="Imagem do Selo" class="foto"><!--Imagem-->
                             </div>
                                 <p class="informacao"><?php echo $selo['Codigo_Selo']; ?></p> <!--Id-->
                                 <p class="informacao"><?php echo $selo['Nome_Selo']; ?></p> <!--Nome-->
@@ -81,36 +81,46 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
 
                 </div>
             </div>
+            <div class="acoes">
+            <button class="adicionar" id="btnAdicionarSelo">Adicionar selo</button>
+        </div>
         </div>
     </div>
 
-        <!-- 
-        <div class="acoes">
-            <button class="adicionar" id="btnAdicionar">Adicionar categoria</button>
-            <div class="pesquisar">
-                <input type="text" id="txtPesquisa" class="pesquisar" placeholder="Pesquisar categoria">
-            </div>
-        </div>
-    </div>
-        -->
-<!-- form de adicionar  -->
-<div id="form-container1" class="formInsert">
-    <form method="POST" id="formInsert-Brinquedo" class="formInsert-Brinquedo" action="../controller/produtoProcess.php">
+<!-- form de adicionar categoria -->
+<div id="form-container2" class="formInsert">
+    <form method="POST" id="formInsert-Categoria" class="formInsert-Brinquedo" action="../controller/categoriaProcess.php">
     <h2>Adicionar Categoria</h2>
     <div class="div-q-separa-socorro">
     <div class="form-div"><!-- div q contém as inputs -->
-        <input type="text" name="Descricao" placeholder="Descrição" required>
-        
-        <input type="text" name="Faixa_Etaria" placeholder="Faixa Etária" required>
-    </div>
+        <input type="text" name="Nome" placeholder="Nome da Categoria" required>
+        </div>
         <input type="hidden" name="Tipo" value="Inserir">
+        </div>
         <div class="div-btn">
         <button type="submit">Confirmar</button> 
+        </div>
+    </form>
+</div>
+
+<!-- form de adicionar selo -->
+<div id="form-container3" class="formInsert">
+    <form method="POST" id="formInsert-Selo" class="formInsert-Brinquedo" action="../controller/seloProcess.php">
+    <h2>Adicionar Selo</h2>
+    <div class="div-q-separa-socorro">
+    <div class="form-div"><!-- div q contém as inputs -->
+        <input type="text" name="Nome" placeholder="Nome do selo" required> 
+        <input type="text" name="Imagem" placeholder="Nome da imagem do selo" required>
+    </div>
+        <input type="hidden" name="Tipo" value="Inserir">
+        </div>
+        <div class="div-btn">
+        <button type="submit">Confirmar</button> 
+        </div>
     </form>
 </div>
 </div>
-</div>
-</div>
-    <?php include("footer.php") ?>
+
+<?php include("footer.php"); ?>
 </body>
 </html>

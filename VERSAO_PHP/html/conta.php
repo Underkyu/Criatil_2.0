@@ -197,7 +197,7 @@ $usuarioData = $userDao->verificarToken(true);
                     </form>
                 </div>
 <?php include("footer.php") ?>
-
+                        
 <!--JAVA LIBRAS-->
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>

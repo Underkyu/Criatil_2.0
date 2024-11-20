@@ -11,7 +11,7 @@ h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
     width: 100%;
     display: flex;
     justify-content: center;
-    font-size: 2.7rem;
+    font-size: 2.4rem;
     text-align: center;
     font-weight: 500;
     color: #232323
@@ -19,7 +19,7 @@ h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
 div.fundo{ /*Fundo azul atrás dos brinquedos*/
     background-color: #0476D9;
     border-radius: 30px;
-    padding: .9rem;
+    padding: .8rem;
     width: 80%;
     display: flex;
     align-self: center;
@@ -210,8 +210,8 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
   margin-right: auto;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  justify-content: space-around !important;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   height: 100%;
   }
@@ -445,8 +445,8 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     flex-direction: column;
     background-color: #ffffff;
     border-radius: 20px;
-    width: 70%;
-    height: 95%;
+    width: 60%;
+    height: 98%;
     box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
     border: 4px solid #0476D9;
   }
@@ -466,7 +466,6 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     justify-content: center;
     height: 100%;
     width: 100%;
-    margin-right: 15px;
   }
   .btn-form {
     display: flex;
@@ -475,7 +474,7 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     align-items: center;
     width: 30%;
     gap: 30px;
-    margin-top: 4%;
+    margin-top: 1%;
   }
   .div-q-separa-socorro {
     display: flex;
@@ -491,8 +490,8 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
   .formInsert-Brinquedo h2 {
     display: flex;
     align-self: center;
-    margin-bottom: 3%;
-    font-size: 2.7rem;
+    margin-bottom: 1%;
+    font-size: 2.4rem;
     text-align: center;
     font-weight: 500;
     color: #232323
@@ -556,20 +555,21 @@ input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs co
   -webkit-appearance: none; 
   margin: 0; 
 }
+
 .imagens-container {
   width: 80%;
-  margin-bottom: 15px;
 }
-.imagem-input {
-  margin-bottom: 10px;
+.img-form {
+  display: flex;
+  height: 60px;
+  align-items: center;
 }
-.imagem-input label {
-  display: block;
-  margin-bottom: 5px;
-}
-.imagem-input input[type="text"] {
-  width: 100%;
-  margin-bottom: 5px;
+.coluna{
+  width: 135px;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  align-items: center;
 }
 .select-input {
   width: 70%;
@@ -582,18 +582,30 @@ input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs co
   display: block;
   margin-left: 2px;
 }
+.arquivo-input {
+  display: none;
+}
 .imagemPreview {
-  max-width: 50px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
 }
-.preview-div {
-  display: none;
-  align-items: center;
-  margin: 0;
-  height: auto;
+.imagem-input {
+  margin-bottom: 35px;
 }
-.preview-div label {
-  margin-right: 6px;
-  font-size: 12px;
+.input-img {
+  display: flex;
+  width: 100px;
+  padding: 6px 15px;
+  background-color: #0476D9;
+  color: white;
+  border: 3px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.25s ease-in-out;
+}
+.input-img:hover {
+  background-color: #0066be;
+  transform: scale(1.05);
 }
 /* responsividade forms - falta fzr responsividade nos dois */

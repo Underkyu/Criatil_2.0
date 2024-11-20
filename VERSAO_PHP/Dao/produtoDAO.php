@@ -41,7 +41,7 @@ class ProdutoDAO implements ProdutoDAOInterface {
         return $imagem;
     }
     // usei 'produto' ao invés de brinquedo em muitos lugares, me confundi, mas ainda funciona, só n confunda
-    public function criarP(Produto $produto, Imagem $imagem){
+    public function criarP(Produto $produto){
         $stmt = $this->conexao->prepare("INSERT INTO brinquedo (Codigo_Selo, Codigo_Categoria, Nome_Brinq, Preco_Brinq, Nota, Fabricante, Descricao, Faixa_Etaria, Status)
          VALUES (:codigoSelo, :codigoCategoria, :nomeBrinq, :precoBrinq, :nota, :fabricante, :descricao, :faixaEtaria, :status)");
     
@@ -65,28 +65,15 @@ class ProdutoDAO implements ProdutoDAOInterface {
         $stmt->bindParam(":faixaEtaria", $faixaEtaria);
         $stmt->bindParam(":status", $status);
     
-        $stmt->execute();
-    
+        if($stmt->execute()){
         // a função "lastInsertId" pega o ultimo ID com auto_increment inserido
         $lastInsertId = $this->conexao->lastInsertId();
-        
-        $this->inserirImagem($imagem, $lastInsertId);
-
         return $lastInsertId;
+        }else{
+            return false;
+        }
     }
     
-    public function inserirImagem(Imagem $imagem, $codigoBrinq) {
-        $stmt = $this->conexao->prepare("INSERT INTO imagem (Codigo_Brinq, Imagem, Num_Imagem) VALUES (:codigoBrinq, :imagem, :numImagem)");
-        
-        $Imagem = $imagem->getImagem();
-        $numImagem = $imagem->getNumImagem();
-
-        $stmt->bindParam(":codigoBrinq", $codigoBrinq);
-        $stmt->bindParam(":imagem", $Imagem);
-        $stmt->bindParam(":numImagem", $numImagem);
-        
-        $stmt->execute();
-    }
 public function atualizaP(Produto $produto, $redirect = true){
     $stmt = $this->conexao->prepare("UPDATE brinquedo SET
     Codigo_Selo = :codigoSelo,
@@ -122,43 +109,63 @@ public function atualizaP(Produto $produto, $redirect = true){
     $stmt->bindParam(":status", $status);
     $stmt->bindParam(":codigo", $codigo);
 
-    $stmt->execute();
-
-    if($redirect) {
-        $this->message->setMessage("Informações alteradas!","Os dados do produto foram alterados com sucesso","success","back");
+    if($stmt->execute()){
+        return true;
+    }else{
+        return false;
     }
 }
+public function inserirImagem(Imagem $imagem, $codigoBrinq) {
+    $stmt = $this->conexao->prepare("INSERT INTO imagem (Codigo_Brinq, Imagem, Num_Imagem) VALUES (:codigoBrinq, :imagem, :numImagem)");
+    
+    $Imagem = $imagem->getImagem();
+    $numImagem = $imagem->getNumImagem();
 
+    $stmt->bindParam(":codigoBrinq", $codigoBrinq);
+    $stmt->bindParam(":imagem", $Imagem);
+    $stmt->bindParam(":numImagem", $numImagem);
+    
+    if($stmt->execute()){
+        return true;
+    }else{
+        return false;
+    }
+}
 public function editaImagem($imagem, $codigoImagem, $codigoBrinq, $numImagem) {
-        // se ainda n tiver código da img mas ter a img, dá insert
-        if (empty($codigoImagem) && !empty($imagem)) {
-            $novaImagem = new Imagem($imagem, $numImagem); // cria outra instância da classe imagem passando os parâmetros pra poder inserir
-            $this->inserirImagem($novaImagem, $codigoBrinq);
-}
+    // Se não tiver código da imagem mas tiver a imagem, insere
+    if (empty($codigoImagem) && !empty($imagem)) {
+        $novaImagem = new Imagem($imagem, $numImagem);
+        return $this->inserirImagem($novaImagem, $codigoBrinq);
+    }
 
-        // se tiver código da img mas a img estiver vazia, dá delete
-        elseif (!empty($codigoImagem) && empty($imagem)) {
-            $this->deletaImagem($codigoImagem);
-}
+    // Se tiver código da imagem mas a imagem estiver vazia, deleta
+    if (!empty($codigoImagem) && empty($imagem)) {
+        return $this->deletaImagem($codigoImagem);
+    }
 
-        //se tiver código de img e a img, dá update
-        elseif (!empty($codigoImagem) && !empty($imagem)) {
-        
+    // Se tiver código de imagem e a imagem, atualiza
+    if (!empty($codigoImagem) && !empty($imagem)) {
         $stmt = $this->conexao->prepare("UPDATE imagem SET Imagem = :imagem WHERE Codigo_Imagem = :codigoImagem");
-
         $stmt->bindParam(":imagem", $imagem);
         $stmt->bindParam(":codigoImagem", $codigoImagem);
+        return $stmt->execute();
+    }
 
-        $stmt->execute();
+    // se não encontrar imagem e código, não faz nada
+    return true;
 }
-}
+
 public function deletaImagem($codigoImagem) {
     // pra apagar a imagem do produto caso ela seja apagada na edição
     $stmt = $this->conexao->prepare("DELETE FROM imagem WHERE Codigo_Imagem  = :codigoImagem");
     
     $stmt->bindParam(":codigoImagem", $codigoImagem);
 
-    $stmt->execute();
+    if($stmt->execute()){
+        return true;
+    }else{
+        return false;
+    }
 }
 public function pesquisarPorNome($nomeBrinq) {
     if($nomeBrinq != "") {

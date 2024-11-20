@@ -48,11 +48,11 @@ if($tipo === "Atualizar"){
                 // Define a imagem no usuário
                 $userData->setImagem($imageNome);
             } else {
-                $message->setMessage("Erro!", "Erro ao salvar a imagem","error","../html/principal.php");
+                $message->setMessage("Erro!", "Erro ao salvar a imagem","error","back");
             }
             
     }else{
-        $message->setMessage("Erro!","Tipo de imagem invalido, insira png ou jpg","error","../html/principal.php");
+        $message->setMessage("Erro!","Tipo de imagem inválido, insira um arquivo .PNG ou .JPG","error","back");
     }
 }
 
@@ -103,7 +103,7 @@ if($tipo === "Atualizar"){
                 $message->setMessage("Erro!", "Erro ao salvar a imagem","error","back");
             }
         } else {
-            $message->setMessage("Erro!","Tipo de imagem invalido, insira png ou jpg","error","back");
+            $message->setMessage("Erro!","Tipo de imagem inválido, insira um arquivo .PNG ou .JPG","error","back");
         }
     }
 }elseif ($tipo === "AtualizarTipo") {

@@ -310,6 +310,64 @@ if($tipo === "Inserir") {
     $_SESSION['produtos'] = $produtos;
     header("Location: ../html/catalogo.php");
     }
+}elseif($tipo === "FiltragemC"){
+    $categoriaArte = filter_input(INPUT_POST, 'categoriaArte');
+    $categoriaCarrinhos = filter_input(INPUT_POST, 'categoriaCarrinhos');
+    $categoriaCartas = filter_input(INPUT_POST, 'categoriaCartas');
+    $categoriaEducativos = filter_input(INPUT_POST, 'categoriaEducativos');
+    $categoriaEletronica = filter_input(INPUT_POST, 'categoriaEletronica');
+    $categoriaEsportes = filter_input(INPUT_POST, 'categoriaEsportes');
+    $categoriaFunko = filter_input(INPUT_POST, 'categoriaFunko');
+    $categoriaPelucias = filter_input(INPUT_POST, 'categoriaPelucias');
+    $categoriaQuebra = filter_input(INPUT_POST, 'categoriaQuebra');
+    $categoriaTabuleiro = filter_input(INPUT_POST, 'categoriaTabuleiro');
+
+    if (!empty($categoriaArte)) {
+        $categoria = $categoriaArte;
+    } elseif (!empty($categoriaCarrinhos)) {
+        $categoria = $categoriaCarrinhos;
+    } elseif (!empty($categoriaCartas)) {
+        $categoria = $categoriaCartas;
+    } elseif (!empty($categoriaEducativos)) {
+        $categoria = $categoriaEducativos;
+    } elseif (!empty($categoriaEletronica)) {
+        $categoria = $categoriaEletronica;
+    } elseif (!empty($categoriaEsportes)) {
+        $categoria = $categoriaEsportes;
+    } elseif (!empty($categoriaFunko)) {
+        $categoria = $categoriaFunko;
+    } elseif (!empty($categoriaPelucias)) {
+        $categoria = $categoriaPelucias;
+    } elseif (!empty($categoriaQuebra)) {
+        $categoria = $categoriaQuebra;
+    } elseif (!empty($categoriaTabuleiro)) {
+        $categoria = $categoriaTabuleiro;
+    }
+
+    if(!empty($categoria)){
+        $produtos = $produtoDao->filtraCategorias($categoria);
+        $_SESSION['produtos'] = $produtos;
+        header("Location: ../html/catalogo.php");
+    }
+
+}elseif($tipo === "FiltragemS"){
+    $defVisual = filter_input(INPUT_POST, 'defVisual');
+    $defMotor = filter_input(INPUT_POST, 'defMotor');
+    $defAuditivo = filter_input(INPUT_POST, 'defAuditivo');
+
+    if (!empty($defVisual)) {
+        $selo = $defVisual;
+    } elseif (!empty($defMotor)) {
+        $selo = $defMotor;
+    } elseif (!empty($defAuditivo)) {
+        $selo = $defAuditivo;
+    }
+
+    if(!empty($selo)){
+        $produtos = $produtoDao->filtraSelos($selo);
+        $_SESSION['produtos'] = $produtos;
+        header("Location: ../html/catalogo.php");
+    }
 }else{
     $message->setMessage("Erro!","Informações invalidas","warning","back");
 }

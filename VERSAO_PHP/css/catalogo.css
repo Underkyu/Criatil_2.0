@@ -21,7 +21,7 @@ body{
 }
 .filtros{
     width: 20%;
-    max-height: 1020px;
+    max-height: 1110px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,6 +118,11 @@ body{
 .formFiltro input[type="radio"]{
     border-radius: 100%;
 }
+.formFiltro button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /* Hover do checkbox */
 input[type="checkbox"]:hover, input[type="radio"]:hover{
     transform: scale(1.1);
@@ -159,7 +164,7 @@ input[type="checkbox"]:hover, input[type="radio"]:hover{
 
 }
 .filtrarbotao:hover {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 .inputPreco{
     width: 36%;

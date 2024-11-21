@@ -88,38 +88,40 @@ if (isset($_SESSION['produtos'])) {
                         </div>
                     </div>
                     <div class="formFiltro hidden">
-                        <form>
                             <!--Filtro por categorias-->
+                            <form method="POST" action="../controller/produtoProcess.php">
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaBoneco" id="checkCategoria1" /><label>Arte</label>
+                                <input type="radio" class="checkbox" name="categoriaArte" id="checkCategoria1"  value="Arte"/><label>Arte</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaCarrinhos" id="checkCategoria2" /><label>Carrinhos</label>
+                                <input type="radio" class="checkbox" name="categoriaCarrinhos" id="checkCategoria2"  value="Carrinhos"/><label>Carrinhos</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaPelucia" id="checkCategoria3" /><label>Cartas</label>
+                                <input type="radio" class="checkbox" name="categoriaCartas" id="checkCategoria3"  value="Cartas"/><label>Cartas</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaTecnicos" id="checkCategoria4" /><label>Educativos</label>
+                                <input type="radio" class="checkbox" name="categoriaEducativos" id="checkCategoria4"  value="Educativos"/><label>Educativos</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaEletronicos" id="checkCategoria5" /><label>Eletrônica</label>
+                                <input type="radio" class="checkbox" name="categoriaEletronica" id="checkCategoria5"  value="Eletrônica"/><label>Eletrônica</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Esportes</label>
+                                <input type="radio" class="checkbox" name="categoriaEsportes" id="checkCategoria6" value="Esportes" /><label>Esportes</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Funko Pop</label>
+                                <input type="radio" class="checkbox" name="categoriaFunko" id="checkCategoria6"  value="Funko Pop"/><label>Funko Pop</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Pelúcias</label>
+                                <input type="radio" class="checkbox" name="categoriaPelucias" id="checkCategoria6" value="Pelúcias"/><label>Pelúcias</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Quebra-Cabeças</label>
+                                <input type="radio" class="checkbox" name="categoriaQuebra" id="checkCategoria6"  value="Quebra-Cabeças"/><label>Quebra-Cabeças</label>
                             </div>
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="categoriaArtisticos" id="checkCategoria6" /><label>Tabuleiro</label>
+                                <input type="radio" class="checkbox" name="categoriaTabuleiro" id="checkCategoria6"  value="Tabuleiro"/><label>Tabuleiro</label>
                             </div>
+                            <input type="hidden" value="FiltragemC" name="Tipo">
+                            <button type="submit" class="filtrarbotao">Filtrar</button>
                         </form>
                     </div>
                 </div>
@@ -137,20 +139,26 @@ if (isset($_SESSION['produtos'])) {
                         </div>
                     </div>
                     <div class="formFiltro hidden">
-                        <form>
                             <!--Filtro por inclusividade-->
+                            <form method="POST" action="../controller/produtoProcess.php">
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="defVisual" id="checkInclusivo1" /><label>Def. Visuais</label>
+                                <input type="radio" class="checkbox" name="defVisual" id="checkInclusivo1" value="Deficiência Visual"/><label>Def. Visuais</label>
                             </div>
+                            <!--
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="defMotor" id="checkInclusivo2" /><label>Def. Motores</label>
+                                <input type="radio" class="checkbox" name="defMotor" id="checkInclusivo2" value="Tabuleiro"/><label>Def. Motores</label>
                             </div>
+                            -->
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="defAuditivo" id="checkInclusivo3" /><label>Def. Auditivos</label>
+                                <input type="radio" class="checkbox" name="defAuditivo" id="checkInclusivo3" value="Deficiência Auditiva"/><label>Def. Auditivos</label>
                             </div>
+                            <!--
                             <div class="formItem">
-                                <input type="checkbox" class="checkbox" name="afasia" id="checkInclusivo4" /><label>Afasia</label>
+                                <input type="radio" class="checkbox" name="afasia" id="checkInclusivo4" /><label>Afasia</label>
                             </div>
+                            -->
+                            <input type="hidden" value="FiltragemS" name="Tipo">
+                            <button type="submit" class="filtrarbotao">Filtrar</button>
                         </form>
                     </div>
                 </div>
@@ -190,16 +198,13 @@ if (isset($_SESSION['produtos'])) {
                     </div>
                     <?php } ?>
 
-                    <?php /* endif; */ ?>
-
                     </div>
-                        <!-- fim da parte dos cards -->
 
-        <?php if (!empty($brinquedos)): ?>
+        <?php if (!empty($brinquedos)) { ?>
         <div class="vermais">
                 <button class="btn-vermais">Ver Mais</button>
             </div>
-            <?php endif; ?>
+            <?php } ?>
     </div>
     </div>
 

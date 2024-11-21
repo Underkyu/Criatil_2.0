@@ -239,6 +239,30 @@ public function filtraProdutos($precoMin, $precoMax) {
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+public function filtraCategorias($categoria) {
+    $stmt1 = $this->conexao->prepare("SELECT Codigo_Categoria FROM categoria WHERE Nome_Categoria = :categoria");
+    $stmt1->bindParam(':categoria', $categoria);
+    $stmt1->execute();
+    $codigoCategoria = $stmt1->fetchColumn();
+
+    $stmt = $this->conexao->prepare("SELECT * FROM brinquedo WHERE Codigo_Categoria = :codigoCategoria");
+    $stmt->bindParam(':codigoCategoria', $codigoCategoria);
+
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+public function filtraSelos($selo) {
+    $stmt1 = $this->conexao->prepare("SELECT Codigo_Selo FROM selo WHERE Nome_Selo = :selo");
+    $stmt1->bindParam(':selo', $selo);
+    $stmt1->execute();
+    $codigoSelo = $stmt1->fetchColumn();
+
+    $stmt = $this->conexao->prepare("SELECT * FROM brinquedo WHERE Codigo_Selo = :codigoSelo");
+    $stmt->bindParam(':codigoSelo', $codigoSelo);
+
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
 public function pesquisarPrimeiraImagemPorCodigoBrinq($codigoBrinq) {
     if($codigoBrinq != "") {

@@ -36,13 +36,13 @@ $brinquedosPedidos = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
                 <div class="ft-lateral">
                   <img class="img-lateral" src=<?php
                         if($usuarioData->getImagem() == "vazio") {;
-                            print_r("../imagens/usuarios/usuario.png"); 
+                            echo("../imagens/usuarios/usuario.png"); 
                             
                         }else{
-                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                            echo("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
                         }?>>
                         <div class="nomelat-div">
-                         <h1 class="nome-lateral"><?php print_r($usuarioData->getNome());?></h1>
+                         <h1 class="nome-lateral"><?php echo($usuarioData->getNome());?></h1>
                         </div>
                         </div>
                     <div class="paginas">
@@ -105,16 +105,16 @@ $brinquedosPedidos = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
                                 <img src=<?php $imagem = $prodDao->pesquisarPrimeiraImagemPorCodigoBrinq($produto->getCodigoBrinq()); 
                                 echo("../imagens/Produtos/".$imagem->getImagem().".jpeg"); ?> class="produto-imagem">
                                 <div class="produto-nome"><?php echo($produto->getNomeBrinq()) ?></div>
-                                <div class="produto-quantidade"><?php print_r($brinq->getQuantidade()) ?></div>
+                                <div class="produto-quantidade"><?php echo($brinq->getQuantidade()) ?></div>
                                 <div class="produto-data"><?php 
                                     $pedido = $pedidosDao->getPedidoPorCodigo($brinq->getCodigoPedido());
-                                    print_r($pedido["Data_Pedido"]);
+                                    echo($pedido["Data_Pedido"]);
                                 ?></div>
                                 <div class="produto-valor">
-                                    <div class="valor-unidade">R$<?php echo($produto->getPrecoBrinq()) ?></div>
+                                    <div class="valor-unidade">R$<?php echo number_format($produto->getPrecoBrinq(), 2, ',', '.') ?></div>
                                     <div class="valor-total">R$<?php 
                                     $precoTotal = $produto->getPrecoBrinq() * $brinq->getQuantidade();
-                                    print_r($precoTotal);
+                                    echo number_format($precoTotal, 2, ',', '.');
                                     ?></div>
                                 </div>
                                 </div>

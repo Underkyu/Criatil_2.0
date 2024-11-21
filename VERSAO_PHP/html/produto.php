@@ -5,8 +5,10 @@ require_once("../controller/global.php");
 require_once("../controller/conexao.php");
 require_once("../Dao/usuarioDAO.php");
 require_once("../models/usuario.php");
+require_once("../Dao/pedidosDAO.php");
 
 $userDao = new UsuarioDAO($conn,$BASE_URL);
+$pedidosDao = new pedidosDao($conn, $BASE_URL);
 
 $usuarioData = $userDao->verificarToken(false);
 
@@ -47,6 +49,9 @@ function renderizarEstrelas($nota) {
   
   return $htmlEstrelas;
 }
+
+$brinqCompradosporUser = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
+
 ?>
 
 <!DOCTYPE html>
@@ -289,6 +294,16 @@ function renderizarEstrelas($nota) {
       </div>
       <!--Fim product slider 1-->
 
+      <?php 
+      /*
+      $codigoBrinqComprado = [];
+      $codigoBrinq = $brinquedo->getCodigoBrinq();
+      $flag = true;
+      
+    
+      if($flag == true) {
+      */
+      ?>
       <form method="POST" action="../controller/avaliacaoProcess.php">
       <div class="add_ava">
         <div class="ava_container">
@@ -298,7 +313,6 @@ function renderizarEstrelas($nota) {
           <h3 class="titulo_input_ava">Titulo</h3>
           <input type="text" class="titulo_ava" name="Titulo_Ava" placeholder="Digite o título da avaliação">
           </div>
-    
           <div class="input_ava">
           <h3 class="titulo_input_ava">Estrelas</h3>
           <select name="Nota_Ava" class="num_estrelas">
@@ -328,10 +342,13 @@ function renderizarEstrelas($nota) {
         </div>
           </div>
       </div>
-      
       <input type="hidden" name="Codigo_Brinq" value=<?php echo($_GET['codigo']) ?>>
       <input type="hidden" name="Tipo" value="Criar">
       </form>
+      <?php/* }else{
+        echo ("ERRO");
+      } */ ?>
+
       
       <h2 class="avaliacoes">Avaliações</h2>
       <!--Titulo avaliações-->

@@ -390,8 +390,8 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     justify-content: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 9rem;
+    margin-bottom: 11rem;
 }
   /* responsividade Hilario*/
   @media (min-width: 1500px) {

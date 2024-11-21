@@ -89,9 +89,10 @@ $itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
                             <div class="legenda-foto">Foto</div>
                             <div class="legenda-nome">Nome</div>
                             <div class="legenda-valor">Valor</div>
-                            <div class="legenda-espaco"> </div>
+                            <?php if($itensLista != false){ ?><div class="legenda-espaco"> </div> <?php } ?>
                         </div>
                         <?php
+                        if($itensLista != false){
                             foreach($itensLista as $item) {
                                 $produto = $prodDao->pesquisarPorCodigo($item->getCodigoBrinq()); 
                         ?>
@@ -117,6 +118,9 @@ $itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
                         </div>
                         <?php
                             }
+                        }else{?>
+                            <h2 class="vazio">Lista de desejos vazia</h2>
+                        <?php }
                         ?>
                      </div>   
         </div>

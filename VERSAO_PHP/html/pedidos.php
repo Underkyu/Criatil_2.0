@@ -1,10 +1,27 @@
+<?php
+require_once("../controller/global.php");
+require_once("../controller/conexao.php");
+require_once("../Dao/usuarioDAO.php");
+require_once("../Dao/desejosDAO.php");
+require_once("../Dao/produtoDAO.php");
+require_once("../Dao/pedidosDAO.php");
+require_once("../models/usuario.php");
+
+$pedidosDao = new pedidosDao($conn, $BASE_URL);
+$userDao = new UsuarioDAO($conn,$BASE_URL);
+$prodDao = new ProdutoDAO($conn,$BASE_URL);
+
+$usuarioData = $userDao->verificarToken(true);
+
+$brinquedosPedidos = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- link da fonte pro css saber que fonte usar -->
-    <link rel="stylesheet" href="../css/pedidos.css">
     <script src="../js/menuSanduicheCONTA.js" defer></script>
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Criatil - meus pedidos</title>
@@ -77,30 +94,37 @@
                             <div class="legenda-data">Data</div>
                             <div class="legenda-valor">Valor</div>
                         </div>
-                        <div class="produto">
+                    
+                        <?php
+                            if($brinquedosPedidos != false){
+                            foreach($brinquedosPedidos as $brinq) {
+                                $produto = $prodDao->pesquisarPorCodigo($brinq->getCodigoBrinq()); 
+                        ?>
+                         <div class="produto">
                             <div class="produto-info">
-                                <img src="../imagens/Produtos/Miku/Imagem1.png" class="produto-imagem">
-                                <div class="produto-nome">Pelúcia Hatsune Miku</div>
-                                <div class="produto-quantidade">01</div>
-                                <div class="produto-data">08/10/2024</div>
+                                <img src=<?php $imagem = $prodDao->pesquisarPrimeiraImagemPorCodigoBrinq($produto->getCodigoBrinq()); 
+                                echo("../imagens/Produtos/".$imagem->getImagem().".jpeg"); ?> class="produto-imagem">
+                                <div class="produto-nome"><?php echo($produto->getNomeBrinq()) ?></div>
+                                <div class="produto-quantidade"><?php print_r($brinq->getQuantidade()) ?></div>
+                                <div class="produto-data"><?php 
+                                    $pedido = $pedidosDao->getPedidoPorCodigo($brinq->getCodigoPedido());
+                                    print_r($pedido["Data_Pedido"]);
+                                ?></div>
                                 <div class="produto-valor">
-                                    <div class="valor-unidade">R$ 50,00/un.</div>
-                                    <div class="valor-total">R$ 50,00</div>
+                                    <div class="valor-unidade">R$<?php echo($produto->getPrecoBrinq()) ?></div>
+                                    <div class="valor-total">R$<?php 
+                                    $precoTotal = $produto->getPrecoBrinq() * $brinq->getQuantidade();
+                                    print_r($precoTotal);
+                                    ?></div>
+                                </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="produto">
-                            <div class="produto-info">
-                                <img src="../imagens/Produtos/Ralsei/ralseideltarune.png" class="produto-imagem">
-                                <div class="produto-nome">Pelúcia Ralsei Deltarune</div>
-                                <div class="produto-quantidade">02</div>
-                                <div class="produto-data">08/10/2024</div>
-                                <div class="produto-valor">
-                                    <div class="valor-unidade">R$ 30,00/un.</div>
-                                    <div class="valor-total">R$ 60,00</div>
-                                </div>
-                            </div>
+                        <?php
+                            }
+                        }else{?>
+                            <h2 class="vazio">Lista de desejos vazia</h2>
+                        <?php }
+                        ?>
                         </div>
                     </div>
                 </div>
@@ -109,4 +133,8 @@
 
 <?php include("footer.php") ?>
 </body>
+
+<head>
+<link rel="stylesheet" href="../css/pedidos.css">
+</head>
 </html>

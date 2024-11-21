@@ -76,7 +76,7 @@ require_once("../models/usuario.php");
             <input type="hidden" name="formaPagamento" value="vazio" id="forma"> <!--Input que armazenará a tipo de pagamento-->
             <input type="hidden" name="precoTotal" value=<?php print_r($precoTotal) ?>> 
             <input type="hidden" name="statusPedido" value="Finalizado"> 
-            <input type="hidden" name="cupom" value="2"> 
+            <input type="hidden" name="cupom" value="1"> 
             <input type="hidden" name="dataPedido" value=<?php print_r($agora) ?>> 
             <input type="hidden" name="codigoUsu" value=<?php print_r($usuarioData->getCodigo()) ?>> 
             <button id="continue-button">Continuar para o pagamento</button>

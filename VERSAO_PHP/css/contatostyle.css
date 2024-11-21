@@ -138,3 +138,6 @@ form {
     transform: translateY(2px);
     filter: brightness(0.8);
 }
+div.footerContainer{
+  margin-top: 2.9rem;
+}

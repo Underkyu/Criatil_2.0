@@ -153,6 +153,7 @@
     margin-bottom: 10px;
     width: 100%;
     text-align: center;
+    margin-top: 50px;
 }
 .legenda-img, .legenda-nome, .legenda-qntd, .legenda-valor {
     flex: 1;
@@ -160,11 +161,9 @@
 
 #carrinho {
     width: 100%;
-    height: auto;
-    max-height: 405px;
+    max-height: 65%;
     display: flex;  
     flex-direction: column;
-    margin-top: 50px;
     overflow-y: scroll;
 }
 .produto {

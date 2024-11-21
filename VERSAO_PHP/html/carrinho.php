@@ -45,15 +45,15 @@ require_once("../models/brinquedo.php");
                         <h1>Inserir Cupom</h1>
                     </div>
                 </div>
-                <div id="carrinho" class="carrinhobox">
-
-                        <div id="carrinho-legenda">
+                <div id="carrinho-legenda">
                             <p class="legenda-img">Foto</p>
                             <p class="legenda-nome">Nome</p>
                             <p class="legenda-qntd">Quantidade</p>
                             <p class="legenda-valor">Valor</p>
                             <p class="legenda-valor"> </p>
                         </div>
+                <div id="carrinho" class="carrinhobox">
+
 
                         <?php
                             foreach ($carrinho as $produto) {

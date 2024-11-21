@@ -119,6 +119,9 @@ $brinquedos_recentes = $stmt_recentes->fetchAll(PDO::FETCH_ASSOC);
               // Seleciona as imagens do brinquedo atual
               $stmt = $conn->query("SELECT Imagem FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem LIMIT 1");
               $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
+
+              $stmt2 = $conn->query("SELECT Imagem_Selo FROM selo WHERE Codigo_Selo = " . $brinquedo['Codigo_Selo']);
+              $selo = $stmt2->fetch(PDO::FETCH_ASSOC);
           ?>
           <!--Div que contem os elementos do card-->
           <div class="card swiper-slide">

@@ -182,10 +182,16 @@ if (isset($_SESSION['produtos'])) {
                         foreach ($brinquedos as $brinquedo) {
                         $stmt = $conn->query("SELECT Imagem FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem LIMIT 1");
                         $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                        $stmt2 = $conn->query("SELECT Imagem_Selo FROM selo WHERE Codigo_Selo = " . $brinquedo['Codigo_Selo']);
+                        $selo = $stmt2->fetch(PDO::FETCH_ASSOC);
                     ?>
                     <div class="card swiper-slide">
                         <div class="imagem_card">
                             <img src="<?php echo "../imagens/Produtos/".$imagem['Imagem'].".jpeg"; ?>" class="foto_card">
+                            <?php  if ($selo['Imagem_Selo'] != null) { ?>
+                                <img src="<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".png"; ?>" class="selo">
+                                <?php } ?>
                         </div>
                         <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>
                         <h3 class="preco">R$<?php echo number_format($brinquedo['Preco_Brinq'], 2, ',', '.'); ?></h3>

@@ -122,7 +122,7 @@ $brinquedosPedidos = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
                         <?php
                             }
                         }else{?>
-                            <h2 class="vazio">Lista de desejos vazia</h2>
+                            <h2 class="vazio">Nenhum pedido realizado</h2>
                         <?php }
                         ?>
                         </div>

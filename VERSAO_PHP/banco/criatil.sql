@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20/11/2024 às 04:24
+-- Tempo de geração: 22/11/2024 às 03:14
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -254,7 +254,8 @@ CREATE TABLE `selo` (
 INSERT INTO `selo` (`Codigo_Selo`, `Nome_Selo`, `Imagem_Selo`) VALUES
 (1, 'Sem Selo', ''),
 (2, 'Deficiência Auditiva', 'Auditiva'),
-(3, 'Deficiência Visual', 'Visual');
+(3, 'Deficiência Visual', 'Visual'),
+(4, 'Deficiência Deepwoken', '4bb6bacebfddc04b66d902e0b17de85f8a1ebbf65a1e30fd12');
 
 -- --------------------------------------------------------
 
@@ -283,7 +284,9 @@ INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Ema
 (2, 'Ricardo Souza', '1993-11-09', '(11) 97492-1221', 'ricas@hotmail.com', '$2y$10$NJ.vVoz7s6UaPGYYx3qh3e85K12lqcbeSNaN6tFk8dIcBnKT41doa', 'Cliente', '6ee4c54eb63ec1e147030dcfcf128f8668a3fe811883ab42b2f8195080f52328fd42ea4da7a66e9127cfb658cd15c8167f98', '36ca795a7aef34ad8ad99a7bf4cf7847f0d74978c951cd6ad331f46f94194884f137e6d7e0fae988378005de66359163acc30516b5e85029fc8c7ada'),
 (3, 'Cássio Gomes', '2006-12-01', '(11) 95853-3922', 'elcassio@gmail.com', '$2y$10$vozGTgSShePrI59.WxRnEeIObXf9mLD00FpkNhblQcO11g4e7v/XW', 'Cliente', 'e94d5498fafc9495ec2c02ae5fb6816c78112d3a76e74564ced749fb0f72f68700c26930884e0f7ed293743954f03ff3150e', 'c3b56e4dada6e6b3cdc4fcfa8db41604afc45a8b90d6705937096632b65a6d0448779658fdffda754009182bcc15a0bd3f0256e72467b2d9c3cedf25'),
 (4, 'Guilherme Britos', '1993-01-03', '(11) 93812-1221', 'guigui@gmail.com', '$2y$10$IeX0NVHaz1QFrCcyU55SHOngBpYOPF.M2AjNa5x6l3mT7.i2azxIy', 'Cliente', 'f45743d8716100d1f325ebfae89461f200deacb16edce4caea592b020268dc8588f186697f6bca7d0141c04a9885caec8b80', '0e8d29d27681f1049882ba048a7ad6b394746a1a18d09663701fd94fdf4e012fe9282659daab86ad6f44f788ab9b8040f5a7d94b8227a542c86f3903'),
-(5, 'Brito Carrero', '1988-12-08', '(11) 98612-3871', 'brito@gmail.com', '$2y$10$o0WKp5VMVhg21KDDf4bUi.dY37TWVFQYpA7fuItZc7DnTfpn87oNG', 'Cliente', '756a229c0886b4ae0c9b13b488ca9234a2220f4a2b93b52b8b8c084cbcede53f8faa4ad988bd7768a938734c56021848ca0e', '41e988ec496a950e9b049be21b5f6ec8250fad053a968625421e8fcfc87fb01120b232ce90917010110e519d64565a3bfce8529928a27e1a5907b651');
+(5, 'Brito Carrero', '1988-12-08', '(11) 98612-3871', 'brito@gmail.com', '$2y$10$o0WKp5VMVhg21KDDf4bUi.dY37TWVFQYpA7fuItZc7DnTfpn87oNG', 'Cliente', '756a229c0886b4ae0c9b13b488ca9234a2220f4a2b93b52b8b8c084cbcede53f8faa4ad988bd7768a938734c56021848ca0e', '41e988ec496a950e9b049be21b5f6ec8250fad053a968625421e8fcfc87fb01120b232ce90917010110e519d64565a3bfce8529928a27e1a5907b651'),
+(7, 'conta silva', '1982-12-08', '(89) 12738-9712', 'conta@gmail', '$2y$10$YVvogMZ6Uv1SEMoE8L6bJeUzI5RNd0fh0If0U1jo7bWCN2rrFtOKy', 'Cliente', 'ab1e368e49f3ea4c41fc307c1f7421a324eb0e2c19a835ec80fd2dfde46c38d5a49c7ab09a855b9d734e2443d7285eec5db9', 'vazio'),
+(8, 'conta silva', '9274-12-08', '(91) 82376-8712', 'email@gmail', '$2y$10$1VWdx34BnUdZw09amWU53.3NYCDHi6C10QFfTXWoxkNtRTfB29F9K', 'Cliente', 'cd0bd67538ab2360f83e82b95eec89e82fc657bfb34027b6b67f46c0a36ecf455e40b8598793b5bf0bbba9f4d95025bef2f4', 'vazio');
 
 --
 -- Índices para tabelas despejadas
@@ -409,7 +412,7 @@ ALTER TABLE `imagem`
 -- AUTO_INCREMENT de tabela `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `Codigo_Pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Codigo_Pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `sac`
@@ -421,13 +424,13 @@ ALTER TABLE `sac`
 -- AUTO_INCREMENT de tabela `selo`
 --
 ALTER TABLE `selo`
-  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restrições para tabelas despejadas

@@ -27,5 +27,9 @@ class Selo {
     public function setImagemSelo($Imagem_Selo) {
         $this->Imagem_Selo = $Imagem_Selo;
     }
+
+    public function imageGenerateName(){
+        return bin2hex(random_bytes(60));
+    }
 }
 ?>

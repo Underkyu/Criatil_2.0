@@ -26,6 +26,7 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
     <title>Categorias & Selos</title>
     <link rel="stylesheet" href="../css/selos&categoriasGrnt.css">
     <script src="../js/grntInsert.js"></script>
+    <script src="../js/grntImgPreview.js"></script>
 </head>
 <body>
 <?php include("headerGrnt.php"); ?>
@@ -75,7 +76,7 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
                             <?php if($selo['Imagem_Selo'] == "") { ?>
                                     <img src="../imagens/Selo/Sem-Selo.png" alt="Sem Selo" class="foto">
                             <?php } else { ?>
-                                <img src=<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".png"; ?> alt="Imagem do Selo" class="foto"><!--Imagem-->
+                                    <img src=<?php echo("../imagens/Selo/".$selo['Imagem_Selo'].".jpeg"); ?> alt="Imagem do Selo" class="foto"><!--Imagem-->
                             <?php } ?>
                             </div>
                                 <p class="informacao"><?php echo $selo['Codigo_Selo']; ?></p> <!--Id-->
@@ -109,12 +110,15 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
 
 <!-- form de adicionar selo -->
 <div id="form-container3" class="formInsert">
-    <form method="POST" id="formInsert-Selo" class="formInsert-Brinquedo" action="../controller/seloProcess.php">
+    <form method="POST" id="formInsert-Selo" class="formInsert-Brinquedo" action="../controller/seloProcess.php" enctype="multipart/form-data">
     <h2>Adicionar Selo</h2>
     <div class="div-q-separa-socorro">
     <div class="form-div"><!-- div q contém as inputs -->
         <input type="text" name="Nome" placeholder="Nome do selo" required> 
-        <input type="text" name="Imagem" placeholder="Nome da imagem do selo" required>
+        <label for="Imagem" class="input-img">Imagem do selo</label>
+        <input type="file" name="Imagem" id="Imagem" class="arquivo-input" required>
+        <p>Preview da Imagem:</p>
+            <img id="Imagem1A" src="" class="imagemPreview" style="display:none;">
     </div>
         <input type="hidden" name="Tipo" value="Inserir">
         </div>

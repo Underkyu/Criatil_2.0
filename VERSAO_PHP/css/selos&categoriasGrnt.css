@@ -136,6 +136,9 @@
       transform: scale(1.05);
       transition: all 0.3s ease-in-out;
   }
+  .arquivo-input {
+  display: none;
+}
   div.acoes{
     display: flex;
     justify-content: center;
@@ -475,7 +478,6 @@
       justify-content: center;
       height: 100%;
       width: 100%;
-      margin-left: 15px;
     }
     .form-div-img {
       display: flex;
@@ -488,11 +490,13 @@
     }
     .div-q-separa-socorro {
       display: flex;
+      align-items: center;
       width: 100%;
     }
     .div-btn {
       display: flex;
       justify-content: center;
+      align-items: center;
       width: 40%;
       height: min-content;
       margin-top: 10px;
@@ -548,10 +552,6 @@
     .formInsert-Brinquedo button:hover {
       transform: scale(1.1);
     }
-    .formInsert-Brinquedo label {
-      font-size: 14px;
-      font-weight: 500;
-    }
     input[type=number]::-webkit-inner-spin-button, 
   input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs com type=number */
     -webkit-appearance: none; 
@@ -584,7 +584,8 @@
     margin-left: 2px;
   }
   .imagemPreview {
-    max-width: 50px;
+    max-width: 60px;
+    margin-top: 5px;
     object-fit: cover;
   }
   .preview-div {
@@ -593,8 +594,35 @@
     margin: 0;
     height: auto;
   }
-  .preview-div label {
-    margin-right: 6px;
-    font-size: 12px;
+  .input-img {
+    width: 50%;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    height: 45px;
+    padding: 0 15px 0 15px;
+    background-color: white;
+    color: black;
+    border-radius: 12px;
+    border: 2px solid black;
+    font-size: 16px;
+    font-weight: 500;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    transition: transform 0.3s ease-in-out;
+  }
+  .input-img:hover {
+    transform: scale(1.05);
+  }
+  .preview-div{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
   /* responsividade forms - falta fzr responsividade nos dois */

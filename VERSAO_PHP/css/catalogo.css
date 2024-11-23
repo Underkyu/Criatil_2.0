@@ -214,8 +214,8 @@ label{
     flex-wrap: wrap;
 
     justify-content: center;
-    min-height: 70vh;
     height: fit-content;
+    margin-bottom: 1rem;
 }
 .card{
     margin: 10px;

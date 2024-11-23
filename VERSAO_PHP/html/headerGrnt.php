@@ -85,8 +85,16 @@ $usuarioData = $userDao->verificarToken(false);
                 </div>
                 </div>
 
-                <a href="conta.php" class="linkk-header">
-                <img src="../imagens/Gerente/FotoGerente.webp" alt="Foto genrente" class="foto_gerente">
+                <a href="conta.php">
+                    <div class="link_headerHeader">
+                    <img src=<?php
+                        if($usuarioData->getImagem() == "vazio") {;
+                            print_r("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                        }?> alt="" class="foto_perfil_header"> <!--Foto do perfil-->
+                </div>
                 </a>
 
                 <!--Responsividade-->

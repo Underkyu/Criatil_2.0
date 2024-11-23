@@ -121,6 +121,21 @@ div.header_normal{ /*Div que contem o conteudo do header de pc*/
   img.perfil{
     border-radius: 100%;
   }
+  div.link_headerHeader { /*Div que contem icon e textos dos links para outras paginas que ficam dentro do header*/
+    display: flex;
+    margin-left: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  img.foto_perfil_header{
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 100%;
+    border: 3px solid #F2AF00;
+    margin: .5rem;
+    background-color: white;
+    overflow: hidden;
+  }
 
 
 /*Responsividade*/

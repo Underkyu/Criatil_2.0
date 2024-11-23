@@ -169,25 +169,25 @@ $usuarioData = $userDao->verificarToken(true);
                     <div class="info-item">
                         <div class="info-label">Nome e sobrenome:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getNome()); ?>" name="Nome_Usu" readonly>
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getNome()); ?>" name="Nome_Usu">
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Data de nascimento:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="date" value=<?php print_r($usuarioData->getNasc());?> name="Nasc_Usu" readonly>
+                        <input class="usuario-info" type="date" value=<?php print_r($usuarioData->getNasc());?> name="Nasc_Usu">
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Email:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getEmail());?> name="Email_Usu" readonly>
+                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getEmail());?> name="Email_Usu">
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Celular:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu" readonly>
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu" >
                         </div>
                     </div>
                     <input type="hidden" name="Tipo" value="Atualizar">

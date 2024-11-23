@@ -12,6 +12,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.appcriatil.R
+import com.example.appcriatil.RoomDB.Usuario
 import com.example.appcriatil.components.ElementoBotao
 import com.example.appcriatil.components.ElementoCheckbox
 import com.example.appcriatil.components.ElementoDivisorComTexto
@@ -32,10 +37,40 @@ import com.example.appcriatil.components.ElementoTextoTitulo
 import com.example.appcriatil.components.PaddedItem
 import com.example.appcriatil.navigation.CriatilAppRouter
 import com.example.appcriatil.navigation.Screen
+import com.example.appcriatil.viewModel.CriatilViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun TelaCadastro() {
+fun TelaCadastro (viewModel: CriatilViewModel) {
+    var nomeValue by remember{
+        mutableStateOf("")
+    }
+    var emailValue by remember{
+        mutableStateOf("")
+    }
+    var telValue by remember{
+        mutableStateOf("")
+    }
+    var cepValue by remember{
+        mutableStateOf("")
+    }
+    var senhaValue by remember{
+        mutableStateOf("")
+    }
+
+    var usuario = Usuario(
+        nomeValue = nomeValue,
+        emailValue = emailValue,
+        telValue = telValue,
+        cepValue = cepValue,
+        senhaValue = senhaValue,
+        logValue = false,
+    )
+
+    var usuarioList by remember{
+        mutableStateOf(listOf<Usuario>())
+    }
+
     Surface(
         color = Color.White,
         modifier = Modifier
@@ -161,5 +196,5 @@ fun TelaCadastro() {
 @Preview
 @Composable
 fun DefaultPreviewOfTelaCadastro() {
-    TelaCadastro()
+    //TelaCadastro()
 }

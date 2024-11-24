@@ -1,6 +1,6 @@
 <?php 
 
-require_once("../models/avaliacao.php");
+require_once("../models/Avaliacao.php");
 require_once("../models/message.php");
 require_once("../controller/conexao.php");
 

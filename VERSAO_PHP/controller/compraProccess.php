@@ -1,7 +1,7 @@
 <?php
 require_once("global.php");
 require_once("conexao.php");
-require_once("../Dao/compraDAO.php");
+require_once("../Dao/CompraDAO.php");
 require_once("../models/message.php");
 require_once("../models/pedido.php");
 require_once("../Dao/carrinhoDAO.php");

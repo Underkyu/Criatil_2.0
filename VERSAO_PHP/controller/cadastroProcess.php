@@ -2,7 +2,7 @@
 require_once("global.php");
 require_once("conexao.php");
 require_once("../Dao/usuarioDAO.php");
-require_once("../models/avaliacao.php");
+require_once("../models/Avaliacao.php");
 require_once("../models/message.php");
 
 $message = new Message($BASE_URL); //Criação de uma objeto de mansagem

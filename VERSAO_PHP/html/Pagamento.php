@@ -68,7 +68,7 @@ require_once("../models/usuario.php");
         </div>
         <div class="sumario">
             <h3>Resumo</h3>
-            <p>Subtotal: <?php echo(number_format($precoTotal, 2, ',', '.')) ?></p>            <p>Desconto:</p>
+            <p>Subtotal: R$<?php echo(number_format($precoTotal, 2, ',', '.')) ?></p>            <p>Desconto:</p>
             <p>Total:</p>
             <p id="pagamentoSelecionado">Pagamento:</p>
             <button id="back-button">Voltar</button>

@@ -500,6 +500,7 @@
       width: 40%;
       height: min-content;
       margin-top: 10px;
+      gap: 20px;
     }
     .formInsert-Brinquedo h2 {
       display: flex;
@@ -536,7 +537,7 @@
     }
     .formInsert-Brinquedo button {
       width: 50%;
-      height: 45px;
+      height: 40px;
       border: 3px solid black;
       border-radius: 10px;
       background-color: #F2AF00;
@@ -549,8 +550,25 @@
       transition: transform 0.3s ease-in-out;
     }
     .formInsert-Brinquedo button:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
+    .formInsert-Brinquedo .delet-btn{
+    width: 50%;
+    height: 40px;
+    background-color: #F2AF00;
+    border: 3px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    transition-duration: .5s;
+    transition-timing-function: linear;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  .formInsert-Brinquedo .delet-btn:hover {
+    background-color: #ed0000;
+    transform: scale(1.05);
+  }
     input[type=number]::-webkit-inner-spin-button, 
   input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs com type=number */
     -webkit-appearance: none; 

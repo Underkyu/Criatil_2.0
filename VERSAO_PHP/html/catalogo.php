@@ -190,7 +190,7 @@ if (isset($_SESSION['produtos'])) {
                         <div class="imagem_card">
                             <img src="<?php echo "../imagens/Produtos/".$imagem['Imagem'].".jpeg"; ?>" class="foto_card">
                             <?php  if ($selo['Imagem_Selo'] != null) { ?>
-                                <img src="<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".png"; ?>" class="selo">
+                                <img src="<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".jpeg"; ?>" class="selo">
                                 <?php } ?>
                         </div>
                         <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>

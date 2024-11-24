@@ -32,6 +32,7 @@ $itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
 <div class="container">
     <!-- página da conta -->
             <div class="navbar-container"> 
+            <div class="ft-nome-lateral">
                 <div class="ft-lateral">
                   <img class="img-lateral" src=<?php
                         if($usuarioData->getImagem() == "vazio") {;
@@ -39,6 +40,7 @@ $itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
                         }else{
                             echo("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
                         }?>>
+                        </div>
                         <div class="nomelat-div">
                          <h1 class="nome-lateral"><?php echo($usuarioData->getNome());?></h1>
                         </div>
@@ -126,7 +128,6 @@ $itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
         </div>
         
     <!-- fim da página da conta -->
-</div>
 </div>
 <?php include("footer.php") ?>
 </body>

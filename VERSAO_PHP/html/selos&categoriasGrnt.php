@@ -180,6 +180,9 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
         </div>
         <div class="div-btn">
             <button type="submit">Confirmar</button> 
+            <!--
+            <button type="submit" class="delet-btn" name="Tipo" value="Deletar">Deletar</button> 
+                            -->
         </div>
     </form>
 </div>
@@ -204,10 +207,48 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
         </div>
         <div class="div-btn">
             <button type="submit">Confirmar</button> 
+            <!--
+            <button type="submit" class="delet-btn" name="Tipo" value="Deletar">Deletar</button> 
+                            -->
         </div>
     </form>
 </div>
 </div>
 <?php include("footer.php"); ?>
 </body>
+<script>
+function confirmDelete(codigoAva, nomeUsu) {
+    Swal.fire({
+        title: 'Tem certeza?',
+        text: "Você confirma a deleção da avaliação de " + nomeUsu + "?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#0476D9',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar',
+        allowOutsideClick: false,
+        toast: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const form = new FormData();
+            form.append('Tipo', 'Deletar');
+            form.append('codigoAva', codigoAva);
+            form.append('nomeUsu', nomeUsu);
+
+            fetch('../controller/avaliacaoProcess.php', { // fetch é praticamente um jeito alternativo de fazer um submit pra enviar formulários
+                method: 'POST',             
+                body: form
+            }).then(response => {
+                if (response.ok) {
+                    // guarda a msg pra ser exibida no script do começo
+                    sessionStorage.setItem('message', 'Avaliação removida com sucesso!');
+                    // recarrega a pag
+                    location.reload();
+                }
+            });
+        }
+    });
+}
+</script>
 </html>

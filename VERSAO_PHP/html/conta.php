@@ -17,6 +17,7 @@ $usuarioData = $userDao->verificarToken(true);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- link da fonte pro css saber que fonte usar -->
+    <link rel="stylesheet" href="../css/conta.css">
     <script src="../js/menuSanduicheCONTA.js" defer></script>
     <script src="../js/conta.js" defer></script>
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
@@ -32,14 +33,13 @@ $usuarioData = $userDao->verificarToken(true);
                 <div class="ft-lateral">
                   <img class="img-lateral" src=<?php
                         if($usuarioData->getImagem() == "vazio") {;
-                            print_r("../imagens/usuarios/usuario.png"); 
-                            
+                            echo("../imagens/usuarios/usuario.png"); 
                         }else{
-                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                            echo("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
                         }?>>
-                </div>
+                        </div>
                         <div class="nomelat-div">
-                         <h1 class="nome-lateral"><?php print_r($usuarioData->getNome());?></h1>
+                         <h1 class="nome-lateral"><?php echo($usuarioData->getNome());?></h1>
                         </div>
                         </div>
                     <div class="paginas">
@@ -92,13 +92,13 @@ $usuarioData = $userDao->verificarToken(true);
                     <div class="info-item">
                         <div class="info-label">Data de nascimento:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="date" value=<?php print_r($usuarioData->getNasc());?> name="Nasc_Usu" disabled>
+                        <input class="usuario-info" type="date" value=<?php echo($usuarioData->getNasc());?> name="Nasc_Usu" disabled>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Email:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getEmail());?> name="Email_Usu" disabled>
+                        <input class="usuario-info" type="text" value=<?php echo($usuarioData->getEmail());?> name="Email_Usu" disabled>
                         </div>
                     </div>
                     <div class="info-item">
@@ -120,17 +120,17 @@ $usuarioData = $userDao->verificarToken(true);
                     <div class="img-container" id="img-container"> 
                         <img src=<?php
                         if($usuarioData->getImagem() == "vazio") {;
-                            print_r("../imagens/usuarios/usuario.png"); 
+                            echo("../imagens/usuarios/usuario.png"); 
                             
                         }else{
-                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                            echo("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
                         }?> class="img-conta">
                     <form action="../controller/usuarioProccess.php" method="POST" enctype="multipart/form-data" id="formSalvarFoto">
                         <div class="editar-icone">
                             <img src="../imagens/Icons/Editar.png" class="icone-editar">
                         </div>
                         </div>
-                        <h2 class="nome-conta"><?php print_r($usuarioData->getNome()) ?></h2>
+                        <h2 class="nome-conta"><?php echo($usuarioData->getNome()) ?></h2>
                         <input type="file" name="imagem_file" id="imagem_file" required>
                         <input type="hidden" name="Tipo" value="updateImagem">
                         <button type="submit" class="editar">Salvar Foto</button>
@@ -175,13 +175,13 @@ $usuarioData = $userDao->verificarToken(true);
                     <div class="info-item">
                         <div class="info-label">Data de nascimento:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="date" value=<?php print_r($usuarioData->getNasc());?> name="Nasc_Usu">
+                        <input class="usuario-info" type="date" value=<?php echo($usuarioData->getNasc());?> name="Nasc_Usu">
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Email:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value=<?php print_r($usuarioData->getEmail());?> name="Email_Usu">
+                        <input class="usuario-info" type="text" value=<?php echo($usuarioData->getEmail());?> name="Email_Usu">
                         </div>
                     </div>
                     <div class="info-item">
@@ -204,8 +204,4 @@ $usuarioData = $userDao->verificarToken(true);
     new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
 </body>
-
-<head>
-<link rel="stylesheet" href="../css/conta.css">
-</head>
 </html>

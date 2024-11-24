@@ -25,5 +25,13 @@ public function atualizarCategoria(Categoria $categoria){
 
     return $stmt->execute();
 }
+
+public function deletarCategoria(Categoria $categoria){
+    $stmt = $this->conn->prepare("DELETE FROM categoria WHERE Codigo_Categoria = :codigo");
+
+    $stmt->bindParam(':codigo', $categoria->getCodigoCategoria());
+
+    return $stmt->execute();
+}
 }
 ?>

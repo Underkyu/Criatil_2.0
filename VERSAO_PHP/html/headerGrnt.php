@@ -88,12 +88,16 @@ $usuarioData = $userDao->verificarToken(false);
                 <a href="conta.php">
                     <div class="link_headerHeader">
                     <img src=<?php
-                        if($usuarioData->getImagem() == "vazio") {;
+                    if($usuarioData){
+                        if($usuarioData->getImagem() == "vazio") {
                             print_r("../imagens/usuarios/usuario.png"); 
-                            
                         }else{
                             print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
-                        }?> alt="" class="foto_perfil_header"> <!--Foto do perfil-->
+                        }
+                    }else{
+                        print_r("../imagens/usuarios/usuario.png"); 
+                    }
+                    ?> alt="" class="foto_perfil_header"> <!--Foto do perfil-->
                 </div>
                 </a>
 

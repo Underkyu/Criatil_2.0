@@ -161,9 +161,9 @@ $categorias = $produtoDao->getCategorias();
 
         <input type="text" id="nome" name="Nome_Brinq" placeholder="Nome" required>
                 
-        <input type="number" step="0.01" min="0.01" name="Preco_Brinq" placeholder="Preço" required>
+        <input type="text" step="0.01" min="0.01" name="Preco_Brinq" placeholder="Preço" oninput="validarNumero(this)" required>
         
-        <input type="number" step="0.5" min="0" max="5" name="Nota" placeholder="Nota" required>
+        <input type="text" step="0.5" min="0" max="5" name="Nota" placeholder="Nota" oninput="validarNumero(this)" required>
         
         <input type="text" name="Fabricante" placeholder="Fabricante" required>
         
@@ -252,9 +252,9 @@ $categorias = $produtoDao->getCategorias();
 
         <input type="text" id="nomeBrinq" name="Nome_Brinq" placeholder="Nome" required>
                 
-        <input type="number" id="precoBrinq" step="0.01" min="0.01" name="Preco_Brinq" placeholder="Preço" required>
+        <input type="text" id="precoBrinq" step="0.01" min="0.01" name="Preco_Brinq" placeholder="Preço" oninput="validarNumero(this)" required />
         
-        <input type="number" id="notaBrinq" step="0.5" min="0" max="5" name="Nota" placeholder="Nota" required>
+        <input type="text" id="notaBrinq" step="0.5" min="0" max="5" name="Nota" placeholder="Nota" oninput="validarNumero(this)" required />
         
         <input type="text" id="fabriBrinq" name="Fabricante" placeholder="Fabricante" required>
         
@@ -316,6 +316,26 @@ $categorias = $produtoDao->getCategorias();
     </form>
 </div>
 </div>
+<script>
+  function validarNumero(input) {
+    // remove o que não for número
+    input.value = input.value.replace(/[^0-9,\.]/g, ''); 
+
+    // substitui ponto por vírgula no filtro
+    input.value = input.value.replace('.', ','); 
+
+    // limita a duas casas decimais
+    const partes = input.value.split(',');
+    if (partes.length > 1 && partes[1].length > 2) {
+        input.value = partes[0] + ',' + partes[1].substring(0, 2);
+    }
+
+    // impede a adição de qlqr coisa dps das 2 casas decimais
+    if (partes.length > 2) {
+    input.value = partes[0] + ',' + partes[1];
+    }
+  }
+</script>
     <?php include("footer.php") ?>
 </body>
 </html>

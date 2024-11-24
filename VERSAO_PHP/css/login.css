@@ -202,6 +202,18 @@ transform: scale(1.1);
   }
 }
 
+@media (max-width: 870px) {
+  .botao-entrar {
+    width: 45%;
+    font-size: 14.5px;
+    }
+    
+    a.login{
+    width: 45%;
+    font-size: 14.5px;
+    }
+}
+
 @media (max-width: 612px) {
   .loginzinho {
     width: 75%;
@@ -218,4 +230,11 @@ transform: scale(1.1);
   .loginzinho {
       width: 80%;
   }
+  .botao-entrar {
+    width: 60%;
+    }
+    
+    a.login{
+    width: 60%;
+    }
 }

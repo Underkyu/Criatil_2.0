@@ -313,7 +313,7 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
         top: auto;
         bottom: auto;
         width: 96%;
-        margin: 0 auto;
+        margin: 1rem auto;
       }
       .sanduiche-div{
         display: flex;
@@ -326,6 +326,9 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
         padding: 0;
       }
       .linha {
+        display: none;
+      }
+      .navbar-container{
         display: none;
       }
 }

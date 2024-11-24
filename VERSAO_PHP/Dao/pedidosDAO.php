@@ -37,7 +37,7 @@ class pedidosDao {
             $brinquedos = [];
 
             foreach ($dataPedido as $item) {
-                $stmt = $this->conexao->prepare("SELECT * FROM brinqVendido WHERE Codigo_Pedido = :codigo_pedido");
+                $stmt = $this->conexao->prepare("SELECT * FROM brinqvendido WHERE Codigo_Pedido = :codigo_pedido");
                 $stmt->bindParam(":codigo_pedido",$item["Codigo_Pedido"]);
                 $stmt->execute();
 

@@ -49,8 +49,9 @@ function renderizarEstrelas($nota) {
   
   return $htmlEstrelas;
 }
-
+if($usuarioData){
 $brinqCompradosporUser = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
+}
 
 ?>
 
@@ -273,7 +274,7 @@ $brinqCompradosporUser = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo())
             <div class="imagem_card">
             <img src=<?php echo("../imagens/Produtos/".$imagem['Imagem'].".jpeg"); ?> class="foto_card">
               <?php  if ($selo['Imagem_Selo'] != null) { ?>
-                <img src="<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".png"; ?>" class="selo">
+                <img src="<?php echo "../imagens/Selo/".$selo['Imagem_Selo'].".jpeg"; ?>" class="selo">
                 <?php } ?>
             </div>
             <h4 class="titulo_card"><?php echo $brinquedo['Nome_Brinq']; ?></h4>

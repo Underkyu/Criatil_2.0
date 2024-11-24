@@ -19,6 +19,7 @@ $userDao = new UsuarioDAO($conn,$BASE_URL);
 $usuarioData = $userDao->verificarToken(false);
 if($usuarioData){
 if($usuarioData->getTipo() == 'Bloqueado'){
+    $userDao->destroirToken();
     $message->setMessage("Conta Bloqueada!","Sua conta foi bloqueada, entre em contato para mais detalhes","error","../html/principal.php");
 }}  
 ?>

@@ -75,6 +75,7 @@ input.pesquisa { /*Barra de pesquisa*/
     margin-left: 1rem;
     justify-content: center;
     align-items: center;
+    height: 100%;
   }
 
   img.link_headerHeader{/*Icon que fica ao lado dos links para outras páginas*/

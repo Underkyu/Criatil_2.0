@@ -82,9 +82,9 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="foto">
                   <img src=<?php
                         if($imagem['Imagem'] == "vazio") {;
-                            print_r("../imagens/usuarios/usuario.png");      
+                            echo("../imagens/usuarios/usuario.png");      
                         }else{
-                            print_r("../imagens/usuarios/".$imagem['Imagem'].".jpeg");
+                            echo("../imagens/usuarios/".$imagem['Imagem'].".jpeg");
                         }?> alt="Foto de perfil" class="foto_perfil"/><!--Foto de perfil da avaliação-->
                 </div>
                   <div class="detalhes_avaliacoes">

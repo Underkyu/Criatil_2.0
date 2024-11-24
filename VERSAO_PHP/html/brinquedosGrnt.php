@@ -159,17 +159,33 @@ $categorias = $produtoDao->getCategorias();
             </select>
         </div>
 
-        <input type="text" id="nome" name="Nome_Brinq" placeholder="Nome" required>
-                
-        <input type="text" step="0.01" min="0.01" name="Preco_Brinq" placeholder="Preço" oninput="validarNumero(this)" required>
+        <div class="select-input">
+        <label for="Nome_Brinq">Nome:</label>
+        <input type="text" id="Nome_Brinq" name="Nome_Brinq" required>
+        </div>
+
+        <div class="select-input">
+        <label for="Preco_Brinq">Preço:</label>
+        <input type="text" step="0.01" min="0.01" name="Preco_Brinq" id="Preco_Brinq" oninput="validarNumero(this)" required>
+        </div>
+
+        <input type="hidden" name="Nota" id="Nota"  value="0" required>
         
-        <input type="text" step="0.5" min="0" max="5" name="Nota" placeholder="Nota" oninput="validarNumero(this)" required>
+        <div class="select-input">
+        <label for="Fabricante">Fabricante:</label>
+        <input type="text" name="Fabricante" id="Fabricante" required>
+        </div>
+
+        <div class="select-input">
+        <label for="Descricao">Descrição:</label>
+        <input type="text" name="Descricao" id="Descricao" required>
+        </div>
+
+        <div class="select-input">
+        <label for="Faixa_Etaria">Faixa etária:</label>
+        <input type="text" name="Faixa_Etaria" id="Faixa_Etaria" required>
+        </div>
         
-        <input type="text" name="Fabricante" placeholder="Fabricante" required>
-        
-        <input type="text" name="Descricao" placeholder="Descrição" required>
-        
-        <input type="text" name="Faixa_Etaria" placeholder="Faixa Etária" required>
     </div>
         <div class="form-div-img">
             <div class="imagens-container">
@@ -250,17 +266,36 @@ $categorias = $produtoDao->getCategorias();
 
         <input type="hidden" id="codigoBrinq" name="codigoBrinq" required>
 
+        <div class="select-input">
+        <label for="Nome_Brinq">Nome:</label>
         <input type="text" id="nomeBrinq" name="Nome_Brinq" placeholder="Nome" required>
-                
+        </div>
+
+        <div class="select-input">
+        <label for="precoBrinq">Preço:</label>
         <input type="text" id="precoBrinq" step="0.01" min="0.01" name="Preco_Brinq" placeholder="Preço" oninput="validarNumero(this)" required />
-        
-        <input type="text" id="notaBrinq" step="0.5" min="0" max="5" name="Nota" placeholder="Nota" oninput="validarNumero(this)" required />
-        
+        </div>
+
+        <div class="select-input">
+        <label for="notaBrinq">Média da nota:</label>
+        <input type="text" id="notaBrinq" step="0.5" min="0" max="5" name="Nota" placeholder="Nota" oninput="validarNumero(this)" readonly required />
+        </div>
+
+        <div class="select-input">
+        <label for="fabriBrinq">Fabricante:</label>
         <input type="text" id="fabriBrinq" name="Fabricante" placeholder="Fabricante" required>
-        
+        </div>
+
+        <div class="select-input">
+        <label for="descBrinq">Descrição:</label>
         <input type="text" id="descBrinq" name="Descricao" placeholder="Descrição" required>
-        
+        </div>
+
+        <div class="select-input">
+        <label for="faixaBrinq">Faixa etária:</label>
         <input type="text" id="faixaBrinq" name="Faixa_Etaria" placeholder="Faixa Etária" required>
+        </div>
+
     </div>
     <div class="form-div-img"> <!-- div q contém as imagens -->
         

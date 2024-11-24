@@ -54,7 +54,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById('codigoBrinq').value = codigoBrinq;
                 document.getElementById('nomeBrinq').value = nomeBrinq;
                 document.getElementById('precoBrinq').value = precoBrinq;
+                validarNumero(document.getElementById('precoBrinq'));
                 document.getElementById('notaBrinq').value = notaBrinq;
+                validarNumero(document.getElementById('notaBrinq'));
                 document.getElementById('fabriBrinq').value = fabriBrinq;
                 document.getElementById('descBrinq').value = descBrinq;
                 document.getElementById('faixaBrinq').value = faixaBrinq;

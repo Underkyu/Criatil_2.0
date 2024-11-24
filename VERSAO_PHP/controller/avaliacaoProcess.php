@@ -31,7 +31,6 @@ if($tipo === "Deletar"){
         $message->setMessage("Erro", "Informações da avaliação não encontradas","error","back");
     }
 }elseif($tipo === "Criar") {
-
     $codBrinq = filter_input(INPUT_POST, "Codigo_Brinq");
     $codUsu = $usuarioData->getCodigo();
     $notaAva = filter_input(INPUT_POST, "Nota_Ava");
@@ -49,7 +48,14 @@ if($tipo === "Deletar"){
 
         $avaliacaoDao->criarA($avaliacao);
 
+        // atualiza a nota do brinquedo no banco
+        $mediaNota = $avaliacaoDao->calculaMediaNota($codBrinq);
+        $resultado = $avaliacaoDao->atualizaNota($codBrinq, $mediaNota); 
+        if($resultado !== false){
         $message->setMessage("Avaliação adicionada", "A avaliação foi adicionada ao site.", "success", "back");
+    }else{
+        $message->setMessage("Erro", "Erro ao adicionar a avaliação ao site, tente novamente", "error", "back");
+    }
     } else {
         $message->setMessage("Campos vazios","Alguns campos não foram preenchidos, tente novamente","error","back");
     }

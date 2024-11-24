@@ -445,9 +445,9 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     flex-direction: column;
     background-color: #ffffff;
     border-radius: 20px;
-    width: 60%;
+    width: 55%;
     height: min-content;
-    padding: 15px 0 15px 0;
+    padding: 10px 0 10px 0;
     box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
     border: 4px solid #0476D9;
   }
@@ -475,7 +475,7 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     align-items: center;
     width: 30%;
     gap: 30px;
-    margin-top: 1%;
+    margin-top: 0.5%;
   }
   .div-q-separa-socorro {
     display: flex;
@@ -499,12 +499,12 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
   }
   .formInsert-Brinquedo input,
   .formInsert-Brinquedo select {
-    width: 70%;
+    width: 100%;
     margin-bottom: 5px;
-    height: 45px;
-    padding: 0 15px 0 15px;
+    height: 35px;
+    padding: 0 10px 0 10px;
     border: 2px solid #0476D9;
-    border-radius: 12px;
+    border-radius: 10px;
     font-size: 16px;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
@@ -573,7 +573,8 @@ input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs co
   align-items: center;
 }
 .select-input {
-  width: 70%;
+  width: 280px;
+  align-items: stretch;
 }
 .select-input select {
   width: 100% !important;

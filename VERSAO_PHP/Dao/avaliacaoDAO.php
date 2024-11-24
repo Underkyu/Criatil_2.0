@@ -48,6 +48,29 @@ class AvaliacaoDAO implements AvaliacaoDAOInterface {
 
         $stmt->execute();
     }
+    
+    public function calculaMediaNota($codigoBrinq) {
+        $stmt = $this->conexao->prepare("SELECT AVG(Nota_Ava) as media FROM avaliacao WHERE Codigo_Brinq = :codigoBrinq");
+        $stmt->bindParam(":codigoBrinq", $codigoBrinq);
+        $stmt->execute();
+    
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($resultado['media']) {
+            return round($resultado['media'] * 2) / 2; // arrendonda de .5 em .5
+        } else {
+            return 0; // retorna 0 se não tiverem avaliações nesse brinquedo
+        }
+    }
+
+    public function atualizaNota($codigoBrinq, $nota) {
+        $notaArredondada = round($nota * 2) / 2; // arrendonda de .5 em .5
+        
+        $stmt = $this->conexao->prepare("UPDATE brinquedo SET Nota = :nota WHERE Codigo_Brinq = :codigoBrinq");
+        $stmt->bindParam(":nota", $notaArredondada);
+        $stmt->bindParam(":codigoBrinq", $codigoBrinq);
+        return $stmt->execute();
+    }
 }
 
 ?>

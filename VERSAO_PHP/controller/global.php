@@ -4,6 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
-  $BASE_URL = "http://" . $_SERVER["SERVER_NAME"] . dirname($_SERVER["REQUEST_URI"]."?") . "/";
+  $BASE_URL =  "https://" . $_SERVER['SERVER_NAME'] . "/filegator/repository/GrupoCriatil/Criatil_2.0/Criatil_2.0/";
 
 ?>

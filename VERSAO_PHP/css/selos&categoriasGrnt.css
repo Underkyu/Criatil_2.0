@@ -119,8 +119,8 @@
   }
   
   button.detalhes{  /*Botão para levar a pagina de edição brinquedo*/
-      width: 6rem;
-      height: 2.5rem;
+      width: 4.2rem;
+      height: 2.2rem;
       background-color: #F2AF00;
       border: none;
       border-radius: 10px;
@@ -504,7 +504,7 @@
     .formInsert-Brinquedo h2 {
       display: flex;
       align-self: center;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       font-size: 2.4rem;
       text-align: center;
       font-weight: 500;
@@ -512,9 +512,8 @@
     }
     .formInsert-Brinquedo input,
     .formInsert-Brinquedo select {
-      width: 50%;
-      margin-bottom: 15px;
-      margin-top: 15px;
+      width: 100%;
+      margin-bottom: 10px;
       height: 45px;
       padding: 0 15px 0 15px;
       border: 2px solid #0476D9;
@@ -573,7 +572,8 @@
     margin-bottom: 5px;
   }
   .select-input {
-    width: 70%;
+    width: 280px;
+    align-items: stretch;
   }
   .select-input select {
     width: 100% !important;
@@ -595,25 +595,27 @@
     height: auto;
   }
   .input-img {
-    width: 50%;
-    margin-bottom: 15px;
-    margin-top: 15px;
-    height: 45px;
-    padding: 0 15px 0 15px;
-    background-color: white;
-    color: black;
-    border-radius: 12px;
-    border: 2px solid black;
-    font-size: 16px;
-    font-weight: 500;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    transition: transform 0.3s ease-in-out;
+  width: 50%;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  height: 40px;
+  padding: 0 15px 0 15px;
+  background-color: #0476D9;
+  color: white;
+  border-radius: 12px;
+  border: 2px solid black;
+  font-size: 16px;
+  font-weight: 500;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
   }
+
   .input-img:hover {
     transform: scale(1.05);
   }

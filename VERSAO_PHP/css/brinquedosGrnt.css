@@ -519,10 +519,6 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
   align-items: inherit;
   gap: 10px;
 }
-  .formInsert-Brinquedo input::placeholder,
-  .formInsert-Brinquedo select::placeholder {
-    color: rgb(88, 88, 88);
-  }
   .select-form {
     padding: 0 15px 0 10px !important;
   }
@@ -579,6 +575,7 @@ input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs co
 .select-input select {
   width: 100% !important;
   margin-bottom: 10px;
+  background: white;
 }
 .select-input label {
   display: block;
@@ -610,5 +607,7 @@ input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs co
   background-color: #0066be;
   transform: scale(1.05);
 }
- 
+ .nota-media {
+  background-color: #f0f0f0;
+ }
 /* responsividade forms - falta fzr responsividade nos dois */

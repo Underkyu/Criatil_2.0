@@ -45,7 +45,7 @@ $categorias = $produtoDao->getCategorias();
                 <div class="titulos"> <!--Titulos que mostram a qual informação o valor é relativo-->
                     <div class="titulo">Foto</div>
                     <div class="titulo">Nome</div>
-                    <div class="titulo">ID</div>
+                    <div class="titulo">Código</div>
                     <div class="titulo">Valor</div>
                     <div class="titulo">Editar Brinquedo</div>
                 </div>
@@ -245,9 +245,8 @@ $categorias = $produtoDao->getCategorias();
     <div class="form-div"><!-- div q contém as inputs -->
 
         <div class="select-input">
-            <label for="selectSelo">Selo:</label>
+            <label for="codigoSelo">Selo:</label>
             <select name="Codigo_Selo" id="codigoSelo" class="select-form" required>
-                <option value="" selected disabled hidden></option> 
                 <?php foreach ($selos as $selo) { ?>
                     <option required name="Codigo_Selo" value="<?php echo $selo['Codigo_Selo'];?>"><?php echo $selo['Nome_Selo']; ?></option>
                 <?php } ?>
@@ -255,9 +254,8 @@ $categorias = $produtoDao->getCategorias();
         </div>
 
         <div class="select-input">
-            <label for="selectCate">Categoria:</label>
+            <label for="codigoCate">Categoria:</label>
             <select name="Codigo_Categoria" id="codigoCate" class="select-form" required>
-                <option value="" selected disabled hidden></option>
                 <?php foreach ($categorias as $categoria) { ?>
                     <option required name="Codigo_Categoria" value="<?php echo $categoria['Codigo_Categoria'];?>"><?php echo $categoria['Nome_Categoria']; ?></option>
                 <?php } ?>
@@ -267,18 +265,13 @@ $categorias = $produtoDao->getCategorias();
         <input type="hidden" id="codigoBrinq" name="codigoBrinq" required>
 
         <div class="select-input">
-        <label for="Nome_Brinq">Nome:</label>
+        <label for="nomeBrinq">Nome:</label>
         <input type="text" id="nomeBrinq" name="Nome_Brinq" placeholder="Nome" required>
         </div>
 
         <div class="select-input">
         <label for="precoBrinq">Preço:</label>
         <input type="text" id="precoBrinq" step="0.01" min="0.01" name="Preco_Brinq" placeholder="Preço" oninput="validarNumero(this)" required />
-        </div>
-
-        <div class="select-input">
-        <label for="notaBrinq">Média da nota:</label>
-        <input type="text" id="notaBrinq" step="0.5" min="0" max="5" name="Nota" placeholder="Nota" oninput="validarNumero(this)" readonly required />
         </div>
 
         <div class="select-input">
@@ -294,6 +287,11 @@ $categorias = $produtoDao->getCategorias();
         <div class="select-input">
         <label for="faixaBrinq">Faixa etária:</label>
         <input type="text" id="faixaBrinq" name="Faixa_Etaria" placeholder="Faixa Etária" required>
+        </div>
+
+        <div class="select-input">
+        <label for="notaBrinq">Média da nota:</label>
+        <input type="text" class="nota-media" id="notaBrinq" step="0.5" min="0" max="5" name="Nota" placeholder="Nota" oninput="validarNumero(this)" readonly required />
         </div>
 
     </div>

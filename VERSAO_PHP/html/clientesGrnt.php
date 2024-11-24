@@ -35,7 +35,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="titulos"> <!--Titulos que mostram a qual informação o valor é relativo-->
                     <div class="titulo">Foto</div>
                     <div class="titulo">Nome</div>
-                    <div class="titulo">ID</div>
+                    <div class="titulo">Código</div>
                     <div class="titulo">Tipo</div>
                     <div class="titulo">Ver detalhes</div>
                 </div>

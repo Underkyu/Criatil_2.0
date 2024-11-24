@@ -16,5 +16,14 @@ public function inserirCategoria(Categoria $categoria) {
 
     return $stmt->execute();
 }
+
+public function atualizarCategoria(Categoria $categoria){
+    $stmt = $this->conn->prepare("UPDATE categoria SET Nome_Categoria = :nome WHERE Codigo_Categoria = :codigo");
+
+    $stmt->bindParam(':nome', $categoria->getNomeCategoria());
+    $stmt->bindParam(':codigo', $categoria->getCodigoCategoria());
+
+    return $stmt->execute();
+}
 }
 ?>

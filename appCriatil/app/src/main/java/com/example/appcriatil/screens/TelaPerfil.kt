@@ -19,7 +19,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,9 +30,11 @@ import com.example.appcriatil.components.ElementoCheckbox
 import com.example.appcriatil.components.ElementoDivisorComTexto
 import com.example.appcriatil.components.ElementoFooter
 import com.example.appcriatil.components.ElementoHeaderNav
+import com.example.appcriatil.components.ElementoHomeHeader
 import com.example.appcriatil.components.ElementoSenhaTextField
 import com.example.appcriatil.components.ElementoTextField
 import com.example.appcriatil.components.ElementoTextoCadastroClicavel
+import com.example.appcriatil.components.ElementoTextoDisplay
 import com.example.appcriatil.components.ElementoTextoTitulo
 import com.example.appcriatil.components.PaddedItem
 import com.example.appcriatil.navigation.CriatilAppRouter
@@ -44,17 +45,7 @@ import com.example.appcriatil.viewModel.Repository
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun TelaDeLogin() {
-    var emaiValue by remember{
-        mutableStateOf("")
-    }
-    var senhaValue by remember{
-        mutableStateOf("")
-    }
-    var usuarioList by remember{
-        mutableStateOf(listOf<Usuario>())
-    }
-
+fun TelaPerfil() {
     Surface(
         color = Color.White,
         modifier = Modifier
@@ -77,7 +68,7 @@ fun TelaDeLogin() {
                     }
                 }
                 item {
-                    PaddedItem { // Título e subtítulo
+                    PaddedItem {
                         ElementoTextoTitulo(value = stringResource(R.string.bem_vindo_de_volta))
                     }
                 }
@@ -87,58 +78,50 @@ fun TelaDeLogin() {
                     }
                 }
                 item {
-                    PaddedItem { // Campos
-                        ElementoTextField(labelValue = stringResource(id = R.string.email), painterResource = painterResource(id = R.drawable.email))
-                    }
-                }
-                item {
-                    PaddedItem { // Divisor com texto
-                        ElementoSenhaTextField(labelValue = stringResource(id = R.string.senha), painterResource = painterResource(id = R.drawable.lock))
-                    }
-                }
-
-                item {
-                    PaddedItem { // Termos de uso
-                        ElementoCheckbox(value = stringResource(id = R.string.termos), onTextSelected = {
-                            CriatilAppRouter.navigateTo(Screen.TelaDeTermosECondicoes)
-                        })
-                    }
-                }
-                item {
-                    PaddedItem { // Espaçamento
-                        Spacer(modifier = Modifier.height(300.dp))
-                    }
-                }
-                item {
-                    PaddedItem { // Botão
-                        ElementoBotao(value = stringResource(id = R.string.login), onClick = {
-                            // Handle button click
-                        })
-                    }
-                }
-                item {
                     PaddedItem { // Espaçamento
                         Spacer(modifier = Modifier.height(20.dp))
                     }
                 }
                 item {
-                    PaddedItem { // Divisor com texto
-                        ElementoDivisorComTexto()
-                    }
-                }
-                item {
-                    PaddedItem { // Redirecionamento para cadastro
-                        ElementoTextoCadastroClicavel(value = stringResource(id = R.string.irParaCadastro), onTextSelected = {
-                            CriatilAppRouter.navigateTo(Screen.TelaCadastro)
-                        })
+                    PaddedItem { // Display de dados
+                        ElementoTextoDisplay("Nome:", "VARIAVEL DE NOME")
                     }
                 }
                 item {
                     PaddedItem { // Espaçamento
-                        Spacer(modifier = Modifier.height(100.dp))
+                        Spacer(modifier = Modifier.height(5.dp))
                     }
                 }
-
+                item {
+                    PaddedItem { // Display de dados
+                        ElementoTextoDisplay("Email:", "VARIAVEL DE EMAIL")
+                    }
+                }
+                item {
+                    PaddedItem { // Espaçamento
+                        Spacer(modifier = Modifier.height(5.dp))
+                    }
+                }
+                item {
+                    PaddedItem { // Display de dados
+                        ElementoTextoDisplay("Telefone:", "VARIAVEL DE TELEFONE")
+                    }
+                }
+                item {
+                    PaddedItem { // Espaçamento
+                        Spacer(modifier = Modifier.height(5.dp))
+                    }
+                }
+                item {
+                    PaddedItem { // Display de dados
+                        ElementoTextoDisplay("CEP:", "VARIAVEL DE CEP")
+                    }
+                }
+                item {
+                    PaddedItem { // Espaçamento
+                        Spacer(modifier = Modifier.height(5.dp))
+                    }
+                }
             }
             ElementoFooter(
                 modifier = Modifier
@@ -153,6 +136,6 @@ fun TelaDeLogin() {
 }
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun TelaDeLoginPreview() {
-    //TelaDeLogin()
+fun TelapPerfilPreview() {
+    TelaPerfil()
 }

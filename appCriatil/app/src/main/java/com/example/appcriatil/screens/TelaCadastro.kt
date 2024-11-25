@@ -41,7 +41,7 @@ import com.example.appcriatil.viewModel.CriatilViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun TelaCadastro (viewModel: CriatilViewModel) {
+fun TelaCadastro () {
     var nomeValue by remember{
         mutableStateOf("")
     }

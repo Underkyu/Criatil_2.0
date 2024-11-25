@@ -9,6 +9,7 @@ sealed class Screen(){
     object TelaDeTermosECondicoes: Screen()
     object TelaDeLogin: Screen()
     object Home: Screen()
+    object TelaPerfil: Screen()
 }
 
 object CriatilAppRouter {

@@ -5,7 +5,6 @@
 package com.example.appcriatil.components
 
 import android.util.Log
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -25,7 +24,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
@@ -47,7 +45,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -61,7 +58,6 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.modifier.modifierLocalMapOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
@@ -81,7 +77,6 @@ import com.example.appcriatil.R
 import com.example.appcriatil.navigation.CriatilAppRouter
 import com.example.appcriatil.navigation.Screen
 import com.example.appcriatil.ui.theme.TextColor
-import com.example.appcriatil.ui.theme.WhiteColor
 import kotlinx.coroutines.delay
 
 @Composable
@@ -118,7 +113,6 @@ fun ElementoTextoTitulo(value:String){
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ElementoTextField(labelValue: String, painterResource: Painter){
 
@@ -129,15 +123,13 @@ fun ElementoTextField(labelValue: String, painterResource: Painter){
     OutlinedTextField(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(1.dp))
-            .background(WhiteColor),
-        label = { Text(text = labelValue) },
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            unfocusedBorderColor = Color(0xFF0476D9),
-            focusedBorderColor = Color(0xFF0476D9),
-            focusedLabelColor = Color(0xFF0476D9),
-            cursorColor = Color(0xFF0476D9)
+            .background(Color.White)
+            .padding(horizontal = 8.dp, vertical = 8.dp),
+        textStyle = TextStyle(
+            color = Color.Black,
+            fontSize = 16.sp
         ),
+        label = { Text(text = labelValue) },
         keyboardOptions = KeyboardOptions.Default,
         value = textValue.value,
         onValueChange = {
@@ -149,7 +141,6 @@ fun ElementoTextField(labelValue: String, painterResource: Painter){
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ElementoSenhaTextField(labelValue: String, painterResource: Painter){
 
@@ -164,15 +155,13 @@ fun ElementoSenhaTextField(labelValue: String, painterResource: Painter){
     OutlinedTextField(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(4.dp))
-            .background(WhiteColor),
-        label = { Text(text = labelValue) },
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            unfocusedBorderColor = Color(0xFF0476D9),
-            focusedBorderColor = Color(0xFF0476D9),
-            focusedLabelColor = Color(0xFF0476D9),
-            cursorColor = Color(0xFF0476D9)
+            .background(Color.White)
+            .padding(horizontal = 8.dp, vertical = 8.dp),
+        textStyle = TextStyle(
+            color = Color.Black,
+            fontSize = 16.sp
         ),
+        label = { Text(text = labelValue) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         value = senha.value,
         onValueChange = {
@@ -478,7 +467,7 @@ fun ElementoFooter(modifier: Modifier = Modifier) {
         ElementoIconeFooter(
             text = "Perfil",
             painterResource = painterResource(id = R.drawable.icon_profile),
-            onClick = { CriatilAppRouter.navigateTo(Screen.TelaDeLogin) }
+            onClick = { CriatilAppRouter.navigateTo(Screen.TelaPerfil) }
         )
     }
 }
@@ -490,7 +479,6 @@ fun PaddedItem(content: @Composable () -> Unit) {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ElementoHomeHeader() {
     val textValue = remember {
@@ -556,10 +544,10 @@ fun ElementoHomeHeader() {
                     .background(Color.White)
                     .height(50.dp)
                     .padding(bottom = 8.dp),
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = Color(0xFF0476D9),
-                    unfocusedBorderColor = Color.LightGray
-                ),
+            textStyle = TextStyle(
+                color = Color.Black,
+                fontSize = 16.sp
+            ),
                 trailingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.search),
@@ -672,7 +660,8 @@ fun ElementoCardProduto(texto: String, preco: String,painterResource: Painter, o
         Image(
             painter = painterResource,
             contentDescription = texto,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .height(170.dp)
                 .padding(8.dp)
                 .clip(RoundedCornerShape(8.dp))
@@ -681,6 +670,30 @@ fun ElementoCardProduto(texto: String, preco: String,painterResource: Painter, o
         Text(text = texto, fontSize = 14.sp, color = Color.Black, fontWeight = FontWeight.Bold, modifier = Modifier.padding(4.dp))
         Text(text = stringResource(R.string.porapenas), fontSize = 14.sp, color = Color.Black, modifier = Modifier.padding(4.dp))
         Text(text = preco, fontSize = 24.sp, color = Color(0xFFF2AF00), fontWeight = FontWeight.Bold, modifier = Modifier.padding(4.dp))
+    }
+}
+
+@Composable
+fun ElementoTextoDisplay(label: String, value: String){
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 40.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = label,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black
+            )
+        Text(
+            text = value,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black
+        )
     }
 }
 

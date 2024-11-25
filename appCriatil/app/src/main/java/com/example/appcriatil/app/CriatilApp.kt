@@ -1,3 +1,5 @@
+@file:Suppress("UNREACHABLE_CODE")
+
 package com.example.appcriatil.app
 
 import androidx.compose.animation.Crossfade
@@ -12,7 +14,9 @@ import com.example.appcriatil.screens.Home
 import com.example.appcriatil.screens.TelaCadastro
 import com.example.appcriatil.screens.TelaDeLogin
 import com.example.appcriatil.screens.TelaDeTermosECondicoes
+import com.example.appcriatil.screens.TelaPerfil
 
+@Suppress("UNREACHABLE_CODE")
 @Composable
 fun CriatilApp(){
     Surface(
@@ -25,6 +29,7 @@ fun CriatilApp(){
                 is Screen.TelaDeTermosECondicoes -> TelaDeTermosECondicoes()
                 is Screen.TelaDeLogin -> TelaDeLogin()
                 is Screen.Home -> Home()
+                is Screen.TelaPerfil -> TelaPerfil()
             }
         }
     }

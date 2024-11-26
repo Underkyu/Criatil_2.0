@@ -22,7 +22,7 @@ $categorias = $produtoDao->getCategorias();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-    <title>Brinquedos cadastrados</title>
+    <title>Criatil Gerentes</title>
     <link rel="stylesheet" href="../css/brinquedosGrnt.css">
     <script src="../js/grntPesquisa.js" ></script>
     <script src="../js/grntImgPreview.js" ></script>

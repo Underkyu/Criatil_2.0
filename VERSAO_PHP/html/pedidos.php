@@ -25,7 +25,7 @@ $brinquedosPedidos = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
     <link rel="stylesheet" href="../css/pedidos.css">
     <script src="../js/menuSanduicheCONTA.js" defer></script>
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-    <title>Criatil - meus pedidos</title>
+    <title>Criatil - Pedidos</title>
 </head>
 <body>
 <?php include("header.php");?>

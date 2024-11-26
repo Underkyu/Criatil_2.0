@@ -38,7 +38,7 @@ require_once("../models/usuario.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-    <title>Criatil - pagamento</title>
+    <title>Criatil - Pagamento</title>
     <link rel="stylesheet" href="../css/Pagamento.css">
 </head>
 <body>

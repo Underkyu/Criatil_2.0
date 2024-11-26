@@ -24,7 +24,7 @@ $itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
     <link rel="stylesheet" href="../css/desejos.css">
     <script src="../js/menuSanduicheCONTA.js" defer></script>
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-    <title>Criatil - Lista de desejos</title>
+    <title>Criatil - Lista de Desejos</title>
 </head>
 <body>
 <?php include("header.php");?>

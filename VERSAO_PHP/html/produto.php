@@ -64,7 +64,7 @@ $brinqCompradosporUser = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo())
     <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-    <title>Criatil - produto</title>
+    <title>Criatil - Produto</title>
   </head>
 
   <body>
@@ -194,7 +194,14 @@ $brinqCompradosporUser = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo())
           <!--Div que contem os detalhes dos produtos-->
           <h3 class="titulo"><?php echo($brinquedo->getNomeBrinq());?></h3>
           <!--Nome do produto-->
-
+          <?php
+           $codigoCat = $brinquedo->getCodigoCategoria();
+           $stmt = $conn->query("SELECT * FROM categoria WHERE Codigo_Categoria = ".$codigoCat);
+           $categoria = $stmt->fetch(PDO::FETCH_ASSOC);
+           ?>
+          <div class="categoria">
+            <a class="categoria"><?php echo($categoria['Nome_Categoria']); ?></a>
+          </div>
           <div class="avaliacoes_anuncio">
             <!--Div que contem as estrelas e o numero de avalições-->
             <div class="estrelas">
@@ -228,7 +235,7 @@ $brinqCompradosporUser = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo())
               +
             </button>
           </div>
-          <form action="../controller/desejosProccess.php" method="POST">
+          <form action="../controller/desejosProccess.php" class="form" method="POST">
           <input type="hidden" name="Operacao" value="Adicionar">
           <input type="hidden" name="codigoUsu" value=<?php 
           if($usuarioData){

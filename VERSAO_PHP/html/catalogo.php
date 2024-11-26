@@ -24,7 +24,7 @@ if (isset($_SESSION['produtos'])) {
     <link rel="stylesheet" href="../css/catalogo.css">
     <script src="../js/catalogo.js" defer></script>
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-    <title>Criatil - Catalogo</title><!--Página de catálogo-->
+    <title>Criatil - Catálogo</title><!--Página de catálogo-->
 </head>
 
 <body>

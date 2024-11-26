@@ -37,7 +37,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-    <title>Avaliações</title>
+    <title>Criatil Gerentes</title>
     <link rel="stylesheet" href="../css/avaliacoesGrnt.css" />
     <script src="../js/grntPesquisa.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

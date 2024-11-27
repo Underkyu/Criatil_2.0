@@ -49,7 +49,7 @@ else if($operacao == "Adicionar"){
             header("Location: ../html/Pagamento.php");
         }
     }else{
-        $message->setMessage("Faça login","É necessario entrar em uma conta antes de finalizar a compra","error","back");
+        $message->setMessage("Faça login","É obrigatório entrar em uma conta antes de finalizar a compra","error","back");
     }
 }
 else if($operacao == "Deletar"){

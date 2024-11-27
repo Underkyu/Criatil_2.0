@@ -214,7 +214,7 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
     </form>
 </div>
 </div>
-<?php include("footer.php"); ?>
+<?php include("footerGrnt.php"); ?>
 </body>
 <script>
 function confirmDelete(codigoAva, nomeUsu) {

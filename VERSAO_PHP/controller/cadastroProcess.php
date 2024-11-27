@@ -73,9 +73,9 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
         $conta = $userDao->pesquisarPorEmail($email);
         
         if($conta->getTipo() == "Cliente"){
-            $message->setMessage("Seja bem vindo!","Login bem sucedido","success","../html/conta.php");
+            $message->setMessage("Seja bem vindo(a)!","Login bem sucedido","success","../html/conta.php");
         }else if($conta->getTipo() == "Gerente"){
-            $message->setMessage("Seja bem vindo!","Login bem sucedido","success","../html/clientesGrnt.php");
+            $message->setMessage("Seja bem vindo(a)!","Login bem sucedido","success","../html/contaGrnt.php");
         }else if($conta->getTipo() == "Bloqueado"){
             $message->setMessage("Conta Bloqueada!","Sua conta foi bloqueada, entre em contato para mais detalhes","error","../html/principal.php");
         }
@@ -115,19 +115,19 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
 
                 $userDao->criarG($usuario,$auth);
             }else{
-                $message->setMessage("Email já Cadastrado","O email inserido já possui um cadastro","error","back"); 
+                $message->setMessage("Email já Cadastrado","O email inserido já possui um cadastro.","error","back"); 
             }
         }else{
-            $message->setMessage("Senha curta","A senha deve conter ao menos 6 caracteres","error","back");
+            $message->setMessage("Senha curta","A senha deve conter ao menos 6 caracteres.","error","back");
         }
 
     } else{
-        $message->setMessage("Falha na senha","A senha e a confirmação são diferente","error","back");
+        $message->setMessage("Falha na senha","A senha e a confirmação são diferentes.","error","back");
     }
     } else{
-        $message->setMessage("Erro!","Por favor, preeencha os campos faltantes","error","back");
+        $message->setMessage("Erro!","Por favor, preeencha os campos restantes.","error","back");
     }
 } else {
-    $message->setMessage("Erro!","Informações invalidas","error","../html/principal.php");
+    $message->setMessage("Erro!","Informações inválidas","error","../html/principal.php");
 }
 ?>

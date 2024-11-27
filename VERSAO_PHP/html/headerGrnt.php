@@ -68,7 +68,7 @@ $usuarioData = $userDao->verificarToken(false);
 
                 <div class="link_header">
                 <a href="selos&categoriasGrnt.php" class="linkk-header">
-                    <img src="../imagens/Gerente/selos&cats.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
+                    <img src="../imagens/Gerente/selos&cats.png" alt="Catalogo icon" class="link_header" id="link_cats"> <!--Icon da parte de explorar catalogo-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno  negrito">Categorias & Selos</p>
                     </div>
@@ -144,7 +144,7 @@ $usuarioData = $userDao->verificarToken(false);
 
                     <div class="link_header">
                   <a href="selos&categoriasGrnt.php" class="linkk-header">
-                    <img src="../imagens/Gerente/selos&cats.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
+                    <img src="../imagens/Gerente/selos&cats.png" alt="Catalogo icon" class="link_header" id="link_cats"> <!--Icon da parte de explorar catalogo-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno  negrito">Categorias & Selos</p>
                     </div>

@@ -369,6 +369,6 @@ $categorias = $produtoDao->getCategorias();
     }
   }
 </script>
-    <?php include("footer.php") ?>
+    <?php include("footerGrnt.php") ?>
 </body>
 </html>

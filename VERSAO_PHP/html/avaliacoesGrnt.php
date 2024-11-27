@@ -121,7 +121,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
 
-  <?php include("footer.php") ?>
+  <?php include("footerGrnt.php") ?>
   </body>
 <script>
 function confirmDelete(codigoAva, nomeUsu) {

@@ -116,6 +116,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </form>
 </div>
 
-<?php include("footer.php") ?>
+<?php include("footerGrnt.php") ?>
 </body>
 </html>

@@ -25,11 +25,20 @@ fun CriatilApp(){
     ) {
         Crossfade(targetState = CriatilAppRouter.currentScreen) { currentState ->
             when (currentState.value) {
-                is Screen.TelaCadastro -> TelaCadastro()
+                is Screen.TelaCadastro -> TelaCadastro(
+                    viewModel = TODO(),
+                    mainActivity = TODO()
+                )
                 is Screen.TelaDeTermosECondicoes -> TelaDeTermosECondicoes()
-                is Screen.TelaDeLogin -> TelaDeLogin()
+                is Screen.TelaDeLogin -> TelaDeLogin(
+                    viewModel = TODO(),
+                    mainActivity = TODO()
+                )
                 is Screen.Home -> Home()
-                is Screen.TelaPerfil -> TelaPerfil()
+                is Screen.TelaPerfil -> TelaPerfil(
+                    viewModel = TODO(),
+                    mainActivity = TODO()
+                )
             }
         }
     }

@@ -8,9 +8,18 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,8 +30,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.appcriatil.MainActivity
 import com.example.appcriatil.R
 import com.example.appcriatil.RoomDB.Usuario
 import com.example.appcriatil.components.ElementoBotao
@@ -41,7 +56,7 @@ import com.example.appcriatil.viewModel.CriatilViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun TelaCadastro () {
+fun TelaCadastro (viewModel: CriatilViewModel, mainActivity: MainActivity) {
     var nomeValue by remember{
         mutableStateOf("")
     }
@@ -69,6 +84,10 @@ fun TelaCadastro () {
 
     var usuarioList by remember{
         mutableStateOf(listOf<Usuario>())
+    }
+
+    val senhaVisivel = remember {
+        mutableStateOf(false)
     }
 
     Surface(
@@ -103,44 +122,127 @@ fun TelaCadastro () {
                     }
                 }
                 item {
-                    PaddedItem {// Campos
-                        ElementoTextField(
-                            labelValue = stringResource(id = R.string.primeiroNome),
-                            painterResource(id = R.drawable.icon_profile)
-                        )
-                    }
+                    OutlinedTextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color.White)
+                            .padding(horizontal = 8.dp, vertical = 8.dp),
+                        textStyle = TextStyle(
+                            color = Color.Black,
+                            fontSize = 16.sp
+                        ),
+                        label = { Text(text = "Nome Completo") },
+                        keyboardOptions = KeyboardOptions.Default,
+                        value = nomeValue,
+                        onValueChange = {
+                            nomeValue = it
+                        },
+                        leadingIcon = {
+                            Icon(painter = painterResource(id = R.drawable.icon_profile), contentDescription = "")
+                        }
+                    )
                 }
                 item {
-                    PaddedItem {
-                        ElementoTextField(
-                            labelValue = stringResource(id = R.string.email),
-                            painterResource = painterResource(id = R.drawable.email)
-                        )
-                    }
+                    OutlinedTextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color.White)
+                            .padding(horizontal = 8.dp, vertical = 8.dp),
+                        textStyle = TextStyle(
+                            color = Color.Black,
+                            fontSize = 16.sp
+                        ),
+                        label = { Text(text = "Email") },
+                        keyboardOptions = KeyboardOptions.Default,
+                        value = emailValue,
+                        onValueChange = {
+                            emailValue = it
+                        },
+                        leadingIcon = {
+                            Icon(painter = painterResource(id = R.drawable.email), contentDescription = "")
+                        }
+                    )
                 }
                 item {
-                    PaddedItem {
-                        ElementoTextField(
-                            labelValue = stringResource(id = R.string.telefone),
-                            painterResource = painterResource(id = R.drawable.telefone)
-                        )
-                    }
+                    OutlinedTextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color.White)
+                            .padding(horizontal = 8.dp, vertical = 8.dp),
+                        textStyle = TextStyle(
+                            color = Color.Black,
+                            fontSize = 16.sp
+                        ),
+                        label = { Text(text = "Email") },
+                        keyboardOptions = KeyboardOptions.Default,
+                        value = telValue,
+                        onValueChange = {
+                            telValue = it
+                        },
+                        leadingIcon = {
+                            Icon(painter = painterResource(id = R.drawable.telefone), contentDescription = "")
+                        }
+                    )
                 }
                 item {
-                    PaddedItem {
-                        ElementoTextField(
-                            labelValue = stringResource(id = R.string.CEP),
-                            painterResource = painterResource(id = R.drawable.homeicon)
-                        )
-                    }
+                    OutlinedTextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color.White)
+                            .padding(horizontal = 8.dp, vertical = 8.dp),
+                        textStyle = TextStyle(
+                            color = Color.Black,
+                            fontSize = 16.sp
+                        ),
+                        label = { Text(text = "Email") },
+                        keyboardOptions = KeyboardOptions.Default,
+                        value = cepValue,
+                        onValueChange = {
+                            cepValue = it
+                        },
+                        leadingIcon = {
+                            Icon(painter = painterResource(id = R.drawable.homeicon), contentDescription = "")
+                        }
+                    )
                 }
                 item {
-                    PaddedItem {
-                        ElementoSenhaTextField(
-                            labelValue = stringResource(id = R.string.senha),
-                            painterResource = painterResource(id = R.drawable.lock)
-                        )
-                    }
+                    OutlinedTextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color.White)
+                            .padding(horizontal = 8.dp, vertical = 8.dp),
+                        textStyle = TextStyle(
+                            color = Color.Black,
+                            fontSize = 16.sp
+                        ),
+                        label = { Text(text = "Senha") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                        value = senhaValue,
+                        onValueChange = {
+                            senhaValue = it
+                        },
+                        leadingIcon = {
+                            Icon(painter = painterResource(id = R.drawable.lock), contentDescription = "")
+                        },
+                        trailingIcon = {
+                            val iconImage = if (senhaVisivel.value) {
+                                Icons.Filled.Visibility
+                            } else {
+                                Icons.Filled.VisibilityOff
+                            }
+
+                            val description = if(senhaVisivel.value){
+                                stringResource(id = R.string.esconderSenha)
+                            }else{
+                                stringResource(id = R.string.mostrarSenha)
+                            }
+
+                            IconButton(onClick = { senhaVisivel.value = !senhaVisivel.value }) {
+                                Icon(imageVector = iconImage, contentDescription = description)
+                            }
+                        },
+                        visualTransformation = if (senhaVisivel.value) VisualTransformation.None else PasswordVisualTransformation()
+                    )
                 }
                 item {
                     PaddedItem {// Termos de uso

@@ -12,7 +12,7 @@ data class Usuario(
     val telValue: String,
     val cepValue: String,
     val senhaValue: String,
-    val logValue: Boolean = false,
+    var logValue: Boolean = false,
 
     @PrimaryKey(autoGenerate = true)
     val idCliente: Int = 0

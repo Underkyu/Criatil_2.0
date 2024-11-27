@@ -22,25 +22,26 @@ $brinquedosPedidos = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- link da fonte pro css saber que fonte usar -->
+    <link rel="stylesheet" href="../css/pedidos.css">
     <script src="../js/menuSanduicheCONTA.js" defer></script>
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-    <title>Criatil - meus pedidos</title>
+    <title>Criatil - Pedidos</title>
 </head>
-<body>
 <body>
 <?php include("header.php");?>
 
-    <div class="container">
+<div class="container">
     <!-- página da conta -->
             <div class="navbar-container"> 
+            <div class="ft-nome-lateral">
                 <div class="ft-lateral">
                   <img class="img-lateral" src=<?php
                         if($usuarioData->getImagem() == "vazio") {;
                             echo("../imagens/usuarios/usuario.png"); 
-                            
                         }else{
                             echo("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
                         }?>>
+                        </div>
                         <div class="nomelat-div">
                          <h1 class="nome-lateral"><?php echo($usuarioData->getNome());?></h1>
                         </div>
@@ -129,12 +130,7 @@ $brinquedosPedidos = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
                     </div>
                 </div>
     <!-- fim da página da conta -->
-</div>
 
 <?php include("footer.php") ?>
 </body>
-
-<head>
-<link rel="stylesheet" href="../css/pedidos.css">
-</head>
 </html>

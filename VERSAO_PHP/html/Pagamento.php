@@ -38,7 +38,7 @@ require_once("../models/usuario.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-    <title>Criatil - pagamento</title>
+    <title>Criatil - Pagamento</title>
     <link rel="stylesheet" href="../css/Pagamento.css">
 </head>
 <body>
@@ -68,7 +68,7 @@ require_once("../models/usuario.php");
         </div>
         <div class="sumario">
             <h3>Resumo</h3>
-            <p>Subtotal: <?php echo(number_format($precoTotal, 2, ',', '.')) ?></p>            <p>Desconto:</p>
+            <p>Subtotal: R$<?php echo(number_format($precoTotal, 2, ',', '.')) ?></p>            <p>Desconto:</p>
             <p>Total:</p>
             <p id="pagamentoSelecionado">Pagamento:</p>
             <button id="back-button">Voltar</button>

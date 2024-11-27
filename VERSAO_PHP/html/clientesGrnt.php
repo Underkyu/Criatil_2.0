@@ -15,7 +15,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-    <title>Clientes cadastrados</title>
+    <title>Criatil Gerentes</title>
     <link rel="stylesheet" href="../css/clientesGrnt.css">
     <script src="../js/grntPesquisa.js"></script>
     <script src="../js/grntDetalhes.js"></script>
@@ -35,7 +35,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="titulos"> <!--Titulos que mostram a qual informação o valor é relativo-->
                     <div class="titulo">Foto</div>
                     <div class="titulo">Nome</div>
-                    <div class="titulo">ID</div>
+                    <div class="titulo">Código</div>
                     <div class="titulo">Tipo</div>
                     <div class="titulo">Ver detalhes</div>
                 </div>
@@ -116,6 +116,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </form>
 </div>
 
-<?php include("footer.php") ?>
+<?php include("footerGrnt.php") ?>
 </body>
 </html>

@@ -1,0 +1,175 @@
+<?php
+require_once("../controller/global.php");
+require_once("../controller/conexao.php");
+require_once("../Dao/usuarioDAO.php");
+require_once("../models/usuario.php");
+
+
+$userDao = new UsuarioDAO($conn,$BASE_URL);
+
+$usuarioData = $userDao->verificarToken(true);
+
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- link da fonte pro css saber que fonte usar -->
+    <link rel="stylesheet" href="../css/contaGrnt.css">
+    <script src="../js/conta.js" defer></script>
+    <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
+    <title>Criatil Gerentes</title>
+</head>
+<body>
+<?php include("headerGrnt.php");?>
+    <div class="containerP">
+    <!-- página da conta -->
+            <div class="navbar-container">
+                <div class="ft-nome-lateral">
+                <div class="ft-lateral">
+                  <img class="img-lateral" src=<?php
+                        if($usuarioData->getImagem() == "vazio") {;
+                            echo("../imagens/usuarios/usuario.png"); 
+                        }else{
+                            echo("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                        }?>>
+                        </div>
+                        <div class="nomelat-div">
+                         <h1 class="nome-lateral"><?php echo($usuarioData->getNome());?></h1>
+                        </div>
+                        </div>
+                    <div class="paginas">
+                        <a href="#" class="pagina-selecionada">Perfil (Gerente)</a>
+                        <a href="../controller/logout.php" class="paginas-navbar" id="sair">Sair</a>
+                    </div>
+            </div>
+
+        <!-- 'box' é a caixa da direita com a informação da página escolhida -->
+        <div class="box-container" id="box">
+            <h1 class="titulo-box">Perfil do Gerente</h1>
+               <div class="perfil-container" id="perfil">
+                <div class="informacoes">
+                    <div class="info-item">
+                        <div class="info-label">Nome e sobrenome:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getNome()); ?>" name="Nome_Usu" disabled>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Data de nascimento:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="date" value=<?php echo($usuarioData->getNasc());?> name="Nasc_Usu" disabled>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Email:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value=<?php echo($usuarioData->getEmail());?> name="Email_Usu" disabled>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Celular:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu" disabled>
+                        </div>
+                    </div>
+                    <input type="hidden" name="Tipo" value="Atualizar">
+                    <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Cliente">
+                    
+                    <div class="botoes">
+                    <button class="editar" type="submit" id="btnEditarPerfil">Editar Perfil</button>
+                    <button class="editar" type="submit" id="btnAtualizarSenha">Atualizar Senha</button>
+                    </div>
+                </div>
+
+                <div class="conta-box">
+                    <div class="img-container" id="img-container"> 
+                        <img src=<?php
+                        if($usuarioData->getImagem() == "vazio") {;
+                            echo("../imagens/usuarios/usuario.png"); 
+                            
+                        }else{
+                            echo("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                        }?> class="img-conta">
+                    <form action="../controller/usuarioProccess.php" method="POST" enctype="multipart/form-data" id="formSalvarFoto">
+                        <div class="editar-icone">
+                            <img src="../imagens/Icons/Editar.png" class="icone-editar">
+                        </div>
+                        </div>
+                        <h2 class="nome-conta"><?php echo($usuarioData->getNome()) ?></h2>
+                        <input type="file" name="imagem_file" id="imagem_file" required>
+                        <input type="hidden" name="Tipo" value="updateImagem">
+                        <button type="submit" class="editar">Salvar Foto</button>
+                    </form>
+                </div>
+               </div>   
+        </div>
+            <!-- fim da página da conta -->
+
+            <!--Formulario de troca de senha-->
+            <div class="trocarSenha" id="formAtualizarSenha">
+                    <form action="../controller/usuarioProccess.php" method="POST" class="form-bg-senha">
+                    <h2 class="troque_senha">Troque sua senha</h2>
+                    <div class="info-item">
+                        <div class="info-label">Senha atual:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" placeholder="Senha atual" name="Atual_Senha">
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Senha nova:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" placeholder="Senha nova" name="Nova_Senha">
+                        </div>
+                    </div>
+                    <input type="hidden" name="Tipo" value="Senha">
+                    <button class="editar" type="submit">Confirmar</button>
+                    </form>
+                    </div>
+
+             <!--Formulario de troca de dados-->   
+             <div class="editarPerfil" id="formEditarPerfil">
+             <form action="../controller/usuarioProccess.php" method="POST" enctype="multipart/form-data" class="form-bg-perfil">
+             <h2 class="edite_perfil">Altere suas informações</h2>
+                    <div class="info-item">
+                        <div class="info-label">Nome e sobrenome:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getNome()); ?>" name="Nome_Usu">
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Data de nascimento:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="date" value=<?php echo($usuarioData->getNasc());?> name="Nasc_Usu">
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Email:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value=<?php echo($usuarioData->getEmail());?> name="Email_Usu">
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Celular:</div>
+                        <div class="info-value">
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu" >
+                        </div>
+                    </div>
+                    <input type="hidden" name="Tipo" value="Atualizar">
+                    <input type="file" name="imagem_file" id="imagem_file">
+                    <input type="hidden" id="tipo" name="Tipo_Usu" placeholder="Carregando.." class="input-login" value="Cliente">
+                    <button class="editar" type="submit">Salvar</button>
+                    </form>
+                </div>
+                </div>
+<?php include("footerGrnt.php") ?>
+                        
+<!--JAVA LIBRAS-->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+</body>
+</html>

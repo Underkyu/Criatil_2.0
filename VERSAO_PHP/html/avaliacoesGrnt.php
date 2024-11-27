@@ -37,7 +37,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-    <title>Avaliações</title>
+    <title>Criatil Gerentes</title>
     <link rel="stylesheet" href="../css/avaliacoesGrnt.css" />
     <script src="../js/grntPesquisa.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -82,9 +82,9 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="foto">
                   <img src=<?php
                         if($imagem['Imagem'] == "vazio") {;
-                            print_r("../imagens/usuarios/usuario.png");      
+                            echo("../imagens/usuarios/usuario.png");      
                         }else{
-                            print_r("../imagens/usuarios/".$imagem['Imagem'].".jpeg");
+                            echo("../imagens/usuarios/".$imagem['Imagem'].".jpeg");
                         }?> alt="Foto de perfil" class="foto_perfil"/><!--Foto de perfil da avaliação-->
                 </div>
                   <div class="detalhes_avaliacoes">
@@ -121,7 +121,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
 
-  <?php include("footer.php") ?>
+  <?php include("footerGrnt.php") ?>
   </body>
 <script>
 function confirmDelete(codigoAva, nomeUsu) {

@@ -19,7 +19,7 @@ $brinquedos_recentes = $stmt_recentes->fetchAll(PDO::FETCH_ASSOC);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
-  <title>Criatil - pagina principal</title>
+  <title>Criatil - Home</title>
 
   <!--CSS dos carrosseis e da pagina respectivamente-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />

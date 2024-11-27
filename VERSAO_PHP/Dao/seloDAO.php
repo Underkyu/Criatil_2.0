@@ -17,5 +17,19 @@ public function inserirSelo(Selo $selo) {
 
     return $stmt->execute();
 }
+
+public function atualizarSelo(Selo $selo) {
+    if ($selo->getImagemSelo() !== null) {
+        $stmt = $this->conn->prepare("UPDATE selo SET Nome_Selo = :nome, Imagem_Selo = :imagem WHERE Codigo_Selo = :codigo");
+        $stmt->bindParam(':imagem', $selo->getImagemSelo());
+    } else { // se não tiver imagem definida, atualiza só o nome
+        $stmt = $this->conn->prepare("UPDATE selo SET Nome_Selo = :nome WHERE Codigo_Selo = :codigo");
+    }
+
+    $stmt->bindParam(':codigo', $selo->getCodigoSelo());
+    $stmt->bindParam(':nome', $selo->getNomeSelo());
+
+    return $stmt->execute();
+}
 }
 ?>

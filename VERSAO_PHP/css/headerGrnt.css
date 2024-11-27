@@ -15,6 +15,7 @@ div.corpo{ /*Basicamente so serve para dar cor pro fundo header*/
 }
 a.linkk-header {
   display: flex;
+  align-items: center;
   text-decoration: none;
 }
 div.header{ /*Div que contem o conteudo do header de pc e celular*/
@@ -58,7 +59,7 @@ div.header_normal{ /*Div que contem o conteudo do header de pc*/
   img.link_header{/*Icon que fica ao lado dos links para outras páginas*/
     width: 2.9rem;
     height: 2.9rem;
-    margin-right: .5rem;
+    margin-right: .2rem;
   }
 
   div.textos_pequenos{/*Div que contem ops pequenos textos que ficam ao lado dos icons no header*/
@@ -80,7 +81,10 @@ div.header_normal{ /*Div que contem o conteudo do header de pc*/
   img.menuSanduiche{ /*Imagem do icon de menu sanduiche*/
     width: 4rem;
   }
-
+  #link_cats { /* Imagem do link da página de selos e categorias (ficou grande demais sem alterar) */
+    width: 2.6rem;
+    height: 2.6rem;
+  }
   button.menuSanduiche{ /*Botão que abre o menu sanduiche*/
     border: none;
     background-color: transparent;

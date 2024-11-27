@@ -97,7 +97,7 @@ h2.preco{ /*Preço do produto*/
   margin: 0;
   font-size: 2.75rem;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 p.descricao{ /*Descrição do produto*/
@@ -107,7 +107,7 @@ p.descricao{ /*Descrição do produto*/
 }
 
 p.quantidade{ /*Literalmente a palavra quantidade em cima do negocio de escolher quantidade*/
-  font-size: 24px;
+  font-size: 23px;
   font-weight: bold;
   margin: 0;
   margin-top: 1rem;
@@ -120,7 +120,7 @@ button.comprar{ /*Botão de comprar*/
   background-color: #0476D9;
   padding: .5rem;
   margin-top: 1rem;
-  width: 100%;
+  width: 90%;
 }
 
 p.comprar{ /*Texto dentro do botão de comprar*/
@@ -131,13 +131,22 @@ p.comprar{ /*Texto dentro do botão de comprar*/
   font-weight: bold;
 }
 
+.categoria{ /* Texto da categoria do produto */
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+div.categoria{
+  display: flex;
+  width: 100%;
+}
 button.carrinho{ /*Botão de adoiconar ao carrinho*/
   border: none;
   border-radius: 20px;
   background-color: #F2AF00;
   padding: .5rem;
   margin-top: 1rem;
-  width: 100%;
+  margin-bottom: 1rem;
+  width: 90%;
 }
 
 p.carrinho{ /*Texto dentro do botão de adicioanar ao carrinho*/
@@ -162,7 +171,7 @@ div.center_imagem{
   input[type="number"]{
     -moz-appearance: textfield;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.6rem;
     border: none;
     background-color: #ffffff;
     color: #202030;
@@ -177,7 +186,7 @@ button.quantidade{
     color: #3264fe;
     background-color: #ffffff;
     border: none;
-    font-size: 2rem;
+    font-size: 1.6rem;
     cursor: pointer;
     font-weight: bolder;
 }

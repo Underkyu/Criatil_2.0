@@ -1,4 +1,4 @@
-*{/*Zerar valores e aplicar fonte padrão (Roboto)*/
+    *{/*Zerar valores e aplicar fonte padrão (Roboto)*/
     background-color: none;
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0px;
@@ -14,6 +14,7 @@
 }
 .ft-nome-lateral{
     display: flex;
+    flex-direction: row;
 }
 .lateral-conta { 
     display: flex;
@@ -390,8 +391,8 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     justify-content: center;
-    margin-top: 9rem;
-    margin-bottom: 11rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
   /* responsividade Hilario*/
   @media (min-width: 1500px) {

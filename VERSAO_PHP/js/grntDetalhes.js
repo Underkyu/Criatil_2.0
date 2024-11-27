@@ -2,6 +2,9 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     const containerFormulario = document.getElementById('form-container');
+    const containerFormularioCategoria = document.getElementById('form-container-categoria');
+    const containerFormularioSelo = document.getElementById('form-container-selo');
+
 
     document.querySelectorAll('.detalhes').forEach(botao => {
         botao.addEventListener('click', function() {
@@ -54,7 +57,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById('codigoBrinq').value = codigoBrinq;
                 document.getElementById('nomeBrinq').value = nomeBrinq;
                 document.getElementById('precoBrinq').value = precoBrinq;
+                validarNumero(document.getElementById('precoBrinq'));
                 document.getElementById('notaBrinq').value = notaBrinq;
+                validarNumero(document.getElementById('notaBrinq'));
                 document.getElementById('fabriBrinq').value = fabriBrinq;
                 document.getElementById('descBrinq').value = descBrinq;
                 document.getElementById('faixaBrinq').value = faixaBrinq;
@@ -115,16 +120,64 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
                 }
                 return; // Evita que o formulário seja exibido para avaliações
+
+            }else if (tipo === 'categoria') {
+                    const codigoCate = this.getAttribute('data-codigocat');
+                    const nomeCate = this.getAttribute('data-nomecat');
+
+                    document.getElementById('codigocat').value = codigoCate;
+                    document.getElementById('nomecat').value = nomeCate;
+
+                    if (containerFormularioCategoria) {
+                        containerFormularioCategoria.style.display = 'flex';
+                    }
+
+            }else if (tipo === 'selo') { 
+                const codigoSelo = this.getAttribute('data-codigoselo');
+                const nomeSelo = this.getAttribute('data-nomeselo');
+                const imagemSelo = this.getAttribute('data-imagemselo');
+
+                document.getElementById('codigoSelo').value = codigoSelo;
+                document.getElementById('nomeSelo').value = nomeSelo;
+
+                if (imagemSelo) {
+                    document.getElementById('ImagemSeloE').src = "../imagens/Selo/" + imagemSelo + ".jpeg";
+                    document.getElementById('ImagemSeloE').style.display = 'flex';
+                } else {
+                    document.getElementById('ImagemSeloE').style.display = 'none';
+                }
+
+                if (containerFormularioSelo) {
+                    containerFormularioSelo.style.display = 'flex';
+                }
+            }else{
+                console.log("Nenhum tipo detectado");
+                return;
             }
 
-
-            // faz o form aparecer (brinquedos)
+            // faz o form aparecer
             if (containerFormulario) {
                 containerFormulario.style.display = 'flex';
             }
         });
     });
 
+    if (containerFormularioCategoria) {
+        containerFormularioCategoria.addEventListener('click', function(e) {
+            if (e.target === containerFormularioCategoria) {
+                containerFormularioCategoria.style.display = 'none';
+            }
+        });
+    }
+
+    if (containerFormularioSelo) {
+        containerFormularioSelo.addEventListener('click', function(e) {
+            if (e.target === containerFormularioSelo) {
+                containerFormularioSelo.style.display = 'none';
+            }
+        });
+    }
+    
     // fecha quando clicar fora
     if (containerFormulario) {
         containerFormulario.addEventListener('click', function(e) {

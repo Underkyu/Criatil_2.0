@@ -28,7 +28,40 @@ if (!empty($nome)) {
 } else {
     $message->setMessage("Erro!", "Por favor, preencha todos os campos.", "error", "back");
 }
-}else{
+}elseif($tipo === "Atualizar"){
+    $codigo = filter_input(INPUT_POST, 'Codigo');
+    $nome = filter_input(INPUT_POST, 'Nome');
+
+    if (!empty($nome)) {
+        $categoria = new Categoria();
+
+        $categoria->setCodigoCategoria($codigo);
+        $categoria->setNomeCategoria($nome);
+
+        if ($categoriaDao->atualizarCategoria($categoria)) {
+            $message->setMessage("Categoria atualizada", "A categoria foi atualizada com sucesso", "success", "back");
+        } else {
+            $message->setMessage("Erro", "Houve um erro ao atualizar a categoria", "error", "back");
+        }
+    } else {
+        $message->setMessage("Erro!", "Por favor, preencha todos os campos.", "error", "back");
+    }
+}elseif($tipo === "Deletar"){
+    $codigo = filter_input(INPUT_POST, "Codigo");
+    $nome = filter_input(INPUT_POST, "Nome");
+
+    if($codigo && $nome){
+        $categoria = new Categoria();
+
+        $categoria->setCodigoCategoria($codigo);
+        $categoria->setNomeCategoria($nome);
+
+        $categoriaDao->deletarCategoria($categoria);
+    }else{
+        $message->setMessage("Erro", "Informações da categoria não encontradas","error","back");
+    }
+}
+else{
     $message->setMessage("Erro!", "Tipo não encontrado.", "error", "back");
 }
 ?>

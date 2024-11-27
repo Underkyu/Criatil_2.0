@@ -34,6 +34,6 @@
 
                 <button type="submit" class="botao-entrar">Cadastrar</button>
     </form>
-    <?php include("footer.php"); ?>
+    <?php include("footerGrnt.php"); ?>
 </body>
 </html>

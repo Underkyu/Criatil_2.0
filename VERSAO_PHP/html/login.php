@@ -30,7 +30,6 @@
 
                   <button type="submit" class="botao-entrar">Entrar</button>
                   <a href="cadastro.php" class="login">Não tem uma conta?</a>
-
             </form>
         </div>
 </body>

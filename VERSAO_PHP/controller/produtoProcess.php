@@ -33,7 +33,7 @@ if($tipo === "Inserir") {
          $notaBrinq === null || $notaBrinq === "" || $fabriBrinq === null || $fabriBrinq === "" ||
           $descBrinq === null || $descBrinq === "" || $faixaBrinq === null || $faixaBrinq === ""){
             $message->setMessage("Campos vazios","Alguns campos não foram preenchidos, tente novamente","error","back");
-            exit;
+            exit();
         }
 
         $produto = new Produto();
@@ -142,7 +142,9 @@ if($tipo === "Inserir") {
     $codigoBrinq = filter_input(INPUT_POST, "codigoBrinq");
     $nomeBrinq = filter_input(INPUT_POST,"Nome_Brinq");
     $precoBrinq = filter_input(INPUT_POST,"Preco_Brinq");
+    $precoBrinq = str_replace(',', '.', $precoBrinq);
     $notaBrinq = filter_input(INPUT_POST,"Nota");
+    $notaBrinq = str_replace(',', '.', $notaBrinq);
     $fabriBrinq = filter_input(INPUT_POST,"Fabricante");
     $descBrinq = filter_input(INPUT_POST,"Descricao");
     $faixaBrinq = filter_input(INPUT_POST,"Faixa_Etaria");

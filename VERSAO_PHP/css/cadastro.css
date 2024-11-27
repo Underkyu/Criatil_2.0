@@ -138,15 +138,23 @@ a.login:hover {
     .cadastrinho img {
       width: 70%;
     }
-    .cadastrinho {
+    div.cadastrinho {
       width: 450px;
     }
 }
 
 @media (max-width: 612px) {
-    .cadastrinho {
+    div.cadastrinho {
+      width: 0;
       width: 75%;
     }
+    .botao-entrar {
+      width: 55%;
+  }
+  
+  a.login{
+    width: 55%;
+  }
 }
 
 @media (max-width: 475px) {
@@ -160,14 +168,8 @@ a.login:hover {
 }
 
 @media (max-width: 450px) {
-    .cadastrinho {
-      width: 80%;
-    }
-}
-
-@media (max-width: 450px) {
-    .cadastrinho {
-      width: 85%;
+    div.cadastrinho {
+      width: 95%;
     }
 }
 

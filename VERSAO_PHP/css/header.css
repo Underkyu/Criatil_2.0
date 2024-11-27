@@ -266,6 +266,9 @@ input.pesquisa { /*Barra de pesquisa*/
     p.negrito {
       font-size: 17px;
     }
+    a.link{
+      flex-direction: column;
+    }
   }
   @media (max-width: 383px) {
     input.pesquisa{

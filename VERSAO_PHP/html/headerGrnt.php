@@ -86,7 +86,7 @@ $usuarioData = $userDao->verificarToken(false);
                 </div>
 
                 <a href="contaGrnt.php">
-                    <div class="link_headerHeader">
+                    <div class="link_headerHeader" id="perfil_normal">
                     <img src=<?php
                     if($usuarioData){
                         if($usuarioData->getImagem() == "vazio") {
@@ -111,39 +111,39 @@ $usuarioData = $userDao->verificarToken(false);
 
 
                 <!--Div do menu sanduiche e so aparece no celular-->
-                <div class="menuSanduiche" id="menuSanduiche">
+                <div class="menuSanduiche" id="menuSanduicheHeader">
 
-                <div class="link_header link_sanduiche">
-                    <a href="avaliacoesGrnt.php" class="linkk-header">
-                        <img src="../imagens/Gerente/Avaliações.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
-                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                            <p class="pequeno  negrito">Avaliações</p>
-                        </div>
-                        </a>
+                <div class="links_sanduiche">
+
+                <div class="link_header">
+                <a href="avaliacoesGrnt.php" class="linkk-header">
+                    <img src="../imagens/Gerente/Avaliações.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno  negrito">Avaliações</p>
                     </div>
-                    
-                    <div class="link_header link_sanduiche">
+                    </a>
+                </div>
+
+                <div class="link_header">
                     <a href="brinquedosGrnt.php" class="linkk-header">
-                        <img src="../imagens/Gerente/Brinquedos.png" alt="Catalogo icon" class="link_header" id="menuSanduiche"> <!--Icon da parte de explorar catalogo-->
+                        <img src="../imagens/Gerente/Brinquedos.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                             <p class="pequeno  negrito">Brinquedos</p>
                         </div>
-                        </a>
-                    </div>
-    
-                    <div class="link_header link_sanduiche">
-                    <a href="clientesGrnt.php" class="linkk-header">
-                        <img src="../imagens/Gerente/Clientes.png" alt="Perfil icon" class="link_header"> <!--Icon do perfil-->
-                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                            <p class="pequeno  negrito">Clientes</p>
-                        </div>
-                        </a>
-                    </div>
-    
+                    </a>
+                </div>
 
+                <div class="link_header">
+                <a href="clientesGrnt.php" class="linkk-header">
+                    <img src="../imagens/Gerente/Clientes.png" alt="Catalogo icon" class="link_header"> <!--Icon da parte de explorar catalogo-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno  negrito">Clientes</p>
+                    </div>
+                    </a>
+                </div>
 
-                    <div class="link_header">
-                  <a href="selos&categoriasGrnt.php" class="linkk-header">
+                <div class="link_header">
+                <a href="selos&categoriasGrnt.php" class="linkk-header">
                     <img src="../imagens/Gerente/selos&cats.png" alt="Catalogo icon" class="link_header" id="link_cats"> <!--Icon da parte de explorar catalogo-->
                     <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
                         <p class="pequeno  negrito">Categorias & Selos</p>
@@ -151,23 +151,31 @@ $usuarioData = $userDao->verificarToken(false);
                     </a>
                 </div>
 
-                    <div class="link_header link_sanduiche">
-                    <a href="cadastrogerente.php" class="linkk-header">
-                        <img src="../imagens/Gerente/CadastrarGerente.png" alt="Catalogo icon" class="link_header" id="menuSanduiche"> <!--Icon da parte de explorar catalogo-->
-                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                            <p class="pequeno  negrito">Cadastrar Gerente</p>
-                        </div>
-                        </a>
+                <div class="link_header">
+                <a href="cadastrogerente.php" class="linkk-header">
+                    <img src="../imagens/Gerente/CadastrarGerente.png" alt="Carrinho icon" class="link_header"> <!--Icon do carrinho-->
+                    <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
+                        <p class="pequeno  negrito">Cadastrar Gerente</p>
                     </div>
+                    </a>
+                </div>
+                </div>
 
-                    <div class="link_header link_sanduiche">
-                    <a href="contaGrnt.php" class="linkk-header">
-                        <img src="../imagens/Gerente/FotoGerente.webp" alt="Carrinho icon" class="link_header perfil"> <!--Icon do carrinho-->
-                        <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
-                            <p class="pequeno  negrito">Perfil</p>
-                        </div>
-                        </a>
-                    </div>
+                <a href="contaGrnt.php">
+                    <div class="link_headerHeader">
+                    <img src=<?php
+                    if($usuarioData){
+                        if($usuarioData->getImagem() == "vazio") {
+                            print_r("../imagens/usuarios/usuario.png"); 
+                        }else{
+                            print_r("../imagens/usuarios/".$usuarioData->getImagem().".jpeg");
+                        }
+                    }else{
+                        print_r("../imagens/usuarios/usuario.png"); 
+                    }
+                    ?> alt="" class="foto_perfil_header"> <!--Foto do perfil-->
+                </div>
+                </a>
                 </div>
             </div>
         </div>

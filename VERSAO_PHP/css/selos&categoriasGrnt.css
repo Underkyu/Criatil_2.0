@@ -226,235 +226,7 @@
   div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     background-color: #dc9e00; 
   }
-  /*Responsividade*/
-  .container {
-      max-width: 1425px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      justify-content: space-around !important;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    
-    /* 2xl */
-    @media (max-width: 1536px) {
-      .container {
-        max-width: 1280px;
-      }
-    }
-    
-    @media (max-width: 1280px) {
-      .adicionar::after {
-        margin-left: 3%;
-        font-size: 28px;
-      }
-      button.adicionar {
-        font-size: 18px;
-        font-size: 16px;
-      }
-    } 
-  
-    /* lg */
-    @media (max-width: 1024px) {
-      .container {
-        max-width: 768px;
-      }
-      p.informacao{
-          font-size: 1.2rem;
-      }
-      input.pesquisar {
-        background-position: 175px 4px;
-        background-size: 1.9rem;
-      }
-      input.pesquisar::placeholder {
-        font-size: 16px;
-      }
-      img.foto {
-        height: 5rem;
-      }
-      h2.titulo {
-        display: flex;
-        font-size: 2rem;
-        text-align: center;
-        font-weight: 500;
-        color: #232323;
-    }
-    }
-    
-    /* md */
-    @media (max-width: 768px) {
-      .container {
-        max-width: 700px;
-      }
-    
-      h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
-          font-size: 2.5rem;
-      }
-      div.pesquisar {
-        width: 25%;
-      }
-      input.pesquisar {
-        background-image: none;
-        text-align: left;
-      }
-      .adicionar::after {
-        content: none;
-      }
-      p.informacao{
-        font-size: 1rem;
-    }
-    button.editar {
-      width: 5rem;
-      height: 2.2rem;
-    }
-    input.pesquisar{
-      padding: 0 5px 0 5px;
-      }
-      h2.titulo {
-        display: flex;
-        font-size: 1.5rem;
-        text-align: center;
-        font-weight: 500;
-        color: #232323;
-    }
-    .boxes{
-      flex-direction: column;
-    }
-    div.fundo{ /*Fundo azul atrás dos brinquedos*/
-      padding: .60rem;
-      height: 65%;
-      margin-top: 2%;
-  }
-  h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
-      font-size: 1.8rem;
-      margin: 0 0 0 0;
-  }
-  div.acoes{
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-  div.pesquisar{
-    height: 3rem;
-    width: 35%;
-  }
-  button.adicionar {
-    height: 3rem;
-  }
-  p.informacao{
-    font-size: .9rem;
-}
-button.editar {
-  width: 4.2rem;
-  height: 1.9rem;
-  font-size: .9rem;
-}
-div.titulo{
-  font-size: 1rem;
-}
-img.foto {
-  height: 3.5rem;
-}
-    }
-    
-    /* sm */
-    @media (max-width: 640px) {
-      .container {
-        max-width: 600px;
-      }
-      div.pesquisar {
-        width: 30%;
-      }
-      img.foto {
-        height: 4rem;
-      }
-    }
-    
-    /* sm */
-    @media (max-width: 600px) {
-    
-    }
-    @media (max-width: 500px) {
-      div.pesquisar {
-        width: 40%;
-      }
-      div.fundo {
-        width: 90%;
-      }
-      .boxes{
-        flex-direction: column;
-      }
-    }
-    /* xs */
-    @media (max-width: 475px) {
-      .container {
-        width: 100%;
-        padding: 0;
-      }
-      div.fundo {
-        width: 95%;
-      }
-      img.foto {
-        height: 4.2rem;
-      }
-      button.editar {
-        width: 4rem;
-        height: 1.8rem;
-        font-size: .8rem;
-      }
-      div.titulo{ /*Titulo que mostra a qual informação o valor é relativo*/
-          font-weight: bold;
-          font-size: .9rem;
-          width: 100%;
-          text-align: center;
-          margin-bottom: 0;
-      }
-      p.informacao{
-          font-size: .9rem;
-      }
-      button.adicionar {
-        font-size: 16px;
-      }
-      div.pesquisar {
-        width: 44%;
-      }
-      input.pesquisar::placeholder {
-        font-size: 16px;
-      }
-    }
-    @media (max-width: 395px) {
-      div.fundo {
-        width: 100%;
-      }
-      div.pesquisar {
-        width: 50%;
-        height: 2.5rem;
-      }
-      p.informacao{
-        font-size: .8rem;
-    }
-      button.adicionar {
-        height: 2.5rem;
-        font-size: 14px;  
-      }
-      input.pesquisar::placeholder{
-        font-size: 14px;  
-      }
-      button.editar {
-        width: 3.2rem;
-        height: 1.2rem;
-        font-size: .8rem;
-      }
-      img.foto {
-        height: 3.6rem;
-      }
-      .formInsert-Brinquedo h2 {
-        font-size: 30px !important;
-      }
-    }
+ 
   
     /* CSS do formulário de select */
     .formInsert {
@@ -546,7 +318,8 @@ img.foto {
       border: 2px solid #191a19d3;
     }
     .formInsert-Brinquedo button {
-      width: 50%;
+      width: min-content;
+      padding: 0px 10px;
       height: 40px;
       border: 3px solid black;
       border-radius: 10px;
@@ -655,4 +428,246 @@ img.foto {
     align-items: center;
     gap: 10px;
   }
+
+  div.inputPopUp{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
   /* responsividade forms - falta fzr responsividade nos dois */
+
+   /*Responsividade*/
+   .container {
+    max-width: 1425px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    justify-content: space-around !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  /* 2xl */
+  @media (max-width: 1536px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+  
+  @media (max-width: 1280px) {
+    .adicionar::after {
+      margin-left: 3%;
+      font-size: 28px;
+    }
+    button.adicionar {
+      font-size: 18px;
+      font-size: 16px;
+    }
+  } 
+
+  /* lg */
+  @media (max-width: 1024px) {
+    .container {
+      max-width: 768px;
+    }
+    p.informacao{
+        font-size: 1.2rem;
+    }
+    input.pesquisar {
+      background-position: 175px 4px;
+      background-size: 1.9rem;
+    }
+    input.pesquisar::placeholder {
+      font-size: 16px;
+    }
+    img.foto {
+      height: 5rem;
+    }
+    h2.titulo {
+      display: flex;
+      font-size: 2rem;
+      text-align: center;
+      font-weight: 500;
+      color: #232323;
+  }
+  .formInsert-Brinquedo input,
+  .formInsert-Brinquedo select {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  }
+  
+  /* md */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 700px;
+    }
+  
+    h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
+        font-size: 2.5rem;
+    }
+    div.pesquisar {
+      width: 25%;
+    }
+    input.pesquisar {
+      background-image: none;
+      text-align: left;
+    }
+    .adicionar::after {
+      content: none;
+    }
+    p.informacao{
+      font-size: 1rem;
+  }
+  button.editar {
+    width: 5rem;
+    height: 2.2rem;
+  }
+  input.pesquisar{
+    padding: 0 5px 0 5px;
+    }
+    h2.titulo {
+      display: flex;
+      font-size: 1.5rem;
+      text-align: center;
+      font-weight: 500;
+      color: #232323;
+  }
+  .boxes{
+    flex-direction: column;
+  }
+  div.fundo{ /*Fundo azul atrás dos brinquedos*/
+    padding: .60rem;
+    height: 65%;
+    margin-top: 2%;
+}
+h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
+    font-size: 1.8rem;
+    margin: 0 0 0 0;
+}
+div.acoes{
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+div.pesquisar{
+  height: 3rem;
+  width: 35%;
+}
+button.adicionar {
+  height: 3rem;
+}
+p.informacao{
+  font-size: .9rem;
+}
+button.editar {
+width: 4.2rem;
+height: 1.9rem;
+font-size: .9rem;
+}
+div.titulo{
+font-size: 1rem;
+}
+img.foto {
+height: 3.5rem;
+}
+  }
+  
+  /* sm */
+  @media (max-width: 640px) {
+    .container {
+      max-width: 600px;
+    }
+    div.pesquisar {
+      width: 30%;
+    }
+    img.foto {
+      height: 4rem;
+    }
+  }
+  
+  /* sm */
+  @media (max-width: 600px) {
+  
+  }
+  @media (max-width: 500px) {
+    div.pesquisar {
+      width: 40%;
+    }
+    div.fundo {
+      width: 90%;
+    }
+    .boxes{
+      flex-direction: column;
+    }
+  }
+  /* xs */
+  @media (max-width: 475px) {
+    .container {
+      width: 100%;
+      padding: 0;
+    }
+    div.fundo {
+      width: 95%;
+    }
+    img.foto {
+      height: 4.2rem;
+    }
+    button.editar {
+      width: 4rem;
+      height: 1.8rem;
+      font-size: .8rem;
+    }
+    div.titulo{ /*Titulo que mostra a qual informação o valor é relativo*/
+        font-weight: bold;
+        font-size: .9rem;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0;
+    }
+    p.informacao{
+        font-size: .9rem;
+    }
+    button.adicionar {
+      font-size: 16px;
+    }
+    div.pesquisar {
+      width: 44%;
+    }
+    input.pesquisar::placeholder {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 395px) {
+    div.fundo {
+      width: 100%;
+    }
+    div.pesquisar {
+      width: 50%;
+      height: 2.5rem;
+    }
+    p.informacao{
+      font-size: .8rem;
+  }
+    button.adicionar {
+      height: 2.5rem;
+      font-size: 14px;  
+    }
+    input.pesquisar::placeholder{
+      font-size: 14px;  
+    }
+    button.editar {
+      width: 3.2rem;
+      height: 1.2rem;
+      font-size: .8rem;
+    }
+    img.foto {
+      height: 3.6rem;
+    }
+    .formInsert-Brinquedo h2 {
+      font-size: 30px !important;
+    }
+  }

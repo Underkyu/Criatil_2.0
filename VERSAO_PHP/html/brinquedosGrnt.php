@@ -130,6 +130,33 @@ $categorias = $produtoDao->getCategorias();
             </div>
         </div>
 
+
+<!--
+        <div class="graficos-container">
+
+        </div>
+        
+        <script>
+/*Script exemplo do chart.js - gráfico de pizza
+(https://www.chartjs.org/docs/latest/samples/other-charts/pie.html)
+const config = {
+  type: 'pie',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Pie Chart'
+      }
+    }
+  },
+};*/
+        </script>
+-->
 <!-- form de adicionar brinquedos -->
 <div id="form-container1" class="formInsert">
     <form method="POST" id="formInsert-Brinquedo" class="formInsert-Brinquedo" action="../controller/produtoProcess.php" enctype="multipart/form-data">
@@ -371,4 +398,5 @@ $categorias = $produtoDao->getCategorias();
 </script>
     <?php include("footerGrnt.php") ?>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
 </html>

@@ -23,8 +23,8 @@ div.fundo{ /*Fundo azul atrás das avaliações*/
   width: 80%;
   display: flex;
   align-self: center;
-  height: 460px;
-  margin: 20px 0 20px 0;
+  height: 550px;
+  margin: 10px 0 10px 0;
 }
 div.box_avaliacao{ /*Div que contem as avaliações*/
   background-color: white;
@@ -93,8 +93,8 @@ div.pesquisar{
   justify-content: space-between;
   border: solid #0476D9 3.5px;
   border-radius: 10px;
-  width: 15rem;
-  height: 3.2rem;
+  width: 14rem;
+  height: 2.8rem;
 }
 
 input.pesquisar{
@@ -102,13 +102,13 @@ input.pesquisar{
   height: 100%;
   width: 100%;
   border-radius: 10px;
-  padding: 0 3px 0 3px;
+  padding: 0 35px 0 5px;
   outline: none;
   font-size: 18px;
   font-weight: 500;
   background-color: white;
-  background-image: url("../imagens/Header/Lupa.png");
-  background-position: 195px 5px;
+  background-image: url("../imagens/Header/Lupa.png");  
+  background-position: 185px 2px;
   background-size: 2rem;
   background-repeat: no-repeat;
 }
@@ -199,6 +199,12 @@ div.box_avaliacao::-webkit-scrollbar-thumb {
 div.box_avaliacao::-webkit-scrollbar-thumb:hover {
   background-color: #dc9e00; 
 }
+.grntC{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 100vh;
+}
 /*Responsividade*/
 .container {
   max-width: 1425px;
@@ -206,11 +212,10 @@ div.box_avaliacao::-webkit-scrollbar-thumb:hover {
   margin-right: auto;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  display: flex;
   justify-content: center;
+  display: flex;
   flex-direction: column;
-  height: 100%;
-  }
+}
   
   /* 2xl */
   @media (max-width: 1536px) {

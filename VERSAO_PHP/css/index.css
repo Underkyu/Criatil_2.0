@@ -102,7 +102,7 @@ div.promocionais{
 
 /*Responsividade*/
 .container {
-  max-width: 1425px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 0.5rem;
@@ -115,7 +115,7 @@ div.promocionais{
 /* 2xl */
 @media (max-width: 1536px) {
   .container {
-    max-width: 1280px;
+    max-width: 1440px;
   }
 }
 

@@ -210,8 +210,8 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
   margin-right: auto;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  justify-content: space-around !important;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   max-height: 100%;
   }

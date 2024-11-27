@@ -86,6 +86,9 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
+    <div class="footer">
+    <?php include("footerGrnt.php") ?>
+    </div>
 
     <div id="form-container" class="formInsert">
     <form id="formInsert-Brinquedo" class="formInsert-Brinquedo" method="POST" action="../controller/usuarioProccess.php">
@@ -116,6 +119,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </form>
 </div>
 
-<?php include("footerGrnt.php") ?>
+
 </body>
 </html>

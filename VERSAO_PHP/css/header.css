@@ -116,9 +116,6 @@ input.pesquisa { /*Barra de pesquisa*/
     border-radius: 15px; 
     display: none;
   }
-  div.link_sanduicheHeader{ /*Conteudo do menu sanduiche*/
-    display: inherit;
-  }
   div.menuSanduicheHeader{ /*Div que contem os elementos que contem elementos da classe "link_sanduiche"*/
     display: none;
     overflow: hidden;
@@ -151,6 +148,10 @@ input.pesquisa { /*Barra de pesquisa*/
     margin: .5rem;
     background-color: white;
     overflow: hidden;
+  }
+
+  a.link{
+    display: flex;
   }
 
 /*Responsividade*/

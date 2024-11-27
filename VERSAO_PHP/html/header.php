@@ -105,6 +105,7 @@ if($usuarioData->getTipo() == 'Bloqueado'){
 
 
                 <!--Div do menu sanduiche e so aparece no celular-->
+                <a href="catalogo.php" class="link">
                 <div class="menuSanduicheHeader" id="menuSanduicheHeader">
                     <div class="link_headerHeader link_sanduicheHeader">
                         <img src="../imagens/Header/produtos.png" alt="Catalogo icon" class="link_headerHeader" id="menuSanduicheHeader"> <!--Icon da parte de explorar catalogo-->
@@ -113,7 +114,8 @@ if($usuarioData->getTipo() == 'Bloqueado'){
                             <p class="pequeno  negrito">Catálogo</p>
                         </div>
                     </div>
-
+                    </a>
+                    <a href="carrinho.php" class="link">
                     <div class="link_headerHeader link_sanduicheHeader">
                         <img src="../imagens/Header/carrinho.png" alt="Carrinho icon" class="link_headerHeader"> <!--Icon do carrinho-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->
@@ -121,6 +123,7 @@ if($usuarioData->getTipo() == 'Bloqueado'){
                             <p class="pequeno  negrito">Carrinho</p>
                         </div>
                     </div>
+                    </a>
                     
                     <?php if($usuarioData): ?>
                     <a href="conta.php">

@@ -50,10 +50,14 @@ function renderizarEstrelas($nota) {
   return $htmlEstrelas;
 }
 
+error_reporting(E_ERROR | E_PARSE);
+
+if($usuarioData){
 $brinquedosComprados = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
 
 // inicializa como false
 $brinquedoAtualComprado = false;
+
 if($brinquedosComprados !== false){
 foreach ($brinquedosComprados as $brinquedoComprado) {
     if ($brinquedoComprado->getCodigoBrinq() == $brinquedo->getCodigoBrinq()) {
@@ -61,6 +65,7 @@ foreach ($brinquedosComprados as $brinquedoComprado) {
         break; // caso encontre um brinquedo que foi comprado, marca como true e termina o foreach
     }
   }
+}
 }
 ?>
 <script>
@@ -327,7 +332,7 @@ foreach ($brinquedosComprados as $brinquedoComprado) {
       </div>
       <!--Fim product slider 1-->
 
-      <?php if ($brinquedoAtualComprado){ ?>
+      <?php if ($brinquedoAtualComprado == true) { ?>
       <form method="POST" action="../controller/avaliacaoProcess.php">
       <div class="add_ava">
         <div class="ava_container">

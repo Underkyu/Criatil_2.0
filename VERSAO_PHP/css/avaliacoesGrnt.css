@@ -202,8 +202,9 @@ div.box_avaliacao::-webkit-scrollbar-thumb:hover {
 .grntC{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  min-height: 100vh;
+}
+div#container_Ava{
+  margin: 7rem 0px;
 }
 /*Responsividade*/
 .container {

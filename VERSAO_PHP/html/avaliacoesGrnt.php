@@ -59,7 +59,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             sessionStorage.removeItem('message');
         }
     </script>
-    <div class="container">
+    <div class="container" id="container_Ava">
       <div class="grntC">
       <h1 class="titulo">Avaliações Recebidas</h1>
         <div class="fundo">

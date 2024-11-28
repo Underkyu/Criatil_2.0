@@ -31,7 +31,7 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
 </head>
 <body>
 <?php include("headerGrnt.php"); ?>
-<div class="container">
+<div class="container" id="container">
     <div class="boxes">
 
         <div class="catdiv">
@@ -188,9 +188,6 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
         </div>
     </form>
 </div>
-<div>
-<?php include("footerGrnt.php"); ?>
-</div>
 
 <!-- form de editar selo -->
 <div id="form-container-selo" class="formInsert" style="display:none;">
@@ -218,6 +215,9 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
         </div>
     </form>
 </div>
+</div>
+<div class="div_footer">
+<?php include("footerGrnt.php"); ?>
 </div>
 </body>
 <script>

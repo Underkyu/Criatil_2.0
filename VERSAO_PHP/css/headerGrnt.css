@@ -197,6 +197,10 @@ div.header_normal{ /*Div que contem o conteudo do header de pc*/
       font-size: 1.5rem;
       width: fit-content;
     }
+    div.link_header { /*Div que contem icon e textos dos links para outras paginas que ficam dentro do header*/
+      margin: 0;
+      margin-top: 1rem;
+    }
   
   }
   

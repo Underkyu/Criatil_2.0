@@ -14,7 +14,8 @@ h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
   font-size: 2.4rem;
   text-align: center;
   font-weight: 500;
-  color: #232323
+  color: #232323;
+  margin-top: 1rem;
 }
 div.fundo{ /*Fundo azul atrás dos brinquedos*/
     background-color: #0476D9;
@@ -156,6 +157,9 @@ div.box_brinquedos::-webkit-scrollbar-thumb {
 div.box_brinquedos::-webkit-scrollbar-thumb:hover {
   background-color: #dc9e00; 
 }
+div#container_Cli{
+  margin: 7rem 0px;
+}
 /*Responsividade*/
 .container {
   max-width: 1425px;
@@ -192,7 +196,9 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
       font-size: 16px;
     }
     img.foto {
-      height: 5rem;
+      height: 6rem;
+      width: 6rem;
+      margin: .5rem 0px;
     }
   }
   
@@ -241,12 +247,10 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
   @media (max-width: 600px) {
     div.fundo{ /*Fundo azul atrás dos brinquedos*/
         padding: .60rem;
-        height: 65%;
         margin-top: 2%;
     }
     h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
-        font-size: 1.8rem;
-        margin: 0 0 0 0;
+        font-size: 1.8rem;;
     }
     div.acoes{
       flex-direction: column;
@@ -269,7 +273,8 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     font-size: 1rem;
   }
   img.foto {
-    height: 3.5rem;
+    height: 4.5rem;
+    width: 4.5rem;
   }
   }
   @media (max-width: 500px) {
@@ -335,7 +340,8 @@ div.box_brinquedos::-webkit-scrollbar-thumb:hover {
     }
 
     img.foto {
-      height: 3.6rem;
+      height: 4rem;
+      width: 4rem;
     }
     .formInsert-Brinquedo h2 {
       font-size: 30px !important;

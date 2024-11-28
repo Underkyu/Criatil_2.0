@@ -37,7 +37,7 @@ $categorias = $produtoDao->getCategorias();
  -responsividade do form: botão de x (fechar) pra telas menores
 -->
 
-    <div class="container">
+    <div class="container" id="container_Brinq">
         <h1 class="titulo">Brinquedos Cadastrados</h1> <!--Titulo em cima da caixa dos brinquedos-->
         <div class="fundo"> <!--Fundo azul que fica atrás dos brinquedos-->
             <div class="box_brinquedos" id="brinquedos-container"><!--Div que contem os brinquedos-->

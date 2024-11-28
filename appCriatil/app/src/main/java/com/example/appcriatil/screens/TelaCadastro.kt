@@ -1,19 +1,26 @@
 package com.example.appcriatil.screens
 
+import android.widget.Button
+import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -46,6 +53,7 @@ import com.example.appcriatil.components.ElementoCheckbox
 import com.example.appcriatil.components.ElementoDivisorComTexto
 import com.example.appcriatil.components.ElementoFooter
 import com.example.appcriatil.components.ElementoHeaderNav
+import com.example.appcriatil.components.ElementoIconeFooter
 import com.example.appcriatil.components.ElementoSenhaTextField
 import com.example.appcriatil.components.ElementoTextField
 import com.example.appcriatil.components.ElementoTextoLoginClicavel
@@ -53,10 +61,13 @@ import com.example.appcriatil.components.ElementoTextoTitulo
 import com.example.appcriatil.components.PaddedItem
 import com.example.appcriatil.navigation.CriatilAppRouter
 import com.example.appcriatil.viewModel.CriatilViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun TelaCadastro (navController: NavController, viewModel: CriatilViewModel, mainActivity: MainActivity) {
+fun TelaCadastro (navController: NavController, viewModel: CriatilViewModel, modifier: Modifier = Modifier, mainActivity: MainActivity) {
     var nomeValue by remember{
         mutableStateOf("")
     }
@@ -173,7 +184,7 @@ fun TelaCadastro (navController: NavController, viewModel: CriatilViewModel, mai
                             color = Color.Black,
                             fontSize = 16.sp
                         ),
-                        label = { Text(text = "Email") },
+                        label = { Text(text = "Telefone") },
                         keyboardOptions = KeyboardOptions.Default,
                         value = telValue,
                         onValueChange = {
@@ -194,7 +205,7 @@ fun TelaCadastro (navController: NavController, viewModel: CriatilViewModel, mai
                             color = Color.Black,
                             fontSize = 16.sp
                         ),
-                        label = { Text(text = "Email") },
+                        label = { Text(text = "C.E.P") },
                         keyboardOptions = KeyboardOptions.Default,
                         value = cepValue,
                         onValueChange = {
@@ -259,10 +270,25 @@ fun TelaCadastro (navController: NavController, viewModel: CriatilViewModel, mai
                     }
                 }
                 item {
-                    PaddedItem {// Botão
-                        ElementoBotao(value = stringResource(id = R.string.cadastrar), onClick = {
+                    PaddedItem {
+                        ElementoBotao("Cadastrar") {
+                            if(nomeValue.isEmpty() || emailValue.isEmpty() || telValue.isEmpty() || cepValue.isEmpty() || senhaValue.isEmpty()){
+                                Toast.makeText(mainActivity, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
+                            }else{
+                                CoroutineScope(Main).launch {
+                                    usuarioList = viewModel.verificarEmail(emailValue)
 
-                        })
+                                    if(usuarioList.isNotEmpty()){
+                                        Toast.makeText(mainActivity, "Email já cadastrado", Toast.LENGTH_SHORT).show()
+                                    }
+                                    else{
+                                        navController.navigate(CriatilAppRouter.login)
+                                        Toast.makeText(mainActivity, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show()
+                                        viewModel.upsertUsuario(usuario)
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 item {
@@ -284,12 +310,34 @@ fun TelaCadastro (navController: NavController, viewModel: CriatilViewModel, mai
                             })
                     }
                 }
+                item {
+                    Row(
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .heightIn(min = 48.dp)
+                            .background(Color(0xFF0476D9))
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceAround,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        ElementoIconeFooter(
+                            text = "Home",
+                            painterResource = painterResource(id = R.drawable.homeicon),
+                            onClick = { navController.navigate(CriatilAppRouter.home) }
+                        )
+                        ElementoIconeFooter(
+                            text = "Carrinho",
+                            painterResource = painterResource(id = R.drawable.carrinho),
+                            onClick = { /* TODO */ }
+                        )
+                        ElementoIconeFooter(
+                            text = "Perfil",
+                            painterResource = painterResource(id = R.drawable.icon_profile),
+                            onClick = { navController.navigate(CriatilAppRouter.login) }
+                        )
+                    }
+                }
             }
-            ElementoFooter(
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .fillMaxWidth()
-            )
         }
 
     }

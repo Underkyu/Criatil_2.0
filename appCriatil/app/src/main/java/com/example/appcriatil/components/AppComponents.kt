@@ -75,7 +75,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.appcriatil.R
 import com.example.appcriatil.navigation.CriatilAppRouter
-import com.example.appcriatil.navigation.Screen
 import com.example.appcriatil.ui.theme.TextColor
 import kotlinx.coroutines.delay
 
@@ -250,7 +249,7 @@ fun ElementoTextoClicavel(value: String , onTextSelected: (String) -> Unit){
 
 @Composable
 fun ElementoBotao(value: String, onClick: () -> Unit){
-    Button(onClick = { /*TODO*/},
+    Button(onClick = {onClick()},
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(48.dp),
@@ -457,7 +456,7 @@ fun ElementoFooter(modifier: Modifier = Modifier) {
         ElementoIconeFooter(
             text = "Home",
             painterResource = painterResource(id = R.drawable.homeicon),
-            onClick = { CriatilAppRouter.navigateTo(Screen.Home) }
+            onClick = { /* TODO */ }
         )
         ElementoIconeFooter(
             text = "Carrinho",
@@ -467,7 +466,7 @@ fun ElementoFooter(modifier: Modifier = Modifier) {
         ElementoIconeFooter(
             text = "Perfil",
             painterResource = painterResource(id = R.drawable.icon_profile),
-            onClick = { CriatilAppRouter.navigateTo(Screen.TelaPerfil) }
+            onClick = { /* TODO */}
         )
     }
 }

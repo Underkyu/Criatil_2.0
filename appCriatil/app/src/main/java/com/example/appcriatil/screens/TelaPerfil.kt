@@ -3,13 +3,16 @@ package com.example.appcriatil.screens
 import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
@@ -42,6 +45,7 @@ import com.example.appcriatil.components.ElementoDivisorComTexto
 import com.example.appcriatil.components.ElementoFooter
 import com.example.appcriatil.components.ElementoHeaderNav
 import com.example.appcriatil.components.ElementoHomeHeader
+import com.example.appcriatil.components.ElementoIconeFooter
 import com.example.appcriatil.components.ElementoSenhaTextField
 import com.example.appcriatil.components.ElementoTextField
 import com.example.appcriatil.components.ElementoTextoCadastroClicavel
@@ -59,7 +63,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun TelaPerfil(navController: NavController, viewModel: CriatilViewModel, mainActivity: MainActivity) {
+fun TelaPerfil(navController: NavController, viewModel: CriatilViewModel, modifier: Modifier = Modifier, mainActivity: MainActivity) {
     var usuarioList by remember{
         mutableStateOf(listOf<Usuario>())
     }
@@ -94,13 +98,13 @@ fun TelaPerfil(navController: NavController, viewModel: CriatilViewModel, mainAc
                 contentPadding = PaddingValues(horizontal = 0.dp)
             ) {
                 stickyHeader {
-                    ElementoHeaderNav(value = stringResource(id = R.string.Cadastro), onClick = {
-                        navController.navigate(CriatilAppRouter.cadastro)
+                    ElementoHeaderNav("Home", onClick = {
+                        navController.navigate(CriatilAppRouter.home)
                     })
                 }
                 item {
                     PaddedItem { // Espaçamento
-                        Spacer(modifier = Modifier.height(20.dp))
+                        Spacer(modifier = Modifier.height(150.dp))
                     }
                 }
                 item {
@@ -110,12 +114,7 @@ fun TelaPerfil(navController: NavController, viewModel: CriatilViewModel, mainAc
                 }
                 item {
                     PaddedItem { // Espaçamento
-                        Spacer(modifier = Modifier.height(20.dp))
-                    }
-                }
-                item {
-                    PaddedItem { // Espaçamento
-                        Spacer(modifier = Modifier.height(20.dp))
+                        Spacer(modifier = Modifier.height(40.dp))
                     }
                 }
                 item {
@@ -203,29 +202,52 @@ fun TelaPerfil(navController: NavController, viewModel: CriatilViewModel, mainAc
                 }
                 item {
                     PaddedItem { // Espaçamento
-                        Spacer(modifier = Modifier.height(5.dp))
+                        Spacer(modifier = Modifier.height(50.dp))
                     }
                 }
                 item {
-                    ElementoBotao(
-                        onClick = {
-                            usuario.logValue = false
-                            viewModel.upsertUsuario(usuario)
-                            Toast.makeText(
-                                mainActivity,
-                                "Saindo de " + usuario.nomeValue + "...",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        },
-                        value = TODO()
-                    )
+                    ElementoBotao("Sair"){
+                        usuario.logValue = false
+                        viewModel.upsertUsuario(usuario)
+                        Toast.makeText(
+                            mainActivity,
+                            "Saindo de "+usuario.nomeValue+"...",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        navController.navigate(CriatilAppRouter.home)
+                    }
+                }
+                item {
+                    Spacer(modifier = Modifier.height(200.dp))
+                }
+                item {
+                    Row(
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .heightIn(min = 48.dp)
+                            .background(Color(0xFF0476D9))
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceAround,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        ElementoIconeFooter(
+                            text = "Home",
+                            painterResource = painterResource(id = R.drawable.homeicon),
+                            onClick = { navController.navigate(CriatilAppRouter.home) }
+                        )
+                        ElementoIconeFooter(
+                            text = "Carrinho",
+                            painterResource = painterResource(id = R.drawable.carrinho),
+                            onClick = { /* TODO */ }
+                        )
+                        ElementoIconeFooter(
+                            text = "Perfil",
+                            painterResource = painterResource(id = R.drawable.icon_profile),
+                            onClick = { navController.navigate(CriatilAppRouter.login) }
+                        )
+                    }
                 }
             }
-            ElementoFooter(
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .fillMaxWidth()
-            )
         }
         SystemBackButtonHandler {
             navController.navigate(CriatilAppRouter.cadastro)

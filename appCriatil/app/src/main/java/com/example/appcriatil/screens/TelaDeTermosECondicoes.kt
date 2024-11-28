@@ -2,7 +2,9 @@ package com.example.appcriatil.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -28,6 +30,8 @@ fun TelaDeTermosECondicoes(navController: NavController, mainActivity: MainActiv
 
         Column {
             ElementoTextoTitulo(value = stringResource(R.string.TituloTermosECondicoes))
+
+            Spacer(modifier = Modifier.height(50.dp))
 
             ElementoTextoBasico(value = stringResource(R.string.TermosECondicoes))
         }

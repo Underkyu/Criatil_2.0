@@ -4,12 +4,15 @@ import android.provider.ContactsContract.CommonDataKinds.Email
 import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -52,6 +55,7 @@ import com.example.appcriatil.components.ElementoCheckbox
 import com.example.appcriatil.components.ElementoDivisorComTexto
 import com.example.appcriatil.components.ElementoFooter
 import com.example.appcriatil.components.ElementoHeaderNav
+import com.example.appcriatil.components.ElementoIconeFooter
 import com.example.appcriatil.components.ElementoSenhaTextField
 import com.example.appcriatil.components.ElementoTextField
 import com.example.appcriatil.components.ElementoTextoCadastroClicavel
@@ -67,7 +71,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun TelaDeLogin(navController: NavController, viewModel: CriatilViewModel, mainActivity: MainActivity) {
+fun TelaDeLogin(navController: NavController, viewModel: CriatilViewModel, modifier: Modifier = Modifier, mainActivity: MainActivity) {
     var emailValue by remember{
         mutableStateOf("")
     }
@@ -100,7 +104,7 @@ fun TelaDeLogin(navController: NavController, viewModel: CriatilViewModel, mainA
                 }
                 item {
                     PaddedItem { // Espaçamento
-                        Spacer(modifier = Modifier.height(20.dp))
+                        Spacer(modifier = Modifier.height(25.dp))
                     }
                 }
                 item {
@@ -187,8 +191,7 @@ fun TelaDeLogin(navController: NavController, viewModel: CriatilViewModel, mainA
                     }
                 }
                 item {
-                    Button(
-                        onClick = {
+                    ElementoBotao("Entrar"){
                             if(emailValue.isEmpty() || senhaValue.isEmpty()){
                                 Toast.makeText(mainActivity, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
                             }else {
@@ -196,18 +199,18 @@ fun TelaDeLogin(navController: NavController, viewModel: CriatilViewModel, mainA
                                     usuarioList = viewModel.loginUsuario(emailValue, senhaValue)
 
                                     if (usuarioList.isNotEmpty()) {
-
                                         val usuarioName = usuarioList[0].nomeValue
                                         val usuario = usuarioList[0]
                                         usuario.logValue = true
+                                        navController.navigate(CriatilAppRouter.perfil)
                                         viewModel.upsertUsuario(usuario)
                                         Toast.makeText(
                                             mainActivity,
-                                            "Bem vindo $usuarioName",
+                                            "Bem vindo $usuarioName !",
                                             Toast.LENGTH_SHORT
                                         ).show()
-                                        navController.navigate(CriatilAppRouter.perfil)
-                                    } else {
+                                    }
+                                    else {
                                         Toast.makeText(
                                             mainActivity,
                                             "Email ou senha incorretos",
@@ -216,13 +219,6 @@ fun TelaDeLogin(navController: NavController, viewModel: CriatilViewModel, mainA
                                     }
                                 }
                             }
-                        },
-                        modifier = Modifier.size(width = 180.dp, height = 38.dp),
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Text(
-                            text = "Entrar"
-                        )
                     }
                 }
                 item {
@@ -243,17 +239,33 @@ fun TelaDeLogin(navController: NavController, viewModel: CriatilViewModel, mainA
                     }
                 }
                 item {
-                    PaddedItem { // Espaçamento
-                        Spacer(modifier = Modifier.height(100.dp))
+                    Row(
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .heightIn(min = 48.dp)
+                            .background(Color(0xFF0476D9))
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceAround,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        ElementoIconeFooter(
+                            text = "Home",
+                            painterResource = painterResource(id = R.drawable.homeicon),
+                            onClick = { navController.navigate(CriatilAppRouter.home) }
+                        )
+                        ElementoIconeFooter(
+                            text = "Carrinho",
+                            painterResource = painterResource(id = R.drawable.carrinho),
+                            onClick = { /* TODO */ }
+                        )
+                        ElementoIconeFooter(
+                            text = "Perfil",
+                            painterResource = painterResource(id = R.drawable.icon_profile),
+                            onClick = { navController.navigate(CriatilAppRouter.login) }
+                        )
                     }
                 }
-
             }
-            ElementoFooter(
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .fillMaxWidth()
-            )
         }
         SystemBackButtonHandler {
             navController.navigate(CriatilAppRouter.cadastro)

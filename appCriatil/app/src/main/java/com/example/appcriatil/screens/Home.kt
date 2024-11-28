@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -29,6 +31,7 @@ import com.example.appcriatil.components.ElementoFooter
 import com.example.appcriatil.components.ElementoHeaderNav
 import com.example.appcriatil.components.ElementoHomeHeader
 import com.example.appcriatil.components.ElementoIconCarousel
+import com.example.appcriatil.components.ElementoIconeFooter
 import com.example.appcriatil.components.ElementoImageCarousel
 import com.example.appcriatil.components.ElementoTextoTitulo
 import com.example.appcriatil.components.IconData
@@ -39,7 +42,7 @@ import com.example.appcriatil.viewModel.CriatilViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Home(navController: NavController){
+fun Home(navController: NavController, modifier: Modifier = Modifier){
     Surface(
         color = Color.White,
         modifier = Modifier
@@ -53,6 +56,9 @@ fun Home(navController: NavController){
             ) {
                 stickyHeader {
                     ElementoHomeHeader()
+                }
+                item {
+                    Spacer(modifier = Modifier.height(5.dp))
                 }
                 item {
                     PaddedItem { // Carrossel
@@ -127,15 +133,37 @@ fun Home(navController: NavController){
                 }
                 item {
                     PaddedItem { // Espaçamento
-                        Spacer(modifier = Modifier.height(300.dp))
+                        Spacer(modifier = Modifier.height(100.dp))
+                    }
+                }
+                item {
+                    Row(
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .heightIn(min = 48.dp)
+                            .background(Color(0xFF0476D9))
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceAround,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        ElementoIconeFooter(
+                            text = "Home",
+                            painterResource = painterResource(id = R.drawable.homeicon),
+                            onClick = { navController.navigate(CriatilAppRouter.home) }
+                        )
+                        ElementoIconeFooter(
+                            text = "Carrinho",
+                            painterResource = painterResource(id = R.drawable.carrinho),
+                            onClick = { /* TODO */ }
+                        )
+                        ElementoIconeFooter(
+                            text = "Perfil",
+                            painterResource = painterResource(id = R.drawable.icon_profile),
+                            onClick = { navController.navigate(CriatilAppRouter.login) }
+                        )
                     }
                 }
             }
-            ElementoFooter(
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .fillMaxWidth()
-            )
         }
         SystemBackButtonHandler {
             navController.navigate(CriatilAppRouter.cadastro)

@@ -105,15 +105,16 @@ div.header_normal{ /*Div que contem o conteudo do header de pc*/
     justify-content: space-evenly;
   }
   
-  .open_header{ /*Classe que serve para tornar o menu sanduiche visivel*/
+  div.open_headerHeader{ /*Classe que serve para tornar o menu sanduiche visivel*/
     display: flex;
+    flex-direction: column;
     width: 100%;
     justify-content: space-evenly;
     padding: 1rem;
     overflow: hidden;
     transition-timing-function: ease-in;
     transition-duration: 0.5s;
-    height: 5rem;
+    height: 27rem;
   }
 
   img.foto_gerente{ /*Foto do gerente*/
@@ -180,11 +181,21 @@ div.header_normal{ /*Div que contem o conteudo do header de pc*/
     div.links_normais{
       display: none;
     }
+    div.links_headerHeader{
+      display: none;
+    }
     img.foto_gerente{
       display: none;
     }
     div.header{ /*Div que contem o conteudo do header de pc e celular*/
       flex-direction: column;
+    }
+    div#perfil_normal{
+      display: none;
+    }
+    p.pequeno{
+      font-size: 1.5rem;
+      width: fit-content;
     }
   
   }

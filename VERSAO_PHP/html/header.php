@@ -105,8 +105,8 @@ if($usuarioData->getTipo() == 'Bloqueado'){
 
 
                 <!--Div do menu sanduiche e so aparece no celular-->
-                <a href="catalogo.php" class="link">
                 <div class="menuSanduicheHeader" id="menuSanduicheHeader">
+                <a href="catalogo.php" class="link">
                     <div class="link_headerHeader link_sanduicheHeader">
                         <img src="../imagens/Header/produtos.png" alt="Catalogo icon" class="link_headerHeader" id="menuSanduicheHeader"> <!--Icon da parte de explorar catalogo-->
                         <div class="textos_pequenos"> <!--Div para conter os textos que ficam ao lado do icon-->

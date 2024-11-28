@@ -59,8 +59,12 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             sessionStorage.removeItem('message');
         }
     </script>
+<<<<<<< HEAD
     <div class="container" id="container_Ava">
       <div class="grntC">
+=======
+    <div class="container">
+>>>>>>> 4d38bf68141550b55e4a8a779ff2cd01a545773f
       <h1 class="titulo">Avaliações Recebidas</h1>
         <div class="fundo">
           <!--Fundo azul que fica atrás dos clientes-->
@@ -121,7 +125,6 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
           </div>
         </div>
       </div>
-    </div>
     <?php include("footerGrnt.php") ?>
 
   </body>

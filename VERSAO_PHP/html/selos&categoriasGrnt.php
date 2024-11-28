@@ -151,7 +151,7 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
             <label for="Nome">Nome do Selo:</label>
             <input type="text" name="Nome" id="Nome" placeholder="Nome do selo" required>
         </div>
-        <label for="Imagem" class="input-img">Imagem do selo</label>
+        <label for="Imagem" class="input-img">Imagem</label>
         <input type="file" name="Imagem" id="Imagem" class="arquivo-input" required>
         <p>Preview da Imagem:</p>
             <img id="Imagem1A" src="" class="imagemPreview" style="display:none;">
@@ -188,6 +188,11 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
         </div>
     </form>
 </div>
+<<<<<<< HEAD
+=======
+<div>
+</div>
+>>>>>>> 4d38bf68141550b55e4a8a779ff2cd01a545773f
 
 <!-- form de editar selo -->
 <div id="form-container-selo" class="formInsert" style="display:none;">
@@ -200,7 +205,10 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
                     <input type="text" id="nomeSelo" name="Nome" placeholder="Nome do Selo" required>
                 </div>
                 <input type="hidden" id="codigoSelo" name="Codigo" required>
-                <label for="ImagemSelo" class="input-img">Imagem do selo</label>
+                <div class="div-label">
+                <p>Imagem do Selo:</p>
+                <label for="ImagemSelo" class="input-img">Imagem</label>
+                </div>
                 <input type="file" name="Imagem" id="ImagemSelo" class="arquivo-input">
                 <p>Preview da Imagem:</p>
                 <img id="ImagemSeloE" src="" class="imagemPreview" style="display:none;">
@@ -216,9 +224,13 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
     </form>
 </div>
 </div>
+<<<<<<< HEAD
 <div class="div_footer">
 <?php include("footerGrnt.php"); ?>
 </div>
+=======
+<?php include("footerGrnt.php"); ?>
+>>>>>>> 4d38bf68141550b55e4a8a779ff2cd01a545773f
 </body>
 <script>
 function confirmDelete(codigoAva, nomeUsu) {

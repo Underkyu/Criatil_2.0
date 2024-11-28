@@ -27,4 +27,4 @@ function mostrarSenha(idInput, idBotao) {
 // máscara do celular
 $(document).ready(function(){
     $('#celular').mask('(00) 00000-0000');
-  });
+});

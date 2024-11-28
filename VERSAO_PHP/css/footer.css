@@ -62,11 +62,11 @@
 
 .footerLogo img {
     width: 100%;
-    height: calc(100%/(240/95));
+    height: auto;
 }
 
 .footerLogo, .footerTelefone {
-    max-width: 240px;
+    max-width: 260px;
     max-height: 95px;
 }
 

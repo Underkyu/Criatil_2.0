@@ -13,9 +13,6 @@
                 <div class="footerAnchor footerLogo">
                     <a href="principal.php"><img src="../imagens/Header/LogoBranca.png" alt="Logo"></a>
                 </div>
-                <div class="footerAnchor footerSac">
-                    <a href="contato.php">SAC</a>
-                </div>
                 <div class="footerAnchor footerSobreNos">
                     <a href="sobrenos.php">Sobre Nós</a>
                 </div>

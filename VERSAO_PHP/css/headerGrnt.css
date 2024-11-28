@@ -39,8 +39,7 @@ div.header_normal{ /*Div que contem o conteudo do header de pc*/
 
 
   img.Logo_header{ /*Bem autoexplicativo*/
-    height: 5.5rem;
-    margin: .5rem;
+    height: 5.2rem;
   }
 
   div.links_normais{/*Div com as anchors mostradas no cp*/

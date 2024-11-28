@@ -4,9 +4,6 @@
     margin: 0px;
     padding: 0px;
     }
-    html, body {
-      height: 100%; 
-    }
   h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
       width: 100%;
       display: flex;
@@ -41,7 +38,7 @@
       width: 90%;
       display: flex;
       align-self: center;
-      height: 350px;
+      height: 360px;
       margin: 30px 0 30px 0;
   }
   div.box_brinquedos{ /*Div que contem os brinquedos*/
@@ -396,14 +393,17 @@
     height: auto;
   }
   .input-img {
+<<<<<<< HEAD
+=======
+  width: 45%;
+>>>>>>> 4d38bf68141550b55e4a8a779ff2cd01a545773f
   margin-bottom: 15px;
   margin-top: 5px;
   height: 40px;
   padding: 0 15px 0 15px;
-  background-color: #0476D9;
-  color: white;
+  color: black;
   border-radius: 12px;
-  border: 2px solid black;
+  border: 2px solid #0476D9;
   font-size: 16px;
   font-weight: 500;
   box-sizing: border-box;
@@ -411,11 +411,14 @@
   outline: none;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
   }
-
+.div-label{
+  width: 280px;
+  justify-content: left;
+}
   .input-img:hover {
     transform: scale(1.05);
   }

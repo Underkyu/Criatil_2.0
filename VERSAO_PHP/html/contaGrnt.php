@@ -19,6 +19,9 @@ $usuarioData = $userDao->verificarToken(true);
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- link da fonte pro css saber que fonte usar -->
     <link rel="stylesheet" href="../css/contaGrnt.css">
     <script src="../js/conta.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="../js/cadastro.js"></script>
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Criatil Gerentes</title>
 </head>
@@ -115,13 +118,13 @@ $usuarioData = $userDao->verificarToken(true);
                     <div class="info-item">
                         <div class="info-label">Senha atual:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" placeholder="Senha atual" name="Atual_Senha">
+                        <input class="usuario-info" type="password" placeholder="Senha atual" name="Atual_Senha">
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Senha nova:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" placeholder="Senha nova" name="Nova_Senha">
+                        <input class="usuario-info" type="password" placeholder="Senha nova" name="Nova_Senha">
                         </div>
                     </div>
                     <input type="hidden" name="Tipo" value="Senha">
@@ -154,7 +157,7 @@ $usuarioData = $userDao->verificarToken(true);
                     <div class="info-item">
                         <div class="info-label">Celular:</div>
                         <div class="info-value">
-                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu" >
+                        <input class="usuario-info" type="text" value="<?php echo htmlspecialchars($usuarioData->getCelular()); ?>" name="Celular_Usu" id="celular">
                         </div>
                     </div>
                     <input type="hidden" name="Tipo" value="Atualizar">

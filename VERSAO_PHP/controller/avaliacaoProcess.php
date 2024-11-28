@@ -37,6 +37,7 @@ if($tipo === "Deletar"){
     $comentAva = filter_input(INPUT_POST, "Comentario");
     $tituloAva = filter_input(INPUT_POST, "Titulo_Ava");
 
+    $notaAva = str_replace(',', '.', $notaAva);
     if(isset($notaAva, $comentAva, $tituloAva) && $notaAva !== '' && $comentAva !== '' && $tituloAva !== '') {
         $avaliacao = new Avaliacao();
 

@@ -14,6 +14,22 @@ $produtoDao = new ProdutoDAO($conn, $BASE_URL); // inicialização do produtoDao
 $selos = $produtoDao->getSelos();
 $categorias = $produtoDao->getCategorias();
 
+$stmt_populares1 = $conn->prepare("SELECT Codigo_Brinq, COUNT(*) AS quantidade_vendida
+FROM brinqvendido GROUP BY Codigo_Brinq ORDER BY quantidade_vendida DESC LIMIT 10");
+$stmt_populares1->execute();
+$populares1 = $stmt_populares1->fetchAll(PDO::FETCH_ASSOC);
+
+$brinquedos_populares = []; // inicializa vetor
+
+foreach($populares1 as $popular) {
+   $stmt_populares2 = $conn->prepare("SELECT * FROM brinquedo WHERE Codigo_Brinq = :codigo
+    AND Status <> 1 ORDER BY Codigo_Brinq"); // faz o select dos brinquedos usando o código retornado do $stmt_populares1
+    $stmt_populares2->bindParam(":codigo", $popular['Codigo_Brinq']);
+    $stmt_populares2->execute();
+    $resultados = $stmt_populares2->fetchAll(PDO::FETCH_ASSOC); 
+    $brinquedos_populares = array_merge($brinquedos_populares, $resultados);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -130,33 +146,61 @@ $categorias = $produtoDao->getCategorias();
             </div>
         </div>
 
-
-<!--
         <div class="graficos-container">
-
+            <h1 class="titulo">Vendas por Brinquedo</h1>
+            <canvas id="graficoBrinquedos" width="100" height="50"></canvas>
         </div>
-        
-        <script>
-/*Script exemplo do chart.js - gráfico de pizza
-(https://www.chartjs.org/docs/latest/samples/other-charts/pie.html)
-const config = {
-  type: 'pie',
-  data: data,
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Pie Chart'
-      }
+
+<script>
+    let brinquedos = [];
+    let quantidade = [];
+    
+    <?php
+    // limita aos 10 brinquedos mais vendidos
+    $limite = min(10, count($populares1));
+    for ($i = 0; $i < $limite; $i++) {
+        $brinquedo = $populares1[$i];
+
+        $stmt_nome = $conn->prepare("SELECT Nome_Brinq FROM brinquedo WHERE Codigo_Brinq = :codigo");
+        $stmt_nome->bindParam(":codigo", $brinquedo['Codigo_Brinq']);
+        $stmt_nome->execute();
+        $nome_brinquedo = $stmt_nome->fetchColumn();
+
+        // envia o nome e a quantidade pro js
+        echo "brinquedos.push('$nome_brinquedo');\n";
+        echo "quantidade.push(" . $brinquedo['quantidade_vendida'] . ");\n";
     }
-  },
-};*/
-        </script>
--->
+    ?>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+<script>
+    Chart.defaults.font.weight = 'bold';
+    const ctx = document.getElementById('graficoBrinquedos').getContext('2d');
+    const graficoBrinquedos = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: brinquedos, 
+            datasets: [{
+                label: 'Quantidade Vendida',
+                data: quantidade,
+                backgroundColor: '#0476D9',
+                color: '#000'
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+</script>
+
 <!-- form de adicionar brinquedos -->
 <div id="form-container1" class="formInsert">
     <form method="POST" id="formInsert-Brinquedo" class="formInsert-Brinquedo" action="../controller/produtoProcess.php" enctype="multipart/form-data">
@@ -398,5 +442,4 @@ const config = {
 </script>
     <?php include("footerGrnt.php") ?>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
 </html>

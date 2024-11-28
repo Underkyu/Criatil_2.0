@@ -4,9 +4,6 @@
   margin: 0px;
   padding: 0px;
   }
-  html, body {
-    height: 100%; 
-  }
 h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
     width: 100%;
     display: flex;
@@ -623,6 +620,7 @@ input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs co
  .nota-media {
   background-color: #f0f0f0;
  }
+<<<<<<< HEAD
 /* responsividade forms - falta fzr responsividade nos dois */
 
 @media (max-width: 1140px) {
@@ -668,3 +666,19 @@ input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs co
   }
   }
 }
+=======
+ .graficos-container { /* container do gráfico */
+  max-width: 100%;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+ }
+ .graficos-container h1 { /* título do gráfico */
+  margin-top: 5rem;
+  margin-bottom: .6rem;
+ }
+/* responsividade forms - falta fzr responsividade nos dois */
+>>>>>>> 4d38bf68141550b55e4a8a779ff2cd01a545773f

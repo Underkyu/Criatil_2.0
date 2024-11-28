@@ -1,7 +1,7 @@
 /* Inicio CSS do card*/
 div.card{
-    width: 17.5rem !important;
-    height: 27rem !important;
+    width: 17.5rem;
+    height: 27rem;
     border: solid #D9D9D9 4px;
     display: flex;
     flex-direction: column;

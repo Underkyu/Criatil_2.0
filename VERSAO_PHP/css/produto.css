@@ -227,10 +227,6 @@ div.avaliacao {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   justify-content: center;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 div.estatisticas {/*Parte que mostra a porcentagem de cada tipo de avaliação*/
@@ -291,7 +287,7 @@ div.card_avaliacao { /*Div que contem as avaliações em si*/
   border: #D4D4D4 solid 3px;
   border-radius: 15px;
   padding: .75rem;
-  margin-bottom: 1rem;
+  margin-top: .8rem;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }

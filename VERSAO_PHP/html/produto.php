@@ -49,8 +49,17 @@ function renderizarEstrelas($nota) {
   
   return $htmlEstrelas;
 }
-if($usuarioData){
-$brinqCompradosporUser = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
+
+$brinquedosComprados = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
+
+// inicializa como false
+$brinquedoAtualComprado = false;
+
+foreach ($brinquedosComprados as $brinquedoComprado) {
+    if ($brinquedoComprado->getCodigoBrinq() == $brinquedo->getCodigoBrinq()) {
+        $brinquedoAtualComprado = true;
+        break; // caso encontre um brinquedo que foi comprado, marca como true e termina o foreach
+    }
 }
 
 ?>
@@ -302,16 +311,7 @@ $brinqCompradosporUser = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo())
       </div>
       <!--Fim product slider 1-->
 
-      <?php 
-      /*
-      $codigoBrinqComprado = [];
-      $codigoBrinq = $brinquedo->getCodigoBrinq();
-      $flag = true;
-      
-    
-      if($flag == true) {
-      */
-      ?>
+      <?php if ($brinquedoAtualComprado){ ?>
       <form method="POST" action="../controller/avaliacaoProcess.php">
       <div class="add_ava">
         <div class="ava_container">
@@ -353,10 +353,7 @@ $brinqCompradosporUser = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo())
       <input type="hidden" name="Codigo_Brinq" value=<?php echo($_GET['codigo']) ?>>
       <input type="hidden" name="Tipo" value="Criar">
       </form>
-      <?php/* }else{
-        echo ("ERRO");
-      } */ ?>
-
+      <?php } ?>
       
       <h2 class="avaliacoes">Avaliações</h2>
       <!--Titulo avaliações-->
@@ -366,9 +363,6 @@ $brinqCompradosporUser = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo())
 
         <div class="estatisticas">
           <!--Parte que mostra a porcentagem de cada tipo de avaliação-->
-
-          <h3 class="estatisticas">Estatisticas</h3>
-          <!--Titulo "Estatisticas"-->
 
           <div class="cinco">
             <!--5 estrelas-->

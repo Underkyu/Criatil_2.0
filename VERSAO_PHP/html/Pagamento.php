@@ -25,6 +25,8 @@ require_once("../models/usuario.php");
     date_default_timezone_set('America/Sao_Paulo');
     $agora = date('Y-m-d\TH:i:s'); //Variavel que guar a data e hora atual
 
+    $porcentagem = 0;
+
     foreach ($carrinho as $produto) {
         $brinquedo = $prodDAO->pesquisarPorCodigo($produto);
         $precoTotal += $brinquedo->getPrecoBrinq()*$quantidadeArray[$contador];
@@ -70,15 +72,17 @@ require_once("../models/usuario.php");
 
         <div class="sumario">
             <h3 class="resumo">Resumo</h3>
-            <p>Subtotal: R$<?php echo(number_format($precoTotal, 2, ',', '.')) ?></p>            <p>Desconto:</p>
-            <p>Total:</p>
+            <p>Subtotal: R$<?php echo(number_format($precoTotal, 2, ',', '.')) ?></p>            <p>Desconto: <?php print_r($porcentagem); ?>%</p>
+            <p>Total: R$<?php 
+            $total =($precoTotal - ($precoTotal*($porcentagem/100)));
+            echo(number_format($total, 2, ',', '.')) ?></p>
             <p id="pagamentoSelecionado">Pagamento:</p>
             <button id="back-button">Voltar</button>
             <form method="POST" action="../controller/compraProccess.php">
             <input type="hidden" name="formaPagamento" value="vazio" id="forma"> <!--Input que armazenará a tipo de pagamento-->
             <input type="hidden" name="precoTotal" value=<?php print_r($precoTotal) ?>> 
             <input type="hidden" name="statusPedido" value="Finalizado"> 
-            <input type="hidden" name="cupom" value="1"> 
+            <input type="hidden" name="cupom" value="1" id cupom> 
             <input type="hidden" name="dataPedido" value=<?php print_r($agora) ?>> 
             <input type="hidden" name="codigoUsu" value=<?php print_r($usuarioData->getCodigo()) ?>> 
             <button id="continue-button">Continuar para o pagamento</button>
@@ -86,9 +90,11 @@ require_once("../models/usuario.php");
         </div>
 
         <div class="cupom">
+            <form action="../controller/cupomProccess.php" method="POST">
             <h4 class="cupom">Insira seu cupom</h4>
-            <input type="text" class="cupom" name="cupomCliente" placeholder="Insira o cupom promocional">
+            <input type="text" class="cupom" name="cupomCliente" placeholder="Insira o cupom promocional" id="CupomCliente">
             <button class="cupom">Confirmar</button>
+            </form>
         </div>
         </div>
     </div>

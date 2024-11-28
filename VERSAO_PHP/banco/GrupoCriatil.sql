@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1deb3
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3789
--- Generation Time: Nov 28, 2024 at 12:42 AM
--- Server version: 8.0.40-0ubuntu0.24.04.1
--- PHP Version: 8.3.6
+-- Host: 127.0.0.1
+-- Tempo de geração: 28/11/2024 às 06:34
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,26 +18,26 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `GrupoCriatil`
+-- Banco de dados: `grupocriatil`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `avaliacao`
+-- Estrutura para tabela `avaliacao`
 --
 
 CREATE TABLE `avaliacao` (
-  `Codigo_Ava` int NOT NULL,
-  `Codigo_Brinq` int NOT NULL,
-  `Codigo_Usu` int NOT NULL,
+  `Codigo_Ava` int(11) NOT NULL,
+  `Codigo_Brinq` int(11) NOT NULL,
+  `Codigo_Usu` int(11) NOT NULL,
   `Nota_Ava` double NOT NULL,
-  `Comentario` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
-  `Titulo_Ava` varchar(20) COLLATE utf8mb4_general_ci NOT NULL
+  `Comentario` varchar(150) NOT NULL,
+  `Titulo_Ava` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `avaliacao`
+-- Despejando dados para a tabela `avaliacao`
 --
 
 INSERT INTO `avaliacao` (`Codigo_Ava`, `Codigo_Brinq`, `Codigo_Usu`, `Nota_Ava`, `Comentario`, `Titulo_Ava`) VALUES
@@ -59,34 +59,35 @@ INSERT INTO `avaliacao` (`Codigo_Ava`, `Codigo_Brinq`, `Codigo_Usu`, `Nota_Ava`,
 (24, 14, 17, 5, 'lindo tabuleiro', 'gostei'),
 (25, 15, 17, 5, 'agora é minha vez de se divertir rs', 'adorei'),
 (26, 2, 17, 5, 'vou dar de presente pro meu netinho', 'muito bonito'),
-(27, 14, 19, 3.5, 'Da pra jogar de 3?', 'To na duvida');
+(28, 2, 12, 3, 'Só derrubei uma vez no chão e já amassou a cara, mas tirando isso qualidade boa', 'Meio frágil'),
+(29, 2, 22, 4, 'Lindo funko pop, ótimo para colecionadores e afins. Vou jogar DeltaRune!', 'Lindo');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brinquedo`
+-- Estrutura para tabela `brinquedo`
 --
 
 CREATE TABLE `brinquedo` (
-  `Codigo_Brinq` int NOT NULL,
-  `Codigo_Selo` int NOT NULL,
-  `Codigo_Categoria` int NOT NULL,
-  `Nome_Brinq` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `Codigo_Brinq` int(11) NOT NULL,
+  `Codigo_Selo` int(11) NOT NULL,
+  `Codigo_Categoria` int(11) NOT NULL,
+  `Nome_Brinq` varchar(100) NOT NULL,
   `Preco_Brinq` double NOT NULL,
   `Nota` double NOT NULL,
-  `Fabricante` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `Descricao` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
-  `Faixa_Etaria` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `Fabricante` varchar(100) NOT NULL,
+  `Descricao` varchar(250) NOT NULL,
+  `Faixa_Etaria` varchar(10) NOT NULL,
   `Status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `brinquedo`
+-- Despejando dados para a tabela `brinquedo`
 --
 
 INSERT INTO `brinquedo` (`Codigo_Brinq`, `Codigo_Selo`, `Codigo_Categoria`, `Nome_Brinq`, `Preco_Brinq`, `Nota`, `Fabricante`, `Descricao`, `Faixa_Etaria`, `Status`) VALUES
 (1, 1, 1, 'Pelúcia Hatsune Miku', 59.99, 3, 'Plush Japan', 'Uma pelúcia da Hatsune Miku do grupo artístico VOCALOID - 100% Algodão', 'Livre', 0),
-(2, 1, 2, 'Ralsei Funko Pop', 109.99, 4.5, 'FunkoMake', 'Um Funko Pop do personagem Ralsei criado por Toby Fox em DELTARUNE - Feito na China.', 'Livre', 0),
+(2, 1, 2, 'Ralsei Funko Pop', 109.99, 4, 'FunkoMake', 'Um Funko Pop do personagem Ralsei criado por Toby Fox em DELTARUNE - Feito na China.', 'Livre', 0),
 (3, 1, 1, 'Pelúcia Ralsei', 49.99, 2, 'Plush Japan', 'Uma pelúcia do personagem Ralsei (ASRIEL) de DELTARUNE - Embarque em mundos mágicos e sombrios com esse boneco exclusivo. 100% ALGODÃO [PRODUTO EM FALTA]', 'Livre', 1),
 (4, 2, 10, 'Alfabeto Libras', 49.99, 4, 'TOYSTER', 'Aprendendo o alfabeto em libras - Ensine seus filhos o alfabeto em libras de uma maneira simples e divertida!', '4+', 0),
 (5, 3, 6, 'Jogo da Velha Tátil', 19.99, 4, 'Montesorri', 'Um tabuleiro de jogo da velha interativo/tátil para divertir as crianças - Feito com base de madeira, ele possui peças igualmente em madeira, essa peça é uma ótima opção para um jogo rápido entre filhos, familiares e amigos!', '4+', 0),
@@ -104,18 +105,18 @@ INSERT INTO `brinquedo` (`Codigo_Brinq`, `Codigo_Selo`, `Codigo_Categoria`, `Nom
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brinqvendido`
+-- Estrutura para tabela `brinqvendido`
 --
 
 CREATE TABLE `brinqvendido` (
-  `Codigo_BrinqVendido` int NOT NULL,
-  `Codigo_Pedido` int NOT NULL,
-  `Codigo_Brinq` int NOT NULL,
-  `Quantidade` int NOT NULL
+  `Codigo_BrinqVendido` int(11) NOT NULL,
+  `Codigo_Pedido` int(11) NOT NULL,
+  `Codigo_Brinq` int(11) NOT NULL,
+  `Quantidade` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `brinqvendido`
+-- Despejando dados para a tabela `brinqvendido`
 --
 
 INSERT INTO `brinqvendido` (`Codigo_BrinqVendido`, `Codigo_Pedido`, `Codigo_Brinq`, `Quantidade`) VALUES
@@ -143,21 +144,28 @@ INSERT INTO `brinqvendido` (`Codigo_BrinqVendido`, `Codigo_Pedido`, `Codigo_Brin
 (22, 16, 14, 2),
 (23, 16, 15, 1),
 (24, 17, 14, 1),
-(25, 18, 13, 1);
+(25, 18, 13, 1),
+(26, 19, 8, 1),
+(27, 19, 9, 1),
+(28, 19, 4, 1),
+(29, 19, 1, 1),
+(30, 19, 5, 1),
+(31, 19, 2, 1),
+(32, 20, 2, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categoria`
+-- Estrutura para tabela `categoria`
 --
 
 CREATE TABLE `categoria` (
-  `Codigo_Categoria` int NOT NULL,
-  `Nome_Categoria` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
+  `Codigo_Categoria` int(11) NOT NULL,
+  `Nome_Categoria` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `categoria`
+-- Despejando dados para a tabela `categoria`
 --
 
 INSERT INTO `categoria` (`Codigo_Categoria`, `Nome_Categoria`) VALUES
@@ -176,18 +184,18 @@ INSERT INTO `categoria` (`Codigo_Categoria`, `Nome_Categoria`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cupom`
+-- Estrutura para tabela `cupom`
 --
 
 CREATE TABLE `cupom` (
-  `Codigo_Cupom` int NOT NULL,
-  `Nome_Cupom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Codigo_Cupom` int(11) NOT NULL,
+  `Nome_Cupom` varchar(50) NOT NULL,
   `Status_Cupom` tinyint(1) NOT NULL,
-  `Porcentagem_Cupom` int NOT NULL
+  `Porcentagem_Cupom` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `cupom`
+-- Despejando dados para a tabela `cupom`
 --
 
 INSERT INTO `cupom` (`Codigo_Cupom`, `Nome_Cupom`, `Status_Cupom`, `Porcentagem_Cupom`) VALUES
@@ -196,18 +204,18 @@ INSERT INTO `cupom` (`Codigo_Cupom`, `Nome_Cupom`, `Status_Cupom`, `Porcentagem_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imagem`
+-- Estrutura para tabela `imagem`
 --
 
 CREATE TABLE `imagem` (
-  `Codigo_Imagem` int NOT NULL,
-  `Codigo_Brinq` int NOT NULL,
-  `Imagem` varchar(300) COLLATE utf8mb4_general_ci NOT NULL,
-  `Num_Imagem` int NOT NULL
+  `Codigo_Imagem` int(11) NOT NULL,
+  `Codigo_Brinq` int(11) NOT NULL,
+  `Imagem` varchar(300) NOT NULL,
+  `Num_Imagem` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `imagem`
+-- Despejando dados para a tabela `imagem`
 --
 
 INSERT INTO `imagem` (`Codigo_Imagem`, `Codigo_Brinq`, `Imagem`, `Num_Imagem`) VALUES
@@ -246,16 +254,16 @@ INSERT INTO `imagem` (`Codigo_Imagem`, `Codigo_Brinq`, `Imagem`, `Num_Imagem`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `listadefavoritos`
+-- Estrutura para tabela `listadefavoritos`
 --
 
 CREATE TABLE `listadefavoritos` (
-  `Codigo_Brinq` int NOT NULL,
-  `Codigo_Usu` int NOT NULL
+  `Codigo_Brinq` int(11) NOT NULL,
+  `Codigo_Usu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `listadefavoritos`
+-- Despejando dados para a tabela `listadefavoritos`
 --
 
 INSERT INTO `listadefavoritos` (`Codigo_Brinq`, `Codigo_Usu`) VALUES
@@ -278,21 +286,21 @@ INSERT INTO `listadefavoritos` (`Codigo_Brinq`, `Codigo_Usu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pedido`
+-- Estrutura para tabela `pedido`
 --
 
 CREATE TABLE `pedido` (
-  `Codigo_Pedido` int NOT NULL,
-  `Codigo_Usu` int NOT NULL,
-  `Codigo_Cupom` int DEFAULT NULL,
+  `Codigo_Pedido` int(11) NOT NULL,
+  `Codigo_Usu` int(11) NOT NULL,
+  `Codigo_Cupom` int(11) DEFAULT NULL,
   `Preco_Total` double NOT NULL,
-  `Forma_Pagamento` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `Forma_Pagamento` varchar(20) NOT NULL,
   `Data_Pedido` datetime NOT NULL,
-  `Status_Pedido` varchar(20) COLLATE utf8mb4_general_ci NOT NULL
+  `Status_Pedido` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `pedido`
+-- Despejando dados para a tabela `pedido`
 --
 
 INSERT INTO `pedido` (`Codigo_Pedido`, `Codigo_Usu`, `Codigo_Cupom`, `Preco_Total`, `Forma_Pagamento`, `Data_Pedido`, `Status_Pedido`) VALUES
@@ -309,23 +317,25 @@ INSERT INTO `pedido` (`Codigo_Pedido`, `Codigo_Usu`, `Codigo_Cupom`, `Preco_Tota
 (15, 16, 1, 321, 'Boleto', '2024-11-26 01:14:17', 'Finalizado'),
 (16, 17, 1, 168.99, 'Debito', '2024-11-26 23:50:49', 'Finalizado'),
 (17, 19, 1, 69.5, 'Pix', '2024-11-27 13:42:56', 'Finalizado'),
-(18, 19, 1, 64.99, 'Pix', '2024-11-27 13:49:04', 'Finalizado');
+(18, 19, 1, 64.99, 'Pix', '2024-11-27 13:49:04', 'Finalizado'),
+(19, 12, 1, 372.94, 'Pix', '2024-11-28 01:23:48', 'Finalizado'),
+(20, 22, 1, 109.99, 'Pix', '2024-11-28 02:23:06', 'Finalizado');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sac`
+-- Estrutura para tabela `sac`
 --
 
 CREATE TABLE `sac` (
-  `Codigo_sac` int NOT NULL,
-  `nome` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `mensagem` varchar(500) COLLATE utf8mb4_general_ci NOT NULL
+  `Codigo_sac` int(11) NOT NULL,
+  `nome` varchar(30) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `mensagem` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `sac`
+-- Despejando dados para a tabela `sac`
 --
 
 INSERT INTO `sac` (`Codigo_sac`, `nome`, `email`, `mensagem`) VALUES
@@ -336,17 +346,17 @@ INSERT INTO `sac` (`Codigo_sac`, `nome`, `email`, `mensagem`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `selo`
+-- Estrutura para tabela `selo`
 --
 
 CREATE TABLE `selo` (
-  `Codigo_Selo` int NOT NULL,
-  `Nome_Selo` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `Imagem_Selo` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `Codigo_Selo` int(11) NOT NULL,
+  `Nome_Selo` varchar(50) NOT NULL,
+  `Imagem_Selo` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `selo`
+-- Despejando dados para a tabela `selo`
 --
 
 INSERT INTO `selo` (`Codigo_Selo`, `Nome_Selo`, `Imagem_Selo`) VALUES
@@ -357,23 +367,23 @@ INSERT INTO `selo` (`Codigo_Selo`, `Nome_Selo`, `Imagem_Selo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estrutura para tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
-  `Codigo_Usu` int NOT NULL,
-  `Nome_Usu` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Codigo_Usu` int(11) NOT NULL,
+  `Nome_Usu` varchar(50) NOT NULL,
   `Nasc_Usu` date NOT NULL,
-  `Celular_Usu` varchar(15) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `Email_Usu` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `Senha_Usu` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `Tipo_Usu` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `Token` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `Imagem` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `Celular_Usu` varchar(15) DEFAULT NULL,
+  `Email_Usu` varchar(100) NOT NULL,
+  `Senha_Usu` varchar(200) NOT NULL,
+  `Tipo_Usu` varchar(20) NOT NULL,
+  `Token` varchar(200) NOT NULL,
+  `Imagem` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `usuario`
+-- Despejando dados para a tabela `usuario`
 --
 
 INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Email_Usu`, `Senha_Usu`, `Tipo_Usu`, `Token`, `Imagem`) VALUES
@@ -384,21 +394,22 @@ INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Ema
 (5, 'Brito Carrero', '1988-12-08', '(11) 98612-3871', 'brito@gmail.com', '$2y$10$maUt5gopWT2QyGQwbvqvrOavMQLPZMvoAfZ/nwmJUf/nzDTegBUHG', 'Bloqueado', '756a229c0886b4ae0c9b13b488ca9234a2220f4a2b93b52b8b8c084cbcede53f8faa4ad988bd7768a938734c56021848ca0e', '41e988ec496a950e9b049be21b5f6ec8250fad053a968625421e8fcfc87fb01120b232ce90917010110e519d64565a3bfce8529928a27e1a5907b651'),
 (7, 'Vinicius Augusto', '1994-06-25', '(11) 96808-0107', 'viniciusnini222@gmail.com', '$2y$10$nmkGuof9y8gP8nrlPAfuJ.vVqe896bNqFXBhqRub2YfJUSRzdCeQC', 'Cliente', 'f56081865148c48d5da8c506d7e9f11a54a3d0bc031a0fcf678d39f9ac145889262b86b7b57199c21080d1c992f929d0c2b5', 'vazio'),
 (8, 'Hatsune Miku', '1999-11-11', '(21) 99887-4455', 'mikumedesuasforcas@gmail.com', '$2y$10$TQSpD7VL0TTCV2ttSLSkue.8iGK5tPUj74RxYi5U58hKe05Bj1AJS', 'Cliente', 'a910d8fb0421f7afb0739e7c28136892d10e7a8b17d37bc731fef324c89a643555637129edd012a4bdf99adb5f418e5f5e4a', 'vazio'),
-(12, 'Avaliador Pedro', '2110-12-08', '(01) 92873-0182', 'email@gmail', '$2y$10$ZFJDVVoliIuQY/U7/pLGNu.Luge.UDDUcAaCYP/Pt1QKgenDx21Ki', 'Gerente', '1baf66dc46a0c69c2df8d4da0d3cb86ae67dd9e759eaa91017bacc233830f69c2c366882a23ea17336aa5f9d1b49c0e52602', 'cf66dcdc31228b8f3d6aae2911a481f2ac45940e6fc4d449672960724f32b9b052df6908b7fbff088657d5d79af746b03a795a40213bf31e0b939dbb'),
+(12, 'Avaliador Pedro', '2110-12-08', '(01) 92873-0182', 'email@gmail', '$2y$10$ZFJDVVoliIuQY/U7/pLGNu.Luge.UDDUcAaCYP/Pt1QKgenDx21Ki', 'Gerente', '6279549a6da08ffe84a493b73527b9385b5f05fd6d5faf4d363437135faf0f71c4435fa2f2e2c7ff7dd12cc9787be97ac7b9', '3077f9fede2d6bad4dfb792af215bc4df1e70c27bffdc1b433ce7433e404af04d6ed6307061c72522516959e533521c65dca82dae4a86ac41aac3741'),
 (14, 'José Diaz', '1989-07-12', '(77) 77777-7777', 'josediaz@gmail.com', '$2y$10$JNN2tmCBa8pNSJMfU4w6NOFAbMP5HFmx0Or9wzHPhb.pMdoficHaq', 'Cliente', '9aedf194d09d3169a516b0ecdaab1fdfc863d42677052d3645dfc454a07190c6b31faa677d112536dd95dcc2a1d57cd9392d', 'b05a1e4cd11e80b2b145387f6cd253d386f2941ab251123c66d8238cf3670724942abfe83bbe91eca4c417ed3918cd5f5b3f44e4ad0896bc932066d3'),
 (15, 'fernando colecionador', '1999-09-30', '(44) 44477-7777', 'fernando@gmail.com', '$2y$10$8tQuWUREfGzy34BH/96JFuLuAdoi./sr2oruzEpOhXwQyTLxSd8hu', 'Cliente', '065c656d13e68887422c3e5c3fa193bdc326364d54bfc947c9dd25f690d614cc68f13f857dcb5bc31577fee148679ff3ec0b', '8536fecc31ad8bbaa966f453f6ed21aa37473b3716d03ccd5e0a13c5ccd087ef87f7ac2b5943bc285e825e60eefb8532dcc3089bcbc90a6ed8339de6'),
 (16, 'yasmin silva', '1996-10-20', '(00) 00000-0000', 'yasmin@gmail.com', '$2y$10$G.L4bM/ujkCNsCJFXahV.OFShQVAU50lRASVIxbPkg3o3Z2e7Czh.', 'Cliente', '5a31404e2400c834718484bd3fd54e180f5b35b319f82e3acb9490e030c1d6b153b631c6b40e69921493387be697da8a2a94', 'c9b5fd0e2669c5238fc804f1ca66923cca1f8c629ecee5e168a83b004901dd260e89a9b7f1527b3e76872ad1e620d60b450414a2dc8a6983171cbf2e'),
 (17, 'ana maria', '1974-12-09', '(44) 44000-0444', 'anamaria@gmail.com', '$2y$10$6UfnmOnGHrETczL1g5gTHeil/8qstUJlxs6ud5LkhwrgK9F6WbctS', 'Cliente', '05c831683c98c52223f36a058f56b4250048d1c7fa043db995b510edfe293284c3541b628b061ccdb5262849fe39bffb0c16', '31a2e99cde73a3b54159db9886efd82b13ce3c7baa8445fee50ad85602425120e6ee221417747fb1585f251d2d0643c7d8380624ead30424e0a83aeb'),
 (18, 'Liana Flores', '2001-12-11', '(21) 99887-4455', 'lianaflores@gmail.com', '$2y$10$9xBzUf039G.lAbfB0Hmb0OBODx7av00xno5a6R99u08C/WR1o7NFC', 'Gerente', '6d997fcfeb5700125ed138eb170124516a37009db5988400c2366314407d7b8b90fa35c13764507b597b9c4ff556c9a427c9', '30146e6f41e14cb817485bbef3bf8f4ecc648561aaa2487e018f3ace9d67c9a612c696095b27ed6769ec3a7000873f3a707347683706ab09f42f200a'),
 (19, 'vinicius fernandes', '2008-02-04', '(55) 04002-8922', 'viniciusfernandes@gmail.com', '$2y$10$D/M.9e5VWdovZgv6B4wJveLwSLQcxWtIRRFDb3O0FBKKnSHtOpxvG', 'Cliente', 'b4dc70a4d9a1034a63cf6ae16b1f94f4088af89fb715cc61434066acb9a4b4c1ed41e3c549b51fb8c64db82605503374f681', '36bd624defc9f337d34d7e94c7e6b384bcf44593ab99f30e67cedc03fdedc089bf37faf2d0704431d508879c2f0decc38135d5c627e24c9b84d0cfd6'),
-(20, 'vinicius augusto', '2024-11-27', '(44) 44555-6666', 'viniciusaugusto@gmail', '$2y$10$lAHdXvlxrxcvvKxgQpggrecHd2B7XymellA1bRojAS.vwMDQPzJwC', 'Cliente', '02f126638578d6b62e634d7c93da44056bb2f76bdac711868f060ad38601ec15368adb5f93b347af001364590276080d22d0', '69c808f2316b17b6dac36026c1cbbff8d74e2525a5c421c416894877564e28a17460b54b85c26d420955c1dd500e4d93b643695892e67ed79a88773c');
+(20, 'vinicius augusto', '2024-11-27', '(44) 44555-6666', 'viniciusaugusto@gmail', '$2y$10$lAHdXvlxrxcvvKxgQpggrecHd2B7XymellA1bRojAS.vwMDQPzJwC', 'Cliente', '02f126638578d6b62e634d7c93da44056bb2f76bdac711868f060ad38601ec15368adb5f93b347af001364590276080d22d0', '69c808f2316b17b6dac36026c1cbbff8d74e2525a5c421c416894877564e28a17460b54b85c26d420955c1dd500e4d93b643695892e67ed79a88773c'),
+(22, 'Roberto Souza', '2001-12-09', NULL, 'robertosouza@hotmail.com', '$2y$10$9R65kJeWtbfwQV3i8co2q.GPwLOeYIjYTcVLJAVuAK/7U0UxrBLRO', 'Cliente', 'cd741ee57f01cf855d7e43b8339210a44b0247c3b2a9f928bc4034f113f347ef4861faba840f09729fcd1ace78447a3eb3ab', '2d21255cd7d42d2a233204afe8f1c0e4239f9a75f69861074d8e5af09b7b1bad57c80522b5e54dec439188f62f8598bc9608824735f9ad997c6f0e4b');
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `avaliacao`
+-- Índices de tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
   ADD PRIMARY KEY (`Codigo_Ava`),
@@ -406,7 +417,7 @@ ALTER TABLE `avaliacao`
   ADD KEY `Codigo_Usu_Ava` (`Codigo_Usu`);
 
 --
--- Indexes for table `brinquedo`
+-- Índices de tabela `brinquedo`
 --
 ALTER TABLE `brinquedo`
   ADD PRIMARY KEY (`Codigo_Brinq`),
@@ -414,7 +425,7 @@ ALTER TABLE `brinquedo`
   ADD KEY `Codigo_Categoria_Brinq` (`Codigo_Categoria`);
 
 --
--- Indexes for table `brinqvendido`
+-- Índices de tabela `brinqvendido`
 --
 ALTER TABLE `brinqvendido`
   ADD PRIMARY KEY (`Codigo_BrinqVendido`),
@@ -422,26 +433,26 @@ ALTER TABLE `brinqvendido`
   ADD KEY `Codigo_Brinq_BrinqVendido` (`Codigo_Brinq`);
 
 --
--- Indexes for table `categoria`
+-- Índices de tabela `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`Codigo_Categoria`);
 
 --
--- Indexes for table `cupom`
+-- Índices de tabela `cupom`
 --
 ALTER TABLE `cupom`
   ADD PRIMARY KEY (`Codigo_Cupom`);
 
 --
--- Indexes for table `imagem`
+-- Índices de tabela `imagem`
 --
 ALTER TABLE `imagem`
   ADD PRIMARY KEY (`Codigo_Imagem`),
   ADD KEY `Codigo_Brinq_Imagem` (`Codigo_Brinq`);
 
 --
--- Indexes for table `pedido`
+-- Índices de tabela `pedido`
 --
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`Codigo_Pedido`),
@@ -449,124 +460,111 @@ ALTER TABLE `pedido`
   ADD KEY `Codigo_Cupom_Pedido` (`Codigo_Cupom`);
 
 --
--- Indexes for table `sac`
+-- Índices de tabela `sac`
 --
 ALTER TABLE `sac`
   ADD PRIMARY KEY (`Codigo_sac`);
 
 --
--- Indexes for table `selo`
+-- Índices de tabela `selo`
 --
 ALTER TABLE `selo`
   ADD PRIMARY KEY (`Codigo_Selo`);
 
 --
--- Indexes for table `usuario`
+-- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`Codigo_Usu`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `avaliacao`
+-- AUTO_INCREMENT de tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
-  MODIFY `Codigo_Ava` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `Codigo_Ava` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `brinquedo`
+-- AUTO_INCREMENT de tabela `brinquedo`
 --
 ALTER TABLE `brinquedo`
-  MODIFY `Codigo_Brinq` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Codigo_Brinq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `brinqvendido`
+-- AUTO_INCREMENT de tabela `brinqvendido`
 --
 ALTER TABLE `brinqvendido`
-  MODIFY `Codigo_BrinqVendido` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `Codigo_BrinqVendido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT for table `categoria`
+-- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `Codigo_Categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Codigo_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `cupom`
+-- AUTO_INCREMENT de tabela `cupom`
 --
 ALTER TABLE `cupom`
-  MODIFY `Codigo_Cupom` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Codigo_Cupom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `imagem`
+-- AUTO_INCREMENT de tabela `imagem`
 --
 ALTER TABLE `imagem`
-  MODIFY `Codigo_Imagem` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `Codigo_Imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `pedido`
+-- AUTO_INCREMENT de tabela `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `Codigo_Pedido` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `Codigo_Pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `sac`
+-- AUTO_INCREMENT de tabela `sac`
 --
 ALTER TABLE `sac`
-  MODIFY `Codigo_sac` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Codigo_sac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `selo`
+-- AUTO_INCREMENT de tabela `selo`
 --
 ALTER TABLE `selo`
-  MODIFY `Codigo_Selo` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Codigo_Usu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- Constraints for dumped tables
+-- Restrições para tabelas despejadas
 --
 
 --
--- Constraints for table `avaliacao`
+-- Restrições para tabelas `avaliacao`
 --
 ALTER TABLE `avaliacao`
   ADD CONSTRAINT `Codigo_Brinq_Ava` FOREIGN KEY (`Codigo_Brinq`) REFERENCES `brinquedo` (`Codigo_Brinq`),
   ADD CONSTRAINT `Codigo_Usu_Ava` FOREIGN KEY (`Codigo_Usu`) REFERENCES `usuario` (`Codigo_Usu`);
 
 --
--- Constraints for table `brinquedo`
+-- Restrições para tabelas `brinquedo`
 --
 ALTER TABLE `brinquedo`
   ADD CONSTRAINT `Codigo_Categoria_Brinq` FOREIGN KEY (`Codigo_Categoria`) REFERENCES `categoria` (`Codigo_Categoria`),
   ADD CONSTRAINT `Codigo_Selo_Brinq` FOREIGN KEY (`Codigo_Selo`) REFERENCES `selo` (`Codigo_Selo`);
 
 --
--- Constraints for table `brinqvendido`
+-- Restrições para tabelas `brinqvendido`
 --
 ALTER TABLE `brinqvendido`
   ADD CONSTRAINT `Codigo_Brinq_BrinqVendido` FOREIGN KEY (`Codigo_Brinq`) REFERENCES `brinquedo` (`Codigo_Brinq`),
   ADD CONSTRAINT `Codigo_Pedido_BrinqVendido` FOREIGN KEY (`Codigo_Pedido`) REFERENCES `pedido` (`Codigo_Pedido`);
-
---
--- Constraints for table `imagem`
---
-ALTER TABLE `imagem`
-  ADD CONSTRAINT `Codigo_Brinq_Imagem` FOREIGN KEY (`Codigo_Brinq`) REFERENCES `brinquedo` (`Codigo_Brinq`);
-
---
--- Constraints for table `pedido`
---
-ALTER TABLE `pedido`
-  ADD CONSTRAINT `Codigo_Cupom_Pedido` FOREIGN KEY (`Codigo_Cupom`) REFERENCES `cupom` (`Codigo_Cupom`),
-  ADD CONSTRAINT `Codigo_Usu_Pedido` FOREIGN KEY (`Codigo_Usu`) REFERENCES `usuario` (`Codigo_Usu`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

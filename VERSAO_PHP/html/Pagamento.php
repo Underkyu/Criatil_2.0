@@ -66,8 +66,10 @@ require_once("../models/usuario.php");
                 </div>
             </div>
         </div>
+        <div class="resumo">
+
         <div class="sumario">
-            <h3>Resumo</h3>
+            <h3 class="resumo">Resumo</h3>
             <p>Subtotal: R$<?php echo(number_format($precoTotal, 2, ',', '.')) ?></p>            <p>Desconto:</p>
             <p>Total:</p>
             <p id="pagamentoSelecionado">Pagamento:</p>
@@ -81,6 +83,13 @@ require_once("../models/usuario.php");
             <input type="hidden" name="codigoUsu" value=<?php print_r($usuarioData->getCodigo()) ?>> 
             <button id="continue-button">Continuar para o pagamento</button>
             </form>
+        </div>
+
+        <div class="cupom">
+            <h4 class="cupom">Insira seu cupom</h4>
+            <input type="text" class="cupom" name="cupomCliente" placeholder="Insira o cupom promocional">
+            <button class="cupom">Confirmar</button>
+        </div>
         </div>
     </div>
     <script src="../js/Pagamento.js"></script>

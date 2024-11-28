@@ -31,20 +31,6 @@ require_once("../models/brinquedo.php");
     <!-- página do carrinho -->
     <div class="container-pag">
         <div class="container-car">
-                <div id="entrega">
-                    <div>
-                        <img src="../imagens/Icons/frete.png">
-                        <h1>Calcular Frete</h1>
-                    </div>
-                    <div>
-                        <img src="../imagens/Icons/entrega.png">
-                        <h1>Método de Entrega</h1>
-                    </div>
-                    <div>
-                        <img src="../imagens/Icons/cupom.png">
-                        <h1>Inserir Cupom</h1>
-                    </div>
-                </div>
                 <div id="carrinho-legenda">
                             <p class="legenda-img">Foto</p>
                             <p class="legenda-nome">Nome</p>

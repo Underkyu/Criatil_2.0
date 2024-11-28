@@ -6,6 +6,9 @@
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Criatil Gerentes</title>
     <link rel="stylesheet" href="../css/cadastrogerente.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="../js/cadastro.js"></script>
 </head>
 <body>
@@ -14,7 +17,7 @@
     <form class="form-login" method="POST" action="../controller/cadastroProcess.php">
     <h1>Cadastrar Gerente</h1>
             <div class="inputgrupo">
-                <input type="text"  id="nome" name="Nome_Usu" placeholder="Nome completo" class="input-login">
+                <input type="text"  id="nome" name="Nome_Usu" placeholder="Nome e sobrenome" class="input-login">
                 <input type="email" id="email" name="Email_Usu" placeholder="E-mail" class="input-login">
             </div>
             <div class="inputgrupo">

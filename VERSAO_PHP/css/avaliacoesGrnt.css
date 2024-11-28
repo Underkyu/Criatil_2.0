@@ -4,9 +4,6 @@
   margin: 0px;
   padding: 0px;
   }
-  html, body {
-    height: 100%; 
-  }
 h1.titulo{ /*Titulo em cima da div que mostra as avaliações*/
   width: 100%;
   display: flex;
@@ -198,12 +195,6 @@ div.box_avaliacao::-webkit-scrollbar-thumb {
 }
 div.box_avaliacao::-webkit-scrollbar-thumb:hover {
   background-color: #dc9e00; 
-}
-.grntC{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  min-height: 100vh;
 }
 /*Responsividade*/
 .container {

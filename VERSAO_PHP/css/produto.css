@@ -71,14 +71,6 @@ div.avaliacoes_anuncio{/*Div que contem o numero de avialações e estrelas ao l
  align-items: flex-end;
 }
 
-div.avaliacoes{ /*Div que contem o numero de avialações e estrelas*/
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin: 0;
-  margin-left: 4rem;
-}
-
 p.avaliacao{ /*Texto que fica ao lado das estrelas de avaliação*/
   color: #F2AF00;
   font-weight: bold;
@@ -121,6 +113,7 @@ button.comprar{ /*Botão de comprar*/
   padding: .5rem;
   margin-top: 1rem;
   width: 90%;
+  cursor: pointer;
 }
 
 p.comprar{ /*Texto dentro do botão de comprar*/
@@ -147,6 +140,7 @@ button.carrinho{ /*Botão de adoiconar ao carrinho*/
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 90%;
+  cursor: pointer;
 }
 
 p.carrinho{ /*Texto dentro do botão de adicioanar ao carrinho*/
@@ -168,6 +162,13 @@ div.center_imagem{
 }
 
   /*Css doido para fazer um botão igual o do figma*/
+  .input-qntd{
+    border: none;
+    box-shadow: none;
+    text-decoration: none;
+    pointer-events: none;
+    cursor: default;
+  }
   input[type="number"]{
     -moz-appearance: textfield;
     text-align: center;
@@ -210,6 +211,7 @@ div.quantidade{
 /*Inicio CSS avaliações*/
 h2.avaliacoes {
   margin: 0;
+  margin-top: 1rem;
   margin-left: auto;
   margin-right: auto;
   padding-left: 0.5rem;
@@ -221,7 +223,8 @@ h2.avaliacoes {
 div.avaliacao {
   display: flex;
   width: fit-content;
-  padding: 1rem;
+  margin-top: .8rem;
+  margin-bottom: .8rem;
   margin-left: auto;
   margin-right: auto;
   padding-left: 0.5rem;
@@ -237,7 +240,7 @@ div.estatisticas {/*Parte que mostra a porcentagem de cada tipo de avaliação*/
   border-radius: 15px;
   height: fit-content;
   padding: 1rem;
-  background-color: #f7f7f7;
+  background-color: white;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
@@ -305,11 +308,23 @@ img.primeira_estrela { /*Primeira estrela ao lado do nome do usuário*/
 div.avaliacoes { /*Div com os cards de avaliações*/
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   margin: 0;
   margin-left: 2rem;
+  padding-right: .5rem;
+  max-height: 460px;
+  overflow:auto;
 }
-
+div.avaliacoes::-webkit-scrollbar {
+  width: 10px;  
+}
+div.avaliacoes::-webkit-scrollbar-thumb {
+  background-color: #F2AF00;
+  border-radius: 10px; 
+}
+div.avaliacoes::-webkit-scrollbar-thumb:hover {
+  background-color: #dc9e00; 
+}
 div.nome_avaliacao {/*Nome do perfil do avaliador*/
   display: flex;
   align-items: center;
@@ -354,20 +369,17 @@ p.avaliacao {
 div.add_ava {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #0476D9;
   border-radius: 15px;
+  border: solid 2px black;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   align-items: center;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  border: 2px solid black;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
 div.ava_container {
   width: 80%;
 }
@@ -383,40 +395,41 @@ input.titulo_ava { /*Input na qual o cliente passará o titulo da */
   border: #D4D4D4 solid 3px;
   border-radius: 15px;
   padding: .75rem;
-  height: 2.5rem;
+  height: 3rem;
   width: 30rem;
   margin-right: 2rem;
   font-size: 1.15rem;
 }
 
-select.num_estrelas { /*Select do número de estrlas da avaliação*/
+input.num_estrelas { /*Select do número de estrlas da avaliação*/
   border: #D4D4D4 solid 3px;
   border-radius: 15px;
   padding: .75rem;
-  height: 4.3rem;
-  width: 10rem;
+  height: 3rem;
+  width: 10.6rem;
   font-size: 1.15rem;
+  text-align: start !important;
 }
 
 input:focus {
   outline: 0;
-  border-color: #0476D9;
+  border-color: black;
   box-shadow: 0 0 5px rgba(4, 118, 217, 0.5);
 }
-
-select:focus {
+textarea.comentario:focus {
   outline: 0;
-  border-color: #0476D9;
+  border-color: black;
   box-shadow: 0 0 5px rgba(4, 118, 217, 0.5);
 }
 
-input.comentario { /*Input na qual o cliente passará o titulo da */
+textarea.comentario { /*Input na qual o cliente passará o titulo da */
   border: #D4D4D4 solid 3px;
   border-radius: 15px;
   padding: .75rem;
   width: 100%;
   font-size: 1.15rem;
   margin-bottom: 3rem;
+  resize: none;
 }
 
 h2.add_ava {/*Texto de adicionar avaliação*/
@@ -450,12 +463,13 @@ div.botao_ava { /*Div que contem o botão de adicionar comentario*/
 img.add_ava_button { /*Imagem de + que fica no botão*/
   width: 1.7rem;
   margin-right: .8rem;
+
 }
 
 button.add_ava {
   border: none;
   border-radius: 10px;
-  width: 16rem;
+  width: 18rem;
   height: 4rem;
   display: flex;
   justify-content: center;
@@ -463,6 +477,7 @@ button.add_ava {
   padding: 1rem;
   background-color: #F2AF00;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 button.add_ava:hover {
@@ -473,7 +488,7 @@ button.add_ava:hover {
 
 p.add_ava_button {
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 /*Fim CSS avaliações*/
 
@@ -564,6 +579,7 @@ div.product{ /* Div dos produtos*/
   div.titulo_ava{ /*Div onde ficam os imputs de titulo e número de estrelas da avaliação*/
     display: flex;
     width: 100%;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 2rem;
     flex-direction: column;

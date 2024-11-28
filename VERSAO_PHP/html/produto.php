@@ -54,16 +54,31 @@ $brinquedosComprados = $pedidosDao->getBrinqPedidos($usuarioData->getCodigo());
 
 // inicializa como false
 $brinquedoAtualComprado = false;
-
+if($brinquedosComprados !== false){
 foreach ($brinquedosComprados as $brinquedoComprado) {
     if ($brinquedoComprado->getCodigoBrinq() == $brinquedo->getCodigoBrinq()) {
         $brinquedoAtualComprado = true;
         break; // caso encontre um brinquedo que foi comprado, marca como true e termina o foreach
     }
+  }
 }
-
 ?>
+<script>
+    let notas = [0, 1, 2, 3, 4, 5]; // inicializando como vetor
+    let quantidade = [0, 0, 0, 0, 0, 0];
 
+    <?php
+    foreach ($avaliacoes as $avaliacao) {
+        $nota = (double) $avaliacao['Nota_Ava']; 
+        $notaArredondada = ceil($nota); // arredonda para cima
+
+        if ($notaArredondada >= 0 && $notaArredondada <= 5) {
+            echo "quantidade[$notaArredondada]++;\n";
+        }
+    }
+    ?>
+
+</script>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -239,6 +254,7 @@ foreach ($brinquedosComprados as $brinquedoComprado) {
               step="1"
               value="1"
               id="my-input"
+              class="input-qntd"
             />
             <button id="increment" onclick="stepper(this)" class="quantidade">
               +
@@ -322,25 +338,50 @@ foreach ($brinquedosComprados as $brinquedoComprado) {
           <input type="text" class="titulo_ava" name="Titulo_Ava" placeholder="Digite o título da avaliação">
           </div>
           <div class="input_ava">
-          <h3 class="titulo_input_ava">Estrelas</h3>
-          <select name="Nota_Ava" class="num_estrelas">
-            <option value= 0>0</option>
-            <option value= 0.5>0,5</option>
-            <option value= 1>1</option>
-            <option value= 1.5>1,5</option>
-            <option value= 2>2</option>
-            <option value= 2.5>2,5</option>
-            <option value= 3>3</option>
-            <option value= 3.5>3,5</option>
-            <option value= 4>4</option>
-            <option value= 4.5>4,5</option>
-            <option value= 5>5</option>
-          </select>
+          <h3 class="titulo_input_ava">Nota (0-5)</h3>
+          <input type="text" name="Nota_Ava" class="num_estrelas" placeholder="Digite uma nota" oninput="validarNota(this)">
+          <script>
+function validarNota(input) {
+    // remove o que não for número
+    input.value = input.value.replace(/[^0-9.,]/g, ''); 
+
+    // substitui ponto por vírgula
+    input.value = input.value.replace('.', ','); 
+
+    // se começar com vírgula, adiciona 0 antes
+    if (input.value.startsWith(',')) {
+        input.value = '0' + input.value;
+    }
+
+    const partes = input.value.split(',');
+
+    if (partes[0] && !['0', '1', '2', '3', '4', '5'].includes(partes[0])) {
+        input.value = '';
+        return;
+    }
+
+    // impede a adição de qlqr coisa dps da casa decimal
+    if (partes.length > 2) {
+        input.value = partes[0] + ',' + partes[1];
+    } else if (partes.length === 2) {
+        partes[1] = partes[1].substring(0, 1);
+        input.value = partes[0] + ',' + partes[1];
+    }
+
+    if (partes.length === 2 && partes[1] && partes[1] !== '0' && partes[1] !== '5') {
+        input.value = partes[0] + ',';
+    }
+
+    if (partes[0] === '5' && partes.length === 2 && partes[1] !== '') {
+        input.value = '5';
+    }
+}
+        </script>
           </div>
         </div>
         <div class="comentario">
             <h3 class="titulo_input_ava">Comentário</h3>
-            <input type="text" maxlength="150" class="comentario" name="Comentario" placeholder="Deixe aqui sua opinião do produto">
+        <textarea type="text" maxlength="150" class="comentario" name="Comentario" placeholder="Deixe aqui sua opinião do produto"></textarea>
         </div>
         <div class="botao_ava">
           <button class="add_ava" type="submit">
@@ -361,69 +402,64 @@ foreach ($brinquedosComprados as $brinquedoComprado) {
       <div class="avaliacao">
         <!--Div que contem toda a parte de avaliações, tanto as estatiticas quanto as avalções em si-->
 
-        <div class="estatisticas">
-          <!--Parte que mostra a porcentagem de cada tipo de avaliação-->
-
-          <div class="cinco">
-            <!--5 estrelas-->
-            <p class="numero_estrelas">5</p>
-            <!--Texto referente ao número de estrelas-->
-            <div class="amarelo" style="width: 144px"></div>
-            <!--Div vazio que compões a parte amarela do gráfico de barra-->
-            <div class="branco" style="width: 56px"></div>
-            <!--Div vazio que compões a parte branca do gráfico de barra-->
-            <p class="porcentagem">77%</p>
-            <!--Texto referente a porcentagem-->
-          </div>
-
-          <div class="quatro">
-            <!--4 estrelas-->
-            <p class="numero_estrelas">4</p>
-            <!--Texto referente ao número de estrelas-->
-            <div class="amarelo" style="width: 32px"></div>
-            <!--Div vazio que compões a parte amarela do gráfico de barra-->
-            <div class="branco" style="width: 168px"></div>
-            <!--Div vazio que compões a parte branca do gráfico de barra-->
-            <p class="porcentagem">16%</p>
-            <!--Texto referente a porcentagem-->
-          </div>
-
-          <div class="tres">
-            <!--3 estrelas-->
-            <p class="numero_estrelas">3</p>
-            <!--Texto referente ao número de estrelas-->
-            <div class="amarelo" style="width: 10px"></div>
-            <!--Div vazio que compões a parte amarela do gráfico de barra-->
-            <div class="branco" style="width: 190px"></div>
-            <!--Div vazio que compões a parte branca do gráfico de barra-->
-            <p class="porcentagem">05%</p>
-            <!--Texto referente a porcentagem-->
-          </div>
-
-          <div class="dois">
-            <!--2 estrelas-->
-            <p class="numero_estrelas">2</p>
-            <!--Texto referente ao número de estrelas-->
-            <div class="amarelo" style="width: 2px"></div>
-            <!--Div vazio que compões a parte amarela do gráfico de barra-->
-            <div class="branco" style="width: 198px"></div>
-            <!--Div vazio que compões a parte branca do gráfico de barra-->
-            <p class="porcentagem">01%</p>
-            <!--Texto referente a porcentagem-->
-          </div>
-
-          <div class="um">
-            <!--1 estrelas-->
-            <p class="numero_estrelas">1</p>
-            <!--Texto referente ao número de estrelas-->
-            <div class="amarelo" style="width: 2px"></div>
-            <!--Div vazio que compões a parte amarela do gráfico de barra-->
-            <div class="branco" style="width: 198px"></div>
-            <!--Div vazio que compões a parte branca do gráfico de barra-->
-            <p class="porcentagem">01%</p>
-            <!--Texto referente a porcentagem-->
-          </div>
-        </div>
+        <div class="avaliacao">
+    <div class="estatisticas">
+        <canvas id="graficoAvaliacoes" height="325"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+        <script>
+  Chart.defaults.font.weight = 'bold';
+  const ctx = document.getElementById('graficoAvaliacoes').getContext('2d');
+  const graficoAvaliacoes = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: notas,
+        datasets: [{
+            label: 'Quantidade de Avaliações',
+            data: quantidade,
+            backgroundColor: '#F2AF00',
+            color: '#000'
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                return 'Nota: ' + tooltipItems[0].label;
+                            },
+                            label: function(tooltipItem) {
+                                return 'Quantidade de Avaliações: ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                },
+        scales: {
+            x: {
+                beginAtZero: true,
+                ticks: {
+                  stepSize: 1
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Nota'
+                },
+                ticks: {
+                    stepSize: 1,
+                    min: 0,
+                    max: 5
+                  }
+            }
+        }
+    }
+});
+        </script>
+    </div>
+    <!-- Fim estatísticas -->
+</div>
         <!--Fim estatisticas-->
 
         <div class="avaliacoes">

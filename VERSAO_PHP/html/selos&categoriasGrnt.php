@@ -151,7 +151,7 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
             <label for="Nome">Nome do Selo:</label>
             <input type="text" name="Nome" id="Nome" placeholder="Nome do selo" required>
         </div>
-        <label for="Imagem" class="input-img">Imagem do selo</label>
+        <label for="Imagem" class="input-img">Imagem</label>
         <input type="file" name="Imagem" id="Imagem" class="arquivo-input" required>
         <p>Preview da Imagem:</p>
             <img id="Imagem1A" src="" class="imagemPreview" style="display:none;">
@@ -189,7 +189,6 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
     </form>
 </div>
 <div>
-<?php include("footerGrnt.php"); ?>
 </div>
 
 <!-- form de editar selo -->
@@ -203,7 +202,10 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
                     <input type="text" id="nomeSelo" name="Nome" placeholder="Nome do Selo" required>
                 </div>
                 <input type="hidden" id="codigoSelo" name="Codigo" required>
-                <label for="ImagemSelo" class="input-img">Imagem do selo</label>
+                <div class="div-label">
+                <p>Imagem do Selo:</p>
+                <label for="ImagemSelo" class="input-img">Imagem</label>
+                </div>
                 <input type="file" name="Imagem" id="ImagemSelo" class="arquivo-input">
                 <p>Preview da Imagem:</p>
                 <img id="ImagemSeloE" src="" class="imagemPreview" style="display:none;">
@@ -219,6 +221,7 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
     </form>
 </div>
 </div>
+<?php include("footerGrnt.php"); ?>
 </body>
 <script>
 function confirmDelete(codigoAva, nomeUsu) {

@@ -93,6 +93,12 @@ if($tipo === "Cadastro"){ //Entra aqui caso $tipo tenha o valor Cadastro
     $imagem = filter_input(INPUT_POST, "Imagem");
 
     if($nome && $nasc && $email && $senha && $confirmar && $celular && $tipo){ //Verifica se todos os campos estão preenchidos
+        // validação do nome e sobrenome
+        $palavras = explode(" ", trim($nome));
+        if (count($palavras) != 2) {
+            $message->setMessage("Erro", "Por favor, insira somente o nome e o sobrenome.", "error", "back");
+            exit;
+        }
         if($senha == $confirmar){//Verifica se a senha e confirmação são iguais
             if(strlen($senha)>=6){//Confere se a senha possui mais de (seis) caracteres
                 if($userDao->pesquisarPorEmail($email) === false){

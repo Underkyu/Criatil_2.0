@@ -20,6 +20,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.appcriatil.MainActivity
 import com.example.appcriatil.R
 import com.example.appcriatil.R.string.peluciamiku
 import com.example.appcriatil.components.ElementoCardProduto
@@ -32,12 +34,12 @@ import com.example.appcriatil.components.ElementoTextoTitulo
 import com.example.appcriatil.components.IconData
 import com.example.appcriatil.components.PaddedItem
 import com.example.appcriatil.navigation.CriatilAppRouter
-import com.example.appcriatil.navigation.Screen
 import com.example.appcriatil.navigation.SystemBackButtonHandler
+import com.example.appcriatil.viewModel.CriatilViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Home(){
+fun Home(navController: NavController){
     Surface(
         color = Color.White,
         modifier = Modifier
@@ -136,12 +138,12 @@ fun Home(){
             )
         }
         SystemBackButtonHandler {
-            CriatilAppRouter.navigateTo(Screen.TelaCadastro)
+            navController.navigate(CriatilAppRouter.cadastro)
         }
     }
 }
 @Preview
 @Composable
 fun DefaultPreviewOfHome(){
-    Home()
+    //Home()
 }

@@ -11,15 +11,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.appcriatil.MainActivity
 import com.example.appcriatil.R
 import com.example.appcriatil.components.ElementoTextoBasico
 import com.example.appcriatil.components.ElementoTextoTitulo
 import com.example.appcriatil.navigation.CriatilAppRouter
-import com.example.appcriatil.navigation.Screen
 import com.example.appcriatil.navigation.SystemBackButtonHandler
 
 @Composable
-fun TelaDeTermosECondicoes() {
+fun TelaDeTermosECondicoes(navController: NavController, mainActivity: MainActivity) {
     Surface(modifier = Modifier
         .fillMaxSize()
         .background(color = Color.White)
@@ -31,7 +32,7 @@ fun TelaDeTermosECondicoes() {
             ElementoTextoBasico(value = stringResource(R.string.TermosECondicoes))
         }
         SystemBackButtonHandler {
-            CriatilAppRouter.navigateTo(Screen.TelaCadastro)
+            navController.navigate(CriatilAppRouter.cadastro)
         }
     }
 }
@@ -39,5 +40,5 @@ fun TelaDeTermosECondicoes() {
 @Preview
 @Composable
 fun DefaultPreviewOfTelaDeTermosECondicoes(){
-    TelaDeTermosECondicoes()
+    //TelaDeTermosECondicoes()
 }

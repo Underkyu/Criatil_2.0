@@ -32,6 +32,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.appcriatil.MainActivity
 import com.example.appcriatil.R
 import com.example.appcriatil.RoomDB.Usuario
@@ -48,7 +49,6 @@ import com.example.appcriatil.components.ElementoTextoDisplay
 import com.example.appcriatil.components.ElementoTextoTitulo
 import com.example.appcriatil.components.PaddedItem
 import com.example.appcriatil.navigation.CriatilAppRouter
-import com.example.appcriatil.navigation.Screen
 import com.example.appcriatil.navigation.SystemBackButtonHandler
 import com.example.appcriatil.ui.theme.TextColor
 import com.example.appcriatil.viewModel.CriatilViewModel
@@ -59,7 +59,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun TelaPerfil(viewModel: CriatilViewModel, mainActivity: MainActivity) {
+fun TelaPerfil(navController: NavController, viewModel: CriatilViewModel, mainActivity: MainActivity) {
     var usuarioList by remember{
         mutableStateOf(listOf<Usuario>())
     }
@@ -95,7 +95,7 @@ fun TelaPerfil(viewModel: CriatilViewModel, mainActivity: MainActivity) {
             ) {
                 stickyHeader {
                     ElementoHeaderNav(value = stringResource(id = R.string.Cadastro), onClick = {
-                        CriatilAppRouter.navigateTo(Screen.TelaCadastro)
+                        navController.navigate(CriatilAppRouter.cadastro)
                     })
                 }
                 item {
@@ -228,7 +228,7 @@ fun TelaPerfil(viewModel: CriatilViewModel, mainActivity: MainActivity) {
             )
         }
         SystemBackButtonHandler {
-            CriatilAppRouter.navigateTo(Screen.TelaCadastro)
+            navController.navigate(CriatilAppRouter.cadastro)
         }
     }
 }

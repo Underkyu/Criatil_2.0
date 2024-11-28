@@ -37,6 +37,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.appcriatil.MainActivity
 import com.example.appcriatil.R
 import com.example.appcriatil.RoomDB.Usuario
@@ -51,12 +52,11 @@ import com.example.appcriatil.components.ElementoTextoLoginClicavel
 import com.example.appcriatil.components.ElementoTextoTitulo
 import com.example.appcriatil.components.PaddedItem
 import com.example.appcriatil.navigation.CriatilAppRouter
-import com.example.appcriatil.navigation.Screen
 import com.example.appcriatil.viewModel.CriatilViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun TelaCadastro (viewModel: CriatilViewModel, mainActivity: MainActivity) {
+fun TelaCadastro (navController: NavController, viewModel: CriatilViewModel, mainActivity: MainActivity) {
     var nomeValue by remember{
         mutableStateOf("")
     }
@@ -103,7 +103,7 @@ fun TelaCadastro (viewModel: CriatilViewModel, mainActivity: MainActivity) {
             ) {
                 stickyHeader {
                     ElementoHeaderNav(value = stringResource(id = R.string.Login), onClick = {
-                        CriatilAppRouter.navigateTo(Screen.TelaDeLogin)
+                        navController.navigate(CriatilAppRouter.login)
                     })
                 }
                 item {
@@ -249,7 +249,7 @@ fun TelaCadastro (viewModel: CriatilViewModel, mainActivity: MainActivity) {
                         ElementoCheckbox(
                             value = stringResource(id = R.string.termos),
                             onTextSelected = {
-                                CriatilAppRouter.navigateTo(Screen.TelaDeTermosECondicoes)
+                                navController.navigate(CriatilAppRouter.termos)
                             })
                     }
                 }
@@ -280,7 +280,7 @@ fun TelaCadastro (viewModel: CriatilViewModel, mainActivity: MainActivity) {
                         ElementoTextoLoginClicavel(
                             value = stringResource(id = R.string.irParaLogin),
                             onTextSelected = {
-                                CriatilAppRouter.navigateTo(Screen.TelaDeLogin)
+                                navController.navigate(CriatilAppRouter.login)
                             })
                     }
                 }

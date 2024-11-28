@@ -43,6 +43,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.appcriatil.MainActivity
 import com.example.appcriatil.R
 import com.example.appcriatil.RoomDB.Usuario
@@ -57,7 +58,6 @@ import com.example.appcriatil.components.ElementoTextoCadastroClicavel
 import com.example.appcriatil.components.ElementoTextoTitulo
 import com.example.appcriatil.components.PaddedItem
 import com.example.appcriatil.navigation.CriatilAppRouter
-import com.example.appcriatil.navigation.Screen
 import com.example.appcriatil.navigation.SystemBackButtonHandler
 import com.example.appcriatil.viewModel.CriatilViewModel
 import com.example.appcriatil.viewModel.Repository
@@ -67,7 +67,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun TelaDeLogin(viewModel: CriatilViewModel, mainActivity: MainActivity) {
+fun TelaDeLogin(navController: NavController, viewModel: CriatilViewModel, mainActivity: MainActivity) {
     var emailValue by remember{
         mutableStateOf("")
     }
@@ -95,7 +95,7 @@ fun TelaDeLogin(viewModel: CriatilViewModel, mainActivity: MainActivity) {
             ) {
                 stickyHeader {
                     ElementoHeaderNav(value = stringResource(id = R.string.Cadastro), onClick = {
-                        CriatilAppRouter.navigateTo(Screen.TelaCadastro)
+                        navController.navigate(CriatilAppRouter.cadastro)
                     })
                 }
                 item {
@@ -177,7 +177,7 @@ fun TelaDeLogin(viewModel: CriatilViewModel, mainActivity: MainActivity) {
                 item {
                     PaddedItem { // Termos de uso
                         ElementoCheckbox(value = stringResource(id = R.string.termos), onTextSelected = {
-                            CriatilAppRouter.navigateTo(Screen.TelaDeTermosECondicoes)
+                            navController.navigate(CriatilAppRouter.termos)
                         })
                     }
                 }
@@ -206,8 +206,7 @@ fun TelaDeLogin(viewModel: CriatilViewModel, mainActivity: MainActivity) {
                                             "Bem vindo $usuarioName",
                                             Toast.LENGTH_SHORT
                                         ).show()
-
-                                        CriatilAppRouter.navigateTo(Screen.TelaPerfil)
+                                        navController.navigate(CriatilAppRouter.perfil)
                                     } else {
                                         Toast.makeText(
                                             mainActivity,
@@ -239,7 +238,7 @@ fun TelaDeLogin(viewModel: CriatilViewModel, mainActivity: MainActivity) {
                 item {
                     PaddedItem { // Redirecionamento para cadastro
                         ElementoTextoCadastroClicavel(value = stringResource(id = R.string.irParaCadastro), onTextSelected = {
-                            CriatilAppRouter.navigateTo(Screen.TelaCadastro)
+                            navController.navigate(CriatilAppRouter.cadastro)
                         })
                     }
                 }
@@ -257,7 +256,7 @@ fun TelaDeLogin(viewModel: CriatilViewModel, mainActivity: MainActivity) {
             )
         }
         SystemBackButtonHandler {
-            CriatilAppRouter.navigateTo(Screen.TelaCadastro)
+            navController.navigate(CriatilAppRouter.cadastro)
         }
     }
 }

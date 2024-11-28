@@ -10,7 +10,7 @@ $cupomDao = new cupomDao($conn,$BASE_URL);
 
 //$operacao = filter_input(INPUT_POST,"Operacao"); //Atibui o valor o input nomeado como "Tipo" a varivel $tipo
 
-$cupom_nome = filter_input(INPUT_POST,"cupom_cliente");
+$cupom_nome = filter_input(INPUT_POST,"cupomCliente");
 
 $cupom = $cupomDao->getCupomPorNome($cupom_nome);
 
@@ -20,7 +20,7 @@ if($cupom != false){
         return false;
     }else{
         $message->setMessage("Cupom inserido com sucesso","O cupom foi inserido com sucesso","success","back");
-        return $cupom;
+        $_SESSION['cupom'] = $cupom;
     }
 }else{
     $message->setMessage("Cupom não existe","O cupom informado não existe","error","back");

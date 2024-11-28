@@ -20,21 +20,18 @@ class cupomDao {
         $cupom->setCodigoCupom($data["Codigo_Cupom"]);
         $cupom->setNomeCupom($data["Nome_Cupom"]);
         $cupom->setStatusCupom($data["Status_Cupom"]);
-        $cupom->setStatusCupom($data["Porcentagem_Cupom"]);
+        $cupom->setPorcentagemCupom($data["Porcentagem_Cupom"]);
 
         return $cupom;
-
     }
 
     public function getCupomPorNome($nome_cupom){
         $stmt = $this->conexao->prepare("SELECT * FROM cupom WHERE Nome_Cupom = :nome_cupom");
-        $stmt->bindParam(":nome_cupom",$nome_cupom);
+        $stmt->bindParam(":nome_cupom", $nome_cupom);
         $stmt->execute();
 
         if($stmt->rowCount() > 0){ //Ve se o número de linhas retornada é maior que zero, basicamente vendo se retornou algo do banco
-            $data = $stmt->fetch();
-            $cupom = $this->buildCupom($data);
-        
+            $cupom = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $cupom;
         }else{
             return false;
@@ -42,8 +39,8 @@ class cupomDao {
 }
 
 public function getCupomPorCodigo($codigo_cupom){
-    $stmt = $this->conexao->prepare("SELECT * FROM cupom WHERE Nome_Cupom = :nome_cupom");
-    $stmt->bindParam(":nome_cupom",$nome_cupom);
+    $stmt = $this->conexao->prepare("SELECT * FROM cupom WHERE Codigo_Cupom = :codigo_cupom");
+    $stmt->bindParam(":codigo_cupom",$codigo_cupom_cupom);
     $stmt->execute();
 
     if($stmt->rowCount() > 0){ //Ve se o número de linhas retornada é maior que zero, basicamente vendo se retornou algo do banco

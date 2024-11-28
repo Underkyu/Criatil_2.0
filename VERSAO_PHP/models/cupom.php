@@ -1,8 +1,3 @@
-$cupom = new Cupom();
-        $cupom->setCodigoCupom($data["Codigo_Cupom"]);
-        $cupom->setNomeCupom($data["Nome_Cupom"]);
-        $cupom->setStatusCupom($data["Status_Cupom"]);
-        $cupom->setStatusCupom($data["Porcentagem_Cupom"]);
 <?php
 class Cupom {
     private $Codigo_Cupom;

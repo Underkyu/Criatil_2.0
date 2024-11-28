@@ -65,7 +65,6 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
                                     </form>
                             </div>
                         <?php } ?>
-
                 </div>
             </div>
             <div class="acoes">
@@ -188,12 +187,6 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
         </div>
     </form>
 </div>
-<<<<<<< HEAD
-=======
-<div>
-</div>
->>>>>>> 4d38bf68141550b55e4a8a779ff2cd01a545773f
-
 <!-- form de editar selo -->
 <div id="form-container-selo" class="formInsert" style="display:none;">
     <form method="POST" id="formEdit-Selo" class="formInsert-Brinquedo" action="../controller/seloProcess.php" enctype="multipart/form-data">
@@ -224,13 +217,7 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
     </form>
 </div>
 </div>
-<<<<<<< HEAD
-<div class="div_footer">
 <?php include("footerGrnt.php"); ?>
-</div>
-=======
-<?php include("footerGrnt.php"); ?>
->>>>>>> 4d38bf68141550b55e4a8a779ff2cd01a545773f
 </body>
 <script>
 function confirmDelete(codigoAva, nomeUsu) {

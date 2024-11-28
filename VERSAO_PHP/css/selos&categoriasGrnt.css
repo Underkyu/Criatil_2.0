@@ -38,8 +38,8 @@
       width: 90%;
       display: flex;
       align-self: center;
-      height: 360px;
-      margin: 30px 0 30px 0;
+      height: 400px;
+      margin: 3rem 0 3rem 0;
   }
   div.box_brinquedos{ /*Div que contem os brinquedos*/
       background-color: white;
@@ -267,6 +267,10 @@
       width: 100%;
       margin-right: 15px;
     }
+    div#container{
+      margin-top: 9.2rem;
+      margin-bottom: 9.2rem;
+    }
     .div-q-separa-socorro {
       display: flex;
       align-items: center;
@@ -393,10 +397,7 @@
     height: auto;
   }
   .input-img {
-<<<<<<< HEAD
-=======
   width: 45%;
->>>>>>> 4d38bf68141550b55e4a8a779ff2cd01a545773f
   margin-bottom: 15px;
   margin-top: 5px;
   height: 40px;
@@ -436,13 +437,6 @@
     display: flex;
     justify-content: center;
   }
-
-  div.div_footer{
-    margin-top: 12rem;
-  }
-  div#container{
-    margin-top: 12rem;
-  }
   /* responsividade forms - falta fzr responsividade nos dois */
 
    /*Responsividade*/
@@ -455,7 +449,6 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    max-height: 100%;
     }
   
   /* 2xl */

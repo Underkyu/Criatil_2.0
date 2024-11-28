@@ -391,8 +391,6 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     justify-content: center;
-    margin-top: 12rem;
-    margin-bottom: 12rem;
     display: flex;
     flex-direction: row;
 }

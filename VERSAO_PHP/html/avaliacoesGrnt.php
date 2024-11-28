@@ -59,12 +59,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             sessionStorage.removeItem('message');
         }
     </script>
-<<<<<<< HEAD
-    <div class="container" id="container_Ava">
-      <div class="grntC">
-=======
-    <div class="container">
->>>>>>> 4d38bf68141550b55e4a8a779ff2cd01a545773f
+    <div class="container" id="container_Cli">
       <h1 class="titulo">Avaliações Recebidas</h1>
         <div class="fundo">
           <!--Fundo azul que fica atrás dos clientes-->
@@ -132,7 +127,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 function confirmDelete(codigoAva, nomeUsu) {
     Swal.fire({
         title: 'Tem certeza?',
-        text: "Você confirma a deleção da avaliação de " + nomeUsu + "?",
+        text: "Você confirma a  deleção da avaliação de " + nomeUsu + "?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#0476D9',

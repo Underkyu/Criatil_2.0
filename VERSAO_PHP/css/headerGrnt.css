@@ -22,8 +22,8 @@ div.header{ /*Div que contem o conteudo do header de pc e celular*/
     display: flex;
     flex-direction: column; /*Eu não sei oq eu fiz, tentando deixar o header com o menu sanduiche, mas agr pra ficar normal pra pc precisa disso ;-;*/
     align-items: center;
-    justify-content: center;
-    width: inherit;
+    justify-content: space-between;
+    width: 100%;
     height: fit-content;
     overflow: hidden;
     transition-timing-function: ease-in;
@@ -33,7 +33,7 @@ div.header{ /*Div que contem o conteudo do header de pc e celular*/
 div.header_normal{ /*Div que contem o conteudo do header de pc*/
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
 }
 

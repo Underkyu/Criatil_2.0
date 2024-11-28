@@ -20,8 +20,8 @@ div.fundo{ /*Fundo azul atrás das avaliações*/
   width: 80%;
   display: flex;
   align-self: center;
-  height: 550px;
-  margin: 10px 0 10px 0;
+  height: 650px;
+  margin: 2.6rem 0 2.6rem 0;
 }
 div.box_avaliacao{ /*Div que contem as avaliações*/
   background-color: white;
@@ -196,16 +196,13 @@ div.box_avaliacao::-webkit-scrollbar-thumb {
 div.box_avaliacao::-webkit-scrollbar-thumb:hover {
   background-color: #dc9e00; 
 }
-<<<<<<< HEAD
 .grntC{
   display: flex;
   flex-direction: column;
 }
-div#container_Ava{
-  margin: 7rem 0px;
+div#container_Cli{
+  margin: 2.2rem auto;
 }
-=======
->>>>>>> 4d38bf68141550b55e4a8a779ff2cd01a545773f
 /*Responsividade*/
 .container {
   max-width: 1425px;

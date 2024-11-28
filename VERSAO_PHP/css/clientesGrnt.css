@@ -52,7 +52,6 @@ div.brinquedo{ /*Div que mostra as informações de um brinquedo*/
     align-items: center; 
     border-bottom: solid #0476D9 2px;
     border-top: solid #0476D9 2px;
-    pointer-events: none;
 }
 div.brinquedo + div.brinquedo {
   border-top: none;
@@ -63,7 +62,6 @@ div.foto {
     display: flex;
     justify-content: center;
     align-items: center;
-    pointer-events: none;
 }
 img.foto {
     /* Foto do brinquedo */
@@ -73,7 +71,6 @@ img.foto {
     height: 7.2rem;
     border-radius: 60px;
     object-fit: cover;
-    pointer-events: none;
     border: 3px solid #F2AF00;
 }
 p.informacao{ /*Textos que mostram nome, id e valor do brinquedo*/
@@ -85,6 +82,7 @@ p.informacao{ /*Textos que mostram nome, id e valor do brinquedo*/
 div.botao_detalhes{ /*DIv que contem o botão para levar a pagina de edição brinquedo*/
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 .form-flex {

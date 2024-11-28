@@ -140,28 +140,7 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
     </form>
 </div>
 
-<!-- form de adicionar selo -->
-<div id="form-container3" class="formInsert">
-    <form method="POST" id="formInsert-Selo" class="formInsert-Brinquedo" action="../controller/seloProcess.php" enctype="multipart/form-data">
-    <h2>Adicionar Selo</h2>
-    <div class="div-q-separa-socorro">
-    <div class="form-div"><!-- div q contém as inputs -->
-        <div class="select-input">
-            <label for="Nome">Nome do Selo:</label>
-            <input type="text" name="Nome" id="Nome" placeholder="Nome do selo" required>
-        </div>
-        <label for="Imagem" class="input-img">Imagem</label>
-        <input type="file" name="Imagem" id="Imagem" class="arquivo-input" required>
-        <p>Preview da Imagem:</p>
-            <img id="Imagem1A" src="" class="imagemPreview" style="display:none;">
-    </div>
-        <input type="hidden" name="Tipo" value="Inserir">
-        </div>
-        <div class="div-btn">
-        <button type="submit">Confirmar</button> 
-        </div>
-    </form>
-</div>
+
 
 <!-- form de editar categoria -->
 <div id="form-container-categoria" class="formInsert" style="display:none;">
@@ -187,6 +166,32 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
         </div>
     </form>
 </div>
+
+<!-- form de adicionar selo -->
+<div id="form-container3" class="formInsert">
+    <form method="POST" id="formInsert-Selo" class="formInsert-Brinquedo" action="../controller/seloProcess.php" enctype="multipart/form-data">
+    <h2>Adicionar Selo</h2>
+    <div class="div-q-separa-socorro">
+    <div class="form-div"><!-- div q contém as inputs -->
+        <div class="select-input">
+            <label for="Nome">Nome do Selo:</label>
+            <input type="text" name="Nome" id="Nome" placeholder="Nome do selo" required>
+        </div>
+        <div class="div-label">
+        <label for="Imagem" class="input-img">Imagem</label>
+        <input type="file" name="Imagem" id="Imagem" class="arquivo-input" required>
+        </div>
+        <p>Preview da Imagem:</p>
+            <img id="Imagem1A" src="" class="imagemPreview" style="display:none;">
+    </div>
+        <input type="hidden" name="Tipo" value="Inserir">
+        </div>
+        <div class="div-btn">
+        <button type="submit">Confirmar</button> 
+        </div>
+    </form>
+</div>
+
 <!-- form de editar selo -->
 <div id="form-container-selo" class="formInsert" style="display:none;">
     <form method="POST" id="formEdit-Selo" class="formInsert-Brinquedo" action="../controller/seloProcess.php" enctype="multipart/form-data">

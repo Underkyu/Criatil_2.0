@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/11/2024 às 06:34
+-- Tempo de geração: 28/11/2024 às 20:56
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Versão do PHP: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,7 +50,6 @@ INSERT INTO `avaliacao` (`Codigo_Ava`, `Codigo_Brinq`, `Codigo_Usu`, `Nota_Ava`,
 (8, 7, 3, 3.5, 'Machuca muito, bem perigoso, mas divertido', 'Forte e legal'),
 (16, 4, 14, 5, 'Meu filho esta conseguindo aprender a ler, realmente muito bom.', 'muito bom'),
 (17, 5, 14, 5, 'Eu e meu filho brincamos por horas', 'divertido'),
-(18, 9, 14, 4, 'não testei ainda mas é um cubo lindo', 'Lindo'),
 (19, 2, 15, 5, 'comprei logo dois, bonito demais', 'muito bonito'),
 (20, 11, 15, 5, 'é o batman, não tem com não gostar', 'meu herói favorito'),
 (21, 12, 15, 5, 'funko brabo do gandalf o branco', 'voce não vai passar'),
@@ -58,9 +57,8 @@ INSERT INTO `avaliacao` (`Codigo_Ava`, `Codigo_Brinq`, `Codigo_Usu`, `Nota_Ava`,
 (23, 6, 16, 4.5, 'achei um pouco cara, mas é de boa qualidade', 'bola'),
 (24, 14, 17, 5, 'lindo tabuleiro', 'gostei'),
 (25, 15, 17, 5, 'agora é minha vez de se divertir rs', 'adorei'),
-(26, 2, 17, 5, 'vou dar de presente pro meu netinho', 'muito bonito'),
-(28, 2, 12, 3, 'Só derrubei uma vez no chão e já amassou a cara, mas tirando isso qualidade boa', 'Meio frágil'),
-(29, 2, 22, 4, 'Lindo funko pop, ótimo para colecionadores e afins. Vou jogar DeltaRune!', 'Lindo');
+(28, 15, 22, 5, 'chamei toda minha família pra jogar', 'muito divertido'),
+(29, 21, 23, 5, 'comprei pra minha filha, ela adora pelúcias', 'fofinho');
 
 -- --------------------------------------------------------
 
@@ -87,7 +85,7 @@ CREATE TABLE `brinquedo` (
 
 INSERT INTO `brinquedo` (`Codigo_Brinq`, `Codigo_Selo`, `Codigo_Categoria`, `Nome_Brinq`, `Preco_Brinq`, `Nota`, `Fabricante`, `Descricao`, `Faixa_Etaria`, `Status`) VALUES
 (1, 1, 1, 'Pelúcia Hatsune Miku', 59.99, 3, 'Plush Japan', 'Uma pelúcia da Hatsune Miku do grupo artístico VOCALOID - 100% Algodão', 'Livre', 0),
-(2, 1, 2, 'Ralsei Funko Pop', 109.99, 4, 'FunkoMake', 'Um Funko Pop do personagem Ralsei criado por Toby Fox em DELTARUNE - Feito na China.', 'Livre', 0),
+(2, 1, 2, 'Ralsei Funko Pop', 109.99, 4.5, 'FunkoMake', 'Um Funko Pop do personagem Ralsei criado por Toby Fox em DELTARUNE - Feito na China.', 'Livre', 0),
 (3, 1, 1, 'Pelúcia Ralsei', 49.99, 2, 'Plush Japan', 'Uma pelúcia do personagem Ralsei (ASRIEL) de DELTARUNE - Embarque em mundos mágicos e sombrios com esse boneco exclusivo. 100% ALGODÃO [PRODUTO EM FALTA]', 'Livre', 1),
 (4, 2, 10, 'Alfabeto Libras', 49.99, 4, 'TOYSTER', 'Aprendendo o alfabeto em libras - Ensine seus filhos o alfabeto em libras de uma maneira simples e divertida!', '4+', 0),
 (5, 3, 6, 'Jogo da Velha Tátil', 19.99, 4, 'Montesorri', 'Um tabuleiro de jogo da velha interativo/tátil para divertir as crianças - Feito com base de madeira, ele possui peças igualmente em madeira, essa peça é uma ótima opção para um jogo rápido entre filhos, familiares e amigos!', '4+', 0),
@@ -98,9 +96,16 @@ INSERT INTO `brinquedo` (`Codigo_Brinq`, `Codigo_Selo`, `Codigo_Categoria`, `Nom
 (11, 1, 12, 'Batman Action Figure', 200, 5, 'dc comics', 'Um Action figure do clássico Cavaleiro das Trevas da DC, Batman', '10', 0),
 (12, 1, 2, 'Gandalf Funko Pop', 149.5, 5, 'pop!', 'O Funko Pop do mago Gandalf, o Branco agora disponível ', '10', 0),
 (13, 3, 7, 'Uno Braille', 64.99, 5, 'Mattel', 'O clássico jogo de cartas UNO agora está disponível com braille incluido', '4+', 0),
-(14, 3, 9, 'xadrez adaptado', 69.5, 5, 'xadrez', 'Tabuleiro estojo adaptado no sistema Braille. Letras e números do sistema Braille são representados em forma de relevo. Possui orifícios para encaixe das peças com cavilhas.', '4+', 0),
-(15, 1, 9, 'bingo', 29.99, 5, 'Bingo Premium', 'um bingo especial para a diversão todas as famílias e idades', '4+', 0),
-(16, 1, 5, 'guitarra', 49, 0, 'mattel', 'Este brinquedo de guitarrinha estimula o gosto pela música e desenvolve a criança num todo!', '+3', 0);
+(14, 3, 9, 'Tabuleiro de Xadrez Adaptado', 69.5, 5, 'xadrez', 'Tabuleiro estojo adaptado no sistema Braille. Letras e números do sistema Braille são representados em forma de relevo. Possui orifícios para encaixe das peças com cavilhas.', '4+', 0),
+(15, 1, 9, 'Jogo de Bingo', 29.99, 5, 'Bingo Premium', 'um bingo especial para a diversão todas as famílias e idades', '4+', 0),
+(16, 1, 5, 'Guitarra de Brinquedo', 49, 0, 'mattel', 'Este brinquedo de guitarrinha estimula o gosto pela música e desenvolve a criança num todo!', '+3', 0),
+(17, 1, 9, 'Pop It Anti Stress', 22.99, 0, 'Pop It', 'É insípido e inofensivo para pessoas e animais de estimação. Cores brilhantes e sons agradáveis são certos para satisfazer qualquer um!', '+3', 0),
+(18, 2, 6, 'Jogo Aprendendo Libras', 44.57, 0, 'libras', 'Desenvolve a atenção, noção de forma, a habildiade de encaixar e ajuda a estimular o aprendizado das libras.', '+10', 0),
+(19, 1, 4, 'Barbie Sereia Arco ìris', 194.99, 0, 'Mattel', 'Mergulhe com Barbie Sereia e veja um show de luzes na água! A sua cauda cintilante emite luzes quando mergulhada na água ou acionada manualmente.', '+3', 0),
+(20, 1, 3, 'Hot Wheels Action Pista Desafio Extremo - Mattel', 384.99, 0, 'Mattel', 'A Hot Wheels Action Pista de Brinquedo Desafio Extremo da Mattel é um emocionante conjunto de pistas de corrida para os amantes de carros e velocidade.', '+10', 0),
+(21, 1, 1, 'Squishmallows Pelúcia De 20cm', 61.99, 0, 'Sunny', 'Squishmallows são os brinquedos de pelúcia mais fofos e macios', '+3', 0),
+(22, 1, 4, 'Tamagotchi Nano Harry Potter', 349.99, 0, 'BANDAI', 'Divirta-se Conheça o novo Tamagotchi Bichinho Virtual edição especial Harry Potter', '+3', 0),
+(23, 1, 1, 'Curlimals - Higgle Ouriço', 149.99, 0, 'Sunny', ' é um brinquedo de pelúcia interativo e incrivelmente fofo, com seu pelo macio e brilhante.', '+3', 0);
 
 -- --------------------------------------------------------
 
@@ -145,13 +150,8 @@ INSERT INTO `brinqvendido` (`Codigo_BrinqVendido`, `Codigo_Pedido`, `Codigo_Brin
 (23, 16, 15, 1),
 (24, 17, 14, 1),
 (25, 18, 13, 1),
-(26, 19, 8, 1),
-(27, 19, 9, 1),
-(28, 19, 4, 1),
-(29, 19, 1, 1),
-(30, 19, 5, 1),
-(31, 19, 2, 1),
-(32, 20, 2, 1);
+(26, 19, 15, 1),
+(27, 20, 21, 1);
 
 -- --------------------------------------------------------
 
@@ -247,9 +247,28 @@ INSERT INTO `imagem` (`Codigo_Imagem`, `Codigo_Brinq`, `Imagem`, `Num_Imagem`) V
 (26, 14, 'd46c53bf9404a2d069780b1abbb97ad67def5ec04d85b12ee49d043181d743142ca66e6da7e51f50a47e778fa91dde6f15d012683633f9c69e6db7de', 1),
 (27, 14, '4c0de6c1119198ac2257f5eaae8b1fcfaaa6c908e4ab535ed89b21e2915862a2fe92fdf36796b5319a405585dcdad166b129beb91613be74c55a604a_2', 2),
 (28, 14, 'b5abf25dfcd0cf075c322877f3defb685e72d9715a30a11187c4601e813f06c4b4414ed200e43ec47efdf9306a0fa9c2057cf554dc0c01c42601037b_3', 3),
-(29, 15, '1a80bd27396a4a5fcc8e10cf3a3ec7b272366dbba1f8d2bf8d3f6ea2728688106d8d7ce892a2be9294a015463d5f6d1eb6c282ee1436cfd7f3e59fab', 1),
-(30, 15, '4382ae8b640b5fc235a2b45ec64d9734d6fa50bb78fe176c3c4a6ce3dae9405c1d244eb2c2f92210d0b458dbd4e394c6821cc3f496a7bea043345102_2', 2),
-(31, 16, 'gui', 1);
+(29, 15, 'bingo1', 1),
+(30, 15, 'bingo_2', 2),
+(31, 16, 'gui', 1),
+(32, 17, '79176ff3832712c356a8e287414030056b9ac2e37f695d738db63f89ba6c466827b600f532f4b6a48854e20180c0f130e2b7c220766d09b9f3bbbf94', 1),
+(33, 17, '152f574e2f9d7179cfc8887f9e31edc22cfe367b96b8f80b64909b74e04d018276d59af589f841f141c3eb8b199441cb742eae03e0ba705851b66387_2', 2),
+(34, 17, 'adb340ada16b7ddc618f71a3ea21bb905f16d3d1d40717b5c26dfe654fefe4db2cc06d4f2b472ac1f3ad497ae9f9ff2b9fa7a387c36ca895eccd387d_3', 3),
+(35, 18, 'PROD_288133504311', 1),
+(36, 18, '8a762a7c004ccede1cfebb52815a26db_2', 2),
+(37, 18, '5767224-800-auto_3', 3),
+(38, 19, 'f1e9113912f85964c0658a6922015e80decddaa0b0650cfb242199181f12f12764527a2f9534e12bf6e407df4b9c1fc50734de1c4272c38bf2f2b986', 1),
+(39, 19, '4d912300c3b3590b9818abe0e9d996072aa2d126b76e1235c14d1b335bb382c135b2ec94320b71841dc7102d2176a6350050b59ceb23186cef7e45f3_2', 2),
+(40, 19, '61a5dfabff63c6b6d908414e5254f0c298e4eb409b27e396314baf939a19d4f8708788755e9a4019f5d2015e0f05383d543114c206ec0e6a88fbc17f_3', 3),
+(41, 20, '57bee31c725d8e45a73888415cac206ab853556fbbae4c7e5432eec9cb50a585fdce80a9079a5694872f3e4204dca95fd7cba046465886b5cea439d7', 1),
+(42, 20, '40407e3112bea0e3f92fcb29891b8adc84307ef3b20f27ae146dd1124a7f2601dd60f4f3552c8c07f77d73bb810e16967e2522d097e5647228ceb36f_2', 2),
+(43, 21, 'cbb4715cfee4749720bde1ed66058bca55a4983379f6b0b6a0b3aa85ddf27c72316314684a7cd933639fd111b2403f9d15682eaa573979fa50a970fe', 1),
+(44, 21, '1211-0b927511937b6e06d516905494252638-1024-1024_2', 2),
+(45, 21, '131-bc620f70215119046216905494253920-1024-1024_3', 3),
+(46, 22, '2e4e7cffdaec2a5788269955683c01489c96de42893b35b899ff3df0ba1c27334ff6ce14b9f041ebf8118f2fead5a560b92a5114d2f34dd9509aab4a', 1),
+(47, 22, '3a285c78ab24e9be036a0002bac1a80b22d9eef4cad0b94d803a93c1be1230a9221f9dd275fd2b3de5ba5ce38b07137ce09cbec2455220f5d16e67a2_2', 2),
+(48, 22, '84f972c9f61037a274155100408e6585b780038124da66afc2340eb59aee654ce4ff24930293b35d369224d0530e79fd6c1a717c71e2d7856f6121da_3', 3),
+(49, 23, 'a2a8c5908d73fa0bebaf3d9c83326e2b228f44afc25a7db187c8b0703c5c9f1dee01eb408bbd4858fb05c497ee0af4e8adc8e63758b29950d7d3d80e', 1),
+(50, 23, 'fa86f27cd7e0d3ad0365495a9884e9f34feb2f83a64b372e352ffd2e82bbefebd1fd55472510f0426984051cbe617274c592540dc58043b7258087a0_2', 2);
 
 -- --------------------------------------------------------
 
@@ -281,7 +300,8 @@ INSERT INTO `listadefavoritos` (`Codigo_Brinq`, `Codigo_Usu`) VALUES
 (8, 12),
 (6, 12),
 (5, 12),
-(1, 19);
+(1, 19),
+(15, 22);
 
 -- --------------------------------------------------------
 
@@ -318,8 +338,8 @@ INSERT INTO `pedido` (`Codigo_Pedido`, `Codigo_Usu`, `Codigo_Cupom`, `Preco_Tota
 (16, 17, 1, 168.99, 'Debito', '2024-11-26 23:50:49', 'Finalizado'),
 (17, 19, 1, 69.5, 'Pix', '2024-11-27 13:42:56', 'Finalizado'),
 (18, 19, 1, 64.99, 'Pix', '2024-11-27 13:49:04', 'Finalizado'),
-(19, 12, 1, 372.94, 'Pix', '2024-11-28 01:23:48', 'Finalizado'),
-(20, 22, 1, 109.99, 'Pix', '2024-11-28 02:23:06', 'Finalizado');
+(19, 22, 1, 29.99, 'Pix', '2024-11-28 14:24:39', 'Finalizado'),
+(20, 23, 1, 61.99, 'Debito', '2024-11-28 14:28:14', 'Finalizado');
 
 -- --------------------------------------------------------
 
@@ -341,7 +361,8 @@ CREATE TABLE `sac` (
 INSERT INTO `sac` (`Codigo_sac`, `nome`, `email`, `mensagem`) VALUES
 (1, 'carlos', 'carloshrbarile@gmail.com', 'oi'),
 (2, 'Miguel', 'migblad11@gmail.com', 'Quero mais cupons'),
-(3, 'LUCAS BONFIM VILELA', 'lucasbvilela01@gmail.com', 'Mais formas de pagamento!');
+(3, 'LUCAS BONFIM VILELA', 'lucasbvilela01@gmail.com', 'Mais formas de pagamento!'),
+(4, 'José Diaz', 'josediaz@gmail.com', 'ola, estou com um problema');
 
 -- --------------------------------------------------------
 
@@ -362,7 +383,9 @@ CREATE TABLE `selo` (
 INSERT INTO `selo` (`Codigo_Selo`, `Nome_Selo`, `Imagem_Selo`) VALUES
 (1, 'Sem Selo', ''),
 (2, 'Deficiência Auditiva', 'Auditiva'),
-(3, 'Deficiência Visual', 'Visual');
+(3, 'Deficiência Visual', 'Visual'),
+(13, 'Deficiência Motora', 'Motor'),
+(14, 'Deficiência Intelectual', 'Intelectual');
 
 -- --------------------------------------------------------
 
@@ -394,15 +417,17 @@ INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Ema
 (5, 'Brito Carrero', '1988-12-08', '(11) 98612-3871', 'brito@gmail.com', '$2y$10$maUt5gopWT2QyGQwbvqvrOavMQLPZMvoAfZ/nwmJUf/nzDTegBUHG', 'Bloqueado', '756a229c0886b4ae0c9b13b488ca9234a2220f4a2b93b52b8b8c084cbcede53f8faa4ad988bd7768a938734c56021848ca0e', '41e988ec496a950e9b049be21b5f6ec8250fad053a968625421e8fcfc87fb01120b232ce90917010110e519d64565a3bfce8529928a27e1a5907b651'),
 (7, 'Vinicius Augusto', '1994-06-25', '(11) 96808-0107', 'viniciusnini222@gmail.com', '$2y$10$nmkGuof9y8gP8nrlPAfuJ.vVqe896bNqFXBhqRub2YfJUSRzdCeQC', 'Cliente', 'f56081865148c48d5da8c506d7e9f11a54a3d0bc031a0fcf678d39f9ac145889262b86b7b57199c21080d1c992f929d0c2b5', 'vazio'),
 (8, 'Hatsune Miku', '1999-11-11', '(21) 99887-4455', 'mikumedesuasforcas@gmail.com', '$2y$10$TQSpD7VL0TTCV2ttSLSkue.8iGK5tPUj74RxYi5U58hKe05Bj1AJS', 'Cliente', 'a910d8fb0421f7afb0739e7c28136892d10e7a8b17d37bc731fef324c89a643555637129edd012a4bdf99adb5f418e5f5e4a', 'vazio'),
-(12, 'Avaliador Pedro', '2110-12-08', '(01) 92873-0182', 'email@gmail', '$2y$10$ZFJDVVoliIuQY/U7/pLGNu.Luge.UDDUcAaCYP/Pt1QKgenDx21Ki', 'Gerente', '6279549a6da08ffe84a493b73527b9385b5f05fd6d5faf4d363437135faf0f71c4435fa2f2e2c7ff7dd12cc9787be97ac7b9', '3077f9fede2d6bad4dfb792af215bc4df1e70c27bffdc1b433ce7433e404af04d6ed6307061c72522516959e533521c65dca82dae4a86ac41aac3741'),
-(14, 'José Diaz', '1989-07-12', '(77) 77777-7777', 'josediaz@gmail.com', '$2y$10$JNN2tmCBa8pNSJMfU4w6NOFAbMP5HFmx0Or9wzHPhb.pMdoficHaq', 'Cliente', '9aedf194d09d3169a516b0ecdaab1fdfc863d42677052d3645dfc454a07190c6b31faa677d112536dd95dcc2a1d57cd9392d', 'b05a1e4cd11e80b2b145387f6cd253d386f2941ab251123c66d8238cf3670724942abfe83bbe91eca4c417ed3918cd5f5b3f44e4ad0896bc932066d3'),
+(12, 'Avaliador Pedro', '2110-12-08', '(01) 92873-0182', 'email@gmail', '$2y$10$ZFJDVVoliIuQY/U7/pLGNu.Luge.UDDUcAaCYP/Pt1QKgenDx21Ki', 'Gerente', '669f72ec968fda36400006592b3fb6d83cf076ad9a8d76eba8884485f8e36eb77bdb050cd7506544905c01b563748c6c4b64', 'cf66dcdc31228b8f3d6aae2911a481f2ac45940e6fc4d449672960724f32b9b052df6908b7fbff088657d5d79af746b03a795a40213bf31e0b939dbb'),
+(14, 'José Diaz', '1989-07-12', '(77) 77777-7777', 'josediaz@gmail.com', '$2y$10$JNN2tmCBa8pNSJMfU4w6NOFAbMP5HFmx0Or9wzHPhb.pMdoficHaq', 'Cliente', 'ebc4804dac3d776b8785bfeb2a8bb9dbf895082ab95bae43825aab58950b255bf19048819a4f865795a528a90012a2c956f6', 'b05a1e4cd11e80b2b145387f6cd253d386f2941ab251123c66d8238cf3670724942abfe83bbe91eca4c417ed3918cd5f5b3f44e4ad0896bc932066d3'),
 (15, 'fernando colecionador', '1999-09-30', '(44) 44477-7777', 'fernando@gmail.com', '$2y$10$8tQuWUREfGzy34BH/96JFuLuAdoi./sr2oruzEpOhXwQyTLxSd8hu', 'Cliente', '065c656d13e68887422c3e5c3fa193bdc326364d54bfc947c9dd25f690d614cc68f13f857dcb5bc31577fee148679ff3ec0b', '8536fecc31ad8bbaa966f453f6ed21aa37473b3716d03ccd5e0a13c5ccd087ef87f7ac2b5943bc285e825e60eefb8532dcc3089bcbc90a6ed8339de6'),
 (16, 'yasmin silva', '1996-10-20', '(00) 00000-0000', 'yasmin@gmail.com', '$2y$10$G.L4bM/ujkCNsCJFXahV.OFShQVAU50lRASVIxbPkg3o3Z2e7Czh.', 'Cliente', '5a31404e2400c834718484bd3fd54e180f5b35b319f82e3acb9490e030c1d6b153b631c6b40e69921493387be697da8a2a94', 'c9b5fd0e2669c5238fc804f1ca66923cca1f8c629ecee5e168a83b004901dd260e89a9b7f1527b3e76872ad1e620d60b450414a2dc8a6983171cbf2e'),
 (17, 'ana maria', '1974-12-09', '(44) 44000-0444', 'anamaria@gmail.com', '$2y$10$6UfnmOnGHrETczL1g5gTHeil/8qstUJlxs6ud5LkhwrgK9F6WbctS', 'Cliente', '05c831683c98c52223f36a058f56b4250048d1c7fa043db995b510edfe293284c3541b628b061ccdb5262849fe39bffb0c16', '31a2e99cde73a3b54159db9886efd82b13ce3c7baa8445fee50ad85602425120e6ee221417747fb1585f251d2d0643c7d8380624ead30424e0a83aeb'),
 (18, 'Liana Flores', '2001-12-11', '(21) 99887-4455', 'lianaflores@gmail.com', '$2y$10$9xBzUf039G.lAbfB0Hmb0OBODx7av00xno5a6R99u08C/WR1o7NFC', 'Gerente', '6d997fcfeb5700125ed138eb170124516a37009db5988400c2366314407d7b8b90fa35c13764507b597b9c4ff556c9a427c9', '30146e6f41e14cb817485bbef3bf8f4ecc648561aaa2487e018f3ace9d67c9a612c696095b27ed6769ec3a7000873f3a707347683706ab09f42f200a'),
-(19, 'vinicius fernandes', '2008-02-04', '(55) 04002-8922', 'viniciusfernandes@gmail.com', '$2y$10$D/M.9e5VWdovZgv6B4wJveLwSLQcxWtIRRFDb3O0FBKKnSHtOpxvG', 'Cliente', 'b4dc70a4d9a1034a63cf6ae16b1f94f4088af89fb715cc61434066acb9a4b4c1ed41e3c549b51fb8c64db82605503374f681', '36bd624defc9f337d34d7e94c7e6b384bcf44593ab99f30e67cedc03fdedc089bf37faf2d0704431d508879c2f0decc38135d5c627e24c9b84d0cfd6'),
+(19, 'vinicius fernandes', '2008-02-04', '(55) 04002-8922', 'viniciusfernandes@gmail.com', '$2y$10$D/M.9e5VWdovZgv6B4wJveLwSLQcxWtIRRFDb3O0FBKKnSHtOpxvG', 'Cliente', '19b2a13ac845c0c607a3e51f3f3a99161255ee5ec0512cfa6fc95af071dc7b54cefa9059dd1304ba091e9839cb4769bb0a04', '36bd624defc9f337d34d7e94c7e6b384bcf44593ab99f30e67cedc03fdedc089bf37faf2d0704431d508879c2f0decc38135d5c627e24c9b84d0cfd6'),
 (20, 'vinicius augusto', '2024-11-27', '(44) 44555-6666', 'viniciusaugusto@gmail', '$2y$10$lAHdXvlxrxcvvKxgQpggrecHd2B7XymellA1bRojAS.vwMDQPzJwC', 'Cliente', '02f126638578d6b62e634d7c93da44056bb2f76bdac711868f060ad38601ec15368adb5f93b347af001364590276080d22d0', '69c808f2316b17b6dac36026c1cbbff8d74e2525a5c421c416894877564e28a17460b54b85c26d420955c1dd500e4d93b643695892e67ed79a88773c'),
-(22, 'Roberto Souza', '2001-12-09', NULL, 'robertosouza@hotmail.com', '$2y$10$9R65kJeWtbfwQV3i8co2q.GPwLOeYIjYTcVLJAVuAK/7U0UxrBLRO', 'Cliente', 'cd741ee57f01cf855d7e43b8339210a44b0247c3b2a9f928bc4034f113f347ef4861faba840f09729fcd1ace78447a3eb3ab', '2d21255cd7d42d2a233204afe8f1c0e4239f9a75f69861074d8e5af09b7b1bad57c80522b5e54dec439188f62f8598bc9608824735f9ad997c6f0e4b');
+(21, 'Silvana Rosa', '1982-05-11', '(21) 93487-3523', 'silvana@gmail.com', '$2y$10$N.XgCXY86xTLb8Ltrumm2O5OkDa.HelfumTdSEmC1cD18clm8nCDO', 'Cliente', '322cec2b0d7ec9fda05e38d99f34ce80dbe50d5210e0ec2445584c10a46f44e7fb12bf75ca80d45d5abf5e4a43f076e2d625', 'vazio'),
+(22, 'mariana josefa', '1990-07-22', '(11) 22334-4556', 'marianajosefa@gmail.com', '$2y$10$lsZNNnJeAM26lP3RdE6txe2TbMWDvLwgixcorn1jlpk6ZxkfS.YRq', 'Cliente', '3c4fdcfc237870cea097fff3603117bb6ac2a2cb0f9a09a1ba28fee2c459ba7c2392e7dcf6f5c20fcf986b929600cc550cb9', '228f9ba694c6ac6efbcda456293ca10d9061e8e8ca7693365903c3020474cdd80ba8101fc85c46fc0e8657c4133972b508826fd58ad3fe9dedece57b'),
+(23, 'Mirela souza', '1998-01-31', '(00) 99887-7665', 'Mirelasouza@gmail.com', '$2y$10$RdolDqYfRNxG/7aOOhlaHORBkdA6OoNJ4FhHtHPsHcmfGxYp2gCCS', 'Cliente', 'ac387e80adb1b041ddadc9b1622da66eab926ae5326b3185d1980c50bdceb27549ca6532cd74ebe1c15f4a62a2ab04ee0e84', '7af3300880ef7c7ea559b89828e1e76e7ae85ac82c268b8d350e85aa708e0db328321746ca04734584b83541d5f9e3ad17ef69d132d3e72b60438324');
 
 --
 -- Índices para tabelas despejadas
@@ -491,13 +516,13 @@ ALTER TABLE `avaliacao`
 -- AUTO_INCREMENT de tabela `brinquedo`
 --
 ALTER TABLE `brinquedo`
-  MODIFY `Codigo_Brinq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Codigo_Brinq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `brinqvendido`
 --
 ALTER TABLE `brinqvendido`
-  MODIFY `Codigo_BrinqVendido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `Codigo_BrinqVendido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
@@ -515,7 +540,7 @@ ALTER TABLE `cupom`
 -- AUTO_INCREMENT de tabela `imagem`
 --
 ALTER TABLE `imagem`
-  MODIFY `Codigo_Imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `Codigo_Imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de tabela `pedido`
@@ -527,19 +552,19 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de tabela `sac`
 --
 ALTER TABLE `sac`
-  MODIFY `Codigo_sac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Codigo_sac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `selo`
 --
 ALTER TABLE `selo`
-  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Codigo_Selo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `Codigo_Usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restrições para tabelas despejadas

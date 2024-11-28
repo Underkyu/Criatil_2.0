@@ -60,6 +60,7 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     </script>
     <div class="container">
+      <div class="grntC">
       <h1 class="titulo">Avaliações Recebidas</h1>
         <div class="fundo">
           <!--Fundo azul que fica atrás dos clientes-->
@@ -120,8 +121,9 @@ $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
           </div>
         </div>
       </div>
+    </div>
+    <?php include("footerGrnt.php") ?>
 
-  <?php include("footerGrnt.php") ?>
   </body>
 <script>
 function confirmDelete(codigoAva, nomeUsu) {

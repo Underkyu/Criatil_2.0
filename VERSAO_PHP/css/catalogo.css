@@ -8,19 +8,12 @@
 .texto_pequeno{
     margin-top: 0;
 }
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 30px;
-}
 .SliderFiltro{
     display: none;
     transition: 100ms ease-in-out;
 }
 .filtros{
-    width: 20%;
+    width: 20rem;
     max-height: 1110px;
     display: flex;
     flex-direction: column;
@@ -199,9 +192,9 @@ label{
 }
 /*Estilo da caixa de produtos*/
 .caixaprodutos{
-    width: 80%;
-    min-height: 80vh;
-    height: max-content;
+    width: 100%;
+    min-height: 100vh;
+    height: min-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -212,7 +205,6 @@ label{
 .produtos{
     display: flex;
     flex-wrap: wrap;
-
     justify-content: center;
     height: fit-content;
     margin-bottom: 1rem;
@@ -246,14 +238,12 @@ label{
   }
   .containerCatalogo {/* Container de todo conteúdo*/
     height: fit-content;
-    justify-content: space-between;
-    width: 95%;
-    min-height: 80vh;
+    justify-content: space-around;
+    width: 100%;
+    min-height: 100vh;
     display: flex; 
-    margin: 0px;
-    max-width: 1536px;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 1.5rem;
+    padding-left: 3rem;
   }
   
   /* 2xl */
@@ -268,16 +258,7 @@ label{
   /* xl */
   @media (max-width: 1280px) {
     .containerCatalogo {
-        width: 100%;
-        height: fit-content;
-        min-height: 80vh;
-        display: flex;
-        margin: 0px;
-        max-width: 1024px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        /* refazer responsividade em casa */
       }
     .card{
         margin: 10px;
@@ -297,16 +278,7 @@ label{
   /* lg */
   @media (max-width: 1024px) {
     .containerCatalogo {
-        width: 100%;
-        height: fit-content;
-        min-height: 80vh;
-        display: flex;
-        margin: 0px;
-        max-width: 768px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        /* refazer responsividade em casa */
       }
     .filtros{
         display: flex;
@@ -381,47 +353,21 @@ label{
   /* md */
   @media (max-width: 768px) {
     .containerCatalogo {
-        width: 100%;
-        height: fit-content;
-        min-height: 80vh;
-        display: flex;
-        margin: 0px;
-        max-width: 640px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        /* refazer responsividade em casa */
       }
   }
   
   /* sm */
   @media (max-width: 640px) {
     .containerCatalogo {
-        width: 100%;
-        height: fit-content;
-        min-height: 80vh;
-        display: flex;
-        margin: 0px;
-        max-width: 475px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        /* refazer responsividade em casa */
       }
   }
   
   /* xs */
   @media (max-width: 475px) {
     .containerCatalogo {
-        width: 100%;
-        height: fit-content;
-        min-height: 80vh;
-        display: flex;
-        margin: 0px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        /* refazer responsividade em casa */
       }
       #prev-button img, #next-button img {
         width: 20px;

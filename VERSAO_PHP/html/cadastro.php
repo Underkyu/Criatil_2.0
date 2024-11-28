@@ -43,7 +43,7 @@
             <div class="input-container">
                 <input type="text" id="celular" name="Celular_Usu" placeholder="Digite o celular" class="input-login" maxlength="15">
             </div>
-
+123.123.123-12
             <input type="hidden" id="tipo" name="Tipo_Usu" class="input-login" value="Cliente">
             <input type="hidden" name="Tipo" value="Cadastro">
             <input type="hidden" name="Imagem" value="vazio">

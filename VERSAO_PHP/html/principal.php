@@ -11,6 +11,20 @@ $stmt_recentes = $conn->prepare("SELECT * FROM brinquedo WHERE Status <> 1 ORDER
 $stmt_recentes->execute();
 $brinquedos_recentes = $stmt_recentes->fetchAll(PDO::FETCH_ASSOC);
 
+$stmt_populares1 = $conn->prepare("SELECT Codigo_Brinq, COUNT(*) AS quantidade_vendida
+FROM brinqvendido GROUP BY Codigo_Brinq ORDER BY quantidade_vendida DESC LIMIT 6");
+$stmt_populares1->execute();
+$populares1 = $stmt_populares1->fetchAll(PDO::FETCH_ASSOC);
+$brinquedos_populares = []; // inicializa vetor
+
+foreach($populares1 as $popular) {
+   $stmt_populares2 = $conn->prepare("SELECT * FROM brinquedo WHERE Codigo_Brinq = :codigo
+    AND Status <> 1 ORDER BY Codigo_Brinq"); // faz o select dos brinquedos usando o código retornado do $stmt_populares1
+    $stmt_populares2->bindParam(":codigo", $popular['Codigo_Brinq']);
+    $stmt_populares2->execute();
+    $resultados = $stmt_populares2->fetchAll(PDO::FETCH_ASSOC); 
+    $brinquedos_populares = array_merge($brinquedos_populares, $resultados);
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +34,8 @@ $brinquedos_recentes = $stmt_recentes->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
   <title>Criatil - Home</title>
+
+  <link rel="stylesheet" href="../css/card.css">
 
   <!--CSS dos carrosseis e da pagina respectivamente-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -115,7 +131,7 @@ $brinquedos_recentes = $stmt_recentes->fetchAll(PDO::FETCH_ASSOC);
         <div class="swiper-wrapper">
           <?php
             // Loop através dos brinquedos e exibição na página
-            foreach ($brinquedos as $brinquedo) {
+            foreach ($brinquedos_populares as $brinquedo) {
               // Seleciona as imagens do brinquedo atual
               $stmt = $conn->query("SELECT Imagem FROM imagem WHERE Codigo_Brinq = " . $brinquedo['Codigo_Brinq'] . " ORDER BY Num_Imagem LIMIT 1");
               $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -166,6 +182,5 @@ $brinquedos_recentes = $stmt_recentes->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/card.css">
 </head>
 </html>

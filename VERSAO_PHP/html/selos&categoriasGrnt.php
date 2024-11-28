@@ -172,19 +172,24 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
             <div class="form-div">
                 <div class="select-input">
                     <label for="nomecat">Nome da Categoria:</label>
+                    <div class="inputPopUp">
                     <input type="text" id="nomecat" name="Nome" placeholder="Nome da Categoria" required>
+                    </div>
                 </div>
                 <input type="hidden" id="codigocat" name="Codigo" required>
             </div>
             <input type="hidden" name="Tipo" value="Atualizar">
         </div>
         <div class="div-btn">
-            <button type="submit">Confirmar</button> 
+        <button type="submit">Confirmar</button> 
             <!--
             <button type="submit" class="delet-btn" name="Tipo" value="Deletar">Deletar</button> 
                             -->
         </div>
     </form>
+</div>
+<div>
+<?php include("footerGrnt.php"); ?>
 </div>
 
 <!-- form de editar selo -->
@@ -214,7 +219,6 @@ $seloDao = new SeloDAO($conn, $BASE_URL);
     </form>
 </div>
 </div>
-<?php include("footerGrnt.php"); ?>
 </body>
 <script>
 function confirmDelete(codigoAva, nomeUsu) {

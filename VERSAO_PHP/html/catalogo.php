@@ -207,9 +207,6 @@ if (isset($_SESSION['produtos'])) {
                     </div>
 
         <?php if (!empty($brinquedos)) { ?>
-        <div class="vermais">
-                <button class="btn-vermais">Ver Mais</button>
-            </div>
             <?php } ?>
     </div>
     </div>

@@ -29,7 +29,7 @@ $itensLista = $desejosDao->getItensLista($usuarioData->getCodigo());
 <body>
 <?php include("header.php");?>
 
-<div class="container">
+<div class="container" id="container">
     <!-- página da conta -->
             <div class="navbar-container"> 
             <div class="ft-nome-lateral">

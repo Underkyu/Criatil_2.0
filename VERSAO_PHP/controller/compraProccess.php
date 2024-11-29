@@ -36,6 +36,10 @@ $carrinhoDao = new carrinhoDao($conn,$BASE_URL);
     $carrinho = $carrinhoDao->getCarrinho();
     
     $contador = 0;
+    
+    if($_SESSION["cupom"]){
+    unset($_SESSION["cupom"]);
+    }
 
     foreach ($carrinho as $produto) {
         $brinqVendido = new BrinqVendido();

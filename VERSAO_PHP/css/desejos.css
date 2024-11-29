@@ -278,12 +278,13 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
 }
 
 /* responsividade hilario*/
+/* responsividade hilario*/
 @media (min-width: 1500px) {
     #box {
         width: 1100px;
     }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1150px) {
     #navbar-conta {
         width: 290px;
         margin-left: 5%;
@@ -307,7 +308,22 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
         padding: 6px 14px;
     }
 }
-@media (max-width: 700px) {
+@media (min-width: 1450px) {
+    .container {
+      max-width: 1550px;
+    }
+    #navbar-conta a {
+        font-size: 24px;
+    }
+    #box{
+        width: 1080px;
+    }
+    .nome-lateral {
+        font-size: 28px;
+        white-space: nowrap;
+    }
+  }
+@media (max-width: 940px) {
     button.menuSanduiche{/*Botão que abre o menu sanduiche*/
         display: flex;
       }
@@ -315,13 +331,13 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
         display: none;
       }
       #box {
-        position:relative;
+        position:relative;  
         right: auto;
         left: auto;
         top: auto;
         bottom: auto;
         width: 96%;
-        margin: 0 auto;
+        margin: 1rem auto;
       }
       .sanduiche-div{
         display: flex;
@@ -336,16 +352,19 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
       .linha {
         display: none;
       }
+      .navbar-container{
+        display: none;
+      }
 }
 @media (max-width: 700px) {
     .produto-imagem {
-        width: 120px;
-        height: 120px;
+        width: 90px;
+        height: 90px;
     }
-    .produto-nome, .produto-valor {
+    .produto-nome, .produto-quantidade, .produto-data, .produto-valor {
         font-size: 14px;
     }
-    .legenda-foto, .legenda-nome, .legenda-valor {
+    .legenda-foto, .legenda-nome, .legenda-qntd, .legenda-data, .legenda-valor {
         font-size: 15px;
     }
 }
@@ -366,8 +385,8 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
         width: 500px;
     }
     .produto-imagem {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
     }
 }
 @media (max-width: 380px) {
@@ -379,10 +398,8 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     #box {
         background-color: white;
         padding: 0;
+        width: 100%;
         margin: 0;
-    }
-    #box h1 {
-        font-size: 28px;
     }
     .pagina-selecionada, .paginas-navbar{
         font-size: 14px;

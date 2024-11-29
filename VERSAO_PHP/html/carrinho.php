@@ -36,7 +36,7 @@ require_once("../models/brinquedo.php");
                             <p class="legenda-nome">Nome</p>
                             <p class="legenda-qntd">Quantidade</p>
                             <p class="legenda-valor">Valor</p>
-                            <p class="legenda-valor"> </p>
+                            <p class="legenda-valor">Excluir</p>
                         </div>
                 <div id="carrinho" class="carrinhobox">
 
@@ -99,7 +99,7 @@ require_once("../models/brinquedo.php");
                             }
                         ?>
 
-                        
+                        <p class="aviso-tamanho" style="display: none; font-size: 14px;">* Tamanho de tela não recomendado para acesso ao site.</p>
                 </div>
                 <div class="botao-deletar">
                     <form method="POST" action="../controller/carrinhoProccess.php">
@@ -137,7 +137,7 @@ require_once("../models/brinquedo.php");
                     </div>
                 </div>
         
-                
+                <button id="botao-resumo">Resumo da Compra</button>
     <!-- fim da página do carrinho -->
      </div>
 

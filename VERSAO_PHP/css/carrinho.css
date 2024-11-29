@@ -4,16 +4,18 @@
     margin: 0px;
     padding: 0px;
     }
-    html, body{
-        height: 100%;
+    html, body {
+        width: 100%;
+        overflow: hidden;
     }
-#resumo {
+    #resumo {
     background-color: #0484d9;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 50px;
+    height: 85vh;
     padding: 10px;
     transition: transform 0.8s ease-in-out;
 }
@@ -56,7 +58,7 @@
     transition: transform 0.8s ease-in-out;
 }
 #resumo.exibido + #botao-resumo {
-    transform: translateX(-50%) translateY(-750%);
+    transform: translateX(-50%) translateY(-600%);
 }
 .conteudoresumo {
     display: flex;
@@ -164,7 +166,6 @@
     max-height: 65%;
     display: flex;  
     flex-direction: column;
-    overflow-y: scroll;
 }
 .produto {
     width: 100%;
@@ -253,26 +254,10 @@ transition: all 0.3s ease-in-out;
     color: #0476D9;
     transition: color 0.3s ease;
 }
-  /* estilos gerais da barra de rolagem */
-  #carrinho::-webkit-scrollbar {
-    height: 18px;
-}
 
-/* estilos do trilho da barra de rolagem */
-#carrinho::-webkit-scrollbar-track {
-    background-color: white;
-    border-radius: 1px;
-}
-
-/* estilos do polegar da barra de rolagem (parte que o usuário arrasta) */
-#carrinho::-webkit-scrollbar-thumb {
-    background-color: #c08a00;
-    border-radius: 8px; 
-    border: 3px solid #f1f1f1; 
-}
 
 img.excluir{ /*Imagem de X para excluir item do carrinho*/
-    width: 2rem;
+    width: 1.4rem;
 }
 button.excluir{ /*Botão que exclui um item do carrinho*/
     background-color: transparent;
@@ -280,12 +265,11 @@ button.excluir{ /*Botão que exclui um item do carrinho*/
 }
 
 div.excluir-item{/*Div que contem o botão que exclui um item do carrinho*/
-    font-size: 19px;
+    font-size: 14px;
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
 }
 div.botao-deletar{ /*Botão que exclui todos os itens do carrinho*/
     width: 100%;
@@ -300,6 +284,11 @@ button.deletar{ /*Div que contem o botão que exclui todos os itens do carrinho*
     align-items: center;
     border-radius: 15px;
     padding: .25rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+button.deletar:hover{
+    transform: scale(1.06);
 }
 img.deletar{
     width: 2.5rem;
@@ -309,31 +298,7 @@ p.deletar{
     font-weight: bold;
 }
 
-
-
-
 /* responsividade */
-@media (max-width: 900px) {
-    #carrinho {
-        overflow-x: auto;
-    }
-    .produto {
-        width: 800px;
-        min-width: 200px;
-    }
-    #carrinho-legenda {
-        display: flex;
-        justify-content: space-around;
-        font-weight: 500;
-        margin-bottom: 10px;
-        margin-top: 20px;
-        width: 800px;
-        text-align: center;
-    }
-    #entrega h1{
-        font-size: 15px;
-    }
-}
 @media (max-width: 840px) {
     #resumo h1 {
         display: none;
@@ -347,7 +312,7 @@ p.deletar{
         right: 0;
         top:auto;
         left: auto;
-        height: 50%;
+        height: 40%; 
         width: 100%;
         transform: translateY(100%);
     }
@@ -372,17 +337,21 @@ p.deletar{
         min-width: 30px;
         max-width: 30px;
     }
+    div.botao-deletar{ /*Botão que exclui todos os itens do carrinho*/
+        width: 100%;
+        margin-top: 4rem;
+        margin-left: 1rem;
+        margin-bottom: 4rem;
+    }
 }
 @media (max-width: 780px) {
-    .produto-imagem{
-        object-fit: cover;
+    .produto-imagem {
+        height: 110px;
+        width: 110px;
     }
 }
 @media (max-width: 555px) {
-    .produto-imagem {
-        height: 120px;
-        width: 120px;
-    }
+
     .produto-nome, .produto-valor{
         font-size: 15px;
     }
@@ -397,6 +366,14 @@ p.deletar{
     }
     #entrega h1{
         font-size: 14px;
+    }
+}
+@media (max-width: 465px){
+    #carrinho-legenda {
+        display: none;
+    }
+    #carrinho{
+        margin-top: 1rem;
     }
 }
 @media (max-width: 425px) {
@@ -418,6 +395,11 @@ p.deletar{
     }
     #entrega h1{
         font-size: 13px;
+    }
+    .aviso-tamanho{
+        display: flex !important;
+        white-space: wrap;
+        overflow: hidden;
     }
 }
 @media (max-width: 370px) {

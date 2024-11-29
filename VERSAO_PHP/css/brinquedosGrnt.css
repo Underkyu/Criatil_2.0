@@ -601,7 +601,21 @@ input[type=number]::-webkit-outer-spin-button { /* remove as setas das inputs co
 .imagem-input {
   margin-bottom: 35px;
 }
-.input-img {
+button.remover-imagem{
+  width: 80px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: none !important;
+  transform: none !important;
+}
+button.remover-imagem:hover{
+  transition: none !important;
+  transform: none !important;
+  scale: none;
+  background-color: rgb(200, 0, 0);
+}
+.input-img {  
   display: flex;
   width: 100px;
   padding: 6px 15px;

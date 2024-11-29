@@ -214,6 +214,9 @@ if($tipo === "Inserir") {
         } else {
             $message->setMessage("Erro", "Tipo da imagem #2 incorreto", "error", "back");
         }
+    }else{
+        // caso não tenha imagem #2, manda a variável mensagem como vazia (condição pro dao deletar a imagem)
+        $produtoDao->editaImagem('', $codigoImagem2, $codigoBrinq, 2);
     }
 
     // se tiver imagem #3
@@ -234,6 +237,9 @@ if($tipo === "Inserir") {
         } else {
             $message->setMessage("Erro", "Tipo da imagem #3 incorreto", "error", "back");
         }
+    }else{
+         // caso não tenha imagem #3, manda a variável mensagem como vazia (condição pro dao deletar a imagem)
+        $produtoDao->editaImagem('', $codigoImagem3, $codigoBrinq, 3);
     }
 
     // Atualiza o produto no banco de dados

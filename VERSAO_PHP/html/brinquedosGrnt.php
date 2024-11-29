@@ -269,7 +269,10 @@ foreach($populares1 as $popular) {
                     </div>
                     <img id="Imagem1A" src="" class="imagemPreview" style="display:none;">
                     </div>
+                    <div class="coluna">
+                    <button type="button" class="remover-imagem" onclick="removerImagem(this)">Remover</button>
                     <input type="file" id="inserirImagem1" name="Imagem1" placeholder="Caminho da Imagem" class="arquivo-input" required>
+                    </div>
                 </div>
 
                 <div class="imagem-input">
@@ -280,7 +283,10 @@ foreach($populares1 as $popular) {
                     </div>
                     <img id="Imagem2A" src="" class="imagemPreview" style="display:none;">
                     </div>
+                    <div class="coluna">
+                    <button type="button" class="remover-imagem" onclick="removerImagem(this)">Remover</button>
                     <input type="file" id="inserirImagem2" name="Imagem2" placeholder="Caminho da Imagem" class="arquivo-input">
+                    </div>
                 </div>
 
                 <div class="imagem-input">
@@ -291,7 +297,10 @@ foreach($populares1 as $popular) {
                     </div>
                     <img id="Imagem3A" src="" class="imagemPreview" style="display:none;">
                     </div>
+                    <div class="coluna">
+                    <button type="button" class="remover-imagem" onclick="removerImagem(this)">Remover</button>
                     <input type="file" id="inserirImagem3" name="Imagem3" placeholder="Caminho da Imagem" class="arquivo-input">
+                    </div>
                 </div>
             </div>
         </div>
@@ -378,7 +387,10 @@ foreach($populares1 as $popular) {
                     </div>
                     <img id="Imagem1E" src="" class="imagemPreview" style="display:none;">
                     </div>
+                    <div class="coluna">
+                    <button type="button" class="remover-imagem" onclick="removerImagem(this)">Remover</button>
                     <input type="file" id="inserirImagem1E" name="Imagem1" placeholder="Caminho da Imagem" class="arquivo-input">
+                    </div>
                 </div>
 
                 <div class="imagem-input">
@@ -389,7 +401,10 @@ foreach($populares1 as $popular) {
                     </div>
                     <img id="Imagem2E" src="" class="imagemPreview" style="display:none;">
                     </div>
+                    <div class="coluna">
+                    <button type="button" class="remover-imagem" onclick="removerImagem(this)">Remover</button>
                     <input type="file" id="inserirImagem2E" name="Imagem2" placeholder="Caminho da Imagem" class="arquivo-input">
+                    </div>
                 </div>
 
                 <div class="imagem-input">
@@ -400,7 +415,10 @@ foreach($populares1 as $popular) {
                     </div>
                     <img id="Imagem3E" src="" class="imagemPreview" style="display:none;">
                     </div>
+                    <div class="coluna">
+                    <button type="button" class="remover-imagem" onclick="removerImagem(this)">Remover</button>
                     <input type="file" id="inserirImagem3E" name="Imagem3" placeholder="Caminho da Imagem" class="arquivo-input">
+                    </div>
                 </div>
 
     </div>
@@ -421,24 +439,32 @@ foreach($populares1 as $popular) {
 </div>
 </div>
 <script>
-  function validarNumero(input) {
-    // remove o que não for número
-    input.value = input.value.replace(/[^0-9,\.]/g, ''); 
+function validarNumero(input) {
+// remove o que não for número
+input.value = input.value.replace(/[^0-9,\.]/g, ''); 
 
-    // substitui ponto por vírgula no filtro
-    input.value = input.value.replace('.', ','); 
+// substitui ponto por vírgula no filtro
+input.value = input.value.replace('.', ','); 
 
-    // limita a duas casas decimais
-    const partes = input.value.split(',');
-    if (partes.length > 1 && partes[1].length > 2) {
-        input.value = partes[0] + ',' + partes[1].substring(0, 2);
-    }
+// limita a duas casas decimais
+const partes = input.value.split(',');
+if (partes.length > 1 && partes[1].length > 2) {
+input.value = partes[0] + ',' + partes[1].substring(0, 2);
+}
 
-    // impede a adição de qlqr coisa dps das 2 casas decimais
-    if (partes.length > 2) {
-    input.value = partes[0] + ',' + partes[1];
-    }
-  }
+// impede a adição de qlqr coisa dps das 2 casas decimais
+if (partes.length > 2) {
+input.value = partes[0] + ',' + partes[1];
+}
+}
+
+function removerImagem(button) {
+const input = button.parentNode.parentNode.querySelector('input[type="file"]');
+input.value = '';
+const preview = button.parentNode.parentNode.querySelector('.imagemPreview');
+preview.src = '';
+preview.style.display = 'none';
+}
 </script>
     <?php include("footerGrnt.php") ?>
 </body>

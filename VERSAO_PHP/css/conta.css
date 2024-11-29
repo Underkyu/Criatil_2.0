@@ -395,8 +395,8 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     margin-bottom: 2rem;
 }
 div#container_Conta{
-    margin-top: 12rem;
-    margin-bottom: 12rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
   /* responsividade Hilario*/
   @media (min-width: 1500px) {

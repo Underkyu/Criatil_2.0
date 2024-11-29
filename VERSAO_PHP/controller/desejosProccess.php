@@ -40,9 +40,4 @@ if($operacao == "Adicionar"){
 
     $message->setMessage("Item excluido","O item foi excluido da lista de desejos","success","back");
 }
-
-
-
-
-
 ?>

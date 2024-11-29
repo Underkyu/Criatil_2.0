@@ -12,7 +12,7 @@ $carrinhoDao = new carrinhoDao($conn,$BASE_URL);
 
 $operacao = filter_input(INPUT_POST,"Operacao"); //Atibui o valor o input nomeado como "Tipo" a varivel $tipo
 $codigo = filter_input(INPUT_POST,"Codigo"); //Atibui o valor o input nomeado como "Tipo" a varivel $tipo
-$carrinho = $carrinhoDao->getCarrinho() ;
+$carrinho = $carrinhoDao->getCarrinho();
 $userDao = new UsuarioDAO($conn,$BASE_URL);
 
 if ($operacao == "AdicionarQuant") {

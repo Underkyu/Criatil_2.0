@@ -18,6 +18,7 @@ if($tipo === "Inserir") {
     $codCat = filter_input(INPUT_POST, "Codigo_Categoria");
     $nomeBrinq = filter_input(INPUT_POST, "Nome_Brinq");
     $precoBrinq = filter_input(INPUT_POST, "Preco_Brinq");
+    $precoBrinq = str_replace(',', '.', $precoBrinq);
     $notaBrinq = filter_input(INPUT_POST, "Nota");
     $fabriBrinq = filter_input(INPUT_POST, "Fabricante");
     $descBrinq = filter_input(INPUT_POST, "Descricao");

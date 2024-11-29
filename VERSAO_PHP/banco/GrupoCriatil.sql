@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/11/2024 às 20:56
+-- Tempo de geração: 29/11/2024 às 03:35
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.1.25
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -102,7 +102,7 @@ INSERT INTO `brinquedo` (`Codigo_Brinq`, `Codigo_Selo`, `Codigo_Categoria`, `Nom
 (17, 1, 9, 'Pop It Anti Stress', 22.99, 0, 'Pop It', 'É insípido e inofensivo para pessoas e animais de estimação. Cores brilhantes e sons agradáveis são certos para satisfazer qualquer um!', '+3', 0),
 (18, 2, 6, 'Jogo Aprendendo Libras', 44.57, 0, 'libras', 'Desenvolve a atenção, noção de forma, a habildiade de encaixar e ajuda a estimular o aprendizado das libras.', '+10', 0),
 (19, 1, 4, 'Barbie Sereia Arco ìris', 194.99, 0, 'Mattel', 'Mergulhe com Barbie Sereia e veja um show de luzes na água! A sua cauda cintilante emite luzes quando mergulhada na água ou acionada manualmente.', '+3', 0),
-(20, 1, 3, 'Hot Wheels Action Pista Desafio Extremo - Mattel', 384.99, 0, 'Mattel', 'A Hot Wheels Action Pista de Brinquedo Desafio Extremo da Mattel é um emocionante conjunto de pistas de corrida para os amantes de carros e velocidade.', '+10', 0),
+(20, 1, 3, 'Hot Wheels Action Pista Desafio Extremo', 384.99, 0, 'Mattel', 'A Hot Wheels Action Pista de Brinquedo Desafio Extremo da Mattel é um emocionante conjunto de pistas de corrida para os amantes de carros e velocidade.', '+10', 0),
 (21, 1, 1, 'Squishmallows Pelúcia De 20cm', 61.99, 0, 'Sunny', 'Squishmallows são os brinquedos de pelúcia mais fofos e macios', '+3', 0),
 (22, 1, 4, 'Tamagotchi Nano Harry Potter', 349.99, 0, 'BANDAI', 'Divirta-se Conheça o novo Tamagotchi Bichinho Virtual edição especial Harry Potter', '+3', 0),
 (23, 1, 1, 'Curlimals - Higgle Ouriço', 149.99, 0, 'Sunny', ' é um brinquedo de pelúcia interativo e incrivelmente fofo, com seu pelo macio e brilhante.', '+3', 0);
@@ -417,7 +417,7 @@ INSERT INTO `usuario` (`Codigo_Usu`, `Nome_Usu`, `Nasc_Usu`, `Celular_Usu`, `Ema
 (5, 'Brito Carrero', '1988-12-08', '(11) 98612-3871', 'brito@gmail.com', '$2y$10$maUt5gopWT2QyGQwbvqvrOavMQLPZMvoAfZ/nwmJUf/nzDTegBUHG', 'Bloqueado', '756a229c0886b4ae0c9b13b488ca9234a2220f4a2b93b52b8b8c084cbcede53f8faa4ad988bd7768a938734c56021848ca0e', '41e988ec496a950e9b049be21b5f6ec8250fad053a968625421e8fcfc87fb01120b232ce90917010110e519d64565a3bfce8529928a27e1a5907b651'),
 (7, 'Vinicius Augusto', '1994-06-25', '(11) 96808-0107', 'viniciusnini222@gmail.com', '$2y$10$nmkGuof9y8gP8nrlPAfuJ.vVqe896bNqFXBhqRub2YfJUSRzdCeQC', 'Cliente', 'f56081865148c48d5da8c506d7e9f11a54a3d0bc031a0fcf678d39f9ac145889262b86b7b57199c21080d1c992f929d0c2b5', 'vazio'),
 (8, 'Hatsune Miku', '1999-11-11', '(21) 99887-4455', 'mikumedesuasforcas@gmail.com', '$2y$10$TQSpD7VL0TTCV2ttSLSkue.8iGK5tPUj74RxYi5U58hKe05Bj1AJS', 'Cliente', 'a910d8fb0421f7afb0739e7c28136892d10e7a8b17d37bc731fef324c89a643555637129edd012a4bdf99adb5f418e5f5e4a', 'vazio'),
-(12, 'Avaliador Pedro', '2110-12-08', '(01) 92873-0182', 'email@gmail', '$2y$10$ZFJDVVoliIuQY/U7/pLGNu.Luge.UDDUcAaCYP/Pt1QKgenDx21Ki', 'Gerente', '669f72ec968fda36400006592b3fb6d83cf076ad9a8d76eba8884485f8e36eb77bdb050cd7506544905c01b563748c6c4b64', 'cf66dcdc31228b8f3d6aae2911a481f2ac45940e6fc4d449672960724f32b9b052df6908b7fbff088657d5d79af746b03a795a40213bf31e0b939dbb'),
+(12, 'Pedro Bueno', '2110-12-08', '(11) 99529-1131', 'email@gmail', '$2y$10$ZFJDVVoliIuQY/U7/pLGNu.Luge.UDDUcAaCYP/Pt1QKgenDx21Ki', 'Cliente', 'b67aaa37d44633c1f150decdef3dcd821b61a2f4fd2aa7244da5999afdccd3bea102e267e5383454fe03e6ad8ab762392ed2', '80a001a34196636b3b37dccb84666f7248e66044a15ba9f95e9c73678e1d35d5e785cf9b4a26a14f74ea5e515fc0c24a81783a3caf85e052728d8e2a'),
 (14, 'José Diaz', '1989-07-12', '(77) 77777-7777', 'josediaz@gmail.com', '$2y$10$JNN2tmCBa8pNSJMfU4w6NOFAbMP5HFmx0Or9wzHPhb.pMdoficHaq', 'Cliente', 'ebc4804dac3d776b8785bfeb2a8bb9dbf895082ab95bae43825aab58950b255bf19048819a4f865795a528a90012a2c956f6', 'b05a1e4cd11e80b2b145387f6cd253d386f2941ab251123c66d8238cf3670724942abfe83bbe91eca4c417ed3918cd5f5b3f44e4ad0896bc932066d3'),
 (15, 'fernando colecionador', '1999-09-30', '(44) 44477-7777', 'fernando@gmail.com', '$2y$10$8tQuWUREfGzy34BH/96JFuLuAdoi./sr2oruzEpOhXwQyTLxSd8hu', 'Cliente', '065c656d13e68887422c3e5c3fa193bdc326364d54bfc947c9dd25f690d614cc68f13f857dcb5bc31577fee148679ff3ec0b', '8536fecc31ad8bbaa966f453f6ed21aa37473b3716d03ccd5e0a13c5ccd087ef87f7ac2b5943bc285e825e60eefb8532dcc3089bcbc90a6ed8339de6'),
 (16, 'yasmin silva', '1996-10-20', '(00) 00000-0000', 'yasmin@gmail.com', '$2y$10$G.L4bM/ujkCNsCJFXahV.OFShQVAU50lRASVIxbPkg3o3Z2e7Czh.', 'Cliente', '5a31404e2400c834718484bd3fd54e180f5b35b319f82e3acb9490e030c1d6b153b631c6b40e69921493387be697da8a2a94', 'c9b5fd0e2669c5238fc804f1ca66923cca1f8c629ecee5e168a83b004901dd260e89a9b7f1527b3e76872ad1e620d60b450414a2dc8a6983171cbf2e'),

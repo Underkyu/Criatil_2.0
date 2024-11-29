@@ -1,6 +1,6 @@
 <?php
 
-  $db_name = "GrupoCriatil";
+  $db_name = "Criatil";
   $db_host = "localhost";
   $db_user = "root";
   $db_pass = "";

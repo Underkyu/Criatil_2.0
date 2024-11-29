@@ -28,9 +28,12 @@ require_once("../models/usuario.php");
     $agora = date('Y-m-d\TH:i:s'); //Variavel que guar a data e hora atual
 
     $porcentagem = 0;
+    
 
     if(isset($_SESSION["cupom"])){
-        $cupom = $cupomDao->getCupomPorCodigo($_SESSION["cupom"]);
+        $cupom_nome = $_SESSION["cupom"];
+        $cupom = $cupomDao->getCupomPorNome($cupom_nome);
+        $porcentagem = $cupom->getPorcentagemCupom();
     }
 
     foreach ($carrinho as $produto) {
@@ -48,6 +51,7 @@ require_once("../models/usuario.php");
     <link rel="shortcut icon" href="../imagens/Logo/LogoAba32x32.png" type="image/x-icon">
     <title>Criatil - Pagamento</title>
     <link rel="stylesheet" href="../css/Pagamento.css">
+    <script src="../js/Pagamento.js" defer></script>
 </head>
 <body>
 <?php include("header.php") ?>
@@ -77,7 +81,7 @@ require_once("../models/usuario.php");
         <div class="resumo">
 
         <div class="sumario">
-            <h3 class="resumo"><?php var_dump($_SESSION["cupom"])?></h3>
+            <h3 class="resumo">Resumo</h3>
             <p>Subtotal: R$<?php echo(number_format($precoTotal, 2, ',', '.')) ?></p>            <p>Desconto: <?php print_r($porcentagem); ?>%</p>
             <p>Total: R$<?php 
             $total =($precoTotal - ($precoTotal*($porcentagem/100)));
@@ -86,11 +90,11 @@ require_once("../models/usuario.php");
             <button id="back-button">Voltar</button>
             <form method="POST" action="../controller/compraProccess.php">
             <input type="hidden" name="formaPagamento" value="vazio" id="forma"> <!--Input que armazenará a tipo de pagamento-->
-            <input type="hidden" name="precoTotal" value=<?php print_r($precoTotal) ?>> 
+            <input type="hidden" name="precoTotal" value=<?php print_r($total) ?>> 
             <input type="hidden" name="statusPedido" value="Finalizado"> 
-            <input type="text" name="cupom" value="<?php
+            <input type="hidden" name="cupom" value="<?php
                 if(isset($_SESSION["cupom"])){
-                    print_r($_SESSION["cupom"]);
+                    print_r($cupom->getCodigoCupom());
                 }
             ?>" id="cupom"> 
             <input type="hidden" name="dataPedido" value=<?php print_r($agora) ?>> 
@@ -99,10 +103,10 @@ require_once("../models/usuario.php");
             </form>
         </div>
 
-        <div class="cupom">
-            <form id="form_cupom" action="../controller/cupomProccess.php">
+        <div class="cupom" id="cupom">
+            <form id="form_cupom" action="../controller/cupomProccess.php" method="POST">
             <h4 class="cupom">Insira seu cupom</h4>
-            <input type="text" class="cupom" name="cupomCliente" placeholder="Insira o cupom promocional" id="CupomCliente">
+            <input type="text" class="cupom" name="cupomCliente" placeholder="Insira o cupom promocional" id="CupomCliente" value="">
             <button class="cupom">Confirmar</button>
             </form>
         </div>

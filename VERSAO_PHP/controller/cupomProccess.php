@@ -19,8 +19,10 @@ if($cupom != false){
         $message->setMessage("O cupom expirou","O cupom informado já expirou","error","back");
         return false;
     }else{
+        print_r($cupom);
+        $_SESSION['cupom'] = $cupom->getNomeCupom();
+        print_r($_SESSION['cupom']);
         $message->setMessage("Cupom inserido com sucesso","O cupom foi inserido com sucesso","success","back");
-        $_SESSION['cupom'] = $cupom;
     }
 }else{
     $message->setMessage("Cupom não existe","O cupom informado não existe","error","back");

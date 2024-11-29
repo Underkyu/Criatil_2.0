@@ -376,4 +376,7 @@ label{
     h1{
         font-size: 1.5rem;
     }
+    div.filtros{
+        display: none;
+    }
   }

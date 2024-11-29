@@ -31,8 +31,9 @@ class cupomDao {
         $stmt->execute();
 
         if($stmt->rowCount() > 0){ //Ve se o número de linhas retornada é maior que zero, basicamente vendo se retornou algo do banco
-            $cupom = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $cupom;
+            $data = $stmt->fetch(PDO::FETCH_ASSOC); // Usa fetch para obter apenas o primeiro resultado
+            $cupom = $this->buildCupom($data); // Constrói o objeto Cupom
+            return $cupom; // Retorna o objeto Cupom
         }else{
             return false;
         }

@@ -38,8 +38,8 @@
       width: 90%;
       display: flex;
       align-self: center;
-      height: 360px;
-      margin: 30px 0 30px 0;
+      height: 400px;
+      margin: 3rem 0 3rem 0;
   }
   div.box_brinquedos{ /*Div que contem os brinquedos*/
       background-color: white;
@@ -245,8 +245,8 @@
       flex-direction: column;
       background-color: #ffffff;
       border-radius: 20px;
-      width: 35%;
-      height: 60%;
+      width: 30%;
+      height: 50%;
       box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.5);
       border: 4px solid #0476D9;
     }
@@ -266,6 +266,10 @@
       height: 100%;
       width: 100%;
       margin-right: 15px;
+    }
+    div#container{
+      margin-top: 9.2rem;
+      margin-bottom: 9.2rem;
     }
     .div-q-separa-socorro {
       display: flex;
@@ -445,7 +449,6 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    max-height: 100%;
     }
   
   /* 2xl */
@@ -493,7 +496,6 @@
   }
   .formInsert-Brinquedo input,
   .formInsert-Brinquedo select {
-    width: 80%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -540,7 +542,6 @@
   }
   div.fundo{ /*Fundo azul atrás dos brinquedos*/
     padding: .60rem;
-    height: 65%;
     margin-top: 2%;
 }
 h1.titulo{ /*Titulo em cima da div que mostra os brinquedos*/
@@ -573,6 +574,15 @@ font-size: 1rem;
 img.foto {
 height: 3.5rem;
 }
+div.catdiv{
+  margin-top: 16rem;
+}
+div.div_footer{
+  margin-top: 14rem;
+}
+div#container{
+  margin-top: 0rem;
+}
   }
   
   /* sm */
@@ -590,7 +600,9 @@ height: 3.5rem;
   
   /* sm */
   @media (max-width: 600px) {
-  
+    .formInsert-Brinquedo {
+      width: 75%;
+    }
   }
   @media (max-width: 500px) {
     div.pesquisar {
@@ -638,6 +650,9 @@ height: 3.5rem;
     }
     input.pesquisar::placeholder {
       font-size: 16px;
+    }
+    .formInsert-Brinquedo {
+      width: 95%;
     }
   }
   @media (max-width: 395px) {

@@ -35,7 +35,7 @@ $usuarioData = $userDao->verificarToken(false);
         <div class="container">
             <div class="header">
                 <div class="header_normal">
-                <img src="../imagens/Header/LogoBranca.png" alt="Logo da Criatil na cor branca" class="Logo_header"> <!--Logo-->
+                <img src="../imagens/Header/LogoGerentes.png" alt="Logo da Criatil na cor branca" class="Logo_header"> <!--Logo-->
     
                 <div class="links_normais">
 

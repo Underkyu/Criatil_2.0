@@ -80,12 +80,6 @@
 }
 
 @media (max-width: 1280px) {
-    .footerLogo {
-        display: none;
-    }
-    .footerTelefone {
-        display: none;
-    }
 }
 
 @media (max-width: 1024px) {

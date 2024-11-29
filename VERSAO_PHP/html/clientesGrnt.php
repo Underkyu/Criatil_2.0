@@ -23,7 +23,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
 <?php include("headerGrnt.php") ?> 
-    <div class="container">
+    <div class="container" id="container_Cli">
 
         <h1 class="titulo">Clientes Cadastrados</h1> <!--Titulo em cima da caixa dos clientes-->
 

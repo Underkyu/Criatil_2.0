@@ -11,7 +11,7 @@
         <div class="footerContent">
             <div class="footerAnchors">
                 <div class="footerAnchor footerLogo">
-                    <img src="../imagens/Header/LogoBranca.png" alt="Logo">
+                    <img src="../imagens/Header/LogoGerentes.png" alt="Logo">
                 </div>
             </div>
         </div>

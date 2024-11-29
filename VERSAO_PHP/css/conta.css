@@ -394,6 +394,10 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
+div#container_Conta{
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+}
   /* responsividade Hilario*/
   @media (min-width: 1500px) {
     #box {
@@ -466,6 +470,9 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
         width: 60%;
         height: 45%;
     }
+    .form-bg-perfil {
+        width: 60%;
+    }
 }
 @media (max-width: 875px) {
       button.menuSanduiche{/*Botão que abre o menu sanduiche*/
@@ -513,6 +520,10 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
     }
     #perfil {
         padding: 1.8rem 1.2rem 0 1.2rem;
+    }
+    div#container_Conta {
+        margin-top: 7rem;
+        margin-bottom: 7rem;
     }
 }
 @media (max-width: 700px) {
@@ -586,7 +597,16 @@ img.menuSanduiche { /*Imagem do icon de menu sanduiche*/
         width: 80%;
         height: 45%;
     }
+    .form-bg-perfil {
+        width: 80%;
+    }
 }
+@media (max-width: 460px) { 
+    .form-bg-perfil {
+        width: 90%;
+    }
+}
+
 @media (max-width: 420px) { 
     #box {
         width: 100%;

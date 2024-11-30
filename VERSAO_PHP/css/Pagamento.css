@@ -70,7 +70,7 @@ body {
 }
 
 .sumario {
-    width: 80%;
+    width: 100%;
     background-color: #007bff;
     color: white;
     padding: 20px;
@@ -155,6 +155,12 @@ input.cupom{
         width: 100%;
         margin-bottom: 20px;
     }
+    div.resumo {
+    width: 65%:
+    }
+    div.cupom {
+    width: 100%;
+    }
 
     .opcoesPagamento {
         display: grid;
@@ -166,4 +172,12 @@ input.cupom{
         width: 80px; 
         height: 80px;
     }
+}
+@media (max-width: 520px){
+div.cupom{
+width: 100%;
+}
+div.resumo{
+width: 100%;
+}
 }

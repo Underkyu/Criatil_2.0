@@ -8,7 +8,9 @@ require_once("../Dao/produtoDAO.php");
 require_once("../models/brinquedo.php");
 require_once("../Dao/usuarioDAO.php");
 require_once("../models/usuario.php");
+require_once("../models/cupom.php");
 
+ini_set('display_errors','Off'); ini_set('error_reporting', E_ALL ); define('WP_DEBUG', false); define('WP_DEBUG_DISPLAY', false);
 
     $userDao = new UsuarioDAO($conn,$BASE_URL);
 
@@ -29,11 +31,14 @@ require_once("../models/usuario.php");
 
     $porcentagem = 0;
     
+    $cupom = $_SESSION['cupom'];
 
-    if(isset($_SESSION["cupom"])){
+    if($cupom !== null && $cupom !== ""){
         $cupom_nome = $_SESSION["cupom"];
         $cupom = $cupomDao->getCupomPorNome($cupom_nome);
         $porcentagem = $cupom->getPorcentagemCupom();
+    }else{
+        $cupom = $cupomDao->getCupomPorCodigo(1);
     }
 
     foreach ($carrinho as $produto) {
@@ -93,8 +98,10 @@ require_once("../models/usuario.php");
             <input type="hidden" name="precoTotal" value=<?php print_r($total) ?>> 
             <input type="hidden" name="statusPedido" value="Finalizado"> 
             <input type="hidden" name="cupom" value="<?php
-                if(isset($_SESSION["cupom"])){
-                    print_r($cupom->getCodigoCupom());
+            if(isset($_SESSION["cupom"])){
+                print_r($cupom->getCodigoCupom());
+                }else{
+                print_r(1);
                 }
             ?>" id="cupom"> 
             <input type="hidden" name="dataPedido" value=<?php print_r($agora) ?>> 

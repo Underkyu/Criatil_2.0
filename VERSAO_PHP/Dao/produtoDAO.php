@@ -245,7 +245,7 @@ public function filtraCategorias($categoria) {
     $stmt1->execute();
     $codigoCategoria = $stmt1->fetchColumn();
 
-    $stmt = $this->conexao->prepare("SELECT * FROM brinquedo WHERE Codigo_Categoria = :codigoCategoria");
+    $stmt = $this->conexao->prepare("SELECT * FROM brinquedo WHERE Codigo_Categoria = :codigoCategoria AND Status <> 1");
     $stmt->bindParam(':codigoCategoria', $codigoCategoria);
 
     $stmt->execute();
@@ -257,7 +257,7 @@ public function filtraSelos($selo) {
     $stmt1->execute();
     $codigoSelo = $stmt1->fetchColumn();
 
-    $stmt = $this->conexao->prepare("SELECT * FROM brinquedo WHERE Codigo_Selo = :codigoSelo");
+    $stmt = $this->conexao->prepare("SELECT * FROM brinquedo WHERE Codigo_Selo = :codigoSelo AND Status <> 1");
     $stmt->bindParam(':codigoSelo', $codigoSelo);
 
     $stmt->execute();

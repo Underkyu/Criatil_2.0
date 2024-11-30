@@ -41,7 +41,7 @@
             </div>
 
             <div class="input-container">
-                <input type="text" id="celular" name="Celular_Usu" placeholder="Digite o celular" class="input-login" maxlength="15">
+                <input type="text" id="celular" name="Celular_Usu" placeholder="Celular (opcional)" class="input-login" maxlength="15">
             </div>
 
             <input type="hidden" id="tipo" name="Tipo_Usu" class="input-login" value="Cliente">

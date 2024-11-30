@@ -18,7 +18,6 @@ $carrinhoDao = new carrinhoDao($conn,$BASE_URL);
     $statusPedido = filter_input(INPUT_POST,"statusPedido");
     $formaPagamento = filter_input(INPUT_POST,"formaPagamento");
     $cupom = filter_input(INPUT_POST,"cupom");
-
     if ($formaPagamento != "vazio"){
         $pedido = new Pedido();
 

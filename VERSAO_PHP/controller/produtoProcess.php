@@ -361,8 +361,9 @@ if($tipo === "Inserir") {
 
 }elseif($tipo === "FiltragemS"){
     $defVisual = filter_input(INPUT_POST, 'defVisual');
-    $defMotor = filter_input(INPUT_POST, 'defMotor');
+    $defMotor = filter_input(INPUT_POST, 'defMotora');
     $defAuditivo = filter_input(INPUT_POST, 'defAuditivo');
+    $defIntelec = filter_input(INPUT_POST, 'defIntelectual');
 
     if (!empty($defVisual)) {
         $selo = $defVisual;
@@ -370,6 +371,8 @@ if($tipo === "Inserir") {
         $selo = $defMotor;
     } elseif (!empty($defAuditivo)) {
         $selo = $defAuditivo;
+    }elseif (!empty($defIntelec)) {
+        $selo = $defIntelec;
     }
 
     if(!empty($selo)){

@@ -144,19 +144,15 @@ if (isset($_SESSION['produtos'])) {
                             <div class="formItem">
                                 <input type="radio" class="checkbox" name="defVisual" id="checkInclusivo1" value="Deficiência Visual"/><label>Def. Visuais</label>
                             </div>
-                            <!--
                             <div class="formItem">
-                                <input type="radio" class="checkbox" name="defMotor" id="checkInclusivo2" value="Tabuleiro"/><label>Def. Motores</label>
+                                <input type="radio" class="checkbox" name="defMotora" id="checkInclusivo2" value="Deficiência Motora"/><label>Def. Motores</label>
                             </div>
-                            -->
                             <div class="formItem">
                                 <input type="radio" class="checkbox" name="defAuditivo" id="checkInclusivo3" value="Deficiência Auditiva"/><label>Def. Auditivos</label>
                             </div>
-                            <!--
                             <div class="formItem">
-                                <input type="radio" class="checkbox" name="afasia" id="checkInclusivo4" /><label>Afasia</label>
+                                <input type="radio" class="checkbox" name="defIntelectual" id="checkInclusivo4" value="Deficiência Intelectual"/><label>Def. Intelectual</label>
                             </div>
-                            -->
                             <input type="hidden" value="FiltragemS" name="Tipo">
                             <button type="submit" class="filtrarbotao">Filtrar</button>
                         </form>

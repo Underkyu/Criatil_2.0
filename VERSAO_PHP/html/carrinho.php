@@ -6,6 +6,7 @@ require_once("../models/message.php");
 require_once("../Dao/produtoDAO.php");
 require_once("../models/brinquedo.php");
 
+ini_set('display_errors','Off'); ini_set('error_reporting', E_ALL ); define('WP_DEBUG', false); define('WP_DEBUG_DISPLAY', false);
 
     $prodDAO = new ProdutoDAO($conn,$BASE_URL);
 
@@ -39,8 +40,34 @@ require_once("../models/brinquedo.php");
                             <p class="legenda-valor">Excluir</p>
                         </div>
                 <div id="carrinho" class="carrinhobox">
-
-
+                <?php 
+                if(empty($carrinho)){
+                ?>
+                <div class="produto" style="cursor: not-allowed;">
+                <div class="produto-info" style="color: gray;">
+                    <img src="../imagens/Produtos/Miku/Imagem1.png" class="produto-imagem" style="filter: grayscale(100%);">
+                    <div class="produto-nome">Nenhum produto adicionado</div>
+                    <div class="produto-quantidade">
+                        <button class="quantidade-botao" name="botao_menos" style="color: gray; cursor: not-allowed;">-</button>
+                        <span class="quantidade-numero" style="display: flex;">0</span>
+                        <button class="quantidade-botao"  name="botao_mais" style="color: gray; cursor: not-allowed;">+</button>
+                    </div>
+                    <div class="produto-valor">
+                        <div class="valor_flex">
+                            <div class="valor-unidade">R$0,00/un.</div>
+                            <div class="valor-total">R$0,00</div>
+                        </div>
+                    </div>
+                    <div class="excluir-item">
+                        <button class="excluir">
+                            <img src="../imagens/Icons/x.png" alt="Excluir item" class="excluir" style="cursor: not-allowed;">
+                        </button>
+                    </div>
+                </div>
+                </div>
+                <?php 
+                }
+                ?>
                         <?php
                             foreach ($carrinho as $produto) {
                                 $brinquedo = $prodDAO->pesquisarPorCodigo($produto);

@@ -161,6 +161,25 @@ class UsuarioDAO implements UsuarioDAOInterface {
             $this->message->setMessage("Login expirado","Por favor fazer login novamente!","error","principal.php");
         }
     }
+    public function verificarTokenGerente($protected = false){
+        if(!empty($_SESSION["token"])){
+            $token = $_SESSION["token"];
+
+            $user = $this->pesquisarPorToken($token);
+            
+            if($user){
+                if($user->getTipo() == "Gerente"){
+                    return $user;
+                }else{
+                    $this->message->setMessage("Acesso bloqueado","Somente contas autorizdas possuem acesso a essa página","error","principal.php"); 
+                }
+            } else if($protected){
+                $this->message->setMessage("Login expirado","Por favor fazer login novamente!","error","principal.php");
+            }
+        }else if($protected){
+            $this->message->setMessage("Login expirado","Por favor fazer login novamente!","error","principal.php");
+        }
+    }
     public function tokenParaSessao($token, $redirect = true){
         $_SESSION["token"] = $token;
 

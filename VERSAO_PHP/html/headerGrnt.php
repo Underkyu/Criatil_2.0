@@ -16,7 +16,7 @@ if(!empty($flashMessage["msg"])){
 }
 $userDao = new UsuarioDAO($conn,$BASE_URL);
 
-$usuarioData = $userDao->verificarToken(false);
+$usuarioData = $userDao->verificarTokenGerente(false);
 
 ?>
 
